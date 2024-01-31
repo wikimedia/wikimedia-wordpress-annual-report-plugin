@@ -1,0 +1,19 @@
+{
+  "name": "annual-report",
+  "version": "0.0.1",
+  "description": "Blocks and frontend functionality for Wikimedia digital-first reports",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wikimedia/wikimedia-wordpress-annual-report-plugin.git"
+  },
+  "author": "",
+  "license": "GPL-2.0-only",
+  "bugs": {
+    "url": "https://github.com/wikimedia/wikimedia-wordpress-annual-report-plugin/issues"
+  },
+  "homepage": "https://github.com/wikimedia/wikimedia-wordpress-annual-report-plugin#readme"
+}
