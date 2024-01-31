@@ -1,0 +1,7 @@
+{
+    "name": "wikimedia/annual-report",
+    "description": "Editor and front-end functionality for Wikimedia's digital reports.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2+",
+    "require": {}
+}
