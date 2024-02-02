@@ -1,7 +1,15 @@
 {
-    "name": "wikimedia/annual-report",
+    "name": "wikimedia/wikimedia-wordpress-annual-report-plugin",
     "description": "Editor and front-end functionality for Wikimedia's digital reports.",
     "type": "wordpress-plugin",
     "license": "GPL-2+",
-    "require": {}
+    "require-dev": {
+        "staabm/annotate-pull-request-from-checkstyle": "^1.8",
+        "wp-coding-standards/wpcs": "^3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
 }
