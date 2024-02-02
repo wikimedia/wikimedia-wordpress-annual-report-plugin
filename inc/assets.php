@@ -3,7 +3,7 @@
  * Plugin assets.
  */
 
-namespace WMF\Report\Assets;
+namespace WMF\Reports\Assets;
 
 /**
  * Attach hooks.
