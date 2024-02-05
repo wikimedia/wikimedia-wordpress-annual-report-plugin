@@ -1,0 +1,75 @@
+name: PHP
+
+on: workflow_call
+
+jobs:
+  php:
+    name: PHP
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: [ '8.0' ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Paths filters
+        uses: dorny/paths-filter@v2
+        id: paths
+        with:
+          filters: |
+            composer: &composer
+              - 'composer.json'
+              - 'composer.lock'
+            php: &php
+              - '**/*.php'
+            phpcs:
+              - *php
+              - *composer
+              - 'phpcs.xml'
+          list-files: shell
+
+      - name: Setup
+        if: ${{ toJSON( steps.paths.outputs.changes ) != '"[]"' }}
+        uses: ./.github/actions/setup-php
+        with:
+          cache_version: ${{ secrets.GH_ACTIONS_CACHE_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        if: ${{ toJSON( steps.paths.outputs.changes ) != '"[]"' && steps.cache-php-dependencies.outputs.cache-hit != 'true' }}
+        run: composer install --no-progress --no-interaction --no-ansi
+
+      - name: Make Composer packages available globally
+        if: ${{ toJSON( steps.paths.outputs.changes ) != '"[]"' }}
+        run: echo "${PWD}/vendor/bin" >> $GITHUB_PATH
+
+      - name: Check syntax
+        if: ${{ steps.paths.outputs.phpcs == 'true' }}
+        run: parallel-lint --exclude .git --exclude .github --exclude vendor .
+
+      - name: Fetch base and head branches
+        run: |
+          git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
+          git fetch origin ${{ github.head_ref }}:${{ github.head_ref }}
+
+      - name: Lint changed files
+        id: phpcs
+        # Once more of the codebase is lint-free, change this to check
+        # outputs.phpcs so it will re-run if standards or dependencies change.
+        if: ${{ steps.paths.outputs.php == 'true' }}
+        run: |
+          CHANGED_FILES=$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}..${{ github.head_ref }} | grep .php$)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+          if [[ -n "$CHANGED_FILES" ]]; then
+            echo "Running phpcs..."
+            phpcs --report-full --report-checkstyle=./phpcs-report.xml $CHANGED_FILES
+          fi
+
+      - name: Report PHPCS results
+        if: ${{ always() && steps.phpcs.outcome == 'failure' }}
+        run: |
+          cs2pr ./phpcs-report.xml
