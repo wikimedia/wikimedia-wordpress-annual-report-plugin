@@ -5,6 +5,8 @@
 
 namespace WMF\Reports\Assets;
 
+use Asset_Loader;
+
 /**
  * Attach hooks.
  */
@@ -23,7 +25,7 @@ function bootstrap() {
  * Enqueue these assets in the block editor.
  */
 function enqueue_editor_assets() : void {
-	register_build_asset(
+	enqueue_build_asset(
 		'annual-report-plugin-editor',
 		'editor.js',
 		[
@@ -32,10 +34,9 @@ function enqueue_editor_assets() : void {
 			'wp-edit-post',
 			'wp-element',
 			'wp-i18n',
-			'vega-embed',
 		]
 	);
-	register_build_asset(
+	enqueue_build_asset(
 		'annual-report-plugin-editor',
 		'editor.css'
 	);
@@ -45,11 +46,11 @@ function enqueue_editor_assets() : void {
  * Enqueue these assets only on the frontend.
  */
 function enqueue_frontend_assets() : void {
-	register_build_asset(
+	enqueue_build_asset(
 		'annual-report-plugin-frontend',
 		'main.js'
 	);
-	register_build_asset(
+	enqueue_build_asset(
 		'annual-report-plugin-frontend',
 		'main.css'
 	);
@@ -62,12 +63,12 @@ function enqueue_frontend_assets() : void {
  * @param string   $asset        Name of script in asset manifest.
  * @param string[] $dependencies Array of script dependencies.
  */
-function register_build_asset( $handle, $asset, $dependencies = [] ) : void {
+function enqueue_build_asset( $handle, $asset, $dependencies = [] ) : void {
 	$plugin_path = trailingslashit( plugin_dir_path( dirname( __FILE__, 1 ) ) );
 
 	$manifest = Asset_Loader\Manifest\get_active_manifest( [
-		$plugin_path . 'build/development-asset-manifest.json',
-		$plugin_path . 'build/production-asset-manifest.json',
+		$plugin_path . 'assets/dist/development-asset-manifest.json',
+		$plugin_path . 'assets/dist/production-asset-manifest.json',
 	] );
 
 	if ( empty( $manifest ) ) {
@@ -75,7 +76,7 @@ function register_build_asset( $handle, $asset, $dependencies = [] ) : void {
 		return;
 	}
 
-	Asset_Loader\register_asset( $manifest, $asset, [
+	Asset_Loader\enqueue_asset( $manifest, $asset, [
 		'handle' => $handle,
 		'dependencies' => $dependencies,
 	] );
