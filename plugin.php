@@ -8,3 +8,10 @@ Version: 0.1
 License: GPL-2+
 */
 
+namespace WMF\Reports;
+
+require_once __DIR__ . '/inc/assets.php';
+require_once __DIR__ . '/inc/report.php';
+
+Assets\bootstrap();
+Report\bootstrap();
