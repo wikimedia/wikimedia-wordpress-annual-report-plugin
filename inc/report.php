@@ -16,7 +16,7 @@ function bootstrap() {
  * Register custom post type for reports.
  */
 function register_post_type() {
-	register_post_type( [
+	\register_post_type(
 		'wmf-report',
 		[
 			'label' => __( 'Reports', 'wmf-reports' ),
@@ -33,5 +33,5 @@ function register_post_type() {
 				'slug' => 'report',
 			],
 		]
-	] );
+	);
 }
