@@ -19,6 +19,24 @@ function bootstrap() {
 
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_assets' );
+	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_connect_src_origins', 901, 2 );
+}
+
+/**
+ * Expand the 'connect-src' origins list to allow ws: websocket.
+ *
+ * Resolves bug in wiki security plugin that only permits wss.
+ *
+ * @param string[] $headers Associative array of headerd to set.
+ * @return string[] Updated HTTP headers array.
+ */
+function set_connect_src_origins( array $headers ) : array {
+	$headers['Content-Security-Policy'] = preg_replace(
+		"/connect-src 'self'/",
+		"connect-src 'self' ws://localhost:8080",
+		$headers['Content-Security-Policy']
+	);
+	return $headers;
 }
 
 /**
