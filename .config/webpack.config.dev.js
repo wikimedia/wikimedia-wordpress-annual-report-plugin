@@ -16,6 +16,7 @@ module.exports = choosePort( 8080 ).then( ( port ) => [
 		},
 		entry: {
 			main: filePath( 'assets/src/main.js' ),
+			editor: filePath( 'assets/src/editor.js' ),
 			// Include these standalone block view.js files in the editor build
 			// configuration so they may use the block editor's externals.
 			'blocks/expandable': filePath( 'assets/src/blocks/expandable/view.js' ),
