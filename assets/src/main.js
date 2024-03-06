@@ -5,7 +5,8 @@
 /**
  * Autoload and require all block editor functionality.
  */
-import { autoloadBlocks, autoloadPlugins } from 'block-editor-hmr';
+import { autoloadBlocks } from 'block-editor-hmr';
+
 import { registerBlockCollection } from '@wordpress/blocks';
 
 // Bundle all the Annual Report blocks into a single collection.

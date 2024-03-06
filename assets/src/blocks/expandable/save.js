@@ -10,6 +10,8 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block Save function.
+ * @param {object} props Props.
+ * @param {object} props.attributes Block attributes.
  * @returns {Element} Element to render.
  */
 export default function Save( { attributes } ) {

@@ -13,6 +13,9 @@ import { __ } from '@wordpress/i18n';
 
 /**
  * Block edit function.
+ * @param {object} props Props.
+ * @param {object} props.attributes Block attributes.
+ * @param {Function} props.setAttributes Function to set attributes.
  * @returns {Element} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
