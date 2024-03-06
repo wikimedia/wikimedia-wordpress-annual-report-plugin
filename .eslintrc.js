@@ -19,6 +19,7 @@ module.exports = {
 			'jsx': true,
 		},
 		'sourceType': 'module',
+		'requireConfigFile': false,
 	},
 	'plugins': [
 		'react',
