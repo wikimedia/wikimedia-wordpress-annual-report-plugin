@@ -9,7 +9,7 @@ export const settings = {
 
 	description: 'Show a teaser of some content, with a link to expand to see the full content.',
 
-	category: 'widgets',
+	category: 'text',
 
 	icon: 'editor-expand',
 
