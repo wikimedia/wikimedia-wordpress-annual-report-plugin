@@ -4,3 +4,11 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.expandable-content {
+    height: 100px;
+    overflow: hidden;
+
+    &.is-expanded {
+        height: 100%;
+    }
+}
