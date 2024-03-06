@@ -15,11 +15,10 @@ module.exports = choosePort( 8080 ).then( ( port ) => [
 			port: 8080,
 		},
 		entry: {
-			editor: filePath( 'assets/src/editor.js' ),
+			main: filePath( 'assets/src/main.js' ),
 			// Include these standalone block view.js files in the editor build
 			// configuration so they may use the block editor's externals.
 			'blocks/expandable': filePath( 'assets/src/blocks/expandable/view.js' ),
-			annualreport: filePath( 'assets/src/main.js' ),
 		},
 		output: {
 			chunkFormat: 'array-push',
