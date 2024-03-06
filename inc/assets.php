@@ -33,7 +33,7 @@ function bootstrap() {
 function set_connect_src_origins( array $headers ) : array {
 	$headers['Content-Security-Policy'] = preg_replace(
 		"/connect-src 'self'/",
-		"connect-src 'self' ws://localhost:8080 localhost:8080",
+		"connect-src 'self' ws://localhost:8080 http://localhost:8080 https://localhost:8080",
 		$headers['Content-Security-Policy']
 	);
 	return $headers;
