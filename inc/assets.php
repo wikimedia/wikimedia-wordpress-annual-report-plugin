@@ -27,7 +27,7 @@ function bootstrap() {
 function enqueue_editor_assets() : void {
 	enqueue_build_asset(
 		'annual-report-plugin-editor',
-		'main.js',
+		'editor.js',
 		[
 			'wp-blocks',
 			'wp-components',
