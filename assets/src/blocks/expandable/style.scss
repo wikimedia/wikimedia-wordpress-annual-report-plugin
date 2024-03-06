@@ -5,10 +5,13 @@
  * Replace them with your own styles or remove the file completely.
  */
 .expandable-content {
-    height: 100px;
-    overflow: hidden;
+    
+    &.is-collapsed {
+        height: 100px;
+        overflow: hidden;
+    }
 
     &.is-expanded {
-        height: 100%;
+        height: auto;
     }
 }
