@@ -12,30 +12,20 @@ module.exports = choosePort( 8080 ).then( ( port ) => [
 		name: 'editor',
 		externals,
 		devServer: {
-			port,
+			port: 8080,
 		},
 		entry: {
 			editor: filePath( 'assets/src/editor.js' ),
+			// Include these standalone block view.js files in the editor build
+			// configuration so they may use the block editor's externals.
+			'blocks/expandable': filePath( 'assets/src/blocks/expandable/view.js' ),
+			annualreport: filePath( 'assets/src/main.js' ),
 		},
 		output: {
 			chunkFormat: 'array-push',
 			path: filePath( 'assets/dist' ),
 			publicPath: `http://localhost:${port}/annual-report/`,
 		}
-	} ),
-	presets.development( {
-		name: 'main',
-		devServer: {
-			port,
-		},
-		entry: {
-			shiro: filePath( 'assets/src/main.js' ),
-		},
-		output: {
-			chunkFormat: 'array-push',
-			path: filePath( 'assets/dist' ),
-			publicPath: `http://localhost:${port}/shiro-theme/`,
-		},
 	} ),
 ]
 );
