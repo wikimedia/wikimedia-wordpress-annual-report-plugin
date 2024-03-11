@@ -61,7 +61,7 @@ jobs:
         # outputs.phpcs so it will re-run if standards or dependencies change.
         if: ${{ steps.paths.outputs.php == 'true' }}
         run: |
-          phpcs --report-full --report-checkstyle=./phpcs-report.xml
+          composer lint -- --report-full --report-checkstyle=./phpcs-report.xml
 
       - name: Report PHPCS results
         if: ${{ always() && steps.phpcs.outcome == 'failure' }}
