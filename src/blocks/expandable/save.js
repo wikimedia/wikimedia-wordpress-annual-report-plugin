@@ -20,7 +20,7 @@ export default function Save( { attributes } ) {
 	return (
 		<div { ...blockProps }>
 			<div
-				className="expandable-content is-collapsed"
+				className="expandable-content"
 				data-visible-amount={ attributes.visibleAmount }
 				data-visible-unit={ attributes.visibleUnit }
 			>
