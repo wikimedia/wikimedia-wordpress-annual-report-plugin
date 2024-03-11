@@ -6,24 +6,30 @@ import React from 'react';
 /**
  * WordPress dependencies
  */
-import { useBlockProps, InnerBlocks, BlockControls } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	InnerBlocks,
+	BlockControls,
+} from '@wordpress/block-editor';
 import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 /**
  * Block edit function.
- * @param {object} props Props.
- * @param {object} props.attributes Block attributes.
- * @param {Function} props.setAttributes Function to set attributes.
- * @returns {Element} Element to render.
+ * @param {Object} props Props.
+ * @param {Object} props.attributes Block attributes.
+ * @return {Element} Element to render.
  */
-export default function Edit( { attributes, setAttributes } ) {
-
+export default function Edit( { attributes } ) {
 	const [ expanded, setExpanded ] = useState( true );
 
-	const className = ( expanded ) ? 'expandable-content is-expanded' : 'expandable-content is-collapsed';
-	const buttonText = ( expanded ) ? __( 'Show less', 'wikimedia-annual-report' ) : __( 'Show more', 'wikimedia-annual-report' );
+	const className = expanded
+		? 'expandable-content is-expanded'
+		: 'expandable-content is-collapsed';
+	const buttonText = expanded
+		? __( 'Show less', 'wikimedia-annual-report' )
+		: __( 'Show more', 'wikimedia-annual-report' );
 
 	return (
 		<div { ...useBlockProps() }>
@@ -31,7 +37,11 @@ export default function Edit( { attributes, setAttributes } ) {
 				<ToolbarGroup>
 					<ToolbarButton
 						icon={ expanded ? 'arrow-up-alt2' : 'arrow-down-alt2' }
-						title={ expanded ? __( 'Collapse', 'wikimedia-annual-report' ) : __( 'Expand', 'wikimedia-annual-report' ) }
+						title={
+							expanded
+								? __( 'Collapse', 'wikimedia-annual-report' )
+								: __( 'Expand', 'wikimedia-annual-report' )
+						}
 						onClick={ () => setExpanded( ! expanded ) }
 					/>
 				</ToolbarGroup>
@@ -49,10 +59,10 @@ export default function Edit( { attributes, setAttributes } ) {
 				<button
 					className="expandable-button"
 					onClick={ () => setExpanded( ! expanded ) }
-				>{ buttonText }</button>
+				>
+					{ buttonText }
+				</button>
 			</div>
-
 		</div>
 	);
-
 }

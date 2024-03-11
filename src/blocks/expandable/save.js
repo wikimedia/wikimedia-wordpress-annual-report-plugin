@@ -11,12 +11,11 @@ import { __ } from '@wordpress/i18n';
 
 /**
  * Block Save function.
- * @param {object} props Props.
- * @param {object} props.attributes Block attributes.
- * @returns {Element} Element to render.
+ * @param {Object} props Props.
+ * @param {Object} props.attributes Block attributes.
+ * @return {Element} Element to render.
  */
 export default function Save( { attributes } ) {
-
 	const blockProps = useBlockProps.save();
 
 	return (
@@ -29,7 +28,9 @@ export default function Save( { attributes } ) {
 				<InnerBlocks.Content />
 			</div>
 			<div className="expandable-expander">
-				<button className="expandable-button">{ __( 'Show more', 'wikimedia-annual-report' ) }</button>
+				<button className="expandable-button">
+					{ __( 'Show more', 'wikimedia-annual-report' ) }
+				</button>
 			</div>
 		</div>
 	);
