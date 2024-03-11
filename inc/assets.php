@@ -41,7 +41,7 @@ function set_connect_src_origins( array $headers ) : array {
  * @return string Fully-formed public URI for this file.
  */
 function build_file_uri( string $relative_file_path ) : string {
-	return plugin_dir_url( PLUGIN_PATH ) . 'build/' . $relative_file_path;
+	return plugin_dir_url( PLUGIN_PATH . '/plugin.php' ) . 'build/' . $relative_file_path;
 }
 
 /**
