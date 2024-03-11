@@ -67,6 +67,9 @@ function enqueue_editor_assets() : void {
 	wp_enqueue_style(
 		'annual-report-plugin-editor',
 		build_file_uri( 'editor.css' )
+		[
+			'dashicons'
+		]
 	);
 }
 
