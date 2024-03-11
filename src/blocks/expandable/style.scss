@@ -4,28 +4,28 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
- .expandable-content {
+.expandable-content {
 
-    &.is-collapsed {
-        height: 100px;
-        overflow: hidden;
-    }
+	&.is-collapsed {
+		height: 100px;
+		overflow: hidden;
+	}
 
-    &.is-expanded {
-        height: auto;
-    }
+	&.is-expanded {
+		height: auto;
+	}
 }
 
 .expandable-expander {
 
-    .expandable-button {
-        max-width: 300px;
-        background-color: white;
-        border: 1px solid #AAAAAA;
-        color: #000000;
+	.expandable-button {
+		max-width: 300px;
+		background-color: white;
+		border: 1px solid #aaa;
+		color: #000;
 
-        &::after {
-            content: "\f347";
-        }
-    }
+		&::after {
+			content: "\f347";
+		}
+	}
 }
