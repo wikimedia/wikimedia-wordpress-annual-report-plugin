@@ -28,7 +28,7 @@
 			"default": 300
 		},
 		"visibleUnit": {
-			"enum": [ "px", "%" ],
+			"enum": [ "px", "%", "vh" ],
 			"default": "px"
 		}
 	},
