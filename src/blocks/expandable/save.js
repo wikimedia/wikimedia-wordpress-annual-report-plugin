@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 
 /**
  * Block Save function.
- * @param {Object} props Props.
+ * @param {Object} props            Props.
  * @param {Object} props.attributes Block attributes.
  * @return {Element} Element to render.
  */
