@@ -101,9 +101,18 @@ const Edit = ( {
 			<RichText
 				tagName="div"
 				className="expandable-expander"
-				value={ attributes.linkText }
-				placeholder="Show more..."
-				onChange={ ( linkText ) => setAttributes( { linkText } ) }
+				value={ attributes.showMoreText }
+				placeholder="Show more"
+				onChange={ ( showMoreText ) => setAttributes( { showMoreText } ) }
+				withoutInteractiveFormatting
+				allowedFormats={ [] }
+			/>
+			<RichText
+				tagName="div"
+				className="expandable-expander"
+				value={ attributes.showLessText }
+				placeholder="Show less"
+				onChange={ ( showLessText ) => setAttributes( { showLessText } ) }
 				withoutInteractiveFormatting
 				allowedFormats={ [] }
 			/>

@@ -15,9 +15,13 @@
 		"buttonTextColor": {
 			"type": "string"
 		},
-		"linkText": {
+		"showMoreText": {
 			"type": "string",
 			"default": "Show more"
+		},
+		"showLessText": {
+			"type": "string",
+			"default": "Show less"
 		},
 		"visibleAmount": {
 			"type": "number",
