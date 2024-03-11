@@ -26,6 +26,7 @@ import useIsChildBlockSelected from '../../hooks/use-is-child-block-selected';
 const UNIT_OPTIONS = [
 	{ label: 'px', value: 'px' },
 	{ label: '%', value: '%' },
+	{ label: 'vh', value: 'vh' },
 ];
 
 /**
