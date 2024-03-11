@@ -6,7 +6,12 @@ import React from 'react';
 /**
  * WordPress dependencies
  */
-import { useBlockProps, InnerBlocks, BlockControls, RichText } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	InnerBlocks,
+	BlockControls,
+	RichText,
+} from '@wordpress/block-editor';
 import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -19,10 +24,11 @@ import { __ } from '@wordpress/i18n';
  * @returns {Element} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-
 	const [ expanded, setExpanded ] = useState( true );
 
-	const className = ( expanded ) ? 'expandable-content is-expanded' : 'expandable-content is-collapsed';
+	const className = expanded
+		? 'expandable-content is-expanded'
+		: 'expandable-content is-collapsed';
 
 	return (
 		<div { ...useBlockProps() }>
@@ -49,13 +55,13 @@ export default function Edit( { attributes, setAttributes } ) {
 					tagName="span"
 					className="expandable-linktext"
 					value={ attributes.linkText }
-					placeholder='Read more...'
-					onChange={ ( content ) => setAttributes( { linkText: content } ) }
+					placeholder="Read more..."
+					onChange={ ( content ) =>
+						setAttributes( { linkText: content } )
+					}
 					withoutInteractiveFormatting
 				/>
 			</div>
-
 		</div>
 	);
-
 }
