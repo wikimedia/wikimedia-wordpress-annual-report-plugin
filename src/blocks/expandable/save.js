@@ -7,6 +7,7 @@ import React from 'react';
  * WordPress dependencies.
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block Save function.
@@ -15,6 +16,7 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
  * @returns {Element} Element to render.
  */
 export default function Save( { attributes } ) {
+
 	const blockProps = useBlockProps.save();
 
 	return (
@@ -27,9 +29,7 @@ export default function Save( { attributes } ) {
 				<InnerBlocks.Content />
 			</div>
 			<div className="expandable-expander">
-				<button className="expandable-button">
-					{ attributes.linkText }
-				</button>
+				<button className="expandable-button">{ __( 'Show more', 'wikimedia-annual-report' ) }</button>
 			</div>
 		</div>
 	);

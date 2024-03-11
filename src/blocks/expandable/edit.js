@@ -6,12 +6,7 @@ import React from 'react';
 /**
  * WordPress dependencies
  */
-import {
-	useBlockProps,
-	InnerBlocks,
-	BlockControls,
-	RichText,
-} from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, BlockControls } from '@wordpress/block-editor';
 import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -24,11 +19,11 @@ import { __ } from '@wordpress/i18n';
  * @returns {Element} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
+
 	const [ expanded, setExpanded ] = useState( true );
 
-	const className = expanded
-		? 'expandable-content is-expanded'
-		: 'expandable-content is-collapsed';
+	const className = ( expanded ) ? 'expandable-content is-expanded' : 'expandable-content is-collapsed';
+	const buttonText = ( expanded ) ? __( 'Show less', 'wikimedia-annual-report' ) : __( 'Show more', 'wikimedia-annual-report' );
 
 	return (
 		<div { ...useBlockProps() }>
@@ -36,7 +31,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				<ToolbarGroup>
 					<ToolbarButton
 						icon={ expanded ? 'arrow-up-alt2' : 'arrow-down-alt2' }
-						title={ expanded ? __( 'Collapse' ) : __( 'Expand' ) }
+						title={ expanded ? __( 'Collapse', 'wikimedia-annual-report' ) : __( 'Expand', 'wikimedia-annual-report' ) }
 						onClick={ () => setExpanded( ! expanded ) }
 					/>
 				</ToolbarGroup>
@@ -51,17 +46,13 @@ export default function Edit( { attributes, setAttributes } ) {
 			</div>
 
 			<div className="expandable-expander">
-				<RichText
-					tagName="span"
-					className="expandable-linktext"
-					value={ attributes.linkText }
-					placeholder="Read more..."
-					onChange={ ( content ) =>
-						setAttributes( { linkText: content } )
-					}
-					withoutInteractiveFormatting
-				/>
+				<button
+					className="expandable-button"
+					onClick={ () => setExpanded( ! expanded ) }
+				>{ buttonText }</button>
 			</div>
+
 		</div>
 	);
+
 }
