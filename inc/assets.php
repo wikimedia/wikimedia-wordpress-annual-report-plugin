@@ -85,6 +85,6 @@ function enqueue_frontend_assets() : void {
 
 	wp_enqueue_style(
 		'annual-report-plugin-frontend',
-		build_file_uri( 'frontend.css' )
+		build_file_uri( 'style-frontend.css' )
 	);
 }
