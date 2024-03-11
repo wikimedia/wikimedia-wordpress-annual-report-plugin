@@ -5,7 +5,7 @@ import Save from './save';
 import metadata from './block.json';
 
 /** @see https://www.npmjs.com/package/@wordpress/scripts#using-css */
-import './style.scss';
+import './frontend.scss';
 
 registerBlockType( metadata.name, {
 	...metadata,

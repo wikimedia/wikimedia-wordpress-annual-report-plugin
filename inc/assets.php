@@ -26,9 +26,20 @@ function bootstrap() {
  * @return string[] Updated HTTP headers array.
  */
 function set_connect_src_origins( array $headers ) : array {
+	if ( wp_get_environment_type() !== 'local' ) {
+		return $headers;
+	}
+
+	$localhost_srcs = array_reduce(
+		[ 8080, 8887 ],
+		function( $carry, $port ) {
+			return $carry .= "ws://localhost:$port wss://localhost:$port http://localhost:$port https://localhost:$port ";
+		},
+		''
+	);
 	$headers['Content-Security-Policy'] = preg_replace(
 		"/connect-src 'self'/",
-		"connect-src 'self' ws://localhost:8080 http://localhost:8080 https://localhost:8080",
+		"connect-src 'self' $localhost_srcs",
 		$headers['Content-Security-Policy']
 	);
 	return $headers;

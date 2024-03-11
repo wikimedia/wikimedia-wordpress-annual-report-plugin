@@ -1,0 +1,33 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.expandable-content.is-collapsed {
+	height: 100px;
+	overflow: hidden;
+}
+.expandable-content.is-expanded {
+	height: auto;
+}
+.expandable-expander {
+	border: 1px solid;
+	font-weight: bold;
+	padding: 0.5rem 0;
+	text-align: center;
+	width: 100%;
+
+	&,
+	.editor-styles-wrapper & {
+		padding: 0.5rem 0;
+	}
+}
+.expandable-expander::after {
+	background: url( './carat.svg' ) center center no-repeat;
+	content: ' ';
+	display: inline-block;
+	height: 0.6rem;
+	padding-left: 3px;
+	width: 13px;
+}
