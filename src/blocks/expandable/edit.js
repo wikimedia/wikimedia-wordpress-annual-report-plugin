@@ -10,24 +10,15 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 	InspectorControls,
-	BlockControls,
 	RichText,
 	withColors,
-	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
-	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 import {
-	ColorPicker,
-	Panel,
 	PanelBody,
 	PanelRow,
-	__experimentalNumberControl as NumberControl,
 	SelectControl,
 	TextControl,
-	ToolbarGroup,
-	ToolbarButton,
 } from '@wordpress/components';
-import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import useIsChildBlockSelected from '../../hooks/use-is-child-block-selected';
@@ -48,21 +39,12 @@ const Edit = ( {
 	attributes,
 	setAttributes,
 	clientId,
-	// From the withColors HOC:
-	buttonBackgroundColor,
-	setButtonBackgroundColor,
-	buttonTextColor,
-	setButtonTextColor,
-	style,
 } ) => {
 	const blockProps = useBlockProps();
 	const isChildSelected = useIsChildBlockSelected( clientId );
-	const [ expanded, setExpanded ] = useState( true );
 	const innerBlockProps = useInnerBlocksProps(
 		{
-			className: expanded
-				? 'expandable-content is-expanded'
-				: 'expandable-content',
+			className: 'expandable-content',
 			'data-visible-amount': attributes.visibleAmount,
 			'data-visible-unit': attributes.visibleUnit,
 			style: {
@@ -82,19 +64,8 @@ const Edit = ( {
 		}
 	);
 
-	const colorGradientSettings = useMultipleOriginColorsAndGradients();
-
 	return (
 		<div { ...blockProps }>
-			<BlockControls>
-				<ToolbarGroup>
-					<ToolbarButton
-						icon={ expanded ? 'arrow-up-alt2' : 'arrow-down-alt2' }
-						title={ expanded ? __( 'Collapse' ) : __( 'Expand' ) }
-						onClick={ () => setExpanded( ! expanded ) }
-					/>
-				</ToolbarGroup>
-			</BlockControls>
 			<InspectorControls group="styles">
 				<PanelBody intialOpen={ true }>
 					<PanelRow className="wmf-expandable-dimensions-panel">
