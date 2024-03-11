@@ -26,8 +26,8 @@ export default function Save( { attributes } ) {
 			>
 				<InnerBlocks.Content />
 			</div>
-			<button className="expandable-expander" type="button">
-				{ attributes.linkText }
+			<button className="expandable-expander" type="button" data-showmoretext={ attributes.showMoreText } data-showlesstext={ attributes.showLessText } >
+				{ attributes.showMoreText }
 			</button>
 		</div>
 	);
