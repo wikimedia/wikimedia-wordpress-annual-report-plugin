@@ -62,7 +62,7 @@ const Edit = ( {
 		{
 			className: expanded
 				? 'expandable-content is-expanded'
-				: 'expandable-content is-collapsed',
+				: 'expandable-content',
 			'data-visible-amount': attributes.visibleAmount,
 			'data-visible-unit': attributes.visibleUnit,
 			style: {
