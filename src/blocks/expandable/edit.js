@@ -124,46 +124,6 @@ const Edit = ( {
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
-			<InspectorControls group="color">
-				<ColorGradientSettingsDropdown
-					settings={ [
-						{
-							label: __(
-								'Toggle Button Background',
-								'wmf-reports'
-							),
-							colorValue:
-								buttonBackgroundColor?.color ||
-								attributes.buttonBackgroundColor,
-							onColorChange: ( color ) => {
-								setButtonBackgroundColor( color );
-
-								setAttributes( {
-									buttonBackgroundColor: color,
-								} );
-							},
-						},
-						{
-							label: __( 'Toggle Button Text', 'wmf-reports' ),
-							colorValue:
-								buttonTextColor?.color ||
-								attributes.buttonTextColor,
-							onColorChange: ( color ) => {
-								setButtonTextColor( color );
-
-								setAttributes( {
-									buttonTextColor: color,
-								} );
-							},
-						},
-					] }
-					panelId={ clientId }
-					hasColorsOrGradients={ false }
-					disableCustomColors={ false }
-					__experimentalIsRenderedInSidebar
-					{ ...colorGradientSettings }
-				/>
-			</InspectorControls>
 
 			<div { ...innerBlockProps } />
 
