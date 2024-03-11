@@ -15,7 +15,6 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
  * @returns {Element} Element to render.
  */
 export default function Save( { attributes } ) {
-
 	const blockProps = useBlockProps.save();
 
 	return (
@@ -28,7 +27,9 @@ export default function Save( { attributes } ) {
 				<InnerBlocks.Content />
 			</div>
 			<div className="expandable-expander">
-				<button className="expandable-button">{ attributes.linkText }</button>
+				<button className="expandable-button">
+					{ attributes.linkText }
+				</button>
 			</div>
 		</div>
 	);

@@ -7,7 +7,8 @@ export const name = 'wikimedia-annual-report/expandable';
 export const settings = {
 	title: 'Expandable',
 
-	description: 'Show a teaser of some content, with a link to expand to see the full content.',
+	description:
+		'Show a teaser of some content, with a link to expand to see the full content.',
 
 	category: 'text',
 
@@ -15,11 +16,7 @@ export const settings = {
 
 	version: '0.1.0',
 
-	keywords: [
-		'annual',
-		'report',
-		'expandable',
-	],
+	keywords: [ 'annual', 'report', 'expandable' ],
 
 	edit: Edit,
 
