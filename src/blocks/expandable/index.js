@@ -1,24 +1,22 @@
+import { registerBlockType } from '@wordpress/blocks';
+
 import Edit from './edit';
 import Save from './save';
+import metadata from './block.json';
+
+/** @see https://www.npmjs.com/package/@wordpress/scripts#using-css */
 import './style.scss';
 
-export const name = 'wikimedia-annual-report/expandable';
-
-export const settings = {
-	title: 'Expandable',
-
-	description:
-		'Show a teaser of some content, with a link to expand to see the full content.',
-
-	category: 'text',
-
-	icon: 'editor-expand',
-
-	version: '0.1.0',
-
-	keywords: [ 'annual', 'report', 'expandable' ],
-
+registerBlockType( metadata.name, {
+	...metadata,
 	edit: Edit,
-
 	save: Save,
-};
+} );
+
+// Block HMR boilerplate.
+if ( module.hot ) {
+	module.hot.accept();
+	const { deregister, refresh } = require( '../../helpers/hot-blocks.js' );
+	module.hot.dispose( deregister( metadata.name ) );
+	refresh( metadata.name, module.hot.data );
+}

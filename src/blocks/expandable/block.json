@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wmf-reports/expandable",
+	"title": "Expandable",
+	"description": "Show a teaser of some content, with a link to expand to see the full content.",
+	"category": "widgets",
+	"icon": "editor-expand",
+
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "wmf-reports",
+
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+
+	"keywords": [ "annual", "report", "expandable", "accordion" ]
+}
