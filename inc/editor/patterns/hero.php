@@ -9,8 +9,8 @@ const NAME = 'wmf-reports/hero';
 
 const PATTERN = <<<CONTENT
 <!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull wmf-reports-hero"><!-- wp:image {"align":"full","id":74377,"sizeSlug":"full","linkDestination":"none"} -->
-<figure class="wp-block-image alignfull size-full"><img src="/wp-content/plugins/wikimedia-wordpress-annual-report-plugin/assets/images/Colorful_Lights_Pattern.png" alt="" class="wp-image-74377"/></figure>
+<div class="wp-block-group alignfull wmf-reports-hero"><!-- wp:image -->
+<figure class="wp-block-image"><img alt=""/></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading -->
