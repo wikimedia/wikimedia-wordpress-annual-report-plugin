@@ -29,8 +29,9 @@
 	padding-left: 0.25rem;
 	width: 13px;
 	vertical-align: middle;
-
 }
-.expandable-expander[aria-expanded="true"]::after {
-	transform: rotate( 180deg );
+
+.expandable-expander[aria-expanded="true"]::after,
+.expandable-expander.is-expanded-in-editor::after {
+	transform: rotate(180deg);
 }

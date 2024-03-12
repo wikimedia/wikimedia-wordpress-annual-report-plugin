@@ -31,9 +31,10 @@ const UNIT_OPTIONS = [
  * @param {Object}   props.attributes    Block attributes.
  * @param {Function} props.setAttributes Function to set attributes.
  * @param {string}   props.clientId      Transient block clientId.
+ * @param {bool}     props.isSelected    Whether this block is selected.
  * @return {React.ReactNode} Element to render.
  */
-const Edit = ( { attributes, setAttributes, clientId } ) => {
+const Edit = ( { attributes, setAttributes, clientId, isSelected } ) => {
 	const blockProps = useBlockProps();
 	const isChildSelected = useIsChildBlockSelected( clientId );
 	const innerBlockProps = useInnerBlocksProps(
@@ -92,28 +93,32 @@ const Edit = ( { attributes, setAttributes, clientId } ) => {
 
 			<div { ...innerBlockProps } />
 
-			<RichText
-				tagName="div"
-				className="expandable-expander"
-				value={ attributes.showMoreText }
-				placeholder="Show more"
-				onChange={ ( showMoreText ) =>
-					setAttributes( { showMoreText } )
-				}
-				withoutInteractiveFormatting
-				allowedFormats={ [] }
-			/>
-			<RichText
-				tagName="div"
-				className="expandable-expander"
-				value={ attributes.showLessText }
-				placeholder="Show less"
-				onChange={ ( showLessText ) =>
-					setAttributes( { showLessText } )
-				}
-				withoutInteractiveFormatting
-				allowedFormats={ [] }
-			/>
+			{ ! isChildSelected && (
+				<RichText
+					tagName="div"
+					className="expandable-expander"
+					value={ attributes.showMoreText }
+					placeholder="Show more"
+					onChange={ ( showMoreText ) =>
+						setAttributes( { showMoreText } )
+					}
+					withoutInteractiveFormatting
+					allowedFormats={ [] }
+				/>
+			) }
+			{ ( isSelected || isChildSelected ) && (
+				<RichText
+					tagName="div"
+					className="expandable-expander is-expanded-in-editor"
+					value={ attributes.showLessText }
+					placeholder="Show less"
+					onChange={ ( showLessText ) =>
+						setAttributes( { showLessText } )
+					}
+					withoutInteractiveFormatting
+					allowedFormats={ [] }
+				/>
+			) }
 		</div>
 	);
 };
