@@ -3,61 +3,122 @@
  */
 import {
 	useBlockProps,
-	InnerBlocks,
-	BlockControls,
+	useInnerBlocksProps,
+	InspectorControls,
+	RichText,
+	withColors,
 } from '@wordpress/block-editor';
-import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import {
+	PanelBody,
+	PanelRow,
+	SelectControl,
+	TextControl,
+} from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+
+import useIsChildBlockSelected from '../../hooks/use-is-child-block-selected';
+
+const UNIT_OPTIONS = [
+	{ label: 'px', value: 'px' },
+	{ label: '%', value: '%' },
+	{ label: 'vh', value: 'vh' },
+];
 
 /**
  * Block edit function.
- * @param {Object} props            Props.
- * @param {Object} props.attributes Block attributes.
- * @return {Element} Element to render.
+ *
+ * @param {Object}   props               Component Props.
+ * @param {Object}   props.attributes    Block attributes.
+ * @param {Function} props.setAttributes Function to set attributes.
+ * @param {string}   props.clientId      Transient block clientId.
+ * @return {React.ReactNode} Element to render.
  */
-export default function Edit( { attributes } ) {
-	const [ expanded, setExpanded ] = useState( true );
-
-	const className = expanded
-		? 'expandable-content is-expanded'
-		: 'expandable-content is-collapsed';
-	const buttonText = expanded
-		? __( 'Show less', 'wikimedia-annual-report' )
-		: __( 'Show more', 'wikimedia-annual-report' );
+const Edit = ( { attributes, setAttributes, clientId } ) => {
+	const blockProps = useBlockProps();
+	const isChildSelected = useIsChildBlockSelected( clientId );
+	const innerBlockProps = useInnerBlocksProps(
+		{
+			className: 'expandable-content',
+			'data-visible-amount': attributes.visibleAmount,
+			'data-visible-unit': attributes.visibleUnit,
+			style: {
+				// Always open if child is selected or required vqriables are not present.
+				...( isChildSelected ||
+				! attributes.visibleAmount ||
+				! attributes.visibleUnit
+					? {}
+					: {
+							height: `${ attributes.visibleAmount }${ attributes.visibleUnit }`,
+							overflow: 'hidden',
+					  } ),
+			},
+		},
+		{
+			template: [ [ 'core/paragraph' ] ],
+		}
+	);
 
 	return (
-		<div { ...useBlockProps() }>
-			<BlockControls>
-				<ToolbarGroup>
-					<ToolbarButton
-						icon={ expanded ? 'arrow-up-alt2' : 'arrow-down-alt2' }
-						title={
-							expanded
-								? __( 'Collapse', 'wikimedia-annual-report' )
-								: __( 'Expand', 'wikimedia-annual-report' )
-						}
-						onClick={ () => setExpanded( ! expanded ) }
-					/>
-				</ToolbarGroup>
-			</BlockControls>
+		<div { ...blockProps }>
+			<InspectorControls group="styles">
+				<PanelBody intialOpen={ true }>
+					<PanelRow className="wmf-expandable-dimensions-panel">
+						<TextControl
+							label={ __( 'Visible Amount', 'wmf-reports' ) }
+							value={ attributes.visibleAmount }
+							onChange={ ( visibleAmount ) => {
+								if ( isNaN( +visibleAmount ) ) {
+									return;
+								}
+								setAttributes( {
+									visibleAmount: +visibleAmount,
+								} );
+							} }
+						/>
+						<SelectControl
+							label={ __( 'Unit', 'wmf-reports' ) }
+							options={ UNIT_OPTIONS }
+							value={
+								attributes.visibleUnit ||
+								UNIT_OPTIONS[ 0 ].value
+							}
+							onChange={ ( visibleUnit ) =>
+								setAttributes( { visibleUnit } )
+							}
+						/>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
 
-			<div
-				className={ className }
-				data-visible-amount={ attributes.visibleAmount }
-				data-visible-unit={ attributes.visibleUnit }
-			>
-				<InnerBlocks />
-			</div>
+			<div { ...innerBlockProps } />
 
-			<div className="expandable-expander">
-				<button
-					className="expandable-button"
-					onClick={ () => setExpanded( ! expanded ) }
-				>
-					{ buttonText }
-				</button>
-			</div>
+			<RichText
+				tagName="div"
+				className="expandable-expander"
+				value={ attributes.showMoreText }
+				placeholder="Show more"
+				onChange={ ( showMoreText ) =>
+					setAttributes( { showMoreText } )
+				}
+				withoutInteractiveFormatting
+				allowedFormats={ [] }
+			/>
+			<RichText
+				tagName="div"
+				className="expandable-expander"
+				value={ attributes.showLessText }
+				placeholder="Show less"
+				onChange={ ( showLessText ) =>
+					setAttributes( { showLessText } )
+				}
+				withoutInteractiveFormatting
+				allowedFormats={ [] }
+			/>
 		</div>
 	);
-}
+};
+
+export default withColors( {
+	buttonBackgroundColor: 'button-bg-color',
+	buttonTextColor: 'button-text-color',
+} )( Edit );

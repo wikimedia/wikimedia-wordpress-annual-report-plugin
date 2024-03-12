@@ -1,39 +1,90 @@
-/**
- * Use this file for JavaScript code that you want to run in the front-end
- * on posts/pages that contain this block.
- *
- * When this file is defined as the value of the `viewScript` property
- * in `block.json` it will be enqueued on the front end of the site.
- *
- * Example:
- *
- * ```js
- * {
- *   "viewScript": "file:./view.js"
- * }
- * ```
- *
- * If you're not making any changes to this file because your project doesn't need any
- * JavaScript running in the front-end, then you should delete this file and remove
- * the `viewScript` property from `block.json`.
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
- */
+import './frontend.scss';
 
-import './style.scss';
+/**
+ * Toggle container height and update aria state appropriately.
+ *
+ * @param {HTMLButtonElement} button      Toggle button.
+ * @param {HTMLDivElement}    container   Container div.
+ * @param {boolean}           forceExpand Force the expansion state.
+ */
+function toggleContainer( button, container, forceExpand = false ) {
+	if ( ! button || ! container ) {
+		// eslint-disable-next-line no-console
+		console.error( 'Invalid expandable container nodes', {
+			button,
+			container,
+		} );
+		return;
+	}
+
+	const { showmoretext, showlesstext } = button.dataset;
+	const { visibleAmount, visibleUnit } = container.dataset;
+
+	// Expand if explicitly requested or if container was previously NOT expanded.
+	const expanded =
+		forceExpand || button.getAttribute( 'aria-expanded' ) !== 'true';
+
+	// Update the button text and content height.
+	button.setAttribute( 'aria-expanded', expanded );
+	button.innerText = expanded ? showlesstext : showmoretext;
+	container.setAttribute(
+		'style',
+		`height: ${ expanded ? 'auto' : visibleAmount + visibleUnit }`
+	);
+	container.classList.toggle( 'is-expanded', expanded );
+}
+
+/**
+ * Toggle the state of an expander.
+ *
+ * @param {MouseEvent} event Click event.
+ */
+function onClickExpander( event ) {
+	if ( ! event.target.classList.contains( 'expandable-expander' ) ) {
+		return;
+	}
+	event.preventDefault();
+	const targetContainerId = event.target.getAttribute( 'aria-controls' );
+	const targetContainer = document.getElementById( targetContainerId );
+	toggleContainer( event.target, targetContainer );
+}
+
+/**
+ * Listen for focus events within expandable-content containers and auto-open
+ * the container if an element within it gains focus, for accessibility.
+ */
+function onFocusWithinExpander() {
+	/**
+	 * This event is attached to .expandable-content <div>s.
+	 *
+	 * @type {HTMLDivElement}
+	 */
+	const targetContainer = this;
+	const button = document.querySelector(
+		`[aria-controls="${ targetContainer.id }"]`
+	);
+	toggleContainer( button, targetContainer, true );
+}
 
 // Add a click event listener to each expandable block.
 // When the button is clicked, toggle the is-expanded class on the content.
-document
-	.querySelectorAll( '.wp-block-wikimedia-annual-report-expandable' )
-	.forEach( ( block ) => {
-		const button = block.querySelector( '.expandable-button' );
-		const content = block.querySelector( '.expandable-content' );
+document.addEventListener( 'click', onClickExpander );
+document.querySelectorAll( '.expandable-content' ).forEach( ( container ) => {
+	container.addEventListener( 'focusin', onFocusWithinExpander );
+} );
 
-		button.addEventListener( 'click', () => {
-			content.classList.toggle( 'is-expanded' );
-		} );
+if ( module.hot ) {
+	module.hot.accept();
+	module.hot.dispose( () => {
+		document.removeEventListener( 'click', onClickExpander );
+		document.removeEventListener( 'focusin', onFocusWithinExpander );
+		document
+			.querySelectorAll( '.expandable-content' )
+			.forEach( ( container ) => {
+				container.removeEventListener(
+					'focusin',
+					onFocusWithinExpander
+				);
+			} );
 	} );
-
-/* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-wikimedia-ar-expandable block)' );
-/* eslint-enable no-console */
+}

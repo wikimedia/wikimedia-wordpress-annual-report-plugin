@@ -8,13 +8,37 @@
 	"icon": "editor-expand",
 
 	"example": {},
+	"attributes": {
+		"buttonBackgroundColor": {
+			"type": "string"
+		},
+		"buttonTextColor": {
+			"type": "string"
+		},
+		"showMoreText": {
+			"type": "string",
+			"default": "Show more"
+		},
+		"showLessText": {
+			"type": "string",
+			"default": "Show less"
+		},
+		"visibleAmount": {
+			"type": "number",
+			"default": 300
+		},
+		"visibleUnit": {
+			"enum": [ "px", "%", "vh" ],
+			"default": "px"
+		}
+	},
 	"supports": {
 		"html": false
 	},
 	"textdomain": "wmf-reports",
 
 	"editorScript": "file:./index.js",
-	"style": "file:./style-index.css",
+	"style": "file:./index.css",
 	"viewScript": "file:./view.js",
 
 	"keywords": [ "annual", "report", "expandable", "accordion" ]

@@ -2,13 +2,12 @@
  * WordPress dependencies.
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
-import { __ } from '@wordpress/i18n';
 
 /**
  * Block Save function.
- * @param {Object} props            Props.
+ * @param {Object} props            Component Props.
  * @param {Object} props.attributes Block attributes.
- * @return {Element} Element to render.
+ * @return {React.ReactNode} Element to render.
  */
 export default function Save( { attributes } ) {
 	const blockProps = useBlockProps.save();
@@ -16,17 +15,20 @@ export default function Save( { attributes } ) {
 	return (
 		<div { ...blockProps }>
 			<div
-				className="expandable-content is-collapsed"
+				className="expandable-content"
 				data-visible-amount={ attributes.visibleAmount }
 				data-visible-unit={ attributes.visibleUnit }
 			>
 				<InnerBlocks.Content />
 			</div>
-			<div className="expandable-expander">
-				<button className="expandable-button">
-					{ __( 'Show more', 'wikimedia-annual-report' ) }
-				</button>
-			</div>
+			<button
+				className="expandable-expander"
+				type="button"
+				data-showmoretext={ attributes.showMoreText }
+				data-showlesstext={ attributes.showLessText }
+			>
+				{ attributes.showMoreText }
+			</button>
 		</div>
 	);
 }
