@@ -14,7 +14,7 @@ const POST_TYPE = 'wmf-report';
 function bootstrap() {
 	add_action( 'init', __NAMESPACE__ . '\\register_post_type' );
 	add_action( 'init', __NAMESPACE__ . '\\register_blocks' );
-	add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\\allow_report_block_types', 901, 2 );
+	add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\\allow_report_block_types', 11, 2 );
 }
 
 /**
@@ -53,11 +53,12 @@ function register_blocks() : void {
 }
 
 /**
- * Allow all plugin blocks when editing a report.
+ * Filter the allowed blocks to ensure all our Annual Report blocks are included.
  *
- * @param bool|string[]           $allowed_block_types  Array of block type slugs, or boolean to enable/disable all.
- *                                                      Default true (all registered block types supported).
+ * @param bool|string[]            $allowed_block_types  Array of block type slugs, or boolean to enable/disable all.
  * @param \WP_Block_Editor_Context $block_editor_context The current block editor context.
+ *
+ * @return bool|string[] Filtered allowed blocks list.
  */
 function allow_report_block_types( $allowed_block_types, $block_editor_context ) {
 	if ( is_bool( $allowed_block_types ) ) {
