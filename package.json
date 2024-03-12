@@ -9,7 +9,7 @@
     "format": "npm-run-all --parallel --continue-on-error format:*",
     "format:js": "wp-scripts format",
     "format:php": "composer lint:fix",
-		"format:css": "wp-scripts lint-style --fix",
+    "format:css": "wp-scripts lint-style --fix",
     "lint": "npm-run-all --parallel --continue-on-error lint:*",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
