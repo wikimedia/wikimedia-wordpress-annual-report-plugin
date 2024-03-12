@@ -29,7 +29,7 @@ const withCustomGroupControls = createHigherOrderComponent( ( BlockEdit ) => {
 			return <BlockEdit key="edit" { ...props } />;
 		}
 		const { attributes, setAttributes } = props;
-		console.log( { attributes } ); // eslint-disable-line
+
 		return (
 			<>
 				<BlockEdit key="edit" { ...props } />
@@ -92,6 +92,37 @@ addFilter(
 );
 
 /**
+ * Allow the "fill viewport height" toggle to be previewed. The style override
+ * is rendered in PHP with a filter, so we filter in the editor too.
+ */
+const withFillViewportHeightStyle = createHigherOrderComponent(
+	( BlockListBlock ) => {
+		return ( props ) => {
+			if (
+				props.name !== 'core/group' ||
+				! props.attributes.fullViewportHeight
+			) {
+				return <BlockListBlock { ...props } />;
+			}
+			const mergedCssClasses = `${
+				props.className || ''
+			} wp-block-group-is-full-viewport-height`;
+			return (
+				<BlockListBlock { ...props } className={ mergedCssClasses } />
+			);
+		};
+	},
+	'withFillViewportHeightStyle'
+);
+
+addFilter(
+	'editor.BlockListBlock',
+	'wmf-reports/block-list-block/group-block',
+	withFillViewportHeightStyle,
+	100
+);
+
+/**
  * Add additional custom properties to group blocks.
  *
  * @todo Should this be restricted to groups on Report post type objects?
@@ -139,6 +170,10 @@ if ( module.hot ) {
 		removeFilter(
 			'editor.BlockEdit',
 			'wmf-reports/add-group-block-controls'
+		);
+		removeFilter(
+			'editor.BlockListBlock',
+			'wmf-reports/block-list-block/group-block'
 		);
 		removeFilter(
 			'blocks.registerBlockType',
