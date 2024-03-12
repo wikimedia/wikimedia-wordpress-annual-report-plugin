@@ -1,19 +1,19 @@
 .expandable-content {
 	height: 300px;
 	overflow: hidden;
-}
 
-.expandable-content.is-expanded {
-	height: auto;
+	&.is-expanded {
+		height: auto;
+	}
 }
 
 .expandable-expander {
+	background-color: #fff;
 	border: 1px solid;
 	font-weight: 700;
 	padding: 0.5rem 0;
 	text-align: center;
 	width: 100%;
-	background-color: #fff;
 
 	&,
 	.editor-styles-wrapper & {
@@ -25,7 +25,12 @@
 	background: url(./carat.svg) center center no-repeat;
 	content: " ";
 	display: inline-block;
-	height: 0.6rem;
-	padding-left: 3px;
+	height: 1em;
+	padding-left: 0.25rem;
 	width: 13px;
+	vertical-align: middle;
+
+}
+.expandable-expander[aria-expanded="true"]::after {
+	transform: rotate( 180deg );
 }
