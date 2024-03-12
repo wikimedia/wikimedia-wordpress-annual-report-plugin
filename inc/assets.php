@@ -14,6 +14,35 @@ use WMF\Reports\Asset_Loader;
 function bootstrap() {
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_assets' );
+	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_connect_src_origins', 901, 2 );
+}
+
+/**
+ * Expand the 'connect-src' origins list to allow ws: websocket.
+ *
+ * Resolves bug in wiki security plugin that only permits wss.
+ *
+ * @param string[] $headers Associative array of headerd to set.
+ * @return string[] Updated HTTP headers array.
+ */
+function set_connect_src_origins( array $headers ) : array {
+	if ( wp_get_environment_type() !== 'local' ) {
+		return $headers;
+	}
+
+	$localhost_srcs = array_reduce(
+		[ 8080, 8887, 8888 ],
+		function( $carry, $port ) {
+			return $carry .= "ws://localhost:$port wss://localhost:$port http://localhost:$port https://localhost:$port ";
+		},
+		''
+	);
+	$headers['Content-Security-Policy'] = preg_replace(
+		"/connect-src 'self'/",
+		"connect-src 'self' $localhost_srcs",
+		$headers['Content-Security-Policy']
+	);
+	return $headers;
 }
 
 /**
@@ -48,7 +77,10 @@ function enqueue_editor_assets() : void {
 
 	wp_enqueue_style(
 		'annual-report-plugin-editor',
-		build_file_uri( 'editor.css' )
+		build_file_uri( 'editor.css' ),
+		[
+			'dashicons'
+		]
 	);
 }
 
@@ -64,6 +96,9 @@ function enqueue_frontend_assets() : void {
 
 	wp_enqueue_style(
 		'annual-report-plugin-frontend',
-		build_file_uri( 'frontend.css' )
+		build_file_uri( 'frontend.css' ),
+		[
+			'dashicons'
+		]
 	);
 }
