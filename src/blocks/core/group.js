@@ -8,6 +8,15 @@ import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 import { addFilter, removeFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 
+const toIdString = ( string ) => {
+	return string
+		.toLowerCase()
+		.replace( /[^a-z0-9]/g, ' ' )
+		.trim()
+		.split( /\s+/ )
+		.join( '-' );
+};
+
 /**
  * Filter the BlockEdit component to inject custom controls into core/group block.
  *
@@ -20,6 +29,7 @@ const withCustomGroupControls = createHigherOrderComponent( ( BlockEdit ) => {
 			return <BlockEdit key="edit" { ...props } />;
 		}
 		const { attributes, setAttributes } = props;
+		console.log( { attributes } ); // eslint-disable-line
 		return (
 			<>
 				<BlockEdit key="edit" { ...props } />
@@ -44,9 +54,13 @@ const withCustomGroupControls = createHigherOrderComponent( ( BlockEdit ) => {
 									'Table of Contents Label',
 									'wmf-reports'
 								) }
-								value={ attributes.tableOfContentsLabel }
-								onChange={ ( tableOfContentsLabel ) => {
-									setAttributes( { tableOfContentsLabel } );
+								value={ attributes.tocLabel }
+								onChange={ ( tocLabel ) => {
+									const id = toIdString( tocLabel );
+									setAttributes( {
+										tocSlug: `toc-${ id }`,
+										tocLabel,
+									} );
 								} }
 							/>
 						) }
@@ -55,10 +69,10 @@ const withCustomGroupControls = createHigherOrderComponent( ( BlockEdit ) => {
 								'Fill viewport height',
 								'wmf-reports'
 							) }
-							value={ attributes.fullViewportHeight }
-							onChange={ ( fullViewportHeight ) =>
-								setAttributes( { fullViewportHeight } )
-							}
+							checked={ attributes.fullViewportHeight }
+							onChange={ ( fullViewportHeight ) => {
+								setAttributes( { fullViewportHeight } );
+							} }
 							help={ __(
 								'Makes this group take up at minimum a full viewport of vertical space',
 								'wmf-reports'
@@ -99,7 +113,10 @@ function customizeGroupBlockAttributes( settings, name ) {
 				type: 'boolean',
 				default: false,
 			},
-			tableOfContentsLabel: {
+			tocLabel: {
+				type: 'string',
+			},
+			tocSlug: {
 				type: 'string',
 			},
 			fullViewportHeight: {
