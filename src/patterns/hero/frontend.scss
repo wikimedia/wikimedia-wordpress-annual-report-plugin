@@ -1,0 +1,66 @@
+.wmf-pattern-reports-hero {
+
+	.wp-block-group__inner-container {
+		position: relative;
+	}
+
+	.wp-block-image {
+		margin-bottom: 0;
+	}
+
+	h2.wp-block-heading {
+		position: absolute;
+		top: 362px;
+		background: black;
+		color: white;
+		font-family: 'Noto Sans';
+		text-transform: uppercase;
+		font-size: 15px;
+		font-weight: bold;
+		padding: 0.5em 0.5em 0.5em 1em;
+		display: grid;
+		grid-template-columns: 20px 1fr;
+		grid-gap: 1em;
+		z-index: 1;
+	}
+
+	h2.wp-block-heading::before {
+		background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuNjgwMDIgMy4zMzA0M0M2LjY3NDIzIDEuNTAwOTYgOC4xNDk1NSAwLjAxMTU3IDkuOTc5IDBIMTAuMDIxQzExLjg1MDQgMC4wMTE1NyAxMy4zMjU4IDEuNTAwOTUgMTMuMzIgMy4zMzA0M0MxMy4zMTQyIDUuMTU5OTEgMTEuODI5NSA2LjYzOTkzIDEwIDYuNjM5OTNDOC4xNzA1MSA2LjYzOTkzIDYuNjg1OCA1LjE1OTkxIDYuNjgwMDIgMy4zMzA0M1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zLjE5NjI2IDIuNjcxMjZDMS4yMjcwOCA0LjUwMDI2IC0wLjAwMzUyNzg5IDcuMTEzMDMgNy41OTc2ZS0wNiAxMC4wMTIyQzAuMDA2NzM2ODcgMTUuNTMwMiA0LjQ4MTkxIDIwIDEwIDIwQzE1LjUxODEgMjAgMTkuOTkzMyAxNS41MzAyIDIwIDEwLjAxMjJDMjAuMDAzNSA3LjExMDk5IDE4Ljc3MTIgNC40OTY1OSAxNi43OTk2IDIuNjY3NDFMMTUuMDMwMiA0LjQzNjg0QzE2LjU0OTQgNS44MTEzOCAxNy41MDI3IDcuNzk5MzMgMTcuNSAxMC4wMDkxQzE3LjQ5NDkgMTQuMTQ3NyAxNC4xMzg2IDE3LjUgMTAgMTcuNUM1Ljg2MTQ0IDE3LjUgMi41MDUwNSAxNC4xNDc3IDIuNTAwMDEgMTAuMDA5MUMyLjQ5NzMxIDcuODAxMzcgMy40NDg4OSA1LjgxNTA0IDQuOTY1NjUgNC40NDA2NEwzLjE5NjI2IDIuNjcxMjZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNi4wMjc5MSA1LjUwMjkxQzQuNzgxNTIgNi42MDQ2OCAzLjk5Njg5IDguMjE2MzkgNC4wMDAwMSAxMC4wMTA0QzQuMDA1MjUgMTMuMDI2MyA2LjIzNDk0IDE1LjUxOTMgOS4xMzUgMTUuOTM4MVY4LjYxTDYuMDI3OTEgNS41MDI5MVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMC44NTcgMTUuOTM5MlY4LjYxTDEzLjk2NzggNS40OTkxNkMxNS4yMTY3IDYuNjAxMDIgMTYuMDAzMSA4LjIxNDM1IDE2IDEwLjAxMDRDMTUuOTk0OCAxMy4wMjkxIDEzLjc2MSAxNS41MjM5IDEwLjg1NyAxNS45MzkyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==");
+		content: " ";
+		display: inline-block;
+		height: 20px;
+		padding-right: 5px;
+		width: 20px;
+		background-repeat: no-repeat;
+	}
+
+	h3.wp-block-heading {
+		background: #00A0FF;
+		border-radius: 0 30px 30px 0;
+		margin-left: -1.25rem;
+		margin-right: 1.3rem;
+		min-width: 100%;
+		font-family: Noto Sans;
+		font-size: 35px;
+		font-weight: bold;
+		color: white;
+		position: absolute;
+		top: 380px;
+		padding: 1em 0.5em 0.5em 0.6em;
+	}
+
+	.wp-block-wmf-reports-expandable {
+		padding: 135px 1.25rem 0 1.25rem;
+		color: white;
+		background-color: #0067C7;
+		margin-left: -1.25rem;
+		margin-right: -1.25rem;
+		min-width: 100%;
+
+			.expandable-expander {
+				background: rgba(255, 255, 255, 0.5);
+				border-color: #00A0FF;
+				border-radius: 2px;
+			}
+	}
+}
