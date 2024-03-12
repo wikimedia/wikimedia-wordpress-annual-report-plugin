@@ -18,6 +18,8 @@ require_once __DIR__ . '/inc/asset-loader/namespace.php';
 require_once __DIR__ . '/inc/asset-loader/utilities.php';
 require_once __DIR__ . '/inc/blocks/expandable.php';
 require_once __DIR__ . '/inc/report.php';
+require_once __DIR__ . '/inc/editor/patterns.php';
+require_once __DIR__ . '/inc/editor/patterns/hero.php';
 
 Assets\bootstrap();
 Blocks\Expandable\bootstrap();
