@@ -24,3 +24,4 @@ require_once __DIR__ . '/inc/editor/patterns/hero.php';
 Assets\bootstrap();
 Blocks\Expandable\bootstrap();
 Report\bootstrap();
+Editor\Patterns\bootstrap();
