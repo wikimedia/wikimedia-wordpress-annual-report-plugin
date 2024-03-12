@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wmf-reports/expandable",
+	"title": "Expandable",
+	"description": "Show a teaser of some content, with a link to expand to see the full content.",
+	"category": "widgets",
+	"icon": "editor-expand",
+
+	"example": {},
+	"attributes": {
+		"buttonBackgroundColor": {
+			"type": "string"
+		},
+		"buttonTextColor": {
+			"type": "string"
+		},
+		"showMoreText": {
+			"type": "string",
+			"default": "Show more"
+		},
+		"showLessText": {
+			"type": "string",
+			"default": "Show less"
+		},
+		"visibleAmount": {
+			"type": "number",
+			"default": 300
+		},
+		"visibleUnit": {
+			"enum": [ "px", "%", "vh" ],
+			"default": "px"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "wmf-reports",
+
+	"editorScript": "file:./index.js",
+	"style": "file:./index.css",
+	"viewScript": "file:./view.js",
+
+	"keywords": [ "annual", "report", "expandable", "accordion" ]
+}
