@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import React from 'react';
-
-/**
  * WordPress dependencies
  */
 import {
@@ -31,10 +26,12 @@ const UNIT_OPTIONS = [
 
 /**
  * Block edit function.
- * @param {object} props Props.
- * @param {object} props.attributes Block attributes.
+ *
+ * @param {Object}   props               Component Props.
+ * @param {Object}   props.attributes    Block attributes.
  * @param {Function} props.setAttributes Function to set attributes.
- * @returns {Element} Element to render.
+ * @param {string}   props.clientId      Transient block clientId.
+ * @return {React.ReactNode} Element to render.
  */
 const Edit = ( { attributes, setAttributes, clientId } ) => {
 	const blockProps = useBlockProps();
