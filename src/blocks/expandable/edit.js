@@ -36,11 +36,7 @@ const UNIT_OPTIONS = [
  * @param {Function} props.setAttributes Function to set attributes.
  * @returns {Element} Element to render.
  */
-const Edit = ( {
-	attributes,
-	setAttributes,
-	clientId,
-} ) => {
+const Edit = ( { attributes, setAttributes, clientId } ) => {
 	const blockProps = useBlockProps();
 	const isChildSelected = useIsChildBlockSelected( clientId );
 	const innerBlockProps = useInnerBlocksProps(
@@ -104,7 +100,9 @@ const Edit = ( {
 				className="expandable-expander"
 				value={ attributes.showMoreText }
 				placeholder="Show more"
-				onChange={ ( showMoreText ) => setAttributes( { showMoreText } ) }
+				onChange={ ( showMoreText ) =>
+					setAttributes( { showMoreText } )
+				}
 				withoutInteractiveFormatting
 				allowedFormats={ [] }
 			/>
@@ -113,7 +111,9 @@ const Edit = ( {
 				className="expandable-expander"
 				value={ attributes.showLessText }
 				placeholder="Show less"
-				onChange={ ( showLessText ) => setAttributes( { showLessText } ) }
+				onChange={ ( showLessText ) =>
+					setAttributes( { showLessText } )
+				}
 				withoutInteractiveFormatting
 				allowedFormats={ [] }
 			/>
