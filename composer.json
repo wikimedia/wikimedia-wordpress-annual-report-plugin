@@ -1,19 +1,19 @@
 {
-    "name": "wikimedia/wikimedia-wordpress-annual-report-plugin",
-    "description": "Editor and front-end functionality for Wikimedia's digital reports.",
-    "type": "wordpress-plugin",
-    "license": "GPL-2+",
-    "require-dev": {
-        "staabm/annotate-pull-request-from-checkstyle": "^1.8",
-        "humanmade/coding-standards": "^1.1.0"
-    },
-    "scripts": {
-        "lint": "phpcs plugin.php inc",
-        "lint:fix": "phpcbf plugin.php inc"
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    }
+	"name": "wikimedia/wikimedia-wordpress-annual-report-plugin",
+	"description": "Editor and front-end functionality for Wikimedia's digital reports.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2+",
+	"require-dev": {
+		"staabm/annotate-pull-request-from-checkstyle": "^1.8",
+		"humanmade/coding-standards": "^1.1.0"
+	},
+	"scripts": {
+		"lint": "phpcs --extensions=php plugin.php inc",
+		"lint:fix": "phpcbf --extensions=php plugin.php inc"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }

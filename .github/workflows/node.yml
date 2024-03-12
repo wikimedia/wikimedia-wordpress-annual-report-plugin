@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 18 ]
+        node-version: [ 20 ]
 
     steps:
       - name: Checkout
@@ -42,10 +42,7 @@ jobs:
 
       - name: Lint code
         if: ${{ steps.paths.outputs.eslint == 'true' }}
-        uses: wearerequired/lint-action@v2
-        with:
-          continue_on_error: false
-          eslint: true
+        run: npm run lint:js
 
       - name: Build application
         if: ${{ steps.paths.outputs.javascript == 'true' || steps.paths.outputs.npm == 'true' }}

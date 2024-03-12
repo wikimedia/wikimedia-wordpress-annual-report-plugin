@@ -1,0 +1,36 @@
+.expandable-content {
+	overflow: hidden;
+
+	&.is-expanded {
+		height: auto;
+	}
+}
+
+.expandable-expander {
+	background-color: #fff;
+	border: 1px solid;
+	font-weight: 700;
+	padding: 0.5rem 0;
+	text-align: center;
+	width: 100%;
+
+	&,
+	.editor-styles-wrapper & {
+		padding: 0.5rem 0;
+	}
+}
+
+.expandable-expander::after {
+	background: url(./carat.svg) center center no-repeat;
+	content: " ";
+	display: inline-block;
+	height: 1em;
+	padding-left: 0.25rem;
+	width: 13px;
+	vertical-align: middle;
+}
+
+.expandable-expander[aria-expanded="true"]::after,
+.expandable-expander.is-expanded-in-editor::after {
+	transform: rotate(180deg);
+}
