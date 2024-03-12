@@ -37,16 +37,20 @@ const UNIT_OPTIONS = [
 const Edit = ( { attributes, setAttributes, clientId, isSelected } ) => {
 	const blockProps = useBlockProps();
 	const isChildSelected = useIsChildBlockSelected( clientId );
+	const isExpanded =
+		isChildSelected ||
+		! attributes.visibleAmount ||
+		! attributes.visibleUnit;
 	const innerBlockProps = useInnerBlocksProps(
 		{
-			className: 'expandable-content',
+			className: `expandable-content${
+				isExpanded ? ' is-expanded' : ''
+			}`,
 			'data-visible-amount': attributes.visibleAmount,
 			'data-visible-unit': attributes.visibleUnit,
 			style: {
-				// Always open if child is selected or required vqriables are not present.
-				...( isChildSelected ||
-				! attributes.visibleAmount ||
-				! attributes.visibleUnit
+				// Always open if child is selected or required variables are not present.
+				...( isExpanded
 					? {}
 					: {
 							height: `${ attributes.visibleAmount }${ attributes.visibleUnit }`,
