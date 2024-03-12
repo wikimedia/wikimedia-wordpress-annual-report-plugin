@@ -3,12 +3,13 @@ import './frontend.scss';
 /**
  * Toggle container height and update aria state appropriately.
  *
- * @param {HTMLButtonElement} button     Toggle button.
- * @param {HTMLDivElement}    container  Container div.
+ * @param {HTMLButtonElement} button      Toggle button.
+ * @param {HTMLDivElement}    container   Container div.
  * @param {boolean}           forceExpand Force the expansion state.
  */
 function toggleContainer( button, container, forceExpand = false ) {
 	if ( ! button || ! container ) {
+		// eslint-disable-next-line no-console
 		console.error( 'Invalid expandable container nodes', {
 			button,
 			container,
@@ -36,7 +37,7 @@ function toggleContainer( button, container, forceExpand = false ) {
 /**
  * Toggle the state of an expander.
  *
- * @param {MouseEvent} event
+ * @param {MouseEvent} event Click event.
  */
 function onClickExpander( event ) {
 	if ( ! event.target.classList.contains( 'expandable-expander' ) ) {
@@ -51,12 +52,10 @@ function onClickExpander( event ) {
 /**
  * Listen for focus events within expandable-content containers and auto-open
  * the container if an element within it gains focus, for accessibility.
- *
- * @param {FocusEvent} event FocusIn event.
  */
-function onFocusWithinExpander( event ) {
+function onFocusWithinExpander() {
 	/**
-	 * This event is bound to .expandable-content divs.
+	 * This event is attached to .expandable-content <div>s.
 	 *
 	 * @type {HTMLDivElement}
 	 */

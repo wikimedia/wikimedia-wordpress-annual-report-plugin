@@ -1,18 +1,13 @@
 /**
- * External dependencies.
- */
-import React from 'react';
-
-/**
  * WordPress dependencies.
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block Save function.
- * @param {object} props Props.
- * @param {object} props.attributes Block attributes.
- * @returns {Element} Element to render.
+ * @param {Object} props            Component Props.
+ * @param {Object} props.attributes Block attributes.
+ * @return {React.ReactNode} Element to render.
  */
 export default function Save( { attributes } ) {
 	const blockProps = useBlockProps.save();
