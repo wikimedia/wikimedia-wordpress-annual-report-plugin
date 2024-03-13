@@ -25,7 +25,7 @@
 		padding-right: 1.25rem;
 		min-width: 100%;
 		position: absolute;
-  		top: 390px;
+  		top: min( max( 100vw, 390px ), 440px );
 
 		.wp-block-group__inner-container {
 			position: relative;
@@ -95,7 +95,7 @@
 		}
 
 		.reports-hero-content {
-			padding-top: 50px;
+			padding-top: 100px;
 		}
 	}
 }
