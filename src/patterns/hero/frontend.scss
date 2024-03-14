@@ -20,7 +20,7 @@
 		background: #00A0FF;
 		border-radius: 0 30px 30px 0;
 		margin-left: -1.25rem;
-		margin-right: calc( -1.25rem + 1.5rem );
+		margin-right: calc( -1.25rem + 2.5rem );
 		padding-left: 1.25rem;
 		padding-right: 1.25rem;
 		min-width: 100%;
@@ -92,6 +92,11 @@
 			min-width: 419px;
 			max-width: 646px;
 			margin: 0 auto;
+			left: calc( ( 100vw - 646px ) / 2 ); /* centre the headings */
+
+			h2.wp-block-heading {
+				left: calc( ( 606px - 230px ) / 2 ); /* centre the heading */
+			}
 		}
 
 		.reports-hero-content {
