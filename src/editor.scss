@@ -14,3 +14,17 @@
 		min-width: 4rem;
 	}
 }
+
+.editor-styles-wrapper.single-wmf-report {
+
+	h2.wp-block-heading {
+		display: inline-block;
+		background: black;
+		color: white;
+		font-family: 'Noto Sans';
+		text-transform: uppercase;
+		font-size: 15px;
+		font-weight: bold;
+		padding: 0.5em 1em 0.5em 1em;
+	}
+}
