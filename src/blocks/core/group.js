@@ -2,6 +2,7 @@
  * Customizations for the core group block.
  */
 
+import { createBlock } from '@wordpress/blocks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
@@ -154,6 +155,24 @@ function customizeGroupBlockAttributes( settings, name ) {
 				type: 'boolean',
 				default: false,
 			},
+		},
+		transforms: {
+			...settings.transforms,
+			from: [
+				// Permit transforming from expandable back to a group block.
+				{
+					type: 'block',
+					blocks: [ 'wmf-reports/expandable' ],
+					transform: ( attributes, innerBlocks ) => {
+						return createBlock(
+							'core/group',
+							attributes,
+							innerBlocks
+						);
+					},
+				},
+				...settings.transforms.from,
+			],
 		},
 	};
 }
