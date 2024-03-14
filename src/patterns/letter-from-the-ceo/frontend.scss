@@ -1,0 +1,49 @@
+.wmf-pattern-letter-from-the-ceo {
+
+	> .wp-block-group__inner-container {
+		max-width: 646px;
+    	margin: 0 auto;
+	}
+
+	.wp-block-quote {
+		margin: 1em 0;
+		border: 0;
+		padding-left: 0;
+
+		p {
+			font-family: 'Noto Sans';
+			font-size: 28px;
+			line-height: 34px;
+			font-weight: bold;
+			font-style: normal;
+		}
+	}
+
+	.profile {
+		display: grid;
+		grid-template-columns: 110px 1fr;
+		width: auto;
+		align-items: center;
+		padding: 0.5em;
+		border: 0;
+		margin-bottom: 1em;
+		border: 0;
+
+		&:hover {
+			border: 0;
+		}
+	}
+
+	.profile__image {
+		margin-bottom: 0;
+		width: 80px;
+		height: 80px;
+	}
+
+	.profile__content {
+		.profile__name {
+			font-size: 14px;
+			line-height: 15px;
+		}
+	}
+}

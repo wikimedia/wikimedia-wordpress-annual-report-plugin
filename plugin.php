@@ -20,6 +20,7 @@ require_once __DIR__ . '/inc/blocks/expandable.php';
 require_once __DIR__ . '/inc/report.php';
 require_once __DIR__ . '/inc/editor/patterns.php';
 require_once __DIR__ . '/inc/editor/patterns/hero.php';
+require_once __DIR__ . '/inc/editor/patterns/letter-from-the-ceo.php';
 
 Assets\bootstrap();
 Blocks\Expandable\bootstrap();
