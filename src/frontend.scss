@@ -14,6 +14,7 @@ button:focus {
 
 /* Patterns */
 @import 'patterns/hero/frontend';
+@import 'patterns/letter-from-the-ceo/frontend';
 
 /* Theme overrides */
 .single-wmf-report {
@@ -21,5 +22,16 @@ button:focus {
 	.mw-980 {
 		max-width: none;
 		padding: 0;
+	}
+
+	h2.wp-block-heading {
+		display: inline-block;
+		background: black;
+		color: white;
+		font-family: 'Noto Sans';
+		text-transform: uppercase;
+		font-size: 15px;
+		font-weight: bold;
+		padding: 0.5em 1em 0.5em 1em;
 	}
 }
