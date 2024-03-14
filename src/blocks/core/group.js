@@ -94,7 +94,8 @@ addFilter(
 
 /**
  * Allow the "fill viewport height" toggle to be previewed. The style override
- * is rendered in PHP with a filter, so we filter in the editor too.
+ * is added on the frontend using a PHP filter, but we use JS to filter in-editor
+ * to add the override classname.
  */
 const withFillViewportHeightStyle = createHigherOrderComponent(
 	( BlockListBlock ) => {
