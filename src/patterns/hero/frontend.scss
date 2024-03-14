@@ -69,8 +69,6 @@
 		padding: calc( ( 100vw - 719px ) * -0.3 + 50px ) 1.25rem 0 1.25rem;
 		color: white;
 		background-color: #0067C7;
-		margin-right: -1.25rem;
-		margin-left: -1.25rem;
 		padding-bottom: 1em;
 		min-width: 100%;
 
@@ -101,6 +99,11 @@
 
 		.reports-hero-content {
 			padding-top: 100px;
+
+			.wp-block-group__inner-container {
+				max-width: 646px;
+  				margin: 0 auto;
+			}
 		}
 	}
 }
