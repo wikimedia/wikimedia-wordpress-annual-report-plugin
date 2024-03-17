@@ -4,3 +4,8 @@ button:focus {
 	box-shadow: 0 0 0 2px rgba(0, 125, 250, 0.8);
 	border-radius: 2px;
 }
+
+/* Styles used for core block modifications */
+.wp-block-group-is-full-viewport-height {
+	height: 100vh;
+}
