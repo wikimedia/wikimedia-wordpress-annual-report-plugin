@@ -1,0 +1,1 @@
+(()=>{"use strict";const e=window.wp.blocks,o=window.React,i=window.wp.i18n,t=window.wp.blockEditor,n=JSON.parse('{"UU":"wmf-reports/example-dynamic"}');(0,e.registerBlockType)(n.UU,{edit:function(){return(0,o.createElement)("p",{...(0,t.useBlockProps)()},(0,i.__)("Example Dynamic – hello from the editor!","example-dynamic"))}})})();

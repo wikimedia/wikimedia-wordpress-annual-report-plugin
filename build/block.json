@@ -1,0 +1,5 @@
+{
+  "description": "This is a bit of a hack: using a bare block.json lets us trick wp-scripts into building our frontend and editor bundles",
+  "editorScript": "file:./editor.js",
+  "viewScript": "file:./frontend.js"
+}
