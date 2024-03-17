@@ -41,7 +41,7 @@ const withCustomGroupControls = createHigherOrderComponent( ( BlockEdit ) => {
 					>
 						<ToggleControl
 							label={ __(
-								'Include in Table of Contents',
+								'Include in Report Table of Contents',
 								'wmf-reports'
 							) }
 							checked={ attributes.includeInToC }
