@@ -17,9 +17,13 @@ button:focus {
 
 /* Theme overrides */
 .single-wmf-report {
-
 	.mw-980 {
 		max-width: none;
 		padding: 0;
 	}
+}
+
+/* Styles used for core block modifications */
+.wp-block-group-is-full-viewport-height {
+	height: 100vh;
 }
