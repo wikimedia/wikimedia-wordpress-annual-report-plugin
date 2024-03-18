@@ -15,18 +15,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v3
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.2
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Merge and build
         uses: ./.github/actions/build-to-release-branch
         with:
           source_branch: develop
           release_branch: release-develop
-          built_asset_paths: ./*.css src
+          built_asset_paths: build
           build_script: |
             npm ci
             npm run build
