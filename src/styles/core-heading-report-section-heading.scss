@@ -1,9 +1,9 @@
 .is-style-report-section-heading {
 	background: #000;
 	color: #fff;
-	font-family: 'Noto Sans';
+	font-family: "Noto Sans", sans-serif;
 	font-size: 0.9375rem;
-	font-weight: bold;
+	font-weight: 700;
 	margin: 0 0 -0.5em 0;
 	padding: 0.5rem 1rem;
 	text-transform: uppercase;
@@ -11,7 +11,7 @@
 
 	// Slightly break out of group container.
 	.wp-block-group.has-background &:first-child {
-		transform: translate( 0, -50% );
+		transform: translate(0, -50%);
 		margin-top: -1.25rem;
 	}
 }

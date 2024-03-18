@@ -1,5 +1,5 @@
 /* Helpers */
-@import 'helpers/variables';
+@import "helpers/variables";
 
 /* Non-block-specific styles */
 button:focus {
@@ -8,8 +8,8 @@ button:focus {
 }
 
 @font-face {
-	font-family: 'Noto Sans';
-	src: url('../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf');
+	font-family: "Noto Sans";
+	src: url("../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf");
 }
 
 /* Patterns */
