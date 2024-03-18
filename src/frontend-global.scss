@@ -1,8 +1,25 @@
-/* Non-block-specific styles */
+/* Helpers */
+@import 'helpers/variables';
 
+/* Non-block-specific styles */
 button:focus {
 	box-shadow: 0 0 0 2px rgba(0, 125, 250, 0.8);
 	border-radius: 2px;
+}
+
+@font-face {
+	font-family: 'Noto Sans';
+	src: url('../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf');
+}
+
+/* Patterns */
+
+/* Theme overrides */
+.single-wmf-report {
+	.mw-980 {
+		max-width: none;
+		padding: 0;
+	}
 }
 
 /* Styles used for core block modifications */
