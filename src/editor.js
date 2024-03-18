@@ -8,6 +8,7 @@ import './blocks/core/group.js';
 
 // Editor-wide styles
 import './editor.scss';
+import './frontend-global.scss';
 
 // Bundle all the Annual Report blocks into a single collection.
 registerBlockCollection( 'wikimedia-annual-report', {
