@@ -29,3 +29,8 @@ button:focus {
 .wp-block-group-is-full-viewport-height {
 	height: 100vh;
 }
+
+/* Editor style overrides */
+.editor-styles-wrapper div.wp-block-group.has-background:not(:only-child) {
+	margin-bottom: 0;
+}

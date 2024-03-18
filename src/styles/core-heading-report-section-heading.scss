@@ -13,6 +13,11 @@
 	// Slightly break out of group container.
 	.wp-block-group.has-background &:first-child {
 		transform: translate(0, -50%);
-		margin-top: -1.25rem;
+		z-index: 2;
+
+		.single-wmf-report & {
+			// Only apply this rule outside the editor.
+			margin-top: -1.25rem;
+		}
 	}
 }
