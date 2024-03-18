@@ -1,0 +1,23 @@
+.editor-styles-wrapper .wp-block.is-style-report-section-heading,
+.is-style-report-section-heading {
+	background: #000;
+	color: #fff;
+	font-family: "Noto Sans", sans-serif;
+	font-size: 0.9375rem;
+	font-weight: 700;
+	margin: 0 0 -0.5em 0;
+	padding: 0.5rem 1rem;
+	text-transform: uppercase;
+	width: max-content;
+
+	// Slightly break out of group container.
+	.wp-block-group.has-background &:first-child {
+		transform: translate(0, -50%);
+		z-index: 2;
+
+		.single-wmf-report & {
+			// Only apply this rule outside the editor.
+			margin-top: -1.25rem;
+		}
+	}
+}
