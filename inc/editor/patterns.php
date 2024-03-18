@@ -28,10 +28,4 @@ function register_pattern() {
 	register_block_pattern_category( MAIN_CATEGORY_NAME, [
 		'label' => __( 'Wikimedia Reports', 'wmf-reports' ),
 	] );
-
-	register_block_pattern( Hero\NAME, [
-		'title' => __( 'Report Hero', 'wmf-reports' ),
-		'categories' => [ MAIN_CATEGORY_NAME ],
-		'content' => Hero\PATTERN,
-	] );
 }
