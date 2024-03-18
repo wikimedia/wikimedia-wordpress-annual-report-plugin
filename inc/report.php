@@ -15,6 +15,7 @@ function bootstrap() {
 	add_action( 'init', __NAMESPACE__ . '\\register_post_type' );
 	add_action( 'init', __NAMESPACE__ . '\\register_blocks' );
 	add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\\allow_report_block_types', 11, 2 );
+	add_filter( 'single_template', __NAMESPACE__ . '\\single_template' );
 }
 
 /**
@@ -79,4 +80,22 @@ function allow_report_block_types( $allowed_block_types, $block_editor_context )
 		)
 	);
 	return array_merge( $allowed_block_types, $plugin_block_types );
+}
+
+/**
+ * Filter the single template to use for reports.
+ *
+ * @param string $template The template file to use.
+ *
+ * @return string The template file to use.
+ */
+function single_template( string $template ) : string {
+	global $post;
+
+	// Use the theme's page.php template to render reports.
+	if ( POST_TYPE === $post->post_type ) {
+		$template = locate_template( 'page.php' );
+	}
+
+	return $template;
 }
