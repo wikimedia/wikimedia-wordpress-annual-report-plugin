@@ -80,7 +80,8 @@ function enqueue_editor_assets() : void {
 		build_file_uri( 'editor.css' ),
 		[
 			'dashicons'
-		]
+		],
+		filemtime( build_file_path( 'editor.css' ) )
 	);
 }
 
@@ -99,6 +100,7 @@ function enqueue_frontend_assets() : void {
 		build_file_uri( 'frontend.css' ),
 		[
 			'dashicons'
-		]
+		],
+		filemtime( build_file_path( 'frontend.css' ) )
 	);
 }
