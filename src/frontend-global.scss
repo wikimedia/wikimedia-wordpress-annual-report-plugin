@@ -20,6 +20,9 @@ button:focus {
 		max-width: none;
 		padding: 0;
 	}
+	.wp-block-group.has-background:not(:only-child) {
+		margin-bottom: 0;
+	}
 }
 
 /* Styles used for core block modifications */
