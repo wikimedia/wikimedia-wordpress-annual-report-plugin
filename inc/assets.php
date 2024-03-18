@@ -13,7 +13,8 @@ use WMF\Reports\Asset_Loader;
  */
 function bootstrap() {
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets' );
-	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_assets' );
+	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_frontend_styles' );
+	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_scripts' );
 	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_connect_src_origins', 901, 2 );
 }
 
@@ -88,13 +89,18 @@ function enqueue_editor_assets() : void {
 /**
  * Enqueue these assets only on the frontend.
  */
-function enqueue_frontend_assets() : void {
+function enqueue_frontend_scripts() : void {
 	Asset_Loader\enqueue_script_asset(
 		'annual-report-plugin-frontend',
 		build_file_path( 'frontend.asset.php' ),
 		build_file_uri( 'frontend.js' )
 	);
+}
 
+/**
+ * Enqueue these assets in the editor and the frontend.
+ */
+function enqueue_frontend_styles() : void {
 	wp_enqueue_style(
 		'annual-report-plugin-frontend',
 		build_file_uri( 'frontend.css' ),
