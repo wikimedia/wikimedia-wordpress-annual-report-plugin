@@ -42,6 +42,11 @@ button:focus {
 			max-width: 650px;
 		}
 	}
+
+	// Demo hack.
+	.wp-block-group.has-background {
+		border-bottom-right-radius: 2rem;
+	}
 }
 
 /* Styles used for core block modifications */
