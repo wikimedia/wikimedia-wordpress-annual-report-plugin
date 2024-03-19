@@ -23,4 +23,11 @@ function register_styles() : void {
 			'label' => __( 'Report Section Heading', 'wmf-reports' ),
 		]
 	);
+	register_block_style(
+		'core/group',
+		[
+			'name' => 'report-overlapping-callout',
+			'label' => __( 'Report Overlapping Callout', 'wmf-reports' ),
+		]
+	);
 }
