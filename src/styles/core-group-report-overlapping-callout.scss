@@ -5,6 +5,15 @@
 	--report-overlapping-callout-group-block-height: 4rem;
 }
 
+img,
+figure,
+div {
+
+	&:has(+ .is-style-report-overlapping-callout) {
+		margin-bottom: 0;
+	}
+}
+
 .is-style-report-overlapping-callout {
 	border-bottom-right-radius: 2rem;
 	border-top-right-radius: 2rem;
@@ -14,15 +23,15 @@
 	z-index: 2; // Appear on top of following elements.
 
 	+ div {
-		padding-top: calc( var( --report-overlapping-callout-group-block-height ) * 0.6 + 1rem ) !important;
+		padding-top: calc(var(--report-overlapping-callout-group-block-height) * 0.6 + 1rem) !important;
 	}
 
-	@media screen and ( min-width: $width-breakpoint-tablet ) {
+	@media screen and (min-width: $width-breakpoint-tablet) {
 		border-radius: 2rem;
 		margin-right: 1.25rem;
 		margin-left: 1.25rem;
 		text-align: center;
-		width: calc( 100% - 2.5rem ); // Core group padding is 1.25rem.
+		width: calc(100% - 2.5rem); // Core group padding is 1.25rem.
 
 		.is-style-report-section-heading {
 			margin-left: auto;
@@ -30,12 +39,4 @@
 		}
 	}
 
-}
-
-img,
-figure,
-div {
-	&:has( + .is-style-report-overlapping-callout ) {
-		margin-bottom: 0;
-	}
 }
