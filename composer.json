@@ -2,7 +2,7 @@
 	"name": "wikimedia/wikimedia-wordpress-annual-report-plugin",
 	"description": "Editor and front-end functionality for Wikimedia's digital reports.",
 	"type": "wordpress-plugin",
-	"license": "GPL-2+",
+	"license": "GPL-2.0-or-later",
 	"require-dev": {
 		"staabm/annotate-pull-request-from-checkstyle": "^1.8",
 		"humanmade/coding-standards": "^1.1.0"
