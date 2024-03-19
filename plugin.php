@@ -5,7 +5,7 @@ Description: WP plugin to house all the functionality required for building Wiki
 Author: Human Made
 Author URI: https://hmn.md
 Version: 0.1
-License: GPL-2+
+License: GPL-2.0-or-later
 */
 
 namespace WMF\Reports;

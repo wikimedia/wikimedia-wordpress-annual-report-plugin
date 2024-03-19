@@ -21,7 +21,7 @@
     "url": "git+https://github.com/wikimedia/wikimedia-wordpress-annual-report-plugin.git"
   },
   "author": "",
-  "license": "GPL-2.0-only",
+  "license": "GPL-2.0-or-later",
   "bugs": {
     "url": "https://github.com/wikimedia/wikimedia-wordpress-annual-report-plugin/issues"
   },
