@@ -57,84 +57,84 @@ function register_report_color_palette_override() : void {
 		],
 		[
 			'name' => __( 'WMF Report Bright Yellow', 'wmf-reports' ),
-			'label' => 'wmf-report-bright-yellow',
+			'slug' => 'wmf-report-bright-yellow',
 			'color' => '#e9e7c0',
 		],
 		[
 			'name' => __( 'WMF Report Red', 'wmf-reports' ),
-			'label' => 'wmf-report-red',
+			'slug' => 'wmf-report-red',
 			'color' => '#970203',
 		],
 		[
 			'name' => __( 'WMF Report Yellow', 'wmf-reports' ),
-			'label' => 'wmf-report-yellow',
+			'slug' => 'wmf-report-yellow',
 			'color' => '#f0bc00',
 		],
 		[
 			'name' => __( 'WMF Report Green', 'wmf-reports' ),
-			'label' => 'wmf-report-green',
+			'slug' => 'wmf-report-green',
 			'color' => '#318557',
 		],
 		[
 			'name' => __( 'WMF Report Bright Green', 'wmf-reports' ),
-			'label' => 'wmf-report-bright-green',
+			'slug' => 'wmf-report-bright-green',
 			'color' => '#71d1b3',
 		],
 		[
 			'name' => __( 'WMF Report Purple', 'wmf-reports' ),
-			'label' => 'wmf-report-purple',
+			'slug' => 'wmf-report-purple',
 			'color' => '#5748b5',
 		],
 		[
 			'name' => __( 'WMF Report Link Color', 'wmf-reports' ),
-			'label' => 'wmf-report-link-color',
+			'slug' => 'wmf-report-link-color',
 			'color' => '#3a25ff',
 		],
 		[
 			'name' => __( 'WMF Report Toned Yellow', 'wmf-reports' ),
-			'label' => 'wmf-report-toned-yellow',
+			'slug' => 'wmf-report-toned-yellow',
 			'color' => '#fbeebf',
 		],
 	];
 	$wend_report_colors = [
 		[
 			'name' => __( 'WEND Report Luminous Vivid Orange', 'wmf-reports' ),
-			'label' => 'wend-report-luminous-vivid-orange',
+			'slug' => 'wend-report-luminous-vivid-orange',
 			'color' => '#ff6801',
 		],
 		[
 			'name' => __( 'WEND Report Luminous Vivid Amber', 'wmf-reports' ),
-			'label' => 'wend-report-luminous-vivid-amber',
+			'slug' => 'wend-report-luminous-vivid-amber',
 			'color' => '#fcb900',
 		],
 		[
 			'name' => __( 'WEND Report Cobalt', 'wmf-reports' ),
-			'label' => 'wend-report-cobalt',
+			'slug' => 'wend-report-cobalt',
 			'color' => '#0360fe',
 		],
 		[
 			'name' => __( 'WEND Report Slate Blue', 'wmf-reports' ),
-			'label' => 'wend-report-slate-blue',
+			'slug' => 'wend-report-slate-blue',
 			'color' => '#1c2d3e',
 		],
 		[
 			'name' => __( 'WEND Report Vivid Cyan Green', 'wmf-reports' ),
-			'label' => 'wend-report-vivid-cyan-green',
+			'slug' => 'wend-report-vivid-cyan-green',
 			'color' => '#00d084',
 		],
 		[
 			'name' => __( 'WEND Report Pale Cyan Blue', 'wmf-reports' ),
-			'label' => 'wend-report-pale-cyan-blue',
+			'slug' => 'wend-report-pale-cyan-blue',
 			'color' => '#8fd1fc',
 		],
 		[
 			'name' => __( 'WEND Report Vivid Purple', 'wmf-reports' ),
-			'label' => 'wend-report-vivid-purple',
+			'slug' => 'wend-report-vivid-purple',
 			'color' => '#9b51df',
 		],
 		[
 			'name' => __( 'WEND Report Bright Blue', 'wmf-reports' ),
-			'label' => 'wend-report-bright-blue',
+			'slug' => 'wend-report-bright-blue',
 			'color' => '#00ced6',
 		],
 	];
