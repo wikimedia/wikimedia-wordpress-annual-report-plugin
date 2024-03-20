@@ -23,9 +23,11 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:group {"lock":{"move":true,"remove":true},"className":"ceo-letter-content","layout":{"type":"constrained"}} -->
 <div class="wp-block-group ceo-letter-content"><!-- wp:wmf-reports/expandable {"lock":{"move":false,"remove":false}} -->
-<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="300" data-visible-unit="px"><!-- wp:paragraph -->
-<p>In my first year as CEO of the Wikimedia Foundation, I asked people all over the world what they thought the world needed from us now. And what I heard sent me back to Wikipedia’s founding principles.&nbsp;These pillars of shared collaboration and free, reliable information have remained constant, even as so much has changed in the past 22 years since Wikipedia was first created. They have only gotten stronger as societies everywhere experience increased threats to our information ecosystem, including a rise in disinformation and misinformation, and an even higher risk of censorship online.&nbsp;</p>
-<!-- /wp:paragraph --></div><button class="expandable-expander" type="button" data-showmoretext="Show more" data-showlesstext="Show less">Show more</button></div>
+<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="300" data-visible-unit="px">
+<!-- wp:paragraph --><p>Nostrud fugiat reprehenderit voluptate nisi id veniam occaecat. Ullamco amet commodo velit sint reprehenderit fugiat deserunt sit in pariatur esse veniam. Magna consequat anim fugiat labore mollit sit nisi.</p><!-- /wp:paragraph -->
+<!-- wp:paragraph --><p>Tempor amet do amet Lorem voluptate minim nulla dolor eiusmod veniam. Irure ex deserunt adipisicing voluptate eu id aute veniam. Nisi veniam mollit nulla esse nostrud laborum sit excepteur consectetur Lorem reprehenderit nulla officia Lorem. Lorem Lorem ex adipisicing est esse.</p><!-- /wp:paragraph -->
+<!-- wp:paragraph --><p>Sint officia mollit non eu irure eiusmod nulla reprehenderit dolor adipisicing ipsum dolore deserunt. Aliquip et nostrud laborum quis mollit culpa laborum ex ipsum. Ea eiusmod sunt fugiat anim adipisicing officia laboris ipsum reprehenderit eu id. Eiusmod minim commodo in aute sunt ipsum pariatur mollit pariatur ipsum proident incididunt ipsum.</p><!-- /wp:paragraph -->
+</div><button class="expandable-expander" type="button" data-showmoretext="Show more" data-showlesstext="Show less">Show more</button></div>
 <!-- /wp:wmf-reports/expandable --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
