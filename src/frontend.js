@@ -8,3 +8,10 @@ import './frontend-global.scss';
 // reloading does not seem to work as expected.
 import './blocks/expandable/frontend.scss';
 import './blocks/table-of-contents/frontend.scss';
+
+// Import block styles.
+import './styles/core-heading-report-section-heading.scss';
+import './styles/core-group-report-overlapping-callout.scss';
+
+// Frontend logic that isn't tied to a custom block.
+import './features/core-group-report-overlapping-callout';
