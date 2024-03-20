@@ -7,7 +7,7 @@ import { registerBlockCollection } from '@wordpress/blocks';
 import './blocks/core/group.js';
 
 // Register all custom formats.
-import './formats/countup-number.js';
+import './formats/countup-number/countup-number-format';
 
 // Editor-wide styles
 import './editor.scss';
