@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wmf-reports/map-inner",
+	"version": "0.1.0",
+	"title": "Map - Inner Content",
+	"category": "widgets",
+	"icon": "admin-site",
+	"description": "",
+	"parent": "wmf-reports/map",
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"id": {
+			"type": "number",
+			"default": 0
+		},
+		"lat": {
+			"type": "number",
+			"default": 0
+		},
+		"long": {
+			"type": "number",
+			"default": 0
+		}
+	},
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"textdomain": "example-dynamic",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}
