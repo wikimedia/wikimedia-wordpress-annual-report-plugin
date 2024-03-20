@@ -29,7 +29,7 @@ export default function Edit( {  attributes, clientId, setAttributes  }) {
 
 	// Track state in a ref, to allow us to determine if slides are added or removed.
 	const slideCount = useRef( slideBlocks.length );
-	const { insertBlock, updateBlockAttributes } = useDispatch( 'core/block-editor' );
+	const { insertBlock, selectBlock, updateBlockAttributes } = useDispatch( 'core/block-editor' );
 
 	const [ currentItemIndex, setCurrentItemIndex ] = useState( 0 );
 	const [ activeCoords, setActiveCoords ] = useState( [-44.5, 40] );
@@ -83,47 +83,15 @@ export default function Edit( {  attributes, clientId, setAttributes  }) {
 	useEffect( () => {
 		mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dHdhdHNvbmhtIiwiYSI6ImNsdHpudnVmczAxdDkyaW1zYzMxNGJtbTgifQ.5UyJ9RgUB1YgoLG7vXm0aw';
 		map = new mapboxgl.Map({
-			container: 'map', // container ID
-			center: activeCoords, // starting position [lng, lat]
-			// cluster: true,
-			// clusterRadius: 80,
-			// dragPan: false,
+			container: 'map',
+			center: activeCoords,
 			projection: 'equalEarth',
 			scrollZoom: false,
-			style: 'mapbox://styles/mapbox/light-v11', // style URL
-			zoom: 3, // starting zoom
+			style: 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7',
+			zoom: 3,
 		});
 
 		map.addControl( new mapboxgl.NavigationControl() );
-
-		slideBlocks && slideBlocks.forEach( ( slideBlock, index ) => {
-			console.log( slideBlock, slideBlock.props );
-			const { id, lat, long } = slideBlock.attributes;
-
-			const markerDiv = document.createElement( 'div' );
-			markerDiv.className = 'marker';
-			markerDiv.id = id;
-
-			markerDiv.addEventListener( 'click', ( event ) => {
-				const markerDivs = document.getElementsByClassName( 'marker' );
-				markerDivs && markerDivs.forEach( ( div ) => {
-					div.classList.remove( 'active' );
-				});
-				markerDiv.classList.add( 'active' );
-				setCurrentItemIndex( index );
-			} );
-
-			const pin = new mapboxgl
-				.Marker( markerDiv )
-				.setDraggable( true )
-				.setLngLat( [ long, lat ] )
-				.addTo( map );
-
-			pin.on( 'dragend', () => {
-				const lngLat = pin.getLngLat();
-				updateBlockAttributes( slideBlock.clientId, { lat: lngLat.lat, long: lngLat.lng } )
-			});
-		});
 
 		map.on( 'moveend', () => {
 			const center = map?.getCenter();
@@ -135,34 +103,55 @@ export default function Edit( {  attributes, clientId, setAttributes  }) {
 
 		map.on('load', () => {
 			// add a clustered GeoJSON source for a sample set of earthquakes
-			map.addSource('earthquakes', {
+			map.addSource( 'markers', {
 				'type': 'geojson',
-				'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
+				'data': {
+					"type": "FeatureCollection",
+					"features": slideBlocks?.map( ( slideBlock, index ) => {
+						const { id, lat, long } = slideBlock.attributes;
+						return ( {
+							"geometry": {
+								"type": "Point",
+								"coordinates": [
+									long,
+									lat
+								]
+							},
+							"type": "Feature",
+							"properties": {
+								"clientId": slideBlock.clientId,
+								"id": id,
+								"index": index,
+							}
+						} );
+					} ) || [],
+				},
 				'cluster': true,
 				'clusterRadius': 80,
 				'clusterProperties': {"sum": ["get", "count", ["get", "value", ["properties"]]] }
 			});
 			// circle and symbol layers for rendering individual earthquakes (unclustered points)
 			map.addLayer({
-				'id': 'earthquake_circle',
+				'id': 'marker_circle',
 				'type': 'circle',
-				'source': 'earthquakes',
+				'source': 'markers',
 				'filter': ['!=', 'cluster', true],
 				'paint': {
 					'circle-color': '#000',
-					'circle-radius': 12
+					'circle-radius': 1
 				}
 			});
 			map.addLayer({
-				'id': 'earthquake_label',
+				'id': 'marker_label',
 				'type': 'symbol',
-				'source': 'earthquakes',
+				'source': 'markers',
 				'filter': ['!=', 'cluster', true],
 				'layout': {
 					'text-field': "{point_count_abbreviated}",
 					'text-size': 10
 				},
 				'paint': {
+					'circle-color': '#000',
 					'text-color': 'white'
 				}
 			});
@@ -173,63 +162,95 @@ export default function Edit( {  attributes, clientId, setAttributes  }) {
 
 			function updateMarkers() {
 				const newMarkers = {};
-				const features = map.querySourceFeatures('earthquakes');
+				const features = map.querySourceFeatures('markers');
 
 				// for every cluster on the screen, create an HTML marker for it (if we didn't yet),
 				// and add it to the map if it's not there already
 				for (const feature of features) {
 					const coords = feature.geometry.coordinates;
-					const props = feature.properties;
-					const id = props.cluster_id;
+					const { clientId: blockId, cluster, id, index } = feature.properties;
 
-					console.log( feature );
+					let marker = markers?.[id];
 
-					if ( ! props.cluster ){
-						const markerDiv = document.createElement( 'div' );
-						markerDiv.className = 'marker';
-						markerDiv.id = id;
+					if ( ! cluster ) {
+						if ( ! marker ) {
+							const markerDiv = document.createElement( 'div' );
+							markerDiv.className = 'marker';
+							markerDiv.id = id;
 
-						const pin = new mapboxgl
-							.Marker( markerDiv )
-							.setDraggable( true )
-							.setLngLat( coords )
-							.addTo( map );
+							marker = new mapboxgl
+								.Marker( markerDiv )
+								.setDraggable( true )
+								.setLngLat( coords )
+								.addTo( map );
 
-						newMarkers[id] = pin;
+							markers[id] = marker;
 
-						if (!markersOnScreen[id]) pin.addTo(map);
-					} else {;
-						const markerDiv = document.createElement( 'div' );
-						markerDiv.className = 'cluster';
-						markerDiv.id = id;
+							if ( index === 0 ) {
+								markerDiv.classList.add( 'active' );
+							}
 
-						const pin = new mapboxgl
-							.Marker( markerDiv )
-							.setDraggable( false )
-							.setLngLat( coords )
-							.addTo( map );
+							markerDiv.addEventListener( 'click', () => {
+								const markerDivs = document.getElementsByClassName( 'marker' );
+								markerDivs && markerDivs.forEach( ( div ) => {
+									div.classList.remove( 'active' );
+								});
+								markerDiv.classList.add( 'active' );
+								setCurrentItemIndex( index );
+								selectBlock( blockId );
+							} );
+						}
 
-						newMarkers[id] = pin;
+						marker.on( 'dragend', () => {
+							const lngLat = marker.getLngLat();
+							updateBlockAttributes( blockId, { lat: lngLat.lat, long: lngLat.lng } )
+						});
 
-						if (!markersOnScreen[id]) pin.addTo(map);
+						newMarkers[id] = marker;
+					} else {
+						if ( ! marker ) {
+							const markerDiv = document.createElement( 'div' );
+							markerDiv.className = 'cluster';
+							markerDiv.id = id;
+							markerDiv.innerHTML = feature.properties.point_count_abbreviated;
+
+							marker = new mapboxgl
+								.Marker( markerDiv )
+								.setDraggable( false )
+								.setLngLat( coords )
+								.addTo( map );
+
+							markers[id] = marker;
+						}
+						newMarkers[id] = marker;
+					}
+
+					if ( ! markersOnScreen[id] ) {
+						marker.addTo( map );
 					}
 				}
+
 				// for every marker we've added previously, remove those that are no longer visible
-				for (const id in markersOnScreen) {
-					if (!newMarkers[id]) markersOnScreen[id].remove();
+				for ( const id in markersOnScreen ) {
+					if ( ! newMarkers[id] ) {
+						markersOnScreen[id].remove();
+					}
 				}
 				markersOnScreen = newMarkers;
 			}
 
 			// after the GeoJSON data is loaded, update markers on the screen on every frame
 			map.on('render', () => {
-				if (!map.isSourceLoaded('earthquakes')) return;
+				if ( ! map.isSourceLoaded('markers') ) {
+					return
+				};
 				updateMarkers();
 			});
 
 			map.on('moveend', () => {
-				console.log( 'END' );
-				if (!map.isSourceLoaded('earthquakes')) return;
+				if ( ! map.isSourceLoaded('markers') ) {
+					return
+				};
 				updateMarkers();
 			});
 		});
@@ -244,7 +265,7 @@ export default function Edit( {  attributes, clientId, setAttributes  }) {
 		<div { ...useBlockProps() }>
 			<div id="map"></div>
 			<div className="inner-block-slider">
-			<p className="help">{ __( 'Click on the + below to add a marker. Position the marker by dragging or enter its coordinates', 'wmf-reports' ) }</p>
+				<p className="help">{ __( 'Click on the + below to add a marker. Position the marker by dragging or enter its coordinates', 'wmf-reports' ) }</p>
 				<InnerBlocksDisplaySingle
 					allowedBlocks={ [ 'wmf-reports/map-inner' ] }
 					className="slides"
@@ -258,7 +279,16 @@ export default function Edit( {  attributes, clientId, setAttributes  }) {
 					currentPage={ currentItemIndex + 1 }
 					nextEnabled={ currentItemIndex + 1 < slideBlocks.length }
 					prevEnabled={ currentItemIndex + 1 > 1 }
-					setCurrentPage={ ( page ) => setCurrentItemIndex( page - 1 ) }
+					setCurrentPage={ ( page ) => {
+						const slideBlock = slideBlocks[ page -1 ];
+						const { id } = slideBlock.attributes;
+						const markerDivs = document.getElementsByClassName( 'marker' );
+						markerDivs && markerDivs.forEach( ( div ) => {
+							div.classList.remove( 'active' );
+						});
+						document.getElementById( id )?.classList.add( 'active' );
+						setCurrentItemIndex( page - 1 );
+					} }
 					totalPages={ slideBlocks.length }
 				/>
 			</div>

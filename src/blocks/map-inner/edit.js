@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import { TextControl } from '@wordpress/components';
+import { InnerBlocks, InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { PanelBody, TextControl } from '@wordpress/components';
 import './editor.scss';
 
 /**
@@ -15,24 +15,26 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { lat, long } = attributes;
 	return (
 		<div { ...useBlockProps() }>
-			<fieldset>
-				<legend>Latitude and Longitude</legend>
-				<p>You can drag the selected marker, or update the latitude and longitude here.</p>
-				<TextControl
-					label="Latitude"
-					value={ lat }
-					onChange={ ( lat ) => {
-						setAttributes( { lat } );
-					} }
-				/>
-				<TextControl
-					label="Longitude"
-					value={ long }
-					onChange={ ( long ) => {
-						setAttributes( { long } );
-					} }
-				/>
-			</fieldset>
+			<InspectorControls>
+				<PanelBody>
+					<TextControl
+						help={ __( 'Update the latitude, or drag the marker to pin point a location.', 'wmf-reports' ) }
+						label="Latitude"
+						value={ lat }
+						onChange={ ( lat ) => {
+							setAttributes( { lat } );
+						} }
+					/>
+					<TextControl
+						help={ __( 'Update the longitude, or drag the marker to pin point a location.', 'wmf-reports' ) }
+						label="Longitude"
+						value={ long }
+						onChange={ ( long ) => {
+							setAttributes( { long } );
+						} }
+					/>
+				</PanelBody>
+			</InspectorControls>
 			<InnerBlocks
 				template={
 					[

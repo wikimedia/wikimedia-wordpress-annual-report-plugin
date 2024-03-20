@@ -18,6 +18,7 @@
 	.help {
 		color: #333;
 		font-size: 1rem;
+		margin-bottom: 0;
 	}
 
 	.mapboxgl-map {
@@ -27,21 +28,33 @@
 	}
 
 	.marker {
-		background-image: url('https://docs.mapbox.com/help/demos/custom-markers-gl-js/mapbox-icon.png');
-		background-size: cover;
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
+		content: '';
 		cursor: pointer;
+		background: #000;
+		background-size: cover;
+		border: none;
+		border-radius: 50%;
+		height: 1.5rem;
+		width: 1.5rem;
 	}
 
 	.cluster {
-		background-image: url('https://picsum.photos/20/20');
-		background-size: cover;
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
+		color: #fff;
 		cursor: pointer;
+		background: #000;
+		background-size: cover;
+		border: none;
+		border-radius: 50%;
+		font-size: 1rem;
+		height: 2rem;
+		text-align: center;
+		width: 2rem;
+		padding-top: 0.35rem;
+	}
+
+	.marker.active,
+	.cluster.active {
+		background: orange;
 	}
 }
 
