@@ -32,12 +32,6 @@
 		}
 
 		h2.wp-block-heading {
-			background: black;
-			color: white;
-			font-family: 'Noto Sans';
-			text-transform: uppercase;
-			font-size: 15px;
-			font-weight: bold;
 			padding: 0.5em 1em 0.5em 1em;
 			display: grid;
 			grid-template-columns: 20px 1fr;
@@ -58,7 +52,7 @@
 
 		h3.wp-block-heading {
 			font-family: Noto Sans;
-			font-size: 35px;
+			font-size: #{$font-size-xxxlarge};
 			font-weight: bold;
 			color: white;
 			padding: 1em 0.5em 0.5em 0.1em;
