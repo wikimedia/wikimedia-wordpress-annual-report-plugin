@@ -6,6 +6,9 @@ import { registerBlockCollection } from '@wordpress/blocks';
 // Import block customization modules which aren't build as standalone bundles.
 import './blocks/core/group.js';
 
+// Register all custom formats.
+import './formats/countup-number.js';
+
 // Editor-wide styles
 import './editor.scss';
 import './frontend-global.scss';
