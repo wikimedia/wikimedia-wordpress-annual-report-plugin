@@ -9,8 +9,8 @@ const NAME = 'wmf-reports/hero';
 
 const PATTERN = <<<CONTENT
 <!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull wmf-pattern-reports-hero"><!-- wp:image {"id":74375,"sizeSlug":"large","linkDestination":"none","lock":{"move":true,"remove":true}} -->
-<figure class="wp-block-image size-large"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Colorful_Lights_Pattern-11.png?w=1024" alt="" class="wp-image-74375"/></figure>
+<div class="wp-block-group alignfull wmf-pattern-reports-hero"><!-- wp:image {"align":"full","id":74375,"sizeSlug":"large","linkDestination":"none","lock":{"move":true,"remove":true}} -->
+<figure class="wp-block-image alignfull size-large"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Colorful_Lights_Pattern-11.png?w=1024" alt="" class="wp-image-74375"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"templateLock":"all","lock":{"move":true,"remove":true},"className":"reports-hero-headings","layout":{"type":"constrained"}} -->
