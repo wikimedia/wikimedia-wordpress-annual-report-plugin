@@ -1,0 +1,33 @@
+.editor-styles-wrapper .wp-block.is-style-report-section-heading,
+.is-style-report-section-heading {
+	background: #000;
+	color: #fff;
+	font-family: "Noto Sans", sans-serif;
+	font-size: 0.9375rem;
+	font-weight: 700;
+	margin: 0 0 -0.5em 0;
+	padding: 0.5rem 1rem;
+	text-transform: uppercase;
+	width: max-content;
+
+	// Slightly break out of group container.
+	.wp-block-group.has-background &:first-child {
+		transform: translate(0, -50%);
+		z-index: 2;
+
+		.single-wmf-report & {
+			// Only apply this rule outside the editor.
+			margin-top: -1.25rem;
+		}
+	}
+}
+
+.is-style-report-section-heading.has-wmf-logo::before {
+	background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuNjgwMDIgMy4zMzA0M0M2LjY3NDIzIDEuNTAwOTYgOC4xNDk1NSAwLjAxMTU3IDkuOTc5IDBIMTAuMDIxQzExLjg1MDQgMC4wMTE1NyAxMy4zMjU4IDEuNTAwOTUgMTMuMzIgMy4zMzA0M0MxMy4zMTQyIDUuMTU5OTEgMTEuODI5NSA2LjYzOTkzIDEwIDYuNjM5OTNDOC4xNzA1MSA2LjYzOTkzIDYuNjg1OCA1LjE1OTkxIDYuNjgwMDIgMy4zMzA0M1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zLjE5NjI2IDIuNjcxMjZDMS4yMjcwOCA0LjUwMDI2IC0wLjAwMzUyNzg5IDcuMTEzMDMgNy41OTc2ZS0wNiAxMC4wMTIyQzAuMDA2NzM2ODcgMTUuNTMwMiA0LjQ4MTkxIDIwIDEwIDIwQzE1LjUxODEgMjAgMTkuOTkzMyAxNS41MzAyIDIwIDEwLjAxMjJDMjAuMDAzNSA3LjExMDk5IDE4Ljc3MTIgNC40OTY1OSAxNi43OTk2IDIuNjY3NDFMMTUuMDMwMiA0LjQzNjg0QzE2LjU0OTQgNS44MTEzOCAxNy41MDI3IDcuNzk5MzMgMTcuNSAxMC4wMDkxQzE3LjQ5NDkgMTQuMTQ3NyAxNC4xMzg2IDE3LjUgMTAgMTcuNUM1Ljg2MTQ0IDE3LjUgMi41MDUwNSAxNC4xNDc3IDIuNTAwMDEgMTAuMDA5MUMyLjQ5NzMxIDcuODAxMzcgMy40NDg4OSA1LjgxNTA0IDQuOTY1NjUgNC40NDA2NEwzLjE5NjI2IDIuNjcxMjZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNi4wMjc5MSA1LjUwMjkxQzQuNzgxNTIgNi42MDQ2OCAzLjk5Njg5IDguMjE2MzkgNC4wMDAwMSAxMC4wMTA0QzQuMDA1MjUgMTMuMDI2MyA2LjIzNDk0IDE1LjUxOTMgOS4xMzUgMTUuOTM4MVY4LjYxTDYuMDI3OTEgNS41MDI5MVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMC44NTcgMTUuOTM5MlY4LjYxTDEzLjk2NzggNS40OTkxNkMxNS4yMTY3IDYuNjAxMDIgMTYuMDAzMSA4LjIxNDM1IDE2IDEwLjAxMDRDMTUuOTk0OCAxMy4wMjkxIDEzLjc2MSAxNS41MjM5IDEwLjg1NyAxNS45MzkyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==") center center no-repeat;
+	content: " ";
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	vertical-align: text-bottom;
+	margin: -3px 0.5rem 0 0;
+}

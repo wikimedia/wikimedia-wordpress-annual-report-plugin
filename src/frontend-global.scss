@@ -1,5 +1,6 @@
 /* Helpers */
-@import 'helpers/variables';
+@import "helpers/variables";
+@import "helpers/colors.scss";
 
 /* Non-block-specific styles */
 button:focus {
@@ -8,8 +9,8 @@ button:focus {
 }
 
 @font-face {
-	font-family: 'Noto Sans';
-	src: url('../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf');
+	font-family: "Noto Sans";
+	src: url("../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf");
 }
 
 /* Patterns */
@@ -33,9 +34,42 @@ button:focus {
 		font-weight: bold;
 		padding: 0.5em 1em 0.5em 1em;
 	}
+
+	.wp-block-group.has-background:not(:only-child) {
+		margin-bottom: 0;
+	}
+
+	/* Alignments */
+	.article-main > * {
+		max-width: 650px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.article-main > .alignwide {
+		max-width: 920px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.article-main > .alignfull {
+		max-width: none;
+
+		&.is-layout-constrained > * {
+			max-width: 650px;
+		}
+	}
+
+	// Demo hack.
+	.wp-block-group.has-background {
+		border-bottom-right-radius: 2rem;
+	}
 }
 
 /* Styles used for core block modifications */
 .wp-block-group-is-full-viewport-height {
 	height: 100vh;
+}
+
+/* Editor style overrides */
+.editor-styles-wrapper div.wp-block-group.has-background:not(:only-child) {
+	margin-bottom: 0;
 }

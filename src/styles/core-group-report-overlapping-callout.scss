@@ -1,0 +1,44 @@
+@import "../helpers/variables";
+
+:root {
+	// Default.
+	--report-overlapping-callout-group-block-height: 4rem;
+}
+
+img,
+figure,
+div {
+
+	&:has(+ .is-style-report-overlapping-callout) {
+		margin-bottom: 0;
+	}
+}
+
+.is-style-report-overlapping-callout,
+.editor-style-wrapper .is-style-report-overlapping-callout {
+	border-bottom-right-radius: 2rem;
+	border-top-right-radius: 2rem;
+	position: absolute;
+	transform: translate(0, -50%);
+	width: 90%;
+	z-index: 2; // Appear on top of following elements.
+
+	+ div {
+		padding-top: calc(var(--report-overlapping-callout-group-block-height) * 0.6 + 1rem) !important;
+	}
+
+	@media screen and (min-width: $width-breakpoint-tablet) {
+		border-radius: 2rem;
+		left: 50%;
+		text-align: center;
+		transform: translate(-50%, -50%); // Absolutely positioned; cannot rely on margins for centering.
+		width: calc(100% - 2.5rem); // Core group padding is 1.25rem.
+
+		.is-style-report-section-heading,
+		.single-wmf-report .article-main > .is-style-report-section-heading {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+}
