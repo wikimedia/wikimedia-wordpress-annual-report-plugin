@@ -79,7 +79,11 @@ function allow_report_block_types( $allowed_block_types, $block_editor_context )
 			$block_json_files
 		)
 	);
-	return array_merge( $allowed_block_types, $plugin_block_types );
+
+	// We also need the media-text block to be available.
+	$core_blocks = [ 'core/media-text' ];
+
+	return array_merge( $allowed_block_types, $plugin_block_types, $core_blocks );
 }
 
 /**

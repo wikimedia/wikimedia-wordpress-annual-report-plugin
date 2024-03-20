@@ -8,7 +8,7 @@
 
 	> .wp-block-group__inner-container {
 		max-width: 646px;
-    	margin: 0 auto;
+		margin: 0 auto;
 	}
 
 	.wp-block-quote {
@@ -25,31 +25,20 @@
 		}
 	}
 
-	.profile {
-		display: grid;
-		grid-template-columns: 110px 1fr;
-		width: auto;
-		align-items: center;
-		padding: 0.5em;
-		border: 0;
-		margin-bottom: 1em;
-		border: 0;
+	.wp-block-media-text {
 
-		&:hover {
-			border: 0;
+		.wp-block-media-text__media img {
+			width: 80px;
+			height: 80px;
 		}
-	}
 
-	.profile__image {
-		margin-bottom: 0;
-		width: 80px;
-		height: 80px;
-	}
-
-	.profile__content {
-		.profile__name {
-			font-size: #{$font-size-base};
-			line-height: #{$line-height-xsmall};
+		.wp-block-media-text__content {
+			p {
+				font-size: #{$font-size-base};
+				line-height: #{$line-height-base};
+				margin-top: 0;
+				margin-bottom: 0;
+			}
 		}
 	}
 }
