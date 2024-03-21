@@ -1,8 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { useBlockProps } from '@wordpress/block-editor';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { PanelBody, TextControl } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect, useRef, useState } from '@wordpress/element';
+import { useCallback, useEffect, useRef, useState } from '@wordpress/element';
+
 // eslint-disable-next-line import/no-unresolved
 import mapboxgl from '!mapbox-gl';
 import './editor.scss';
@@ -25,6 +27,8 @@ let map = null;
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
+	const { mapStyle } = attributes;
+
 	const slideBlocks = useSelect(
 		( select ) =>
 			select( 'core/block-editor' ).getBlock( clientId ).innerBlocks
@@ -32,6 +36,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 
 	// Track state in a ref, to allow us to determine if slides are added or removed.
 	const slideCount = useRef( slideBlocks.length );
+
 	const { insertBlock, selectBlock, updateBlockAttributes } =
 		useDispatch( 'core/block-editor' );
 
@@ -61,7 +66,12 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	const markers = {};
 	let markersOnScreen = {};
 
-	const updateMarkers = () => {
+	/**
+	 * Update Markers.
+	 *
+	 * Whenever we alter the map we need to make sure the markers are updated.
+	 */
+	const updateMarkers = useCallback( () => {
 		const newMarkers = {};
 		const features = map.querySourceFeatures( 'markers' );
 
@@ -140,8 +150,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			}
 		}
 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		markersOnScreen = newMarkers;
-	};
+	}, [ map, selectBlock, updateBlockAttributes ] );
 
 	/**
 	 * If a slide is added, switch to the new slide. If one is deleted, make sure we don't
@@ -171,8 +182,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 
 		// Update ref with new value..
 		slideCount.current = slideBlocks.length;
-	}, [ slideBlocks.length, currentItemIndex, slideCount ] );
+	}, [ slideBlocks.length, currentItemIndex, slideCount, slideBlocks ] );
 
+	/**
+	 * Init the map.
+	 */
 	useEffect( () => {
 		const fullScreenControl = new mapboxgl.NavigationControl();
 
@@ -185,10 +199,10 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			'***REMOVED***';
 		map = new mapboxgl.Map( {
 			container: 'map',
-			center: [ -13.326915886961197, 25.093160453432485 ],
+			center: [ -28.326915886961197, 25.093160453432485 ],
 			projection: 'equalEarth',
 			scrollZoom: false,
-			style: 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7',
+			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
 			zoom: 2,
 		} );
 
@@ -268,7 +282,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				updateMarkers();
 			} );
 		} );
-	}, [ slideBlocks, slideBlocks.length ] );
+	}, [ mapStyle, slideBlocks, slideBlocks.length, updateMarkers ] );
 
 	const blockProps = useBlockProps( {
 		className: 'map map-carousel',
@@ -276,14 +290,24 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 
 	return (
 		<div { ...blockProps }>
+			<InspectorControls>
+				<PanelBody>
+					<TextControl
+						help={ __(
+							'Change the style associated with the map',
+							'wmf-reports'
+						) }
+						label={ __( 'Map Style', 'wmf-reports' ) }
+						value={ mapStyle }
+						// eslint-disable-next-line no-shadow
+						onChange={ ( mapStyle ) => {
+							setAttributes( { mapStyle } );
+						} }
+					/>
+				</PanelBody>
+			</InspectorControls>
 			<div id="map"></div>
 			<div className="inner-block-slider">
-				<p className="help">
-					{ __(
-						'Click on the + below to add a marker. Position the marker by dragging or enter its coordinates',
-						'wmf-reports'
-					) }
-				</p>
 				<InnerBlocksDisplaySingle
 					allowedBlocks={ [ 'wmf-reports/marker' ] }
 					className="slides"
@@ -291,6 +315,12 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					parentBlockId={ clientId }
 					template={ [ 'wmf-reports/marker' ] }
 				/>
+				<p className="help">
+					{ __(
+						'Click on the + below to add a marker. Position the marker by dragging or enter its coordinates',
+						'wmf-reports'
+					) }
+				</p>
 				<Navigation
 					addSlide={ addSlide }
 					addSlideEnabled={ true }
