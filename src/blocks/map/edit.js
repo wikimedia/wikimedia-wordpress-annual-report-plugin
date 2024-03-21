@@ -160,7 +160,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	 */
 	useEffect( () => {
 		const markerDivs = document.getElementsByClassName( 'marker' );
-		markerDivs.forEach( ( div ) => {
+		Array.from( markerDivs ).forEach( ( div ) => {
 			div.classList.remove( 'active' );
 		} );
 

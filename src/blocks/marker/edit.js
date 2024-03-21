@@ -82,9 +82,113 @@ export default function Edit( { attributes, setAttributes } ) {
 						{
 							align: 'full',
 							backgroundColor: 'wmf-report-bright-yellow',
+							className: 'map-info',
 							layout: { type: 'constrained' },
 						},
-						[ [ 'core/paragraph' ] ],
+						[
+							[
+								'core/columns',
+								{},
+								[
+									[
+										'core/column',
+										{ width: '66.66%' },
+										[
+											[
+												'core/image',
+												{
+													lightbox: {
+														aspectRatio: '4/3',
+														className: 'is-style-default map-info__image',
+														enabled: false,
+														linkDestination: 'none',
+														scale: 'cover',
+														sizeSlug: 'full',
+													},
+												},
+											],
+										],
+									],
+									[
+										'core/column',
+										{ width: '33.33%' },
+										[
+											[
+												'core/paragraph',
+												{
+													className:
+														'map-info__category is-style-sans-p',
+													content:
+														'Lorem ipsum / Sit amet',
+													style: {
+														elements: {
+															link: {
+																color: {
+																	text: 'var:preset|color|orange',
+																},
+															},
+														},
+													},
+													textColor: 'orange',
+												},
+											],
+											[
+												'core/heading',
+												{
+													className:
+														'map-info__heading is-style-default',
+													content:
+														'Lorem ipsum dolor sit amet vulputate.',
+												},
+											],
+											[
+												'core/paragraph',
+												{
+													className:
+														'map-info__location is-style-sans-p',
+													content:
+														'<em>Line for location</em>',
+												},
+											],
+											[
+												'core/paragraph',
+												{
+													className: 'is-style-sans-p',
+													content:
+														'Lorem ipsum dolor sit amet ullamcorper convallis condimentum suspendisse cras blandit congue tincidunt turpis vulputate. Imperdiet quisque libero in porta venenatis vitae netus condimentum.',
+												},
+											],
+											[
+												'core/buttons',
+												{},
+												[
+													[
+														'core/button',
+														{
+															backgroundColor:
+																'base100',
+															className:
+																'is-style-tertiary map-info__button',
+															content: 'Read More',
+															style: {
+																elements: {
+																	link: {
+																		color: {
+																			text: 'var:preset|color|base0'
+																		},
+																	},
+																},
+															},
+															textColor: 'base10',
+														},
+													],
+												],
+											],
+										],
+									],
+								],
+							],
+						],
 					],
 				] }
 			/>
