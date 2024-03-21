@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "wmf-reports/map-inner",
+	"name": "wmf-reports/marker",
 	"version": "0.1.0",
-	"title": "Map - Inner Content",
+	"title": "Marker",
 	"category": "widgets",
 	"icon": "admin-site",
 	"description": "",

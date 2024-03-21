@@ -11,10 +11,6 @@
 		"align": {
 			"type": "string",
 			"default": "full"
-		},
-		"markers": {
-			"type": "object",
-			"default": {}
 		}
 	},
 	"example": {},
