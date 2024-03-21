@@ -22,16 +22,50 @@ map.addControl( fullScreenControl );
 const markers = document.getElementsByClassName(
 	'wp-block-wmf-reports-marker'
 );
+const mapMarkers = document.getElementsByClassName( 'marker' );
+const backButton = document.getElementById( 'back' );
+const forwardButton = document.getElementById( 'forward' );
 
-// Make all but first slide hidden.
-Array.from( markers ).forEach( ( div, index ) => {
-	if ( index === 0 ) {
-		return;
+const setMarker = ( id ) => {
+	const nextMapMarker = mapMarkers[ id ];
+	const nextMarker = markers[ id ];
+
+	Array.from( mapMarkers ).forEach( ( mapMarker ) => {
+		mapMarker.classList.remove( 'active' );
+	} );
+
+	if ( nextMapMarker ) {
+		nextMapMarker.classList.add( 'active' );
 	}
-	div.style.visibility = 'hidden';
-	div.style.height = 0;
+
+	Array.from( markers ).forEach( ( marker ) => {
+		marker.style.visibility = 'hidden';
+		marker.style.height = 0;
+	} );
+
+	nextMarker.style.visibility = 'visible';
+	nextMarker.style.height = null;
+};
+
+setMarker( 0 );
+
+backButton.addEventListener( 'click', () => {
+	const index = Array.from( markers ).findIndex(
+		( marker ) => marker.style.visibility === 'visible'
+	);
+
+	const nextIndex = index - 1 < 0 ? markers.length - 1 : index - 1;
+	setMarker( nextIndex );
 } );
 
+forwardButton.addEventListener( 'click', () => {
+	const index = Array.from( markers ).findIndex(
+		( marker ) => marker.style.visibility === 'visible'
+	);
+
+	const nextIndex = index + 1 > markers.length - 1 ? 0 : index + 1;
+	setMarker( nextIndex );
+} );
 
 map.on( 'load', () => {
 	// add a clustered GeoJSON source for a sample set of earthquakes
@@ -121,29 +155,7 @@ map.on( 'load', () => {
 
 				markerDiv.addEventListener( 'click', ( e ) => {
 					const markerId = e.target.dataset.id;
-
-					// Remove existing active status.
-					const markersDivs = document.getElementsByClassName( 'marker' );
-					Array.from( markersDivs ).forEach( ( div ) => {
-						div.classList.remove( 'active' );
-					} );
-
-					// Make current marker active.
-					e.target.classList.add( 'active' );
-
-					// Hide all existing info areas.
-					const infoAreas = document.getElementsByClassName(
-						'wp-block-wmf-reports-marker'
-					);
-					Array.from( infoAreas ).forEach( ( div ) => {
-						div.style.visibility = 'hidden';
-						div.style.height = 0;
-					} );
-
-					// Highlight selected info area.
-					const infoArea = document.getElementById( markerId );
-					infoArea.style.visibility = 'visible';
-					infoArea.style.height = null;
+					setMarker( markerId );
 				} );
 			} else {
 				const markerDiv = document.createElement( 'div' );
