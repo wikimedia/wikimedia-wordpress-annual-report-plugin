@@ -15,9 +15,23 @@ const map = new mapboxgl.Map( {
 	zoom: 2,
 } );
 
+let hasRendered = false;
+
 map.addControl( fullScreenControl );
 
-const markers = document.getElementsByClassName( 'wp-block-wmf-reports-marker' );
+const markers = document.getElementsByClassName(
+	'wp-block-wmf-reports-marker'
+);
+
+// Make all but first slide hidden.
+Array.from( markers ).forEach( ( div, index ) => {
+	if ( index === 0 ) {
+		return;
+	}
+	div.style.visibility = 'hidden';
+	div.style.height = 0;
+} );
+
 
 map.on( 'load', () => {
 	// add a clustered GeoJSON source for a sample set of earthquakes
@@ -26,7 +40,7 @@ map.on( 'load', () => {
 		data: {
 			type: 'FeatureCollection',
 			features:
-			Array.from( markers ).map( ( marker, index ) => {
+				Array.from( markers ).map( ( marker, index ) => {
 					return {
 						geometry: {
 							type: 'Point',
@@ -81,6 +95,10 @@ map.on( 'load', () => {
 			return;
 		}
 
+		if ( hasRendered ) {
+			return;
+		}
+
 		const features = map.querySourceFeatures( 'markers' );
 
 		for ( const feature of features ) {
@@ -90,7 +108,7 @@ map.on( 'load', () => {
 			if ( ! cluster ) {
 				const markerDiv = document.createElement( 'div' );
 				markerDiv.className = 'marker';
-				markerDiv.id = id;
+				markerDiv.dataset.id = id;
 
 				new mapboxgl.Marker( markerDiv )
 					.setDraggable( false )
@@ -101,9 +119,31 @@ map.on( 'load', () => {
 					markerDiv.classList.add( 'active' );
 				}
 
-				markerDiv.addEventListener( 'click', () => {
-					// setCurrentItemIndex( index );
-					// selectBlock( blockId );
+				markerDiv.addEventListener( 'click', ( e ) => {
+					const markerId = e.target.dataset.id;
+
+					// Remove existing active status.
+					const markersDivs = document.getElementsByClassName( 'marker' );
+					Array.from( markersDivs ).forEach( ( div ) => {
+						div.classList.remove( 'active' );
+					} );
+
+					// Make current marker active.
+					e.target.classList.add( 'active' );
+
+					// Hide all existing info areas.
+					const infoAreas = document.getElementsByClassName(
+						'wp-block-wmf-reports-marker'
+					);
+					Array.from( infoAreas ).forEach( ( div ) => {
+						div.style.visibility = 'hidden';
+						div.style.height = 0;
+					} );
+
+					// Highlight selected info area.
+					const infoArea = document.getElementById( markerId );
+					infoArea.style.visibility = 'visible';
+					infoArea.style.height = null;
 				} );
 			} else {
 				const markerDiv = document.createElement( 'div' );
@@ -118,5 +158,7 @@ map.on( 'load', () => {
 					.addTo( map );
 			}
 		}
+
+		hasRendered = true;
 	} );
 } );
