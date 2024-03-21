@@ -11,6 +11,10 @@
 		"align": {
 			"type": "string",
 			"default": "full"
+		},
+		"mapStyle": {
+			"type": "string",
+			"default": "mapbox://styles/mapbox/light-v11"
 		}
 	},
 	"example": {},
