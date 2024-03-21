@@ -92,7 +92,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				if ( ! marker ) {
 					const markerDiv = document.createElement( 'div' );
 					markerDiv.className = 'marker';
-					markerDiv.id = id;
+					markerDiv.dataset.id = id;
 
 					marker = new mapboxgl.Marker( markerDiv )
 						.setDraggable( true )
@@ -124,7 +124,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				if ( ! marker ) {
 					const markerDiv = document.createElement( 'div' );
 					markerDiv.className = 'cluster';
-					markerDiv.id = id;
+					markerDiv.dataset.id = id;
 					markerDiv.innerHTML =
 						feature.properties.point_count_abbreviated;
 
@@ -159,17 +159,6 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	 * show a non-existent slide.
 	 */
 	useEffect( () => {
-		const markerDivs = document.getElementsByClassName( 'marker' );
-		Array.from( markerDivs ).forEach( ( div ) => {
-			div.classList.remove( 'active' );
-		} );
-
-		const slideBlock = slideBlocks[ currentItemIndex ];
-		const { id } = slideBlock?.attributes || {};
-		if ( id ) {
-			document.getElementById( id )?.classList.add( 'active' );
-		}
-
 		if ( slideBlocks.length > slideCount.current ) {
 			// Slide added
 			setCurrentItemIndex( slideBlocks.length - 1 );
@@ -273,6 +262,24 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					return;
 				}
 				updateMarkers();
+
+				const mapMarkers = document.getElementsByClassName( 'marker' );
+				Array.from( mapMarkers ).forEach( ( div ) => {
+					div.classList.remove( 'active' );
+				} );
+
+				const slideBlock = slideBlocks[ currentItemIndex ];
+				const { id } = slideBlock?.attributes || {};
+
+				if ( id ) {
+					const nextMapMarkers = Array.from( mapMarkers ).filter(
+						( mapMarker ) =>
+							mapMarker.dataset.id.toString() === id.toString()
+					);
+					nextMapMarkers.forEach( ( mapMarker ) => {
+						mapMarker.classList.add( 'active' );
+					} );
+				}
 			} );
 
 			map.on( 'moveend', () => {
