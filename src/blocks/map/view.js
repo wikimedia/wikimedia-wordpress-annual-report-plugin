@@ -22,29 +22,31 @@ map.addControl( fullScreenControl );
 const markers = document.getElementsByClassName(
 	'wp-block-wmf-reports-marker'
 );
-const mapMarkers = document.getElementsByClassName( 'marker' );
 const backButton = document.getElementById( 'back' );
 const forwardButton = document.getElementById( 'forward' );
 
 const setMarker = ( id ) => {
-	const nextMapMarker = mapMarkers[ id ];
-	const nextMarker = markers[ id ];
+	const nextMarkerInfoBox = markers[ id ];
+	const mapMarkers = document.getElementsByClassName( 'marker' );
+	const nextMapMarkers = Array.from( mapMarkers ).filter(
+		( mapMarker ) => mapMarker.dataset.id === nextMarkerInfoBox.id
+	);
 
 	Array.from( mapMarkers ).forEach( ( mapMarker ) => {
 		mapMarker.classList.remove( 'active' );
 	} );
 
-	if ( nextMapMarker ) {
-		nextMapMarker.classList.add( 'active' );
-	}
-
-	Array.from( markers ).forEach( ( marker ) => {
-		marker.style.visibility = 'hidden';
-		marker.style.height = 0;
+	nextMapMarkers.forEach( ( mapMarker ) => {
+		mapMarker.classList.add( 'active' );
 	} );
 
-	nextMarker.style.visibility = 'visible';
-	nextMarker.style.height = null;
+	Array.from( markers ).forEach( ( markerInfoBox ) => {
+		markerInfoBox.style.visibility = 'hidden';
+		markerInfoBox.style.height = 0;
+	} );
+
+	nextMarkerInfoBox.style.visibility = 'visible';
+	nextMarkerInfoBox.style.height = null;
 };
 
 setMarker( 0 );
