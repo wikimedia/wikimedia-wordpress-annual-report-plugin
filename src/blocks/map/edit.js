@@ -13,6 +13,7 @@ import InnerBlocksDisplaySingle from '../../components/inner-block-slider/inner-
 import Navigation from '../../components/inner-block-slider/navigation';
 
 let map = null;
+let mapItemIndex = 0;
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -29,23 +30,23 @@ let map = null;
 export default function Edit( { attributes, clientId, setAttributes } ) {
 	const { mapStyle } = attributes;
 
+	// Get the innerBlocks (slideBlocks).
 	const slideBlocks = useSelect(
 		( select ) =>
 			select( 'core/block-editor' ).getBlock( clientId ).innerBlocks
 	);
 
-	// Track state in a ref, to allow us to determine if slides are added or removed.
-	const slideCount = useRef( slideBlocks.length );
-
 	const { insertBlock, selectBlock, updateBlockAttributes } =
 		useDispatch( 'core/block-editor' );
 
+	// Track state in a ref, to allow us to determine if slides are added or removed.
+	const slideCount = useRef( slideBlocks.length );
+
+	// Keep track of the selected Slide.
 	const [ currentItemIndex, setCurrentItemIndex ] = useState( 0 );
 
 	/**
-	 * Custom "Add Block" appender.
-	 *
-	 * @return { void }
+	 * Add Slide Function.
 	 */
 	const addSlide = () => {
 		const center = map?.getCenter();
@@ -63,96 +64,134 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		insertBlock( created, undefined, clientId );
 	};
 
-	const markers = {};
-	let markersOnScreen = {};
-
 	/**
-	 * Update Markers.
+	 * Update Markers Function.
 	 *
-	 * Whenever we alter the map we need to make sure the markers are updated.
+	 * As we move around the map, clusters will show and hide. We need to update
+	 * the markers on the map dynamically to handle this.
 	 */
 	const updateMarkers = useCallback( () => {
-		const newMarkers = {};
-		const features = map.querySourceFeatures( 'markers' );
+		if ( ! map ) {
+			return;
+		}
 
-		// for every cluster on the screen, create an HTML marker for it (if we didn't yet),
-		// and add it to the map if it's not there already
+		const features = map.querySourceFeatures( 'markers' );
+		const mapMarkers = document.getElementsByClassName( 'marker' );
+		const clusterMarkers = document.getElementsByClassName( 'cluster' );
+		const newMarkers = [];
+		const newClusters = [];
+
+		// For every cluster on the screen, create an HTML marker for it
+		// (if it does not already exist).
 		for ( const feature of features ) {
 			const coords = feature.geometry.coordinates;
 			const {
 				clientId: blockId,
 				cluster,
+				cluster_id: clusterId,
 				id,
 				index,
 			} = feature.properties;
 
-			let marker = markers?.[ id ];
+			// Existing Marker.
+			const marker =
+				Array.from( mapMarkers ).filter(
+					( mapMarker ) => parseInt( mapMarker?.dataset?.id ) === id
+				)?.[ 0 ] || null;
 
+			// Existing Cluster.
+			const clusterMarker =
+				Array.from( clusterMarkers ).filter(
+					( mapMarker ) =>
+						parseInt( mapMarker?.dataset?.clusterId ) === clusterId
+				)?.[ 0 ] || null;
+
+			// Marker is a cluster, if it does not exist, create it.
+			if ( cluster ) {
+				if ( ! clusterMarker ) {
+					const markerDiv = document.createElement( 'div' );
+					markerDiv.className = 'cluster';
+					markerDiv.dataset.clusterId = clusterId;
+					markerDiv.innerHTML =
+						feature.properties.point_count_abbreviated;
+
+					new mapboxgl.Marker( markerDiv )
+						.setDraggable( false )
+						.setLngLat( coords )
+						.addTo( map );
+				}
+
+				// Push it to our list of existing clusters.
+				if ( ! newClusters.includes( clusterId ) ) {
+					newClusters.push( clusterId );
+				}
+			}
+
+			// Marker is a marker, if it does not exist, create it.
 			if ( ! cluster ) {
 				if ( ! marker ) {
 					const markerDiv = document.createElement( 'div' );
 					markerDiv.className = 'marker';
 					markerDiv.dataset.id = id;
 
-					marker = new mapboxgl.Marker( markerDiv )
+					const pin = new mapboxgl.Marker( markerDiv )
 						.setDraggable( true )
 						.setLngLat( coords )
 						.addTo( map );
 
-					markers[ id ] = marker;
-
-					if ( index === 0 ) {
+					// If the item being added is the active item.
+					if ( index === mapItemIndex ) {
 						markerDiv.classList.add( 'active' );
 					}
 
+					// On click select the related slide and highlight the marker.
 					markerDiv.addEventListener( 'click', () => {
+						Array.from( mapMarkers ).forEach( ( div ) =>
+							div.classList.remove( 'active' )
+						);
+
+						markerDiv.classList.add( 'active' );
+
+						mapItemIndex = index;
 						setCurrentItemIndex( index );
 						selectBlock( blockId );
 					} );
-				}
 
-				marker.on( 'dragend', () => {
-					const lngLat = marker.getLngLat();
-					updateBlockAttributes( blockId, {
-						lat: lngLat.lat,
-						long: lngLat.lng,
+					// On marker drag, update its attributes.
+					pin.on( 'dragend', () => {
+						const lngLat = pin.getLngLat();
+						updateBlockAttributes( blockId, {
+							lat: lngLat.lat,
+							long: lngLat.lng,
+						} );
 					} );
-				} );
-
-				newMarkers[ id ] = marker;
-			} else {
-				if ( ! marker ) {
-					const markerDiv = document.createElement( 'div' );
-					markerDiv.className = 'cluster';
-					markerDiv.dataset.id = id;
-					markerDiv.innerHTML =
-						feature.properties.point_count_abbreviated;
-
-					marker = new mapboxgl.Marker( markerDiv )
-						.setDraggable( false )
-						.setLngLat( coords )
-						.addTo( map );
-
-					markers[ id ] = marker;
 				}
-				newMarkers[ id ] = marker;
-			}
 
-			if ( ! markersOnScreen[ id ] ) {
-				marker.addTo( map );
-			}
-		}
-
-		// For every marker we've added previously, remove those that are no longer visible
-		for ( const id in markersOnScreen ) {
-			if ( ! newMarkers[ id ] ) {
-				markersOnScreen[ id ].remove();
+				// Push it to our list of existing markers.
+				if ( ! newMarkers.includes( id ) ) {
+					newMarkers.push( id );
+				}
 			}
 		}
 
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		markersOnScreen = newMarkers;
-	}, [ map, selectBlock, updateBlockAttributes ] );
+		// If there are markers which are on the map, but shouldn't be, remove them.
+		Array.from( mapMarkers ).forEach( ( mapMarker ) => {
+			if ( ! newMarkers.includes( parseInt( mapMarker?.dataset?.id ) ) ) {
+				mapMarker.remove();
+			}
+		} );
+
+		// If there are clusters which are on the map, but shouldn't be, remove them.
+		Array.from( clusterMarkers ).forEach( ( clusterMarker ) => {
+			if (
+				! newClusters.includes(
+					parseInt( clusterMarker?.dataset?.clusterId )
+				)
+			) {
+				clusterMarker.remove();
+			}
+		} );
+	}, [ selectBlock, updateBlockAttributes ] );
 
 	/**
 	 * If a slide is added, switch to the new slide. If one is deleted, make sure we don't
@@ -198,7 +237,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		map.addControl( fullScreenControl );
 
 		map.on( 'load', () => {
-			// add a clustered GeoJSON source for a sample set of earthquakes
+			// For clustering we need to add a data source.
 			map.addSource( 'markers', {
 				type: 'geojson',
 				data: {
@@ -217,7 +256,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 									id,
 									index,
 								},
-							}
+							};
 						} ) || [],
 				},
 				cluster: true,
@@ -230,7 +269,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					],
 				},
 			} );
-			// circle and symbol layers for rendering individual earthquakes (unclustered points)
+
+			// For clustering we need to add a layer for markers.
+			// We will replace these with HTML markers.
 			map.addLayer( {
 				id: 'marker_circle',
 				type: 'circle',
@@ -241,6 +282,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					'circle-radius': 1,
 				},
 			} );
+
+			// For clustering we need to add a layer for clusters.
+			// We will replace these with HTML markers.
 			map.addLayer( {
 				id: 'marker_label',
 				type: 'symbol',
@@ -256,33 +300,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				},
 			} );
 
-			// after the GeoJSON data is loaded, update markers on the screen on every frame
+			// Rendering happen as the map moves, update the pins on the map
+			// based on the above data source.
 			map.on( 'render', () => {
-				if ( ! map.isSourceLoaded( 'markers' ) ) {
-					return;
-				}
-				updateMarkers();
-
-				const mapMarkers = document.getElementsByClassName( 'marker' );
-				Array.from( mapMarkers ).forEach( ( div ) => {
-					div.classList.remove( 'active' );
-				} );
-
-				const slideBlock = slideBlocks[ currentItemIndex ];
-				const { id } = slideBlock?.attributes || {};
-
-				if ( id ) {
-					const nextMapMarkers = Array.from( mapMarkers ).filter(
-						( mapMarker ) =>
-							mapMarker.dataset.id.toString() === id.toString()
-					);
-					nextMapMarkers.forEach( ( mapMarker ) => {
-						mapMarker.classList.add( 'active' );
-					} );
-				}
-			} );
-
-			map.on( 'moveend', () => {
 				if ( ! map.isSourceLoaded( 'markers' ) ) {
 					return;
 				}
