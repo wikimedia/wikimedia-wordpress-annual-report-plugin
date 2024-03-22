@@ -13,4 +13,10 @@
 		margin-bottom: 0.5rem;
 		margin-top: -2rem;
 	}
+
+	&:not( :has( .wp-block-wmf-reports-marker ) ) {
+		.help {
+			margin-top: 0;
+		}
+	}
 }

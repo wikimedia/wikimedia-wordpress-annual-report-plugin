@@ -217,7 +217,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	 */
 	useEffect( () => {
 		// eslint-disable-next-line no-undef
-		if ( ! wmf.apiKey ) {
+		if ( ! wmf?.apiKey ) {
 			return;
 		}
 
@@ -229,7 +229,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		}
 
 		// eslint-disable-next-line no-undef
-		mapboxgl.accessToken = wmf.apiKey;
+		mapboxgl.accessToken = wmf?.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
 			center: [ -28.326915886961197, 25.093160453432485 ],
