@@ -19,7 +19,7 @@ function bootstrap() {
 }
 
 /**
- * Register game settings.
+ * Register map settings.
  *
  * @return void
  */
@@ -36,14 +36,14 @@ function register_map_settings() : void {
 }
 
 /**
- * Add game settings page.
+ * Add map settings page.
  *
  * @return void
  */
 function add_map_settings_page() : void {
 	add_options_page(
-		'Map Settings',
-		'Map Settings',
+		esc_html__( 'Map Settings', 'wmf-reports' ),
+		esc_html__( 'Map Settings', 'wmf-reports' ),
 		'manage_options',
 		'map_settings',
 		__NAMESPACE__ . '\\render_map_settings_admin_page'
@@ -56,26 +56,35 @@ function add_map_settings_page() : void {
 function render_map_settings_admin_page() : void {
 ?>
 <div class="wrap">
-    <h1>Map Settings</h1>
-    <p>This admin screen lets you manage your map settings.</p>
+    <h1><?php esc_html_e( 'Map Settings', 'wmf-reports' ); ?></h1>
+    <p><?php esc_html_e( 'This admin screen lets you manage your map settings.', 'wmf-reports' ); ?></p>
 
     <form method="post">
         <?php
 			$api_key = (string) get_option( MAP_API_OPTION_KEY, '' );
 			?>
 
-        <h2 class="title">Mapbox API Key</h2>
-        <p>Use this section manage your API Key.</p>
+        <h2 class="title"><?php esc_html_e( 'API Key', 'wmf-reports' ); ?></h2>
+        <p><?php esc_html_e( 'Use this section manage your API Key.', 'wmf-reports' ); ?></p>
         <table class="form-table permalink-structure" role="presentation">
             <tbody>
                 <tr>
                     <th scope="row">
-                        <label for="game_refresh_rate">API Key</label>
+                        <label for="map_api_key"><?php esc_html_e( 'Mapbox API Key', 'wmf-reports' ); ?></label>
                     </th>
                     <td>
                         <p>
                             <input id="map_api_key" name="<?php echo esc_attr( MAP_API_OPTION_KEY ); ?>"
-                                type="text" value="<?php echo esc_attr( $$api_key ); ?>" />
+                                type="text" value="<?php echo esc_attr( $api_key ); ?>" />
+							<p class="description">
+								<?php
+								printf(
+									esc_html__( 'Follow the instructions on the %sMapbox website%s to create your API key.', 'wmf-reports' ),
+									'<a href="https://docs.mapbox.com/help/getting-started/access-tokens/">',
+									'</a>'
+								)
+								?>
+							</p>
                         </p>
                     </td>
                 </tr>
@@ -90,7 +99,7 @@ function render_map_settings_admin_page() : void {
 }
 
 /**
- * Save game settings options.
+ * Save map settings options.
  *
  * @return void
  */
@@ -105,34 +114,9 @@ function save_map_settings_options() : void {
 		return;
 	}
 
-	// Game refresh rate.
-	$game_refresh_rate_old = get_option( GAME_REFRESH_RATE, 60 );
-	$game_refresh_rate     = intval( $_REQUEST[ GAME_REFRESH_RATE ] );
-
-	// Remove old schedule if the refresh rate changes.
-	if ( $game_refresh_rate_old !== $game_refresh_rate ) {
-		$time = wp_next_scheduled( 'dp_update_game_posts' );
-		wp_unschedule_event( $time, 'dp_update_game_posts' );
-		update_option( GAME_REFRESH_RATE, $game_refresh_rate );
-	}
-
-
 	// Default Sportsbook.
-	$default_sportsbooks = sanitize_text_field( $_REQUEST[ SPORTSBOOKS_DEFAULT_OPTION_KEY ] );
-	update_option( SPORTSBOOKS_DEFAULT_OPTION_KEY, $default_sportsbooks );
-
-	// Excluded Sportsbooks.
-	$sportsbooks          = (array) get_option( SPORTSBOOKS_ALL_OPTION_KEY, [] );
-	$excluded_sportsbooks = array_map( 'sanitize_text_field', (array) $_REQUEST[ SPORTSBOOKS_EXCLUDED_OPTION_KEY ] );
-
-	$updated_sportsbooks = array_filter(
-		$sportsbooks,
-		function ( $sportsbook ) use ( $excluded_sportsbooks ) {
-			return ! in_array( $sportsbook, $excluded_sportsbooks, true );
-		}
-	);
-
-	update_option( SPORTSBOOKS_EXCLUDED_OPTION_KEY, $updated_sportsbooks );
+	$api_key = sanitize_text_field( $_REQUEST[ MAP_API_OPTION_KEY ] );
+	update_option( MAP_API_OPTION_KEY, $api_key );
 
 	// Add a notice so we know the option has been updated.
 	add_action( 'admin_notices', __NAMESPACE__ . '\\show_updated_notice' );
@@ -145,7 +129,7 @@ function save_map_settings_options() : void {
  */
 function show_updated_notice() : void {
 	$class   = 'notice notice-success is-dismissible';
-	$message = 'Settings saved.';
+	$message = esc_html__( 'Settings Saved.', 'wmf-reports' );
 
 	printf( '<div class="%1$s"><p><strong>%2$s</strong></p></div>', esc_attr( $class ), esc_html( $message ) );
 }

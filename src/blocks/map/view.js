@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-unresolved
 import mapboxgl from '!mapbox-gl';
 
-mapboxgl.accessToken =
-	'***REMOVED***';
+// eslint-disable-next-line no-undef
+mapboxgl.accessToken = wmf.apiKey;
 
 const mapDiv = document.getElementById( 'map' );
 const fullScreenControl = new mapboxgl.NavigationControl();
