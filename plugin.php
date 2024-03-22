@@ -21,6 +21,7 @@ require_once __DIR__ . '/inc/blocks/core-group.php';
 require_once __DIR__ . '/inc/report.php';
 require_once __DIR__ . '/inc/editor/colors.php';
 require_once __DIR__ . '/inc/editor/patterns.php';
+require_once __DIR__ . '/inc/editor/patterns/donor.php';
 require_once __DIR__ . '/inc/editor/styles.php';
 
 Assets\bootstrap();
