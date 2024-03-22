@@ -78,16 +78,27 @@
 		&.wp-block-group.has-background {
 			padding: 0px;
 		}
+
+		.wp-block-columns .wp-block-column:last-child {
+			margin-left: 0;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
 	}
 
 	.is-style-sans-p {
 		margin-top: 0;
 	}
 
-	&__image {
+	&__image.wp-block-image {
+		margin-bottom: 0;
+
 		img {
+			max-height: 300px;
+
 			@media only screen and ( min-width: 782px ) {
 				border-radius: 30px;
+				max-height: 100%;
 			}
 		}
 	}
@@ -118,8 +129,81 @@
 		}
 	}
 
-	.wp-block-column *:last-child,
 	.wp-block-columns {
-		margin-bottom: 0px;
+		margin-bottom: 0;
+		.wp-block-column:last-child {
+			> *:last-child {
+				margin-bottom: 1rem;
+
+				@media only screen and ( min-width: 782px ) {
+					margin-bottom: 5rem;
+				}
+			}
+		}
+	}
+}
+
+.map {
+	&__markers-wrapper {
+		position: relative;
+
+		@media only screen and ( min-width: 782px ) {
+			position: initial;
+		}
+	}
+
+	&__buttons-wrapper {
+		bottom: auto;
+		position: absolute;
+		top: calc( 300px - 1.5rem );
+		right: 1rem;
+		width: 100%;
+
+		@media only screen and ( min-width: 782px ) {
+			bottom: 2rem;
+			top: auto;
+			right: auto;
+		}
+	}
+
+	&__markers-wrapper:not( :has( .wp-block-wmf-reports-marker[style*="visibility: visible;"] .map-info__image img ) ) {
+		.map__buttons-wrapper {
+			top: - 1.5rem;
+
+			@media only screen and ( min-width: 782px ) {
+				top: auto;
+			}
+		}
+	}
+
+	&__buttons {
+		margin: auto;
+		max-width: 960px;
+		text-align: right;
+	}
+
+	&__button {
+		background-color: #fff;
+		background-image: url('data:image/svg+xml,<svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5858 11L0.292908 1.70712L1.70712 0.292908L12.4142 11L1.70712 21.7071L0.292908 20.2929L9.5858 11Z" fill="black"/></svg>');
+		background-position: 55% 50%;
+		background-repeat: no-repeat;
+		border: 1px solid #aaa;
+		border-radius: 100%;
+		cursor: pointer;
+		height: 48px;
+		margin-left: 0.5rem;
+		width: 48px;
+
+		&--back {
+			transform: scaleX(-1);
+		}
+
+		&:hover {
+			background-color: #ccc;
+		}
+
+		&:focus {
+			border-radius: 100%;
+		}
 	}
 }

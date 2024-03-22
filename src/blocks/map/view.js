@@ -5,6 +5,11 @@ import mapboxgl from '!mapbox-gl';
 mapboxgl.accessToken = wmf.apiKey;
 
 const mapDiv = document.getElementById( 'map' );
+const markers = document.getElementsByClassName(
+	'wp-block-wmf-reports-marker'
+);
+const backButton = document.getElementById( 'map-back' );
+const forwardButton = document.getElementById( 'map-forward' );
 const fullScreenControl = new mapboxgl.NavigationControl();
 const map = new mapboxgl.Map( {
 	container: 'map',
@@ -17,12 +22,6 @@ const map = new mapboxgl.Map( {
 let mapItemIndex = 0;
 
 map.addControl( fullScreenControl );
-
-const markers = document.getElementsByClassName(
-	'wp-block-wmf-reports-marker'
-);
-const backButton = document.getElementById( 'back' );
-const forwardButton = document.getElementById( 'forward' );
 
 const setMarker = ( id ) => {
 	mapItemIndex = id;
@@ -49,6 +48,8 @@ const setMarker = ( id ) => {
 	nextMarkerInfoBox.style.visibility = 'visible';
 	nextMarkerInfoBox.style.height = null;
 };
+
+setMarker( 0 );
 
 backButton.addEventListener( 'click', () => {
 	const index = Array.from( markers ).findIndex(
