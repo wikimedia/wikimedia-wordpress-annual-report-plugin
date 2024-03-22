@@ -1,4 +1,4 @@
-@import '../../helpers/variables';
+@import '../helpers/variables';
 
 .single-wmf-report {
 
@@ -21,8 +21,12 @@
 	.accordion-item__title-text {
 		font-family: 'Noto Sans';
 		font-weight: bold;
-		font-size: #{$font-size-xxlarge};
+		font-size: #{$font-size-xlarge};
 		line-height: #{$line-height-xlarge};
+
+		mark.has-inline-color {
+			font-size: #{$font-size-base};
+		}
 	}
 
 	.accordion-item__content {
