@@ -71,7 +71,6 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	 * the markers on the map dynamically to handle this.
 	 */
 	const updateMarkers = useCallback( () => {
-		console.log( map?.getCenter() );
 		if ( ! map ) {
 			return;
 		}
