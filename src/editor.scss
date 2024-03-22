@@ -15,3 +15,19 @@
 .wp-block-group-is-full-viewport-height {
 	height: 100vh;
 }
+
+/* Shiro Accordion overrides */
+.editor-styles-wrapper.single-wmf-report {
+
+	.accordion-item__title::after {
+		background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAyMiAxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMSA5LjU4NTg2TDIwLjI5MjkgMC4yOTI5NjlMMjEuNzA3MSAxLjcwNzE4TDExIDEyLjQxNDNMMC4yOTI4NzcgMS43MDcxOEwxLjcwNzA5IDAuMjkyOTY5TDExIDkuNTg1ODZaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K) center center no-repeat;
+		content: " ";
+		display: inline-block;
+		height: 48px;
+		width: 48px;
+		vertical-align: middle;
+		transform: none;
+		border: 1px solid #AAAAAA;
+		border-radius: 50%;
+	}
+}
