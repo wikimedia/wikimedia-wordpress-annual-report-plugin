@@ -2,8 +2,8 @@
 	position: relative;
 
 	&::after {
-		box-shadow: inset 0px 3px 10px -10px rgba(0,0,0,0.75);
-		content: '';
+		box-shadow: inset 0 3px 10px -10px rgba(0, 0, 0, 0.75);
+		content: "";
 		height: 10px;
 		position: absolute;
 		top: 0;
@@ -24,7 +24,7 @@
 	}
 
 	.marker {
-		content: '';
+		content: "";
 		cursor: pointer;
 		background: #000;
 		background-size: cover;
@@ -50,11 +50,12 @@
 
 	.marker.active,
 	.cluster.active {
-		background: #FF7800;
+		background: #ff7800;
 	}
 }
 
 .wp-block-wmf-reports-marker {
+
 	.wp-block-group.alignfull,
 	.alignfull {
 		margin: 0;
@@ -73,10 +74,10 @@
 	line-height: 1.75;
 
 	@media only screen and ( max-width: 781px ) {
-		padding: 0px;
+		padding: 0;
 
 		&.wp-block-group.has-background {
-			padding: 0px;
+			padding: 0;
 		}
 
 		.wp-block-columns .wp-block-column:last-child {
@@ -119,8 +120,8 @@
 		margin-bottom: 0.5rem;
 
 		&::before {
-			content: '';
-			background: #FF7800;
+			content: "";
+			background: #ff7800;
 			background-size: cover;
 			border-radius: 50%;
 			display: inline-block;
@@ -132,7 +133,9 @@
 
 	.wp-block-columns {
 		margin-bottom: 0;
+
 		.wp-block-column:last-child {
+
 			> *:last-child {
 				margin-bottom: 1rem;
 
@@ -145,6 +148,7 @@
 }
 
 .map {
+
 	&__markers-wrapper {
 		position: relative;
 
@@ -156,7 +160,7 @@
 	&__buttons-wrapper {
 		bottom: auto;
 		position: absolute;
-		top: calc( 300px - 1.5rem );
+		top: calc(300px - 1.5rem);
 		right: 1rem;
 		width: 100%;
 
@@ -167,7 +171,8 @@
 		}
 	}
 
-	&__markers-wrapper:not( :has( .wp-block-wmf-reports-marker[style*="visibility: visible;"] .map-info__image img ) ) {
+	&__markers-wrapper:not(:has(.wp-block-wmf-reports-marker[style*="visibility: visible;"] .map-info__image img)) {
+
 		.map__buttons-wrapper {
 			top: - 1.5rem;
 
@@ -185,6 +190,7 @@
 
 	&__button {
 		background-color: #fff;
+		// stylelint-disable-next-line function-url-quotes
 		background-image: url('data:image/svg+xml,<svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5858 11L0.292908 1.70712L1.70712 0.292908L12.4142 11L1.70712 21.7071L0.292908 20.2929L9.5858 11Z" fill="black"/></svg>');
 		background-position: 55% 50%;
 		background-repeat: no-repeat;

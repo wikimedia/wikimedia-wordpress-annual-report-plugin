@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ReactNode, useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { createBlock } from '@wordpress/blocks';
 import { useSelect, useDispatch } from '@wordpress/data';
@@ -10,13 +10,13 @@ import Navigation from './navigation';
 /**
  * InnerBlockSlider component.
  *
- * @param {object} props - Component props.
+ * @param {Object} props               - Component props.
  * @param {string} props.parentBlockId - Parent block clientId.
- * @param {Array} props.allowedBlocks - Allowed block types.
- * @param {string} props.currentBlock - Block which will be inserted by the inserter.
- * @param {Array}  props.template - Initial block template.
- * @param {number} props.slideLimit - Maximum allowed slides.
- * @returns {ReactNode} Component.
+ * @param {Array}  props.allowedBlocks - Allowed block types.
+ * @param {string} props.currentBlock  - Block which will be inserted by the inserter.
+ * @param {Array}  props.template      - Initial block template.
+ * @param {number} props.slideLimit    - Maximum allowed slides.
+ * @return {ReactNode} Component.
  */
 const InnerBlockSlider = ( {
 	parentBlockId,
@@ -28,7 +28,8 @@ const InnerBlockSlider = ( {
 	const innerBlockTemplate = template || [ [ currentBlock ] ];
 
 	const slideBlocks = useSelect(
-		( select ) => select( 'core/block-editor' ).getBlock( parentBlockId ).innerBlocks
+		( select ) =>
+			select( 'core/block-editor' ).getBlock( parentBlockId ).innerBlocks
 	);
 
 	const [ currentItemIndex, setCurrentItemIndex ] = useState( 0 );
@@ -41,7 +42,7 @@ const InnerBlockSlider = ( {
 	/**
 	 * Custom "Add Block" appender.
 	 *
-	 * @returns {void}
+	 * @return {void}
 	 */
 	const addSlide = () => {
 		const created = createBlock( currentBlock );
