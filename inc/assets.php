@@ -8,6 +8,8 @@ namespace WMF\Reports\Assets;
 use const WMF\Reports\PLUGIN_PATH;
 use WMF\Reports\Asset_Loader;
 
+use const WMF\Reports\Blocks\Map\MAP_API_OPTION_KEY;
+
 /**
  * Attach hooks.
  */
@@ -87,6 +89,13 @@ function enqueue_editor_assets() : void {
 
 	if ( has_block( 'wmf-reports/map' ) ) {
 		wp_enqueue_style( 'mapbox-css', 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' );
+		wp_localize_script(
+			'annual-report-plugin-editor',
+			'wmf',
+			[
+				'apiKey' => get_option( MAP_API_OPTION_KEY ),
+			],
+		);
 	}
 }
 
@@ -99,6 +108,16 @@ function enqueue_frontend_scripts() : void {
 		build_file_path( 'frontend.asset.php' ),
 		build_file_uri( 'frontend.js' )
 	);
+
+	if ( has_block( 'wmf-reports/map' ) ) {
+		wp_localize_script(
+			'annual-report-plugin-frontend',
+			'wmf',
+			[
+				'apiKey' => get_option( MAP_API_OPTION_KEY ),
+			],
+		);
+	}
 }
 
 /**

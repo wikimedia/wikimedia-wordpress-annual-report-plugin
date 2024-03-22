@@ -5,6 +5,7 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 import { BaseControl, PanelBody, TextControl } from '@wordpress/components';
+import { useEffect, useState } from '@wordpress/element';
 import './editor.scss';
 
 import { SearchBox } from '@mapbox/search-js-react';
@@ -22,6 +23,7 @@ import { SearchBox } from '@mapbox/search-js-react';
  */
 export default function Edit( { attributes, setAttributes } ) {
 	const { lat, long } = attributes;
+
 	return (
 		<div { ...useBlockProps() }>
 			<InspectorControls>
@@ -35,7 +37,8 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( 'Search for address', 'wmf-reports' ) }
 					>
 						<SearchBox
-							accessToken="pk.eyJ1IjoibWF0dHdhdHNvbmhtIiwiYSI6ImNsdHpudnVmczAxdDkyaW1zYzMxNGJtbTgifQ.5UyJ9RgUB1YgoLG7vXm0aw"
+							// eslint-disable-next-line no-undef
+							accessToken={ wmf.apiKey }
 							value=""
 							onRetrieve={ ( object ) => {
 								const { coordinates } = object?.features?.[ 0 ]

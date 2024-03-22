@@ -216,6 +216,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	 * Init the map.
 	 */
 	useEffect( () => {
+		// eslint-disable-next-line no-undef
+		if ( ! wmf.apiKey ) {
+			return;
+		}
+
 		const fullScreenControl = new mapboxgl.NavigationControl();
 
 		if ( map ) {
@@ -223,8 +228,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			map.remove();
 		}
 
-		mapboxgl.accessToken =
-			'pk.eyJ1IjoibWF0dHdhdHNvbmhtIiwiYSI6ImNsdHpudnVmczAxdDkyaW1zYzMxNGJtbTgifQ.5UyJ9RgUB1YgoLG7vXm0aw';
+		// eslint-disable-next-line no-undef
+		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
 			center: [ -28.326915886961197, 25.093160453432485 ],
@@ -314,6 +319,20 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	const blockProps = useBlockProps( {
 		className: 'map map-carousel',
 	} );
+
+	// eslint-disable-next-line no-undef
+	if ( ! wmf.apiKey ) {
+		return (
+			<div className="components-placeholder is-large">
+				<div className="components-placeholder__fieldset">
+					{ __(
+						'Map not available, please ensure you have entered the map API key.',
+						'wmf-reports'
+					) }
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div { ...blockProps }>
