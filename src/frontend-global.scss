@@ -43,6 +43,12 @@ button:focus {
 			max-width: 650px;
 		}
 	}
+	[class*="wmf-pattern-reports-"] {
+		.wp-block-group__inner-container {
+			padding-left: 1.25rem;
+			padding-right: 1.25rem;
+		}
+	}
 
 	// Demo hack.
 	.wp-block-group.has-background {
