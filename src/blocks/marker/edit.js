@@ -5,8 +5,6 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 import { BaseControl, PanelBody, TextControl } from '@wordpress/components';
-import { useEffect, useState } from '@wordpress/element';
-import './editor.scss';
 
 import { SearchBox } from '@mapbox/search-js-react';
 
@@ -38,7 +36,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					>
 						<SearchBox
 							// eslint-disable-next-line no-undef
-							accessToken={ wmf.apiKey }
+							accessToken={ wmf?.apiKey }
 							value=""
 							onRetrieve={ ( object ) => {
 								const { coordinates } = object?.features?.[ 0 ]
