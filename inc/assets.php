@@ -36,7 +36,7 @@ function set_connect_src_origins( array $headers ) : array {
 	$localhost_srcs = array_reduce(
 		[ 8080, 8887, 8888 ],
 		function( $carry, $port ) {
-			return $carry .= "ws://localhost:$port wss://localhost:$port http://localhost:$port https://localhost:$port ";
+			return $carry .= "ws://localhost:$port wss://localhost:$port http://localhost:$port https://localhost:$port https://*.mapbox.com ";
 		},
 		''
 	);
@@ -45,6 +45,19 @@ function set_connect_src_origins( array $headers ) : array {
 		"connect-src 'self' $localhost_srcs",
 		$headers['Content-Security-Policy']
 	);
+
+	$headers['Content-Security-Policy'] = preg_replace(
+		"/script-src 'self'/",
+		"script-src 'self' blob: https://wikimedia.vipdev.lndo.site",
+		$headers['Content-Security-Policy']
+	);
+
+	$headers['Content-Security-Policy'] = preg_replace(
+		"/style-src 'self'/",
+		"style-src 'self' https://*.mapbox.com",
+		$headers['Content-Security-Policy']
+	);
+
 	return $headers;
 }
 
