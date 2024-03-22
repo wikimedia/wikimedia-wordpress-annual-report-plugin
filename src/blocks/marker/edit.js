@@ -98,14 +98,23 @@ export default function Edit( { attributes, setAttributes } ) {
 											[
 												'core/image',
 												{
+													aspectRatio: '4/3',
+													className:
+														'is-style-default map-info__image',
+													id: 74106,
 													lightbox: {
 														aspectRatio: '4/3',
-														className: 'is-style-default map-info__image',
+														className:
+															'is-style-default map-info__image',
 														enabled: false,
+														id: 74106,
 														linkDestination: 'none',
 														scale: 'cover',
 														sizeSlug: 'full',
 													},
+													linkDestination: 'none',
+													scale: 'cover',
+													sizeSlug: 'full',
 												},
 											],
 										],
@@ -154,7 +163,8 @@ export default function Edit( { attributes, setAttributes } ) {
 											[
 												'core/paragraph',
 												{
-													className: 'is-style-sans-p',
+													className:
+														'is-style-sans-p',
 													content:
 														'Lorem ipsum dolor sit amet ullamcorper convallis condimentum suspendisse cras blandit congue tincidunt turpis vulputate. Imperdiet quisque libero in porta venenatis vitae netus condimentum.',
 												},
@@ -170,7 +180,7 @@ export default function Edit( { attributes, setAttributes } ) {
 																'base100',
 															className:
 																'is-style-tertiary map-info__button',
-															content: 'Read More',
+															text: 'Read More',
 															style: {
 																elements: {
 																	link: {
