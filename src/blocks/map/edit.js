@@ -71,6 +71,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	 * the markers on the map dynamically to handle this.
 	 */
 	const updateMarkers = useCallback( () => {
+		console.log( map?.getCenter() );
 		if ( ! map ) {
 			return;
 		}
@@ -232,7 +233,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		mapboxgl.accessToken = wmf?.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
-			center: [ -28.326915886961197, 25.093160453432485 ],
+			center: [ 2.8, 40 ],
 			projection: 'equalEarth',
 			scrollZoom: false,
 			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.

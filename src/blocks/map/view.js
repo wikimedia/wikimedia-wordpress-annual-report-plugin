@@ -13,7 +13,7 @@ const forwardButton = document.getElementById( 'map-forward' );
 const fullScreenControl = new mapboxgl.NavigationControl();
 const map = new mapboxgl.Map( {
 	container: 'map',
-	center: [ -28.326915886961197, 25.093160453432485 ],
+	center: [ 2.8, 40 ],
 	projection: 'equalEarth',
 	scrollZoom: false,
 	style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
@@ -135,7 +135,7 @@ const updateMarkers = () => {
 				markerDiv.dataset.id = id;
 
 				new mapboxgl.Marker( markerDiv )
-					.setDraggable( true )
+					.setDraggable( false )
 					.setLngLat( coords )
 					.addTo( map );
 
