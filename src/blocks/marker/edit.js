@@ -185,7 +185,7 @@ export default function Edit( { attributes, setAttributes } ) {
 																elements: {
 																	link: {
 																		color: {
-																			text: 'var:preset|color|base0'
+																			text: 'var:preset|color|base0',
 																		},
 																	},
 																},

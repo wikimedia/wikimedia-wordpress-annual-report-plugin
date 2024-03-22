@@ -1,21 +1,20 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { ReactNode } from 'react';
 
 import { Button, IconButton } from '@wordpress/components';
 
 /**
  * Inner Block Slider Navigation component.
  *
- * @param {object} props Props
- * @param {number} props.totalPages Total pages.
- * @param {number} props.currentPage Current pages.
- * @param {Function} props.setCurrentPage Set current page.
- * @param {boolean} props.prevEnabled Is previous page enabled.
- * @param {boolean} props.nextEnabled Is Next button enabled.
- * @param {Function} props.addSlide Add slide callback.
- * @param {boolean} props.addSlideEnabled Is add slide button enabled.
- * @returns {ReactNode} Component.
+ * @param {Object}   props                 Props
+ * @param {number}   props.totalPages      Total pages.
+ * @param {number}   props.currentPage     Current pages.
+ * @param {Function} props.setCurrentPage  Set current page.
+ * @param {boolean}  props.prevEnabled     Is previous page enabled.
+ * @param {boolean}  props.nextEnabled     Is Next button enabled.
+ * @param {Function} props.addSlide        Add slide callback.
+ * @param {boolean}  props.addSlideEnabled Is add slide button enabled.
+ * @return {ReactNode} Component.
  */
 function Navigation( {
 	totalPages,
@@ -42,16 +41,22 @@ function Navigation( {
 			{ [ ...Array( totalPages ).keys() ].map( ( i ) => (
 				<Button
 					key={ i + 1 }
-					aria-label={ `Slide ${i + 1}` }
-					className={ classNames( 'components-button', 'is-not-small', {
-						'is-primary': currentPage === i + 1,
-						'is-secondary': currentPage !== i + 1,
-					} ) }
+					aria-label={ `Slide ${ i + 1 }` }
+					className={ classNames(
+						'components-button',
+						'is-not-small',
+						{
+							'is-primary': currentPage === i + 1,
+							'is-secondary': currentPage !== i + 1,
+						}
+					) }
 					type="button"
 					onClick={ () => {
 						setCurrentPage( i + 1 );
 					} }
-				>{ i + 1 }</Button>
+				>
+					{ i + 1 }
+				</Button>
 			) ) }
 			<IconButton
 				disabled={ ! nextEnabled }
