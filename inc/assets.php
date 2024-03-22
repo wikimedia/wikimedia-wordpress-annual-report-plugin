@@ -100,16 +100,14 @@ function enqueue_editor_assets() : void {
 		filemtime( build_file_path( 'editor.css' ) )
 	);
 
-	if ( has_block( 'wmf-reports/map' ) ) {
-		wp_enqueue_style( 'mapbox-css', 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' );
-		wp_localize_script(
-			'annual-report-plugin-editor',
-			'wmf',
-			[
-				'apiKey' => get_option( MAP_API_OPTION_KEY ),
-			],
-		);
-	}
+	wp_enqueue_style( 'mapbox-css', 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' );
+	wp_localize_script(
+		'annual-report-plugin-editor',
+		'wmf',
+		[
+			'apiKey' => get_option( MAP_API_OPTION_KEY ),
+		],
+	);
 }
 
 /**
