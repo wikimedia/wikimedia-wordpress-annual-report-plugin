@@ -29,9 +29,9 @@ function register_pattern() {
 		'label' => __( 'Wikimedia Reports', 'wmf-reports' ),
 	] );
 
-	register_block_pattern( MapInfo\NAME, [
-		'title' => __( 'Map Info', 'wmf-reports' ),
+	register_block_pattern( CarouselSlide\NAME, [
+		'title' => __( 'Carousel Slide', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],
-		'content' => MapInfo\PATTERN,
+		'content' => CarouselSlide\PATTERN,
 	] );
 }

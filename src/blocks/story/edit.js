@@ -1,12 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import {
 	InnerBlocks,
-	InspectorControls,
 	useBlockProps,
 } from '@wordpress/block-editor';
-import { BaseControl, PanelBody, TextControl } from '@wordpress/components';
-
-import { SearchBox } from '@mapbox/search-js-react';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -19,72 +15,19 @@ import { SearchBox } from '@mapbox/search-js-react';
  *
  * @return {Element} Element to render.
  */
-export default function Edit( { attributes, setAttributes } ) {
-	const { lat, long } = attributes;
-
+export default function Edit() {
 	return (
 		<div { ...useBlockProps() }>
-			<InspectorControls>
-				<PanelBody>
-					<BaseControl
-						help={ __(
-							'Search for the address to update the longitude and latitude',
-							'wmf-reports'
-						) }
-						id="search-box"
-						label={ __( 'Search for address', 'wmf-reports' ) }
-					>
-						<SearchBox
-							// eslint-disable-next-line no-undef
-							accessToken={ wmf?.apiKey }
-							value=""
-							onRetrieve={ ( object ) => {
-								const { coordinates } = object?.features?.[ 0 ]
-									?.geometry || [
-									-13.326915886961197, 25.093160453432485,
-								];
-								setAttributes( {
-									lat: coordinates[ 1 ],
-									long: coordinates[ 0 ],
-								} );
-							} }
-						/>
-					</BaseControl>
-					<TextControl
-						help={ __(
-							'Update the latitude, use the search, or drag the marker to pin point a location.',
-							'wmf-reports'
-						) }
-						label={ __( 'Latitude', 'wmf-reports' ) }
-						value={ lat }
-						// eslint-disable-next-line no-shadow
-						onChange={ ( lat ) => {
-							setAttributes( { lat } );
-						} }
-					/>
-					<TextControl
-						help={ __(
-							'Update the longitude, use the search, or drag the marker to pin point a location.',
-							'wmf-reports'
-						) }
-						label={ __( 'Longitude', 'wmf-reports' ) }
-						value={ long }
-						// eslint-disable-next-line no-shadow
-						onChange={ ( long ) => {
-							setAttributes( { long } );
-						} }
-					/>
-				</PanelBody>
-			</InspectorControls>
 			<InnerBlocks
 				template={ [
 					[
 						'core/group',
 						{
 							align: 'full',
-							backgroundColor: 'wmf-report-bright-yellow',
+							backgroundColor: 'wmf-report-blue',
 							className: 'carousel-slide',
 							layout: { type: 'constrained' },
+							textColor: 'base100',
 						},
 						[
 							[
@@ -126,40 +69,12 @@ export default function Edit( { attributes, setAttributes } ) {
 										{ width: '33.33%' },
 										[
 											[
-												'core/paragraph',
-												{
-													className:
-														'carousel-slide__category is-style-sans-p',
-													content:
-														'Lorem ipsum / Sit amet',
-													style: {
-														elements: {
-															link: {
-																color: {
-																	text: 'var:preset|color|orange',
-																},
-															},
-														},
-													},
-													textColor: 'orange',
-												},
-											],
-											[
 												'core/heading',
 												{
 													className:
 														'carousel-slide__heading is-style-default',
 													content:
 														'Lorem ipsum dolor sit amet vulputate.',
-												},
-											],
-											[
-												'core/paragraph',
-												{
-													className:
-														'carousel-slide__location is-style-sans-p',
-													content:
-														'<em>Line for location</em>',
 												},
 											],
 											[
