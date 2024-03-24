@@ -17,6 +17,7 @@
 		top: calc(300px - 1.5rem);
 		right: 1rem;
 		width: 100%;
+		z-index: 2;
 
 		@media only screen and ( min-width: 782px ) {
 			bottom: 2rem;
@@ -27,7 +28,7 @@
 
 	&__markers-wrapper:not(:has(.carousel__slide[style*="visibility: visible;"] .map-info__image img)) {
 
-		.map__buttons-wrapper {
+		.carousel__buttons-wrapper {
 			top: - 1.5rem;
 
 			@media only screen and ( min-width: 782px ) {
@@ -78,6 +79,7 @@
 	font-size: $font-size-base;
 	font-weight: 400;
 	line-height: $line-height-base;
+
 
 	@media only screen and ( max-width: 781px ) {
 		padding: 0;
@@ -155,6 +157,6 @@
 
 .wp-block-wmf-reports-story {
 	&.animate {
-		transition: all 0.5s;
+		transition: all 0.25s;
 	}
 }
