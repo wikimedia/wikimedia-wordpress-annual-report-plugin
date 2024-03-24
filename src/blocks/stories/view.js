@@ -144,7 +144,7 @@ const setSlide = ( id ) => {
 					storyInfoBox.style.opacity = null;
 					storyInfoBox.classList.remove( 'animate' );
 					processing = false;
-				}, 500 );
+				}, 250 );
 
 				nextStoryInfoBox.style.visibility = 'visible';
 				nextStoryInfoBox.style.height = null;
@@ -155,26 +155,24 @@ const setSlide = ( id ) => {
 			if ( id < currentId ) {
 				nextStoryInfoBox.style.opacity = 0;
 				nextStoryInfoBox.style.height = null;
-				const currentHeight = nextStoryInfoBox.offsetHeight;
+				nextStoryInfoBox.style.visibility = 'visible';
+				nextStoryInfoBox.style.position = 'absolute';
 
 				storyInfoBox.style.visibility = 'visible';
 				storyInfoBox.style.height = null;
 				storyInfoBox.style.opacity = 1;
 
-				nextStoryInfoBox.style.height =
-					storyInfoBox.offsetHeight + 'px';
-
 				setTimeout( () => {
-					nextStoryInfoBox.style.visibility = 'visible';
-					nextStoryInfoBox.style.position = 'absolute';
 					nextStoryInfoBox.classList.add( 'animate' );
+					storyInfoBox.classList.add( 'animate' );
 				}, 1 );
 
 				setTimeout( () => {
+					storyInfoBox.style.height =
+						nextStoryInfoBox.offsetHeight + 'px';
 					nextStoryInfoBox.style.opacity = 1;
-					nextStoryInfoBox.style.height = currentHeight + 'px';
 					processing = true;
-				}, 10 );
+				}, 2 );
 
 				setTimeout( () => {
 					nextStoryInfoBox.style.height = null;
@@ -185,8 +183,9 @@ const setSlide = ( id ) => {
 					storyInfoBox.style.visibility = 'hidden';
 					storyInfoBox.style.height = 0;
 					storyInfoBox.style.opacity = null;
+					storyInfoBox.classList.remove( 'animate' );
 					processing = false;
-				}, 510 );
+				}, 250 );
 				return;
 			}
 			return;
