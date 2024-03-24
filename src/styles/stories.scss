@@ -1,0 +1,39 @@
+.wp-block-wmf-reports-stories {
+	.wp-block-group.alignfull,
+	.alignfull {
+		margin: 0;
+		width: 100%;
+	}
+
+	.alignwide {
+		max-width: $width-breakpoint-wide;
+	}
+}
+
+.stories {
+	& &__categories-wrapper {
+		margin: auto;
+		margin-bottom: 2rem;
+	}
+
+	&__categories {
+		display: flex;
+		gap: 1rem;
+		width: max-content;
+	}
+
+	.category-slide {
+		border: 1px solid #000;
+		cursor: pointer;
+		padding: 1rem;
+		text-align: center;
+
+		&:hover,
+		&:focus,
+		&.active {
+			background-color: #ff7800;
+			border-color: #ff7800;
+			color: #fff;
+		}
+	}
+}

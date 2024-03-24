@@ -317,7 +317,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	}, [ mapStyle, slideBlocks, slideBlocks.length, updateMarkers ] );
 
 	const blockProps = useBlockProps( {
-		className: 'map map-carousel',
+		className: 'map map--carousel',
 	} );
 
 	// eslint-disable-next-line no-undef

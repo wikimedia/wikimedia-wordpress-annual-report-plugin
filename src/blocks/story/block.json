@@ -1,27 +1,23 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "wmf-reports/marker",
+	"name": "wmf-reports/story",
 	"version": "0.1.0",
-	"title": "Marker",
+	"title": "Story",
 	"category": "widgets",
-	"icon": "admin-site",
+	"icon": "image-flip-horizontal",
 	"description": "",
-	"parent": [ "wmf-reports/map" ],
+	"parent": [ "wmf-reports/stories" ],
 	"attributes": {
 		"align": {
 			"type": "string",
 			"default": "full"
 		},
+		"category": {
+			"type": "string",
+			"default": ""
+		},
 		"id": {
-			"type": "number",
-			"default": 0
-		},
-		"lat": {
-			"type": "number",
-			"default": 0
-		},
-		"long": {
 			"type": "number",
 			"default": 0
 		}
