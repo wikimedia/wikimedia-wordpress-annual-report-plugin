@@ -38,6 +38,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 
 	// Keep track of the selected Slide.
 	const [ currentItemIndex, setCurrentItemIndex ] = useState( 0 );
+	const [ marginOffset, setMarginOffset ] = useState( 0 );
 
 	/**
 	 * Add Slide Function.
@@ -49,6 +50,92 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		} );
 		insertBlock( created, undefined, clientId );
 	};
+
+	/**
+	 * Scroll category slides into view.
+	 */
+	useEffect( () => {
+		const wrapper = document.getElementsByClassName(
+			'stories__categories-wrapper'
+		)?.[ 0 ];
+		const track = document.getElementsByClassName(
+			'stories__categories'
+		)?.[ 0 ];
+		const activeCategory = document.querySelector(
+			'.category-slide.active'
+		);
+		const currentOffset = track.style.marginLeft || 0;
+
+		const wrapperPosition = wrapper?.getBoundingClientRect();
+		const categoryPosition = activeCategory?.getBoundingClientRect();
+
+		// calculate the position of the category slide.
+
+		// First index should always go to position 0;
+		if ( currentItemIndex === 0 ) {
+			setMarginOffset( 0 );
+		}
+
+		// Last index should always be no further left than wrapperPosition.right
+		if ( currentItemIndex === slideCount.current - 1 ) {
+			// Get width of slide.
+			const slideWidth = categoryPosition.right - categoryPosition.left;
+			const positionOfSlide =
+				categoryPosition.left - parseInt( currentOffset );
+			const newPosition =
+				wrapperPosition.right - ( positionOfSlide + slideWidth );
+			setMarginOffset( newPosition );
+		}
+
+		if (
+			currentItemIndex > 0 &&
+			currentItemIndex < slideCount.current - 1
+		) {
+			const firstSlide = document.querySelector(
+				'.category-slide:first-child'
+			);
+			const lastSlide = document.querySelector(
+				'.category-slide:last-child'
+			);
+
+			const slideWidth = categoryPosition.right - categoryPosition.left;
+			const positionOfSlide =
+				categoryPosition.left - parseInt( currentOffset );
+			const wrapperWidth = wrapperPosition.right - wrapperPosition.left;
+			const halfWrapperWidth = wrapperWidth / 2;
+			const newPosition =
+				wrapperPosition.right -
+				halfWrapperWidth -
+				positionOfSlide +
+				slideWidth / 2;
+
+			// If its going to take our first slide too far right, set the position 0.
+			const firstSlidePosition = firstSlide?.getBoundingClientRect();
+			const firstSlideOffset = firstSlidePosition.left - parseInt( currentOffset );
+			const firstSlideNewPosition = firstSlideOffset + newPosition;
+
+			if ( firstSlideNewPosition > wrapperPosition.left ) {
+				setMarginOffset( 0 );
+				return;
+			}
+
+			// If its going to take our last slide too far left, set position of last slide.
+			const lastSlidePosition = lastSlide?.getBoundingClientRect();
+			const lastSlideOffset =
+				lastSlidePosition.right - parseInt( currentOffset );
+			const lastSlideNewPosition = lastSlideOffset + newPosition;
+
+			if ( lastSlideNewPosition < wrapperPosition.right ) {
+				setMarginOffset( wrapperPosition.right - lastSlideOffset );
+				return;
+			}
+
+			// Otherwise set the position.
+			setMarginOffset( newPosition );
+		}
+
+		// Everything else should move to the middle, unless it already is near the middle.
+	}, [ currentItemIndex ] );
 
 	/**
 	 * If a slide is added, switch to the new slide. If one is deleted, make sure we don't
@@ -76,7 +163,10 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	return (
 		<div { ...blockProps }>
 			<div className="stories__categories-wrapper alignwide">
-				<div className="stories__categories">
+				<div
+					className="stories__categories"
+					style={ { marginLeft: marginOffset } }
+				>
 					{ slideBlocks.map( ( slideBlock, index ) => {
 						const {
 							attributes: blockAttributes,
