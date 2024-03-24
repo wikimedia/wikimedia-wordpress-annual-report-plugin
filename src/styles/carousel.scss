@@ -1,4 +1,8 @@
 .carousel {
+
+	overflow: hidden;
+	position: relative;
+
 	.carousel-wrapper {
 		position: relative;
 
@@ -21,7 +25,7 @@
 		}
 	}
 
-	&__markers-wrapper:not(:has(.wp-block-wmf-reports-marker[style*="visibility: visible;"] .map-info__image img)) {
+	&__markers-wrapper:not(:has(.carousel__slide[style*="visibility: visible;"] .map-info__image img)) {
 
 		.map__buttons-wrapper {
 			top: - 1.5rem;

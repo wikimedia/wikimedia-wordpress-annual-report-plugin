@@ -17,7 +17,11 @@ import {
  */
 export default function Edit() {
 	return (
-		<div { ...useBlockProps() }>
+		<div
+			{ ...useBlockProps( {
+				className: 'carousel__slide',
+			} ) }
+		>
 			<InnerBlocks
 				template={ [
 					[

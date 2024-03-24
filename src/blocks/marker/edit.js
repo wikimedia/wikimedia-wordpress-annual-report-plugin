@@ -23,7 +23,11 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { lat, long } = attributes;
 
 	return (
-		<div { ...useBlockProps() }>
+		<div
+			{ ...useBlockProps( {
+				className: 'carousel__slide',
+			} ) }
+		>
 			<InspectorControls>
 				<PanelBody>
 					<BaseControl
