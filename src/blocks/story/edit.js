@@ -78,8 +78,6 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			''
 		);
 
-		console.log( 'excerpt', post.excerpt.rendered, post.excerpt, excerpt );
-
 		const newBlocks = createBlock(
 			'core/group',
 			{

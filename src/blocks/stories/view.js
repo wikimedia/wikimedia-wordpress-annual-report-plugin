@@ -94,6 +94,9 @@ const animateSlider = ( currentItemIndex ) => {
 };
 
 const setSlide = ( id ) => {
+	const currentSlide = document.querySelector( '.category-slide.active' );
+	const currentId = parseInt( currentSlide?.dataset?.index || 0 );
+
 	const nextStoryInfoBox = stories[ id ];
 
 	const nextCategorySlide = Array.from( categorySlides ).filter(
@@ -108,16 +111,95 @@ const setSlide = ( id ) => {
 		categorySlide.classList.add( 'active' );
 	} );
 
-	Array.from( stories ).forEach( ( storyInfoBox ) => {
+	let processing = false;
+
+	Array.from( stories ).forEach( ( storyInfoBox, index ) => {
+		if ( processing ) {
+			return;
+		}
+		if ( index === id ) {
+			return;
+		}
+		if ( index === currentId && currentId !== id ) {
+			if ( id >= currentId ) {
+				storyInfoBox.style.zIndex = 1;
+				storyInfoBox.style.position = 'absolute';
+				nextStoryInfoBox.style.height = null;
+				nextStoryInfoBox.style.opacity = 0;
+				storyInfoBox.style.opacity = 1;
+
+				storyInfoBox.classList.add( 'animate' );
+
+				setTimeout( () => {
+					storyInfoBox.style.height = nextStoryInfoBox.offsetHeight;
+					storyInfoBox.style.opacity = 0;
+					processing = true;
+				}, 1 );
+
+				setTimeout( () => {
+					storyInfoBox.style.visibility = 'hidden';
+					storyInfoBox.style.height = 0;
+					storyInfoBox.style.zIndex = null;
+					storyInfoBox.style.position = null;
+					storyInfoBox.style.opacity = null;
+					storyInfoBox.classList.remove( 'animate' );
+					processing = false;
+				}, 500 );
+
+				nextStoryInfoBox.style.visibility = 'visible';
+				nextStoryInfoBox.style.height = null;
+				nextStoryInfoBox.style.opacity = null;
+				return;
+			}
+
+			if ( id < currentId ) {
+				nextStoryInfoBox.style.opacity = 0;
+				nextStoryInfoBox.style.height = null;
+				const currentHeight = nextStoryInfoBox.offsetHeight;
+
+				storyInfoBox.style.visibility = 'visible';
+				storyInfoBox.style.height = null;
+				storyInfoBox.style.opacity = 1;
+
+				nextStoryInfoBox.style.height =
+					storyInfoBox.offsetHeight + 'px';
+
+				setTimeout( () => {
+					nextStoryInfoBox.style.visibility = 'visible';
+					nextStoryInfoBox.style.position = 'absolute';
+					nextStoryInfoBox.classList.add( 'animate' );
+				}, 1 );
+
+				setTimeout( () => {
+					nextStoryInfoBox.style.opacity = 1;
+					nextStoryInfoBox.style.height = currentHeight + 'px';
+					processing = true;
+				}, 10 );
+
+				setTimeout( () => {
+					nextStoryInfoBox.style.height = null;
+					nextStoryInfoBox.style.opacity = null;
+					nextStoryInfoBox.style.visibility = 'visible';
+					nextStoryInfoBox.style.position = null;
+					nextStoryInfoBox.classList.remove( 'animate' );
+					storyInfoBox.style.visibility = 'hidden';
+					storyInfoBox.style.height = 0;
+					storyInfoBox.style.opacity = null;
+					processing = false;
+				}, 510 );
+				return;
+			}
+			return;
+		}
+
 		storyInfoBox.style.visibility = 'hidden';
 		storyInfoBox.style.height = 0;
 	} );
 
-	nextStoryInfoBox.style.visibility = 'visible';
-	nextStoryInfoBox.style.height = null;
-
 	animateSlider( id );
 };
+
+setSlide( 0 );
 
 Array.from( categorySlides ).forEach( ( categorySlide, index ) => {
 	categorySlide.addEventListener( 'click', () => {
@@ -135,12 +217,14 @@ backButton.addEventListener( 'click', () => {
 } );
 
 forwardButton.addEventListener( 'click', () => {
-	const index = Array.from( stories ).findIndex(
+	let index = Array.from( stories ).findIndex(
 		( story ) => story.style.visibility === 'visible'
 	);
+
+	if ( index < 0 ) {
+		index = 0;
+	}
 
 	const nextIndex = index + 1 > stories.length - 1 ? 0 : index + 1;
 	setSlide( nextIndex );
 } );
-
-setSlide( 0 );
