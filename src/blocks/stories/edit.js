@@ -64,16 +64,30 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		const activeCategory = document.querySelector(
 			'.category-slide.active'
 		);
+		const firstSlide = document.querySelector(
+			'.category-slide:first-child'
+		);
+		const lastSlide = document.querySelector(
+			'.category-slide:last-child'
+		);
 		const currentOffset = track.style.marginLeft || 0;
 
 		const wrapperPosition = wrapper?.getBoundingClientRect();
 		const categoryPosition = activeCategory?.getBoundingClientRect();
+		const lastSlidePosition = lastSlide?.getBoundingClientRect();
 
 		// calculate the position of the category slide.
 
 		// First index should always go to position 0;
 		if ( currentItemIndex === 0 ) {
 			setMarginOffset( 0 );
+			return;
+		}
+
+		// If there are not enough items to trigger scrolling, return.
+		if ( lastSlidePosition.right < wrapperPosition.right ) {
+			setMarginOffset( 0 );
+			return;
 		}
 
 		// Last index should always be no further left than wrapperPosition.right
@@ -85,19 +99,13 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			const newPosition =
 				wrapperPosition.right - ( positionOfSlide + slideWidth );
 			setMarginOffset( newPosition );
+			return;
 		}
 
 		if (
 			currentItemIndex > 0 &&
 			currentItemIndex < slideCount.current - 1
 		) {
-			const firstSlide = document.querySelector(
-				'.category-slide:first-child'
-			);
-			const lastSlide = document.querySelector(
-				'.category-slide:last-child'
-			);
-
 			const slideWidth = categoryPosition.right - categoryPosition.left;
 			const positionOfSlide =
 				categoryPosition.left - parseInt( currentOffset );
@@ -120,7 +128,6 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			}
 
 			// If its going to take our last slide too far left, set position of last slide.
-			const lastSlidePosition = lastSlide?.getBoundingClientRect();
 			const lastSlideOffset =
 				lastSlidePosition.right - parseInt( currentOffset );
 			const lastSlideNewPosition = lastSlideOffset + newPosition;
@@ -157,7 +164,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	}, [ slideBlocks.length, currentItemIndex, slideCount, slideBlocks ] );
 
 	const blockProps = useBlockProps( {
-		className: 'stories',
+		className: 'stories carousel',
 	} );
 
 	return (
@@ -190,7 +197,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								value={ category }
 								// eslint-disable-next-line no-shadow
 								onChange={ ( category ) => {
-									updateBlockAttributes( blockId, { category } );
+									updateBlockAttributes( blockId, {
+										category,
+									} );
 								} }
 								onClick={ () => {
 									setCurrentItemIndex( index );
