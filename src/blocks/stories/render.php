@@ -16,7 +16,7 @@
 				$id = $inner_block->attributes['id'] ?? '';
 				if ( $category ) {
 					?>
-					<button class="category-slide" data-id="<?php echo esc_html( $id ); ?>">
+					<button class="category-slide" data-id="<?php echo esc_html( $id ); ?>" data-index="<?php echo esc_attr( $key ); ?>">
 						<?php echo wp_kses_post( $category ); ?>
 					</button>
 					<?php

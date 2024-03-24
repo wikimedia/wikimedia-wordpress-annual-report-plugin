@@ -152,3 +152,9 @@
 		}
 	}
 }
+
+.wp-block-wmf-reports-story {
+	&.animate {
+		transition: all 0.5s;
+	}
+}
