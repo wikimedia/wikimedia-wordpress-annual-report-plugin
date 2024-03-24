@@ -1,9 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { InspectorControls, RichText, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useCallback, useEffect, useRef, useState } from '@wordpress/element';
+import { useEffect, useRef, useState } from '@wordpress/element';
 
 // eslint-disable-next-line import/no-unresolved
 import './editor.scss';
@@ -15,15 +14,13 @@ import Navigation from '../../components/inner-block-slider/navigation';
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
- * @param {Object}   props               Block Props.
- * @param {Object}   props.attributes    Block Attributes.
- * @param {number}   props.clientId      Client ID.
- * @param {Function} props.setAttributes Set Block Attributes.
+ * @param {Object} props          Block Props.
+ * @param {number} props.clientId Client ID.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.
  */
-export default function Edit( { attributes, clientId, setAttributes } ) {
+export default function Edit( { clientId } ) {
 	// Get the innerBlocks (slideBlocks).
 	const slideBlocks = useSelect(
 		( select ) =>
@@ -64,9 +61,6 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		const activeCategory = document.querySelector(
 			'.category-slide.active'
 		);
-		const firstSlide = document.querySelector(
-			'.category-slide:first-child'
-		);
 		const lastSlide = document.querySelector(
 			'.category-slide:last-child'
 		);
@@ -106,6 +100,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			currentItemIndex > 0 &&
 			currentItemIndex < slideCount.current - 1
 		) {
+			const firstSlide = document.querySelector(
+				'.category-slide:first-child'
+			);
 			const slideWidth = categoryPosition.right - categoryPosition.left;
 			const positionOfSlide =
 				categoryPosition.left - parseInt( currentOffset );
@@ -191,7 +188,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								key={ blockId }
 								placeholder={ __(
 									'Category Name',
-									'harvard-blocks'
+									'wmf-reports'
 								) }
 								tagName="div"
 								value={ category }

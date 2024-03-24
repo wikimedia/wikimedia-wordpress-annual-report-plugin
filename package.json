@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/wikimedia/wikimedia-wordpress-annual-report-plugin#readme",
   "devDependencies": {
+    "@humanmade/block-editor-components": "^0.6.4",
     "@wordpress/scripts": "^27.4.0",
     "classnames": "^2.5.1",
     "npm-run-all": "^4.1.5"
