@@ -10,3 +10,27 @@
 		}
 	}
 }
+
+.wp-block {
+	.overlay {
+		border: 1px solid #0167C7;
+		margin-top: -6.5rem;
+		margin-left: -2rem;
+		margin-right: -2rem;
+
+		&__navigation {
+			background-color: #fff;
+			display: flex;
+			text-align: left;
+			padding: 2rem 2rem 0 2rem;
+
+			&:only-child {
+				padding-bottom: 2rem;
+			}
+		}
+
+		&__inner {
+			padding: 2rem;
+		}
+	}
+}

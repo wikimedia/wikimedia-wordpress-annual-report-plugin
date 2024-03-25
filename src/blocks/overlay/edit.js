@@ -12,6 +12,7 @@ import {
 	SelectControl,
 } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 
 // eslint-disable-next-line import/no-unresolved
 import './editor.scss';
@@ -32,6 +33,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	const { PostSelectButton } = window.hm.components;
 
 	const { postId, postType } = attributes;
+
+	const [ contentExpanded, setContentExpanded ] = useState( false );
 
 	const childBlocks = useSelect(
 		( select ) =>
@@ -78,10 +81,6 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		const heading = post.title.raw || '';
 		const imageId = post?.featured_media || 0;
 		const imageUrl = media.link;
-		const excerpt = ( post.excerpt.rendered || '' ).replace(
-			/<\/?[^>]+(>|$)/g,
-			''
-		);
 		const content = post?.content?.raw || '';
 
 		removeBlocks( clientIds );
@@ -167,7 +166,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	return (
 		<div
 			{ ...useBlockProps( {
-				className: 'carousel__slide',
+				className: 'overlay',
 			} ) }
 		>
 			<InspectorControls>
@@ -249,19 +248,35 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					) }
 				</PanelBody>
 			</InspectorControls>
-			<InnerBlocks
-				template={ [
-					[
-						'core/paragraph',
-						{
-							placeholder: __(
-								'Add overlay content…',
-								'wmf-reports'
-							),
-						},
-					],
-				] }
-			/>
+			<div className="overlay__content">
+				<div className="overlay__navigation">
+					<Button
+						variant="secondary"
+						onClick={ () => setContentExpanded( ! contentExpanded ) }
+					>
+						{ contentExpanded
+							? __( 'Collapse Overlay Content', 'wmf-reports' )
+							: __( 'Edit Overlay Content', 'wmf-reports' ) }
+					</Button>
+				</div>
+				{ contentExpanded && (
+					<div className="overlay__inner">
+						<InnerBlocks
+							template={ [
+								[
+									'core/paragraph',
+									{
+										placeholder: __(
+											'Add overlay content…',
+											'wmf-reports'
+										),
+									},
+								],
+							] }
+						/>
+					</div>
+				) }
+			</div>
 		</div>
 	);
 }
