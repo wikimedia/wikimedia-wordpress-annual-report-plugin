@@ -72,7 +72,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		const clientIds = childBlocks.map( ( block ) => block.clientId );
 		const heading = post.title.raw || '';
 		const imageId = post?.featured_media || 0;
-		const imageUrl = media.link;
+		const imageUrl = media?.link || '';
+		const link = post?.link || '#';
 		const excerpt = ( post.excerpt.rendered || '' ).replace(
 			/<\/?[^>]+(>|$)/g,
 			''
@@ -83,170 +84,169 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			HTML: content,
 		} );
 
-		const newBlocks = createBlock(
-			'core/group',
-			{
-				align: 'full',
-				backgroundColor: 'wmf-report-blue',
-				className: 'carousel-slide',
-				layout: { type: 'constrained' },
-				textColor: 'base100',
-			},
-			[
-				createBlock( 'core/columns', { align: 'wide' }, [
-					createBlock( 'core/column', { width: '66.66%' }, [
-						createBlock( 'core/image', {
-							aspectRatio: '4/3',
-							className: 'is-style-default carousel-slide__image',
-							id: imageId || 74197,
-							lightbox: {
+		const newBlocks = [
+			createBlock(
+				'core/group',
+				{
+					align: 'full',
+					backgroundColor: 'wmf-report-blue',
+					className: 'carousel-slide',
+					layout: { type: 'constrained' },
+					textColor: 'base100',
+				},
+				[
+					createBlock( 'core/columns', { align: 'wide' }, [
+						createBlock( 'core/column', { width: '66.66%' }, [
+							createBlock( 'core/image', {
 								aspectRatio: '4/3',
-								className:
-									'is-style-default carousel-slide__image',
-								enabled: false,
+								className: 'is-style-default carousel-slide__image',
 								id: imageId || 74197,
+								lightbox: {
+									aspectRatio: '4/3',
+									className:
+										'is-style-default carousel-slide__image',
+									enabled: false,
+									id: imageId || 74197,
+									linkDestination: 'none',
+									scale: 'cover',
+									sizeSlug: 'full',
+									url:
+										imageUrl ||
+										'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+								},
 								linkDestination: 'none',
 								scale: 'cover',
 								sizeSlug: 'full',
 								url:
 									imageUrl ||
 									'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-							},
-							linkDestination: 'none',
-							scale: 'cover',
-							sizeSlug: 'full',
-							url:
-								imageUrl ||
-								'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-						} ),
-					] ),
-					createBlock( 'core/column', { width: '33.33%' }, [
-						createBlock( 'core/heading', {
-							className:
-								'carousel-slide__heading is-style-default',
-							content:
-								heading || 'Lorem ipsum dolor sit amet vulputate.',
-						}, ),
-						createBlock( 'core/paragraph', {
-							className: 'is-style-sans-p',
-							content: excerpt ||
-								'Lorem ipsum dolor sit amet ullamcorper convallis condimentum suspendisse cras blandit congue tincidunt turpis vulputate. Imperdiet quisque libero in porta venenatis vitae netus condimentum.',
-						} ),
-						createBlock( 'core/buttons', {}, [
-							createBlock( 'core/button', {
-								backgroundColor: 'base100',
+							} ),
+						] ),
+						createBlock( 'core/column', { width: '33.33%' }, [
+							createBlock( 'core/heading', {
 								className:
-									'is-style-tertiary carousel-slide__button',
-								text: 'Read More',
-								style: {
-									elements: {
-										link: {
-											color: {
-												text: 'var:preset|color|base0',
+									'carousel-slide__heading is-style-default',
+								content:
+									heading ||
+										'Lorem ipsum dolor sit amet vulputate.',
+							}, ),
+							createBlock( 'core/paragraph', {
+								className: 'is-style-sans-p',
+								content: excerpt ||
+									'Lorem ipsum dolor sit amet ullamcorper convallis condimentum suspendisse cras blandit congue tincidunt turpis vulputate. Imperdiet quisque libero in porta venenatis vitae netus condimentum.',
+							} ),
+							createBlock( 'core/buttons', {}, [
+								createBlock( 'core/button', {
+									backgroundColor: 'base100',
+									className:
+										'is-style-tertiary carousel-slide__button',
+									text: 'Read More',
+									style: {
+										elements: {
+											link: {
+												color: {
+													text: 'var:preset|color|base0',
+												},
 											},
 										},
 									},
-								},
-								textColor: 'base10',
-							} ),
+									textColor: 'base10',
+									url: link,
+								} ),
+							] ),
 						] ),
 					] ),
-				] ),
-				createBlock(
-					'wmf-reports/overlay',
-					{
-						postId,
-						postType,
-					},
-					[
-						createBlock(
-							'core/group',
-							{
-								align: 'full',
-								className: 'carousel-slide',
-								layout: { type: 'constrained' },
-							},
-							[
+				]
+			),
+			createBlock(
+				'wmf-reports/overlay',
+				{
+					postId,
+					postType,
+				},
+				[
+					createBlock(
+						'core/group',
+						{
+							align: 'full',
+							className: 'carousel-slide',
+							layout: { type: 'constrained' },
+						},
+						[
+							createBlock( 'core/columns', { align: 'wide' }, [
 								createBlock(
-									'core/columns',
-									{ align: 'wide' },
+									'core/column',
+									{ width: '66.66%' },
 									[
-										createBlock(
-											'core/column',
-											{ width: '66.66%' },
-											[
-												createBlock( 'core/image', {
-													aspectRatio: '4/3',
-													className:
-														'is-style-default carousel-slide__image',
-													id: imageId || 74197,
-													lightbox: {
-														aspectRatio: '4/3',
-														className:
-															'is-style-default carousel-slide__image',
-														enabled: false,
-														id: imageId || 74197,
-														linkDestination: 'none',
-														scale: 'cover',
-														sizeSlug: 'full',
-														url:
-															imageUrl ||
-															'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-													},
-													linkDestination: 'none',
-													scale: 'cover',
-													sizeSlug: 'full',
-													url:
-														imageUrl ||
-														'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-												} ),
-											]
-										),
-										createBlock(
-											'core/column',
-											{ width: '33.33%' },
-											[
-												createBlock( 'core/paragraph', {
-													className:
-														'carousel-slide__category is-style-sans-p',
-													content:
-														'Lorem ipsum / Sit amet',
-													style: {
-														elements: {
-															link: {
-																color: {
-																	text: 'var:preset|color|orange',
-																},
-															},
-														},
-													},
-													textColor: 'orange',
-												} ),
-												createBlock( 'core/heading', {
-													className:
-														'carousel-slide__heading is-style-default',
-													content:
-														heading ||
-														'Lorem ipsum dolor sit amet vulputate.',
-												} ),
-											]
-										),
+										createBlock( 'core/image', {
+											aspectRatio: '4/3',
+											className:
+												'is-style-default carousel-slide__image',
+											id: imageId || 74197,
+											lightbox: {
+												aspectRatio: '4/3',
+												className:
+													'is-style-default carousel-slide__image',
+												enabled: false,
+												id: imageId || 74197,
+												linkDestination: 'none',
+												scale: 'cover',
+												sizeSlug: 'full',
+												url:
+													imageUrl ||
+													'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+											},
+											linkDestination: 'none',
+											scale: 'cover',
+											sizeSlug: 'full',
+											url:
+												imageUrl ||
+												'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+										} ),
 									]
 								),
 								createBlock(
-									'core/group',
-									{
-										align: 'wide',
-										layout: { type: 'constrained' },
-									},
-									innerBlocks
+									'core/column',
+									{ width: '33.33%' },
+									[
+										createBlock( 'core/paragraph', {
+											className:
+												'carousel-slide__category is-style-sans-p',
+											content: 'Lorem ipsum / Sit amet',
+											style: {
+												elements: {
+													link: {
+														color: {
+															text: 'var:preset|color|orange',
+														},
+													},
+												},
+											},
+											textColor: 'orange',
+										} ),
+										createBlock( 'core/heading', {
+											className:
+												'carousel-slide__heading is-style-default',
+											content:
+												heading ||
+												'Lorem ipsum dolor sit amet vulputate.',
+										} ),
+									]
 								),
-							]
-						),
-					]
-				),
-			]
-		);
+							] ),
+							createBlock(
+								'core/group',
+								{
+									align: 'wide',
+									layout: { type: 'constrained' },
+								},
+								innerBlocks
+							),
+						]
+					),
+				]
+			),
+		];
 
 		replaceBlocks( clientIds, newBlocks );
 	};
@@ -428,9 +428,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 									],
 								],
 							],
-							[ 'wmf-reports/overlay', {} ],
 						],
 					],
+					[ 'wmf-reports/overlay', {} ],
 				] }
 			/>
 		</div>
