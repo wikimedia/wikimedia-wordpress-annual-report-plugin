@@ -3,7 +3,7 @@ const overlays = document.getElementsByClassName(
 );
 
 Array.from( overlays ).forEach( ( overlay ) => {
-	const innerHtml = ( overlay?.innerHTML  || '' ).replace(
+	const innerHtml = ( overlay?.innerHTML || '' ).replace(
 		/<\/?[^>]+(>|$)/g,
 		''
 	);
@@ -12,7 +12,7 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		return;
 	}
 
-	const parent = overlay.closest( '.wp-block-group' );
+	const parent = overlay.closest( '.wp-block-wmf-reports-story' );
 	const button = parent.querySelector(
 		'.carousel-slide__button, overlay-trigger'
 	);
