@@ -12,6 +12,8 @@ const setMarginOffset = ( offset ) => {
 	track.style.marginLeft = offset + 'px';
 };
 
+let processingAnimation = false;
+
 const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
 		'stories__categories-wrapper'
@@ -111,88 +113,103 @@ const setSlide = ( id ) => {
 		categorySlide.classList.add( 'active' );
 	} );
 
-	let processing = false;
-
 	Array.from( stories ).forEach( ( storyInfoBox, index ) => {
-		if ( processing ) {
+		if ( processingAnimation ) {
 			return;
 		}
+
 		if ( index === id ) {
 			return;
 		}
+
+		// Handle animations.
 		if ( index === currentId && currentId !== id ) {
+			// Left to right animation.
 			if ( id >= currentId ) {
-				storyInfoBox.style.zIndex = 1;
-				storyInfoBox.style.position = 'absolute';
 				nextStoryInfoBox.style.height = null;
 				nextStoryInfoBox.style.opacity = 0;
+
 				storyInfoBox.style.opacity = 1;
+				storyInfoBox.style.position = 'absolute';
+				storyInfoBox.style.zIndex = 1;
 
 				storyInfoBox.classList.add( 'animate' );
 
 				setTimeout( () => {
 					storyInfoBox.style.height = nextStoryInfoBox.offsetHeight;
 					storyInfoBox.style.opacity = 0;
-					processing = true;
+
+					processingAnimation = true;
 				}, 1 );
 
 				setTimeout( () => {
-					storyInfoBox.style.visibility = 'hidden';
 					storyInfoBox.style.height = 0;
-					storyInfoBox.style.zIndex = null;
-					storyInfoBox.style.position = null;
 					storyInfoBox.style.opacity = null;
+					storyInfoBox.style.position = null;
+					storyInfoBox.style.visibility = 'hidden';
+					storyInfoBox.style.zIndex = null;
+
 					storyInfoBox.classList.remove( 'animate' );
-					processing = false;
+
+					processingAnimation = false;
 				}, 250 );
 
-				nextStoryInfoBox.style.visibility = 'visible';
 				nextStoryInfoBox.style.height = null;
 				nextStoryInfoBox.style.opacity = null;
+				nextStoryInfoBox.style.visibility = 'visible';
+
 				return;
 			}
 
+			// Right to left animation.
 			if ( id < currentId ) {
-				nextStoryInfoBox.style.opacity = 0;
 				nextStoryInfoBox.style.height = null;
-				nextStoryInfoBox.style.visibility = 'visible';
+				nextStoryInfoBox.style.opacity = 0;
 				nextStoryInfoBox.style.position = 'absolute';
+				nextStoryInfoBox.style.visibility = 'visible';
 
-				storyInfoBox.style.visibility = 'visible';
 				storyInfoBox.style.height = null;
 				storyInfoBox.style.opacity = 1;
+				storyInfoBox.style.visibility = 'visible';
 
 				setTimeout( () => {
 					nextStoryInfoBox.classList.add( 'animate' );
+
 					storyInfoBox.classList.add( 'animate' );
 				}, 1 );
 
 				setTimeout( () => {
+					nextStoryInfoBox.style.opacity = 1;
+
 					storyInfoBox.style.height =
 						nextStoryInfoBox.offsetHeight + 'px';
-					nextStoryInfoBox.style.opacity = 1;
-					processing = true;
+
+					processingAnimation = true;
 				}, 2 );
 
 				setTimeout( () => {
 					nextStoryInfoBox.style.height = null;
 					nextStoryInfoBox.style.opacity = null;
-					nextStoryInfoBox.style.visibility = 'visible';
 					nextStoryInfoBox.style.position = null;
+					nextStoryInfoBox.style.visibility = 'visible';
+
 					nextStoryInfoBox.classList.remove( 'animate' );
-					storyInfoBox.style.visibility = 'hidden';
+
 					storyInfoBox.style.height = 0;
 					storyInfoBox.style.opacity = null;
+					storyInfoBox.style.visibility = 'hidden';
+
 					storyInfoBox.classList.remove( 'animate' );
-					processing = false;
+
+					processingAnimation = false;
 				}, 250 );
 				return;
 			}
 			return;
 		}
 
-		storyInfoBox.style.visibility = 'hidden';
 		storyInfoBox.style.height = 0;
+		storyInfoBox.style.visibility = 'hidden';
 	} );
 
 	animateSlider( id );
