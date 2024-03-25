@@ -31,7 +31,7 @@
 		"html": false,
 		"align": [ "full" ]
 	},
-	"textdomain": "example-dynamic",
+	"textdomain": "wmf-reports",
 	"editorScript": "file:./index.js",
 	"render": "file:./render.php"
 }
