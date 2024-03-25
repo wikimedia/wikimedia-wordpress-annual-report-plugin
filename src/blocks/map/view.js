@@ -20,6 +20,7 @@ const map = new mapboxgl.Map( {
 	zoom: 2,
 } );
 let mapItemIndex = 0;
+let processingAnimation = false;
 
 map.addControl( fullScreenControl );
 
@@ -32,6 +33,18 @@ const setMarker = ( id ) => {
 		( mapMarker ) => mapMarker.dataset.id === nextMarkerInfoBox.id
 	);
 
+	const currentSlide = document.querySelector(
+		'.wp-block-wmf-reports-marker[style*="visibility: visible"]'
+	);
+	let currentId = 0;
+	if ( currentSlide ) {
+		currentId = Array.from( markers ).findIndex(
+			( markerInfoBox ) =>
+				parseInt( currentSlide.id ) === parseInt( markerInfoBox.id )
+		);
+	}
+
+
 	Array.from( mapMarkers ).forEach( ( mapMarker ) => {
 		mapMarker.classList.remove( 'active' );
 	} );
@@ -40,13 +53,104 @@ const setMarker = ( id ) => {
 		mapMarker.classList.add( 'active' );
 	} );
 
-	Array.from( markers ).forEach( ( markerInfoBox ) => {
-		markerInfoBox.style.visibility = 'hidden';
-		markerInfoBox.style.height = 0;
-	} );
+	Array.from( markers ).forEach( ( markerInfoBox, index ) => {
+		if ( processingAnimation ) {
+			return;
+		}
 
-	nextMarkerInfoBox.style.visibility = 'visible';
-	nextMarkerInfoBox.style.height = null;
+		if ( index === id ) {
+			return;
+		}
+
+		// Handle animations.
+		if ( index === currentId && currentId !== id ) {
+			// Left to right animation.
+			if ( id >= currentId ) {
+				nextMarkerInfoBox.style.height = null;
+				nextMarkerInfoBox.style.opacity = 0;
+
+				markerInfoBox.style.opacity = 1;
+				markerInfoBox.style.position = 'absolute';
+				markerInfoBox.style.zIndex = 1;
+
+				markerInfoBox.classList.add( 'animate' );
+
+				setTimeout( () => {
+					markerInfoBox.style.height = nextMarkerInfoBox.offsetHeight;
+					markerInfoBox.style.opacity = 0;
+
+					processingAnimation = true;
+				}, 1 );
+
+				setTimeout( () => {
+					markerInfoBox.style.height = 0;
+					markerInfoBox.style.opacity = null;
+					markerInfoBox.style.position = null;
+					markerInfoBox.style.visibility = 'hidden';
+					markerInfoBox.style.zIndex = null;
+
+					markerInfoBox.classList.remove( 'animate' );
+
+					processingAnimation = false;
+				}, 250 );
+
+				nextMarkerInfoBox.style.height = null;
+				nextMarkerInfoBox.style.opacity = null;
+				nextMarkerInfoBox.style.visibility = 'visible';
+
+				return;
+			}
+
+			// Right to left animation.
+			if ( id < currentId ) {
+				nextMarkerInfoBox.style.height = null;
+				nextMarkerInfoBox.style.opacity = 0;
+				nextMarkerInfoBox.style.position = 'absolute';
+				nextMarkerInfoBox.style.visibility = 'visible';
+
+				markerInfoBox.style.height = null;
+				markerInfoBox.style.opacity = 1;
+				markerInfoBox.style.visibility = 'visible';
+
+				setTimeout( () => {
+					nextMarkerInfoBox.classList.add( 'animate' );
+
+					markerInfoBox.classList.add( 'animate' );
+				}, 1 );
+
+				setTimeout( () => {
+					nextMarkerInfoBox.style.opacity = 1;
+
+					markerInfoBox.style.height =
+						nextMarkerInfoBox.offsetHeight + 'px';
+
+					processingAnimation = true;
+				}, 2 );
+
+				setTimeout( () => {
+					nextMarkerInfoBox.style.height = null;
+					nextMarkerInfoBox.style.opacity = null;
+					nextMarkerInfoBox.style.position = null;
+					nextMarkerInfoBox.style.visibility = 'visible';
+
+					nextMarkerInfoBox.classList.remove( 'animate' );
+
+					markerInfoBox.style.height = 0;
+					markerInfoBox.style.opacity = null;
+					markerInfoBox.style.visibility = 'hidden';
+
+					markerInfoBox.classList.remove( 'animate' );
+
+					processingAnimation = false;
+				}, 250 );
+				return;
+			}
+			return;
+		}
+
+		markerInfoBox.style.height = 0;
+		markerInfoBox.style.visibility = 'hidden';
+	} );
 };
 
 setMarker( 0 );
@@ -61,9 +165,13 @@ backButton.addEventListener( 'click', () => {
 } );
 
 forwardButton.addEventListener( 'click', () => {
-	const index = Array.from( markers ).findIndex(
+	let index = Array.from( markers ).findIndex(
 		( marker ) => marker.style.visibility === 'visible'
 	);
+
+	if ( index < 0 ) {
+		index = 0;
+	}
 
 	const nextIndex = index + 1 > markers.length - 1 ? 0 : index + 1;
 	setMarker( nextIndex );
