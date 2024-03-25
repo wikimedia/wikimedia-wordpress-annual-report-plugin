@@ -77,6 +77,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			/<\/?[^>]+(>|$)/g,
 			''
 		);
+		const content = post?.content?.raw || '';
+
+		const innerBlocks = wp.blocks.rawHandler( {
+			HTML: content,
+		} );
 
 		const newBlocks = createBlock(
 			'core/group',
@@ -147,6 +152,99 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						] ),
 					] ),
 				] ),
+				createBlock(
+					'wmf-reports/overlay',
+					{
+						postId,
+						postType,
+					},
+					[
+						createBlock(
+							'core/group',
+							{
+								align: 'full',
+								className: 'carousel-slide',
+								layout: { type: 'constrained' },
+							},
+							[
+								createBlock(
+									'core/columns',
+									{ align: 'wide' },
+									[
+										createBlock(
+											'core/column',
+											{ width: '66.66%' },
+											[
+												createBlock( 'core/image', {
+													aspectRatio: '4/3',
+													className:
+														'is-style-default carousel-slide__image',
+													id: imageId || 74197,
+													lightbox: {
+														aspectRatio: '4/3',
+														className:
+															'is-style-default carousel-slide__image',
+														enabled: false,
+														id: imageId || 74197,
+														linkDestination: 'none',
+														scale: 'cover',
+														sizeSlug: 'full',
+														url:
+															imageUrl ||
+															'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+													},
+													linkDestination: 'none',
+													scale: 'cover',
+													sizeSlug: 'full',
+													url:
+														imageUrl ||
+														'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+												} ),
+											]
+										),
+										createBlock(
+											'core/column',
+											{ width: '33.33%' },
+											[
+												createBlock( 'core/paragraph', {
+													className:
+														'carousel-slide__category is-style-sans-p',
+													content:
+														'Lorem ipsum / Sit amet',
+													style: {
+														elements: {
+															link: {
+																color: {
+																	text: 'var:preset|color|orange',
+																},
+															},
+														},
+													},
+													textColor: 'orange',
+												} ),
+												createBlock( 'core/heading', {
+													className:
+														'carousel-slide__heading is-style-default',
+													content:
+														heading ||
+														'Lorem ipsum dolor sit amet vulputate.',
+												} ),
+											]
+										),
+									]
+								),
+								createBlock(
+									'core/group',
+									{
+										align: 'wide',
+										layout: { type: 'constrained' },
+									},
+									innerBlocks
+								),
+							]
+						),
+					]
+				),
 			]
 		);
 
@@ -330,6 +428,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 									],
 								],
 							],
+							[ 'wmf-reports/overlay', {} ],
 						],
 					],
 				] }

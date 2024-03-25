@@ -1,22 +1,30 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "wmf-reports/stories",
+	"name": "wmf-reports/overlay",
 	"version": "0.1.0",
-	"title": "Stories",
+	"title": "Overlay",
 	"category": "widgets",
 	"icon": "image-flip-horizontal",
 	"description": "",
 	"attributes": {
 		"align": {
 			"type": "string",
-			"default": "full"
+			"default": "wide"
+		},
+		"postId": {
+			"type": "number",
+			"default": 0
+		},
+		"postType": {
+			"type": "string",
+			"default": "story"
 		}
 	},
 	"example": {},
 	"supports": {
 		"html": false,
-		"align": [ "full" ]
+		"align": [ "wide" ]
 	},
 	"textdomain": "wmf-reports",
 	"editorScript": "file:./index.js",
