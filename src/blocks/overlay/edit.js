@@ -153,6 +153,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					'core/group',
 					{
 						align: 'wide',
+						className: 'carousel-slide__content',
 						layout: { type: 'constrained' },
 					},
 					innerBlocks
