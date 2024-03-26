@@ -1,5 +1,4 @@
 .carousel {
-
 	overflow: hidden;
 	position: relative;
 
@@ -15,7 +14,7 @@
 		bottom: auto;
 		position: absolute;
 		top: calc(300px - 1.5rem);
-		right: 1rem;
+		right: 0;
 		width: 100%;
 		z-index: 2;
 
@@ -26,7 +25,7 @@
 		}
 	}
 
-	&__markers-wrapper:not(:has(.carousel__slide[style*="visibility: visible;"] .map-info__image img)) {
+	&__markers-wrapper:not(:has(.carousel__slide[style*="visibility: visible;"] .carousel__image img)) {
 
 		.carousel__buttons-wrapper {
 			top: - 1.5rem;
@@ -41,6 +40,11 @@
 		margin: auto;
 		max-width: $width-breakpoint-wide;
 		text-align: right;
+		padding-right: 1rem;
+
+		@media only screen and ( min-width: calc( $width-breakpoint-wide + 1rem ) ) {
+			padding-right: 0;
+		}
 	}
 
 	&__button {
@@ -158,5 +162,69 @@
 .wp-block-wmf-reports-story {
 	&.animate {
 		transition: all 0.25s;
+	}
+}
+
+.wmf-annual-reports-overlay-wrapper {
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	overflow: scroll;
+	position: fixed;
+	top: 0;
+	transition: all 0.3s;
+	width: 100%;
+	z-index: 99999;
+
+	.wmf-annual-reports-overlay-popover {
+		background-color: #fff;
+		margin: auto;
+		max-width: calc( $width-breakpoint-wide + 8rem );
+		opacity: 0;
+		padding: 0;
+		position: relative;
+		transition: all 0.3s;
+
+		@media only screen and ( min-width: 782px ) {
+			border-radius: 30px;
+			box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+			padding: 2rem 6rem 2rem 2rem;
+		}
+	}
+
+	.wmf-annual-reports-overlay-popover-close {
+		background-color: #fff;
+		// stylelint-disable-next-line function-url-quotes
+		background-image: url('data:image/svg+xml,<svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.17069 7.9958L1.16665 13.9998L0 12.8332L6.00404 6.82915L0.341705 1.16681L1.50836 0.000160592L7.17069 5.66249L12.8332 0L13.9998 1.16665L8.33735 6.82915L14.3415 12.8333L13.1749 14L7.17069 7.9958Z" fill="%23202122"/></svg>');
+		background-position: 55% 50%;
+		background-repeat: no-repeat;
+		border: 1px solid #aaa;
+		border-radius: 100%;
+		cursor: pointer;
+		height: 48px;
+		position: absolute;
+		right: 1rem;
+		top: 1rem;
+		width: 48px;
+
+		@media only screen and ( min-width: 782px ) {
+			position: fixed;
+			right: 2rem;
+			top: 2rem;
+		}
+
+		@media only screen and ( min-width: calc( $width-breakpoint-wide + 8rem ) ) {
+			left: 50%;
+			transform: translateX( calc( -50% + calc( $width-breakpoint-wide / 2 ) ) );
+		}
+
+		&:hover {
+			background-color: #ccc;
+		}
+
+		&:focus {
+			border-radius: 100%;
+		}
 	}
 }

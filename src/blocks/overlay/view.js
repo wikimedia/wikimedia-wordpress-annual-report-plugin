@@ -13,9 +13,7 @@ Array.from( overlays ).forEach( ( overlay ) => {
 	}
 
 	const parent = overlay.closest( '.wp-block-wmf-reports-story' );
-	const button = parent.querySelector(
-		'.carousel-slide__button, overlay-trigger'
-	);
+	const button = parent.querySelector( '.carousel-slide__button' );
 
 	if ( ! button ) {
 		return;
@@ -24,7 +22,37 @@ Array.from( overlays ).forEach( ( overlay ) => {
 	button.addEventListener( 'click', ( e ) => {
 		e.preventDefault();
 
-		alert( 'TRIGGER' + innerHtml.trim() );
+		const body = document.querySelector( 'body' );
+		body.style.overflow = 'hidden';
+
+		const wrapper = document.createElement( 'div' );
+		wrapper.classList.add( 'wmf-annual-reports-overlay-wrapper' );
+		wrapper.style.opacity = 0;
+
+		const popover = document.createElement( 'div' );
+		popover.classList.add( 'wmf-annual-reports-overlay-popover' );
+		popover.append( overlay.content.cloneNode( true ) );
+		popover.style.opacity = 0;
+
+		const close = document.createElement( 'button' );
+		close.classList.add( 'wmf-annual-reports-overlay-popover-close' );
+
+		const closeText = document.createElement( 'span' );
+		closeText.classList.add( 'screen-reader-text' );
+		closeText.innerHTML = 'Close Overlay';
+
+		close.appendChild( closeText );
+		wrapper.appendChild( popover );
+		popover.appendChild( close );
+		body.appendChild( wrapper );
+
+		popover.focus();
+
+		// Do fadeIn.
+		setTimeout( () => {
+			wrapper.style.opacity = 1;
+			popover.style.opacity = 1;
+		}, 1 );
 
 		return false;
 	} );
