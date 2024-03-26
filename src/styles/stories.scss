@@ -1,4 +1,5 @@
 .wp-block-wmf-reports-stories {
+
 	.wp-block-group.alignfull,
 	.alignfull {
 		margin: 0;
@@ -11,12 +12,14 @@
 }
 
 .wp-block-wmf-reports-story {
+
 	&.animate {
 		transition: all 0.25s;
 	}
 }
 
 .stories {
+
 	& &__categories-wrapper {
 		margin: auto;
 		margin-bottom: 2rem;
@@ -49,6 +52,7 @@
 			}
 		}
 
+		/* stylelint-disable no-descending-specificity */
 		img {
 			display: block;
 			height: 1rem;
@@ -57,5 +61,6 @@
 			min-width: $font-size-base;
 			width: auto;
 		}
+		/* stylelint-enable no-descending-specificity */
 	}
 }

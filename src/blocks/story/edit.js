@@ -5,7 +5,12 @@ import {
 	InspectorControls,
 	useBlockProps,
 } from '@wordpress/block-editor';
-import { Button, BaseControl, PanelBody, SelectControl } from '@wordpress/components';
+import {
+	Button,
+	BaseControl,
+	PanelBody,
+	SelectControl,
+} from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 
 // eslint-disable-next-line import/no-unresolved
@@ -102,7 +107,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						createBlock( 'core/column', { width: '66.66%' }, [
 							createBlock( 'core/image', {
 								aspectRatio: '4/3',
-								className: 'is-style-default carousel-slide__image',
+								className:
+									'is-style-default carousel-slide__image',
 								id: imageId || 74197,
 								lightbox: {
 									aspectRatio: '4/3',
@@ -132,10 +138,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								content:
 									heading ||
 									'Lorem ipsum dolor sit amet vulputate.',
-							}, ),
+							} ),
 							createBlock( 'core/paragraph', {
 								className: 'is-style-sans-p',
-								content: excerpt ||
+								content:
+									excerpt ||
 									'Lorem ipsum dolor sit amet ullamcorper convallis condimentum suspendisse cras blandit congue tincidunt turpis vulputate. Imperdiet quisque libero in porta venenatis vitae netus condimentum.',
 							} ),
 							createBlock( 'core/buttons', {}, [
@@ -177,53 +184,65 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						},
 						[
 							createBlock( 'core/columns', { align: 'wide' }, [
-								createBlock( 'core/column', { width: '66.66%' }, [
-									createBlock( 'core/image', {
-										aspectRatio: '4/3',
-										className: 'is-style-default overlay__image',
-										id: imageId || 74197,
-										lightbox: {
+								createBlock(
+									'core/column',
+									{ width: '66.66%' },
+									[
+										createBlock( 'core/image', {
 											aspectRatio: '4/3',
-											className: 'is-style-default overlay__image',
-											enabled: false,
+											className:
+												'is-style-default overlay__image',
 											id: imageId || 74197,
+											lightbox: {
+												aspectRatio: '4/3',
+												className:
+													'is-style-default overlay__image',
+												enabled: false,
+												id: imageId || 74197,
+												linkDestination: 'none',
+												scale: 'cover',
+												sizeSlug: 'full',
+												url:
+													imageUrl ||
+													'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+											},
 											linkDestination: 'none',
 											scale: 'cover',
 											sizeSlug: 'full',
 											url:
 												imageUrl ||
 												'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-										},
-										linkDestination: 'none',
-										scale: 'cover',
-										sizeSlug: 'full',
-										url:
-											imageUrl ||
-											'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-									} ),
-								] ),
-								createBlock( 'core/column', { width: '33.33%' }, [
-									createBlock( 'core/paragraph', {
-										className: 'overlay__category is-style-sans-p',
-										content: 'Lorem ipsum / Sit amet',
-										style: {
-											elements: {
-												link: {
-													color: {
-														text: 'var:preset|color|orange',
+										} ),
+									]
+								),
+								createBlock(
+									'core/column',
+									{ width: '33.33%' },
+									[
+										createBlock( 'core/paragraph', {
+											className:
+												'overlay__category is-style-sans-p',
+											content: 'Lorem ipsum / Sit amet',
+											style: {
+												elements: {
+													link: {
+														color: {
+															text: 'var:preset|color|orange',
+														},
 													},
 												},
 											},
-										},
-										textColor: 'orange',
-									} ),
-									createBlock( 'core/heading', {
-										className: 'overlay__heading is-style-default',
-										content:
-											heading ||
-											'Lorem ipsum dolor sit amet vulputate.',
-									} ),
-								] ),
+											textColor: 'orange',
+										} ),
+										createBlock( 'core/heading', {
+											className:
+												'overlay__heading is-style-default',
+											content:
+												heading ||
+												'Lorem ipsum dolor sit amet vulputate.',
+										} ),
+									]
+								),
 							] ),
 							createBlock(
 								'core/group',
@@ -313,7 +332,10 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								'wmf-reports'
 							) }
 							id={ __( 'Refresh Slide Content', 'wmf-reports' ) }
-							label={ __( 'Refresh Slide Content', 'wmf-reports' ) }
+							label={ __(
+								'Refresh Slide Content',
+								'wmf-reports'
+							) }
 						>
 							<Button variant="secondary" onClick={ updateSlide }>
 								{ __( 'Refresh Slide', 'wmf-reports' ) }

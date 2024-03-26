@@ -1,6 +1,12 @@
 /* Helpers */
 @import "helpers/variables";
-@import "helpers/colors.scss";
+@import "helpers/colors";
+
+/* Blocks */
+@import "styles/carousel";
+@import "styles/map";
+@import "styles/overlay";
+@import "styles/stories";
 
 /* Non-block-specific styles */
 button:focus {
@@ -10,17 +16,19 @@ button:focus {
 
 @font-face {
 	font-family: "Noto Sans";
-	src: url("../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf");
+	src: url(../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf);
 }
 
 /* Patterns */
 
 /* Theme overrides */
 .single-wmf-report {
+
 	.mw-980 {
 		max-width: none;
 		padding: 0;
 	}
+
 	.wp-block-group.has-background:not(:only-child) {
 		margin-bottom: 0;
 	}
@@ -31,11 +39,13 @@ button:focus {
 		margin-left: auto;
 		margin-right: auto;
 	}
+
 	.article-main > .alignwide {
 		max-width: 920px;
 		margin-left: auto;
 		margin-right: auto;
 	}
+
 	.article-main > .alignfull {
 		max-width: none;
 
@@ -45,9 +55,11 @@ button:focus {
 	}
 
 	// Demo hack.
+	/* stylelint-disable no-descending-specificity */
 	.wp-block-group.has-background {
 		border-bottom-right-radius: 2rem;
 	}
+	/* stylelint-enable no-descending-specificity */
 }
 
 /* Styles used for core block modifications */
@@ -59,9 +71,3 @@ button:focus {
 .editor-styles-wrapper div.wp-block-group.has-background:not(:only-child) {
 	margin-bottom: 0;
 }
-
-/* Blocks */
-@import 'styles/carousel.scss';
-@import 'styles/map.scss';
-@import 'styles/overlay.scss';
-@import 'styles/stories.scss';
