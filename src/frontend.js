@@ -13,5 +13,8 @@ import './blocks/table-of-contents/frontend.scss';
 import './styles/core-heading-report-section-heading.scss';
 import './styles/core-group-report-overlapping-callout.scss';
 
+// Text formats.
+import './formats/countup-number/view';
+
 // Frontend logic that isn't tied to a custom block.
 import './features/core-group-report-overlapping-callout';

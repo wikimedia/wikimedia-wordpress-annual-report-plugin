@@ -1,0 +1,44 @@
+// Import variables again here because otherwise the build fails despite the
+// fact that the variables are already imported in the main frontend.scss file
+@import '../../helpers/variables';
+
+.wmf-pattern-letter-from-the-ceo {
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+
+	> .wp-block-group__inner-container {
+		max-width: 646px;
+		margin: 0 auto;
+	}
+
+	.wp-block-quote {
+		margin: 1em 0;
+		border: 0;
+		padding-left: 0;
+
+		p {
+			font-family: 'Noto Sans';
+			font-size: #{$font-size-xxlarge};
+			line-height: #{$line-height-xlarge};
+			font-weight: bold;
+			font-style: normal;
+		}
+	}
+
+	.wp-block-media-text {
+
+		.wp-block-media-text__media img {
+			width: 80px;
+			height: 80px;
+		}
+
+		.wp-block-media-text__content {
+			p {
+				font-size: #{$font-size-base};
+				line-height: #{$line-height-base};
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+}
