@@ -65,6 +65,7 @@ Array.from( overlays ).forEach( ( overlay ) => {
 			popover.style.opacity = 0;
 
 			setTimeout( () => {
+				body.style.overflow = null;
 				popover.blur();
 				wrapper.remove();
 			}, 300 );
