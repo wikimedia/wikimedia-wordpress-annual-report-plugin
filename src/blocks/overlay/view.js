@@ -19,6 +19,8 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		return;
 	}
 
+	button.setAttribute( 'aria-label', 'Open content in overlay' );
+
 	button.addEventListener( 'click', ( e ) => {
 		e.preventDefault();
 
@@ -28,6 +30,8 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		const wrapper = document.createElement( 'div' );
 		wrapper.classList.add( 'wmf-annual-reports-overlay-wrapper' );
 		wrapper.style.opacity = 0;
+		wrapper.setAttribute( 'role', 'alertdialog' );
+		wrapper.setAttribute( 'aria-modal', 'true' );
 
 		const popover = document.createElement( 'div' );
 		popover.classList.add( 'wmf-annual-reports-overlay-popover' );
@@ -37,6 +41,7 @@ Array.from( overlays ).forEach( ( overlay ) => {
 
 		const close = document.createElement( 'button' );
 		close.classList.add( 'wmf-annual-reports-overlay-popover-close' );
+		wrapper.setAttribute( 'aria-label', 'Close overlay' );
 
 		const closeText = document.createElement( 'span' );
 		closeText.classList.add( 'screen-reader-text' );
@@ -60,6 +65,7 @@ Array.from( overlays ).forEach( ( overlay ) => {
 			popover.style.opacity = 0;
 
 			setTimeout( () => {
+				popover.blur();
 				wrapper.remove();
 			}, 300 );
 		} );
