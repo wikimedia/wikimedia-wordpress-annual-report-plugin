@@ -33,5 +33,15 @@ function register_pattern() {
 		'title' => __( 'Report Donors', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],
 		'content' => Donors\PATTERN,
+	register_block_pattern( Hero\NAME, [
+		'title' => __( 'Report Hero', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => Hero\PATTERN,
+	] );
+
+	register_block_pattern( LetterFromTheCeo\NAME, [
+		'title' => __( 'Letter from the CEO', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => LetterFromTheCeo\PATTERN,
 	] );
 }

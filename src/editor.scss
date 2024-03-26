@@ -1,3 +1,6 @@
+@import 'patterns/hero/editor';
+@import 'patterns/letter-from-the-ceo/editor';
+
 @font-face {
 	font-family: "Noto Sans";
 	src: url("../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf");
@@ -9,6 +12,20 @@
 
 	.components-base-control {
 		min-width: 4rem;
+	}
+}
+
+.editor-styles-wrapper.single-wmf-report {
+
+	h2.wp-block-heading {
+		display: inline-block;
+		background: black;
+		color: white;
+		font-family: 'Noto Sans';
+		text-transform: uppercase;
+		font-size: 15px;
+		font-weight: bold;
+		padding: 0.5em 1em 0.5em 1em;
 	}
 }
 
@@ -30,4 +47,7 @@
 		border: 1px solid #AAAAAA;
 		border-radius: 50%;
 	}
+.editor-styles-wrapper [data-block],
+.editor-styles-wrapper ul[data-block] li {
+	font-family: var(--font-family-sans);
 }
