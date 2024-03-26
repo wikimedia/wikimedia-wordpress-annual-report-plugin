@@ -79,3 +79,6 @@ button:focus {
 .editor-styles-wrapper div.wp-block-group.has-background:not(:only-child) {
 	margin-bottom: 0;
 }
+
+/* Blocks */
+@import 'styles/map.scss';

@@ -8,6 +8,8 @@ namespace WMF\Reports\Assets;
 use const WMF\Reports\PLUGIN_PATH;
 use WMF\Reports\Asset_Loader;
 
+use const WMF\Reports\Blocks\Map\MAP_API_OPTION_KEY;
+
 /**
  * Attach hooks.
  */
@@ -34,7 +36,7 @@ function set_connect_src_origins( array $headers ) : array {
 	$localhost_srcs = array_reduce(
 		[ 8080, 8887, 8888 ],
 		function( $carry, $port ) {
-			return $carry .= "ws://localhost:$port wss://localhost:$port http://localhost:$port https://localhost:$port ";
+			return $carry .= "ws://localhost:$port wss://localhost:$port http://localhost:$port https://localhost:$port https://*.mapbox.com ";
 		},
 		''
 	);
@@ -43,6 +45,19 @@ function set_connect_src_origins( array $headers ) : array {
 		"connect-src 'self' $localhost_srcs",
 		$headers['Content-Security-Policy']
 	);
+
+	$headers['Content-Security-Policy'] = preg_replace(
+		"/script-src 'self'/",
+		"script-src 'self' blob: https://wikimedia.vipdev.lndo.site",
+		$headers['Content-Security-Policy']
+	);
+
+	$headers['Content-Security-Policy'] = preg_replace(
+		"/style-src 'self'/",
+		"style-src 'self' https://*.mapbox.com",
+		$headers['Content-Security-Policy']
+	);
+
 	return $headers;
 }
 
@@ -84,6 +99,15 @@ function enqueue_editor_assets() : void {
 		],
 		filemtime( build_file_path( 'editor.css' ) )
 	);
+
+	wp_enqueue_style( 'mapbox-css', 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' );
+	wp_localize_script(
+		'annual-report-plugin-editor',
+		'wmf',
+		[
+			'apiKey' => get_option( MAP_API_OPTION_KEY ),
+		],
+	);
 }
 
 /**
@@ -95,6 +119,16 @@ function enqueue_frontend_scripts() : void {
 		build_file_path( 'frontend.asset.php' ),
 		build_file_uri( 'frontend.js' )
 	);
+
+	if ( has_block( 'wmf-reports/map' ) ) {
+		wp_localize_script(
+			'annual-report-plugin-frontend',
+			'wmf',
+			[
+				'apiKey' => get_option( MAP_API_OPTION_KEY ),
+			],
+		);
+	}
 }
 
 /**
@@ -109,4 +143,8 @@ function enqueue_frontend_styles() : void {
 		],
 		filemtime( build_file_path( 'frontend.css' ) )
 	);
+
+	if ( has_block( 'wmf-reports/map' ) ) {
+		wp_enqueue_style( 'mapbox-css', 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' );
+	}
 }
