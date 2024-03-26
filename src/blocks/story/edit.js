@@ -51,7 +51,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		};
 	} );
 
-	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	// const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { insertBlocks, removeBlocks } = useDispatch( 'core/block-editor' );
 
 	const onPostSelect = ( posts ) => {
 		// eslint-disable-next-line no-shadow
@@ -83,6 +84,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		const innerBlocks = wp.blocks.rawHandler( {
 			HTML: content,
 		} );
+
+		removeBlocks( clientIds );
 
 		const newBlocks = [
 			createBlock(
@@ -128,7 +131,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 									'carousel-slide__heading is-style-default',
 								content:
 									heading ||
-										'Lorem ipsum dolor sit amet vulputate.',
+									'Lorem ipsum dolor sit amet vulputate.',
 							}, ),
 							createBlock( 'core/paragraph', {
 								className: 'is-style-sans-p',
@@ -169,76 +172,64 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						'core/group',
 						{
 							align: 'full',
-							className: 'carousel-slide',
+							className: 'overlay__group',
 							layout: { type: 'constrained' },
 						},
 						[
 							createBlock( 'core/columns', { align: 'wide' }, [
-								createBlock(
-									'core/column',
-									{ width: '66.66%' },
-									[
-										createBlock( 'core/image', {
+								createBlock( 'core/column', { width: '66.66%' }, [
+									createBlock( 'core/image', {
+										aspectRatio: '4/3',
+										className: 'is-style-default overlay__image',
+										id: imageId || 74197,
+										lightbox: {
 											aspectRatio: '4/3',
-											className:
-												'is-style-default carousel-slide__image',
+											className: 'is-style-default overlay__image',
+											enabled: false,
 											id: imageId || 74197,
-											lightbox: {
-												aspectRatio: '4/3',
-												className:
-													'is-style-default carousel-slide__image',
-												enabled: false,
-												id: imageId || 74197,
-												linkDestination: 'none',
-												scale: 'cover',
-												sizeSlug: 'full',
-												url:
-													imageUrl ||
-													'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-											},
 											linkDestination: 'none',
 											scale: 'cover',
 											sizeSlug: 'full',
 											url:
 												imageUrl ||
 												'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-										} ),
-									]
-								),
-								createBlock(
-									'core/column',
-									{ width: '33.33%' },
-									[
-										createBlock( 'core/paragraph', {
-											className:
-												'carousel-slide__category is-style-sans-p',
-											content: 'Lorem ipsum / Sit amet',
-											style: {
-												elements: {
-													link: {
-														color: {
-															text: 'var:preset|color|orange',
-														},
+										},
+										linkDestination: 'none',
+										scale: 'cover',
+										sizeSlug: 'full',
+										url:
+											imageUrl ||
+											'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+									} ),
+								] ),
+								createBlock( 'core/column', { width: '33.33%' }, [
+									createBlock( 'core/paragraph', {
+										className: 'overlay__category is-style-sans-p',
+										content: 'Lorem ipsum / Sit amet',
+										style: {
+											elements: {
+												link: {
+													color: {
+														text: 'var:preset|color|orange',
 													},
 												},
 											},
-											textColor: 'orange',
-										} ),
-										createBlock( 'core/heading', {
-											className:
-												'carousel-slide__heading is-style-default',
-											content:
-												heading ||
-												'Lorem ipsum dolor sit amet vulputate.',
-										} ),
-									]
-								),
+										},
+										textColor: 'orange',
+									} ),
+									createBlock( 'core/heading', {
+										className: 'overlay__heading is-style-default',
+										content:
+											heading ||
+											'Lorem ipsum dolor sit amet vulputate.',
+									} ),
+								] ),
 							] ),
 							createBlock(
 								'core/group',
 								{
 									align: 'wide',
-									className: 'carousel-slide__content',
+									className: 'overlay__content',
 									layout: { type: 'constrained' },
 								},
 								innerBlocks
@@ -249,7 +240,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			),
 		];
 
-		replaceBlocks( clientIds, newBlocks );
+		insertBlocks( newBlocks, null, clientId );
 	};
 
 	return (

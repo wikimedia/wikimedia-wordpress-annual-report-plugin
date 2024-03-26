@@ -31,6 +31,7 @@ Array.from( overlays ).forEach( ( overlay ) => {
 
 		const popover = document.createElement( 'div' );
 		popover.classList.add( 'wmf-annual-reports-overlay-popover' );
+		popover.classList.add( 'overlay' );
 		popover.append( overlay.content.cloneNode( true ) );
 		popover.style.opacity = 0;
 
@@ -53,6 +54,15 @@ Array.from( overlays ).forEach( ( overlay ) => {
 			wrapper.style.opacity = 1;
 			popover.style.opacity = 1;
 		}, 1 );
+
+		close.addEventListener( 'click', () => {
+			wrapper.style.opacity = 0;
+			popover.style.opacity = 0;
+
+			setTimeout( () => {
+				wrapper.remove();
+			}, 300 );
+		} );
 
 		return false;
 	} );

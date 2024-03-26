@@ -34,4 +34,10 @@ function register_pattern() {
 		'categories' => [ MAIN_CATEGORY_NAME ],
 		'content' => CarouselSlide\PATTERN,
 	] );
+
+	register_block_pattern( OverlayGroup\NAME, [
+		'title' => __( 'Overlay Group', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => OverlayGroup\PATTERN,
+	] );
 }

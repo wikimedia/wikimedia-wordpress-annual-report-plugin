@@ -7,7 +7,6 @@
 	"category": "widgets",
 	"icon": "image-flip-horizontal",
 	"description": "",
-	"parent": [ "wmf-reports/stories" ],
 	"attributes": {
 		"align": {
 			"type": "string",

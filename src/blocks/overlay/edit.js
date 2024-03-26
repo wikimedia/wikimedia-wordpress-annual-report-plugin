@@ -93,7 +93,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			'core/group',
 			{
 				align: 'full',
-				className: 'carousel-slide',
+				className: 'overlay__group',
 				layout: { type: 'constrained' },
 			},
 			[
@@ -101,12 +101,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					createBlock( 'core/column', { width: '66.66%' }, [
 						createBlock( 'core/image', {
 							aspectRatio: '4/3',
-							className: 'is-style-default carousel-slide__image',
+							className: 'is-style-default overlay__image',
 							id: imageId || 74197,
 							lightbox: {
 								aspectRatio: '4/3',
-								className:
-									'is-style-default carousel-slide__image',
+								className: 'is-style-default overlay__image',
 								enabled: false,
 								id: imageId || 74197,
 								linkDestination: 'none',
@@ -126,8 +125,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					] ),
 					createBlock( 'core/column', { width: '33.33%' }, [
 						createBlock( 'core/paragraph', {
-							className:
-								'carousel-slide__category is-style-sans-p',
+							className: 'overlay__category is-style-sans-p',
 							content: 'Lorem ipsum / Sit amet',
 							style: {
 								elements: {
@@ -141,8 +139,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 							textColor: 'orange',
 						} ),
 						createBlock( 'core/heading', {
-							className:
-								'carousel-slide__heading is-style-default',
+							className: 'overlay__heading is-style-default',
 							content:
 								heading ||
 								'Lorem ipsum dolor sit amet vulputate.',
@@ -153,7 +150,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					'core/group',
 					{
 						align: 'wide',
-						className: 'carousel-slide__content',
+						className: 'overlay__content',
 						layout: { type: 'constrained' },
 					},
 					innerBlocks
@@ -249,11 +246,13 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					) }
 				</PanelBody>
 			</InspectorControls>
-			<div className="overlay__content">
-				<div className="overlay__navigation">
+			<div className="overlay-container">
+				<div className="overlay-container__navigation">
 					<Button
 						variant="secondary"
-						onClick={ () => setContentExpanded( ! contentExpanded ) }
+						onClick={ () =>
+							setContentExpanded( ! contentExpanded )
+						}
 					>
 						{ contentExpanded
 							? __( 'Collapse Overlay Content', 'wmf-reports' )
@@ -261,7 +260,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					</Button>
 				</div>
 				{ contentExpanded && (
-					<div className="overlay__inner">
+					<div className="overlay-container__inner">
 						<InnerBlocks
 							template={ [
 								[
