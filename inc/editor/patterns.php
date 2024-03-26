@@ -44,4 +44,10 @@ function register_pattern() {
 		'categories' => [ MAIN_CATEGORY_NAME ],
 		'content' => LetterFromTheCeo\PATTERN,
 	] );
+
+	register_block_pattern( FinanceTables\NAME, [
+		'title' => __( 'Finance Tables', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => FinanceTables\PATTERN,
+	] );
 }
