@@ -1,6 +1,16 @@
 /* Helpers */
 @import "helpers/variables";
-@import "helpers/colors.scss";
+@import "helpers/colors";
+
+/* Blocks */
+@import "styles/carousel";
+@import "styles/map";
+@import "styles/overlay";
+@import "styles/stories";
+
+/* Patterns */
+@import "patterns/hero/frontend";
+@import "patterns/letter-from-the-ceo/frontend";
 
 /* Non-block-specific styles */
 button:focus {
@@ -10,15 +20,12 @@ button:focus {
 
 @font-face {
 	font-family: "Noto Sans";
-	src: url("../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf");
+	src: url(../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf);
 }
-
-/* Patterns */
-@import 'patterns/hero/frontend';
-@import 'patterns/letter-from-the-ceo/frontend';
 
 /* Theme overrides */
 .single-wmf-report {
+
 	.mw-980 {
 		max-width: none;
 		padding: 0;
@@ -28,7 +35,7 @@ button:focus {
 		display: inline-block;
 		background: black;
 		color: white;
-		font-family: 'Noto Sans';
+		font-family: $font-family-base;
 		text-transform: uppercase;
 		font-size: 15px;
 		font-weight: bold;
@@ -45,11 +52,13 @@ button:focus {
 		margin-left: auto;
 		margin-right: auto;
 	}
+
 	.article-main > .alignwide {
 		max-width: 920px;
 		margin-left: auto;
 		margin-right: auto;
 	}
+
 	.article-main > .alignfull {
 		max-width: none;
 
@@ -65,9 +74,11 @@ button:focus {
 	}
 
 	// Demo hack.
+	/* stylelint-disable no-descending-specificity */
 	.wp-block-group.has-background {
 		border-bottom-right-radius: 2rem;
 	}
+	/* stylelint-enable no-descending-specificity */
 }
 
 /* Styles used for core block modifications */
@@ -79,6 +90,3 @@ button:focus {
 .editor-styles-wrapper div.wp-block-group.has-background:not(:only-child) {
 	margin-bottom: 0;
 }
-
-/* Blocks */
-@import 'styles/map.scss';

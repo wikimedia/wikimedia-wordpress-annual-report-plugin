@@ -1,20 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "wmf-reports/map",
+	"name": "wmf-reports/stories",
 	"version": "0.1.0",
-	"title": "Map",
+	"title": "Stories",
 	"category": "widgets",
-	"icon": "admin-site",
+	"icon": "image-flip-horizontal",
 	"description": "",
 	"attributes": {
 		"align": {
 			"type": "string",
 			"default": "full"
-		},
-		"mapStyle": {
-			"type": "string",
-			"default": "mapbox://styles/mapbox/light-v11"
 		}
 	},
 	"example": {},

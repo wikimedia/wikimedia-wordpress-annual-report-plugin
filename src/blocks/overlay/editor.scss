@@ -1,0 +1,53 @@
+.components-base-control.story-base-control {
+
+	button {
+		cursor: pointer;
+		display: block;
+	}
+
+	.post-select {
+
+		button {
+			padding: 0;
+		}
+	}
+}
+
+.wp-block-wmf-reports-overlay .block-editor-block-list__layout > .wp-block[data-align="full"] {
+	max-width: 100%;
+
+	.wp-block:not([data-align="full"]) {
+		max-width: 960px;
+	}
+}
+
+/* stylelint-disable no-descending-specificity */
+.wp-block {
+
+	.overlay-container {
+		border: 1px solid #0167c7;
+		margin-top: -6.5rem;
+		margin-left: -2rem;
+		margin-right: -6rem;
+
+		&__navigation {
+			background-color: #fff;
+			display: flex;
+			text-align: left;
+			padding: 2rem 2rem 0 2rem;
+
+			&:only-child {
+				padding-bottom: 2rem;
+			}
+		}
+
+		&__inner {
+			padding: 2rem;
+		}
+
+		.overlay__content {
+			padding-top: 0;
+		}
+	}
+}
+/* stylelint-enable no-descending-specificity */
