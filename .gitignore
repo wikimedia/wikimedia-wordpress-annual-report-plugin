@@ -2,3 +2,5 @@
 /node_modules/
 /assets/dist/
 /build/
+
+.DS_Store
