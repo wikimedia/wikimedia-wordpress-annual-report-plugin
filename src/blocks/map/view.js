@@ -44,7 +44,6 @@ const setMarker = ( id ) => {
 		);
 	}
 
-
 	Array.from( mapMarkers ).forEach( ( mapMarker ) => {
 		mapMarker.classList.remove( 'active' );
 	} );

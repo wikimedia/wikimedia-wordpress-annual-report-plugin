@@ -116,7 +116,8 @@ export default function Edit( { clientId } ) {
 
 			// If its going to take our first slide too far right, set the position 0.
 			const firstSlidePosition = firstSlide?.getBoundingClientRect();
-			const firstSlideOffset = firstSlidePosition.left - parseInt( currentOffset );
+			const firstSlideOffset =
+				firstSlidePosition.left - parseInt( currentOffset );
 			const firstSlideNewPosition = firstSlideOffset + newPosition;
 
 			if ( firstSlideNewPosition > wrapperPosition.left ) {

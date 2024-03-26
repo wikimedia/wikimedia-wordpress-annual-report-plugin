@@ -7,18 +7,21 @@
 // == Breakpoints ==
 // The following numbers are prone to change with new information.
 
-// Minimum available screen width at which a device can be considered a mobile device
+// Minimum available screen width at which a device can be considered
+// a mobile device
 // Many older feature phones have screens smaller than this value.
 @use "sass:math";
 
 $width-breakpoint-mobile: 320px;
 
-// Minimum available screen width at which a device can be considered a tablet
-// The number is currently based on the device width of a Samsung Galaxy S5 mini and is low
-// enough to cover iPad (768px).
+// Minimum available screen width at which a device can be
+// considered a tablet
+// The number is currently based on the device width of a
+// Samsung Galaxy S5 mini and is low enough to cover iPad (768px).
 $width-breakpoint-tablet: 720px;
 
-// Minimum available screen width at which a device can be considered a desktop.
+// Minimum available screen width at which a device can be
+// considered a desktop.
 $width-breakpoint-desktop: 1000px;
 
 // Wider desktop breakpoint, currently used in Flow.
@@ -33,7 +36,7 @@ $width-breakpoint-wide: 960px;
 // == Typography ==
 
 // Font families
-$font-family-base: "Noto Sans", Arial, Helvetica, sans-serif;
+$font-family-base: "Noto Sans", arial, helvetica, sans-serif;
 
 // Font sizes
 $font-size-small: 0.875rem; // 14px

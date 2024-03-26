@@ -1,10 +1,12 @@
 .components-base-control.story-base-control {
+
 	button {
 		cursor: pointer;
 		display: block;
 	}
 
 	.post-select {
+
 		button {
 			padding: 0;
 		}
@@ -19,9 +21,11 @@
 	}
 }
 
+/* stylelint-disable no-descending-specificity */
 .wp-block {
+
 	.overlay-container {
-		border: 1px solid #0167C7;
+		border: 1px solid #0167c7;
 		margin-top: -6.5rem;
 		margin-left: -2rem;
 		margin-right: -6rem;
@@ -46,3 +50,4 @@
 		}
 	}
 }
+/* stylelint-enable no-descending-specificity */
