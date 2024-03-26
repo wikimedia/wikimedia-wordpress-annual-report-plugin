@@ -65,7 +65,7 @@ function render_map_settings_admin_page() : void {
 			?>
 
         <h2 class="title"><?php esc_html_e( 'API Key', 'wmf-reports' ); ?></h2>
-        <p><?php esc_html_e( 'Use this section manage your API Key.', 'wmf-reports' ); ?></p>
+        <p><?php esc_html_e( 'Use this section to manage your API Key.', 'wmf-reports' ); ?></p>
         <table class="form-table permalink-structure" role="presentation">
             <tbody>
                 <tr>
