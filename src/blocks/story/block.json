@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wmf-reports/story",
+	"version": "0.1.0",
+	"title": "Story",
+	"category": "widgets",
+	"icon": "image-flip-horizontal",
+	"description": "",
+	"parent": [ "wmf-reports/stories" ],
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"category": {
+			"type": "string",
+			"default": ""
+		},
+		"id": {
+			"type": "number",
+			"default": 0
+		},
+		"postId": {
+			"type": "number",
+			"default": 0
+		},
+		"postType": {
+			"type": "string",
+			"default": "story"
+		}
+	},
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"textdomain": "wmf-reports",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"render": "file:./render.php"
+}

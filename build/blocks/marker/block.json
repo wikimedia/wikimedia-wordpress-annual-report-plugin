@@ -7,7 +7,9 @@
   "category": "widgets",
   "icon": "admin-site",
   "description": "",
-  "parent": "wmf-reports/map",
+  "parent": [
+    "wmf-reports/map"
+  ],
   "attributes": {
     "align": {
       "type": "string",
@@ -33,7 +35,7 @@
       "full"
     ]
   },
-  "textdomain": "example-dynamic",
+  "textdomain": "wmf-reports",
   "editorScript": "file:./index.js",
   "render": "file:./render.php"
 }

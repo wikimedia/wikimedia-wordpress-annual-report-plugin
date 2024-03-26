@@ -314,10 +314,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				updateMarkers();
 			} );
 		} );
-	}, [ mapStyle, slideBlocks, slideBlocks.length, updateMarkers ] );
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ mapStyle, slideBlocks.length, updateMarkers ] );
 
 	const blockProps = useBlockProps( {
-		className: 'map map-carousel',
+		className: 'map map--carousel carousel',
 	} );
 
 	// eslint-disable-next-line no-undef

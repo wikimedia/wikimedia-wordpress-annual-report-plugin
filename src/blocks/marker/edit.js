@@ -23,7 +23,11 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { lat, long } = attributes;
 
 	return (
-		<div { ...useBlockProps() }>
+		<div
+			{ ...useBlockProps( {
+				className: 'carousel__slide',
+			} ) }
+		>
 			<InspectorControls>
 				<PanelBody>
 					<BaseControl
@@ -83,13 +87,13 @@ export default function Edit( { attributes, setAttributes } ) {
 						{
 							align: 'full',
 							backgroundColor: 'wmf-report-bright-yellow',
-							className: 'map-info',
+							className: 'carousel-slide',
 							layout: { type: 'constrained' },
 						},
 						[
 							[
 								'core/columns',
-								{},
+								{ align: 'wide' },
 								[
 									[
 										'core/column',
@@ -100,21 +104,23 @@ export default function Edit( { attributes, setAttributes } ) {
 												{
 													aspectRatio: '4/3',
 													className:
-														'is-style-default map-info__image',
-													id: 74106,
+														'is-style-default carousel-slide__image',
+													id: 74197,
 													lightbox: {
 														aspectRatio: '4/3',
 														className:
-															'is-style-default map-info__image',
+															'is-style-default carousel-slide__image',
 														enabled: false,
-														id: 74106,
+														id: 74197,
 														linkDestination: 'none',
 														scale: 'cover',
 														sizeSlug: 'full',
+														url: '/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
 													},
 													linkDestination: 'none',
 													scale: 'cover',
 													sizeSlug: 'full',
+													url: '/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
 												},
 											],
 										],
@@ -127,7 +133,7 @@ export default function Edit( { attributes, setAttributes } ) {
 												'core/paragraph',
 												{
 													className:
-														'map-info__category is-style-sans-p',
+														'carousel-slide__category is-style-sans-p',
 													content:
 														'Lorem ipsum / Sit amet',
 													style: {
@@ -146,7 +152,7 @@ export default function Edit( { attributes, setAttributes } ) {
 												'core/heading',
 												{
 													className:
-														'map-info__heading is-style-default',
+														'carousel-slide__heading is-style-default',
 													content:
 														'Lorem ipsum dolor sit amet vulputate.',
 												},
@@ -155,7 +161,7 @@ export default function Edit( { attributes, setAttributes } ) {
 												'core/paragraph',
 												{
 													className:
-														'map-info__location is-style-sans-p',
+														'carousel-slide__location is-style-sans-p',
 													content:
 														'<em>Line for location</em>',
 												},
@@ -179,7 +185,7 @@ export default function Edit( { attributes, setAttributes } ) {
 															backgroundColor:
 																'base100',
 															className:
-																'is-style-tertiary map-info__button',
+																'is-style-tertiary carousel-slide__button',
 															text: 'Read More',
 															style: {
 																elements: {
