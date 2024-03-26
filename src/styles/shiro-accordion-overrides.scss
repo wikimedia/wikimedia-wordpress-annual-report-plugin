@@ -1,0 +1,54 @@
+@import '../helpers/variables';
+
+.single-wmf-report {
+
+	.accordion-item__title::after {
+		background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAyMiAxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMSA5LjU4NTg2TDIwLjI5MjkgMC4yOTI5NjlMMjEuNzA3MSAxLjcwNzE4TDExIDEyLjQxNDNMMC4yOTI4NzcgMS43MDcxOEwxLjcwNzA5IDAuMjkyOTY5TDExIDkuNTg1ODZaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K) center center no-repeat;
+		content: " ";
+		display: inline-block;
+		height: 48px;
+		width: 48px;
+		vertical-align: middle;
+		transform: none;
+		border: 1px solid #AAAAAA;
+		border-radius: 50%;
+	}
+
+	.accordion-item[aria-expanded] .accordion-item__title::after {
+		transform: rotate(180deg);
+	}
+
+	.accordion-item__title-text {
+		font-family: 'Noto Sans';
+		font-weight: bold;
+		font-size: #{$font-size-xlarge};
+		line-height: #{$line-height-xlarge};
+
+		mark.has-inline-color {
+			font-size: #{$font-size-base};
+		}
+	}
+
+	.accordion-item__content {
+
+		h6.wp-block-heading {
+			font-family: 'Noto Sans';
+			font-size: #{$font-size-base};
+			line-height: #{$line-height-xxlarge};
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		.wp-block-table {
+			margin-bottom: 1em;
+
+			table, thead, tbody, tr, th, td {
+				border: 0;
+			}
+
+			thead {
+				border-bottom: 1px solid #C8CCD1;
+			}
+		}
+	}
+}

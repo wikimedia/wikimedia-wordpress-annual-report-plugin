@@ -29,6 +29,18 @@ function register_pattern() {
 		'label' => __( 'Wikimedia Reports', 'wmf-reports' ),
 	] );
 
+	register_block_pattern( MapInfo\NAME, [
+		'title' => __( 'Map Info', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => MapInfo\PATTERN,
+	] );
+
+	register_block_pattern( Donors\NAME, [
+		'title' => __( 'Report Donors', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => Donors\PATTERN,
+	] );
+
 	register_block_pattern( Hero\NAME, [
 		'title' => __( 'Report Hero', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],
@@ -39,5 +51,11 @@ function register_pattern() {
 		'title' => __( 'Letter from the CEO', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],
 		'content' => LetterFromTheCeo\PATTERN,
+	] );
+
+	register_block_pattern( FinanceTables\NAME, [
+		'title' => __( 'Finance Tables', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => FinanceTables\PATTERN,
 	] );
 }
