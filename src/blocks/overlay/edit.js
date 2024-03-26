@@ -51,7 +51,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		);
 
 		// eslint-disable-next-line no-shadow
-		const media = select( 'core' ).getMedia( post?.featured_media || 0 );
+		const media = post?.featured_media
+			? select( 'core' ).getMedia( post?.featured_media )
+			: {};
 
 		return {
 			media,
@@ -80,7 +82,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		const clientIds = childBlocks.map( ( block ) => block.clientId );
 		const heading = post.title.raw || '';
 		const imageId = post?.featured_media || 0;
-		const imageUrl = media.link;
+		const imageUrl = media?.link;
 		const content = post?.content?.raw || '';
 
 		removeBlocks( clientIds );
