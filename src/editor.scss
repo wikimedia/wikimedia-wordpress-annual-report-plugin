@@ -47,4 +47,7 @@
 		border: 1px solid #AAAAAA;
 		border-radius: 50%;
 	}
+.editor-styles-wrapper [data-block],
+.editor-styles-wrapper ul[data-block] li {
+	font-family: var(--font-family-sans);
 }

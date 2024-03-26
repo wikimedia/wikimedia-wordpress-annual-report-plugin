@@ -14,5 +14,8 @@ import './styles/core-heading-report-section-heading.scss';
 import './styles/core-group-report-overlapping-callout.scss';
 import './styles/shiro-accordion-overrides.scss';
 
+// Text formats.
+import './formats/countup-number/view';
+
 // Frontend logic that isn't tied to a custom block.
 import './features/core-group-report-overlapping-callout';
