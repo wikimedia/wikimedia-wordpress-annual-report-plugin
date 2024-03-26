@@ -6,6 +6,8 @@ declare( strict_types=1 );
 
 namespace WMF\Reports\Report;
 
+use WMF\Reports\Editor;
+
 const POST_TYPE = 'wmf-report';
 
 /**
@@ -79,7 +81,11 @@ function allow_report_block_types( $allowed_block_types, $block_editor_context )
 			$block_json_files
 		)
 	);
-	return array_merge( $allowed_block_types, $plugin_block_types );
+
+	// We also need the media-text block to be available.
+	$core_blocks = [ 'core/media-text' ];
+
+	return array_merge( $allowed_block_types, $plugin_block_types, $core_blocks );
 }
 
 /**
@@ -98,4 +104,23 @@ function single_template( string $template ) : string {
 	}
 
 	return $template;
+}
+
+/**
+ * Check whether the current admin or frontend page is a WMF Report item or the
+ * editor for a WMF Report item.
+ *
+ * @return bool Whether we're viewing or editing a Report.
+ */
+function is_report_page() : bool {
+	if ( ! is_admin() ) {
+		$current_post_type = get_post_type();
+		if ( ! empty( $current_post_type ) ) {
+			return $current_post_type === POST_TYPE;
+		}
+		// Not sure how to handle returning before post global is set.
+		// Tried to use wpcom_vip_url_to_postid, but it seemed to return the wrong ID.
+		return false;
+	}
+	return Editor\is_edit_post_screen( POST_TYPE );
 }
