@@ -8,7 +8,7 @@ namespace WMF\Reports\Editor\Patterns\Hero;
 const NAME = 'wmf-reports/hero';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"tagName":"section","align":"full","className":"wmf-pattern-reports-hero is-style-default"} -->
+<!-- wp:group {"tagName":"section","align":"full","className":"wmf-pattern-reports-hero is-style-default", "metadata":{"name":"Hero"}}} -->
 <section class="wp-block-group alignfull wmf-pattern-reports-hero is-style-default"><!-- wp:image {"align":"full","id":74087,"sizeSlug":"large","linkDestination":"none","lock":{"move":true,"remove":true}} -->
 <figure class="wp-block-image alignfull size-large"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Pranzo_al_volo.jpg?w=683" alt="" class="wp-image-74087"/></figure>
 <!-- /wp:image -->

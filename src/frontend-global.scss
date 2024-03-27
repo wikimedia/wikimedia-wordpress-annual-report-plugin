@@ -31,15 +31,17 @@ button:focus {
 		padding: 0;
 	}
 
-	h2.wp-block-heading {
-		display: inline-block;
-		background: black;
-		color: white;
-		font-family: $font-family-base;
-		text-transform: uppercase;
-		font-size: 15px;
-		font-weight: bold;
-		padding: 0.5em 1em 0.5em 1em;
+	h2:not(.carousel-slide__heading) {
+		&.wp-block-heading {
+			display: inline-block;
+			background: black;
+			color: white;
+			font-family: $font-family-base;
+			text-transform: uppercase;
+			font-size: 15px;
+			font-weight: bold;
+			padding: 0.5em 1em 0.5em 1em;
+		}
 	}
 
 	.wp-block-group.has-background:not(:only-child) {
@@ -89,4 +91,67 @@ button:focus {
 /* Editor style overrides */
 .editor-styles-wrapper div.wp-block-group.has-background:not(:only-child) {
 	margin-bottom: 0;
+}
+
+.editor-styles-wrapper .single-wmf-report,
+.single-wmf-report {
+	p+p {
+		margin-top: 0;
+	}
+
+	&.wp-block-group.alignfull,
+	.wp-block-group.alignfull,
+	.alignfull,
+	.wp-block[data-align="full"] {
+		margin-left: 0;
+		margin-right: 0;
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+
+		.wp-block-group__inner-container {
+			padding: 0;
+		}
+	}
+
+	.alignwide,
+	.wp-block[data-align="wide"] {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: $width-breakpoint-wide !important;
+		width: 100%;
+	}
+
+	.wp-block-wmf-reports-expandable {
+		margin-bottom: 2rem;
+
+		.expandable-content {
+			position: relative;
+
+			&::after {
+				content: '';
+				height: 2rem;
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%);
+			}
+		}
+
+		.expandable-expander {
+			display: inline-block;
+			padding-left: 3rem;
+			padding-right: 3rem;
+			width: auto;
+		}
+	}
+
+	.has-wmf-report-blue-background-color .wp-block-wmf-reports-expandable .expandable-content::after {
+		background: linear-gradient(180deg, rgba(1, 103, 199, 0) 0%, rgba(1, 103, 199, 1) 80%);
+	}
+
+	.has-base-90-background-color .wp-block-wmf-reports-expandable .expandable-content::after {
+		background: linear-gradient(180deg, rgba(258, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 80%);
+	}
 }
