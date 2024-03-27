@@ -17,16 +17,16 @@
 
 .editor-styles-wrapper.single-wmf-report {
 
-	h2.wp-block-heading {
-		display: inline-block;
-		background: black;
-		color: white;
-		font-family: 'Noto Sans';
-		text-transform: uppercase;
-		font-size: 15px;
-		font-weight: bold;
-		padding: 0.5em 1em 0.5em 1em;
-	}
+	// h2:not(.carousel-slide__heading).wp-block-heading {
+	// 	display: inline-block;
+	// 	background: black;
+	// 	color: white;
+	// 	font-family: 'Noto Sans';
+	// 	text-transform: uppercase;
+	// 	font-size: 15px;
+	// 	font-weight: bold;
+	// 	padding: 0.5em 1em 0.5em 1em;
+	// }
 }
 
 .wp-block-group-is-full-viewport-height {
