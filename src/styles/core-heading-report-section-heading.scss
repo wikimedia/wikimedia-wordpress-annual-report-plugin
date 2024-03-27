@@ -14,11 +14,6 @@
 	.wp-block-group.has-background &:first-child {
 		transform: translate(0, -50%);
 		z-index: 2;
-
-		.single-wmf-report & {
-			// Only apply this rule outside the editor.
-			margin-top: -1.25rem;
-		}
 	}
 }
 
