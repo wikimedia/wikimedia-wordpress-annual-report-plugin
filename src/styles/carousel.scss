@@ -25,16 +25,16 @@
 		}
 	}
 
-	&__markers-wrapper:not(:has(.carousel__slide[style*="visibility: visible;"] .carousel__image img)) {
+	// &__markers-wrapper:not(:has(.carousel-slide[style*="visibility: visible;"] .carousel-slide__image img)) {
 
-		.carousel__buttons-wrapper {
-			top: - 1.5rem;
+	// 	.carousel__buttons-wrapper {
+	// 		top: - 1.5rem;
 
-			@media only screen and ( min-width: 782px ) {
-				top: auto;
-			}
-		}
-	}
+	// 		@media only screen and ( min-width: 782px ) {
+	// 			top: auto;
+	// 		}
+	// 	}
+	// }
 
 	&__buttons {
 		margin: auto;
@@ -105,6 +105,13 @@
 
 	&__image.wp-block-image {
 		margin-bottom: 0;
+		margin-left: -2rem;
+		margin-right: -2rem;
+
+		@media only screen and ( min-width: 782px ) {
+			margin-left: auto;
+			margin-right: auto;
+		}
 
 		img {
 			max-height: 300px;
