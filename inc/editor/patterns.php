@@ -35,10 +35,10 @@ function register_pattern() {
 		'content' => CarouselSlide\PATTERN,
 	] );
 
-	register_block_pattern( OverlayGroup\NAME, [
-		'title' => __( 'Overlay Group', 'wmf-reports' ),
+	register_block_pattern( Overlay\NAME, [
+		'title' => __( 'Overlay', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],
-		'content' => OverlayGroup\PATTERN,
+		'content' => Overlay\PATTERN,
 	] );
 
 	register_block_pattern( Donors\NAME, [

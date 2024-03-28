@@ -28,7 +28,7 @@ require_once __DIR__ . '/inc/editor/patterns/donor.php';
 require_once __DIR__ . '/inc/editor/patterns/finance-tables.php';
 require_once __DIR__ . '/inc/editor/patterns/hero.php';
 require_once __DIR__ . '/inc/editor/patterns/letter-from-the-ceo.php';
-require_once __DIR__ . '/inc/editor/patterns/overlay-group.php';
+require_once __DIR__ . '/inc/editor/patterns/overlay.php';
 require_once __DIR__ . '/inc/editor/styles.php';
 
 Assets\bootstrap();

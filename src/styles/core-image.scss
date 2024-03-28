@@ -1,4 +1,6 @@
+.wp-block-image.is-style-report-image,
 .wp-block-image.is-style-report-image.alignwide,
+.wp-block-image.is-style-report-image-vertical,
 .wp-block-image.is-style-report-image-vertical.alignwide {
 	background-color: #eaecf0;
 	padding-left: 0;
@@ -38,6 +40,7 @@
 	}
 }
 
+.wp-block-image.is-style-report-image-vertical,
 .wp-block-image.is-style-report-image-vertical.alignwide {
 	@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
 		position: relative;
