@@ -25,8 +25,10 @@ function bootstrap() {
  * @return void
  */
 function register_pattern() {
-	register_block_pattern_category( MAIN_CATEGORY_NAME, [
-		'label' => __( 'Wikimedia Reports', 'wmf-reports' ),
+	register_block_pattern( ByTheNumbers\NAME, [
+		'title' => __( 'By the Numbers', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => ByTheNumbers\PATTERN,
 	] );
 
 	register_block_pattern( CarouselSlide\NAME, [
@@ -35,22 +37,46 @@ function register_pattern() {
 		'content' => CarouselSlide\PATTERN,
 	] );
 
-	register_block_pattern( Overlay\NAME, [
-		'title' => __( 'Overlay', 'wmf-reports' ),
+	register_block_pattern( Donate\NAME, [
+		'title' => __( 'Donate', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],
-		'content' => Overlay\PATTERN,
+		'content' => Donate\PATTERN,
 	] );
 
 	register_block_pattern( Donors\NAME, [
-		'title' => __( 'Report Donors', 'wmf-reports' ),
+		'title' => __( 'Donors', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],
 		'content' => Donors\PATTERN,
 	] );
 
+	register_block_pattern( Endowment\NAME, [
+		'title' => __( 'Endowment', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => Endowment\PATTERN,
+	] );
+
+	register_block_pattern( FinanceTables\NAME, [
+		'title' => __( 'Finance Tables', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => FinanceTables\PATTERN,
+	] );
+
+	register_block_pattern( FinancialStatements\NAME, [
+		'title' => __( 'Financial Statements', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => FinancialStatements\PATTERN,
+	] );
+
 	register_block_pattern( Hero\NAME, [
-		'title' => __( 'Report Hero', 'wmf-reports' ),
+		'title' => __( 'Hero', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],
 		'content' => Hero\PATTERN,
+	] );
+
+	register_block_pattern( Leadership\NAME, [
+		'title' => __( 'Leadership', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => Leadership\PATTERN,
 	] );
 
 	register_block_pattern( LetterFromTheCeo\NAME, [
@@ -59,9 +85,31 @@ function register_pattern() {
 		'content' => LetterFromTheCeo\PATTERN,
 	] );
 
-	register_block_pattern( FinanceTables\NAME, [
-		'title' => __( 'Finance Tables', 'wmf-reports' ),
+	register_block_pattern( Overlay\NAME, [
+		'title' => __( 'Overlay', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],
-		'content' => FinanceTables\PATTERN,
+		'content' => Overlay\PATTERN,
+	] );
+
+	register_block_pattern( PreviousReports\NAME, [
+		'title' => __( 'Previous Reports', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => PreviousReports\PATTERN,
+	] );
+
+	register_block_pattern( Report\NAME, [
+		'title' => __( 'Report', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => Report\PATTERN,
+	] );
+
+	register_block_pattern( Wrapped\NAME, [
+		'title' => __( 'Wrapped', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => Wrapped\PATTERN,
+	] );
+
+	register_block_pattern_category( MAIN_CATEGORY_NAME, [
+		'label' => __( 'Wikimedia Reports', 'wmf-reports' ),
 	] );
 }
