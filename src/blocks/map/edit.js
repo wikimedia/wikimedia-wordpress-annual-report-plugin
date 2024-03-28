@@ -232,11 +232,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		mapboxgl.accessToken = wmf?.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
-			center: [ 2.8, 40 ],
+			center: [ 8.18, 11.83 ],
 			projection: 'equalEarth',
 			scrollZoom: false,
 			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
-			zoom: 2,
+			zoom: 1,
 		} );
 
 		map.addControl( fullScreenControl );
