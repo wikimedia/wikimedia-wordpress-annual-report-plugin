@@ -1,6 +1,5 @@
 /* Theme overrides */
 .single-wmf-report {
-
 	.mw-980 {
 		max-width: none;
 		padding: 0;
@@ -19,32 +18,6 @@
 			margin-bottom: 1rem;
 		}
 	}
-
-	// Demo hack.
-	/* stylelint-disable no-descending-specificity */
-	.wp-block-group.has-background {
-		border-bottom-right-radius: 2rem;
-		// margin-bottom: 2rem;
-	}
-	/* stylelint-enable no-descending-specificity */
-}
-
-/* Styles used for core block modifications */
-.wp-block-group-is-full-viewport-height {
-	height: 100vh;
-}
-
-/* Editor style overrides */
-.editor-styles-wrapper div.wp-block-group.has-background:not(:only-child) {
-	margin-bottom: 0;
-}
-
-.editor-styles-wrapper.single-wmf-report .block-editor-block-list__layout>.wp-block .has-background.report-background {
-	padding: 0;
-}
-
-.editor-styles-wrapper.single-wmf-report,
-.single-wmf-report {
 
 	/* Non-block-specific styles */
 	button:focus {
@@ -67,10 +40,8 @@
 		margin-top: 0;
 	}
 
-	&.wp-block-group.alignfull,
 	.wp-block-group.alignfull,
-	.alignfull,
-	.wp-block[data-align="full"] {
+	.alignfull {
 		margin-left: 0;
 		margin-right: 0;
 		max-width: 100%;
@@ -83,8 +54,8 @@
 		}
 	}
 
-	.alignwide,
-	.wp-block[data-align="wide"] {
+	.wp-block-group.alignwide,
+	.alignwide {
 		margin-left: auto;
 		margin-right: auto;
 		max-width: $width-breakpoint-wide !important;
@@ -95,4 +66,13 @@
 			padding-right: 2rem;
 		}
 	}
+
+	.wp-block-group.has-background {
+		border-bottom-right-radius: 2rem;
+	}
+}
+
+/* Styles used for core block modifications */
+.wp-block-group-is-full-viewport-height {
+	height: 100vh;
 }

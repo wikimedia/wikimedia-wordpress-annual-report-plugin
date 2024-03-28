@@ -1,25 +1,9 @@
-@import '../helpers/variables';
-
-.single-wmf-report {
-	.accordion {
-		padding: 0px;
-	}
+.wp-block-wmf-reports-accordion {
+	padding: 0px;
 
 	.accordion-item {
 		margin: 0;
 		padding: 0;
-
-		table {
-			th:first-of-type,
-			td:first-of-type {
-				padding-left: 0;
-			}
-
-			th:last-of-type,
-			td:last-of-type {
-				padding-right: 0;
-			}
-		}
 	}
 
 	.accordion-item__title {
@@ -55,16 +39,20 @@
 
 	.accordion-item__content {
 
-		h6.wp-block-heading {
-			font-family: 'Noto Sans';
-			font-size: #{$font-size-base};
-			line-height: #{$line-height-xxlarge};
-			font-weight: bold;
-			text-transform: uppercase;
-		}
-
 		.wp-block-table {
 			margin-bottom: 1em;
+
+			table {
+				th:first-of-type,
+				td:first-of-type {
+					padding-left: 0;
+				}
+
+				th:last-of-type,
+				td:last-of-type {
+					padding-right: 0;
+				}
+			}
 
 			table, thead, tbody, tr, th, td {
 				border: 0;
