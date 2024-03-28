@@ -6,11 +6,17 @@
 @import "styles/theme";
 
 /* Blocks */
+@import "blocks/expandable/frontend";
+@import "blocks/table-of-contents/frontend";
+
+@import "styles/core-heading-report-section-heading";
+@import "styles/core-group-report-overlapping-callout";
 @import "styles/core-image";
 @import "styles/map";
 @import "styles/stories";
 
 /* Patterns */
+@import "patterns/accordion";
 @import "patterns/carousel";
 @import "patterns/donate";
 @import "patterns/donors";

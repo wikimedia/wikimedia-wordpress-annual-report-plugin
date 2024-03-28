@@ -31,7 +31,7 @@
 }
 
 .expandable-expander::after {
-	background: url(./carat.svg) center center no-repeat;
+	background: url('data:image/svg+xml,<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.795181 1L6.26205 6L11.7289 1" stroke="black" stroke-width="2"/></svg>') center center no-repeat;
 	content: " ";
 	display: inline-block;
 	height: 1em;

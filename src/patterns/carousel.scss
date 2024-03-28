@@ -11,7 +11,7 @@
 		}
 	}
 
-	&__buttons-wrapper {
+	.carousel__buttons-wrapper {
 		bottom: auto;
 		position: absolute;
 		top: calc(300px - 1.5rem);
@@ -26,7 +26,7 @@
 		}
 	}
 
-	&__buttons {
+	.carousel__buttons {
 		margin: auto;
 		max-width: $width-breakpoint-wide;
 		text-align: right;
