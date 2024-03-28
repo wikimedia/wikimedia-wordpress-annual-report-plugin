@@ -12,12 +12,13 @@ const backButton = document.getElementById( 'map-back' );
 const forwardButton = document.getElementById( 'map-forward' );
 const fullScreenControl = new mapboxgl.NavigationControl();
 const map = new mapboxgl.Map( {
+	attributionControl: false,
 	container: 'map',
-	center: [ 2.8, 40 ],
+	center: [ 8.18, 11.83 ],
 	projection: 'equalEarth',
 	scrollZoom: false,
 	style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
-	zoom: 2,
+	zoom: 1,
 } );
 let mapItemIndex = 0;
 let processingAnimation = false;
