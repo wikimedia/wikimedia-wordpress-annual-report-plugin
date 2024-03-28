@@ -1,19 +1,21 @@
 /* Theme overrides */
 .single-wmf-report {
+
 	.mw-980 {
 		max-width: none;
 		padding: 0;
 	}
 
 	h2:not([class*="is-style-"]) {
+
 		&.wp-block-heading {
 			display: inline-block;
-			background: black;
-			color: white;
+			background: #000;
+			color: #fff;
 			font-family: $font-family-base;
 			text-transform: uppercase;
 			font-size: 15px;
-			font-weight: bold;
+			font-weight: 700;
 			padding: 0.5rem 1rem 0.5rem 1rem;
 			margin-bottom: 1rem;
 		}
@@ -29,14 +31,22 @@
 		padding: 0;
 	}
 
-	h1, h2, h3, h4, h5, h6, li, p {
+	// stylelint-disable-next-line no-descending-specificity
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	li,
+	p {
 		font-family: var(--font-family-sans);
 		// font-size: $font-size-base;
 		font-weight: 400;
 		line-height: $line-height-base;
 	}
 
-	p+p {
+	p + p {
 		margin-top: 0;
 	}
 
@@ -49,6 +59,7 @@
 		padding-right: 0;
 		width: 100%;
 
+		// stylelint-disable-next-line no-descending-specificity
 		.wp-block-group__inner-container {
 			padding: 0;
 		}
