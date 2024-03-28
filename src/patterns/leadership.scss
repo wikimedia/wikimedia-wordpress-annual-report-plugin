@@ -1,0 +1,18 @@
+.leadership-board-trusties {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 2rem 0;
+	display: grid;
+	gap: 1rem;
+
+	grid-template-columns: 1fr 1fr;
+
+	@media only screen and ( min-width: 782px ) {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	li {
+		padding: 0;
+		margin: 0;
+	}
+}

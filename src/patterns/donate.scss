@@ -1,0 +1,13 @@
+.donate-section.wp-block-group.has-background {
+	padding: 2rem;
+
+	@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
+		padding: 4rem 4rem 3rem 4rem !important;
+	}
+
+	.has-icon-heart-pink {
+		.wp-block-button__link::before {
+			filter: brightness(0) invert(1);
+		}
+	}
+}
