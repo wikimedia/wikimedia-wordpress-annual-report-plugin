@@ -1,4 +1,5 @@
-.carousel {
+.wp-block-wmf-reports-map.carousel,
+.wp-block-wmf-reports-stories.carousel {
 	overflow: hidden;
 	position: relative;
 
@@ -25,17 +26,6 @@
 		}
 	}
 
-	// &__markers-wrapper:not(:has(.carousel-slide[style*="visibility: visible;"] .carousel-slide__image img)) {
-
-	// 	.carousel__buttons-wrapper {
-	// 		top: - 1.5rem;
-
-	// 		@media only screen and ( min-width: 782px ) {
-	// 			top: auto;
-	// 		}
-	// 	}
-	// }
-
 	&__buttons {
 		margin: auto;
 		max-width: $width-breakpoint-wide;
@@ -51,7 +41,7 @@
 		}
 	}
 
-	&__button {
+	button.carousel__button {
 		background-color: #fff;
 		// stylelint-disable-next-line function-url-quotes
 		background-image: url('data:image/svg+xml,<svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5858 11L0.292908 1.70712L1.70712 0.292908L12.4142 11L1.70712 21.7071L0.292908 20.2929L9.5858 11Z" fill="black"/></svg>');
@@ -82,7 +72,7 @@
 	}
 }
 
-.carousel-slide {
+.wmf-pattern-reports-carousel-slide{
 	font-family: $font-family-base;
 	font-size: $font-size-base;
 	font-weight: 400;

@@ -1,7 +1,3 @@
-// Import variables again here because otherwise the build fails despite the
-// fact that the variables are already imported in the main frontend.scss file
-@import '../../helpers/variables';
-
 .wmf-pattern-letter-from-the-ceo {
 
 	> .wp-block-group__inner-container {
