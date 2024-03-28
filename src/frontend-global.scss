@@ -2,91 +2,29 @@
 @import "helpers/variables";
 @import "helpers/colors";
 
-/* Blocks */
-@import "styles/carousel";
+/* Theme */
+@import "styles/theme";
+
+/* Blocks and Styles */
+@import "blocks/expandable/frontend";
+@import "blocks/table-of-contents/frontend";
+@import "styles/core-heading-report-section-heading";
+@import "styles/core-group-report-overlapping-callout";
+@import "styles/core-image";
 @import "styles/map";
-@import "styles/overlay";
 @import "styles/stories";
 
 /* Patterns */
-@import "patterns/hero/frontend";
-@import "patterns/letter-from-the-ceo/frontend";
-
-/* Non-block-specific styles */
-button:focus {
-	box-shadow: 0 0 0 2px rgba(0, 125, 250, 0.8);
-	border-radius: 2px;
-}
+@import "patterns/accordion";
+@import "patterns/carousel";
+@import "patterns/donate";
+@import "patterns/donors";
+@import "patterns/hero";
+@import "patterns/leadership";
+@import "patterns/letter-from-the-ceo";
+@import "patterns/overlay";
 
 @font-face {
 	font-family: "Noto Sans";
 	src: url(../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf);
-}
-
-/* Theme overrides */
-.single-wmf-report {
-
-	.mw-980 {
-		max-width: none;
-		padding: 0;
-	}
-
-	h2.wp-block-heading {
-		display: inline-block;
-		background: black;
-		color: white;
-		font-family: $font-family-base;
-		text-transform: uppercase;
-		font-size: 15px;
-		font-weight: bold;
-		padding: 0.5em 1em 0.5em 1em;
-	}
-
-	.wp-block-group.has-background:not(:only-child) {
-		margin-bottom: 0;
-	}
-
-	/* Alignments */
-	.article-main > * {
-		max-width: 650px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.article-main > .alignwide {
-		max-width: 920px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.article-main > .alignfull {
-		max-width: none;
-
-		&.is-layout-constrained > * {
-			max-width: 650px;
-		}
-	}
-	[class*="wmf-pattern-reports-"] {
-		.wp-block-group__inner-container {
-			padding-left: 1.25rem;
-			padding-right: 1.25rem;
-		}
-	}
-
-	// Demo hack.
-	/* stylelint-disable no-descending-specificity */
-	.wp-block-group.has-background {
-		border-bottom-right-radius: 2rem;
-	}
-	/* stylelint-enable no-descending-specificity */
-}
-
-/* Styles used for core block modifications */
-.wp-block-group-is-full-viewport-height {
-	height: 100vh;
-}
-
-/* Editor style overrides */
-.editor-styles-wrapper div.wp-block-group.has-background:not(:only-child) {
-	margin-bottom: 0;
 }

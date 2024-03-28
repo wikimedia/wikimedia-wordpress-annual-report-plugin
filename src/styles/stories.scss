@@ -20,17 +20,50 @@
 
 .stories {
 
-	& &__categories-wrapper {
+	&.carousel &__categories-wrapper.alignwide {
 		margin: auto;
 		margin-bottom: 2rem;
+		max-width: calc($width-breakpoint-wide + 4rem) !important;
+		overflow: scroll;
+		padding-left: 0;
+		padding-right: 0;
 		padding-top: 2px;
+		position: relative;
+		scrollbar-width: none;
+	}
+
+	&.carousel &__categories-outer-wrapper.alignwide {
+		max-width: calc($width-breakpoint-wide + 4rem) !important;
+		overflow: hidden;
+		padding-left: 0;
+		padding-right: 0;
+		position: relative;
+
+		&::after,
+		&::before {
+			bottom: 0;
+			background: linear-gradient(90deg, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 80%);
+			content: "";
+			height: 100%;
+			position: absolute;
+			right: 0;
+			width: 2rem;
+			z-index: 1;
+		}
+
+		&::before {
+			background: linear-gradient(270deg, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 80%);
+			left: 0;
+		}
 	}
 
 	&__categories {
 		display: flex;
 		gap: 1rem;
-		width: max-content;
+		padding-left: 2rem;
+		padding-right: 2rem;
 		transition: all 0.5s;
+		width: max-content;
 	}
 
 	.category-slide {
