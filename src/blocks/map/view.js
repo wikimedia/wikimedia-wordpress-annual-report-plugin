@@ -121,6 +121,7 @@ const setMarker = ( id ) => {
 				setTimeout( () => {
 					nextMarkerInfoBox.style.opacity = 1;
 
+					markerInfoBox.style.opacity = 0;
 					markerInfoBox.style.height =
 						nextMarkerInfoBox.offsetHeight + 'px';
 
