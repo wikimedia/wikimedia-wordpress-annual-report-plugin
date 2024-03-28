@@ -3,7 +3,9 @@ const categorySlides = document.getElementsByClassName( 'category-slide' );
 const backButton = document.getElementById( 'carousel-back' );
 const forwardButton = document.getElementById( 'carousel-forward' );
 const backCategoryButton = document.getElementById( 'carousel-slide-back' );
-const forwardCategoryButton = document.getElementById( 'carousel-slide-forward' );
+const forwardCategoryButton = document.getElementById(
+	'carousel-slide-forward'
+);
 const slideCount = stories.length;
 
 const setMarginOffset = ( offset ) => {

@@ -23,7 +23,7 @@
 	&.carousel &__categories-wrapper.alignwide {
 		margin: auto;
 		margin-bottom: 2rem;
-		max-width: calc( $width-breakpoint-wide + 4rem ) !important;
+		max-width: calc($width-breakpoint-wide + 4rem) !important;
 		overflow: scroll;
 		padding-left: 0;
 		padding-right: 0;
@@ -33,7 +33,7 @@
 	}
 
 	&.carousel &__categories-outer-wrapper.alignwide {
-		max-width: calc( $width-breakpoint-wide + 4rem ) !important;
+		max-width: calc($width-breakpoint-wide + 4rem) !important;
 		overflow: hidden;
 		padding-left: 0;
 		padding-right: 0;
