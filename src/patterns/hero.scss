@@ -18,10 +18,10 @@
 	}
 
 	&__heading.alignwide {
-		margin-left: -2rem;
+		margin-left: -2rem !important;
 
 		@media only screen and ( min-width: 782px ) {
-			margin-left: auto;
+			margin-left: auto !important;
 		}
 	}
 
