@@ -1,9 +1,10 @@
 /**
  * Front end funcionality for report pages.
  */
-import './frontend.scss';
+import './frontend-global.scss';
 
-// Import specific block frontend bundles so that they hot-reload properly.
-// Going through wp-scripts for frontend block CSS reloading does not seem
-// to work as expected.
-import './blocks/expandable/frontend.scss';
+// Text formats.
+import './formats/countup-number/view';
+
+// Frontend logic that isn't tied to a custom block.
+import './features/core-group-report-overlapping-callout';

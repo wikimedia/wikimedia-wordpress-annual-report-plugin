@@ -1,0 +1,1 @@
+console.log("Hello World! (from wmf-reports-example-dynamic block)");
