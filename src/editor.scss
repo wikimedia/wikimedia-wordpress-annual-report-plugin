@@ -36,6 +36,17 @@
 	}
 
 	&.single-wmf-report {
+		h1, h2, h3, h4, h5, h6, li, p {
+			font-family: var(--font-family-sans);
+			// font-size: $font-size-base;
+			font-weight: 400;
+			line-height: $line-height-base;
+		}
+
+		p+p {
+			margin-top: 0;
+		}
+
 		.wp-block[data-align="full"] {
 			margin-left: 0;
 			margin-right: 0;
