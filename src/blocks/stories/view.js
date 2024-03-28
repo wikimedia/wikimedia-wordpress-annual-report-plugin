@@ -6,10 +6,13 @@ const slideCount = stories.length;
 
 const setMarginOffset = ( offset ) => {
 	const track = document.getElementsByClassName(
-		'stories__categories'
+		'stories__categories-wrapper'
 	)?.[ 0 ];
 
-	track.style.marginLeft = offset + 'px';
+	track.scrollTo( {
+		left: -offset,
+		behavior: 'smooth',
+	} );
 };
 
 let processingAnimation = false;
@@ -18,12 +21,9 @@ const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
 		'stories__categories-wrapper'
 	)?.[ 0 ];
-	const track = document.getElementsByClassName(
-		'stories__categories'
-	)?.[ 0 ];
 	const activeCategory = document.querySelector( '.category-slide.active' );
 	const lastSlide = document.querySelector( '.category-slide:last-child' );
-	const currentOffset = track.style.marginLeft || 0;
+	const currentOffset = -wrapper.scrollLeft || 0;
 
 	const wrapperPosition = wrapper?.getBoundingClientRect();
 	const categoryPosition = activeCategory?.getBoundingClientRect();
@@ -181,6 +181,7 @@ const setSlide = ( id ) => {
 
 				setTimeout( () => {
 					nextStoryInfoBox.style.opacity = 1;
+					storyInfoBox.style.opacity = 0;
 
 					storyInfoBox.style.height =
 						nextStoryInfoBox.offsetHeight + 'px';
