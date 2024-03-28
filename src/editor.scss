@@ -2,13 +2,14 @@
 @import "helpers/variables";
 @import "helpers/colors";
 
-.editor-styles-wrapper {
-	@import "frontend-global";
-}
-
 @font-face {
 	font-family: "Noto Sans";
 	src: url(../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf);
+}
+
+.editor-styles-wrapper {
+	// stylelint-disable-next-line no-invalid-position-at-import-rule
+	@import "frontend-global";
 }
 
 /* Editor style overrides */
@@ -16,7 +17,7 @@
 	margin-bottom: 0;
 }
 
-.editor-styles-wrapper.single-wmf-report .block-editor-block-list__layout>.wp-block .has-background.report-background {
+.editor-styles-wrapper.single-wmf-report .block-editor-block-list__layout > .wp-block .has-background.report-background {
 	padding: 0;
 }
 
@@ -25,7 +26,9 @@
 	font-family: var(--font-family-sans);
 }
 
+// stylelint-disable-next-line no-duplicate-selectors
 .editor-styles-wrapper {
+
 	.wmf-expandable-dimensions-panel {
 		gap: 0.5rem;
 		align-items: flex-start;
@@ -36,14 +39,23 @@
 	}
 
 	&.single-wmf-report {
-		h1, h2, h3, h4, h5, h6, li, p {
+
+		// stylelint-disable-next-line  no-descending-specificity
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		li,
+		p {
 			font-family: var(--font-family-sans);
 			// font-size: $font-size-base;
 			font-weight: 400;
 			line-height: $line-height-base;
 		}
 
-		p+p {
+		p + p {
 			margin-top: 0;
 		}
 
@@ -75,6 +87,7 @@
 }
 
 /* Shiro Accordion overrides */
+// stylelint-disable-next-line  no-duplicate-selectors
 .editor-styles-wrapper.single-wmf-report {
 
 	.accordion-item__title::after {
@@ -85,7 +98,7 @@
 		width: 48px;
 		vertical-align: middle;
 		transform: none;
-		border: 1px solid #AAAAAA;
+		border: 1px solid #aaa;
 		border-radius: 50%;
 	}
 }

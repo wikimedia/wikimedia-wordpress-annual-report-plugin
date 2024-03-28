@@ -1,5 +1,5 @@
 .wp-block-wmf-reports-accordion {
-	padding: 0px;
+	padding: 0;
 
 	.accordion-item {
 		margin: 0;
@@ -18,7 +18,7 @@
 		width: 48px;
 		vertical-align: middle;
 		transform: none;
-		border: 1px solid #AAAAAA;
+		border: 1px solid #aaa;
 		border-radius: 50%;
 	}
 
@@ -27,8 +27,8 @@
 	}
 
 	.accordion-item__title-text {
-		font-family: 'Noto Sans';
-		font-weight: bold;
+		font-family: $font-family-base;
+		font-weight: 700;
 		font-size: #{$font-size-xlarge};
 		line-height: #{$line-height-xlarge};
 
@@ -43,6 +43,7 @@
 			margin-bottom: 1em;
 
 			table {
+
 				th:first-of-type,
 				td:first-of-type {
 					padding-left: 0;
@@ -54,12 +55,18 @@
 				}
 			}
 
-			table, thead, tbody, tr, th, td {
+			// stylelint-disable-next-line no-descending-specificity
+			table,
+			thead,
+			tbody,
+			tr,
+			th,
+			td {
 				border: 0;
 			}
 
 			thead {
-				border-bottom: 1px solid #C8CCD1;
+				border-bottom: 1px solid #c8ccd1;
 			}
 		}
 	}

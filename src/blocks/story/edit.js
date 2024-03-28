@@ -140,7 +140,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								content:
 									heading ||
 									'Lorem ipsum dolor sit amet vulputate.',
-								level: 3
+								level: 3,
 							} ),
 							createBlock( 'core/paragraph', {
 								className: 'is-style-sans-p',

@@ -12,10 +12,10 @@
 		padding-left: 0;
 
 		p {
-			font-family: 'Noto Sans';
+			font-family: $font-family-base;
 			font-size: #{$font-size-xxlarge};
 			line-height: #{$line-height-xlarge};
-			font-weight: bold;
+			font-weight: 700;
 			font-style: normal;
 		}
 	}
@@ -28,5 +28,3 @@
 		}
 	}
 }
-
-
