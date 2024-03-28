@@ -70,6 +70,28 @@
 	.alignwide {
 		max-width: $width-breakpoint-wide;
 	}
+
+	.stories__categories-buttons {
+		display: none;
+		height: 0;
+		position: relative;
+
+		@media only screen and ( min-width: calc( $width-breakpoint-wide + 12rem ) ) {
+			display: block;
+
+			#carousel-slide-back {
+				left: -6rem;
+				position: absolute;
+				top: -5.5rem;
+			}
+
+			#carousel-slide-forward {
+				position: absolute;
+				right: -6rem;
+				top: -5.5rem;
+			}
+		}
+	}
 }
 
 .wmf-pattern-reports-carousel-slide {

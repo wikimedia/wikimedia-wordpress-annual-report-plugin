@@ -30,10 +30,6 @@
 		padding-top: 2px;
 		position: relative;
 		scrollbar-width: none;
-
-		@media only screen and ( min-width: 782px ) {
-			overflow: hidden;
-		}
 	}
 
 	&.carousel &__categories-outer-wrapper.alignwide {

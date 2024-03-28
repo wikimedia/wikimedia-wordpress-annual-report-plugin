@@ -2,6 +2,8 @@ const stories = document.getElementsByClassName( 'wp-block-wmf-reports-story' );
 const categorySlides = document.getElementsByClassName( 'category-slide' );
 const backButton = document.getElementById( 'carousel-back' );
 const forwardButton = document.getElementById( 'carousel-forward' );
+const backCategoryButton = document.getElementById( 'carousel-slide-back' );
+const forwardCategoryButton = document.getElementById( 'carousel-slide-forward' );
 const slideCount = stories.length;
 
 const setMarginOffset = ( offset ) => {
@@ -31,14 +33,16 @@ const animateSlider = ( currentItemIndex ) => {
 
 	// calculate the position of the category slide.
 
-	// First index should always go to position 0;
-	if ( currentItemIndex === 0 ) {
+	// If there are not enough items to trigger scrolling, return.
+	if ( lastSlidePosition.right < wrapperPosition.right ) {
 		setMarginOffset( 0 );
+		document.querySelector( '.stories__categories-buttons' ).style.display =
+			'none';
 		return;
 	}
 
-	// If there are not enough items to trigger scrolling, return.
-	if ( lastSlidePosition.right < wrapperPosition.right ) {
+	// First index should always go to position 0;
+	if ( currentItemIndex === 0 ) {
 		setMarginOffset( 0 );
 		return;
 	}
@@ -181,8 +185,8 @@ const setSlide = ( id ) => {
 
 				setTimeout( () => {
 					nextStoryInfoBox.style.opacity = 1;
-					storyInfoBox.style.opacity = 0;
 
+					storyInfoBox.style.opacity = 0;
 					storyInfoBox.style.height =
 						nextStoryInfoBox.offsetHeight + 'px';
 
@@ -225,24 +229,28 @@ Array.from( categorySlides ).forEach( ( categorySlide, index ) => {
 	} );
 } );
 
-backButton.addEventListener( 'click', () => {
-	const index = Array.from( stories ).findIndex(
-		( story ) => story.style.visibility === 'visible'
-	);
+[ backCategoryButton, backButton ].forEach( ( button ) => {
+	button.addEventListener( 'click', () => {
+		const index = Array.from( stories ).findIndex(
+			( story ) => story.style.visibility === 'visible'
+		);
 
-	const nextIndex = index - 1 < 0 ? stories.length - 1 : index - 1;
-	setSlide( nextIndex );
+		const nextIndex = index - 1 < 0 ? stories.length - 1 : index - 1;
+		setSlide( nextIndex );
+	} );
 } );
 
-forwardButton.addEventListener( 'click', () => {
-	let index = Array.from( stories ).findIndex(
-		( story ) => story.style.visibility === 'visible'
-	);
+[ forwardCategoryButton, forwardButton ].forEach( ( button ) => {
+	button.addEventListener( 'click', () => {
+		let index = Array.from( stories ).findIndex(
+			( story ) => story.style.visibility === 'visible'
+		);
 
-	if ( index < 0 ) {
-		index = 0;
-	}
+		if ( index < 0 ) {
+			index = 0;
+		}
 
-	const nextIndex = index + 1 > stories.length - 1 ? 0 : index + 1;
-	setSlide( nextIndex );
+		const nextIndex = index + 1 > stories.length - 1 ? 0 : index + 1;
+		setSlide( nextIndex );
+	} );
 } );
