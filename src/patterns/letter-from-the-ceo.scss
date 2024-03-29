@@ -1,0 +1,30 @@
+.wmf-pattern-letter-from-the-ceo {
+
+	> .wp-block-group__inner-container {
+		margin: 0 auto;
+	}
+
+	.wp-block-quote {
+		margin: 0;
+		border: 0;
+		margin-bottom: 1rem;
+		max-width: 100%;
+		padding-left: 0;
+
+		p {
+			font-family: $font-family-base;
+			font-size: #{$font-size-xxlarge};
+			line-height: #{$line-height-xlarge};
+			font-weight: 700;
+			font-style: normal;
+		}
+	}
+
+	.wp-block-group.is-layout-flex {
+		margin-bottom: 1rem;
+
+		img {
+			margin-right: 1rem;
+		}
+	}
+}

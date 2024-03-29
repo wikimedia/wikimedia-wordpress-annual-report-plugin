@@ -13,7 +13,9 @@ Array.from( overlays ).forEach( ( overlay ) => {
 	}
 
 	const parent = overlay.closest( '.wp-block-wmf-reports-story' );
-	const button = parent.querySelector( '.carousel-slide__button' );
+	const button = parent.querySelector(
+		'.wmf-pattern-reports-carousel-slide__button'
+	);
 
 	if ( ! button ) {
 		return;

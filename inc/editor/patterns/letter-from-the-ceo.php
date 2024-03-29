@@ -8,8 +8,8 @@ namespace WMF\Reports\Editor\Patterns\LetterFromTheCeo;
 const NAME = 'wmf-reports/letter-from-the-ceo';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"className":"wmf-pattern-letter-from-the-ceo","layout":{"type":"constrained"}} -->
-<div class="wp-block-group wmf-pattern-letter-from-the-ceo"><!-- wp:heading {"lock":{"move":true,"remove":true}} -->
+<!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"align":"wide","className":"wmf-pattern-letter-from-the-ceo","metadata":{"name":"Letter from the CEO"},"includeInToC":true,"tocLabel":"Letter from the CEO","tocSlug":"toc-letter-from-the-ceo"} -->
+<div class="wp-block-group alignwide wmf-pattern-letter-from-the-ceo"><!-- wp:heading {"lock":{"move":true,"remove":true}} -->
 <h2 class="wp-block-heading">Letter from the CEO</h2>
 <!-- /wp:heading -->
 
@@ -19,19 +19,19 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph --></blockquote>
 <!-- /wp:quote -->
 
-<!-- wp:media-text {"lock":{"move":true,"remove":true}} -->
-<div class="wp-block-media-text is-stacked-on-mobile"><figure class="wp-block-media-text__media"></figure><div class="wp-block-media-text__content"><!-- wp:paragraph {"placeholder":"Content…"} -->
-<p><strong>Maryana Iskander</strong></p>
-<!-- /wp:paragraph -->
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:image {"id":69208,"width":"100px","aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","style":{"layout":{"selfStretch":"fit","flexSize":null}},"className":"is-style-rounded"} -->
+<figure class="wp-block-image size-large is-resized is-style-rounded"><img src="/wp-content/uploads/2022/10/1024px-Maryana_Iskander.jpg?w=1024" alt="Maryana Iskander" class="wp-image-69208" style="aspect-ratio:1;object-fit:cover;width:100px"/></figure>
+<!-- /wp:image -->
 
-<!-- wp:paragraph -->
-<p>CEO of the Wikimedia Foundation</p>
-<!-- /wp:paragraph --></div></div>
-<!-- /wp:media-text -->
+<!-- wp:paragraph {"placeholder":"Content…"} -->
+<p><strong>Maryana Iskander</strong><br>CEO of the Wikimedia Foundation</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:group {"lock":{"move":true,"remove":true},"className":"ceo-letter-content","layout":{"type":"constrained"}} -->
-<div class="wp-block-group ceo-letter-content"><!-- wp:wmf-reports/expandable {"lock":{"move":false,"remove":false}} -->
-<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="300" data-visible-unit="px"><!-- wp:paragraph {"lock":{"move":false,"remove":false}} -->
+<!-- wp:group {"lock":{"move":true,"remove":true},"className":"wmf-pattern-letter-from-the-ceo__content"} -->
+<div class="wp-block-group wmf-pattern-letter-from-the-ceo__content"><!-- wp:wmf-reports/expandable {"visibleAmount":250,"lock":{"move":false,"remove":false}} -->
+<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="250" data-visible-unit="px"><!-- wp:paragraph {"lock":{"move":false,"remove":false}} -->
 <p>Nostrud fugiat reprehenderit voluptate nisi id veniam occaecat. Ullamco amet commodo velit sint reprehenderit fugiat deserunt sit in pariatur esse veniam. Magna consequat anim fugiat labore mollit sit nisi.</p>
 <!-- /wp:paragraph -->
 
