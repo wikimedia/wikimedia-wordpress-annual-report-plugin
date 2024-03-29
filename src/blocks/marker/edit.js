@@ -87,7 +87,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						{
 							align: 'full',
 							backgroundColor: 'wmf-report-bright-yellow',
-							className: 'carousel-slide',
+							className: 'wmf-pattern-reports-carousel-slide',
 							layout: { type: 'constrained' },
 						},
 						[
@@ -104,12 +104,12 @@ export default function Edit( { attributes, setAttributes } ) {
 												{
 													aspectRatio: '4/3',
 													className:
-														'is-style-default carousel-slide__image',
+														'is-style-default wmf-pattern-reports-carousel-slide__image',
 													id: 74197,
 													lightbox: {
 														aspectRatio: '4/3',
 														className:
-															'is-style-default carousel-slide__image',
+															'is-style-default wmf-pattern-reports-carousel-slide__image',
 														enabled: false,
 														id: 74197,
 														linkDestination: 'none',
@@ -133,7 +133,7 @@ export default function Edit( { attributes, setAttributes } ) {
 												'core/paragraph',
 												{
 													className:
-														'carousel-slide__category is-style-sans-p',
+														'wmf-pattern-reports-carousel-slide__category is-style-sans-p',
 													content:
 														'Lorem ipsum / Sit amet',
 													style: {
@@ -152,16 +152,17 @@ export default function Edit( { attributes, setAttributes } ) {
 												'core/heading',
 												{
 													className:
-														'carousel-slide__heading is-style-default',
+														'wmf-pattern-reports-carousel-slide__heading is-style-h2',
 													content:
 														'Lorem ipsum dolor sit amet vulputate.',
+													level: 3,
 												},
 											],
 											[
 												'core/paragraph',
 												{
 													className:
-														'carousel-slide__location is-style-sans-p',
+														'wmf-pattern-reports-carousel-slide__location is-style-sans-p',
 													content:
 														'<em>Line for location</em>',
 												},
@@ -185,7 +186,7 @@ export default function Edit( { attributes, setAttributes } ) {
 															backgroundColor:
 																'base100',
 															className:
-																'is-style-tertiary carousel-slide__button',
+																'is-style-tertiary wmf-pattern-reports-carousel-slide__button',
 															text: 'Read More',
 															style: {
 																elements: {

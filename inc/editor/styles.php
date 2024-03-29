@@ -30,4 +30,18 @@ function register_styles() : void {
 			'label' => __( 'Report Overlapping Callout', 'wmf-reports' ),
 		]
 	);
+	register_block_style(
+		'core/image',
+		[
+			'name' => 'report-image',
+			'label' => __( 'Report Image', 'wmf-reports' ),
+		]
+	);
+	register_block_style(
+		'core/image',
+		[
+			'name' => 'report-image-vertical',
+			'label' => __( 'Report Image Vertical', 'wmf-reports' ),
+		]
+	);
 }

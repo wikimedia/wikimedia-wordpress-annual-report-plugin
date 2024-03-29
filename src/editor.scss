@@ -1,39 +1,93 @@
-@import 'patterns/hero/editor';
-@import 'patterns/letter-from-the-ceo/editor';
+/* Helpers */
+@import "helpers/variables";
+@import "helpers/colors";
 
 @font-face {
 	font-family: "Noto Sans";
 	src: url(../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf);
 }
 
-.wmf-expandable-dimensions-panel {
-	gap: 0.5rem;
-	align-items: flex-start;
-
-	.components-base-control {
-		min-width: 4rem;
-	}
+.editor-styles-wrapper {
+	// stylelint-disable-next-line no-invalid-position-at-import-rule
+	@import "frontend-global";
 }
 
-.editor-styles-wrapper.single-wmf-report {
-
-	h2.wp-block-heading {
-		display: inline-block;
-		background: black;
-		color: white;
-		font-family: 'Noto Sans';
-		text-transform: uppercase;
-		font-size: 15px;
-		font-weight: bold;
-		padding: 0.5em 1em 0.5em 1em;
-	}
+/* Editor style overrides */
+.editor-styles-wrapper div.wp-block-group.has-background:not(:only-child) {
+	margin-bottom: 0;
 }
 
-.wp-block-group-is-full-viewport-height {
-	height: 100vh;
+.editor-styles-wrapper.single-wmf-report .block-editor-block-list__layout > .wp-block .has-background.report-background {
+	padding: 0;
+}
+
+.editor-styles-wrapper [data-block],
+.editor-styles-wrapper ul[data-block] li {
+	font-family: var(--font-family-sans);
+}
+
+// stylelint-disable-next-line no-duplicate-selectors
+.editor-styles-wrapper {
+
+	.wmf-expandable-dimensions-panel {
+		gap: 0.5rem;
+		align-items: flex-start;
+
+		.components-base-control {
+			min-width: 4rem;
+		}
+	}
+
+	&.single-wmf-report {
+
+		// stylelint-disable-next-line  no-descending-specificity
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		li,
+		p {
+			font-family: var(--font-family-sans);
+			// font-size: $font-size-base;
+			font-weight: 400;
+			line-height: $line-height-base;
+		}
+
+		p + p {
+			margin-top: 0;
+		}
+
+		.wp-block[data-align="full"] {
+			margin-left: 0;
+			margin-right: 0;
+			max-width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+			width: 100%;
+
+			.wp-block-group__inner-container {
+				padding: 0;
+			}
+		}
+
+		.wp-block[data-align="wide"] {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: $width-breakpoint-wide !important;
+			width: 100%;
+
+			@media only screen and ( max-width: calc( $width-breakpoint-wide + 4rem ) ) {
+				padding-left: 2rem;
+				padding-right: 2rem;
+			}
+		}
+	}
 }
 
 /* Shiro Accordion overrides */
+// stylelint-disable-next-line  no-duplicate-selectors
 .editor-styles-wrapper.single-wmf-report {
 
 	.accordion-item__title::after {
@@ -44,12 +98,7 @@
 		width: 48px;
 		vertical-align: middle;
 		transform: none;
-		border: 1px solid #AAAAAA;
+		border: 1px solid #aaa;
 		border-radius: 50%;
 	}
-}
-
-.editor-styles-wrapper [data-block],
-.editor-styles-wrapper ul[data-block] li {
-	font-family: var(--font-family-sans);
 }
