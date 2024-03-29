@@ -100,7 +100,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				{
 					align: 'full',
 					backgroundColor: 'wmf-report-blue',
-					className: 'carousel-slide',
+					className: 'wmf-pattern-reports-carousel-slide',
 					layout: { type: 'constrained' },
 					textColor: 'base100',
 				},
@@ -110,12 +110,12 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 							createBlock( 'core/image', {
 								aspectRatio: '4/3',
 								className:
-									'is-style-default carousel-slide__image',
+									'is-style-default wmf-pattern-reports-carousel-slide__image',
 								id: imageId || 74197,
 								lightbox: {
 									aspectRatio: '4/3',
 									className:
-										'is-style-default carousel-slide__image',
+										'is-style-default wmf-pattern-reports-carousel-slide__image',
 									enabled: false,
 									id: imageId || 74197,
 									linkDestination: 'none',
@@ -136,10 +136,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						createBlock( 'core/column', { width: '33.33%' }, [
 							createBlock( 'core/heading', {
 								className:
-									'carousel-slide__heading is-style-default',
+									'wmf-pattern-reports-carousel-slide__heading is-style-h2',
 								content:
 									heading ||
 									'Lorem ipsum dolor sit amet vulputate.',
+								level: 3,
 							} ),
 							createBlock( 'core/paragraph', {
 								className: 'is-style-sans-p',
@@ -151,7 +152,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								createBlock( 'core/button', {
 									backgroundColor: 'base100',
 									className:
-										'is-style-tertiary carousel-slide__button',
+										'is-style-tertiary wmf-pattern-reports-carousel-slide__button',
 									text: 'Read More',
 									style: {
 										elements: {
@@ -181,7 +182,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						'core/group',
 						{
 							align: 'full',
-							className: 'overlay__group',
+							className: 'wp-block-wmf-pattern-overlay',
 							layout: { type: 'constrained' },
 						},
 						[
@@ -193,12 +194,12 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 										createBlock( 'core/image', {
 											aspectRatio: '4/3',
 											className:
-												'is-style-default overlay__image',
+												'is-style-default wp-block-wmf-pattern-overlay__image',
 											id: imageId || 74197,
 											lightbox: {
 												aspectRatio: '4/3',
 												className:
-													'is-style-default overlay__image',
+													'is-style-default wp-block-wmf-pattern-overlay__image',
 												enabled: false,
 												id: imageId || 74197,
 												linkDestination: 'none',
@@ -223,7 +224,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 									[
 										createBlock( 'core/paragraph', {
 											className:
-												'overlay__category is-style-sans-p',
+												'wp-block-wmf-pattern-overlay__category is-style-sans-p',
 											content: 'Lorem ipsum / Sit amet',
 											style: {
 												elements: {
@@ -238,10 +239,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 										} ),
 										createBlock( 'core/heading', {
 											className:
-												'overlay__heading is-style-default',
+												'wp-block-wmf-pattern-overlay__heading is-style-h2',
 											content:
 												heading ||
 												'Lorem ipsum dolor sit amet vulputate.',
+											level: 4,
 										} ),
 									]
 								),
@@ -250,7 +252,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								'core/group',
 								{
 									align: 'wide',
-									className: 'overlay__content',
+									className:
+										'wp-block-wmf-pattern-overlay__content',
 									layout: { type: 'constrained' },
 								},
 								innerBlocks
@@ -353,7 +356,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						{
 							align: 'full',
 							backgroundColor: 'wmf-report-blue',
-							className: 'carousel-slide',
+							className: 'wmf-pattern-reports-carousel-slide',
 							layout: { type: 'constrained' },
 							textColor: 'base100',
 						},
@@ -371,12 +374,12 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 												{
 													aspectRatio: '4/3',
 													className:
-														'is-style-default carousel-slide__image',
+														'is-style-default wmf-pattern-reports-carousel-slide__image',
 													id: 74197,
 													lightbox: {
 														aspectRatio: '4/3',
 														className:
-															'is-style-default carousel-slide__image',
+															'is-style-default wmf-pattern-reports-carousel-slide__image',
 														enabled: false,
 														id: 74197,
 														linkDestination: 'none',
@@ -400,9 +403,10 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 												'core/heading',
 												{
 													className:
-														'carousel-slide__heading is-style-default',
+														'wmf-pattern-reports-carousel-slide__heading is-style-h2',
 													content:
 														'Lorem ipsum dolor sit amet vulputate.',
+													level: 3,
 												},
 											],
 											[
@@ -424,7 +428,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 															backgroundColor:
 																'base100',
 															className:
-																'is-style-tertiary carousel-slide__button',
+																'is-style-tertiary wmf-pattern-reports-carousel-slide__button',
 															text: 'Read More',
 															style: {
 																elements: {

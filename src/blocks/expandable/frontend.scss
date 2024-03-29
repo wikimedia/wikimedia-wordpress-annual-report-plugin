@@ -1,30 +1,42 @@
+.wp-block-wmf-reports-expandable {
+	margin-bottom: 2rem;
+}
+
 .expandable-content {
 	overflow: hidden;
+	position: relative;
 
 	&.is-expanded {
 		height: auto;
+	}
+
+	&::after {
+		bottom: 0;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%);
+		content: "";
+		height: 2rem;
+		position: absolute;
+		width: 100%;
 	}
 }
 
 .expandable-expander {
 	background-color: #fff;
 	border: 1px solid;
+	display: inline-block;
 	font-weight: 700;
-	padding: 0.5rem 0;
+	padding: 0.5rem 3rem 0.5rem 3rem;
 	text-align: center;
-	width: 100%;
-
-	&,
-	.editor-styles-wrapper & {
-		padding: 0.5rem 0;
-	}
+	width: auto;
 }
 
 .expandable-expander::after {
-	background: url(./carat.svg) center center no-repeat;
+	// stylelint-disable-next-line function-url-quotes
+	background: url('data:image/svg+xml,<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.795181 1L6.26205 6L11.7289 1" stroke="black" stroke-width="2"/></svg>') center center no-repeat;
 	content: " ";
 	display: inline-block;
 	height: 1em;
+	margin-left: 0.5rem;
 	padding-left: 0.25rem;
 	width: 13px;
 	vertical-align: middle;
@@ -33,4 +45,19 @@
 .expandable-expander[aria-expanded="true"]::after,
 .expandable-expander.is-expanded-in-editor::after {
 	transform: rotate(180deg);
+}
+
+.has-base-90-background-color .wp-block-wmf-reports-expandable .expandable-content::after {
+	background: linear-gradient(180deg, rgba(258, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 80%);
+}
+
+.has-wmf-report-blue-background-color .wp-block-wmf-reports-expandable {
+
+	.expandable-expander::after {
+		filter: brightness(0) invert(1);
+	}
+
+	.expandable-content::after {
+		background: linear-gradient(180deg, rgba(1, 103, 199, 0) 0%, rgba(1, 103, 199, 1) 80%);
+	}
 }
