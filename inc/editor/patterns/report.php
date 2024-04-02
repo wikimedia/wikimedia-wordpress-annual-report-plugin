@@ -387,8 +387,8 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"width":"33.33%"} -->
-<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none"} -->
+<!-- wp:column {"width":"33.33%", "className":"wmf-pattern-financial-statements__score"} -->
+<div class="wp-block-column wmf-pattern-financial-statements__score" style="flex-basis:33.33%"><!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none"} -->
 <figure class="wp-block-image size-large"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.</figcaption></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
