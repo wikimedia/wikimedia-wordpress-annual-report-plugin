@@ -40,6 +40,7 @@ function set_connect_src_origins( array $headers ) : array {
 		},
 		''
 	);
+
 	$headers['Content-Security-Policy'] = preg_replace(
 		"/connect-src 'self'/",
 		"connect-src 'self' $localhost_srcs",
@@ -48,7 +49,7 @@ function set_connect_src_origins( array $headers ) : array {
 
 	$headers['Content-Security-Policy'] = preg_replace(
 		"/script-src 'self'/",
-		"script-src 'self' blob: https://wikimedia.vipdev.lndo.site",
+		"script-src 'self' blob: https://wikimedia.vipdev.lndo.site https://wikimediafoundation-org-develop.go-vip.co",
 		$headers['Content-Security-Policy']
 	);
 
