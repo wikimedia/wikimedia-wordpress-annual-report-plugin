@@ -10,24 +10,26 @@ const slideCount = stories.length;
 
 const setMarginOffset = ( offset ) => {
 	const track = document.getElementsByClassName(
-		'stories__categories-wrapper'
+		'stories__categories'
 	)?.[ 0 ];
 
-	track.scrollTo( {
-		left: -offset,
-		behavior: 'smooth',
-	} );
+	track.style.marginLeft = offset + 'px';
 };
 
 let processingAnimation = false;
+let touchstartX = 0;
+let touchendX = 0;
 
 const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
 		'stories__categories-wrapper'
 	)?.[ 0 ];
+	const track = document.getElementsByClassName(
+		'stories__categories'
+	)?.[ 0 ];
 	const activeCategory = document.querySelector( '.category-slide.active' );
 	const lastSlide = document.querySelector( '.category-slide:last-child' );
-	const currentOffset = -wrapper.scrollLeft || 0;
+	const currentOffset = track.style.marginLeft || 0;
 
 	const wrapperPosition = wrapper?.getBoundingClientRect();
 	const categoryPosition = activeCategory?.getBoundingClientRect();
@@ -36,7 +38,7 @@ const animateSlider = ( currentItemIndex ) => {
 	// calculate the position of the category slide.
 
 	// If there are not enough items to trigger scrolling, return.
-	if ( lastSlidePosition.right < wrapperPosition.right ) {
+	if ( lastSlidePosition.right + currentOffset < wrapperPosition.right ) {
 		setMarginOffset( 0 );
 		document.querySelector( '.stories__categories-buttons' ).style.display =
 			'none';
@@ -188,12 +190,15 @@ const setSlide = ( id ) => {
 				setTimeout( () => {
 					nextStoryInfoBox.style.opacity = 1;
 
-					storyInfoBox.style.opacity = 0;
 					storyInfoBox.style.height =
 						nextStoryInfoBox.offsetHeight + 'px';
 
 					processingAnimation = true;
 				}, 2 );
+
+				setTimeout( () => {
+					storyInfoBox.style.opacity = 0;
+				}, 250 );
 
 				setTimeout( () => {
 					nextStoryInfoBox.style.height = null;
@@ -255,4 +260,23 @@ Array.from( categorySlides ).forEach( ( categorySlide, index ) => {
 		const nextIndex = index + 1 > stories.length - 1 ? 0 : index + 1;
 		setSlide( nextIndex );
 	} );
+} );
+
+function checkDirection() {
+	if ( touchendX < touchstartX ) {
+		forwardButton.click();
+	}
+
+	if ( touchendX > touchstartX ) {
+		backButton.click();
+	}
+}
+
+document.addEventListener( 'touchstart', ( e ) => {
+	touchstartX = e.changedTouches[ 0 ].screenX;
+} );
+
+document.addEventListener( 'touchend', ( e ) => {
+	touchendX = e.changedTouches[ 0 ].screenX;
+	checkDirection();
 } );

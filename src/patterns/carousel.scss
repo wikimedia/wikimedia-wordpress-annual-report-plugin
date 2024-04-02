@@ -80,15 +80,19 @@
 			display: block;
 
 			#carousel-slide-back {
+				height: 40px;
 				left: -6rem;
 				position: absolute;
 				top: -5.5rem;
+				width: 40px;
 			}
 
 			#carousel-slide-forward {
+				height: 40px;
 				position: absolute;
 				right: -6rem;
 				top: -5.5rem;
+				width: 40px;
 			}
 		}
 	}
