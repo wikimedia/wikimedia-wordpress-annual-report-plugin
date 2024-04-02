@@ -121,12 +121,15 @@ const setMarker = ( id ) => {
 				setTimeout( () => {
 					nextMarkerInfoBox.style.opacity = 1;
 
-					markerInfoBox.style.opacity = 0;
 					markerInfoBox.style.height =
 						nextMarkerInfoBox.offsetHeight + 'px';
 
 					processingAnimation = true;
 				}, 2 );
+
+				setTimeout( () => {
+					markerInfoBox.style.opacity = 0;
+				}, 250 );
 
 				setTimeout( () => {
 					nextMarkerInfoBox.style.height = null;
