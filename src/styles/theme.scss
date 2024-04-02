@@ -6,20 +6,23 @@
 		padding: 0;
 	}
 
-	// We stack our nav on top of Shiro's, in that theme.
-	[data-dropdown-status="initialized"] .primary-nav {
-		min-height: 0;
-		height: 3rem;
+	@media (min-width: 1024px) {
+		// We stack our nav on top of Shiro's, in that theme.
+		[data-dropdown-status="initialized"] .primary-nav {
+			min-height: 0;
+			height: 3rem;
+			margin-top: 4rem;
 
-		&:focus-within {
-			z-index: 10;
+			&:focus-within {
+				z-index: 10;
+			}
 		}
-	}
 
-	[data-dropdown-status="initialized"] .primary-nav__items {
-		max-width: $width-breakpoint-wide;
-		margin: 0 auto;
-		padding: 0;
+		[data-dropdown-status="initialized"] .primary-nav__items {
+			max-width: $width-breakpoint-wide;
+			margin: 0 auto;
+			padding: 0;
+		}
 	}
 
 	.header-main .header-content {
