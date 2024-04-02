@@ -2,14 +2,19 @@
 	margin-top: 2rem;
 
 	.carousel__track-outer {
+		margin: auto;
+		max-width: calc( $width-breakpoint-desktop-extrawide * 2 );
 		scrollbar-width: none;
-		overflow: scroll;
+		overflow: hidden;
 	}
 
 	.carousel__track {
 		display: flex;
 		gap: 2rem;
 		width: max-content;
+		&.animate {
+			transition: all 0.5s;
+		}
 	}
 }
 
