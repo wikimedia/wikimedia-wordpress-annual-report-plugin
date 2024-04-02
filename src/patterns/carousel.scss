@@ -94,6 +94,40 @@
 	}
 }
 
+.wp-block-wmf-reports-report-archive.carousel {
+	.carousel__buttons {
+		margin: 2rem auto 2rem auto;
+		max-width: $width-breakpoint-wide;
+		text-align: right;
+	}
+
+	button.carousel__button {
+		background-color: #fff;
+		// stylelint-disable-next-line function-url-quotes
+		background-image: url('data:image/svg+xml,<svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5858 11L0.292908 1.70712L1.70712 0.292908L12.4142 11L1.70712 21.7071L0.292908 20.2929L9.5858 11Z" fill="black"/></svg>');
+		background-position: 55% 50%;
+		background-repeat: no-repeat;
+		border: 1px solid #aaa;
+		border-radius: 100%;
+		cursor: pointer;
+		height: 48px;
+		margin-left: 0.5rem;
+		width: 48px;
+
+		&--back {
+			transform: scaleX(-1);
+		}
+
+		&:hover {
+			background-color: #ccc;
+		}
+
+		&:focus {
+			border-radius: 100%;
+		}
+	}
+}
+
 .wmf-pattern-reports-carousel-slide {
 	font-family: $font-family-base;
 	font-size: $font-size-base;

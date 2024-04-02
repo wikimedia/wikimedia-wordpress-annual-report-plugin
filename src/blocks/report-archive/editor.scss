@@ -1,0 +1,8 @@
+
+.wp-block-wmf-reports-report-archive .block-editor-block-list__layout > .wp-block[data-align="full"] {
+	max-width: 100%;
+
+	.wp-block:not([data-align="full"]) {
+		max-width: 960px;
+	}
+}
