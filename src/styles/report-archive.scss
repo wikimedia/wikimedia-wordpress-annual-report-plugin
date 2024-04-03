@@ -3,7 +3,7 @@
 
 	.carousel__track-outer {
 		margin: auto;
-		max-width: calc( $width-breakpoint-desktop-extrawide * 2 );
+		max-width: calc($width-breakpoint-desktop-extrawide * 2);
 		scrollbar-width: none;
 		overflow: hidden;
 	}
@@ -12,6 +12,7 @@
 		display: flex;
 		gap: 2rem;
 		width: max-content;
+
 		&.animate {
 			transition: all 0.5s;
 		}
@@ -23,18 +24,22 @@
 	max-width: 240px;
 	width: 240px;
 
+	// stylelint-disable-next-line  no-descending-specificity
 	.wp-block-wmf-reports-report__image {
 		margin-bottom: 2rem;
 
+		// stylelint-disable-next-line  no-descending-specificity
 		img {
 			border-bottom-right-radius: 2rem;
 		}
 	}
 
+	// stylelint-disable-next-line  no-descending-specificity
 	.wp-block-wmf-reports-report__date {
 		margin-bottom: 0.5rem;
 	}
 
+	// stylelint-disable-next-line  no-descending-specificity
 	h3.wp-block-wmf-reports-report__title,
 	.wp-block-wmf-reports-report__title {
 		line-height: 1.2;

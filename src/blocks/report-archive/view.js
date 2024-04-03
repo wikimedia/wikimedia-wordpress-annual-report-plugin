@@ -39,7 +39,8 @@ const setMarginOffset = ( offset, animate = true ) => {
 		track.classList.add( 'animate' );
 	}
 	track.style.marginLeft = -offset + 'px';
-	setTimeout( () => {
+	setTimeout(
+		() => {
 			track.classList.remove( 'animate' );
 			doingAnimation = false;
 		},
@@ -79,7 +80,8 @@ setMarginOffset( slideWidth / 2 );
 
 backButton.addEventListener( 'click', () => {
 	wmfReportPreviousIndex = wmfReportIndex;
-	wmfReportIndex = wmfReportIndex - 1 < 0 ? slideCount - 1 : wmfReportIndex - 1;
+	wmfReportIndex =
+		wmfReportIndex - 1 < 0 ? slideCount - 1 : wmfReportIndex - 1;
 	animateSlider( wmfReportIndex );
 } );
 
@@ -100,11 +102,11 @@ function checkDirection() {
 	}
 }
 
-document.addEventListener( 'touchstart', ( e ) => {
+track.addEventListener( 'touchstart', ( e ) => {
 	touchstartX = e.changedTouches[ 0 ].screenX;
 } );
 
-document.addEventListener( 'touchend', ( e ) => {
+track.addEventListener( 'touchend', ( e ) => {
 	touchendX = e.changedTouches[ 0 ].screenX;
 	checkDirection();
 } );

@@ -99,12 +99,15 @@
 }
 
 .wp-block-wmf-reports-report-archive.carousel {
+
+	// stylelint-disable-next-line  no-descending-specificity
 	.carousel__buttons {
 		margin: 2rem auto 2rem auto;
 		max-width: $width-breakpoint-wide;
 		text-align: right;
 	}
 
+	// stylelint-disable-next-line  no-descending-specificity
 	button.carousel__button {
 		background-color: #fff;
 		// stylelint-disable-next-line function-url-quotes

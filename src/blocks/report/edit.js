@@ -7,10 +7,6 @@ import './editor.scss';
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
- * @param {Object}   props               Block Props.
- * @param {Object}   props.attributes    Block Attributes.
- * @param {number}   props.clientId      Block ClientId.
- * @param {Function} props.setAttributes Set Block Attributes.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.

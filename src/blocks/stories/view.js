@@ -7,12 +7,9 @@ const forwardCategoryButton = document.getElementById(
 	'carousel-slide-forward'
 );
 const slideCount = stories.length;
+const track = document.getElementsByClassName( 'stories__categories' )?.[ 0 ];
 
 const setMarginOffset = ( offset ) => {
-	const track = document.getElementsByClassName(
-		'stories__categories'
-	)?.[ 0 ];
-
 	track.style.marginLeft = offset + 'px';
 };
 
@@ -23,9 +20,6 @@ let touchendX = 0;
 const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
 		'stories__categories-wrapper'
-	)?.[ 0 ];
-	const track = document.getElementsByClassName(
-		'stories__categories'
 	)?.[ 0 ];
 	const activeCategory = document.querySelector( '.category-slide.active' );
 	const lastSlide = document.querySelector( '.category-slide:last-child' );
@@ -272,11 +266,11 @@ function checkDirection() {
 	}
 }
 
-document.addEventListener( 'touchstart', ( e ) => {
+track.addEventListener( 'touchstart', ( e ) => {
 	touchstartX = e.changedTouches[ 0 ].screenX;
 } );
 
-document.addEventListener( 'touchend', ( e ) => {
+track.addEventListener( 'touchend', ( e ) => {
 	touchendX = e.changedTouches[ 0 ].screenX;
 	checkDirection();
 } );
