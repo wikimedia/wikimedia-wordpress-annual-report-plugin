@@ -2,8 +2,8 @@ const initMasonry = function ( container, items, columns, id ) {
 	const containerElement = document.querySelector( container );
 	const containerElementWrapper = containerElement.parentNode;
 	const itemElements = document.querySelectorAll( items );
-	containerElement.style.display = 'none';
-	containerElement.setAttribute( 'aria-hidden', '' );
+	// containerElement.style.display = 'none';
+	// containerElement.setAttribute( 'aria-hidden', '' );
 	const containerElementNew = document.createElement( 'div' );
 	containerElementNew.setAttribute( 'id', id );
 	containerElementNew.classList.add( 'masonry-layout', 'columns-' + columns );
