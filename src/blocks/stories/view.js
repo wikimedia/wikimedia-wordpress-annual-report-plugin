@@ -23,7 +23,7 @@ const animateSlider = ( currentItemIndex ) => {
 	)?.[ 0 ];
 	const activeCategory = document.querySelector( '.category-slide.active' );
 	const lastSlide = document.querySelector( '.category-slide:last-child' );
-	const currentOffset = track.style.marginLeft || 0;
+	const currentOffset = parseInt( track.style.marginLeft ) || 0;
 
 	const wrapperPosition = wrapper?.getBoundingClientRect();
 	const categoryPosition = activeCategory?.getBoundingClientRect();
@@ -32,7 +32,7 @@ const animateSlider = ( currentItemIndex ) => {
 	// calculate the position of the category slide.
 
 	// If there are not enough items to trigger scrolling, return.
-	if ( lastSlidePosition.right + currentOffset < wrapperPosition.right ) {
+	if ( lastSlidePosition.right - currentOffset < wrapperPosition.right ) {
 		setMarginOffset( 0 );
 		document.querySelector( '.stories__categories-buttons' ).style.display =
 			'none';
@@ -49,8 +49,7 @@ const animateSlider = ( currentItemIndex ) => {
 	if ( currentItemIndex === slideCount - 1 ) {
 		// Get width of slide.
 		const slideWidth = categoryPosition.right - categoryPosition.left;
-		const positionOfSlide =
-			categoryPosition.left - parseInt( currentOffset );
+		const positionOfSlide = categoryPosition.left - currentOffset;
 		const newPosition =
 			wrapperPosition.right - ( positionOfSlide + slideWidth );
 		setMarginOffset( newPosition );
@@ -62,8 +61,7 @@ const animateSlider = ( currentItemIndex ) => {
 			'.category-slide:first-child'
 		);
 		const slideWidth = categoryPosition.right - categoryPosition.left;
-		const positionOfSlide =
-			categoryPosition.left - parseInt( currentOffset );
+		const positionOfSlide = categoryPosition.left - currentOffset;
 		const wrapperWidth = wrapperPosition.right - wrapperPosition.left;
 		const halfWrapperWidth = wrapperWidth / 2;
 		const newPosition =
@@ -74,8 +72,7 @@ const animateSlider = ( currentItemIndex ) => {
 
 		// If its going to take our first slide too far right, set the position 0.
 		const firstSlidePosition = firstSlide?.getBoundingClientRect();
-		const firstSlideOffset =
-			firstSlidePosition.left - parseInt( currentOffset );
+		const firstSlideOffset = firstSlidePosition.left - currentOffset;
 		const firstSlideNewPosition = firstSlideOffset + newPosition;
 
 		if ( firstSlideNewPosition > wrapperPosition.left ) {
@@ -84,8 +81,7 @@ const animateSlider = ( currentItemIndex ) => {
 		}
 
 		// If its going to take our last slide too far left, set position of last slide.
-		const lastSlideOffset =
-			lastSlidePosition.right - parseInt( currentOffset );
+		const lastSlideOffset = lastSlidePosition.right - currentOffset;
 		const lastSlideNewPosition = lastSlideOffset + newPosition;
 
 		if ( lastSlideNewPosition < wrapperPosition.right ) {
