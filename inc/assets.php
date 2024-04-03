@@ -18,10 +18,50 @@ function bootstrap() {
 	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_frontend_styles' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_scripts' );
 	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_connect_src_origins', 901, 2 );
+	add_filter( 'wmf/security/csp/allowed_origins', __NAMESPACE__ . '\\allow_mapbox_csp_origins', 10, 2 );
+	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_blob_worker_src_csp', 901, 2 );
 }
 
 /**
- * Expand the 'connect-src' origins list to allow ws: websocket.
+ * Customize CSP origin allow-list for this site to permit loading mapbox.
+ *
+ * @param string[] $allowed_origins List of origins to allow in this CSP.
+ * @param string   $policy_type     CSP type.
+ * @return string[] Filtered list of permitted origins.
+ */
+function allow_mapbox_csp_origins( array $allowed_origins, string $policy_type ) : array {
+	if ( in_array( $policy_type, [ 'script-src', 'style-src' ], true ) ) {
+		$allowed_origins[] = 'https://api.mapbox.com';
+	}
+	return $allowed_origins;
+}
+
+/**
+ * Permit blob: urls in worker-src CSP to allow Mapbox workers.
+ *
+ * We can't do this with the csp/allowed_origins filter because blob: is
+ * not a permitted URL format yet within the security plugin, and we don't
+ * set worker-src in the security plugin by default.
+ *
+ * @param string[] $headers Associative array of headerd to set.
+ * @return string[] Updated HTTP headers array.
+ */
+function set_blob_worker_src_csp( array $headers ) : array {
+	if ( strpos( $headers['Content-Security-Policy'], 'worker-src' ) !== false ) {
+		$headers['Content-Security-Policy'] = preg_replace(
+			"/worker-src /",
+			"worker-src blob:",
+			$headers['Content-Security-Policy']
+		);
+	} else {
+		$headers['Content-Security-Policy'] .= '; worker-src self blob:';
+	}
+
+	return $headers;
+}
+
+/**
+ * Expand the 'connect-src' origins list to allow ws: websocket and Mapbox connections.
  *
  * Resolves bug in wiki security plugin that only permits wss.
  *
@@ -29,6 +69,13 @@ function bootstrap() {
  * @return string[] Updated HTTP headers array.
  */
 function set_connect_src_origins( array $headers ) : array {
+	$headers['Content-Security-Policy'] = preg_replace(
+		"/connect-src 'self'/",
+		"connect-src 'self' https://api.mapbox.com",
+		$headers['Content-Security-Policy']
+	);
+
+	// Further changes in this function are relevant only in local environment.
 	if ( wp_get_environment_type() !== 'local' ) {
 		return $headers;
 	}
@@ -36,7 +83,7 @@ function set_connect_src_origins( array $headers ) : array {
 	$localhost_srcs = array_reduce(
 		[ 8080, 8887, 8888 ],
 		function( $carry, $port ) {
-			return $carry .= "ws://localhost:$port wss://localhost:$port http://localhost:$port https://localhost:$port https://*.mapbox.com ";
+			return $carry .= "ws://localhost:$port wss://localhost:$port http://localhost:$port https://localhost:$port ";
 		},
 		''
 	);
@@ -44,18 +91,6 @@ function set_connect_src_origins( array $headers ) : array {
 	$headers['Content-Security-Policy'] = preg_replace(
 		"/connect-src 'self'/",
 		"connect-src 'self' $localhost_srcs",
-		$headers['Content-Security-Policy']
-	);
-
-	$headers['Content-Security-Policy'] = preg_replace(
-		"/script-src 'self'/",
-		"script-src 'self' blob: https://wikimedia.vipdev.lndo.site https://wikimediafoundation-org-develop.go-vip.co",
-		$headers['Content-Security-Policy']
-	);
-
-	$headers['Content-Security-Policy'] = preg_replace(
-		"/style-src 'self'/",
-		"style-src 'self' https://*.mapbox.com",
 		$headers['Content-Security-Policy']
 	);
 
