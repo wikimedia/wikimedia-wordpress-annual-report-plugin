@@ -11,3 +11,9 @@ import './features/core-group-report-overlapping-callout';
 
 // Open accordion first items by default.
 import './features/accordion';
+
+// Render animations.
+import './features/animations';
+
+// By the numbers masonry.
+import './features/masonry';
