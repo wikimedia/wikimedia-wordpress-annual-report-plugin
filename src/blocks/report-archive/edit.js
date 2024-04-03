@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, useRef, useState } from '@wordpress/element';
 
