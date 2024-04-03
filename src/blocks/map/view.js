@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
-import mapboxgl from '!mapbox-gl';
+import mapboxgl from 'mapbox-gl';
 
 // eslint-disable-next-line no-undef
 mapboxgl.accessToken = wmf.apiKey;
