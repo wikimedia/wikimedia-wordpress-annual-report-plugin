@@ -156,6 +156,7 @@
 	}
 
 	.is-style-sans-p {
+		font-size: $font-size-base;
 		margin-top: 0;
 	}
 
@@ -194,6 +195,7 @@
 		font-weight: 700;
 	}
 
+	&__location,
 	&__location.is-style-sans-p {
 		margin-bottom: 0.5rem;
 
