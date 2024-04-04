@@ -7,19 +7,15 @@ const forwardCategoryButton = document.getElementById(
 	'carousel-slide-forward'
 );
 const slideCount = stories.length;
+const track = document.getElementsByClassName( 'stories__categories' )?.[ 0 ];
 
 const setMarginOffset = ( offset ) => {
-	const track = document.getElementsByClassName(
-		'stories__categories-wrapper'
-	)?.[ 0 ];
-
-	track.scrollTo( {
-		left: -offset,
-		behavior: 'smooth',
-	} );
+	track.style.marginLeft = offset + 'px';
 };
 
 let processingAnimation = false;
+let touchstartX = 0;
+let touchendX = 0;
 
 const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
@@ -27,7 +23,7 @@ const animateSlider = ( currentItemIndex ) => {
 	)?.[ 0 ];
 	const activeCategory = document.querySelector( '.category-slide.active' );
 	const lastSlide = document.querySelector( '.category-slide:last-child' );
-	const currentOffset = -wrapper.scrollLeft || 0;
+	const currentOffset = parseInt( track.style.marginLeft ) || 0;
 
 	const wrapperPosition = wrapper?.getBoundingClientRect();
 	const categoryPosition = activeCategory?.getBoundingClientRect();
@@ -36,7 +32,7 @@ const animateSlider = ( currentItemIndex ) => {
 	// calculate the position of the category slide.
 
 	// If there are not enough items to trigger scrolling, return.
-	if ( lastSlidePosition.right < wrapperPosition.right ) {
+	if ( lastSlidePosition.right - currentOffset < wrapperPosition.right ) {
 		setMarginOffset( 0 );
 		document.querySelector( '.stories__categories-buttons' ).style.display =
 			'none';
@@ -53,8 +49,7 @@ const animateSlider = ( currentItemIndex ) => {
 	if ( currentItemIndex === slideCount - 1 ) {
 		// Get width of slide.
 		const slideWidth = categoryPosition.right - categoryPosition.left;
-		const positionOfSlide =
-			categoryPosition.left - parseInt( currentOffset );
+		const positionOfSlide = categoryPosition.left - currentOffset;
 		const newPosition =
 			wrapperPosition.right - ( positionOfSlide + slideWidth );
 		setMarginOffset( newPosition );
@@ -66,8 +61,7 @@ const animateSlider = ( currentItemIndex ) => {
 			'.category-slide:first-child'
 		);
 		const slideWidth = categoryPosition.right - categoryPosition.left;
-		const positionOfSlide =
-			categoryPosition.left - parseInt( currentOffset );
+		const positionOfSlide = categoryPosition.left - currentOffset;
 		const wrapperWidth = wrapperPosition.right - wrapperPosition.left;
 		const halfWrapperWidth = wrapperWidth / 2;
 		const newPosition =
@@ -78,8 +72,7 @@ const animateSlider = ( currentItemIndex ) => {
 
 		// If its going to take our first slide too far right, set the position 0.
 		const firstSlidePosition = firstSlide?.getBoundingClientRect();
-		const firstSlideOffset =
-			firstSlidePosition.left - parseInt( currentOffset );
+		const firstSlideOffset = firstSlidePosition.left - currentOffset;
 		const firstSlideNewPosition = firstSlideOffset + newPosition;
 
 		if ( firstSlideNewPosition > wrapperPosition.left ) {
@@ -88,8 +81,7 @@ const animateSlider = ( currentItemIndex ) => {
 		}
 
 		// If its going to take our last slide too far left, set position of last slide.
-		const lastSlideOffset =
-			lastSlidePosition.right - parseInt( currentOffset );
+		const lastSlideOffset = lastSlidePosition.right - currentOffset;
 		const lastSlideNewPosition = lastSlideOffset + newPosition;
 
 		if ( lastSlideNewPosition < wrapperPosition.right ) {
@@ -188,12 +180,15 @@ const setSlide = ( id ) => {
 				setTimeout( () => {
 					nextStoryInfoBox.style.opacity = 1;
 
-					storyInfoBox.style.opacity = 0;
 					storyInfoBox.style.height =
 						nextStoryInfoBox.offsetHeight + 'px';
 
 					processingAnimation = true;
 				}, 2 );
+
+				setTimeout( () => {
+					storyInfoBox.style.opacity = 0;
+				}, 250 );
 
 				setTimeout( () => {
 					nextStoryInfoBox.style.height = null;
@@ -255,4 +250,23 @@ Array.from( categorySlides ).forEach( ( categorySlide, index ) => {
 		const nextIndex = index + 1 > stories.length - 1 ? 0 : index + 1;
 		setSlide( nextIndex );
 	} );
+} );
+
+function checkDirection() {
+	if ( touchendX < touchstartX ) {
+		forwardButton.click();
+	}
+
+	if ( touchendX > touchstartX ) {
+		backButton.click();
+	}
+}
+
+track.addEventListener( 'touchstart', ( e ) => {
+	touchstartX = e.changedTouches[ 0 ].screenX;
+} );
+
+track.addEventListener( 'touchend', ( e ) => {
+	touchendX = e.changedTouches[ 0 ].screenX;
+	checkDirection();
 } );

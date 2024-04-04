@@ -383,14 +383,22 @@ const PATTERN = <<<CONTENT
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
 <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:paragraph -->
-<p>Lorem ipsum dolor sit amet iaculis purus viverra velit hendrerit vestibulum pulvinar mauris.</p>
+<p>Lorem ipsum dolor sit amet iaculis purus viverra velit hendrerit vestibulum pulvinar mauris. Lorem ipsum dolor sit amet iaculis purus viverra velit hendrerit vestibulum pulvinar mauris.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"width":"33.33%", "className":"wmf-pattern-financial-statements__score"} -->
-<div class="wp-block-column wmf-pattern-financial-statements__score" style="flex-basis:33.33%"><!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.</figcaption></figure>
-<!-- /wp:image --></div>
+<!-- wp:column {"width":"33.33%","className":"wmf-pattern-financial-statements__score"} -->
+<div class="wp-block-column wmf-pattern-financial-statements__score" style="flex-basis:33.33%"><!-- wp:image {"align":"center","id":74791,"width":"103px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Guidestar-Platinum-Transparence-2021.png?w=103" alt="" class="wp-image-74791" style="width:103px;height:auto"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"align":"center","id":74790,"width":"109px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Four-Stars.png?w=87" alt="" class="wp-image-74790" style="width:109px;height:auto"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center"><strong>98/100</strong></p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -400,9 +408,31 @@ const PATTERN = <<<CONTENT
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3,"className":"is-style-h1"} -->
-<h3 class="wp-block-heading is-style-h1">Accordion goes here</h3>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:shiro/accordion {"className":"wp-block-wmf-reports-accordion\u002d\u002dalt"} -->
+<div class="accordion-wrapper wp-block-shiro-accordion wp-block-wmf-reports-accordion--alt undefined"><!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color">00%</mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item -->
+
+<!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color">00%</mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item -->
+
+<!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color">00%</mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item -->
+
+<!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color">00%</mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item --></div>
+<!-- /wp:shiro/accordion --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -526,9 +556,31 @@ const PATTERN = <<<CONTENT
 <p>Lorem ipsum dolor sit amet congue eu eiusmod tempus eiusmod malesuada mi tristique. Nisl tempor senectus dictum consequat posuere mattis labore. Vel porta aliqua volutpat posuere at nulla at. Molestie nibh dolore mollis elit quisque lacus rhoncus. Ornare venenatis tincidunt id tempor scelerisque quis porta magna.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3,"className":"is-style-h1"} -->
-<h3 class="wp-block-heading is-style-h1">Accordion goes here</h3>
-<!-- /wp:heading --></div>
+<!-- wp:shiro/accordion {"className":"wp-block-wmf-reports-accordion\u002d\u002dalt"} -->
+<div class="accordion-wrapper wp-block-shiro-accordion wp-block-wmf-reports-accordion--alt undefined"><!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst</h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item -->
+
+<!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color"></mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item -->
+
+<!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color"></mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item -->
+
+<!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color"></mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item --></div>
+<!-- /wp:shiro/accordion --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"align":"wide","backgroundColor":"base80","className":"wp-block-wmf-reports-donate","metadata":{"name":"Donate"}} -->
@@ -816,13 +868,225 @@ const PATTERN = <<<CONTENT
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Archive</h3>
+<h3 class="wp-block-heading">Previous Reports</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph -->
-<p>TODO Carousel</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group --></div>
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Archive</h3>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:wmf-reports/report-archive -->
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"id":74154,"width":"240px","height":"300px","scale":"cover","sizeSlug":"large","linkDestination":"none","className":"wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-large is-resized wp-block-wmf-reports-report__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Ingushetia_Russia_Armkhi_Ingush_tower.jpg?w=1024" alt="" class="wp-image-74154" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>FIRST The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>Lorem ipsum dolor sit amet mattis ut magna faucibus vulputate nullam feugiat arcu nulla aliquet.</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+
+<!-- wp:wmf-reports/report -->
+<!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74079,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Rabock_i_narbild.jpg" alt="" class="wp-image-74079" style="object-fit:cover;width:240px;height:300px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
+<p class="wp-block-wmf-reports-report__date has-base-10-color has-text-color has-link-color"><strong>2023</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>LAST The people behind a year of impact around the world</strong></a></h3>
+<!-- /wp:heading -->
+<!-- /wp:wmf-reports/report -->
+<!-- /wp:wmf-reports/report-archive --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 CONTENT;
