@@ -8,7 +8,8 @@ import './frontend.scss';
  * @param {boolean}           forceExpand Force the expansion state.
  */
 function toggleContainer( button, container, forceExpand = false ) {
-	const currentScrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+	const currentScrollPosition =
+		document.documentElement.scrollTop || document.body.scrollTop;
 
 	if ( ! button || ! container ) {
 		// eslint-disable-next-line no-console
