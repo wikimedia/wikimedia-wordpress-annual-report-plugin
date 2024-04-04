@@ -1,4 +1,5 @@
 .wmf-pattern-by-the-numbers {
+	background-color: #14866d !important;
 	overflow: hidden;
 
 	.wmf-pattern-by-the-numbers__masonry {
@@ -19,12 +20,21 @@
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			gap: 8rem;
+			margin-top: 2rem;
 		}
 
 		.masonry-layout > div > img,
 		.masonry-layout > div > div {
 			width: 100%;
 			margin-bottom: 6rem;
+		}
+
+		.masonry-column-1 {
+			padding-left: 4rem;
+		}
+
+		.masonry-column-2 {
+			padding-right: 4rem;
 		}
 
 		// stylelint-disable-next-line no-descending-specificity

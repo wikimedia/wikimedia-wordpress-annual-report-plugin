@@ -12,10 +12,8 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		return;
 	}
 
-	const parent = overlay.closest( '.wp-block-wmf-reports-story' );
-	const button = parent.querySelector(
-		'.wmf-pattern-reports-carousel-slide__button'
-	);
+	const parent = overlay.closest( '.wp-block-group' );
+	const button = parent.querySelector( '.overlay__trigger' );
 
 	if ( ! button ) {
 		return;
@@ -55,6 +53,12 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		body.appendChild( wrapper );
 
 		popover.focus();
+
+		const popoverBounds = popover.getBoundingClientRect();
+		console.log( popoverBounds.height, window.innerHeight );
+		if ( popoverBounds.height < window.innerHeight ) {
+			popover.classList.add( 'center' );
+		}
 
 		// Do fadeIn.
 		setTimeout( () => {
