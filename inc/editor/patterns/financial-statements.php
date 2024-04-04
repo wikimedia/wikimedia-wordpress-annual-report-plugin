@@ -20,14 +20,22 @@ const PATTERN = <<<CONTENT
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
 <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:paragraph -->
-<p>Lorem ipsum dolor sit amet iaculis purus viverra velit hendrerit vestibulum pulvinar mauris.</p>
+<p>Lorem ipsum dolor sit amet iaculis purus viverra velit hendrerit vestibulum pulvinar mauris. Lorem ipsum dolor sit amet iaculis purus viverra velit hendrerit vestibulum pulvinar mauris.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"width":"33.33%", "className":"wmf-pattern-financial-statements__score"} -->
-<div class="wp-block-column wmf-pattern-financial-statements__score" style="flex-basis:33.33%"><!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.</figcaption></figure>
-<!-- /wp:image --></div>
+<!-- wp:column {"width":"33.33%","className":"wmf-pattern-financial-statements__score"} -->
+<div class="wp-block-column wmf-pattern-financial-statements__score" style="flex-basis:33.33%"><!-- wp:image {"align":"center","id":74791,"width":"103px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Guidestar-Platinum-Transparence-2021.png?w=103" alt="" class="wp-image-74791" style="width:103px;height:auto"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"align":"center","id":74790,"width":"109px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Four-Stars.png?w=87" alt="" class="wp-image-74790" style="width:109px;height:auto"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center"><strong>98/100</strong></p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -37,9 +45,31 @@ const PATTERN = <<<CONTENT
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3,"className":"is-style-h1"} -->
-<h3 class="wp-block-heading is-style-h1">Accordion goes here</h3>
-<!-- /wp:heading --></div>
+<div class="wp-block-column"><!-- wp:shiro/accordion {"className":"wp-block-wmf-reports-accordion\u002d\u002dalt"} -->
+<div class="accordion-wrapper wp-block-shiro-accordion wp-block-wmf-reports-accordion--alt undefined"><!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color">00%</mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item -->
+
+<!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color">00%</mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item -->
+
+<!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color">00%</mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item -->
+
+<!-- wp:shiro/accordion-item -->
+<div class="accordion-item"><button class="accordion-item__title"><h3 class="accordion-item__title-text">Lorem ipsum dolor sit amet diam aliquam fusce dictumst <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-10-color">00%</mark></h3></button><div class="accordion-item__content"><!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet aliquam tempus posuere turpis in fusce consequat. Rhoncus duis aliquet at turpis velit orci adipiscing mollis do fermentum. Blandit eros pretium morbi urna malesuada molestie sed pharetra gravida mattis. Ac malesuada odio urna sodales porttitor fusce cras mollis aliquet feugiat aliquam. Ullamcorper volutpat euismod cursus consectetur erat sagittis dapibus aenean turpis nisl habitasse.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:shiro/accordion-item --></div>
+<!-- /wp:shiro/accordion --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
