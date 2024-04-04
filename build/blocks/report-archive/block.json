@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wmf-reports/report-archive",
+  "version": "0.1.0",
+  "title": "Report Archive",
+  "category": "widgets",
+  "icon": "image-flip-horizontal",
+  "description": "",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  },
+  "example": {},
+  "supports": {
+    "html": false,
+    "align": [
+      "full"
+    ]
+  },
+  "textdomain": "wmf-reports",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

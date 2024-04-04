@@ -29,15 +29,15 @@
 		</div>
 	</div>
 	<div class="stories__categories-buttons alignwide">
-		<button id="carousel-slide-back" class="carousel__button carousel__button--back"><span class="screen-reader-text"><?php esc_html_e( 'Previous Map Marker', 'wmf-reports' ); ?></span></button>
-		<button id="carousel-slide-forward" class="carousel__button carousel__button--forward"><span class="screen-reader-text"><?php esc_html_e( 'Next Map Marker', 'wmf-reports' ); ?></span></button>
+		<button id="carousel-slide-back" class="carousel__button carousel__button--back"><span class="screen-reader-text"><?php esc_html_e( 'Previous Story', 'wmf-reports' ); ?></span></button>
+		<button id="carousel-slide-forward" class="carousel__button carousel__button--forward"><span class="screen-reader-text"><?php esc_html_e( 'Next Story', 'wmf-reports' ); ?></span></button>
 	</div>
 	<div class="carousel-wrapper">
 		<?php echo $content; ?>
 		<div class="carousel__buttons-wrapper">
 			<div class="carousel__buttons alignwide">
-				<button id="carousel-back" class="carousel__button carousel__button--back"><span class="screen-reader-text"><?php esc_html_e( 'Previous Map Marker', 'wmf-reports' ); ?></span></button>
-				<button id="carousel-forward" class="carousel__button carousel__button--forward"><span class="screen-reader-text"><?php esc_html_e( 'Next Map Marker', 'wmf-reports' ); ?></span></button>
+				<button id="carousel-back" class="carousel__button carousel__button--back"><span class="screen-reader-text"><?php esc_html_e( 'Previous Story', 'wmf-reports' ); ?></span></button>
+				<button id="carousel-forward" class="carousel__button carousel__button--forward"><span class="screen-reader-text"><?php esc_html_e( 'Next Story', 'wmf-reports' ); ?></span></button>
 			</div>
 		</div>
 	</div>
