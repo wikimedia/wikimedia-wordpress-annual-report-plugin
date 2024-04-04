@@ -22,9 +22,8 @@
 	}
 
 	/* Non-block-specific styles */
-	button:focus {
+	button:focus-visible {
 		box-shadow: 0 0 0 2px rgba(0, 125, 250, 0.8);
-		border-radius: 2px;
 	}
 
 	.report-background.wp-block-group.has-background {
