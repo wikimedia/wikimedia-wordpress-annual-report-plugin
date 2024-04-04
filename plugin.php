@@ -38,6 +38,7 @@ require_once __DIR__ . '/inc/editor/patterns/previous-reports.php';
 require_once __DIR__ . '/inc/editor/patterns/report.php';
 require_once __DIR__ . '/inc/editor/patterns/wrapped.php';
 require_once __DIR__ . '/inc/editor/styles.php';
+require_once __DIR__ . '/inc/theme-integration.php';
 
 Assets\bootstrap();
 Blocks\Core_Group\bootstrap();
@@ -47,3 +48,4 @@ Report\bootstrap();
 Editor\Colors\bootstrap();
 Editor\Patterns\bootstrap();
 Editor\Styles\bootstrap();
+Theme_Integration\bootstrap();
