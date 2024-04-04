@@ -6,6 +6,36 @@
 		padding: 0;
 	}
 
+	@media (min-width: 1024px) {
+		// We stack our nav on top of Shiro's, in that theme.
+		[data-dropdown-status="initialized"] .primary-nav {
+			min-height: 0;
+			height: 3rem;
+			margin-top: 4rem;
+		}
+
+		[data-dropdown-status="initialized"] .primary-nav__items {
+			max-width: $width-breakpoint-wide;
+			margin: 0 auto;
+			padding: 0;
+		}
+
+		// Focus management to enable keyboard selection of page-level nav
+		// items even when they are occluded by the Report navigation.
+		.header-default {
+			position: relative;
+
+			.header-inner .primary-nav:focus-within {
+				background: #fff;
+				z-index: 3000; // overrides 2000 of .site-header
+			}
+		}
+	}
+
+	.header-main .header-content {
+		margin: 0;
+	}
+
 	h2:not([class*="is-style-"]) {
 
 		&.wp-block-heading {
