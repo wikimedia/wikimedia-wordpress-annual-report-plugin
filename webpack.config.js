@@ -10,6 +10,11 @@ const { optimize } = require( 'webpack' );
 
 module.exports = defaultConfig;
 
+module.exports.externals = {
+	...module.exports.externals,
+	'mapbox-gl': 'mapboxgl',
+};
+
 if ( module.exports.mode === 'production' ) {
 	// Disable all codesplitting in production builds. This makes Webpack render
 	// smaller files (by removing Webpack's own boilerplate from the output), and
