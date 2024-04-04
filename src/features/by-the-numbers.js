@@ -16,7 +16,7 @@ const doAnimations = () => {
 	const animations = {
 		'0-ads-served': [ noAdsServedElement, noAdsServedElementDesktop ],
 		'top-visited': [ topVisitedElement, topVisitedElementDesktop ],
-		'piechart': [ pieChartElement, pieChartElementDesktop ],
+		piechart: [ pieChartElement, pieChartElementDesktop ],
 	};
 
 	Object.entries( animations ).forEach( ( [ key, elements ] ) => {
@@ -35,7 +35,7 @@ const doAnimations = () => {
 						type: 'play',
 					},
 				],
-				path: `/wp-content/plugins/wikimedia-wordpress-annual-report-plugin/assets/animations/${key}.json`,
+				path: `/wp-content/plugins/wikimedia-wordpress-annual-report-plugin/assets/animations/${ key }.json`,
 			} );
 
 			const observer = new window.IntersectionObserver(
