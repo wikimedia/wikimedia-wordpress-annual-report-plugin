@@ -85,7 +85,7 @@ function set_blob_worker_src_csp( array $headers ) : array {
 function set_connect_src_origins( array $headers ) : array {
 	$headers['Content-Security-Policy'] = preg_replace(
 		"/connect-src 'self'/",
-		"connect-src 'self' https://api.mapbox.com",
+		"connect-src 'self' https://api.mapbox.com https://events.mapbox.com",
 		$headers['Content-Security-Policy']
 	);
 
