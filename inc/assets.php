@@ -14,12 +14,26 @@ use const WMF\Reports\Blocks\Map\MAP_API_OPTION_KEY;
  * Attach hooks.
  */
 function bootstrap() {
+	add_action( 'init', __NAMESPACE__ . '\\register_dependency_scripts' );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets' );
 	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_frontend_styles' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_scripts' );
 	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_connect_src_origins', 901, 2 );
 	add_filter( 'wmf/security/csp/allowed_origins', __NAMESPACE__ . '\\allow_mapbox_csp_origins', 10, 2 );
 	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_blob_worker_src_csp', 901, 2 );
+}
+
+/**
+ * Register script handles which will be used as dependencies of other blocks.
+ */
+function register_dependency_scripts() : void {
+	wp_register_script(
+		'mapbox-gl',
+		'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js',
+		[],
+		'3.2.0',
+		true
+	);
 }
 
 /**
