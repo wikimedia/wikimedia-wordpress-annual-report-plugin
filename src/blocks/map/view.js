@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/no-unresolved
-import mapboxgl from '!mapbox-gl';
+// Use mapbox off of CDN-loaded window global on frontend.
+const mapboxgl = window.mapboxgl;
 
 // eslint-disable-next-line no-undef
 mapboxgl.accessToken = wmf.apiKey;
