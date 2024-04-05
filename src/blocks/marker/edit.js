@@ -216,7 +216,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 									createBlock( 'core/paragraph', {
 										className:
 											'wmf-pattern-overlay__category is-style-sans-p',
-										content: '<strong>Lorem ipsum / Sit amet</strong>',
+										content:
+											'<strong>Lorem ipsum / Sit amet</strong>',
 										style: {
 											elements: {
 												link: {
@@ -240,7 +241,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 									createBlock( 'core/paragraph', {
 										className:
 											'wmf-pattern-overlay__location is-style-sans-p',
-										content: '<em>Optional line for location</em>',
+										content:
+											'<em>Optional line for location</em>',
 									} ),
 									createBlock( 'core/image', {
 										aspectRatio: '4/3',
