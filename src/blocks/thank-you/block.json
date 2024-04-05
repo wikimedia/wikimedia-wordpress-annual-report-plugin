@@ -15,12 +15,15 @@
 		"lines": {
 			"type": "array",
 			"default": [
-				"Thank You!",
-				"Merci!",
-				"धन्यवाद्",
-				"Gracias!",
-				"Спасибо!",
-				"ありがとう"
+				"Merci",
+				"धन्यवाद",
+				"Gracias",
+				"ありがとう",
+				"شكراً",
+				"Danke",
+				"Asante",
+				"շնորհակալություն",
+				"Thank you!"
 			]
 		}
 	},
