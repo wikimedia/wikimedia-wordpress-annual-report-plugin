@@ -8,18 +8,12 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		''
 	);
 
-	console.log( 'overlay.classList', overlay.classList );
-
 	if ( ! innerHtml.trim() ) {
-		console.log( 'returned' );
 		return;
 	}
 
 	const parent = overlay.closest( '.has_overlay' );
-	console.log( 'parent', parent );
-
 	const button = parent?.querySelector( '.overlay__trigger' );
-	console.log( 'button', button );
 
 	if ( ! button ) {
 		return;
