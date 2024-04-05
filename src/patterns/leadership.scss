@@ -16,6 +16,11 @@
 		.wp-block-group {
 			padding: 0;
 			margin: 0;
+			margin-left: 0;
+
+			.wp-block-group__inner-container {
+				margin-left: 0 !important;
+			}
 
 			.wp-block-buttons,
 			p {

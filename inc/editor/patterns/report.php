@@ -12,7 +12,7 @@ const PATTERN = <<<CONTENT
 <div class="wp-block-group alignfull report-background has-base-90-background-color has-background"><!-- wp:group {"tagName":"section","align":"full","backgroundColor":"wmf-report-blue","className":"wmf-pattern-reports-hero is-style-default","metadata":{"name":""}} -->
 <section class="wp-block-group alignfull wmf-pattern-reports-hero is-style-default has-wmf-report-blue-background-color has-background"><!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero__head","metadata":{"name":""}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-hero__head"><!-- wp:image {"align":"full","id":74087,"sizeSlug":"large","linkDestination":"none","lock":{"move":false,"remove":false},"className":"wmf-pattern-reports-hero__image"} -->
-<figure class="wp-block-image alignfull size-large wmf-pattern-reports-hero__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Pranzo_al_volo.jpg?w=683" alt="" class="wp-image-74087"/></figure>
+<figure class="wp-block-image alignfull size-large wmf-pattern-reports-hero__image"><img src="/wp-content/uploads/2023/12/Pranzo_al_volo.jpg?w=683" alt="" class="wp-image-74087"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero__heading-container","metadata":{"name":""}} -->
@@ -66,7 +66,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group -->
 
 <!-- wp:image {"align":"wide","id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
-<figure class="wp-block-image alignwide size-large is-style-report-image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<figure class="wp-block-image alignwide size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"align":"wide","className":"wmf-pattern-letter-from-the-ceo","includeInToC":true,"tocLabel":"Letter from the CEO","tocSlug":"toc-letter-from-the-ceo"} -->
@@ -82,7 +82,7 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group"><!-- wp:image {"id":69208,"width":"100px","aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","style":{"layout":{"selfStretch":"fit","flexSize":null}},"className":"is-style-rounded"} -->
-<figure class="wp-block-image size-large is-resized is-style-rounded"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2022/10/1024px-Maryana_Iskander.jpg?w=1024" alt="Maryana Iskander" class="wp-image-69208" style="aspect-ratio:1;object-fit:cover;width:100px"/></figure>
+<figure class="wp-block-image size-large is-resized is-style-rounded"><img src="/wp-content/uploads/2022/10/1024px-Maryana_Iskander.jpg?w=1024" alt="Maryana Iskander" class="wp-image-69208" style="aspect-ratio:1;object-fit:cover;width:100px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"placeholder":"Content…"} -->
@@ -291,7 +291,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group -->
 
 <!-- wp:wmf-reports/stories -->
-<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74792\u0022 style=\u0022width: 21px;\u0022 src=\u0022https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Heart-icon.svg\u0022 alt=\u0022\u0022\u003eCategory 1","id":1712315582973} -->
+<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74792\u0022 style=\u0022width: 21px;\u0022 src=\u0022/wp-content/uploads/2024/03/Heart-icon.svg\u0022 alt=\u0022\u0022\u003eCategory 1","id":1712315582973} -->
 <!-- wp:group {"align":"full","backgroundColor":"wmf-report-blue","textColor":"base100","className":"wmf-pattern-reports-carousel-slide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-carousel-slide has-base-100-color has-wmf-report-blue-background-color has-text-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"66.66%"} -->
@@ -373,7 +373,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:wmf-reports/overlay -->
 <!-- /wp:wmf-reports/story -->
 
-<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74792\u0022 style=\u0022width: 21px;\u0022 src=\u0022https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Heart-icon.svg\u0022 alt=\u0022\u0022\u003eCategory 2","id":1712315586654} -->
+<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74792\u0022 style=\u0022width: 21px;\u0022 src=\u0022/wp-content/uploads/2024/03/Heart-icon.svg\u0022 alt=\u0022\u0022\u003eCategory 2","id":1712315586654} -->
 <!-- wp:group {"align":"full","backgroundColor":"wmf-report-blue","textColor":"base100","className":"wmf-pattern-reports-carousel-slide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-carousel-slide has-base-100-color has-wmf-report-blue-background-color has-text-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"66.66%"} -->
@@ -455,7 +455,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:wmf-reports/overlay -->
 <!-- /wp:wmf-reports/story -->
 
-<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74792\u0022 style=\u0022width: 21px;\u0022 src=\u0022https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Heart-icon.svg\u0022 alt=\u0022\u0022\u003eCategory 3","id":1712315588066} -->
+<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74792\u0022 style=\u0022width: 21px;\u0022 src=\u0022/wp-content/uploads/2024/03/Heart-icon.svg\u0022 alt=\u0022\u0022\u003eCategory 3","id":1712315588066} -->
 <!-- wp:group {"align":"full","backgroundColor":"wmf-report-blue","textColor":"base100","className":"wmf-pattern-reports-carousel-slide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-carousel-slide has-base-100-color has-wmf-report-blue-background-color has-text-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"66.66%"} -->
@@ -540,7 +540,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group -->
 
 <!-- wp:image {"align":"wide","id":74090,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image-vertical"} -->
-<figure class="wp-block-image alignwide size-large is-style-report-image-vertical"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Anjo_cacador.jpg?w=1024" alt="" class="wp-image-74090"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<figure class="wp-block-image alignwide size-large is-style-report-image-vertical"><img src="/wp-content/uploads/2023/12/Anjo_cacador.jpg?w=1024" alt="" class="wp-image-74090"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"align":"full","backgroundColor":"base90"} -->
@@ -849,11 +849,11 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:column {"width":"33.33%","className":"wmf-pattern-financial-statements__score"} -->
 <div class="wp-block-column wmf-pattern-financial-statements__score" style="flex-basis:33.33%"><!-- wp:image {"align":"center","id":74791,"width":"103px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Guidestar-Platinum-Transparence-2021.png?w=103" alt="" class="wp-image-74791" style="width:103px;height:auto"/></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="/wp-content/uploads/2024/03/Guidestar-Platinum-Transparence-2021.png?w=103" alt="" class="wp-image-74791" style="width:103px;height:auto"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:image {"align":"center","id":74790,"width":"109px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Four-Stars.png?w=87" alt="" class="wp-image-74790" style="width:109px;height:auto"/></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="/wp-content/uploads/2024/03/Four-Stars.png?w=87" alt="" class="wp-image-74790" style="width:109px;height:auto"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"align":"center"} -->
@@ -930,7 +930,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group -->
 
 <!-- wp:image {"align":"wide","id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
-<figure class="wp-block-image alignwide size-large is-style-report-image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<figure class="wp-block-image alignwide size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"align":"wide","className":"wmf-pattern-reports-leadership","includeInToC":true,"tocLabel":"Leadership","tocSlug":"toc-leadership"} -->
@@ -1012,8 +1012,8 @@ const PATTERN = <<<CONTENT
 <!-- wp:group {"className":"wmf-pattern-overlay","layout":{"type":"constrained"}} -->
 <div class="wp-block-group wmf-pattern-overlay"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":65396,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"https://wikimedia.vipdev.lndo.site/news/2021/09/14/wikimedia-foundation-appoints-maryana-iskander-as-chief-executive-officer/maryana_iskander/"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
-<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.</figcaption></figure>
+<div class="wp-block-column"><!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":65396,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/news/2021/09/14/wikimedia-foundation-appoints-maryana-iskander-as-chief-executive-officer/maryana_iskander/"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
+<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.</figcaption></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
@@ -1060,7 +1060,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group -->
 
 <!-- wp:image {"align":"wide","id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
-<figure class="wp-block-image alignwide size-large is-style-report-image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<figure class="wp-block-image alignwide size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"align":"wide","className":"wmf-pattern-endownment","includeInToC":true,"tocLabel":"Endowment and Legacy","tocSlug":"toc-endowment-and-legacy"} -->
@@ -1132,7 +1132,7 @@ const PATTERN = <<<CONTENT
 <div class="wp-block-group"><!-- wp:wmf-reports/thank-you /-->
 
 <!-- wp:image {"id":74663,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Heart.png?w=144" alt="" class="wp-image-74663"/></figure>
+<figure class="wp-block-image size-large"><img src="/wp-content/uploads/2024/03/Heart.png?w=144" alt="" class="wp-image-74663"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group -->
 
@@ -1356,7 +1356,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group -->
 
 <!-- wp:image {"align":"wide","id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
-<figure class="wp-block-image alignwide size-large is-style-report-image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<figure class="wp-block-image alignwide size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"align":"wide","className":"wmf-pattern-wrapped"} -->
@@ -1393,7 +1393,7 @@ const PATTERN = <<<CONTENT
 <!-- wp:wmf-reports/report-archive -->
 <!-- wp:wmf-reports/report -->
 <!-- wp:image {"id":74154,"width":"240px","height":"300px","scale":"cover","sizeSlug":"large","linkDestination":"none","className":"wp-block-wmf-reports-report__image"} -->
-<figure class="wp-block-image size-large is-resized wp-block-wmf-reports-report__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Ingushetia_Russia_Armkhi_Ingush_tower.jpg?w=1024" alt="" class="wp-image-74154" style="object-fit:cover;width:240px;height:300px"/></figure>
+<figure class="wp-block-image size-large is-resized wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2023/12/Ingushetia_Russia_Armkhi_Ingush_tower.jpg?w=1024" alt="" class="wp-image-74154" style="object-fit:cover;width:240px;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
@@ -1589,7 +1589,7 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:wmf-reports/report -->
 <!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74079,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
-<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Rabock_i_narbild.jpg" alt="" class="wp-image-74079" style="object-fit:cover;width:240px;height:300px"/></figure>
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2023/12/Rabock_i_narbild.jpg" alt="" class="wp-image-74079" style="object-fit:cover;width:240px;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
