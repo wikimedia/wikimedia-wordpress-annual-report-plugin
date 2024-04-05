@@ -1,0 +1,18 @@
+.wp-block-columns.is-style-align-buttons-bottom {
+
+	.wp-block-column :last-child {
+		margin-bottom: 0;
+	}
+
+	@media screen and (max-width: 781px) {
+		.wp-block-column:last-child {
+			margin: 0;
+		}
+	}
+
+	@media screen and (min-width: 782px) {
+		.wp-block-column:last-child > * {
+			margin-left: auto;
+		}
+	}
+}

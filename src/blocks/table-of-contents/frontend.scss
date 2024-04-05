@@ -5,12 +5,9 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-wmf-reports-table-of-contents,
-.editor-styles-wrapper .wp-block-wmf-reports-table-of-contents {
-	ul {
-		padding-left: 1rem;
-		margin: 0;
-	}
+.wp-block-wmf-reports-table-of-contents {
+	padding-left: 1rem;
+	margin: 0;
 
 	li {
 		list-style-type: none;
@@ -38,15 +35,15 @@
 	}
 
 	@media screen and (min-width: 782px) {
-		ul {
-			margin-left: 2rem;
-			padding-left: 2.875rem;
-			border-left: 1px solid var(--wp--preset--color--wmf-report-blue);
-		}
+		margin-left: 2rem;
+		padding-left: 2.875rem;
+		border-left: 1px solid var(--wp--preset--color--wmf-report-blue);
+
 		li {
 			&::before {
 				display: none;
 			}
+
 			a {
 				color: var(--wp--preset--color--wmf-report-blue);
 				font-size: 1.125rem;
