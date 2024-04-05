@@ -5,8 +5,7 @@ import { PanelBody, TextControl } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useEffect, useRef, useState } from '@wordpress/element';
 
-// eslint-disable-next-line import/no-unresolved
-import mapboxgl from '!mapbox-gl';
+import mapboxgl from 'mapbox-gl';
 import './editor.scss';
 
 import InnerBlocksDisplaySingle from '../../components/inner-block-slider/inner-block-single-display';
