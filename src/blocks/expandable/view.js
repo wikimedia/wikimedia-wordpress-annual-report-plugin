@@ -8,6 +8,9 @@ import './frontend.scss';
  * @param {boolean}           forceExpand Force the expansion state.
  */
 function toggleContainer( button, container, forceExpand = false ) {
+	const currentScrollPosition =
+		document.documentElement.scrollTop || document.body.scrollTop;
+
 	if ( ! button || ! container ) {
 		// eslint-disable-next-line no-console
 		console.error( 'Invalid expandable container nodes', {
@@ -32,6 +35,13 @@ function toggleContainer( button, container, forceExpand = false ) {
 		`height: ${ expanded ? 'auto' : visibleAmount + visibleUnit }`
 	);
 	container.classList.toggle( 'is-expanded', expanded );
+
+	window.scrollTo( {
+		top:
+			parseInt( expanded ? visibleAmount : -visibleAmount ) +
+			currentScrollPosition,
+		behavior: 'smooth',
+	} );
 }
 
 /**

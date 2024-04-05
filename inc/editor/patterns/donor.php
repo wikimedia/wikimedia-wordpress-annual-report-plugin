@@ -8,15 +8,13 @@ namespace WMF\Reports\Editor\Patterns\Donors;
 const NAME = 'wmf-reports/donors';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"align":"wide","className":"wmf-pattern-reports-donors","metadata":{"name":"Donors"},"includeInToC":true,"tocLabel":"Donors","tocSlug":"toc-donors"} -->
+<!-- wp:group {"align":"wide","className":"wmf-pattern-reports-donors","includeInToC":true,"tocLabel":"Donors","tocSlug":"toc-donors"} -->
 <div class="wp-block-group alignwide wmf-pattern-reports-donors"><!-- wp:heading -->
 <h2 class="wp-block-heading">Donors</h2>
 <!-- /wp:heading -->
 
 <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
-<div class="wp-block-group"><!-- wp:image {"id":74662,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="/wp-content/uploads/2024/03/Greeting.png?w=246" alt="" class="wp-image-74662"/></figure>
-<!-- /wp:image -->
+<div class="wp-block-group"><!-- wp:wmf-reports/thank-you /-->
 
 <!-- wp:image {"id":74663,"sizeSlug":"large","linkDestination":"none"} -->
 <figure class="wp-block-image size-large"><img src="/wp-content/uploads/2024/03/Heart.png?w=144" alt="" class="wp-image-74663"/></figure>

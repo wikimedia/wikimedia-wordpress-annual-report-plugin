@@ -109,6 +109,12 @@ function register_pattern() {
 		'content' => Wrapped\PATTERN,
 	] );
 
+	register_block_pattern( WelcomePage\NAME, [
+		'title' => __( 'Welcome Page', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => WelcomePage\PATTERN,
+	] );
+
 	register_block_pattern_category( MAIN_CATEGORY_NAME, [
 		'label' => __( 'Wikimedia Reports', 'wmf-reports' ),
 	] );
