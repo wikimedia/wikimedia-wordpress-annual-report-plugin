@@ -201,7 +201,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					createBlock(
 						'core/group',
 						{
-							className: 'wp-block-wmf-pattern-overlay',
+							className: 'wmf-pattern-overlay',
 						},
 						[
 							createBlock(
@@ -215,7 +215,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								[
 									createBlock( 'core/paragraph', {
 										className:
-											'wmf-pattern-reports-overlay__category is-style-sans-p',
+											'wmf-pattern-overlay__category is-style-sans-p',
 										content: '<strong>Lorem ipsum / Sit amet</strong>',
 										style: {
 											elements: {
@@ -230,7 +230,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 									} ),
 									createBlock( 'core/heading', {
 										className:
-											'wmf-pattern-reports-overlay__heading is-style-h2',
+											'wmf-pattern-overlay__heading is-style-h2',
 										content: `<strong>${
 											heading ||
 											'Lorem ipsum dolor sit amet imperdiet</strong>'
@@ -239,18 +239,18 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 									} ),
 									createBlock( 'core/paragraph', {
 										className:
-											'wmf-pattern-reports-overlay__location is-style-sans-p',
+											'wmf-pattern-overlay__location is-style-sans-p',
 										content: '<em>Optional line for location</em>',
 									} ),
 									createBlock( 'core/image', {
 										aspectRatio: '4/3',
 										className:
-											'is-style-default wmf-pattern-reports-overlay__image',
+											'is-style-default wmf-pattern-overlay__image',
 										id: imageId || 74197,
 										lightbox: {
 											aspectRatio: '4/3',
 											className:
-												'is-style-default wmf-pattern-reports-overlay__image',
+												'is-style-default wmf-pattern-overlay__image',
 											enabled: false,
 											id: imageId || 74197,
 											linkDestination: 'none',
@@ -547,7 +547,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 							[
 								'core/group',
 								{
-									className: 'wp-block-wmf-pattern-overlay',
+									className: 'wmf-pattern-overlay',
 								},
 								[
 									[
@@ -563,7 +563,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 												'core/paragraph',
 												{
 													className:
-														'wmf-pattern-reports-overlay__category is-style-sans-p',
+														'wmf-pattern-overlay__category is-style-sans-p',
 													content:
 														'<strong>Lorem ipsum / Sit amet</strong>',
 													style: {
@@ -582,7 +582,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 												'core/heading',
 												{
 													className:
-														'wmf-pattern-reports-overlay__heading is-style-h2',
+														'wmf-pattern-overlay__heading is-style-h2',
 													content:
 														'<strong>Lorem ipsum dolor sit amet imperdiet</strong>',
 													level: 4,
@@ -592,7 +592,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 												'core/paragraph',
 												{
 													className:
-														'wmf-pattern-reports-overlay__location is-style-sans-p',
+														'wmf-pattern-overlay__location is-style-sans-p',
 													content:
 														'<em>Optional line for location</em>',
 												},
@@ -602,12 +602,12 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 												{
 													aspectRatio: '4/3',
 													className:
-														'is-style-default wmf-pattern-reports-overlay__image',
+														'is-style-default wmf-pattern-overlay__image',
 													id: 74197,
 													lightbox: {
 														aspectRatio: '4/3',
 														className:
-															'is-style-default wmf-pattern-reports-overlay__image',
+															'is-style-default wmf-pattern-overlay__image',
 														enabled: false,
 														id: 74197,
 														linkDestination: 'none',

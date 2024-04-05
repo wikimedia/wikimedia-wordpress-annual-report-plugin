@@ -71,7 +71,7 @@
 	}
 }
 
-.wp-block-wmf-pattern-overlay {
+.wmf-pattern-overlay {
 
 	&__image.wp-block-image {
 
@@ -99,7 +99,7 @@
 	.wp-block-group-is-layout-flex {
 		margin-bottom: 1rem;
 
-		.wp-block-wmf-pattern-overlay__image.wp-block-image {
+		.wmf-pattern-overlay__image.wp-block-image {
 
 			@media only screen and (max-width: 781px) {
 				margin-top: -1rem;
@@ -121,7 +121,7 @@
 			margin-top: 0;
 		}
 
-		.wp-block-wmf-pattern-overlay__image.wp-block-image {
+		.wmf-pattern-overlay__image.wp-block-image {
 
 			@media only screen and (max-width: 781px) {
 				margin-bottom: 0;
