@@ -99,10 +99,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				'core/group',
 				{
 					align: 'full',
-					backgroundColor: 'wmf-report-blue',
+					backgroundColor: 'wmf-report-bright-yellow',
 					className: 'wmf-pattern-reports-carousel-slide',
 					layout: { type: 'constrained' },
-					textColor: 'base100',
 				},
 				[
 					createBlock( 'core/columns', { align: 'wide' }, [
@@ -134,13 +133,34 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 							} ),
 						] ),
 						createBlock( 'core/column', { width: '33.33%' }, [
+							createBlock( 'core/paragraph', {
+								className:
+									'wmf-pattern-reports-carousel-slide__category is-style-sans-p',
+								content: 'Lorem ipsum / Sit amet',
+								style: {
+									elements: {
+										link: {
+											color: {
+												text: 'var:preset|color|orange',
+											},
+										},
+									},
+								},
+								textColor: 'orange',
+							} ),
 							createBlock( 'core/heading', {
 								className:
 									'wmf-pattern-reports-carousel-slide__heading is-style-h2',
-								content:
+								content: `<strong>${
 									heading ||
-									'Lorem ipsum dolor sit amet vulputate.',
+									'Lorem ipsum dolor sit amet vulputate.'
+								}</strong>`,
 								level: 3,
+							} ),
+							createBlock( 'core/paragraph', {
+								className:
+									'wmf-pattern-reports-carousel-slide__location is-style-sans-p',
+								content: '<em>Line for location</em>',
 							} ),
 							createBlock( 'core/paragraph', {
 								className: 'is-style-sans-p',
@@ -164,7 +184,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 										},
 									},
 									textColor: 'base10',
-									url: link,
+									url: link || '#',
 								} ),
 							] ),
 						] ),
@@ -181,83 +201,75 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					createBlock(
 						'core/group',
 						{
-							align: 'full',
 							className: 'wp-block-wmf-pattern-overlay',
-							layout: { type: 'constrained' },
 						},
 						[
-							createBlock( 'core/columns', { align: 'wide' }, [
-								createBlock(
-									'core/column',
-									{ width: '66.66%' },
-									[
-										createBlock( 'core/image', {
+							createBlock(
+								'core/group',
+								{
+									layout: {
+										type: 'flex',
+										orientation: 'vertical',
+									},
+								},
+								[
+									createBlock( 'core/paragraph', {
+										className:
+											'wmf-pattern-reports-overlay__category is-style-sans-p',
+										content: '<strong>Lorem ipsum / Sit amet</strong>',
+										style: {
+											elements: {
+												link: {
+													color: {
+														text: 'var:preset|color|orange',
+													},
+												},
+											},
+										},
+										textColor: 'orange',
+									} ),
+									createBlock( 'core/heading', {
+										className:
+											'wmf-pattern-reports-overlay__heading is-style-h2',
+										content: `<strong>${
+											heading ||
+											'Lorem ipsum dolor sit amet imperdiet</strong>'
+										}</strong>`,
+										level: 4,
+									} ),
+									createBlock( 'core/paragraph', {
+										className:
+											'wmf-pattern-reports-overlay__location is-style-sans-p',
+										content: '<em>Optional line for location</em>',
+									} ),
+									createBlock( 'core/image', {
+										aspectRatio: '4/3',
+										className:
+											'is-style-default wmf-pattern-reports-overlay__image',
+										id: imageId || 74197,
+										lightbox: {
 											aspectRatio: '4/3',
 											className:
-												'is-style-default wp-block-wmf-pattern-overlay__image',
+												'is-style-default wmf-pattern-reports-overlay__image',
+											enabled: false,
 											id: imageId || 74197,
-											lightbox: {
-												aspectRatio: '4/3',
-												className:
-													'is-style-default wp-block-wmf-pattern-overlay__image',
-												enabled: false,
-												id: imageId || 74197,
-												linkDestination: 'none',
-												scale: 'cover',
-												sizeSlug: 'full',
-												url:
-													imageUrl ||
-													'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-											},
 											linkDestination: 'none',
 											scale: 'cover',
 											sizeSlug: 'full',
 											url:
 												imageUrl ||
 												'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-										} ),
-									]
-								),
-								createBlock(
-									'core/column',
-									{ width: '33.33%' },
-									[
-										createBlock( 'core/paragraph', {
-											className:
-												'wp-block-wmf-pattern-overlay__category is-style-sans-p',
-											content: 'Lorem ipsum / Sit amet',
-											style: {
-												elements: {
-													link: {
-														color: {
-															text: 'var:preset|color|orange',
-														},
-													},
-												},
-											},
-											textColor: 'orange',
-										} ),
-										createBlock( 'core/heading', {
-											className:
-												'wp-block-wmf-pattern-overlay__heading is-style-h2',
-											content:
-												heading ||
-												'Lorem ipsum dolor sit amet vulputate.',
-											level: 4,
-										} ),
-									]
-								),
-							] ),
-							createBlock(
-								'core/group',
-								{
-									align: 'wide',
-									className:
-										'wp-block-wmf-pattern-overlay__content',
-									layout: { type: 'constrained' },
-								},
-								innerBlocks
+										},
+										linkDestination: 'none',
+										scale: 'cover',
+										sizeSlug: 'full',
+										url:
+											imageUrl ||
+											'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+									} ),
+								]
 							),
+							...innerBlocks,
 						]
 					),
 				]
@@ -473,7 +485,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 													className:
 														'wmf-pattern-reports-carousel-slide__heading is-style-h2',
 													content:
-														'Lorem ipsum dolor sit amet vulputate.',
+														'<strong>Lorem ipsum dolor sit amet vulputate.</strong>',
 													level: 3,
 												},
 											],
