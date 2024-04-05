@@ -8,13 +8,13 @@ namespace WMF\Reports\Editor\Patterns\FinancialStatements;
 const NAME = 'wmf-reports/financial-statements';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"align":"wide","className":"wmf-pattern-financial-statements","metadata":{"name":"Financial Statements"},"includeInToC":true,"tocLabel":"Financial Statments","tocSlug":"toc-financial-statments"} -->
+<!-- wp:group {"align":"wide","className":"wmf-pattern-financial-statements","includeInToC":true,"tocLabel":"Financial Statments","tocSlug":"toc-financial-statments"} -->
 <div class="wp-block-group alignwide wmf-pattern-financial-statements"><!-- wp:heading -->
 <h2 class="wp-block-heading">Financial Statements</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Lorem ipsum dolor sit</h3>
+<h3 class="wp-block-heading"><strong>Lorem ipsum dolor sit</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:columns -->

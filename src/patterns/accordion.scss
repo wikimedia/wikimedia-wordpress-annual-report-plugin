@@ -38,6 +38,12 @@
 	}
 
 	.accordion-item__content {
+		font-size: $font-size-base;
+
+		li,
+		p {
+			font-size: $font-size-base;
+		}
 
 		.wp-block-table {
 			margin-bottom: 1em;
@@ -125,6 +131,10 @@
 
 	.accordion-item__content {
 		font-size: $font-size-base;
+
+		p {
+			font-size: $font-size-base;
+		}
 	}
 	/* stylelint-enable no-descending-specificity */
 }
