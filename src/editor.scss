@@ -107,7 +107,9 @@
 }
 
 // Fixes for the vertical image in the editor.
+// stylelint-disable-next-line  no-duplicate-selectors
 .editor-styles-wrapper {
+
 	.wp-block-image.is-style-report-image-vertical,
 	.wp-block-image.is-style-report-image-vertical.alignwide {
 
@@ -129,8 +131,11 @@
 	}
 }
 
+// stylelint-disable-next-line  no-duplicate-selectors
 .editor-styles-wrapper {
+
 	.wp-block-wmf-pattern-overlay {
+
 		.wp-block-columns {
 
 			@media only screen and (min-width: 782px) {
