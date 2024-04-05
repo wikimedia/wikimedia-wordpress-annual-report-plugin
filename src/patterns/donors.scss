@@ -19,4 +19,12 @@
 			margin: 0;
 		}
 	}
+
+	.is-layout-flex {
+		align-items: flex-start;
+
+		.wp-block-wmf-reports-thank-you {
+			margin-bottom: 3rem;
+		}
+	}
 }

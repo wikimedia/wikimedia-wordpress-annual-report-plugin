@@ -8,18 +8,14 @@ namespace WMF\Reports\Editor\Patterns\PreviousReports;
 const NAME = 'wmf-reports/previous-reports';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"align":"full","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"backgroundColor":"bright-blue","textColor":"base100","className":"wmf-pattern-previous-reports","metadata":{"name":"Previous Reports"}} -->
+<!-- wp:group {"align":"full","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"backgroundColor":"bright-blue","textColor":"base100","className":"wmf-pattern-previous-reports"} -->
 <div class="wp-block-group alignfull wmf-pattern-previous-reports has-base-100-color has-bright-blue-background-color has-text-color has-background has-link-color"><!-- wp:group {"align":"wide","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"textColor":"base100","includeInToC":true,"tocLabel":"Previous Reports","tocSlug":"toc-previous-reports"} -->
 <div class="wp-block-group alignwide has-base-100-color has-text-color has-link-color"><!-- wp:heading -->
 <h2 class="wp-block-heading">Previous Reports</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Previous Reports</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Archive</h3>
+<h3 class="wp-block-heading"><strong>Archive</strong></h3>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
@@ -34,7 +30,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"wp-block-wmf-reports-report__title is-style-default"} -->
-<h3 class="wp-block-heading wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>FIRST The people behind a year of impact around the world</strong></a></h3>
+<h3 class="wp-block-heading wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
 <!-- /wp:heading -->
 <!-- /wp:wmf-reports/report -->
 
@@ -230,7 +226,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
-<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>LAST The people behind a year of impact around the world</strong></a></h3>
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
 <!-- /wp:heading -->
 <!-- /wp:wmf-reports/report -->
 <!-- /wp:wmf-reports/report-archive --></div>
