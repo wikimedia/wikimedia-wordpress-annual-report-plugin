@@ -5,19 +5,21 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-wmf-reports-table-of-contents {
+.wp-block-wmf-reports-table-of-contents,
+.editor-styles-wrapper .wp-block-wmf-reports-table-of-contents {
 	ul {
 		padding-left: 1rem;
+		margin: 0;
 	}
 
 	li {
 		list-style-type: none;
 		margin-bottom: 0.5rem;
 
-		::marker {
-			color: var( --wp--preset--color--wmf-report-link-color );
-			font-size: 0.75rem;
+		&:last-child {
+			margin-bottom: 0;
 		}
+
 		&::before {
 			background-color: var( --wp--preset--color--wmf-report-link-color );
 			border-radius: 50%;
