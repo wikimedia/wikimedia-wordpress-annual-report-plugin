@@ -26,11 +26,11 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:column {"width":"33.33%","className":"wmf-pattern-financial-statements__score"} -->
 <div class="wp-block-column wmf-pattern-financial-statements__score" style="flex-basis:33.33%"><!-- wp:image {"align":"center","id":74791,"width":"103px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Guidestar-Platinum-Transparence-2021.png?w=103" alt="" class="wp-image-74791" style="width:103px;height:auto"/></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="/wp-content/uploads/2024/03/Guidestar-Platinum-Transparence-2021.png?w=103" alt="" class="wp-image-74791" style="width:103px;height:auto"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:image {"align":"center","id":74790,"width":"109px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Four-Stars.png?w=87" alt="" class="wp-image-74790" style="width:109px;height:auto"/></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="/wp-content/uploads/2024/03/Four-Stars.png?w=87" alt="" class="wp-image-74790" style="width:109px;height:auto"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"align":"center"} -->

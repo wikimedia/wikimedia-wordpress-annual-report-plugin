@@ -17,7 +17,7 @@ const PATTERN = <<<CONTENT
 <div class="wp-block-group"><!-- wp:wmf-reports/thank-you /-->
 
 <!-- wp:image {"id":74663,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Heart.png?w=144" alt="" class="wp-image-74663"/></figure>
+<figure class="wp-block-image size-large"><img src="/wp-content/uploads/2024/03/Heart.png?w=144" alt="" class="wp-image-74663"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group -->
 
