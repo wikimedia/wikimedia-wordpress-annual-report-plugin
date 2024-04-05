@@ -6,5 +6,50 @@
  */
 
 .wp-block-wmf-reports-table-of-contents {
-	border-bottom: 1px dotted #777;
+	ul {
+		padding-left: 1rem;
+	}
+
+	li {
+		list-style-type: none;
+		margin-bottom: 0.5rem;
+
+		::marker {
+			color: var( --wp--preset--color--wmf-report-link-color );
+			font-size: 0.75rem;
+		}
+		&::before {
+			background-color: var( --wp--preset--color--wmf-report-link-color );
+			border-radius: 50%;
+			content: " ";
+			display: inline-block;
+			height: 4px;
+			margin: 0 0.75rem 0 -1rem;
+			vertical-align: middle;
+			width: 4px;
+		}
+
+		a {
+			font-size: 0.9375rem;
+			line-height: 1;
+		}
+	}
+
+	@media screen and (min-width: 782px) {
+		ul {
+			margin-left: 2rem;
+			padding-left: 2.875rem;
+			border-left: 1px solid var(--wp--preset--color--wmf-report-blue);
+		}
+		li {
+			&::before {
+				display: none;
+			}
+			a {
+				color: var(--wp--preset--color--wmf-report-blue);
+				font-size: 1.125rem;
+				font-weight: 700;
+			}
+		}
+	}
 }
