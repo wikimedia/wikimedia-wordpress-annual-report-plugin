@@ -8,13 +8,13 @@ namespace WMF\Reports\Editor\Patterns\Endowment;
 const NAME = 'wmf-reports/endowment';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"align":"wide","className":"wmf-pattern-endownment","metadata":{"name":"Endowment"},"includeInToC":true,"tocLabel":"Endowment and Legacy","tocSlug":"toc-endowment-and-legacy"} -->
+<!-- wp:group {"align":"wide","className":"wmf-pattern-endownment","includeInToC":true,"tocLabel":"Endowment and Legacy","tocSlug":"toc-endowment-and-legacy"} -->
 <div class="wp-block-group alignwide wmf-pattern-endownment"><!-- wp:heading -->
 <h2 class="wp-block-heading">Endowment and Legacy</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Lorem ipsum dolor sit amet cras tristique integer ullamcorper arcu bibendum interdum ultricies.</h3>
+<h3 class="wp-block-heading"><strong>Lorem ipsum dolor sit amet cras tristique integer ullamcorper arcu bibendum interdum ultricies.</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->

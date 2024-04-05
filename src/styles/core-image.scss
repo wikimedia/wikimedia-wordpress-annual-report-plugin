@@ -51,23 +51,22 @@
 .wp-block-image.is-style-report-image-vertical.alignwide {
 
 	@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
-		position: relative;
-		background-color: transparent;
+		display: flex;
 
 		figcaption {
-			background-color: #eaecf0;
-			position: absolute;
-			max-width: 25%;
-			width: 100%;
-			top: 50%;
-			transform: translateY(-50%);
-			right: 0;
-			padding: 1rem;
 			border-bottom-right-radius: 2rem;
+			padding: 1rem;
+			position: relative;
+			width: 100%;
+
+			mark {
+				position: absolute;
+				bottom: 1rem;
+			}
 		}
 
 		img {
-			max-width: 83.33%;
+			max-width: 66.66%;
 		}
 	}
 }

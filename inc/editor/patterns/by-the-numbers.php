@@ -8,14 +8,14 @@ namespace WMF\Reports\Editor\Patterns\ByTheNumbers;
 const NAME = 'wmf-reports/by-the-numbers';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"align":"full","backgroundColor":"green","className":"wmf-pattern-by-the-numbers","metadata":{"name":"By the Numbers"},"tocLabel":"","tocSlug":"toc-"} -->
-<div class="wp-block-group alignfull wmf-pattern-by-the-numbers has-green-background-color has-background"><!-- wp:group {"align":"wide","includeInToC":true,"tocLabel":"By the Numbers","tocSlug":"toc-by-the-numbers"} -->
+<!-- wp:group {"align":"full","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"backgroundColor":"green-30","textColor":"base100","className":"wmf-pattern-by-the-numbers","tocLabel":"","tocSlug":"toc-"} -->
+<div class="wp-block-group alignfull wmf-pattern-by-the-numbers has-base-100-color has-green-30-background-color has-text-color has-background has-link-color"><!-- wp:group {"align":"wide","includeInToC":true,"tocLabel":"By the Numbers","tocSlug":"toc-by-the-numbers"} -->
 <div class="wp-block-group alignwide"><!-- wp:heading -->
 <h2 class="wp-block-heading">By the Numbers</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">A good year in stats</h3>
+<h3 class="wp-block-heading"><strong>A good year in stats</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->

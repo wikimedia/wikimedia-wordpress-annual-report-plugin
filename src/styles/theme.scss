@@ -52,9 +52,8 @@
 	}
 
 	/* Non-block-specific styles */
-	button:focus {
+	button:focus-visible {
 		box-shadow: 0 0 0 2px rgba(0, 125, 250, 0.8);
-		border-radius: 2px;
 	}
 
 	.report-background.wp-block-group.has-background {
@@ -120,4 +119,18 @@
 /* Styles used for core block modifications */
 .wp-block-group-is-full-viewport-height {
 	height: 100vh;
+}
+
+.wp-block-button.is-style-transparent {
+
+	.wp-block-button__link.has-base-100-background-color {
+		background: #fff !important;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: none;
+			opacity: 0.5;
+			text-decoration: none;
+		}
+	}
 }
