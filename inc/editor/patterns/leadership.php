@@ -87,8 +87,8 @@ const PATTERN = <<<CONTENT
 <!-- wp:group {"className":"wmf-pattern-overlay","layout":{"type":"constrained"}} -->
 <div class="wp-block-group wmf-pattern-overlay"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":65396,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"https://wikimedia.vipdev.lndo.site/news/2021/09/14/wikimedia-foundation-appoints-maryana-iskander-as-chief-executive-officer/maryana_iskander/"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
-<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.</figcaption></figure>
+<div class="wp-block-column"><!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":65396,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/news/2021/09/14/wikimedia-foundation-appoints-maryana-iskander-as-chief-executive-officer/maryana_iskander/"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
+<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.</figcaption></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
