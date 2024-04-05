@@ -37,6 +37,7 @@ require_once __DIR__ . '/inc/editor/patterns/overlay.php';
 require_once __DIR__ . '/inc/editor/patterns/previous-reports.php';
 require_once __DIR__ . '/inc/editor/patterns/report.php';
 require_once __DIR__ . '/inc/editor/patterns/wrapped.php';
+require_once __DIR__ . '/inc/editor/patterns/welcome-page.php';
 require_once __DIR__ . '/inc/editor/styles.php';
 require_once __DIR__ . '/inc/theme-integration.php';
 
