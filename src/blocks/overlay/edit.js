@@ -94,20 +94,56 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		const newBlocks = createBlock(
 			'core/group',
 			{
-				align: 'full',
-				className: 'overlay__group',
-				layout: { type: 'constrained' },
+				className: 'wmf-pattern-overlay',
 			},
 			[
-				createBlock( 'core/columns', { align: 'wide' }, [
-					createBlock( 'core/column', { width: '66.66%' }, [
+				createBlock(
+					'core/group',
+					{
+						layout: {
+							type: 'flex',
+							orientation: 'vertical',
+						},
+					},
+					[
+						createBlock( 'core/paragraph', {
+							className:
+								'wmf-pattern-overlay__category is-style-sans-p',
+							content: '<strong>Lorem ipsum / Sit amet</strong>',
+							style: {
+								elements: {
+									link: {
+										color: {
+											text: 'var:preset|color|orange',
+										},
+									},
+								},
+							},
+							textColor: 'orange',
+						} ),
+						createBlock( 'core/heading', {
+							className:
+								'wmf-pattern-overlay__heading is-style-h2',
+							content: `<strong>${
+								heading ||
+								'Lorem ipsum dolor sit amet imperdiet</strong>'
+							}</strong>`,
+							level: 4,
+						} ),
+						createBlock( 'core/paragraph', {
+							className:
+								'wmf-pattern-overlay__location is-style-sans-p',
+							content: '<em>Optional line for location</em>',
+						} ),
 						createBlock( 'core/image', {
 							aspectRatio: '4/3',
-							className: 'is-style-default overlay__image',
+							className:
+								'is-style-default wmf-pattern-overlay__image',
 							id: imageId || 74197,
 							lightbox: {
 								aspectRatio: '4/3',
-								className: 'is-style-default overlay__image',
+								className:
+									'is-style-default wmf-pattern-overlay__image',
 								enabled: false,
 								id: imageId || 74197,
 								linkDestination: 'none',
@@ -124,39 +160,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								imageUrl ||
 								'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
 						} ),
-					] ),
-					createBlock( 'core/column', { width: '33.33%' }, [
-						createBlock( 'core/paragraph', {
-							className: 'overlay__category is-style-sans-p',
-							content: 'Lorem ipsum / Sit amet',
-							style: {
-								elements: {
-									link: {
-										color: {
-											text: 'var:preset|color|orange',
-										},
-									},
-								},
-							},
-							textColor: 'orange',
-						} ),
-						createBlock( 'core/heading', {
-							className: 'overlay__heading is-style-default',
-							content:
-								heading ||
-								'Lorem ipsum dolor sit amet vulputate.',
-						} ),
-					] ),
-				] ),
-				createBlock(
-					'core/group',
-					{
-						align: 'wide',
-						className: 'overlay__content',
-						layout: { type: 'constrained' },
-					},
-					innerBlocks
+					]
 				),
+				...innerBlocks,
 			]
 		);
 
