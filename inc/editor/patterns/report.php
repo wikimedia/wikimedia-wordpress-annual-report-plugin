@@ -8,32 +8,32 @@ namespace WMF\Reports\Editor\Patterns\Report;
 const NAME = 'wmf-reports/report';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"align":"full","backgroundColor":"base90","className":"report-background","metadata":{"name":"Background Report"}} -->
-<div class="wp-block-group alignfull report-background has-base-90-background-color has-background"><!-- wp:group {"tagName":"section","align":"full","backgroundColor":"wmf-report-blue","className":"wmf-pattern-reports-hero is-style-default","metadata":{"name":"Hero"}} -->
-<section class="wp-block-group alignfull wmf-pattern-reports-hero is-style-default has-wmf-report-blue-background-color has-background"><!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero__head","metadata":{"name":"Hero - Head"}} -->
+<!-- wp:group {"align":"full","backgroundColor":"base90","className":"report-background","metadata":{"name":"Report Background"}} -->
+<div class="wp-block-group alignfull report-background has-base-90-background-color has-background"><!-- wp:group {"tagName":"section","align":"full","backgroundColor":"wmf-report-blue","className":"wmf-pattern-reports-hero is-style-default","metadata":{"name":""}} -->
+<section class="wp-block-group alignfull wmf-pattern-reports-hero is-style-default has-wmf-report-blue-background-color has-background"><!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero__head","metadata":{"name":""}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-hero__head"><!-- wp:image {"align":"full","id":74087,"sizeSlug":"large","linkDestination":"none","lock":{"move":false,"remove":false},"className":"wmf-pattern-reports-hero__image"} -->
 <figure class="wp-block-image alignfull size-large wmf-pattern-reports-hero__image"><img src="/wp-content/uploads/2023/12/Pranzo_al_volo.jpg?w=683" alt="" class="wp-image-74087"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero__heading-container","metadata":{"name":"Hero - Heading Container"}} -->
-<div class="wp-block-group alignfull wmf-pattern-reports-hero__heading-container"><!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"align":"wide","className":"wmf-pattern-reports-hero__heading","metadata":{"name":"Header - Heading"}} -->
-<div class="wp-block-group alignwide wmf-pattern-reports-hero__heading"><!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base90"}}}},"backgroundColor":"wmf-report-brightblue","textColor":"base90","className":"wmf-pattern-reports-hero__heading-pill","metadata":{"name":"Hero - Heading Pill"}} -->
+<!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero__heading-container","metadata":{"name":""}} -->
+<div class="wp-block-group alignfull wmf-pattern-reports-hero__heading-container"><!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"align":"wide","className":"wmf-pattern-reports-hero__heading"} -->
+<div class="wp-block-group alignwide wmf-pattern-reports-hero__heading"><!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base90"}}}},"backgroundColor":"wmf-report-brightblue","textColor":"base90","className":"wmf-pattern-reports-hero__heading-pill"} -->
 <div class="wp-block-group wmf-pattern-reports-hero__heading-pill has-base-90-color has-wmf-report-brightblue-background-color has-text-color has-background has-link-color"><!-- wp:heading {"className":"wmf-pattern-reports-hero__heading-label"} -->
 <h2 class="wp-block-heading wmf-pattern-reports-hero__heading-label">Annual Report 2025</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":1} -->
-<h1 class="wp-block-heading">The people behind a year of impact around the world</h1>
+<h1 class="wp-block-heading"><strong>The people behind a year of impact around the world</strong></h1>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"lock":{"move":true,"remove":true},"align":"full","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"backgroundColor":"wmf-report-blue","textColor":"base100","className":"wmf-pattern-reports-hero__content-background","metadata":{"name":"Hero - Content Background"}} -->
-<div class="wp-block-group alignfull wmf-pattern-reports-hero__content-background has-base-100-color has-wmf-report-blue-background-color has-text-color has-background has-link-color"><!-- wp:group {"align":"wide","className":"wmf-pattern-reports-hero__content","metadata":{"name":"Hero Content"}} -->
-<div class="wp-block-group alignwide wmf-pattern-reports-hero__content"><!-- wp:wmf-reports/expandable {"showMoreText":"View more","showLessText":"View less","visibleAmount":260,"lock":{"move":false,"remove":false}} -->
-<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="260" data-visible-unit="px"><!-- wp:paragraph {"className":"is-style-sans-p"} -->
+<!-- wp:group {"lock":{"move":true,"remove":true},"align":"full","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"backgroundColor":"wmf-report-blue","textColor":"base100","className":"wmf-pattern-reports-hero__content-background"} -->
+<div class="wp-block-group alignfull wmf-pattern-reports-hero__content-background has-base-100-color has-wmf-report-blue-background-color has-text-color has-background has-link-color"><!-- wp:group {"align":"wide","className":"wmf-pattern-reports-hero__content"} -->
+<div class="wp-block-group alignwide wmf-pattern-reports-hero__content"><!-- wp:wmf-reports/expandable {"showMoreText":"View more","showLessText":"View less","visibleAmount":150,"lock":{"move":false,"remove":false}} -->
+<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="150" data-visible-unit="px"><!-- wp:paragraph {"className":"is-style-sans-p"} -->
 <p class="is-style-sans-p">This year’s Annual Report highlights the people who made sure that the Wikimedia projects made a big difference in the 2022-2023 fiscal year. If you’re a donor, that means you. If you’re a contributor to Wikipedia or any of the Wikimedia Foundation’s 12 other knowledge projects, that means you. Every year, millions and millions of people give selflessly to the ipsum duis consectetur aute eu duis cillum officia proident ea ut incididunt.</p>
 <!-- /wp:paragraph -->
 
@@ -45,7 +45,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group --></section>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","metadata":{"name":"Table of Contents"}} -->
+<!-- wp:group {"align":"wide"} -->
 <div class="wp-block-group alignwide"><!-- wp:heading {"className":"is-style-h2"} -->
 <h2 class="wp-block-heading is-style-h2">Table of Contents</h2>
 <!-- /wp:heading -->
@@ -60,7 +60,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:button -->
 
 <!-- wp:button {"backgroundColor":"base100","className":"is-style-transparent"} -->
-<div class="wp-block-button is-style-transparent"><a class="wp-block-button__link has-base-100-background-color has-background wp-element-button">Share TODO</a></div>
+<div class="wp-block-button is-style-transparent"><a class="wp-block-button__link has-base-100-background-color has-background wp-element-button">Share</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
@@ -69,7 +69,7 @@ const PATTERN = <<<CONTENT
 <figure class="wp-block-image alignwide size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
-<!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"align":"wide","className":"wmf-pattern-letter-from-the-ceo","metadata":{"name":"Letter from the CEO"},"includeInToC":true,"tocLabel":"Letter from the CEO","tocSlug":"toc-letter-from-the-ceo"} -->
+<!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"align":"wide","className":"wmf-pattern-letter-from-the-ceo","includeInToC":true,"tocLabel":"Letter from the CEO","tocSlug":"toc-letter-from-the-ceo"} -->
 <div class="wp-block-group alignwide wmf-pattern-letter-from-the-ceo"><!-- wp:heading {"lock":{"move":true,"remove":true}} -->
 <h2 class="wp-block-heading">Letter from the CEO</h2>
 <!-- /wp:heading -->
@@ -91,8 +91,8 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group -->
 
 <!-- wp:group {"lock":{"move":true,"remove":true},"className":"ceo-letter-content"} -->
-<div class="wp-block-group ceo-letter-content"><!-- wp:wmf-reports/expandable {"visibleAmount":250,"lock":{"move":false,"remove":false}} -->
-<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="250" data-visible-unit="px"><!-- wp:paragraph {"lock":{"move":false,"remove":false}} -->
+<div class="wp-block-group ceo-letter-content"><!-- wp:wmf-reports/expandable {"visibleAmount":150,"lock":{"move":false,"remove":false}} -->
+<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="150" data-visible-unit="px"><!-- wp:paragraph {"lock":{"move":false,"remove":false}} -->
 <p>Nostrud fugiat reprehenderit voluptate nisi id veniam occaecat. Ullamco amet commodo velit sint reprehenderit fugiat deserunt sit in pariatur esse veniam. Magna consequat anim fugiat labore mollit sit nisi.</p>
 <!-- /wp:paragraph -->
 
@@ -107,14 +107,14 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","backgroundColor":"green","className":"wmf-pattern-by-the-numbers","metadata":{"name":"By the Numbers"},"tocLabel":"","tocSlug":"toc-"} -->
-<div class="wp-block-group alignfull wmf-pattern-by-the-numbers has-green-background-color has-background"><!-- wp:group {"align":"wide","includeInToC":true,"tocLabel":"By the Numbers","tocSlug":"toc-by-the-numbers"} -->
+<!-- wp:group {"align":"full","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"backgroundColor":"green-30","textColor":"base100","className":"wmf-pattern-by-the-numbers","tocLabel":"","tocSlug":"toc-"} -->
+<div class="wp-block-group alignfull wmf-pattern-by-the-numbers has-base-100-color has-green-30-background-color has-text-color has-background has-link-color"><!-- wp:group {"align":"wide","includeInToC":true,"tocLabel":"By the Numbers","tocSlug":"toc-by-the-numbers"} -->
 <div class="wp-block-group alignwide"><!-- wp:heading -->
 <h2 class="wp-block-heading">By the Numbers</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">A good year in stats</h3>
+<h3 class="wp-block-heading"><strong>A good year in stats</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -269,18 +269,18 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","className":"is-style-default","metadata":{"name":"Stories"}} -->
-<div class="wp-block-group alignfull is-style-default"><!-- wp:group {"align":"wide","metadata":{"name":"Stories - Content"},"includeInToC":true,"tocLabel":"Stories","tocSlug":"toc-stories"} -->
+<!-- wp:group {"align":"full","className":"is-style-default"} -->
+<div class="wp-block-group alignfull is-style-default"><!-- wp:group {"align":"wide","includeInToC":true,"tocLabel":"Stories","tocSlug":"toc-stories"} -->
 <div class="wp-block-group alignwide"><!-- wp:heading -->
 <h2 class="wp-block-heading">Stories</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Lorem ipsum dolor sit amet vestibulum urna odio turpis tempus dictumst turpis auctor est cursus.</h3>
+<h3 class="wp-block-heading"><strong>Lorem ipsum dolor sit amet vestibulum urna odio turpis tempus dictumst turpis auctor est cursus.</strong></h3>
 <!-- /wp:heading -->
 
-<!-- wp:wmf-reports/expandable -->
-<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="300" data-visible-unit="px"><!-- wp:paragraph -->
+<!-- wp:wmf-reports/expandable {"visibleAmount":150} -->
+<div class="wp-block-wmf-reports-expandable"><div class="expandable-content" data-visible-amount="150" data-visible-unit="px"><!-- wp:paragraph -->
 <p>Lorem ipsum dolor sit amet aliqua tincidunt lobortis erat integer. Turpis sollicitudin phasellus rhoncus elementum laoreet est nunc. Nunc tellus facilisis mauris cursus imperdiet luctus aliquam elementum neque dictumst purus viverra mollis dapibus. Ultrices odio aliquet luctus dolore labore fusce mauris imperdiet faucibus ut tincidunt aliqua turpis. Vitae auctor praesent tempus aliqua sapien duis nullam.</p>
 <!-- /wp:paragraph -->
 
@@ -291,7 +291,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group -->
 
 <!-- wp:wmf-reports/stories -->
-<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74453\u0022 style=\u0022width: 21px;\u0022 src=\u0022wp-content/uploads/2024/03/Heart.svg\u0022 alt=\u0022\u0022\u003eCategory 1","id":1711621034266} -->
+<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74792\u0022 style=\u0022width: 21px;\u0022 src=\u0022/wp-content/uploads/2024/03/Heart-icon.svg\u0022 alt=\u0022\u0022\u003eCategory 1","id":1712315582973} -->
 <!-- wp:group {"align":"full","backgroundColor":"wmf-report-blue","textColor":"base100","className":"wmf-pattern-reports-carousel-slide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-carousel-slide has-base-100-color has-wmf-report-blue-background-color has-text-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"66.66%"} -->
@@ -302,7 +302,7 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:column {"width":"33.33%"} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:heading {"level":3,"className":"wmf-pattern-reports-carousel-slide__heading is-style-h2"} -->
-<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2">Slide 1: Lorem ipsum dolor sit amet.</h3>
+<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2"><strong>Lorem ipsum dolor sit amet vulputate.</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"is-style-sans-p"} -->
@@ -310,18 +310,70 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button"} -->
-<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button">Read More</a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"} -->
+<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button" href="#">Read More</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
 
-<!-- wp:wmf-reports/overlay /-->
+<!-- wp:wmf-reports/overlay -->
+<!-- wp:group {"className":"wmf-pattern-overlay"} -->
+<div class="wp-block-group wmf-pattern-overlay"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|orange"}}}},"textColor":"orange","className":"wmf-pattern-overlay__category is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__category is-style-sans-p has-orange-color has-text-color has-link-color"><strong>Lorem ipsum / Sit amet</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4,"className":"wmf-pattern-overlay__heading is-style-h2"} -->
+<h4 class="wp-block-heading wmf-pattern-overlay__heading is-style-h2"><strong>Lorem ipsum dolor sit amet imperdiet</strong></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wmf-pattern-overlay__location is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__location is-style-sans-p"><em>Optional line for location</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
+<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet magna curabitur pretium. Nisi vel augue egestas sapien blandit eros maecenas netus dapibus. Sagittis mattis orci condimentum ornare maecenas iaculis sapien erat diam praesent egestas fermentum. Etiam et sollicitudin odio nisl consequat porttitor condimentum sapien feugiat libero dapibus dui risus. Sapien do a phasellus risus pretium tristique euismod tempor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
+<figure class="wp-block-image size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Turpis nulla eiusmod congue orci arcu elit nisi. Magna maecenas id proin lacus tempor vestibulum tincidunt nisi. Venenatis nunc vel mollis risus mi urna egestas ullamcorper aliquet vulputate. Ullamcorper dictumst vestibulum erat luctus urna adipiscing quisque ornare pharetra justo pellentesque quam. Labore velit tempus dolore eu imperdiet porttitor sodales orci.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"style":{"elements":{"link":{"color":{"text":"var:preset|color|wmf-report-blue"}}}},"textColor":"wmf-report-blue","className":"is-style-default"} -->
+<blockquote class="wp-block-quote is-style-default has-wmf-report-blue-color has-text-color has-link-color"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet tristique lacus arcu justo curabitur ut mollis habitasse mollis orci. Maecenas lectus tellus suspendisse porttitor senectus lobortis cras netus sollicitudin hac magna. Id lacus turpis posuere donec proin tempor maecenas porttitor eu sollicitudin orci fringilla. Ac orci proin quisque leo vestibulum magna mollis sollicitudin pretium sed arcu lacus nullam adipiscing. Nunc nec aliquam netus consectetur id egestas eget volutpat ultrices do tristique dui iaculis vulputate.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"is-style-pullquote"} -->
+<blockquote class="wp-block-quote is-style-pullquote"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Feugiat posuere convallis senectus faucibus sollicitudin ultricies curabitur sodales lectus eros volutpat nisi. Feugiat est pretium orci nunc sapien auctor enim mattis habitasse scelerisque diam ultricies tristique ut. Nisi nibh gravida cras aenean aliqua mollis at justo tellus lacinia dui. Congue tellus viverra adipiscing suspendisse dapibus sapien pharetra auctor laoreet morbi dictum phasellus leo quisque. Cras elementum ultricies fermentum nisi velit platea lacus suspendisse at tempus tincidunt erat.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+<!-- /wp:wmf-reports/overlay -->
 <!-- /wp:wmf-reports/story -->
 
-<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74453\u0022 style=\u0022width: 21px;\u0022 src=\u0022wp-content/uploads/2024/03/Heart.svg\u0022 alt=\u0022\u0022\u003eCategory 2","id":1711621036826} -->
+<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74792\u0022 style=\u0022width: 21px;\u0022 src=\u0022/wp-content/uploads/2024/03/Heart-icon.svg\u0022 alt=\u0022\u0022\u003eCategory 2","id":1712315586654} -->
 <!-- wp:group {"align":"full","backgroundColor":"wmf-report-blue","textColor":"base100","className":"wmf-pattern-reports-carousel-slide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-carousel-slide has-base-100-color has-wmf-report-blue-background-color has-text-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"66.66%"} -->
@@ -332,7 +384,7 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:column {"width":"33.33%"} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:heading {"level":3,"className":"wmf-pattern-reports-carousel-slide__heading is-style-h2"} -->
-<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2">Slide 2: Lorem ipsum dolor sit amet.</h3>
+<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2"><strong>Lorem ipsum dolor sit amet vulputate.</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"is-style-sans-p"} -->
@@ -340,18 +392,70 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button"} -->
-<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button">Read More</a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"} -->
+<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button" href="#">Read More</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
 
-<!-- wp:wmf-reports/overlay /-->
+<!-- wp:wmf-reports/overlay -->
+<!-- wp:group {"className":"wmf-pattern-overlay"} -->
+<div class="wp-block-group wmf-pattern-overlay"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|orange"}}}},"textColor":"orange","className":"wmf-pattern-overlay__category is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__category is-style-sans-p has-orange-color has-text-color has-link-color"><strong>Lorem ipsum / Sit amet</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4,"className":"wmf-pattern-overlay__heading is-style-h2"} -->
+<h4 class="wp-block-heading wmf-pattern-overlay__heading is-style-h2"><strong>Lorem ipsum dolor sit amet imperdiet</strong></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wmf-pattern-overlay__location is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__location is-style-sans-p"><em>Optional line for location</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
+<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet magna curabitur pretium. Nisi vel augue egestas sapien blandit eros maecenas netus dapibus. Sagittis mattis orci condimentum ornare maecenas iaculis sapien erat diam praesent egestas fermentum. Etiam et sollicitudin odio nisl consequat porttitor condimentum sapien feugiat libero dapibus dui risus. Sapien do a phasellus risus pretium tristique euismod tempor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
+<figure class="wp-block-image size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Turpis nulla eiusmod congue orci arcu elit nisi. Magna maecenas id proin lacus tempor vestibulum tincidunt nisi. Venenatis nunc vel mollis risus mi urna egestas ullamcorper aliquet vulputate. Ullamcorper dictumst vestibulum erat luctus urna adipiscing quisque ornare pharetra justo pellentesque quam. Labore velit tempus dolore eu imperdiet porttitor sodales orci.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"style":{"elements":{"link":{"color":{"text":"var:preset|color|wmf-report-blue"}}}},"textColor":"wmf-report-blue","className":"is-style-default"} -->
+<blockquote class="wp-block-quote is-style-default has-wmf-report-blue-color has-text-color has-link-color"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet tristique lacus arcu justo curabitur ut mollis habitasse mollis orci. Maecenas lectus tellus suspendisse porttitor senectus lobortis cras netus sollicitudin hac magna. Id lacus turpis posuere donec proin tempor maecenas porttitor eu sollicitudin orci fringilla. Ac orci proin quisque leo vestibulum magna mollis sollicitudin pretium sed arcu lacus nullam adipiscing. Nunc nec aliquam netus consectetur id egestas eget volutpat ultrices do tristique dui iaculis vulputate.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"is-style-pullquote"} -->
+<blockquote class="wp-block-quote is-style-pullquote"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Feugiat posuere convallis senectus faucibus sollicitudin ultricies curabitur sodales lectus eros volutpat nisi. Feugiat est pretium orci nunc sapien auctor enim mattis habitasse scelerisque diam ultricies tristique ut. Nisi nibh gravida cras aenean aliqua mollis at justo tellus lacinia dui. Congue tellus viverra adipiscing suspendisse dapibus sapien pharetra auctor laoreet morbi dictum phasellus leo quisque. Cras elementum ultricies fermentum nisi velit platea lacus suspendisse at tempus tincidunt erat.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+<!-- /wp:wmf-reports/overlay -->
 <!-- /wp:wmf-reports/story -->
 
-<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74453\u0022 style=\u0022width: 21px;\u0022 src=\u0022wp-content/uploads/2024/03/Heart.svg\u0022 alt=\u0022\u0022\u003eCategory 3","id":1711621037700} -->
+<!-- wp:wmf-reports/story {"category":"\u003cimg class=\u0022wp-image-74792\u0022 style=\u0022width: 21px;\u0022 src=\u0022/wp-content/uploads/2024/03/Heart-icon.svg\u0022 alt=\u0022\u0022\u003eCategory 3","id":1712315588066} -->
 <!-- wp:group {"align":"full","backgroundColor":"wmf-report-blue","textColor":"base100","className":"wmf-pattern-reports-carousel-slide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-carousel-slide has-base-100-color has-wmf-report-blue-background-color has-text-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"66.66%"} -->
@@ -362,7 +466,7 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:column {"width":"33.33%"} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:heading {"level":3,"className":"wmf-pattern-reports-carousel-slide__heading is-style-h2"} -->
-<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2">Slide 3: Lorem ipsum dolor sit amet.</h3>
+<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2"><strong>Lorem ipsum dolor sit amet vulputate.</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"is-style-sans-p"} -->
@@ -370,15 +474,67 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button"} -->
-<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button">Read More</a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"} -->
+<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button" href="#">Read More</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
 
-<!-- wp:wmf-reports/overlay /-->
+<!-- wp:wmf-reports/overlay -->
+<!-- wp:group {"className":"wmf-pattern-overlay"} -->
+<div class="wp-block-group wmf-pattern-overlay"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|orange"}}}},"textColor":"orange","className":"wmf-pattern-overlay__category is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__category is-style-sans-p has-orange-color has-text-color has-link-color"><strong>Lorem ipsum / Sit amet</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4,"className":"wmf-pattern-overlay__heading is-style-h2"} -->
+<h4 class="wp-block-heading wmf-pattern-overlay__heading is-style-h2"><strong>Lorem ipsum dolor sit amet imperdiet</strong></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wmf-pattern-overlay__location is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__location is-style-sans-p"><em>Optional line for location</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
+<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet magna curabitur pretium. Nisi vel augue egestas sapien blandit eros maecenas netus dapibus. Sagittis mattis orci condimentum ornare maecenas iaculis sapien erat diam praesent egestas fermentum. Etiam et sollicitudin odio nisl consequat porttitor condimentum sapien feugiat libero dapibus dui risus. Sapien do a phasellus risus pretium tristique euismod tempor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
+<figure class="wp-block-image size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Turpis nulla eiusmod congue orci arcu elit nisi. Magna maecenas id proin lacus tempor vestibulum tincidunt nisi. Venenatis nunc vel mollis risus mi urna egestas ullamcorper aliquet vulputate. Ullamcorper dictumst vestibulum erat luctus urna adipiscing quisque ornare pharetra justo pellentesque quam. Labore velit tempus dolore eu imperdiet porttitor sodales orci.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"style":{"elements":{"link":{"color":{"text":"var:preset|color|wmf-report-blue"}}}},"textColor":"wmf-report-blue","className":"is-style-default"} -->
+<blockquote class="wp-block-quote is-style-default has-wmf-report-blue-color has-text-color has-link-color"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet tristique lacus arcu justo curabitur ut mollis habitasse mollis orci. Maecenas lectus tellus suspendisse porttitor senectus lobortis cras netus sollicitudin hac magna. Id lacus turpis posuere donec proin tempor maecenas porttitor eu sollicitudin orci fringilla. Ac orci proin quisque leo vestibulum magna mollis sollicitudin pretium sed arcu lacus nullam adipiscing. Nunc nec aliquam netus consectetur id egestas eget volutpat ultrices do tristique dui iaculis vulputate.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"is-style-pullquote"} -->
+<blockquote class="wp-block-quote is-style-pullquote"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Feugiat posuere convallis senectus faucibus sollicitudin ultricies curabitur sodales lectus eros volutpat nisi. Feugiat est pretium orci nunc sapien auctor enim mattis habitasse scelerisque diam ultricies tristique ut. Nisi nibh gravida cras aenean aliqua mollis at justo tellus lacinia dui. Congue tellus viverra adipiscing suspendisse dapibus sapien pharetra auctor laoreet morbi dictum phasellus leo quisque. Cras elementum ultricies fermentum nisi velit platea lacus suspendisse at tempus tincidunt erat.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+<!-- /wp:wmf-reports/overlay -->
 <!-- /wp:wmf-reports/story -->
 <!-- /wp:wmf-reports/stories --></div>
 <!-- /wp:group -->
@@ -387,14 +543,14 @@ const PATTERN = <<<CONTENT
 <figure class="wp-block-image alignwide size-large is-style-report-image-vertical"><img src="/wp-content/uploads/2023/12/Anjo_cacador.jpg?w=1024" alt="" class="wp-image-74090"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
-<!-- wp:group {"align":"full","backgroundColor":"base90","metadata":{"name":"Map"}} -->
-<div class="wp-block-group alignfull has-base-90-background-color has-background"><!-- wp:group {"align":"wide","metadata":{"name":"Map - Content"}} -->
+<!-- wp:group {"align":"full","backgroundColor":"base90"} -->
+<div class="wp-block-group alignfull has-base-90-background-color has-background"><!-- wp:group {"align":"wide"} -->
 <div class="wp-block-group alignwide"><!-- wp:heading -->
 <h2 class="wp-block-heading">The Map</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Lorem ipsum dolor sit</h3>
+<h3 class="wp-block-heading"><strong>Lorem ipsum dolor sit</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -403,7 +559,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:group -->
 
 <!-- wp:wmf-reports/map {"mapStyle":"mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7"} -->
-<!-- wp:wmf-reports/marker {"id":1711620993448,"lat":53.57493674236627,"long":-1.951007118194303} -->
+<!-- wp:wmf-reports/marker {"id":1712315532947,"lat":52.40118959617423,"long":-3.6826590478945165} -->
 <!-- wp:group {"align":"full","backgroundColor":"wmf-report-bright-yellow","className":"wmf-pattern-reports-carousel-slide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-carousel-slide has-wmf-report-bright-yellow-background-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"66.66%"} -->
@@ -418,7 +574,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"wmf-pattern-reports-carousel-slide__heading is-style-h2"} -->
-<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2">Slide 1: Lorem ipsum dolor sit amet.</h3>
+<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2"><strong>Lorem ipsum dolor sit amet vulputate.</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"wmf-pattern-reports-carousel-slide__location is-style-sans-p"} -->
@@ -430,16 +586,70 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button"} -->
-<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button">Read More</a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"} -->
+<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button" href="#">Read More</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
+
+<!-- wp:wmf-reports/overlay -->
+<!-- wp:group {"className":"wmf-pattern-overlay"} -->
+<div class="wp-block-group wmf-pattern-overlay"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|orange"}}}},"textColor":"orange","className":"wmf-pattern-overlay__category is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__category is-style-sans-p has-orange-color has-text-color has-link-color"><strong>Lorem ipsum / Sit amet</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4,"className":"wmf-pattern-overlay__heading is-style-h2"} -->
+<h4 class="wp-block-heading wmf-pattern-overlay__heading is-style-h2"><strong>Lorem ipsum dolor sit amet imperdiet</strong></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wmf-pattern-overlay__location is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__location is-style-sans-p"><em>Optional line for location</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
+<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet magna curabitur pretium. Nisi vel augue egestas sapien blandit eros maecenas netus dapibus. Sagittis mattis orci condimentum ornare maecenas iaculis sapien erat diam praesent egestas fermentum. Etiam et sollicitudin odio nisl consequat porttitor condimentum sapien feugiat libero dapibus dui risus. Sapien do a phasellus risus pretium tristique euismod tempor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
+<figure class="wp-block-image size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Turpis nulla eiusmod congue orci arcu elit nisi. Magna maecenas id proin lacus tempor vestibulum tincidunt nisi. Venenatis nunc vel mollis risus mi urna egestas ullamcorper aliquet vulputate. Ullamcorper dictumst vestibulum erat luctus urna adipiscing quisque ornare pharetra justo pellentesque quam. Labore velit tempus dolore eu imperdiet porttitor sodales orci.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"style":{"elements":{"link":{"color":{"text":"var:preset|color|wmf-report-blue"}}}},"textColor":"wmf-report-blue","className":"is-style-default"} -->
+<blockquote class="wp-block-quote is-style-default has-wmf-report-blue-color has-text-color has-link-color"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet tristique lacus arcu justo curabitur ut mollis habitasse mollis orci. Maecenas lectus tellus suspendisse porttitor senectus lobortis cras netus sollicitudin hac magna. Id lacus turpis posuere donec proin tempor maecenas porttitor eu sollicitudin orci fringilla. Ac orci proin quisque leo vestibulum magna mollis sollicitudin pretium sed arcu lacus nullam adipiscing. Nunc nec aliquam netus consectetur id egestas eget volutpat ultrices do tristique dui iaculis vulputate.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"is-style-pullquote"} -->
+<blockquote class="wp-block-quote is-style-pullquote"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Feugiat posuere convallis senectus faucibus sollicitudin ultricies curabitur sodales lectus eros volutpat nisi. Feugiat est pretium orci nunc sapien auctor enim mattis habitasse scelerisque diam ultricies tristique ut. Nisi nibh gravida cras aenean aliqua mollis at justo tellus lacinia dui. Congue tellus viverra adipiscing suspendisse dapibus sapien pharetra auctor laoreet morbi dictum phasellus leo quisque. Cras elementum ultricies fermentum nisi velit platea lacus suspendisse at tempus tincidunt erat.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+<!-- /wp:wmf-reports/overlay -->
 <!-- /wp:wmf-reports/marker -->
 
-<!-- wp:wmf-reports/marker {"id":1711620997492,"lat":39.69846099035526,"long":-4.925610042483299} -->
+<!-- wp:wmf-reports/marker {"id":1712315545884,"lat":40.49434579288612,"long":-6.9508353962416125} -->
 <!-- wp:group {"align":"full","backgroundColor":"wmf-report-bright-yellow","className":"wmf-pattern-reports-carousel-slide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-carousel-slide has-wmf-report-bright-yellow-background-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"66.66%"} -->
@@ -454,7 +664,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"wmf-pattern-reports-carousel-slide__heading is-style-h2"} -->
-<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2">Slide 2: Lorem ipsum dolor sit amet.</h3>
+<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2"><strong>Lorem ipsum dolor sit amet vulputate.</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"wmf-pattern-reports-carousel-slide__location is-style-sans-p"} -->
@@ -466,16 +676,70 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button"} -->
-<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button">Read More</a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"} -->
+<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button" href="#">Read More</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
+
+<!-- wp:wmf-reports/overlay -->
+<!-- wp:group {"className":"wmf-pattern-overlay"} -->
+<div class="wp-block-group wmf-pattern-overlay"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|orange"}}}},"textColor":"orange","className":"wmf-pattern-overlay__category is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__category is-style-sans-p has-orange-color has-text-color has-link-color"><strong>Lorem ipsum / Sit amet</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4,"className":"wmf-pattern-overlay__heading is-style-h2"} -->
+<h4 class="wp-block-heading wmf-pattern-overlay__heading is-style-h2"><strong>Lorem ipsum dolor sit amet imperdiet</strong></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wmf-pattern-overlay__location is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__location is-style-sans-p"><em>Optional line for location</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
+<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet magna curabitur pretium. Nisi vel augue egestas sapien blandit eros maecenas netus dapibus. Sagittis mattis orci condimentum ornare maecenas iaculis sapien erat diam praesent egestas fermentum. Etiam et sollicitudin odio nisl consequat porttitor condimentum sapien feugiat libero dapibus dui risus. Sapien do a phasellus risus pretium tristique euismod tempor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
+<figure class="wp-block-image size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Turpis nulla eiusmod congue orci arcu elit nisi. Magna maecenas id proin lacus tempor vestibulum tincidunt nisi. Venenatis nunc vel mollis risus mi urna egestas ullamcorper aliquet vulputate. Ullamcorper dictumst vestibulum erat luctus urna adipiscing quisque ornare pharetra justo pellentesque quam. Labore velit tempus dolore eu imperdiet porttitor sodales orci.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"style":{"elements":{"link":{"color":{"text":"var:preset|color|wmf-report-blue"}}}},"textColor":"wmf-report-blue","className":"is-style-default"} -->
+<blockquote class="wp-block-quote is-style-default has-wmf-report-blue-color has-text-color has-link-color"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet tristique lacus arcu justo curabitur ut mollis habitasse mollis orci. Maecenas lectus tellus suspendisse porttitor senectus lobortis cras netus sollicitudin hac magna. Id lacus turpis posuere donec proin tempor maecenas porttitor eu sollicitudin orci fringilla. Ac orci proin quisque leo vestibulum magna mollis sollicitudin pretium sed arcu lacus nullam adipiscing. Nunc nec aliquam netus consectetur id egestas eget volutpat ultrices do tristique dui iaculis vulputate.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"is-style-pullquote"} -->
+<blockquote class="wp-block-quote is-style-pullquote"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Feugiat posuere convallis senectus faucibus sollicitudin ultricies curabitur sodales lectus eros volutpat nisi. Feugiat est pretium orci nunc sapien auctor enim mattis habitasse scelerisque diam ultricies tristique ut. Nisi nibh gravida cras aenean aliqua mollis at justo tellus lacinia dui. Congue tellus viverra adipiscing suspendisse dapibus sapien pharetra auctor laoreet morbi dictum phasellus leo quisque. Cras elementum ultricies fermentum nisi velit platea lacus suspendisse at tempus tincidunt erat.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+<!-- /wp:wmf-reports/overlay -->
 <!-- /wp:wmf-reports/marker -->
 
-<!-- wp:wmf-reports/marker {"id":1711621008853,"lat":28.374271789478193,"long":-81.78748912155979} -->
+<!-- wp:wmf-reports/marker {"id":1712315552199,"lat":29.157136125130965,"long":-82.55206183665828} -->
 <!-- wp:group {"align":"full","backgroundColor":"wmf-report-bright-yellow","className":"wmf-pattern-reports-carousel-slide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-carousel-slide has-wmf-report-bright-yellow-background-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"66.66%"} -->
@@ -490,7 +754,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"wmf-pattern-reports-carousel-slide__heading is-style-h2"} -->
-<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2">Slide 3: Lorem ipsum dolor sit amet.</h3>
+<h3 class="wp-block-heading wmf-pattern-reports-carousel-slide__heading is-style-h2"><strong>Lorem ipsum dolor sit amet vulputate.</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"wmf-pattern-reports-carousel-slide__location is-style-sans-p"} -->
@@ -502,24 +766,78 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button"} -->
-<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button">Read More</a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"base100","textColor":"base10","style":{"elements":{"link":{"color":{"text":"var:preset|color|base0"}}}},"className":"is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"} -->
+<div class="wp-block-button is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger"><a class="wp-block-button__link has-base-10-color has-base-100-background-color has-text-color has-background has-link-color wp-element-button" href="#">Read More</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
+
+<!-- wp:wmf-reports/overlay -->
+<!-- wp:group {"className":"wmf-pattern-overlay"} -->
+<div class="wp-block-group wmf-pattern-overlay"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|orange"}}}},"textColor":"orange","className":"wmf-pattern-overlay__category is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__category is-style-sans-p has-orange-color has-text-color has-link-color"><strong>Lorem ipsum / Sit amet</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4,"className":"wmf-pattern-overlay__heading is-style-h2"} -->
+<h4 class="wp-block-heading wmf-pattern-overlay__heading is-style-h2"><strong>Lorem ipsum dolor sit amet imperdiet</strong></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wmf-pattern-overlay__location is-style-sans-p"} -->
+<p class="wmf-pattern-overlay__location is-style-sans-p"><em>Optional line for location</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
+<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet magna curabitur pretium. Nisi vel augue egestas sapien blandit eros maecenas netus dapibus. Sagittis mattis orci condimentum ornare maecenas iaculis sapien erat diam praesent egestas fermentum. Etiam et sollicitudin odio nisl consequat porttitor condimentum sapien feugiat libero dapibus dui risus. Sapien do a phasellus risus pretium tristique euismod tempor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
+<figure class="wp-block-image size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Turpis nulla eiusmod congue orci arcu elit nisi. Magna maecenas id proin lacus tempor vestibulum tincidunt nisi. Venenatis nunc vel mollis risus mi urna egestas ullamcorper aliquet vulputate. Ullamcorper dictumst vestibulum erat luctus urna adipiscing quisque ornare pharetra justo pellentesque quam. Labore velit tempus dolore eu imperdiet porttitor sodales orci.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"style":{"elements":{"link":{"color":{"text":"var:preset|color|wmf-report-blue"}}}},"textColor":"wmf-report-blue","className":"is-style-default"} -->
+<blockquote class="wp-block-quote is-style-default has-wmf-report-blue-color has-text-color has-link-color"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet tristique lacus arcu justo curabitur ut mollis habitasse mollis orci. Maecenas lectus tellus suspendisse porttitor senectus lobortis cras netus sollicitudin hac magna. Id lacus turpis posuere donec proin tempor maecenas porttitor eu sollicitudin orci fringilla. Ac orci proin quisque leo vestibulum magna mollis sollicitudin pretium sed arcu lacus nullam adipiscing. Nunc nec aliquam netus consectetur id egestas eget volutpat ultrices do tristique dui iaculis vulputate.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote {"className":"is-style-pullquote"} -->
+<blockquote class="wp-block-quote is-style-pullquote"><!-- wp:paragraph {"className":"is-style-h2"} -->
+<p class="is-style-h2"><strong>Lorem ipsum dolor sit amet id cras tortor malesuada.</strong></p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>Feugiat posuere convallis senectus faucibus sollicitudin ultricies curabitur sodales lectus eros volutpat nisi. Feugiat est pretium orci nunc sapien auctor enim mattis habitasse scelerisque diam ultricies tristique ut. Nisi nibh gravida cras aenean aliqua mollis at justo tellus lacinia dui. Congue tellus viverra adipiscing suspendisse dapibus sapien pharetra auctor laoreet morbi dictum phasellus leo quisque. Cras elementum ultricies fermentum nisi velit platea lacus suspendisse at tempus tincidunt erat.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+<!-- /wp:wmf-reports/overlay -->
 <!-- /wp:wmf-reports/marker -->
 <!-- /wp:wmf-reports/map --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","className":"wmf-pattern-financial-statements","metadata":{"name":"Financial Statements"},"includeInToC":true,"tocLabel":"Financial Statments","tocSlug":"toc-financial-statments"} -->
+<!-- wp:group {"align":"wide","className":"wmf-pattern-financial-statements","includeInToC":true,"tocLabel":"Financial Statments","tocSlug":"toc-financial-statments"} -->
 <div class="wp-block-group alignwide wmf-pattern-financial-statements"><!-- wp:heading -->
 <h2 class="wp-block-heading">Financial Statements</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Lorem ipsum dolor sit</h3>
+<h3 class="wp-block-heading"><strong>Lorem ipsum dolor sit</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:columns -->
@@ -531,11 +849,11 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:column {"width":"33.33%","className":"wmf-pattern-financial-statements__score"} -->
 <div class="wp-block-column wmf-pattern-financial-statements__score" style="flex-basis:33.33%"><!-- wp:image {"align":"center","id":74791,"width":"103px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Guidestar-Platinum-Transparence-2021.png?w=103" alt="" class="wp-image-74791" style="width:103px;height:auto"/></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="/wp-content/uploads/2024/03/Guidestar-Platinum-Transparence-2021.png?w=103" alt="" class="wp-image-74791" style="width:103px;height:auto"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:image {"align":"center","id":74790,"width":"109px","height":"auto","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Four-Stars.png?w=87" alt="" class="wp-image-74790" style="width:109px;height:auto"/></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="/wp-content/uploads/2024/03/Four-Stars.png?w=87" alt="" class="wp-image-74790" style="width:109px;height:auto"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"align":"center"} -->
@@ -615,83 +933,143 @@ const PATTERN = <<<CONTENT
 <figure class="wp-block-image alignwide size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
-<!-- wp:group {"align":"wide","className":"wmf-pattern-reports-leadership","metadata":{"name":"Leadership"},"includeInToC":true,"tocLabel":"Leadership","tocSlug":"toc-leadership"} -->
+<!-- wp:group {"align":"wide","className":"wmf-pattern-reports-leadership","includeInToC":true,"tocLabel":"Leadership","tocSlug":"toc-leadership"} -->
 <div class="wp-block-group alignwide wmf-pattern-reports-leadership"><!-- wp:heading -->
 <h2 class="wp-block-heading">Leadership</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">A constellation of bright minds</h3>
+<h3 class="wp-block-heading"><strong>A constellation of bright minds</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":4,"className":"is-style-h3"} -->
-<h4 class="wp-block-heading is-style-h3">Board of trustees</h4>
+<h4 class="wp-block-heading is-style-h3"><strong>Board of trustees</strong></h4>
 <!-- /wp:heading -->
 
-<!-- wp:list {"className":"wmf-pattern-reports-leadership__list"} -->
-<ul class="wmf-pattern-reports-leadership__list"><!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</li>
-<!-- /wp:list-item -->
+<!-- wp:group {"className":"wmf-pattern-reports-leadership__list","layout":{"type":"constrained"}} -->
+<div class="wp-block-group wmf-pattern-reports-leadership__list"><!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</li>
-<!-- /wp:list-item -->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> </li>
-<!-- /wp:list-item -->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> </li>
-<!-- /wp:list-item -->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</li>
-<!-- /wp:list-item -->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> <br></li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> </p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
 
 <!-- wp:heading {"level":4,"className":"is-style-h3"} -->
-<h4 class="wp-block-heading is-style-h3">Executive team</h4>
+<h4 class="wp-block-heading is-style-h3"><strong>Executive team</strong></h4>
 <!-- /wp:heading -->
 
-<!-- wp:list {"className":"wmf-pattern-reports-leadership__list"} -->
-<ul class="wmf-pattern-reports-leadership__list"><!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</li>
-<!-- /wp:list-item -->
+<!-- wp:group {"className":"wmf-pattern-reports-leadership__list","layout":{"type":"constrained"}} -->
+<div class="wp-block-group wmf-pattern-reports-leadership__list"><!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:list-item -->
-<li><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-wmf-report-blue-color"><strong>Lorem ipsum dolor</strong> </mark><br>Sit amet iaculis</li>
-<!-- /wp:list-item -->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> </li>
-<!-- /wp:list-item -->
+<!-- wp:group {"className":"has_overlay","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has_overlay"><!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-as-link overlay__trigger"} -->
+<div class="wp-block-button is-style-as-link overlay__trigger"><a class="wp-block-button__link wp-element-button"><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
 
-<!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> </li>
-<!-- /wp:list-item -->
+<!-- wp:wmf-reports/overlay -->
+<!-- wp:group {"className":"wmf-pattern-overlay","layout":{"type":"constrained"}} -->
+<div class="wp-block-group wmf-pattern-overlay"><!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:image {"lightbox":{"aspectRatio":"4/3","className":"is-style-default wmf-pattern-overlay__image","enabled":false,"id":65396,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/news/2021/09/14/wikimedia-foundation-appoints-maryana-iskander-as-chief-executive-officer/maryana_iskander/"},"id":74197,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wmf-pattern-overlay__image"} -->
+<figure class="wp-block-image size-full is-style-default wmf-pattern-overlay__image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png" alt="" class="wp-image-74197" style="aspect-ratio:4/3;object-fit:cover"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.</figcaption></figure>
+<!-- /wp:image --></div>
+<!-- /wp:column -->
 
-<!-- wp:list-item -->
-<li><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list --></div>
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"style":{"elements":{"link":{"color":{"text":"var:preset|color|wmf-report-blue"}}}},"textColor":"wmf-report-blue","className":"wmf-pattern-overlay__heading is-style-h2"} -->
+<h4 class="wp-block-heading wmf-pattern-overlay__heading is-style-h2 has-wmf-report-blue-color has-text-color has-link-color">Lorem ipsum dolor sit amet</h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet pretium</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet porta pulvinar dictumst dapibus leo fusce scelerisque suspendisse. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Dictumst vitae tincidunt magna justo pretium praesent lacus neque molestie convallis suspendisse blandit. Platea donec eleifend turpis hendrerit pharetra platea eros sollicitudin justo imperdiet fames nulla tempus consequat. Aliquam elementum semper adipiscing sagittis habitasse risus imperdiet et donec do justo. Vivamus dapibus auctor nulla lectus cursus volutpat semper congue.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:shiro/share-article /--></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
+<!-- /wp:wmf-reports/overlay --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>Lorem ipsum dolor</strong> <br>Sit amet iaculis</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:image {"align":"wide","id":74197,"sizeSlug":"large","linkDestination":"none","className":"is-style-report-image"} -->
 <figure class="wp-block-image alignwide size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
-<!-- wp:group {"align":"wide","className":"wmf-pattern-endownment","metadata":{"name":"Endowment"},"includeInToC":true,"tocLabel":"Endowment and Legacy","tocSlug":"toc-endowment-and-legacy"} -->
+<!-- wp:group {"align":"wide","className":"wmf-pattern-endownment","includeInToC":true,"tocLabel":"Endowment and Legacy","tocSlug":"toc-endowment-and-legacy"} -->
 <div class="wp-block-group alignwide wmf-pattern-endownment"><!-- wp:heading -->
 <h2 class="wp-block-heading">Endowment and Legacy</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Lorem ipsum dolor sit amet cras tristique integer ullamcorper arcu bibendum interdum ultricies.</h3>
+<h3 class="wp-block-heading"><strong>Lorem ipsum dolor sit amet cras tristique integer ullamcorper arcu bibendum interdum ultricies.</strong></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -725,7 +1103,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:shiro/accordion --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","backgroundColor":"base80","className":"wp-block-wmf-reports-donate","metadata":{"name":"Donate"}} -->
+<!-- wp:group {"align":"wide","backgroundColor":"base80","className":"wp-block-wmf-reports-donate"} -->
 <div class="wp-block-group alignwide wp-block-wmf-reports-donate has-base-80-background-color has-background"><!-- wp:heading {"level":3,"className":"is-style-default"} -->
 <h3 class="wp-block-heading is-style-default"><strong>Help Ensure Wikipedia's Future</strong></h3>
 <!-- /wp:heading -->
@@ -745,15 +1123,13 @@ const PATTERN = <<<CONTENT
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","className":"wmf-pattern-reports-donors","metadata":{"name":"Donors"},"includeInToC":true,"tocLabel":"Donors","tocSlug":"toc-donors"} -->
+<!-- wp:group {"align":"wide","className":"wmf-pattern-reports-donors","includeInToC":true,"tocLabel":"Donors","tocSlug":"toc-donors"} -->
 <div class="wp-block-group alignwide wmf-pattern-reports-donors"><!-- wp:heading -->
 <h2 class="wp-block-heading">Donors</h2>
 <!-- /wp:heading -->
 
 <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
-<div class="wp-block-group"><!-- wp:image {"id":74662,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="/wp-content/uploads/2024/03/Greeting.png?w=246" alt="" class="wp-image-74662"/></figure>
-<!-- /wp:image -->
+<div class="wp-block-group"><!-- wp:wmf-reports/thank-you /-->
 
 <!-- wp:image {"id":74663,"sizeSlug":"large","linkDestination":"none"} -->
 <figure class="wp-block-image size-large"><img src="/wp-content/uploads/2024/03/Heart.png?w=144" alt="" class="wp-image-74663"/></figure>
@@ -983,9 +1359,9 @@ const PATTERN = <<<CONTENT
 <figure class="wp-block-image alignwide size-large is-style-report-image"><img src="/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png?w=980" alt="" class="wp-image-74197"/><figcaption class="wp-element-caption">Lorem ipsum dolor sit amet at cras ac massa erat hac mattis dolore.<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-base-50-color">File provided by Wikimedia Commons</mark></figcaption></figure>
 <!-- /wp:image -->
 
-<!-- wp:group {"align":"wide","className":"wmf-pattern-wrapped","metadata":{"name":"Wrapped"}} -->
+<!-- wp:group {"align":"wide","className":"wmf-pattern-wrapped"} -->
 <div class="wp-block-group alignwide wmf-pattern-wrapped"><!-- wp:heading {"className":"is-style-h2"} -->
-<h2 class="wp-block-heading is-style-h2">And that's 2023 Wrapped</h2>
+<h2 class="wp-block-heading is-style-h2"><strong>And that's 2023 Wrapped</strong></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -1003,25 +1379,21 @@ const PATTERN = <<<CONTENT
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"backgroundColor":"bright-blue","textColor":"base100","className":"wmf-pattern-previous-reports","metadata":{"name":"Previous Reports"}} -->
+<!-- wp:group {"align":"full","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"backgroundColor":"bright-blue","textColor":"base100","className":"wmf-pattern-previous-reports"} -->
 <div class="wp-block-group alignfull wmf-pattern-previous-reports has-base-100-color has-bright-blue-background-color has-text-color has-background has-link-color"><!-- wp:group {"align":"wide","style":{"elements":{"link":{"color":{"text":"var:preset|color|base100"}}}},"textColor":"base100","includeInToC":true,"tocLabel":"Previous Reports","tocSlug":"toc-previous-reports"} -->
 <div class="wp-block-group alignwide has-base-100-color has-text-color has-link-color"><!-- wp:heading -->
 <h2 class="wp-block-heading">Previous Reports</h2>
 <!-- /wp:heading -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Previous Reports</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Archive</h3>
+<h3 class="wp-block-heading"><strong>Archive</strong></h3>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
 <!-- wp:wmf-reports/report-archive -->
 <!-- wp:wmf-reports/report -->
 <!-- wp:image {"id":74154,"width":"240px","height":"300px","scale":"cover","sizeSlug":"large","linkDestination":"none","className":"wp-block-wmf-reports-report__image"} -->
-<figure class="wp-block-image size-large is-resized wp-block-wmf-reports-report__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Ingushetia_Russia_Armkhi_Ingush_tower.jpg?w=1024" alt="" class="wp-image-74154" style="object-fit:cover;width:240px;height:300px"/></figure>
+<figure class="wp-block-image size-large is-resized wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2023/12/Ingushetia_Russia_Armkhi_Ingush_tower.jpg?w=1024" alt="" class="wp-image-74154" style="object-fit:cover;width:240px;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
@@ -1029,7 +1401,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"wp-block-wmf-reports-report__title is-style-default"} -->
-<h3 class="wp-block-heading wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>FIRST The people behind a year of impact around the world</strong></a></h3>
+<h3 class="wp-block-heading wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
 <!-- /wp:heading -->
 <!-- /wp:wmf-reports/report -->
 
@@ -1217,7 +1589,7 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:wmf-reports/report -->
 <!-- wp:image {"lightbox":{"className":"is-style-default wp-block-wmf-reports-report__image","enabled":false,"id":74197,"linkDestination":"none","scale":"cover","sizeSlug":"full","url":"/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png"},"id":74079,"width":"240px","height":"300px","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default wp-block-wmf-reports-report__image"} -->
-<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Rabock_i_narbild.jpg" alt="" class="wp-image-74079" style="object-fit:cover;width:240px;height:300px"/></figure>
+<figure class="wp-block-image size-full is-resized is-style-default wp-block-wmf-reports-report__image"><img src="/wp-content/uploads/2023/12/Rabock_i_narbild.jpg" alt="" class="wp-image-74079" style="object-fit:cover;width:240px;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base10"}}}},"textColor":"base10","className":"wp-block-wmf-reports-report__date"} -->
@@ -1225,7 +1597,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"\u0022wp-block-wmf-reports-report__title is-style-default"} -->
-<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>LAST The people behind a year of impact around the world</strong></a></h3>
+<h3 class="wp-block-heading &quot;wp-block-wmf-reports-report__title is-style-default"><a href="#"><strong>The people behind a year of impact around the world</strong></a></h3>
 <!-- /wp:heading -->
 <!-- /wp:wmf-reports/report -->
 <!-- /wp:wmf-reports/report-archive --></div>
