@@ -14,3 +14,6 @@ import './features/accordion';
 
 // By the numbers masonry and animations.
 import './features/by-the-numbers';
+
+// Welcome page JS.
+import './features/welcome-page';
