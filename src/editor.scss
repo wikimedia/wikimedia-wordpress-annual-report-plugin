@@ -105,3 +105,41 @@
 		}
 	}
 }
+
+// Fixes for the vertical image in the editor.
+.editor-styles-wrapper {
+	.wp-block-image.is-style-report-image-vertical,
+	.wp-block-image.is-style-report-image-vertical.alignwide {
+
+		@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
+			display: flex;
+
+			div {
+				max-width: 66.66%;
+
+				img {
+					max-width: 100%;
+				}
+			}
+
+			figcaption {
+				width: auto;
+			}
+		}
+	}
+}
+
+.editor-styles-wrapper {
+	.wp-block-wmf-pattern-overlay {
+		.wp-block-columns {
+
+			@media only screen and (min-width: 782px) {
+				margin-left: 0;
+			}
+
+			p {
+				margin-bottom: 0.5rem !important;
+			}
+		}
+	}
+}
