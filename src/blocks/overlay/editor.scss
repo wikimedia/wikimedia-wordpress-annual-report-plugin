@@ -55,12 +55,13 @@
 
 .wmf-pattern-reports-leadership {
 
-	.block-editor-block-list__block:has( .wp-block-wmf-reports-overlay ),
-	.wp-block-group__inner-container:has( .wp-block-wmf-reports-overlay ),
+	.block-editor-block-list__block:has(.wp-block-wmf-reports-overlay),
+	.wp-block-group__inner-container:has(.wp-block-wmf-reports-overlay),
 	.wp-block-wmf-reports-overlay {
 		position: static;
 	}
 
+	// stylelint-disable-next-line no-descending-specificity
 	.wp-block {
 
 		.overlay-container {

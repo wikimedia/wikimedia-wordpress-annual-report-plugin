@@ -9,7 +9,10 @@ setTimeout( () => {
 		entries.forEach( ( entry ) => {
 			const targetNumber =
 				entry.target.dataset.countupTargetNumber ||
-				parseInt( entry.target.textContent.replace( /[^0-9]/g, '' ), 10 );
+				parseInt(
+					entry.target.textContent.replace( /[^0-9]/g, '' ),
+					10
+				);
 
 			if ( ! entry.target.dataset.countupTargetNumber ) {
 				entry.target.dataset.countupTargetNumber = targetNumber;

@@ -8,12 +8,17 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		''
 	);
 
+	console.log( 'overlay.classList', overlay.classList );
+
 	if ( ! innerHtml.trim() ) {
 		return;
 	}
 
-	const parent = overlay.closest( '.wp-block-group' );
+	const parent = overlay.closest( '.has_overlay' );
 	const button = parent.querySelector( '.overlay__trigger' );
+
+	console.log( 'parent', parent );
+	console.log( 'button', button );
 
 	if ( ! button ) {
 		return;
@@ -55,7 +60,6 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		popover.focus();
 
 		const popoverBounds = popover.getBoundingClientRect();
-		console.log( popoverBounds.height, window.innerHeight );
 		if ( popoverBounds.height < window.innerHeight ) {
 			popover.classList.add( 'center' );
 		}
