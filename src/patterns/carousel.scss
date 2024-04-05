@@ -59,7 +59,7 @@
 		}
 
 		&:hover {
-			background-color: #ccc;
+			opacity: 0.8;
 		}
 
 		&:focus {
@@ -126,7 +126,7 @@
 		}
 
 		&:hover {
-			background-color: #ccc;
+			opacity: 0.8;
 		}
 
 		&:focus {
@@ -223,6 +223,19 @@
 					margin-bottom: 5rem;
 				}
 			}
+		}
+	}
+
+	.wp-block-button.is-style-tertiary .wp-block-button__link {
+		border-color: #000;
+		color: #000;
+
+		&:hover {
+			opacity: 0.8;
+			border-color: #000;
+			box-shadow: none;
+			color: #000;
+			text-decoration: none;
 		}
 	}
 }
