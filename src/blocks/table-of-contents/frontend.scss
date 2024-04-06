@@ -4,6 +4,7 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+@use 'sass:math';
 
 .wp-block-wmf-reports-table-of-contents {
 	padding-left: 1rem;
@@ -50,5 +51,98 @@
 				font-weight: 700;
 			}
 		}
+	}
+}
+
+$indicator-cutoff-width: 980px;
+
+// Site-header should always have dropshadow when jumplist is present.
+.site-header {
+	box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+}
+
+.wmf-toc-jumplist {
+	display: none;
+	background: white;
+
+	a {
+		font-size: 0.8125rem;
+		color: var(--wp--preset--color--base-10);
+
+		&:focus,
+		&:hover {
+			color: var(--wp--preset--color--wmf-report-brightblue);
+		}
+	}
+
+	@media screen and (min-width: $indicator-cutoff-width) {
+		box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+		display: block;
+		height: 2.875rem;
+		left: 0;
+		position: fixed;
+		top: 94px;
+		width: 100%;
+		z-index: 10;
+
+		&__items {
+			display: flex;
+			flex-wrap: nowrap;
+			max-width: 980px;
+			margin: auto;
+		}
+
+		a {
+			display: inline-block;
+			padding: 0.62rem 0.44rem;
+			text-wrap: nowrap;
+
+			&:first-child {
+				padding-left: 0;
+			}
+			&:last-child {
+				padding-right: 0;
+			}
+		}
+	}
+}
+
+.wmf-toc-progress {
+	// These variables are used for the circular indicator.
+	$indicator-width: 60px; // Should match viewBox.
+	$stroke-width: 10px;
+	$radius: math.div( $indicator-width - $stroke-width, 2 );
+	&__indicator {
+		z-index: 100;
+		width: $indicator-width;
+		height: $indicator-width;
+		position: absolute;
+		circle {
+			transform: rotate(-90deg);
+			transform-origin: 50% 50%;
+			// Radius is set as an SVG attribute.
+			cx: math.div( $indicator-width, 2 );
+			cy: math.div( $indicator-width, 2 );
+			fill: transparent;
+			stroke: orange;
+			stroke-width: $stroke-width;
+			transition: stroke-dashoffset 17ms;
+		}
+	}
+	&__icon {
+		position: absolute;
+		z-index: 100; // TEMP
+		border-radius: 50%;
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='Layer_2' data-name='Layer 2' viewBox='0 0 18 16'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23000;stroke-width:0%7D%3C/style%3E%3C/defs%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpath d='M2 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2ZM18 13H6v2h12v-2ZM18 7H6v2h12V7ZM18 1H6v2h12V1ZM4 8c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2ZM2 16c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2Z' class='cls-1'/%3E%3C/g%3E%3C/svg%3E") white center center no-repeat;
+		background-size: 1.26rem;
+		margin: 8px;
+		width: 44px;
+		height: 44px;
+		border: 1px solid #aaa;
+	}
+
+	@media screen and (min-width: $indicator-cutoff-width) {
+		height: 0.5rem;
+		background: var(--wp--preset--color--wmf-report-brightblue);
 	}
 }
