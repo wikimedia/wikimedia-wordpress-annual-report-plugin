@@ -10,8 +10,102 @@ $indicator-cutoff-width: 980px;
 .wmf-toc-jumplist {
 	background: #fff;
 
-	&__items {
+	&__modal,
+	&__modal-header {
 		display: none;
+	}
+
+	@media screen and (max-width: #{$indicator-cutoff-width - 1}) {
+		$screen-top-offset: 8rem;
+
+		&__modal,
+		&__modal-header {
+			display: block;
+		}
+
+		&__modal-header {
+			margin-bottom: 1.5rem;
+
+			h2 {
+				font-size: 1.75rem;
+				font-weight: 700;
+				line-height: 2.125;
+				letter-spacing: -0.035rem;
+			}
+		}
+
+		&__modal {
+			left: 50%;
+			max-width: 480px;
+			position: fixed;
+			top: $screen-top-offset;
+			transform: translate(-50%, 0);
+			width: 100vw;
+			z-index: 10000;
+		}
+
+		&__modal-blanket{
+			background: rgba(0, 0, 0, 0.4);
+			content: " ";
+			height: 100%;
+			left: 0;
+			position: fixed;
+			top: 0;
+			width: 100vw;
+			z-index: 10000;
+		}
+
+		.wmf-toc-jumplist__modal-contents {
+			background-color: #fff;
+			border-top-left-radius: 2rem;
+			border-top-right-radius: 2rem;
+			height: calc(100vh - $screen-top-offset);
+			padding: 2rem;
+		}
+
+		.wmf-toc-jumplist__items {
+			margin-top: -1px;
+
+			a {
+				border-radius: 2px;
+				display: block;
+				font-size: 0.9375rem;
+				line-height: 1;
+				padding: 0.5rem 0.75rem;
+
+				&,
+				&:hover {
+					color: var(--wp--preset--color--wmf-report-link-color);
+				}
+
+				&::before {
+					background-color: var(--wp--preset--color--wmf-report-link-color);
+					border-radius: 50%;
+					content: " ";
+					display: inline-block;
+					height: 4px;
+					margin: 0 0.5rem 0 0;
+					vertical-align: middle;
+					width: 4px;
+				}
+			}
+
+			.wmf-toc-jumplist__active-item {
+				background: var(--wp--preset--color--wmf-report-orange);
+
+				&,
+				&:hover,
+				&:active {
+					color: #fff;
+				}
+
+				&::before {
+					background-color: #fff;
+				}
+			}
+		}
+
+		// Duplicates some styles from .wp-block-wmf-reports-table-of-contents.
 	}
 
 	a {
@@ -34,6 +128,10 @@ $indicator-cutoff-width: 980px;
 		top: 94px;
 		width: 100%;
 		z-index: 10;
+
+		&__modal {
+			display: block;
+		}
 
 		&__items {
 			display: flex;

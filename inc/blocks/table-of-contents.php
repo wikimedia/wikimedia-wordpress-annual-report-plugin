@@ -49,20 +49,35 @@ function render_jumplist( array $waypoints ) : string {
 				<?php /* Dash array = initial offset = circumference. */ ?>
 				<circle r="25" stroke-dasharray="157.08" stroke-dashoffset="157.08" />
 			</svg>
-			<div class="wmf-toc-progress__icon"></div>
+			<button class="wmf-toc-progress__icon">
+				<span class="screen-reader-text">
+					<?php esc_html_e( 'Open jumplist', 'wmf-reports' ); ?>
+				</span>
+			</button>
 		</div>
-		<div class="wmf-toc-jumplist__items">
+		<div class="wmf-toc-jumplist__modal-blanket"></div>
+		<div class="wmf-toc-jumplist__modal">
+			<div class="wmf-toc-jumplist__modal-contents">
+				<div class="wmf-toc-jumplist__modal-header">
+					<h2>Table of contents</h2>
+				</div>
+				<div class="wmf-toc-jumplist__items">
+					<?php
+					foreach ( $waypoints as $waypoint ) {
+						if ( empty( $waypoint->tocSlug ) || empty( $waypoint->tocLabel ) ) {
+							continue;
+						}
+						printf(
+							'<a href="#%s">%s</a>',
+							esc_attr( $waypoint->tocSlug ), // esc_url would add https://.
+							esc_html( $waypoint->tocLabel )
+						);
+					}
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
 	<?php
-	foreach ( $waypoints as $waypoint ) {
-		if ( empty( $waypoint->tocSlug ) || empty( $waypoint->tocLabel ) ) {
-			continue;
-		}
-		printf(
-			'<a href="#%s">%s</a>',
-			esc_attr( $waypoint->tocSlug ), // esc_url would add https://.
-			esc_html( $waypoint->tocLabel )
-		);
-	}
-	echo '</div></div>';
 	return (string) ob_get_clean();
 }
