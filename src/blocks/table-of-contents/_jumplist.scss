@@ -8,8 +8,11 @@ $indicator-cutoff-width: 980px;
 }
 
 .wmf-toc-jumplist {
-	display: none;
 	background: #fff;
+
+	&__items {
+		display: none;
+	}
 
 	a {
 		font-size: 0.8125rem;
@@ -21,7 +24,7 @@ $indicator-cutoff-width: 980px;
 		}
 	}
 
-	@media screen and (min-width: $indicator-cutoff-width) {
+	@media screen and (min-width: $indicator-cutoff-width ) {
 		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
 		display: block;
 		height: 2.875rem;
@@ -43,12 +46,15 @@ $indicator-cutoff-width: 980px;
 			padding: 0.62rem 0.44rem;
 			text-wrap: nowrap;
 
-			&:first-child {
-				padding-left: 0;
-			}
+			@media screen and (min-width: #{$indicator-cutoff-width + ( 16 * 0.88 )}) {
 
-			&:last-child {
-				padding-right: 0;
+				&:first-child {
+					padding-left: 0;
+				}
+
+				&:last-child {
+					padding-right: 0;
+				}
 			}
 		}
 	}
@@ -59,6 +65,14 @@ $indicator-cutoff-width: 980px;
 	$indicator-width: 60px; // Should match viewBox.
 	$stroke-width: 10px;
 	$radius: math.div($indicator-width - $stroke-width, 2);
+
+	@media screen and (max-width: #{$indicator-cutoff-width - 1} ) {
+		position: fixed;
+		top: 88vh;
+		right: 5rem;
+		width: auto !important; // Override inline style in mobile view.
+		z-index: 100;
+	}
 
 	&__indicator {
 		z-index: 100;
@@ -92,7 +106,24 @@ $indicator-cutoff-width: 980px;
 	}
 
 	@media screen and (min-width: $indicator-cutoff-width) {
-		height: 0.5rem;
 		background: var(--wp--preset--color--wmf-report-brightblue);
+		height: 0.5rem;
+		position: relative;
+		width: 0; // Will be overridden by inline style attribute.
+
+		&__indicator,
+		&__icon {
+			display: none;
+		}
+
+		&::after {
+			background: var(--wp--preset--color--base-80);
+			content: " ";
+			height: 100%;
+			left: 0;
+			position: absolute;
+			width: 100vw;
+			z-index: -1;
+		}
 	}
 }
