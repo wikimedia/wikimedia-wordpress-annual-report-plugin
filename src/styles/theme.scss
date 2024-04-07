@@ -88,6 +88,10 @@
 		background: transparent;
 	}
 
+	.wp-block-group[id] {
+		scroll-margin-top: 8rem;
+	}
+
 	.wp-block-group.alignfull,
 	.alignfull {
 		margin-left: 0;
