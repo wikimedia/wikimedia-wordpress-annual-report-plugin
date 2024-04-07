@@ -85,7 +85,7 @@ function updateJumplistActiveItem() {
 	if ( ! activeSectionLink ) {
 		return;
 	}
-	console.log( activeSectionLink.getAttribute( 'href' ) ); // eslint-disable-line
+
 	jumplistItems.forEach( ( sectionLink ) => {
 		sectionLink.classList.toggle(
 			'wmf-toc-jumplist__active-item',
