@@ -111,6 +111,45 @@ function initializeProgressIndicator() {
 
 initializeProgressIndicator();
 
+const jumplistOpenClass = 'wmf-toc-jumplist--modal-open';
+
+/**
+ * Open the jumplist modal.
+ */
+const openJumplistModal = () => {
+	document
+		.querySelector( '.wmf-toc-jumplist' )
+		.classList.add( jumplistOpenClass );
+};
+
+/**
+ * Close the jumplist modal.
+ */
+const closeJumplistModal = () => {
+	document
+		.querySelectorAll( `.${ jumplistOpenClass }` )
+		.forEach( ( node ) => node.classList.remove( jumplistOpenClass ) );
+};
+
+document
+	.querySelector( '.wmf-toc-progress button' )
+	.addEventListener( 'click', openJumplistModal );
+
+// Delegated lister. Switch behavior based on element clicked.
+document.addEventListener( 'click', ( { target } ) => {
+	const targetIs = ( className ) =>
+		target?.classList?.contains?.( className );
+
+	if (
+		targetIs( 'wmf-toc-jumplist__modal-blanket' ) ||
+		targetIs( 'wmf-toc-jumplist__modal-close' ) ||
+		( target.nodeName === 'A' &&
+			/^#[A-Za-z0-9-]+$/.test( target.getAttribute( 'href' ) ) )
+	) {
+		closeJumplistModal();
+	}
+} );
+
 if ( module.hot ) {
 	module.hot.accept();
 	module.hot.dispose( () => {

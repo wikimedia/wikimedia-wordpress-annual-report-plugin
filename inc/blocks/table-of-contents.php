@@ -49,7 +49,7 @@ function render_jumplist( array $waypoints ) : string {
 				<?php /* Dash array = initial offset = circumference. */ ?>
 				<circle r="25" stroke-dasharray="157.08" stroke-dashoffset="157.08" />
 			</svg>
-			<button class="wmf-toc-progress__icon">
+			<button class="wmf-toc-progress__icon" type="button">
 				<span class="screen-reader-text">
 					<?php esc_html_e( 'Open jumplist', 'wmf-reports' ); ?>
 				</span>
@@ -74,6 +74,13 @@ function render_jumplist( array $waypoints ) : string {
 						);
 					}
 					?>
+				</div>
+				<div class="wmf-toc-jumplist__modal-footer">
+					<button class="wmf-toc-jumplist__modal-close" type="button">
+						<span class="screen-reader-text">
+							<?php esc_html_e( 'Close jumplist', 'wmf-reports' ); ?>
+						</span>
+					</button>
 				</div>
 			</div>
 		</div>
