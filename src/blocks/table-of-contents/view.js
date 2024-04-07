@@ -2,15 +2,17 @@
  * Update all ToC progress circles and bars on scroll.
  */
 function onScroll() {
-	// Measure off of body, not document, to handle fixed viewport in Shiro.
-	const clientHeight = document.body.clientHeight;
-	const scrollHeight = document.documentElement.scrollHeight;
+	const clientHeight = (
+		document.querySelector( 'main' ) ||
+		document.querySelector( 'article' ) ||
+		document.body
+	).clientHeight;
 	const scrollTop = document.documentElement.scrollTop;
 	// Cap at 100, shiro theme structure can lead to >100% values.
-	const percentage = Math.min(
-		scrollTop / ( scrollHeight - clientHeight ),
+	const percentage = +Math.min(
+		( scrollTop / clientHeight ) * 100,
 		100
-	);
+	).toFixed( 2 ); // eslint-disable-line
 	const remaining = ( 100 - percentage ) / 100;
 
 	document
@@ -35,8 +37,6 @@ function onScroll() {
 		} );
 }
 
-const debouncedOnScroll = debounce( onScroll, 17 );
-
 /**
  * Read the ToC and initialize progress indicator menus.
  */
@@ -44,7 +44,6 @@ function initializeProgressIndicator() {
 	window.addEventListener( 'scroll', onScroll );
 }
 
-console.log( document.querySelector( '.wmf-toc-progress' ) ); // eslint-disable-line
 initializeProgressIndicator();
 
 if ( module.hot ) {
