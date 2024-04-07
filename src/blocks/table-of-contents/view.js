@@ -1,40 +1,105 @@
 /**
- * Update all ToC progress circles and bars on scroll.
+ * @type {HTMLDivElement}
  */
-function onScroll() {
-	const clientHeight = (
+const jumplist = document.querySelector( '.wmf-toc-jumplist' );
+/**
+ * @type {HTMLAnchorElement[]}
+ */
+const jumplistItems = jumplist.querySelectorAll( '.wmf-toc-jumplist__items a' );
+/**
+ * @type {HTMLDivElement}
+ */
+const progressIndicator = jumplist.querySelector( '.wmf-toc-progress' );
+
+const ACTIVE_SECTION_HEADER_MARGIN = 300;
+
+/**
+ * Determine the element to use for reading progress measurements.
+ *
+ * @return {HTMLElement} Selected content element.
+ */
+function getMainElement() {
+	return (
 		document.querySelector( 'main' ) ||
 		document.querySelector( 'article' ) ||
 		document.body
-	).clientHeight;
+	);
+}
+
+/**
+ * Update all ToC progress circles and bars on scroll.
+ */
+function updateProgressIndicators() {
+	const clientHeight = getMainElement().clientHeight;
 	const scrollTop = document.documentElement.scrollTop;
-	// Cap at 100, shiro theme structure can lead to >100% values.
+	// Cap at 100, as Shiro theme structure can lead to >100% values.
 	const percentage = +Math.min(
 		( scrollTop / clientHeight ) * 100,
 		100
-	).toFixed( 2 ); // eslint-disable-line
+	).toFixed( 2 );
 	const remaining = ( 100 - percentage ) / 100;
 
-	document
-		.querySelectorAll( '.wmf-toc-progress' )
-		.forEach( ( progressElement ) => {
-			progressElement.setAttribute( 'style', `width:${ percentage }%` );
-		} );
+	// Handle linear (desktop) indicator.
+	progressIndicator.setAttribute( 'style', `width:${ percentage }%` );
 
-	document
-		.querySelectorAll( '.wmf-toc-progress circle' )
-		.forEach( ( circle ) => {
-			const radius = +circle.getAttribute( 'r' );
-			if ( isNaN( radius ) ) {
-				return;
-			}
+	// Handle radial (mobile) indicator.
+	const radialIndicator = progressIndicator.querySelector( 'circle' );
+	const radius = +radialIndicator.getAttribute( 'r' );
+	if ( isNaN( radius ) ) {
+		return;
+	}
+	const circumference = Math.PI * radius * 2;
+	radialIndicator.setAttribute(
+		'stroke-dashoffset',
+		`${ ( remaining * circumference ).toFixed( 0 ) }px`
+	);
+}
 
-			const circumference = Math.PI * radius * 2;
-			circle.setAttribute(
-				'stroke-dashoffset',
-				`${ ( remaining * circumference ).toFixed( 0 ) }px`
-			);
-		} );
+/**
+ * Given the list of jumplist section anchors, identify which container is
+ * visible on screen.
+ *
+ * @return {?HTMLAnchorElement} Active section's anchor link, or null.
+ */
+function identifyVisibleSection() {
+	for ( const sectionLink of jumplistItems ) {
+		const anchorSelector = sectionLink.getAttribute( 'href' );
+		const targetContainer = document.querySelector( anchorSelector );
+		const rect = targetContainer.getBoundingClientRect();
+		if (
+			rect.top <= ACTIVE_SECTION_HEADER_MARGIN &&
+			rect.top + rect.height >= 0
+		) {
+			return sectionLink;
+		}
+	}
+	// Could not determine active section.
+	return null;
+}
+
+/**
+ * Update the active (visible) section indicator in the jumplist.
+ */
+function updateJumplistActiveItem() {
+	const activeSectionLink = identifyVisibleSection();
+	if ( ! activeSectionLink ) {
+		return;
+	}
+	console.log( activeSectionLink.getAttribute( 'href' ) ); // eslint-disable-line
+	jumplistItems.forEach( ( sectionLink ) => {
+		sectionLink.classList.toggle(
+			'wmf-toc-jumplist__active-item',
+			activeSectionLink === sectionLink
+		);
+	} );
+}
+
+/**
+ * Scroll handler.
+ */
+function onScroll() {
+	updateProgressIndicators();
+	updateJumplistActiveItem();
 }
 
 /**

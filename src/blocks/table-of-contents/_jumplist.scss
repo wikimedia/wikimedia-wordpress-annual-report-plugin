@@ -19,7 +19,8 @@ $indicator-cutoff-width: 980px;
 		color: var(--wp--preset--color--base-10);
 
 		&:focus,
-		&:hover {
+		&:hover,
+		&.wmf-toc-jumplist__active-item {
 			color: var(--wp--preset--color--wmf-report-brightblue);
 		}
 	}
