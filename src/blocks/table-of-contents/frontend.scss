@@ -4,6 +4,7 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+@import "./jumplist";
 
 .wp-block-wmf-reports-table-of-contents {
 	padding-left: 1rem;
@@ -18,7 +19,7 @@
 		}
 
 		&::before {
-			background-color: var( --wp--preset--color--wmf-report-link-color );
+			background-color: var(--wp--preset--color--wmf-report-link-color);
 			border-radius: 50%;
 			content: " ";
 			display: inline-block;
@@ -35,11 +36,12 @@
 	}
 
 	@media screen and (min-width: 782px) {
+		border-left: 1px solid var(--wp--preset--color--wmf-report-blue);
 		margin-left: 2rem;
 		padding-left: 2.875rem;
-		border-left: 1px solid var(--wp--preset--color--wmf-report-blue);
 
 		li {
+
 			&::before {
 				display: none;
 			}
