@@ -1,0 +1,248 @@
+@use "sass:math";
+
+$indicator-cutoff-width: 980px;
+
+// Site-header should always have dropshadow when jumplist is present.
+.site-header {
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wmf-toc-jumplist {
+	background: #fff;
+
+	&__modal,
+	&__modal-blanket,
+	&__modal-header {
+		display: none;
+	}
+
+	@media screen and (max-width: #{$indicator-cutoff-width - 1}) {
+		$screen-top-offset: 8rem;
+
+		&__modal-header {
+			margin-bottom: 1.5rem;
+
+			h2 {
+				font-size: 1.75rem;
+				font-weight: 700;
+				line-height: 2.125;
+				letter-spacing: -0.035rem;
+			}
+		}
+
+		&__modal {
+			left: 50%;
+			max-width: 480px;
+			position: fixed;
+			top: $screen-top-offset;
+			transform: translate(-50%, 0);
+			width: 100vw;
+			z-index: 100000; // Win the war with WP's admin bar.
+		}
+
+		&__modal-blanket {
+			background: rgba(0, 0, 0, 0.4);
+			content: " ";
+			height: 100%;
+			left: 0;
+			position: fixed;
+			top: 0;
+			width: 100vw;
+			z-index: 100000; // Win the war with WP's admin bar.
+		}
+
+		.wmf-toc-jumplist__modal-contents {
+			background-color: #fff;
+			border-top-left-radius: 2rem;
+			border-top-right-radius: 2rem;
+			height: calc(100vh - $screen-top-offset);
+			padding: 2rem;
+		}
+
+		.wmf-toc-jumplist__items {
+			margin-top: -1px;
+
+			// Mirror styles from .wp-block-wmf-reports-table-of-contents.
+			a {
+				border-radius: 2px;
+				display: block;
+				font-size: 0.9375rem;
+				line-height: 1;
+				padding: 0.5rem 0.75rem;
+
+				&,
+				&:hover {
+					color: var(--wp--preset--color--wmf-report-link-color);
+				}
+
+				&::before {
+					background-color: var(--wp--preset--color--wmf-report-link-color);
+					border-radius: 50%;
+					content: " ";
+					display: inline-block;
+					height: 4px;
+					margin: 0 0.5rem 0 0;
+					vertical-align: middle;
+					width: 4px;
+				}
+			}
+
+			.wmf-toc-jumplist__active-item {
+				background: var(--wp--preset--color--wmf-report-orange);
+
+				&,
+				&:hover,
+				&:active {
+					color: #fff;
+				}
+
+				&::before {
+					background-color: #fff;
+				}
+			}
+		}
+
+		.wmf-toc-jumplist--modal-open &__modal,
+		.wmf-toc-jumplist--modal-open &__modal-blanket,
+		.wmf-toc-jumplist--modal-open &__modal-header {
+			display: block;
+		}
+
+		.wmf-toc-jumplist__modal-footer {
+			align-items: middle;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			margin-top: 1.5rem;
+		}
+
+		.wmf-toc-jumplist__modal-close {
+			// stylelint-disable-next-line function-url-quotes
+			background: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.27811 10.2784L2.00003 17.5565L0.585815 16.1423L7.86389 8.86421L1.00003 2.00035L2.41424 0.586132L9.27811 7.45L16.1422 0.585938L17.5564 2.00015L10.6923 8.86421L17.9706 16.1425L16.5564 17.5567L9.27811 10.2784Z' fill='%23202122'/%3E%3C/svg%3E%0A") #fff center center no-repeat;
+			border-radius: 50%;
+			border: 1px solid var(--wp--preset--color--base-70);
+			height: 3rem;
+			width: 3rem;
+		}
+	}
+
+	a {
+		font-size: 0.8125rem;
+		color: var(--wp--preset--color--base-10);
+
+		&:focus,
+		&:hover,
+		&.wmf-toc-jumplist__active-item {
+			color: var(--wp--preset--color--wmf-report-brightblue);
+		}
+	}
+
+	@media screen and (min-width: $indicator-cutoff-width ) {
+		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+		display: block;
+		height: 2.875rem;
+		left: 0;
+		position: fixed;
+		top: 94px;
+		width: 100%;
+		z-index: 10;
+
+		&__modal {
+			display: block;
+		}
+
+		&__items {
+			display: flex;
+			flex-wrap: nowrap;
+			max-width: 980px;
+			margin: auto;
+		}
+
+		a {
+			display: inline-block;
+			padding: 0.62rem 0.44rem;
+			text-wrap: nowrap;
+
+			@media screen and (min-width: #{$indicator-cutoff-width + ( 16 * 0.88 )}) {
+
+				&:first-child {
+					padding-left: 0;
+				}
+
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}
+
+.wmf-toc-progress {
+	// These variables are used for the circular indicator.
+	$indicator-width: 60px; // Should match viewBox.
+	$stroke-width: 10px;
+	$radius: math.div($indicator-width - $stroke-width, 2);
+
+	@media screen and (max-width: #{$indicator-cutoff-width - 1} ) {
+		position: fixed;
+		top: 88vh;
+		right: 5rem;
+		width: auto !important; // Override inline style in mobile view.
+		z-index: 100;
+	}
+
+	&__indicator {
+		z-index: 100;
+		width: $indicator-width;
+		height: $indicator-width;
+		position: absolute;
+
+		circle {
+			transform: rotate(-90deg);
+			transform-origin: 50% 50%;
+			// Radius is set as an SVG attribute.
+			cx: math.div($indicator-width, 2);
+			cy: math.div($indicator-width, 2);
+			fill: transparent;
+			stroke: var(--wp--preset--color--orange);
+			stroke-width: $stroke-width;
+			transition: stroke-dashoffset 17ms;
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		border-radius: 50%;
+		// stylelint-disable-next-line function-url-quotes
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='Layer_2' data-name='Layer 2' viewBox='0 0 18 16'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23000;stroke-width:0%7D%3C/style%3E%3C/defs%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpath d='M2 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2ZM18 13H6v2h12v-2ZM18 7H6v2h12V7ZM18 1H6v2h12V1ZM4 8c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2ZM2 16c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2Z' class='cls-1'/%3E%3C/g%3E%3C/svg%3E") #fff center center no-repeat;
+		background-size: 1.26rem;
+		margin: 8px;
+		width: 44px;
+		height: 44px;
+		border: 1px solid #aaa;
+		z-index: 101; // Over the progress SVG.
+	}
+
+	@media screen and (min-width: $indicator-cutoff-width) {
+		background: var(--wp--preset--color--wmf-report-brightblue);
+		height: 0.5rem;
+		position: relative;
+		width: 0; // Will be overridden by inline style attribute.
+
+		&__indicator,
+		&__icon {
+			display: none;
+		}
+
+		&::after {
+			background: var(--wp--preset--color--base-80);
+			content: " ";
+			height: 100%;
+			left: 0;
+			position: absolute;
+			width: 100vw;
+			z-index: -1;
+		}
+	}
+}
