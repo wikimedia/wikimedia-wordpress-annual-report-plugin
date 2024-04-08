@@ -49,6 +49,7 @@
 
 .wp-block-image.is-style-report-image-vertical,
 .wp-block-image.is-style-report-image-vertical.alignwide {
+	margin-bottom: 1rem;
 
 	@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
 		display: flex;

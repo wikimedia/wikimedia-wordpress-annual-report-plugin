@@ -34,15 +34,33 @@
 				font-size: $font-size-small;
 				font-weight: 400;
 				text-align: left;
+				cursor: default;
+				pointer-events: none;
 
 				strong {
 					color: #3a25ff;
+					cursor: pointer;
 					display: inline-block;
 					font-weight: 700;
 					line-height: 1.6;
 					margin-bottom: 0.2rem;
+					pointer-events: all;
+				}
+
+				&:hover {
+					text-decoration: none;
+
+					strong {
+						text-decoration: underline;
+					}
 				}
 			}
+		}
+	}
+
+	&__list {
+		.wp-block-group {
+			margin-left: 0 !important;
 		}
 	}
 }
