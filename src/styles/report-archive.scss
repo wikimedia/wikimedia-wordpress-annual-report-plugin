@@ -1,5 +1,6 @@
 .wp-block-wmf-reports-report-archive.carousel {
 	margin-top: 2rem;
+	position: relative;
 
 	.carousel__track-outer {
 		margin: auto;
@@ -16,6 +17,12 @@
 		&.animate {
 			transition: all 0.5s;
 		}
+	}
+
+	.carousel__buttons-wrapper {
+		position: absolute;
+		top: -7rem;
+		width: 100%;
 	}
 }
 
