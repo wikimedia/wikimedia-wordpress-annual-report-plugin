@@ -261,6 +261,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 					// On click select the related slide and highlight the marker.
 					markerDiv.addEventListener( 'click', () => {
 						setMarker( index );
+						const yOffset = -140;
+						const element = document.getElementById('map');
+						const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+						window.scrollTo({top: y, behavior: 'smooth'});
 					} );
 				}
 
