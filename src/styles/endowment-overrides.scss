@@ -1,3 +1,4 @@
+.wikimedia-endow,
 body.single-wmf-report.wikimedia-endow:not(.home) {
 	$width-breakpoint-wide: 1440px;
 
@@ -36,6 +37,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		> div {
 			max-width: 100%;
 			padding: 0;
+		}
+
+		p {
+			max-width: 100%;
 		}
 	}
 
@@ -82,6 +87,52 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		border-bottom-right-radius: 0;
 	}
 
+	/** Images **/
+	.wmf-pattern-image {
+		clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+		margin-bottom: 2rem;
+
+		@media only screen and ( min-width: 782px ) {
+			clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+		}
+	}
+
+	.wp-block-image.is-style-report-image,
+	.wp-block-image.is-style-report-image.alignwide,
+	.wp-block-image.is-style-report-image-vertical,
+	.wp-block-image.is-style-report-image-vertical.alignwide {
+		background-color: transparent;
+
+		img {
+			border-bottom-right-radius: 0;
+		}
+
+		mark {
+			margin-bottom: 2rem;
+		}
+
+		@media only screen and ( min-width: 782px ) {
+			display: flex;
+
+			figcaption {
+
+				border-bottom-right-radius: 2rem;
+				padding: 1rem;
+				position: relative;
+				width: 100%;
+				mark {
+					position: relative;
+					margin-top: 2rem;
+				}
+			}
+
+			img {
+				max-width: 66.66%;
+				width: 100%;
+			}
+		}
+	}
+
 	/** Expandable Content **/
 	.expandable-content {
 		&::after {
@@ -98,7 +149,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			// min-height: 500px;
 		}
 
-
 		&__image {
 			background-color: #fff;
 			margin: 0;
@@ -113,6 +163,14 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 					height: 100%;
 					// min-height: 500px;
 				}
+			}
+		}
+
+		&__location,
+		&__location.is-style-sans-p {
+
+			&::before {
+				background: #0060fe;
 			}
 		}
 
@@ -141,6 +199,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	.wp-block-wmf-reports-map.carousel,
 	.wp-block-wmf-reports-stories.carousel {
+		margin-bottom: 2rem;
+
 		.carousel__buttons-wrapper {
 			@media only screen and ( min-width: 782px ) {
 				bottom: 16%;
@@ -149,14 +209,40 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	/** Stories **/
-	.stories.carousel .stories__categories-outer-wrapper.alignwide {
-		&::after,
-		&::before {
-			background: linear-gradient(90deg, rgba(248, 249, 250, 0) 0%, rgba(255, 255, 255, 1) 80%);
+	.wp-block-wmf-reports-stories.stories {
+
+		.stories__categories-wrapper.alignwide {
+			padding-left: 0;
+			padding-right: 0;
 		}
 
-		&::before {
-			background: linear-gradient(270deg, rgba(248, 249, 250, 0) 0%, rgba(255, 255, 255, 1) 80%);
+		&.carousel .stories__categories-outer-wrapper.alignwide {
+			&::after,
+			&::before {
+				background: linear-gradient(90deg, rgba(248, 249, 250, 0) 0%, rgba(255, 255, 255, 1) 80%);
+			}
+
+			&::before {
+				background: linear-gradient(270deg, rgba(248, 249, 250, 0) 0%, rgba(255, 255, 255, 1) 80%);
+			}
+		}
+
+		.category-slide {
+			&:hover,
+			&:focus,
+			&.active {
+				background-color: #0060fe;
+				border-color: #0060fe;
+				color: #fff;
+			}
+		}
+	}
+
+	/** Map **/
+	.wp-block-wmf-reports-map {
+		.marker.active,
+		.cluster.active {
+			background: #0060fe;
 		}
 	}
 }
