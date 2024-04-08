@@ -14,6 +14,7 @@ use const WMF\Reports\Blocks\Map\MAP_API_OPTION_KEY;
  * Attach hooks.
  */
 function bootstrap() {
+	add_action( 'body_class', __NAMESPACE__ . '\\add_body_classes'  );
 	add_action( 'init', __NAMESPACE__ . '\\register_dependency_scripts' );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets' );
 	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_frontend_styles' );
@@ -21,6 +22,14 @@ function bootstrap() {
 	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_connect_src_origins', 901, 2 );
 	add_filter( 'wmf/security/csp/allowed_origins', __NAMESPACE__ . '\\allow_mapbox_csp_origins', 10, 2 );
 	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_blob_worker_src_csp', 901, 2 );
+}
+
+/**
+ * Output the current theme so that we can target only that.
+ */
+function add_body_classes( $classes ) {
+	$classes[] = get_option('stylesheet');
+	return $classes;
 }
 
 /**

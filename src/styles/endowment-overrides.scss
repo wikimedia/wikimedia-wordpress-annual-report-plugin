@@ -1,0 +1,94 @@
+body.single-wmf-report.wikimedia-endow:not(.home) {
+	$width-breakpoint-wide: 1440px;
+
+	.alignfull {
+		transform: none;
+
+		> div {
+			max-width: 100%;
+			padding: 0;
+		}
+	}
+
+	.wp-block-group.alignfull,
+	.alignfull {
+		margin-left: 0;
+		margin-right: 0;
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+
+		// stylelint-disable-next-line no-descending-specificity
+		.wp-block-group__inner-container {
+			padding: 0;
+		}
+	}
+
+	.wp-block-group.alignwide,
+	.alignwide {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: $width-breakpoint-wide !important;
+		width: 100%;
+
+		@media only screen and ( max-width: calc( $width-breakpoint-wide + 4rem ) ) {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+	}
+
+	.wmf-report.hentry {
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		margin: 0;
+	}
+
+	.entry-content {
+		max-width: 100%;
+	}
+
+	.wp-block-group.has-background {
+		border-bottom-right-radius: 0;
+	}
+
+	.wmf-pattern-reports-carousel-slide {
+		clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+
+		@media only screen and ( min-width: 782px ) {
+			clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+			min-height: 900px;
+		}
+
+
+		&__image {
+			background-color: #fff;
+			margin: 0;
+
+			@media only screen and ( min-width: 782px ) {
+				height: 100%;
+				min-height: 900px;
+			}
+
+			img {
+				@media only screen and ( min-width: 782px ) {
+					min-height: 900px;
+				}
+			}
+		}
+
+		.wp-block-group__inner-container {
+			@media only screen and ( min-width: 782px ) {
+				min-height: 900px;
+			}
+		}
+	}
+
+	.wp-block-wmf-reports-map.carousel,
+	.wp-block-wmf-reports-stories.carousel {
+		.carousel__buttons-wrapper {
+			bottom: 12rem;
+		}
+	}
+}

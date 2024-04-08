@@ -30,6 +30,9 @@
 @import "patterns/overlay";
 @import "patterns/welcome-page";
 
+/* Endowment */
+@import "styles/endowment-overrides";
+
 @font-face {
 	font-family: "Noto Sans";
 	src: url(../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf);
