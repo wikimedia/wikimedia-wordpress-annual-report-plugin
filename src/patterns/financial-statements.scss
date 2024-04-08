@@ -1,9 +1,16 @@
 .wmf-pattern-financial-statements {
+	margin-bottom: 2rem;
 
 	&__score {
 
 		.wp-block-image {
 			margin-bottom: 0.5rem;
+		}
+	}
+
+	table {
+		th:first-of-type {
+			width: 66%;
 		}
 	}
 }
