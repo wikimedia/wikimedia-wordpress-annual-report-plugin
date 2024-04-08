@@ -68,4 +68,12 @@ const initializeAccordionItems = () => {
 	}
 };
 
-document.addEventListener( 'DOMContentLoaded', initializeAccordionItems );
+document.addEventListener( 'DOMContentLoaded', () => {
+	const endowSite = document.querySelector( '.wikimedia-endow' );
+
+	if ( ! endowSite ) {
+		return;
+	}
+
+	initializeAccordionItems();
+} );
