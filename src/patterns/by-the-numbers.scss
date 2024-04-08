@@ -1,4 +1,5 @@
 .wmf-pattern-by-the-numbers {
+	padding-top: 2rem !important;
 	overflow: hidden;
 
 	.wmf-pattern-by-the-numbers__masonry {
@@ -26,6 +27,10 @@
 		.masonry-layout > div > div {
 			width: 100%;
 			margin-bottom: 6rem;
+		}
+
+		.masonry-layout > div > div:last-of-type {
+			margin-bottom: 2rem;
 		}
 
 		.masonry-column-1 {
