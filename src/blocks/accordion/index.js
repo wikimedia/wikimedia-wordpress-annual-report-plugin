@@ -24,30 +24,14 @@ registerBlockType( metadata.name, {
 	edit: Edit,
 	save: ( { attributes } ) => {
 		const blockProps = useBlockProps.save();
-		blockProps.className = `wmf-accordion-wrapper ${blockProps.className} ${attributes.fontColor}`;
+		blockProps.className = `wmf-accordion-wrapper ${ blockProps.className } ${ attributes.fontColor }`;
 
 		return (
-			<div { ...blockProps } >
+			<div { ...blockProps }>
 				<InnerBlocks.Content />
 			</div>
-
 		);
 	},
-	deprecated: [
-        {
-            save: ( { attributes } ) => {
-				const blockProps = useBlockProps.save();
-				blockProps.className = `accordion-wrapper ${blockProps.className} ${attributes.fontColor}`;
-
-				return (
-					<div { ...blockProps } >
-						<InnerBlocks.Content />
-					</div>
-
-				);
-			},
-        },
-    ],
 } );
 
 // Block HMR boilerplate.

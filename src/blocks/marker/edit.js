@@ -30,7 +30,6 @@ import { SearchBox } from '@mapbox/search-js-react';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
-
 	const { lat, long, postId, postType } = attributes;
 
 	const childBlocks = useSelect(

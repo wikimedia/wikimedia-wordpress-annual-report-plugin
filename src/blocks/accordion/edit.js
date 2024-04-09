@@ -1,4 +1,9 @@
-import { InnerBlocks, useBlockProps, InspectorControls, useSetting } from '@wordpress/block-editor';
+import {
+	InnerBlocks,
+	useBlockProps,
+	InspectorControls,
+	useSetting,
+} from '@wordpress/block-editor';
 import { Panel, PanelBody, ColorPalette } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -19,12 +24,15 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<Panel header= { __( 'Set title font color:', 'wmf-reports' ) } >
+				<Panel header={ __( 'Set title font color:', 'wmf-reports' ) }>
 					<PanelBody>
 						<ColorPalette
 							value={ fontColor }
 							colors={ [ ...useSetting( 'color.palette' ) ] }
-							onChange={ ( fontColor ) => setAttributes( { fontColor } ) }
+							// eslint-disable-next-line no-shadow
+							onChange={ ( fontColor ) =>
+								setAttributes( { fontColor } )
+							}
 						/>
 					</PanelBody>
 				</Panel>
@@ -39,4 +47,3 @@ export default function Edit( { attributes, setAttributes } ) {
 		</>
 	);
 }
-

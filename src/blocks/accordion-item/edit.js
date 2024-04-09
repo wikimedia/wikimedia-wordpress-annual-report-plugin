@@ -8,13 +8,14 @@ import { __ } from '@wordpress/i18n';
  * @param {Object}   props               Block Props.
  * @param {Object}   props.attributes    Block Attributes.
  * @param {Function} props.setAttributes Set Block Attributes.
+ * @param {string}   props.context       Block Context.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, setAttributes, context } ) {
 	const blockProps = useBlockProps(); // eslint-disable-line react-hooks/rules-of-hooks
-	const fontColor = context['accordion/fontColor'];
+	const fontColor = context[ 'accordion/fontColor' ];
 
 	if ( fontColor !== attributes.fontColor ) {
 		setTimeout( () => setAttributes( { fontColor } ) );
@@ -27,7 +28,10 @@ export default function Edit( { attributes, setAttributes, context } ) {
 					<RichText
 						className="wmf-accordion-item__title-text"
 						formattingControls={ [] }
-						placeholder={ __( 'Add Accordion Title...', 'wmf-reports' ) }
+						placeholder={ __(
+							'Add Accordion Title…',
+							'wmf-reports'
+						) }
 						tagName="h3"
 						value={ attributes.title }
 						onChange={ ( title ) => setAttributes( { title } ) }
