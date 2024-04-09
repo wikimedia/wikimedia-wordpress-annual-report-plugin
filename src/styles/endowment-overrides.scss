@@ -1,6 +1,11 @@
+/* stylelint-disable no-descending-specificity */
 .wikimedia-endow,
 body.single-wmf-report.wikimedia-endow:not(.home) {
 	$width-breakpoint-wide: 1440px;
+
+	.entry-header {
+		display: none;
+	}
 
 	.wp-block-heading {
 		margin: 0 0 1rem 0;
@@ -10,6 +15,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		margin-top: 0;
 	}
 
+	.wmf-pattern-endowment-hero__label,
 	h2:not([class*="is-style-"]) {
 		margin-bottom: 2rem;
 
@@ -27,6 +33,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	h2 {
+
 		&::after {
 			display: none;
 		}
@@ -56,7 +63,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		padding-right: 0;
 		width: 100%;
 
-		// stylelint-disable-next-line no-descending-specificity
 		.wp-block-group__inner-container {
 			padding: 0;
 		}
@@ -69,7 +75,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		max-width: $width-breakpoint-wide !important;
 		width: 100%;
 
-		@media only screen and ( min-width: 1044px ) and ( max-width: calc( $width-breakpoint-wide + 2rem ) ) {
+		@media only screen and (min-width: 1044px) and (max-width: calc($width-breakpoint-wide + 2rem)) {
 			padding-left: 2rem;
 			padding-right: 2rem;
 		}
@@ -86,20 +92,162 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	.entry-content {
 		max-width: 100%;
+		margin-top: -1rem;
 	}
 
 	.wp-block-group.has-background {
 		border-bottom-right-radius: 0;
 	}
 
+	/** Expandable Content **/
+	.expandable-content {
+
+		&::after {
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%);
+		}
+	}
+
+	/* Hero */
+	.is-style-default.wmf-pattern-endowment-hero {
+		margin-bottom: -4rem;
+		padding-bottom: 2rem;
+
+		@media only screen and (min-width: 782px) {
+			clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+			padding-bottom: 6rem;
+			margin-bottom: 0;
+		}
+
+		.wmf-pattern-endowment-hero__label {
+
+			@media only screen and (min-width: 782px) {
+				margin-top: 6rem;
+			}
+
+			img {
+				filter: brightness(0) invert(1);
+				line-height: 0;
+				margin: 0 0.5rem -4px 0;
+				padding: 0;
+			}
+		}
+
+		.wmf-pattern-endowment-hero__title {
+
+			&::after {
+				background-color: #00ced6;
+				content: "";
+				display: block;
+				height: 0.25rem;
+				margin: 4rem 0 4rem 0;
+				width: 6rem;
+			}
+		}
+
+		.wmf-pattern-endowment-hero__image {
+			margin: 0;
+			clip-path: polygon(0 0, 100% 0, 100% 89%, 0 100%);
+
+			@media only screen and (min-width: 1500px) {
+				clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+			}
+		}
+
+		@media only screen and (max-width: 781px) {
+
+			.wp-block-column:last-child {
+				order: -1;
+			}
+
+			.wmf-pattern-endowment-hero__image {
+				margin-left: -2rem;
+				margin-right: -2rem;
+			}
+		}
+
+		.expandable-content {
+
+			&::after {
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(28, 45, 62, 1) 80%);
+			}
+		}
+
+		/** Letter from the CEO **/
+		.wp-block-group.alignwide.wmf-pattern-letter-from-the-ceo {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	/** TOC **/
+	.wmf-pattern-toc {
+		margin-top: 4rem;
+		margin-bottom: 4rem;
+		position: relative;
+
+		.wp-block-wmf-reports-table-of-contents {
+			margin: 1rem 1rem 2rem 1rem;
+			padding: 0;
+			list-style-type: disc;
+
+			li {
+				color: #0060fe;
+				list-style-type: disc;
+
+				a {
+					color: #0060fe;
+				}
+			}
+		}
+
+		.wp-block-buttons {
+
+			@media only screen and (min-width: 782px) {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+
+			@media only screen and (min-width: calc(782px + 4rem)) {
+				right: 2rem;
+			}
+		}
+	}
+
+	@media only screen and (min-width: 782px) {
+
+		.wmf-toc-jumplist {
+			display: none;
+		}
+	}
+
 	/** Images **/
+	.wmf-pattern-image--hide-desktop {
+
+		@media only screen and (min-width: 782px) {
+			display: none;
+		}
+	}
+
+	.wmf-pattern-image--hide-mobile {
+		display: none;
+
+		@media only screen and (min-width: 782px) {
+			display: block;
+		}
+	}
+
 	.wmf-pattern-image {
 		clip-path: polygon(0 4%, 100% 0, 100% 100%, 0% 100%);
 
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 			margin-bottom: 2rem;
 		}
+	}
+
+	.is-style-default.wmf-pattern-endowment-hero + .wmf-pattern-image {
+		clip-path: polygon(0 0, 100% 6%, 100% 100%, 0% 100%);
 	}
 
 	.wp-block-image.is-style-report-image,
@@ -116,7 +264,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			margin-bottom: 2rem;
 		}
 
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			display: flex;
 
 			figcaption {
@@ -125,6 +273,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				padding: 1rem 1rem 1rem 2rem;
 				position: relative;
 				width: 100%;
+
 				mark {
 					position: relative;
 					margin-top: 2rem;
@@ -138,35 +287,26 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 	}
 
-	/** Expandable Content **/
-	.expandable-content {
-		&::after {
-			background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%);
-		}
-	}
-
 	/** Carousels **/
 	.wmf-pattern-reports-carousel-slide {
 		clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
 
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-			// min-height: 500px;
 		}
 
 		&__image {
 			background-color: #fff;
 			margin: 0;
 
-			@media only screen and ( min-width: 782px ) {
+			@media only screen and (min-width: 782px) {
 				height: 100%;
-				// min-height: 500px;
 			}
 
 			img {
-				@media only screen and ( min-width: 782px ) {
+
+				@media only screen and (min-width: 782px) {
 					height: 100%;
-					// min-height: 500px;
 				}
 			}
 		}
@@ -183,9 +323,9 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			padding: 0;
 
 			.wp-block-column:last-of-type {
-				padding: 2rem 2rem 6rem 2rem;
+				padding: 0 2rem 0 2rem;
 
-				@media only screen and ( min-width: 782px ) {
+				@media only screen and (min-width: 782px) {
 					padding: 2rem 2rem 6rem 0;
 
 					.wp-block-buttons {
@@ -199,12 +339,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.wp-block-wmf-reports-map.carousel,
 	.wp-block-wmf-reports-stories.carousel {
 		margin-bottom: 2rem;
-
-		.carousel__buttons-wrapper {
-			@media only screen and ( min-width: 782px ) {
-				bottom: 16%;
-			}
-		}
 	}
 
 	/** Stories **/
@@ -216,11 +350,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.stories__categories-outer-wrapper.alignwide,
-		.stories__categories-wrapper.alignwide  {
-			max-width: calc( $width-breakpoint-wide + 4rem ) !important;
+		.stories__categories-wrapper.alignwide {
+			max-width: calc($width-breakpoint-wide + 4rem) !important;
 		}
 
 		&.carousel .stories__categories-outer-wrapper.alignwide {
+
 			&::after,
 			&::before {
 				background: linear-gradient(90deg, rgba(248, 249, 250, 0) 0%, rgba(255, 255, 255, 1) 80%);
@@ -232,6 +367,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.category-slide {
+
 			&:hover,
 			&:focus,
 			&.active {
@@ -244,6 +380,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/** Map **/
 	.wp-block-wmf-reports-map {
+
 		.marker.active,
 		.cluster.active {
 			background: #0060fe;
@@ -272,28 +409,69 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			.wp-block-wmf-reports-accordion-item:nth-of-type(1) .wmf-accordion-item::before,
 			.wmf-accordion-item:nth-of-type(1)::before {
-				background-color: #78107A;
+				background-color: #78107a;
 			}
 
 			.wp-block-wmf-reports-accordion-item:nth-of-type(2) .wmf-accordion-item::before,
 			.wmf-accordion-item:nth-of-type(2)::before {
-				background-color: #1C2D3E;
+				background-color: #1c2d3e;
 			}
 
 			.wp-block-wmf-reports-accordion-item:nth-of-type(3) .wmf-accordion-item::before,
 			.wmf-accordion-item:nth-of-type(3)::before {
-				background-color: #0060FE;
+				background-color: #0060fe;
 			}
 
 			.wp-block-wmf-reports-accordion-item:nth-of-type(4) .wmf-accordion-item::before,
 			.wmf-accordion-item:nth-of-type(4)::before {
-				background-color: #00CED6;
+				background-color: #00ced6;
+			}
+		}
+	}
+
+	/* Financial Statements */
+	// stylelint-disable-next-line no-duplicate-selectors
+	.wmf-pattern-financial-statements {
+
+		table {
+
+			&.has-light-blue-background-color {
+				border: 2rem solid #e3eef2;
+			}
+
+			&.has-wend-report-cobalt-background-color {
+				border: 2rem solid #0060fe;
+			}
+
+			thead {
+				border-bottom: 1px solid #0060fe;
+			}
+
+			td,
+			th {
+				border: 0;
+			}
+
+			tr {
+				border-bottom: 1px solid #0060fe;
+			}
+		}
+
+		.wp-block-columns.alignwide {
+			gap: 0;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+
+			@media only screen and (min-width: 782px) {
+				gap: 4rem;
+				padding-left: 4rem !important;
 			}
 		}
 	}
 
 	/* Leadership */
 	.wmf-pattern-reports-leadership {
+
 		a.wp-block-button__link:not([href]) {
 			background-color: transparent;
 			padding: 0;
@@ -304,14 +482,15 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.wp-block-wmf-reports-donate {
 		margin-bottom: 2rem;
 
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			padding: 4rem !important;
 		}
 
 		.wp-block-button__link.has-wend-report-slate-blue-color {
-			color: #1C2D3E !important;
+			color: #1c2d3e !important;
 
-			&:before {
+			&::before {
+				// stylelint-disable-next-line function-url-quotes
 				background-image: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.99854 16H15.9985V11H17.9985V16C17.9985 17.1046 17.1031 18 15.9985 18H1.99854C0.893966 18 -0.00146484 17.1046 -0.00146484 16V2C-0.00146484 0.89543 0.893965 0 1.99854 0H6.99854V2H1.99854V16Z" fill="%231C2D3E"/><path d="M9.99854 0H17.9985V8L14.7085 4.71L8.97853 10.44L7.55853 9.02L13.2885 3.29L9.99854 0Z" fill="%231C2D3E"/></svg>');
 				background-repeat: no-repeat;
 				background-position: 50% 50%;
@@ -325,10 +504,11 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wp-block-button__link.has-wend-report-luminous-vivid-orange-background-color {
-			background-color: #D40356 !important;
+			background-color: #d40356 !important;
 			color: #fff !important;
 
-			&:before {
+			&::before {
+				// stylelint-disable-next-line function-url-quotes
 				background-image: url('data:image/svg+xml,<svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5733 8.38756L9.0007 16.0005L1.42814 8.38756C-0.477999 6.46691 -0.477999 3.36163 1.42814 1.44098C3.33428 -0.47532 6.42742 -0.47532 8.33355 1.44098C8.58915 1.69794 8.81009 1.98103 8.99637 2.27283C9.18265 1.97667 9.40359 1.69794 9.65918 1.44098C11.5653 -0.479675 14.6585 -0.479675 16.5689 1.44098C18.4751 3.35728 18.4751 6.46691 16.5689 8.38756H16.5733Z" fill="white"/></svg>');
 				background-repeat: no-repeat;
 				background-position: 50% 50%;
@@ -346,29 +526,33 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.wmf-pattern-reports-donors {
 
 		.wp-block-group-is-layout-flex {
-			@media only screen and ( max-width: 781px ) {
+
+			@media only screen and (max-width: 781px) {
 				justify-content: space-between !important;
 			}
 
-			@media only screen and ( min-width: 782px ) {
+			@media only screen and (min-width: 782px) {
+
 				img {
 					margin-left: 4rem;
 				}
 			}
 		}
 
-		.wp-block-wmf-reports-accordion:not( .wp-block-wmf-reports-accordion--alt ) {
+		.wp-block-wmf-reports-accordion:not(.wp-block-wmf-reports-accordion--alt) {
 			width: auto !important;
 
-			@media only screen and ( min-width: 782px ) {
+			@media only screen and (min-width: 782px) {
 				margin-left: 4rem;
 
 				.wmf-accordion-item {
-					border-color: #0060FE;
+					border-color: #0060fe;
 					margin-left: 4rem;
 					overflow: visible;
 				}
+
 				.wmf-accordion-item__title {
+
 					&::after {
 						position: absolute;
 						left: -4rem;
@@ -381,5 +565,50 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	/* Contact */
 	.wmf-pattern-contact {
 		overflow: hidden;
+		clip-path: polygon(0 0, 100% 9%, 100% 100%, 0 100%);
+		margin-top: -2rem;
+		padding-top: 4rem;
+		padding-bottom: 2rem;
+
+		.wp-block-group__inner-container {
+			padding-left: 2rem !important;
+			padding-right: 2rem !important;
+			max-width: calc(440px + 4rem);
+			text-align: center;
+
+			.wp-block-heading {
+				font-size: 26px;
+				text-transform: none;
+				text-align: center;
+
+				&::after {
+					display: block;
+				}
+			}
+		}
+	}
+
+	/* Report */
+	.wmf-pattern-previous-reports {
+		clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%);
+		padding: 2rem  2rem;
+
+		@media only screen and (min-width: 782px) {
+			padding: 4rem  4rem;
+		}
+
+		.wp-block-heading.wp-block-wmf-reports-report__title,
+		.wp-block-heading {
+			font-size: 24px;
+
+			a {
+				text-decoration: none;
+
+				&:focus,
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
 	}
 }

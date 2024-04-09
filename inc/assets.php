@@ -26,6 +26,8 @@ function bootstrap() {
 
 /**
  * Output the current theme so that we can target only that.
+ *
+* @param string $classes Class to output to the body tag.
  */
 function add_body_classes( $classes ) {
 	$classes[] = get_option('stylesheet');

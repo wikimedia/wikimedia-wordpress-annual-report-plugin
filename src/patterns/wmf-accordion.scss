@@ -52,6 +52,7 @@ $primary-nav-mobile-height: 62px;
 	}
 
 	&[aria-expanded] {
+
 		.wmf-accordion-item__content { // stylelint-disable selector-class-pattern
 			height: auto;
 			padding-top: 14px;
@@ -59,7 +60,7 @@ $primary-nav-mobile-height: 62px;
 	}
 }
 
-.wp-block-wmf-reports-accordion:not( .wp-block-wmf-reports-accordion--alt ) {
+.wp-block-wmf-reports-accordion:not(.wp-block-wmf-reports-accordion--alt) {
 	padding: 0;
 
 	.wmf-accordion-item {
@@ -142,6 +143,7 @@ $primary-nav-mobile-height: 62px;
 .wp-block-wmf-reports-accordion--alt {
 	margin-bottom: 2rem;
 
+	// stylelint-disable-next-line  no-descending-specificity
 	.wmf-accordion-item {
 		background: #fff;
 		border: 1px solid #000;
