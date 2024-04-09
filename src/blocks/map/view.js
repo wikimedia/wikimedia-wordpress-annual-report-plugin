@@ -262,9 +262,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 					markerDiv.addEventListener( 'click', () => {
 						setMarker( index );
 						const yOffset = -140;
-						const element = document.getElementById('map');
-						const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-						window.scrollTo({top: y, behavior: 'smooth'});
+						const element = document.getElementById( 'map' );
+						const y =
+							element.getBoundingClientRect().top +
+							window.scrollY +
+							yOffset;
+						window.scrollTo( { top: y, behavior: 'smooth' } );
 					} );
 				}
 

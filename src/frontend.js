@@ -14,3 +14,6 @@ import './features/by-the-numbers';
 
 // Welcome page JS.
 import './features/welcome-page';
+
+// Endow accordion.
+import './features/block-accordion';

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wmf-reports/accordion-item",
+  "version": "0.1.0",
+  "title": "WMF - Accordion Item",
+  "category": "widgets",
+  "icon": "admin-site",
+  "description": "Port of the Shiro Accordion Item, with custom features",
+  "parent": [
+    "wmf-reports/accordion"
+  ],
+  "attributes": {
+    "fontColor": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": "h3"
+    }
+  },
+  "example": {},
+  "supports": {
+    "html": false,
+    "align": [
+      "center",
+      "full"
+    ]
+  },
+  "usesContext": [
+    "accordion/fontColor"
+  ],
+  "textdomain": "wmf-reports",
+  "editorScript": "file:./index.js"
+}
