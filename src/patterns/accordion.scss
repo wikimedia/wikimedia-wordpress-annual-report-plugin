@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .wikimedia-endow {
 	$primary-nav-mobile-height: 62px;
 
@@ -53,6 +54,7 @@
 		}
 
 		&[aria-expanded] {
+
 			.accordion-item__content { // stylelint-disable selector-class-pattern
 				height: auto;
 				padding-top: 14px;
@@ -125,7 +127,6 @@
 				}
 			}
 
-			// stylelint-disable-next-line no-descending-specificity
 			table,
 			thead,
 			tbody,
@@ -165,7 +166,6 @@
 		}
 	}
 
-	/* stylelint-disable no-descending-specificity */
 	.accordion-item__title::after {
 		background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAyMiAxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMSA5LjU4NTg2TDIwLjI5MjkgMC4yOTI5NjlMMjEuNzA3MSAxLjcwNzE4TDExIDEyLjQxNDNMMC4yOTI4NzcgMS43MDcxOEwxLjcwNzA5IDAuMjkyOTY5TDExIDkuNTg1ODZaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K) center center no-repeat;
 		content: " ";
@@ -201,7 +201,6 @@
 			font-size: $font-size-base;
 		}
 	}
-	/* stylelint-enable no-descending-specificity */
 }
 
 .wp-block-shiro-accordion .accordion-item,
