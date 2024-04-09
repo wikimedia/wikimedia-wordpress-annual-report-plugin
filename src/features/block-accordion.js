@@ -10,11 +10,9 @@
 const toggleAccordionItem = e => {
 	e.preventDefault();
 
-	const parent = e.target.closest( '.accordion-item' );
-	const wrapper = e.target.closest( '.accordion-wrapper' );
+	const parent = e.target.closest( '.wmf-accordion-item' );
+	const wrapper = e.target.closest( '.wmf-accordion-wrapper' );
 	const isExpanded = parent.getAttribute( 'aria-expanded' );
-
-	closeAllAccordionItems( wrapper ); // closes any opened item.
 
 	// Open items should have the empty string as the attribute value.
 	parent.toggleAttribute( 'aria-expanded', isExpanded !== '' );
@@ -27,7 +25,7 @@ const toggleAccordionItem = e => {
  * @param {HTMLElement} wrapper Accordion wrapper div.
  */
 const closeAllAccordionItems = wrapper => {
-	[ ...wrapper.querySelectorAll( '.accordion-item' ) ].forEach(
+	[ ...wrapper.querySelectorAll( '.wmf-accordion-item' ) ].forEach(
 		accordionItem => accordionItem.removeAttribute( 'aria-expanded' )
 	);
 };
@@ -38,7 +36,7 @@ const closeAllAccordionItems = wrapper => {
  * @param {Element} item The concerned element.
  */
 const addAccordionToggleHandlers = item => {
-	const button = item.querySelector( '.accordion-item__title' );
+	const button = item.querySelector( '.wmf-accordion-item__title' );
 	button.addEventListener( 'click', toggleAccordionItem );
 };
 
@@ -49,7 +47,7 @@ const addAccordionToggleHandlers = item => {
  */
 const initializeAccordionItems = () => {
 	// Hook in click events to each item.
-	[ ...document.querySelectorAll( '.accordion-item' ) ].forEach( item => addAccordionToggleHandlers( item ) );
+	[ ...document.querySelectorAll( '.wmf-accordion-item' ) ].forEach( item => addAccordionToggleHandlers( item ) );
 
 	// Open and scroll FAQ into view if visiting page with the anchor link for a section.
 	if ( document.location.hash ) {
@@ -69,11 +67,5 @@ const initializeAccordionItems = () => {
 };
 
 document.addEventListener( 'DOMContentLoaded', () => {
-	const endowSite = document.querySelector( '.wikimedia-endow' );
-
-	if ( ! endowSite ) {
-		return;
-	}
-
 	initializeAccordionItems();
 } );

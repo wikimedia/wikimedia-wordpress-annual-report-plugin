@@ -23,10 +23,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			font-weight: 700;
 			padding: 0.5rem 1rem 0.5rem 1rem;
 			margin-bottom: 1rem;
+		}
+	}
 
-			&::after {
-				display: none;
-			}
+	h2 {
+		&::after {
+			display: none;
 		}
 	}
 
@@ -39,6 +41,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			padding: 0;
 		}
 
+		.wp-block,
 		p {
 			max-width: 100%;
 		}
@@ -66,7 +69,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		max-width: $width-breakpoint-wide !important;
 		width: 100%;
 
-		@media only screen and ( max-width: calc( $width-breakpoint-wide + 4rem ) ) {
+		@media only screen and ( min-width: 1044px ) and ( max-width: calc( $width-breakpoint-wide + 2rem ) ) {
 			padding-left: 2rem;
 			padding-right: 2rem;
 		}
@@ -74,9 +77,11 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	.wmf-report.hentry {
 		max-width: 100%;
+		padding-bottom: 0;
 		padding-left: 0;
 		padding-right: 0;
 		margin: 0;
+		margin-bottom: 0;
 	}
 
 	.entry-content {
@@ -89,11 +94,11 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/** Images **/
 	.wmf-pattern-image {
-		clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
-		margin-bottom: 2rem;
+		clip-path: polygon(0 4%, 100% 0, 100% 100%, 0% 100%);
 
 		@media only screen and ( min-width: 782px ) {
 			clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+			margin-bottom: 2rem;
 		}
 	}
 
@@ -116,8 +121,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			figcaption {
 
-				border-bottom-right-radius: 2rem;
-				padding: 1rem;
+				border-bottom-right-radius: none;
+				padding: 1rem 1rem 1rem 2rem;
 				position: relative;
 				width: 100%;
 				mark {
@@ -174,12 +179,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 		}
 
-		.wp-block-group__inner-container {
-			@media only screen and ( min-width: 782px ) {
-				// min-height: 500px;
-			}
-		}
-
 		.wp-block-columns.alignwide {
 			padding: 0;
 
@@ -211,6 +210,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	/** Stories **/
 	.wp-block-wmf-reports-stories.stories {
 
+		.stories__categories-wrapper {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.stories__categories-outer-wrapper.alignwide,
+		.stories__categories-wrapper.alignwide  {
+			max-width: calc( $width-breakpoint-wide + 4rem ) !important;
+		}
+
 		&.carousel .stories__categories-outer-wrapper.alignwide {
 			&::after,
 			&::before {
@@ -239,5 +248,138 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		.cluster.active {
 			background: #0060fe;
 		}
+	}
+
+	/* Accordion */
+	.wp-block-wmf-reports-accordion {
+		width: 100% !important;
+		max-width: 100% !important;
+
+		.wp-block {
+			max-width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.wmf-accordion-wrapper {
+			margin-top: 0;
+		}
+	}
+
+	.wmf-pattern-financial-statements {
+
+		.wp-block-wmf-reports-accordion--alt {
+
+			.wp-block-wmf-reports-accordion-item:nth-of-type(1) .wmf-accordion-item::before,
+			.wmf-accordion-item:nth-of-type(1)::before {
+				background-color: #78107A;
+			}
+
+			.wp-block-wmf-reports-accordion-item:nth-of-type(2) .wmf-accordion-item::before,
+			.wmf-accordion-item:nth-of-type(2)::before {
+				background-color: #1C2D3E;
+			}
+
+			.wp-block-wmf-reports-accordion-item:nth-of-type(3) .wmf-accordion-item::before,
+			.wmf-accordion-item:nth-of-type(3)::before {
+				background-color: #0060FE;
+			}
+
+			.wp-block-wmf-reports-accordion-item:nth-of-type(4) .wmf-accordion-item::before,
+			.wmf-accordion-item:nth-of-type(4)::before {
+				background-color: #00CED6;
+			}
+		}
+	}
+
+	/* Leadership */
+	.wmf-pattern-reports-leadership {
+		a.wp-block-button__link:not([href]) {
+			background-color: transparent;
+			padding: 0;
+		}
+	}
+
+	/* Donate */
+	.wp-block-wmf-reports-donate {
+		margin-bottom: 2rem;
+
+		@media only screen and ( min-width: 782px ) {
+			padding: 4rem !important;
+		}
+
+		.wp-block-button__link.has-wend-report-slate-blue-color {
+			color: #1C2D3E !important;
+
+			&:before {
+				background-image: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.99854 16H15.9985V11H17.9985V16C17.9985 17.1046 17.1031 18 15.9985 18H1.99854C0.893966 18 -0.00146484 17.1046 -0.00146484 16V2C-0.00146484 0.89543 0.893965 0 1.99854 0H6.99854V2H1.99854V16Z" fill="%231C2D3E"/><path d="M9.99854 0H17.9985V8L14.7085 4.71L8.97853 10.44L7.55853 9.02L13.2885 3.29L9.99854 0Z" fill="%231C2D3E"/></svg>');
+				background-repeat: no-repeat;
+				background-position: 50% 50%;
+				background-size: contain;
+				content: " ";
+				display: inline-block;
+				height: 15px;
+				width: 15px;
+				margin-right: 0.5rem;
+			}
+		}
+
+		.wp-block-button__link.has-wend-report-luminous-vivid-orange-background-color {
+			background-color: #D40356 !important;
+			color: #fff !important;
+
+			&:before {
+				background-image: url('data:image/svg+xml,<svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5733 8.38756L9.0007 16.0005L1.42814 8.38756C-0.477999 6.46691 -0.477999 3.36163 1.42814 1.44098C3.33428 -0.47532 6.42742 -0.47532 8.33355 1.44098C8.58915 1.69794 8.81009 1.98103 8.99637 2.27283C9.18265 1.97667 9.40359 1.69794 9.65918 1.44098C11.5653 -0.479675 14.6585 -0.479675 16.5689 1.44098C18.4751 3.35728 18.4751 6.46691 16.5689 8.38756H16.5733Z" fill="white"/></svg>');
+				background-repeat: no-repeat;
+				background-position: 50% 50%;
+				background-size: contain;
+				content: " ";
+				display: inline-block;
+				height: 15px;
+				width: 15px;
+				margin-right: 0.5rem;
+			}
+		}
+	}
+
+	/* Donors */
+	.wmf-pattern-reports-donors {
+
+		.wp-block-group-is-layout-flex {
+			@media only screen and ( max-width: 781px ) {
+				justify-content: space-between !important;
+			}
+
+			@media only screen and ( min-width: 782px ) {
+				img {
+					margin-left: 4rem;
+				}
+			}
+		}
+
+		.wp-block-wmf-reports-accordion:not( .wp-block-wmf-reports-accordion--alt ) {
+			width: auto !important;
+
+			@media only screen and ( min-width: 782px ) {
+				margin-left: 4rem;
+
+				.wmf-accordion-item {
+					border-color: #0060FE;
+					margin-left: 4rem;
+					overflow: visible;
+				}
+				.wmf-accordion-item__title {
+					&::after {
+						position: absolute;
+						left: -4rem;
+					}
+				}
+			}
+		}
+	}
+
+	/* Contact */
+	.wmf-pattern-contact {
+		overflow: hidden;
 	}
 }
