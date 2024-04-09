@@ -136,6 +136,10 @@
 	font-weight: 400;
 	line-height: $line-height-base;
 
+	&.wp-block-group.has-background {
+		padding-bottom: 0;
+	}
+
 	@media only screen and ( max-width: 781px ) {
 		padding: 0;
 
@@ -156,13 +160,10 @@
 	}
 
 	&__image.wp-block-image {
-		margin-bottom: 0;
-		margin-left: -2rem;
-		margin-right: -2rem;
+		margin: 0 -2rem;
 
 		@media only screen and ( min-width: 782px ) {
-			margin-left: auto;
-			margin-right: auto;
+			margin: 0 auto 2rem;
 		}
 
 		img {
