@@ -14,10 +14,10 @@
 	.carousel__buttons-wrapper {
 		bottom: auto;
 		position: absolute;
-		top: calc(300px - 1.5rem);
+		top: calc(400px + 300px - 1.5rem); // Map + expected image height.
 		right: 0;
 		width: 100%;
-		z-index: 2;
+		z-index: 10;
 
 		@media only screen and ( min-width: 782px ) {
 			bottom: 2rem;
