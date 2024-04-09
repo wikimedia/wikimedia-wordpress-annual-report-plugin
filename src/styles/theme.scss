@@ -89,11 +89,6 @@
 		background: transparent;
 	}
 
-	.wp-block-group.has-background {
-		padding-top: 2rem;
-		padding-bottom: 2rem;
-	}
-
 	.wp-block-group[id] {
 		scroll-margin-top: 6rem;
 	}
@@ -128,19 +123,13 @@
 
 	.wp-block-group.has-background {
 		border-bottom-right-radius: 2rem;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
 	}
 
 	.vega-embed {
 		display: block;
 		margin: auto;
-	}
-
-	figcaption {
-		font-size: 0.75rem;
-
-		mark {
-			font-size: 0.625rem;
-		}
 	}
 }
 
