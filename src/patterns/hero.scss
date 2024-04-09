@@ -6,6 +6,7 @@
 	}
 
 	&__heading-label {
+
 		img {
 			filter: brightness(0) invert(1);
 			line-height: 0;
@@ -16,7 +17,7 @@
 
 	&__heading-container {
 		transform: translateY(-50%);
-		margin-bottom: calc( -0.5 * var(--report-overlapping-callout-group-block-height, 200px) );
+		margin-bottom: calc(-0.5 * var(--report-overlapping-callout-group-block-height, 200px));
 
 		@media only screen and ( min-width: 782px ) {
 			margin-bottom: 0;
@@ -79,6 +80,7 @@
 	}
 
 	& &__content-background.wp-block-group {
+
 		@media only screen and ( max-width: 781px ) {
 			padding-top: 2.5rem;
 		}
