@@ -39,6 +39,10 @@
 		width: 90vw;
 		padding: 2rem;
 
+		.editor-styles-wrapper & {
+			width: 90%;
+		}
+
 		h1 {
 			font-size: 2.1875rem;
 			line-height: 1.3;
