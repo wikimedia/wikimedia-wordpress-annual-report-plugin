@@ -15,6 +15,11 @@
 	// stylelint-disable-next-line no-descending-specificity
 	img {
 		border-bottom-right-radius: 2rem;
+
+		@media only screen and (max-width: 781px) {
+			height: 24rem;
+			object-fit: cover;
+		}
 	}
 
 	// stylelint-disable-next-line no-descending-specificity
