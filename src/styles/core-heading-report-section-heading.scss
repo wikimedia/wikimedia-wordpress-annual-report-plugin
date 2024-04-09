@@ -4,16 +4,10 @@
 	font-family: "Noto Sans", sans-serif;
 	font-size: 0.9375rem;
 	font-weight: 700;
-	margin: 0;
-	padding: 0.5rem 1rem;
+	margin: 0 0 1rem;
+	padding: 0.3rem 1rem;
 	text-transform: uppercase;
 	width: max-content;
-
-	// Slightly break out of group container.
-	.wp-block-group.has-background &:first-child {
-		transform: translate(0, -50%);
-		z-index: 2;
-	}
 }
 
 .is-style-report-section-heading.has-wmf-logo::before {
