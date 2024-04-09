@@ -211,11 +211,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	/** Stories **/
 	.wp-block-wmf-reports-stories.stories {
 
-		.stories__categories-wrapper.alignwide {
-			padding-left: 0;
-			padding-right: 0;
-		}
-
 		&.carousel .stories__categories-outer-wrapper.alignwide {
 			&::after,
 			&::before {
