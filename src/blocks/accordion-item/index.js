@@ -27,7 +27,10 @@ registerBlockType( metadata.name, {
 
 		return (
 			<div className="wmf-accordion-item">
-				<button className="wmf-accordion-item__title" style={ fontColor && { color: fontColor } } >
+				<button
+					className="wmf-accordion-item__title"
+					style={ fontColor && { color: fontColor } }
+				>
 					<RichText.Content
 						className="wmf-accordion-item__title-text"
 						tagName="h3"
@@ -36,34 +39,11 @@ registerBlockType( metadata.name, {
 				</button>
 
 				<div className="wmf-accordion-item__content">
-					<InnerBlocks.Content/>
+					<InnerBlocks.Content />
 				</div>
 			</div>
 		);
 	},
-	deprecated: [
-        {
-            save: ( { attributes } ) => {
-				const { fontColor, title } = attributes;
-
-				return (
-					<div className="accordion-item">
-						<button className="accordion-item__title" style={ fontColor && { color: fontColor } } >
-							<RichText.Content
-								className="accordion-item__title-text"
-								tagName="h3"
-								value={ title }
-							/>
-						</button>
-
-						<div className="accordion-item__content">
-							<InnerBlocks.Content/>
-						</div>
-					</div>
-				);
-			},
-        },
-    ],
 } );
 
 // Block HMR boilerplate.

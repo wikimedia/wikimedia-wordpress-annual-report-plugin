@@ -31,8 +31,6 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
-
-
 	const { postId, postType } = attributes;
 
 	const [ contentExpanded, setContentExpanded ] = useState( false );

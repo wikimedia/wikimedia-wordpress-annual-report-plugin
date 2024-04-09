@@ -34,8 +34,13 @@ function toggleContainer( button, container, forceExpand = false ) {
 	container.classList.toggle( 'is-expanded', expanded );
 
 	window.scrollTo( {
-		top:
-			expanded ? window.scrollY + container.getBoundingClientRect().top + visibleAmount : window.scrollY + container.getBoundingClientRect().top - visibleAmount,
+		top: expanded
+			? window.scrollY +
+			  container.getBoundingClientRect().top +
+			  visibleAmount
+			: window.scrollY +
+			  container.getBoundingClientRect().top -
+			  visibleAmount,
 		behavior: 'smooth',
 	} );
 }
