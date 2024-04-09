@@ -134,6 +134,14 @@
 		display: block;
 		margin: auto;
 	}
+
+	figcaption {
+		font-size: 0.75rem;
+
+		mark {
+			font-size: 0.625rem;
+		}
+	}
 }
 
 /* Styles used for core block modifications */
