@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .wmf-pattern-reports-leadership {
 
 	&__list > .wp-block-group__inner-container {
@@ -59,6 +60,7 @@
 	}
 
 	&__list {
+
 		.wp-block-group {
 			margin-left: 0 !important;
 		}

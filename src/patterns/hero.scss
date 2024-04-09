@@ -6,6 +6,7 @@
 	}
 
 	&__heading-label {
+
 		img {
 			filter: brightness(0) invert(1);
 			line-height: 0;
@@ -16,7 +17,7 @@
 
 	&__heading-container {
 		transform: translateY(-50%);
-		margin-bottom: -5rem;
+		margin-bottom: calc(-0.5 * var(--report-overlapping-callout-group-block-height, 200px));
 
 		@media only screen and ( min-width: 782px ) {
 			margin-bottom: 0;
@@ -35,23 +36,32 @@
 
 	&__heading-pill.wp-block-group.has-background {
 		border-radius: 0 30px 30px 0;
-		max-width: 90%;
+		max-width: 34rem;
+		width: 90vw;
 		padding: 2rem;
 
+		.editor-styles-wrapper & {
+			width: 90%;
+		}
+
 		h1 {
-			font-size: 35px;
+			font-size: 2.1875rem;
 			line-height: 1.3;
 			margin-bottom: 0;
 		}
 
-		.wmf-pattern-reports-hero__heading-label {
+		h2.is-style-report-section-heading {
 			position: absolute;
-			top: -3rem;
+			margin-top: -2rem;
+			transform: translate(0, -50%);
 		}
 
 		@media only screen and ( min-width: 782px ) {
 			border-radius: 30px;
-			max-width: 55%;
+
+			h2.is-style-report-section-heading {
+				position: absolute;
+			}
 		}
 	}
 
@@ -67,6 +77,13 @@
 
 	.has-large-font-size {
 		line-height: 1.5;
+	}
+
+	& &__content-background.wp-block-group {
+
+		@media only screen and ( max-width: 781px ) {
+			padding-top: 2.5rem;
+		}
 	}
 
 	&__content {
@@ -85,7 +102,8 @@
 
 			@media only screen and ( min-width: 782px ) {
 				border-left: 1px solid #fff;
-				padding-left: 3rem;
+				padding-left: 2.875rem;
+				margin-left: 2rem;
 				margin-top: -4rem;
 				padding-top: 4rem;
 			}

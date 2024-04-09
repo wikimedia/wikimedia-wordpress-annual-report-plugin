@@ -14,14 +14,13 @@
 	.carousel__buttons-wrapper {
 		bottom: auto;
 		position: absolute;
-		top: calc(300px - 1.5rem);
+		top: calc(400px + 300px - 1.5rem); // Map + expected image height.
 		right: 0;
 		width: 100%;
-		z-index: 2;
+		z-index: 10;
 
 		@media only screen and ( min-width: 782px ) {
-			bottom: 2rem;
-			top: auto;
+			top: calc(400px - 1.5rem); // Map only.
 			right: auto;
 		}
 	}
@@ -31,10 +30,6 @@
 		max-width: $width-breakpoint-wide;
 		text-align: right;
 		padding-right: 1rem;
-
-		@media only screen and ( min-width: 782px ) {
-			margin-top: -5rem;
-		}
 
 		@media only screen and ( min-width: calc( $width-breakpoint-wide + 1rem ) ) {
 			padding-right: 0;
@@ -141,6 +136,10 @@
 	font-weight: 400;
 	line-height: $line-height-base;
 
+	&.wp-block-group.has-background {
+		padding-bottom: 0;
+	}
+
 	@media only screen and ( max-width: 781px ) {
 		padding: 0;
 
@@ -161,13 +160,10 @@
 	}
 
 	&__image.wp-block-image {
-		margin-bottom: 0;
-		margin-left: -2rem;
-		margin-right: -2rem;
+		margin: 0 -2rem;
 
 		@media only screen and ( min-width: 782px ) {
-			margin-left: auto;
-			margin-right: auto;
+			margin: 0 auto 2rem;
 		}
 
 		img {
@@ -218,24 +214,26 @@
 
 			> *:last-child {
 				margin-bottom: 1rem;
-
-				@media only screen and ( min-width: 782px ) {
-					margin-bottom: 5rem;
-				}
 			}
 		}
 	}
 
-	.wp-block-button.is-style-tertiary .wp-block-button__link {
-		border-color: #000;
-		color: #000;
+	.wp-block-button.is-style-tertiary {
+		margin: 1rem 0 2rem;
 
-		&:hover {
-			opacity: 0.8;
+		.wp-block-button__link {
 			border-color: #000;
-			box-shadow: none;
 			color: #000;
-			text-decoration: none;
+			font-size: 0.8125rem;
+			padding: 0.25rem 0.75rem;
+
+			&:hover {
+				opacity: 0.8;
+				border-color: #000;
+				box-shadow: none;
+				color: #000;
+				text-decoration: none;
+			}
 		}
 	}
 }

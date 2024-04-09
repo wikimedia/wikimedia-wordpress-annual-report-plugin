@@ -19,6 +19,7 @@
 
 	// stylelint-disable-next-line no-descending-specificity
 	figcaption {
+		font-size: 0.75rem;
 		padding: 1rem 2rem;
 
 		@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
@@ -27,8 +28,9 @@
 
 		// stylelint-disable-next-line no-descending-specificity
 		mark {
+			color: inherit !important;
 			display: block;
-			font-size: 14px;
+			font-size: 0.625rem;
 			margin-top: 0.5rem;
 
 			// stylelint-disable-next-line no-descending-specificity
@@ -41,6 +43,7 @@
 				width: 14px;
 				margin-right: 0.5rem;
 				display: inline-block;
+				vertical-align: bottom;
 			}
 
 		}

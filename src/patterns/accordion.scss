@@ -139,30 +139,22 @@
 	/* stylelint-enable no-descending-specificity */
 }
 
-/* stylelint-disable no-descending-specificity */
-.wmf-pattern-financial-statements {
+.wp-block-shiro-accordion .accordion-item,
+.editor-styles-wrapper .wp-block-shiro-accordion .accordion-item {
 
-	.wp-block-wmf-reports-accordion--alt {
+	&.vis-color-purple::before {
+		background-color: var(--wp--preset--color--vivid-purple);
+	}
 
-		.wp-block-shiro-accordion-item:nth-of-type(1) .accordion-item::before,
-		.accordion-item:nth-of-type(1)::before {
-			background-color: #9b51df;
-		}
+	&.vis-color-red::before {
+		background-color: var(--wp--preset--color--wmf-report-red);
+	}
 
-		.wp-block-shiro-accordion-item:nth-of-type(2) .accordion-item::before,
-		.accordion-item:nth-of-type(2)::before {
-			background-color: #970203;
-		}
+	&.vis-color-orange::before {
+		background-color: var(--wp--preset--color--wmf-report-orange);
+	}
 
-		.wp-block-shiro-accordion-item:nth-of-type(3) .accordion-item::before,
-		.accordion-item:nth-of-type(3)::before {
-			background-color: #ff6801;
-		}
-
-		.wp-block-shiro-accordion-item:nth-of-type(4) .accordion-item::before,
-		.accordion-item:nth-of-type(4)::before {
-			background-color: #fcb900;
-		}
+	&.vis-color-amber::before {
+		background-color: var(--wp--preset--color--luminous-vivid-amber);
 	}
 }
-/* stylelint-enable no-descending-specificity */
