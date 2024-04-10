@@ -23,6 +23,11 @@
 	}
 
 	// stylelint-disable-next-line no-descending-specificity
+	&:has(+ .wp-block-group.has-background) {
+		margin-bottom: 0;
+	}
+
+	// stylelint-disable-next-line no-descending-specificity
 	figcaption {
 		font-size: 0.75rem;
 		padding: 1rem 2rem;
@@ -55,6 +60,7 @@
 	}
 }
 
+/* stylelint-disable no-descending-specificity */
 .wp-block-image.is-style-report-image-vertical,
 .wp-block-image.is-style-report-image-vertical.alignwide {
 	margin-bottom: 1rem;
