@@ -17,6 +17,7 @@ require_once __DIR__ . '/inc/assets.php';
 require_once __DIR__ . '/inc/asset-loader/namespace.php';
 require_once __DIR__ . '/inc/asset-loader/utilities.php';
 require_once __DIR__ . '/inc/blocks/core-group.php';
+require_once __DIR__ . '/inc/blocks/datavis.php';
 require_once __DIR__ . '/inc/blocks/expandable.php';
 require_once __DIR__ . '/inc/blocks/map.php';
 require_once __DIR__ . '/inc/blocks/table-of-contents.php';
@@ -44,6 +45,7 @@ require_once __DIR__ . '/inc/theme-integration.php';
 
 Assets\bootstrap();
 Blocks\Core_Group\bootstrap();
+Blocks\Datavis\bootstrap();
 Blocks\Expandable\bootstrap();
 Blocks\Map\bootstrap();
 Blocks\Table_of_Contents\bootstrap();

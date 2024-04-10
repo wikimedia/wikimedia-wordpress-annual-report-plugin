@@ -167,6 +167,10 @@
 	.accordion-item {
 		border-bottom: 1px solid var(--wp--preset--color--base-70, #aaa);
 	}
+
+	.vega-embed path {
+		transition: d 200ms;
+	}
 }
 
 /* Styles used for core block modifications */
