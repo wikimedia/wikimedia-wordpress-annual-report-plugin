@@ -10,6 +10,10 @@
 		margin-top: 3.875rem;
 	}
 
+	.wp-block-columns {
+		margin-bottom: 0;
+	}
+
 	@media (min-width: 1024px) {
 		// We stack our nav on top of Shiro's, in that theme.
 		[data-dropdown-status="initialized"] .primary-nav {
