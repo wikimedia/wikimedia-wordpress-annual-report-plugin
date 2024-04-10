@@ -89,8 +89,36 @@
 		background: transparent;
 	}
 
-	.wp-block-group[id] {
-		scroll-margin-top: 6rem;
+	/* stylelint-disable no-descending-specificity */
+	[id^="toc-"] {
+		scroll-margin-top: 0;
+		// Have to be able to predict where the pill is in relation to the div.
+		padding-top: 2rem !important;
+		margin-top: 0 !important;
+	}
+
+	&.admin-bar [id^="toc-"] {
+
+		@media screen and (min-width: 600px) {
+			scroll-margin-top: 46px; // Fixed admin bar.
+		}
+
+		@media screen and (min-width: 783px) {
+			scroll-margin-top: calc(32px + 1rem); // Thinner admin-bar plus a little space.
+		}
+
+		@media screen and (min-width: 980px) {
+			scroll-margin-top: calc(32px + 1rem + 3rem); // Fixed subnav bar.
+		}
+	}
+	/* stylelint-enable */
+
+	figure,
+	div {
+		// Correct spacing for following elements based on prior [id^="toc-"] rule.
+		&:has(+ [id^="toc-"]) {
+			margin-bottom: 0;
+		}
 	}
 
 	.wp-block-group.alignfull,
