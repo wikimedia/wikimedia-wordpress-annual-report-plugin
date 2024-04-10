@@ -237,3 +237,13 @@
 		}
 	}
 }
+
+// Hide all but first item until carousel initializes to reduce CLS.
+.carousel--uninitialized {
+	.carousel__carousel-wrapper,
+	.carousel-wrapper {
+		> div:not(:first-child) {
+			display: none;
+		}
+	}
+}

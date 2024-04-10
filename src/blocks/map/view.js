@@ -160,6 +160,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	};
 
 	setMarker( 0 );
+	const parentContainer =
+		markers[ 0 ] && markers[ 0 ].closest( '.carousel--uninitialized' );
+	if ( parentContainer ) {
+		// Remove the wrapper class to unwind CLS-prevention CSS
+		parentContainer.classList.remove( '.carousel-uninitialized' );
+	}
 
 	backButton.addEventListener( 'click', () => {
 		const index = Array.from( markers ).findIndex(
@@ -262,9 +268,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 					markerDiv.addEventListener( 'click', () => {
 						setMarker( index );
 						const yOffset = -140;
-						const element = document.getElementById('map');
-						const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-						window.scrollTo({top: y, behavior: 'smooth'});
+						const element = document.getElementById( 'map' );
+						const y =
+							element.getBoundingClientRect().top +
+							window.scrollY +
+							yOffset;
+						window.scrollTo( { top: y, behavior: 'smooth' } );
 					} );
 				}
 
