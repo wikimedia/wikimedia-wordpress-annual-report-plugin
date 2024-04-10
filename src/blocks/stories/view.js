@@ -18,7 +18,17 @@ const setMarginOffset = ( offset ) => {
 let processingAnimation = false;
 let touchstartX = 0;
 let touchendX = 0;
-let isInitialLoad = true;
+
+const scrollToSection = ( elt ) => {
+	const section = elt.closest( '.stories.carousel' );
+
+	if ( section ) {
+		section.scrollIntoView( {
+			block: 'center',
+			behavior: 'smooth',
+		} );
+	}
+};
 
 const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
@@ -128,7 +138,7 @@ window.addEventListener(
 	}, 100 )
 );
 
-const setSlide = ( id ) => {
+const setSlide = ( id, scrollToElement = true ) => {
 	const currentSlide = document.querySelector( '.category-slide.active' );
 	const currentId = parseInt( currentSlide?.dataset?.index || 0 );
 
@@ -150,10 +160,9 @@ const setSlide = ( id ) => {
 
 		const groupID = categorySlide.closest( '.wp-block-group[id]' )?.id;
 
-		if ( isInitialLoad ) {
-			isInitialLoad = false;
-		} else {
+		if ( scrollToElement ) {
 			location.hash = `${ groupID }-${ categorySlide.dataset.id }`;
+			scrollToSection( categorySlide );
 		}
 	} );
 
@@ -329,25 +338,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const slideID = location.hash.slice( location.hash.lastIndexOf( '-' ) + 1 );
 	const slide = document.getElementById( slideID );
 
-	if ( ! slide ) {
-		return;
-	}
-
-	const section = slide.closest( '.stories.carousel' );
-
-	if ( section ) {
+	if ( slide && slide.closest( '.stories.carousel' ) ) {
 		setTimeout( () => {
-			section.scrollIntoView( {
-				block: 'start',
-				behavior: 'smooth',
-			} );
-
-			const slides = slide.parentElement.children;
-			const slideIndex = [ ...slides ].findIndex(
+			const slideIndex = [ ...slide.parentElement.children ].findIndex(
 				( { id } ) => id === slideID
 			);
 
 			setSlide( slideIndex );
-		}, 200 );
+		}, 500 );
 	}
 } );
