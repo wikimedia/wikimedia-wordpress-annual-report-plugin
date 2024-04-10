@@ -167,6 +167,7 @@ function enqueue_editor_assets() : void {
 		'wmf',
 		[
 			'apiKey' => get_option( MAP_API_OPTION_KEY ),
+			'theme' => get_option('stylesheet'),
 		],
 	);
 }

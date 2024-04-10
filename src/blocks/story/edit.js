@@ -31,6 +31,7 @@ import './editor.scss';
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
 	const { postId, postType } = attributes;
+	const isWend = wmf.theme === 'wikimedia-endow';
 
 	const childBlocks = useSelect(
 		( select ) =>
@@ -98,21 +99,21 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				'core/group',
 				{
 					align: 'full',
-					backgroundColor: 'wmf-report-blue',
+					backgroundColor: isWend ? 'wend-report-slate-blue' : 'wmf-report-blue',
 					className: 'wmf-pattern-reports-carousel-slide',
 					layout: { type: 'constrained' },
-					textColor: 'base100',
+					textColor: isWend ? 'white' : 'base100',
 				},
 				[
 					createBlock( 'core/columns', { align: 'wide' }, [
-						createBlock( 'core/column', { width: '66.66%' }, [
+						createBlock( 'core/column', { width: isWend ? '50%' : '66.66%' }, [
 							createBlock( 'core/image', {
-								aspectRatio: '4/3',
+								aspectRatio: isWend ? '1/1' : '4/3',
 								className:
 									'is-style-default wmf-pattern-reports-carousel-slide__image',
 								id: imageId || 74197,
 								lightbox: {
-									aspectRatio: '4/3',
+									aspectRatio: isWend ? '1/1' : '4/3',
 									className:
 										'is-style-default wmf-pattern-reports-carousel-slide__image',
 									enabled: false,
@@ -349,10 +350,10 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						'core/group',
 						{
 							align: 'full',
-							backgroundColor: 'wmf-report-blue',
+							backgroundColor: isWend ? 'wend-report-slate-blue' : 'wmf-report-blue',
 							className: 'wmf-pattern-reports-carousel-slide',
 							layout: { type: 'constrained' },
-							textColor: 'base100',
+							textColor: isWend ? 'white' : 'base100',
 						},
 						[
 							[
@@ -361,17 +362,17 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								[
 									[
 										'core/column',
-										{ width: '66.66%' },
+										{ width: isWend ? '50%' : '66.66%' },
 										[
 											[
 												'core/image',
 												{
-													aspectRatio: '4/3',
+													aspectRatio: isWend ? '1/1' : '4/3',
 													className:
 														'is-style-default wmf-pattern-reports-carousel-slide__image',
 													id: 74197,
 													lightbox: {
-														aspectRatio: '4/3',
+														aspectRatio: isWend ? '1/1' : '4/3',
 														className:
 															'is-style-default wmf-pattern-reports-carousel-slide__image',
 														enabled: false,
