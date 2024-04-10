@@ -23,6 +23,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	} );
 	let mapItemIndex = 0;
 	let processingAnimation = false;
+	let isInitialLoad = true;
 
 	map.addControl( fullScreenControl );
 
@@ -52,6 +53,14 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		nextMapMarkers.forEach( ( mapMarker ) => {
 			mapMarker.classList.add( 'active' );
+
+			const groupID = mapMarker.closest( '.wp-block-group[id]' )?.id;
+
+			if ( isInitialLoad ) {
+				isInitialLoad = false;
+			} else {
+				location.hash = `${ groupID }-${ mapMarker.dataset.id }`;
+			}
 		} );
 
 		Array.from( markers ).forEach( ( markerInfoBox, index ) => {
@@ -373,4 +382,30 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			updateMarkers();
 		} );
 	} );
+
+	/**
+	 * Check for current slide on load, and advance to it if set.
+	 */
+	const slideID = location.hash.slice( location.hash.lastIndexOf( '-' ) + 1 );
+	const slide = document.getElementById( slideID );
+
+	if ( slide ) {
+		const section = slide.closest( '.map.carousel' );
+
+		if ( section ) {
+			setTimeout( () => {
+				section.scrollIntoView( {
+					block: 'start',
+					behavior: 'smooth',
+				} );
+
+				const slides = slide.parentElement.children;
+				const slideIndex = [ ...slides ].findIndex(
+					( { id } ) => id === slideID
+				);
+
+				setMarker( slideIndex );
+			}, 200 );
+		}
+	}
 } );

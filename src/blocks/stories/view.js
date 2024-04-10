@@ -18,6 +18,7 @@ const setMarginOffset = ( offset ) => {
 let processingAnimation = false;
 let touchstartX = 0;
 let touchendX = 0;
+let isInitialLoad = true;
 
 const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
@@ -146,6 +147,14 @@ const setSlide = ( id ) => {
 
 	nextCategorySlide.forEach( ( categorySlide ) => {
 		categorySlide.classList.add( 'active' );
+
+		const groupID = categorySlide.closest( '.wp-block-group[id]' )?.id;
+
+		if ( isInitialLoad ) {
+			isInitialLoad = false;
+		} else {
+			location.hash = `${ groupID }-${ categorySlide.dataset.id }`;
+		}
 	} );
 
 	Array.from( stories ).forEach( ( storyInfoBox, index ) => {
@@ -311,4 +320,34 @@ track.addEventListener( 'touchstart', ( e ) => {
 track.addEventListener( 'touchend', ( e ) => {
 	touchendX = e.changedTouches[ 0 ].screenX;
 	checkDirection();
+} );
+
+/**
+ * Check for current slide on load, and advance to it if set.
+ */
+document.addEventListener( 'DOMContentLoaded', () => {
+	const slideID = location.hash.slice( location.hash.lastIndexOf( '-' ) + 1 );
+	const slide = document.getElementById( slideID );
+
+	if ( ! slide ) {
+		return;
+	}
+
+	const section = slide.closest( '.stories.carousel' );
+
+	if ( section ) {
+		setTimeout( () => {
+			section.scrollIntoView( {
+				block: 'start',
+				behavior: 'smooth',
+			} );
+
+			const slides = slide.parentElement.children;
+			const slideIndex = [ ...slides ].findIndex(
+				( { id } ) => id === slideID
+			);
+
+			setSlide( slideIndex );
+		}, 200 );
+	}
 } );
