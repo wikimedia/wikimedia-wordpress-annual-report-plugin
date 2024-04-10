@@ -31,6 +31,7 @@ import { SearchBox } from '@mapbox/search-js-react';
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
 	const { lat, long, postId, postType } = attributes;
+	const isWend = wmf.theme === 'wikimedia-endow';
 
 	const childBlocks = useSelect(
 		( select ) =>
@@ -98,20 +99,20 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				'core/group',
 				{
 					align: 'full',
-					backgroundColor: 'wmf-report-bright-yellow',
+					backgroundColor: isWend ? 'light-blue' : 'wmf-report-bright-yellow',
 					className: 'wmf-pattern-reports-carousel-slide',
 					layout: { type: 'constrained' },
 				},
 				[
 					createBlock( 'core/columns', { align: 'wide' }, [
-						createBlock( 'core/column', { width: '66.66%' }, [
+						createBlock( 'core/column', { width: isWend ? '50%' : '66.66%' }, [
 							createBlock( 'core/image', {
-								aspectRatio: '4/3',
+								aspectRatio: isWend ? '1/1' : '4/3',
 								className:
 									'is-style-default wmf-pattern-reports-carousel-slide__image',
 								id: imageId || 74197,
 								lightbox: {
-									aspectRatio: '4/3',
+									aspectRatio: isWend ? '1/1' : '4/3',
 									className:
 										'is-style-default wmf-pattern-reports-carousel-slide__image',
 									enabled: false,
@@ -418,7 +419,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						'core/group',
 						{
 							align: 'full',
-							backgroundColor: 'wmf-report-bright-yellow',
+							backgroundColor: isWend ? 'light-blue' : 'wmf-report-bright-yellow',
 							className: 'wmf-pattern-reports-carousel-slide',
 							layout: { type: 'constrained' },
 						},
@@ -429,17 +430,17 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								[
 									[
 										'core/column',
-										{ width: '66.66%' },
+										{ width: isWend ? '50%' : '66.66%' },
 										[
 											[
 												'core/image',
 												{
-													aspectRatio: '4/3',
+													aspectRatio: isWend ? '1/1' : '4/3',
 													className:
 														'is-style-default wmf-pattern-reports-carousel-slide__image',
 													id: 74197,
 													lightbox: {
-														aspectRatio: '4/3',
+														aspectRatio: isWend ? '1/1' : '4/3',
 														className:
 															'is-style-default wmf-pattern-reports-carousel-slide__image',
 														enabled: false,
