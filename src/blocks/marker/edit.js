@@ -170,7 +170,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 							} ),
 							createBlock( 'core/buttons', {}, [
 								createBlock( 'core/button', {
-									backgroundColor: 'base100',
+									backgroundColor: isWend ? 'white' : 'base100',
 									className:
 										'is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger',
 									text: 'Read More',
@@ -517,7 +517,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 														'core/button',
 														{
 															backgroundColor:
-																'base100',
+																isWend ? 'white' : 'base100',
 															className:
 																'is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger',
 															text: 'Read More',
