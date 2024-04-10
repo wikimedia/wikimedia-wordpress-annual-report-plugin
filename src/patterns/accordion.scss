@@ -200,7 +200,8 @@
 }
 
 .wp-block-wmf-accordion .wmf-accordion-item,
-.editor-styles-wrapper .wp-block-wmf-accordion .wmf-accordion-item {
+.editor-styles-wrapper .wp-block-wmf-accordion .wmf-accordion-item,
+.wp-block-wmf-reports-accordion--alt .wmf-accordion-item {
 
 	&[class*="vis-color"] {
 		border-left: 0;
@@ -213,18 +214,30 @@
 	}
 
 	&.vis-color-purple::before {
-		background-color: var(--wp--preset--color--vivid-purple);
+		background-color: var(--wp--preset--color--vivid-purple, #5748B5);
+	}
+
+	&.vis-color-light-purple::before {
+		background-color: #9b51df;
 	}
 
 	&.vis-color-red::before {
-		background-color: var(--wp--preset--color--wmf-report-red);
+		background-color: var(--wp--preset--color--wmf-report-red, #970302);
 	}
 
 	&.vis-color-orange::before {
-		background-color: var(--wp--preset--color--wmf-report-orange);
+		background-color: var(--wp--preset--color--wmf-report-orange, #FF7800);
+	}
+
+	&.vis-color-wend-orange {
+		background-color: #ff6801;
+	}
+
+	&.vis-color-yellow::before {
+		background-color: var(--wp--preset--color--wmf-report-yellow, #F0BC00);
 	}
 
 	&.vis-color-amber::before {
-		background-color: var(--wp--preset--color--luminous-vivid-amber);
+		background-color: var(--wp--preset--color--luminous-vivid-amber, #fcb900);
 	}
 }
