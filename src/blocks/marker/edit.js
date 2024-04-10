@@ -29,7 +29,9 @@ import { SearchBox } from '@mapbox/search-js-react';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
-	const { PostSelectButton } = window?.hm?.components;
+	const { PostSelectButton } = window?.hm?.components || {
+		PostSelectButton: () => {},
+	};
 	const { lat, long, postId, postType } = attributes;
 	// eslint-disable-next-line no-undef
 	const isWend = wmf.theme === 'wikimedia-endow';
