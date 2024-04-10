@@ -33,9 +33,11 @@ const addAccordionToggleHandlers = ( item ) => {
  */
 const initializeAccordionItems = () => {
 	// Hook in click events to each item.
-	[ ...document.querySelectorAll( '.wmf-accordion-item' ) ].forEach(
-		( item ) => addAccordionToggleHandlers( item )
-	);
+	[
+		...document.querySelectorAll(
+			'.wp-block-wmf-reports-accordion .wmf-accordion-item'
+		),
+	].forEach( ( item ) => addAccordionToggleHandlers( item ) );
 
 	// Open and scroll FAQ into view if visiting page with the anchor link for a section.
 	if ( document.location.hash ) {
