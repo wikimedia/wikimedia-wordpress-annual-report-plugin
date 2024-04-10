@@ -737,8 +737,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	.archive-report,
 	.report {
+
 		&__label {
-			margin-bottom: 2rem;
 			display: inline-block;
 			background: #0060fe;
 			color: #fff;
@@ -756,14 +756,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				padding: 0;
 			}
 
-			&:after {
+			&::after {
 				display: none;
 			}
 		}
 	}
 
 	.archive-report {
+
 		&__image {
+
 			@media only screen and (min-width: 782px) {
 				clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
 			}
@@ -771,6 +773,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		&__button {
 			margin-bottom: 2rem;
+
 			a {
 				color: #000;
 			}
@@ -778,6 +781,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	.report {
+
 		> .wp-block-group__inner-container {
 			display: grid;
 			grid-template-columns: 33.33% 66.66%;
@@ -788,6 +792,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			margin-top: 0;
 			margin-bottom: 0.5rem;
 			font-size: 1rem;
+
 			a {
 				text-decoration: none;
 				font-size: 1rem;
@@ -805,7 +810,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		&__date {
 			font-size: 14px;
-			margin-top: 0px;
+			margin-top: 0;
 		}
 	}
 }
