@@ -6,7 +6,7 @@
 $map_style = $attributes['mapStyle'] ?? 'mapbox://styles/mapbox/light-v11';
 ?>
 
-<div <?php echo get_block_wrapper_attributes( [ 'class' => 'map map--carousel carousel alignfull' ] ); ?>>
+<div <?php echo get_block_wrapper_attributes( [ 'class' => 'map map--carousel carousel alignfull carousel--uninitialized' ] ); ?>>
 	<div id="map" data-map-style="<?php echo esc_attr( $map_style ); ?>"></div>
 	<div class="carousel__carousel-wrapper">
 		<?php echo $content; ?>

@@ -15,6 +15,16 @@
 	// stylelint-disable-next-line no-descending-specificity
 	img {
 		border-bottom-right-radius: 2rem;
+
+		@media only screen and (max-width: 781px) {
+			height: 24rem;
+			object-fit: cover;
+		}
+	}
+
+	// stylelint-disable-next-line no-descending-specificity
+	&:has(+ .wp-block-group.has-background) {
+		margin-bottom: 0;
 	}
 
 	// stylelint-disable-next-line no-descending-specificity
@@ -50,6 +60,7 @@
 	}
 }
 
+/* stylelint-disable no-descending-specificity */
 .wp-block-image.is-style-report-image-vertical,
 .wp-block-image.is-style-report-image-vertical.alignwide {
 	margin-bottom: 1rem;

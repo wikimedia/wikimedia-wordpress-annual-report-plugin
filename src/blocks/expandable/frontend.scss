@@ -33,6 +33,10 @@
 	&:hover {
 		opacity: 0.8;
 	}
+
+	@media screen and (max-width: 540px) {
+		width: 100%;
+	}
 }
 
 .expandable-expander::after {
