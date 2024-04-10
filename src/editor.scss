@@ -104,6 +104,14 @@
 			border-radius: 50%;
 		}
 	}
+
+	.wp-block-wmf-reports-accordion--alt {
+		.wmf-accordion-item__title::after {
+			border: 0;
+			height: 0.8rem;
+			width: 0.8rem;
+		}
+	}
 }
 
 // Fixes for the vertical image in the editor.
