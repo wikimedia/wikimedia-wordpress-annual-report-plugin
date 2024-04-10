@@ -11,11 +11,25 @@ const toggleAccordionItem = ( e ) => {
 	e.preventDefault();
 
 	const parent = e.target.closest( '.wmf-accordion-item' );
+	const wrapper = e.target.closest( '.accordion-wrapper' );
 	const isExpanded = parent.getAttribute( 'aria-expanded' );
+
+	closeAllAccordionItems( wrapper ); // closes any opened item.
 
 	// Open items should have the empty string as the attribute value.
 	parent.toggleAttribute( 'aria-expanded', isExpanded !== '' );
 	parent.scrollIntoView( { block: 'center' } );
+};
+
+/**
+ * Closes all opened items.
+ *
+ * @param {HTMLElement} wrapper Accordion wrapper div.
+ */
+const closeAllAccordionItems = ( wrapper ) => {
+	[ ...wrapper.querySelectorAll( '.wmf-accordion-item' ) ].forEach(
+		( accordionItem ) => accordionItem.removeAttribute( 'aria-expanded' )
+	);
 };
 
 /**
