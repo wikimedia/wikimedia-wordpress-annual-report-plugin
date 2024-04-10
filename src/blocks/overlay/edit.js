@@ -13,7 +13,6 @@ import {
 } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
-import { PostSelectButton } from '@humanmade/block-editor-components';
 
 // eslint-disable-next-line import/no-unresolved
 import './editor.scss';
@@ -31,7 +30,12 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
+	const { PostSelectButton } = window?.hm?.components || {
+		PostSelectButton: () => {},
+	};
 	const { postId, postType } = attributes;
+	// eslint-disable-next-line no-undef
+	const isWend = wmf.theme === 'wikimedia-endow';
 
 	const [ contentExpanded, setContentExpanded ] = useState( false );
 
@@ -174,85 +178,90 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				className: 'overlay',
 			} ) }
 		>
-			<InspectorControls>
-				<PanelBody>
-					<SelectControl
-						label={ __( 'Choose Post Type', 'wmf-reports' ) }
-						help={ __(
-							'Altering the post type will allow you to choose posts from that post type using the select post button below.',
-							'wmf-reports'
-						) }
-						options={ [
-							{
-								label: 'Post',
-								value: 'post',
-							},
-							{
-								label: 'Page',
-								value: 'page',
-							},
-							{
-								label: 'Profile',
-								value: 'profile',
-							},
-							{
-								label: 'Report',
-								value: 'wmf-report',
-							},
-							{
-								label: 'Story (Default)',
-								value: 'story',
-							},
-						] }
-						value={ postType }
-						// eslint-disable-next-line no-shadow
-						onChange={ ( postType ) => {
-							setAttributes( { postType } );
-						} }
-					/>
-					<BaseControl
-						className="story-base-control"
-						help={ __(
-							'Associate this post with the overlay. Once you have chosen a post use the button below to refresh the overlay content.',
-							'wmf-reports'
-						) }
-						id={ __( 'Associated Post', 'wmf-reports' ) }
-						label={ __( 'Associated Post', 'wmf-reports' ) }
-					>
-						<PostSelectButton
-							maxPosts={ 1 }
-							postType={ postType }
-							value={ [ postId ] }
-							onSelect={ onPostSelect }
-						>
-							<span className="components-button is-secondary">
-								{ __( 'Select post', 'wmf-reports' ) }
-							</span>
-						</PostSelectButton>
-					</BaseControl>
-					{ postId !== 0 && (
+			{ ! isWend && (
+				<InspectorControls>
+					<PanelBody>
+						<SelectControl
+							label={ __( 'Choose Post Type', 'wmf-reports' ) }
+							help={ __(
+								'Altering the post type will allow you to choose posts from that post type using the select post button below.',
+								'wmf-reports'
+							) }
+							options={ [
+								{
+									label: 'Post',
+									value: 'post',
+								},
+								{
+									label: 'Page',
+									value: 'page',
+								},
+								{
+									label: 'Profile',
+									value: 'profile',
+								},
+								{
+									label: 'Report',
+									value: 'wmf-report',
+								},
+								{
+									label: 'Story (Default)',
+									value: 'story',
+								},
+							] }
+							value={ postType }
+							// eslint-disable-next-line no-shadow
+							onChange={ ( postType ) => {
+								setAttributes( { postType } );
+							} }
+						/>
 						<BaseControl
 							className="story-base-control"
 							help={ __(
-								'Pull the overlay content from the associated post.',
+								'Associate this post with the overlay. Once you have chosen a post use the button below to refresh the overlay content.',
 								'wmf-reports'
 							) }
-							id={ __(
-								'Refresh Overlay Content',
-								'wmf-reports'
-							) }
-							label={ __(
-								'Refresh Overlay Content',
-								'wmf-reports'
-							) }
+							id={ __( 'Associated Post', 'wmf-reports' ) }
+							label={ __( 'Associated Post', 'wmf-reports' ) }
 						>
-							<Button variant="secondary" onClick={ updateSlide }>
-								{ __( 'Refresh Overlay', 'wmf-reports' ) }
-							</Button>
+							<PostSelectButton
+								maxPosts={ 1 }
+								postType={ postType }
+								value={ [ postId ] }
+								onSelect={ onPostSelect }
+							>
+								<span className="components-button is-secondary">
+									{ __( 'Select post', 'wmf-reports' ) }
+								</span>
+							</PostSelectButton>
 						</BaseControl>
-					) }
-				</PanelBody>
-			</InspectorControls>
+						{ postId !== 0 && (
+							<BaseControl
+								className="story-base-control"
+								help={ __(
+									'Pull the overlay content from the associated post.',
+									'wmf-reports'
+								) }
+								id={ __(
+									'Refresh Overlay Content',
+									'wmf-reports'
+								) }
+								label={ __(
+									'Refresh Overlay Content',
+									'wmf-reports'
+								) }
+							>
+								<Button
+									variant="secondary"
+									onClick={ updateSlide }
+								>
+									{ __( 'Refresh Overlay', 'wmf-reports' ) }
+								</Button>
+							</BaseControl>
+						) }
+					</PanelBody>
+				</InspectorControls>
+			) }
 			<div className="overlay-container">
 				<div className="overlay-container__navigation">
 					<Button

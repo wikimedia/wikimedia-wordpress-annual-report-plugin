@@ -93,6 +93,30 @@
 	}
 }
 
+.wp-block-wmf-reports-stories.carousel figure.is-type-video {
+	margin: 0 -2rem;
+}
+
+.wp-block-wmf-reports-map.carousel .carousel__buttons-wrapper {
+	@media only screen and ( min-width: 782px ) {
+		bottom: 2rem;
+		top: unset;
+		transform: none;
+	}
+}
+.wp-block-wmf-reports-stories.carousel .carousel__buttons-wrapper {
+	@media only screen and (max-width: 781px) {
+		top: var(--story-slide-graphic-height, 300px);
+		transform: translate(0, -50%);
+	}
+
+	@media only screen and ( min-width: 782px ) {
+		bottom: 4rem;
+		top: unset;
+		transform: none;
+	}
+}
+
 .wp-block-wmf-reports-report-archive.carousel {
 
 	// stylelint-disable-next-line  no-descending-specificity
@@ -234,6 +258,19 @@
 				color: #000;
 				text-decoration: none;
 			}
+		}
+	}
+}
+
+/* stylelint-disable no-descending-specificity */
+// Hide all but first item until carousel initializes to reduce CLS.
+.carousel--uninitialized {
+
+	.carousel__carousel-wrapper,
+	.carousel-wrapper {
+
+		> div:not(:first-child) {
+			display: none;
 		}
 	}
 }

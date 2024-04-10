@@ -6,7 +6,7 @@
 $block_id = wp_unique_id( 'stories-' );
 ?>
 
-<div <?php echo get_block_wrapper_attributes( [ 'class' => 'stories carousel alignfull', 'id' => $block_id ] ); ?>>
+<div <?php echo get_block_wrapper_attributes( [ 'class' => 'stories carousel alignfull carousel--uninitialized', 'id' => $block_id ] ); ?>>
 
 	<div class="stories__categories-outer-wrapper alignwide">
 		<div class="stories__categories-wrapper alignwide">
