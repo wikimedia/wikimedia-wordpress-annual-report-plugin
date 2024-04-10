@@ -83,7 +83,8 @@
 
 	.accordion-item {
 		background: #fff;
-		border: 1px solid #000;
+		border: 1px solid var(--wp--preset--color--base-70, #aaa);
+		border-radius: 2px;
 		margin-bottom: 1rem;
 		padding: 1rem 0.5rem 1rem 1.5rem;
 		position: relative;
@@ -141,6 +142,16 @@
 
 .wp-block-shiro-accordion .accordion-item,
 .editor-styles-wrapper .wp-block-shiro-accordion .accordion-item {
+
+	&[class*="vis-color"] {
+		border-left: 0;
+
+		&::before {
+			border-right: 0;
+			border-top-left-radius: 2px;
+			border-top-right-radius: 2px;
+		}
+	}
 
 	&.vis-color-purple::before {
 		background-color: var(--wp--preset--color--vivid-purple);
