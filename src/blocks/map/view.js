@@ -160,6 +160,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	};
 
 	setMarker( 0 );
+	const parentContainer =
+		markers[ 0 ] && markers[ 0 ].closest( '.carousel--uninitialized' );
+	if ( parentContainer ) {
+		// Remove the wrapper class to unwind CLS-prevention CSS
+		parentContainer.classList.remove( 'carousel--uninitialized' );
+	}
 
 	backButton.addEventListener( 'click', () => {
 		const index = Array.from( markers ).findIndex(

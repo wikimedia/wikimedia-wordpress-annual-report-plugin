@@ -89,8 +89,36 @@
 		background: transparent;
 	}
 
-	.wp-block-group[id] {
-		scroll-margin-top: 6rem;
+	/* stylelint-disable no-descending-specificity */
+	[id^="toc-"] {
+		scroll-margin-top: 0;
+		// Have to be able to predict where the pill is in relation to the div.
+		padding-top: 2rem !important;
+		margin-top: 0 !important;
+	}
+
+	&.admin-bar [id^="toc-"] {
+
+		@media screen and (min-width: 600px) {
+			scroll-margin-top: 46px; // Fixed admin bar.
+		}
+
+		@media screen and (min-width: 783px) {
+			scroll-margin-top: calc(32px + 1rem); // Thinner admin-bar plus a little space.
+		}
+
+		@media screen and (min-width: 980px) {
+			scroll-margin-top: calc(32px + 1rem + 3rem); // Fixed subnav bar.
+		}
+	}
+	/* stylelint-enable */
+
+	figure,
+	div {
+		// Correct spacing for following elements based on prior [id^="toc-"] rule.
+		&:has(+ [id^="toc-"]) {
+			margin-bottom: 0;
+		}
 	}
 
 	.wp-block-group.alignfull,
@@ -130,6 +158,14 @@
 	.vega-embed {
 		display: block;
 		margin: auto;
+	}
+
+	.wp-block-button.has-icon-download .wp-block-button__link::before {
+		background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.9999 8.99219H14.9999L9.99994 14.9922L4.99994 8.99219H8.99994V0.992188H10.9999V8.99219ZM16.9999 16.9922V11.9922H18.9999V16.9922C18.9999 18.0968 18.1045 18.9922 16.9999 18.9922H2.99994C1.89537 18.9922 0.999939 18.0968 0.999939 16.9922V11.9922H2.99994V16.9922H16.9999Z' fill='black'/%3E%3C/svg%3E%0A");
+	}
+
+	.accordion-item {
+		border-bottom: 1px solid var(--wp--preset--color--base-70, #aaa);
 	}
 }
 
