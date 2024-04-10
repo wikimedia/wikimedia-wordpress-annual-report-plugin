@@ -223,7 +223,7 @@ const parentContainer =
 	stories[ 0 ] && stories[ 0 ].closest( '.carousel--uninitialized' );
 if ( parentContainer ) {
 	// Remove the wrapper class to unwind CLS-prevention CSS
-	parentContainer.classList.remove( '.carousel-uninitialized' );
+	parentContainer.classList.remove( 'carousel--uninitialized' );
 }
 
 Array.from( categorySlides ).forEach( ( categorySlide, index ) => {
