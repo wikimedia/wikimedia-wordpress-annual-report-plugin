@@ -23,11 +23,21 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	} );
 	let mapItemIndex = 0;
 	let processingAnimation = false;
-	let isInitialLoad = true;
 
 	map.addControl( fullScreenControl );
 
-	const setMarker = ( id ) => {
+	const scrollToSection = ( elt ) => {
+		const section = elt.closest( '.map.carousel' );
+
+		if ( section ) {
+			section.scrollIntoView( {
+				block: 'start',
+				behavior: 'smooth',
+			} );
+		}
+	};
+
+	const setMarker = ( id, scrollToElement = true ) => {
 		mapItemIndex = id;
 
 		const nextMarkerInfoBox = markers[ id ];
@@ -56,10 +66,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 			const groupID = mapMarker.closest( '.wp-block-group[id]' )?.id;
 
-			if ( isInitialLoad ) {
-				isInitialLoad = false;
-			} else {
+			if ( scrollToElement ) {
 				location.hash = `${ groupID }-${ mapMarker.dataset.id }`;
+				scrollToSection( mapMarker );
 			}
 		} );
 
@@ -168,7 +177,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		} );
 	};
 
-	setMarker( 0 );
 	const parentContainer =
 		markers[ 0 ] && markers[ 0 ].closest( '.carousel--uninitialized' );
 	if ( parentContainer ) {
@@ -381,31 +389,21 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			}
 			updateMarkers();
 		} );
-	} );
 
-	/**
-	 * Check for current slide on load, and advance to it if set.
-	 */
-	const slideID = location.hash.slice( location.hash.lastIndexOf( '-' ) + 1 );
-	const slide = document.getElementById( slideID );
-
-	if ( slide ) {
-		const section = slide.closest( '.map.carousel' );
-
-		if ( section ) {
-			setTimeout( () => {
-				section.scrollIntoView( {
-					block: 'start',
-					behavior: 'smooth',
-				} );
-
-				const slides = slide.parentElement.children;
-				const slideIndex = [ ...slides ].findIndex(
-					( { id } ) => id === slideID
-				);
-
-				setMarker( slideIndex );
-			}, 200 );
+		// Check for current slide on load, and advance to it if set.
+		// Otherwise, just initialize the map with the first item.
+		const slideID = location.hash.slice(
+			location.hash.lastIndexOf( '-' ) + 1
+		);
+		const slide = document.getElementById( slideID );
+		if ( slide && slide.closest( '.map.carousel' ) ) {
+			const slideIndex = [ ...slide.parentElement.children ].findIndex(
+				( { id } ) => id === slideID
+			);
+			// Set the marker in a timeout, so that the map can fully initialize first.
+			setTimeout( () => setMarker( slideIndex ), 50 );
+		} else {
+			setMarker( 0, false );
 		}
-	}
+	} );
 } );
