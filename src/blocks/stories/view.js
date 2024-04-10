@@ -219,6 +219,12 @@ const setSlide = ( id ) => {
 };
 
 setSlide( 0 );
+const parentContainer =
+	stories[ 0 ] && stories[ 0 ].closest( '.carousel--uninitialized' );
+if ( parentContainer ) {
+	// Remove the wrapper class to unwind CLS-prevention CSS
+	parentContainer.classList.remove( '.carousel-uninitialized' );
+}
 
 Array.from( categorySlides ).forEach( ( categorySlide, index ) => {
 	categorySlide.addEventListener( 'click', () => {
