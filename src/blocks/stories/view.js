@@ -1,3 +1,5 @@
+import debounce from '../../helpers/debounce';
+
 const stories = document.getElementsByClassName( 'wp-block-wmf-reports-story' );
 const categorySlides = document.getElementsByClassName( 'category-slide' );
 const backButton = document.getElementById( 'carousel-back' );
@@ -94,11 +96,45 @@ const animateSlider = ( currentItemIndex ) => {
 	}
 };
 
+function setGraphicHeightCssProperty( slide ) {
+	// Calculate height of graphic in next story box.
+	const nextStoryGraphic =
+		slide.querySelector( 'figure iframe' ) ||
+		slide.querySelector( 'figure' );
+
+	if ( nextStoryGraphic ) {
+		const graphicHeight = nextStoryGraphic.getBoundingClientRect().height;
+		const wrapper = slide.closest( '.carousel-wrapper' );
+		if ( wrapper && graphicHeight ) {
+			wrapper.style.setProperty(
+				'--story-slide-graphic-height',
+				`${ Math.round( graphicHeight ) }px`
+			);
+		}
+	}
+}
+
+// Reset the story slide graphic height on resize to properly position arrows.
+window.addEventListener(
+	'resize',
+	debounce( () => {
+		for ( const story of stories ) {
+			if ( story.style.visibility !== 'hidden' ) {
+				setGraphicHeightCssProperty( story );
+				return;
+			}
+		}
+	}, 100 )
+);
+
 const setSlide = ( id ) => {
 	const currentSlide = document.querySelector( '.category-slide.active' );
 	const currentId = parseInt( currentSlide?.dataset?.index || 0 );
 
 	const nextStoryInfoBox = stories[ id ];
+
+	// Calculate height of graphic in next story box.
+	setGraphicHeightCssProperty( nextStoryInfoBox );
 
 	const nextCategorySlide = Array.from( categorySlides ).filter(
 		( categorySlide ) => categorySlide.dataset.id === nextStoryInfoBox.id
@@ -219,6 +255,12 @@ const setSlide = ( id ) => {
 };
 
 setSlide( 0 );
+const parentContainer =
+	stories[ 0 ] && stories[ 0 ].closest( '.carousel--uninitialized' );
+if ( parentContainer ) {
+	// Remove the wrapper class to unwind CLS-prevention CSS
+	parentContainer.classList.remove( 'carousel--uninitialized' );
+}
 
 Array.from( categorySlides ).forEach( ( categorySlide, index ) => {
 	categorySlide.addEventListener( 'click', () => {
