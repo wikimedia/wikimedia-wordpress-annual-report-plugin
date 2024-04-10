@@ -24,7 +24,7 @@
 		margin: auto;
 		margin-bottom: 2rem;
 		max-width: calc($width-breakpoint-wide + 4rem) !important;
-		overflow: hidden;
+		overflow: scroll;
 		padding-left: 0;
 		padding-right: 0;
 		padding-top: 2px;
@@ -70,8 +70,16 @@
 		background-color: #fff;
 		border: 1px solid #aaa;
 		cursor: pointer;
-		padding: 1rem;
+		font-size: 0.75rem;
+		max-width: 100px;
+		padding: 0.625rem 0.9375rem;
 		text-align: center;
+
+		@media screen and (min-width: 782px) {
+			font-size: 0.9375rem;
+			max-width: unset;
+			padding: 1rem;
+		}
 
 		&:hover,
 		&:focus,

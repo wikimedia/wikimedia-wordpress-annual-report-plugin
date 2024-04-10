@@ -10,7 +10,7 @@ import { registerBlockType } from '@wordpress/blocks';
  */
 import Edit from './edit';
 import metadata from './block.json';
-import { InnerBlocks, RichText } from '@wordpress/block-editor';
+import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -23,10 +23,13 @@ registerBlockType( metadata.name, {
 	 */
 	edit: Edit,
 	save: ( { attributes } ) => {
+		const blockProps = useBlockProps.save( {
+			className: 'accordion-item',
+		} );
 		const { fontColor, title } = attributes;
 
 		return (
-			<div className="wmf-accordion-item">
+			<div { ...blockProps }>
 				<button
 					className="wmf-accordion-item__title"
 					style={ fontColor && { color: fontColor } }

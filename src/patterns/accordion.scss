@@ -157,7 +157,6 @@
 
 		&::before {
 			background-color: #ff6801;
-			border-right: 1px solid #000;
 			content: "";
 			height: 100%;
 			left: 0;
@@ -204,8 +203,8 @@
 	}
 }
 
-.wp-block-shiro-accordion .accordion-item,
-.editor-styles-wrapper .wp-block-shiro-accordion .accordion-item {
+.wp-block-wmf-accordion .accordion-item,
+.editor-styles-wrapper .wp-block-wmf-accordion .accordion-item {
 
 	&[class*="vis-color"] {
 		border-left: 0;
