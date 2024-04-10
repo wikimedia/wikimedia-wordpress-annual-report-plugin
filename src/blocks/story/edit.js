@@ -29,7 +29,7 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
-	const { PostSelectButton } = window.hm.components;
+	const { PostSelectButton } = window?.hm?.components;
 	const { postId, postType } = attributes;
 	// eslint-disable-next-line no-undef
 	const isWend = wmf.theme === 'wikimedia-endow';
@@ -277,82 +277,90 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				className: 'carousel__slide',
 			} ) }
 		>
-			<InspectorControls>
-				<PanelBody>
-					<SelectControl
-						label={ __( 'Choose Post Type', 'wmf-reports' ) }
-						help={ __(
-							'Altering the post type will allow you to choose posts from that post type using the select post button below.',
-							'wmf-reports'
-						) }
-						options={ [
-							{
-								label: 'Post',
-								value: 'post',
-							},
-							{
-								label: 'Page',
-								value: 'page',
-							},
-							{
-								label: 'Profile',
-								value: 'profile',
-							},
-							{
-								label: 'Report',
-								value: 'wmf-report',
-							},
-							{
-								label: 'Story (Default)',
-								value: 'story',
-							},
-						] }
-						value={ postType }
-						// eslint-disable-next-line no-shadow
-						onChange={ ( postType ) => {
-							setAttributes( { postType } );
-						} }
-					/>
-					<BaseControl
-						className="story-base-control"
-						help={ __(
-							'Associate this post with a slide. Once you have chosen a post use the button below to refresh the slide content.',
-							'wmf-reports'
-						) }
-						id={ __( 'Associated Post', 'wmf-reports' ) }
-						label={ __( 'Associated Post', 'wmf-reports' ) }
-					>
-						<PostSelectButton
-							maxPosts={ 1 }
-							postType={ postType }
-							value={ [ postId ] }
-							onSelect={ onPostSelect }
-						>
-							<span className="components-button is-secondary">
-								{ __( 'Select post', 'wmf-reports' ) }
-							</span>
-						</PostSelectButton>
-					</BaseControl>
-					{ postId !== 0 && (
+			{ ! isWend && (
+				<InspectorControls>
+					<PanelBody>
+						<SelectControl
+							label={ __( 'Choose Post Type', 'wmf-reports' ) }
+							help={ __(
+								'Altering the post type will allow you to choose posts from that post type using the select post button below.',
+								'wmf-reports'
+							) }
+							options={ [
+								{
+									label: 'Post',
+									value: 'post',
+								},
+								{
+									label: 'Page',
+									value: 'page',
+								},
+								{
+									label: 'Profile',
+									value: 'profile',
+								},
+								{
+									label: 'Report',
+									value: 'wmf-report',
+								},
+								{
+									label: 'Story (Default)',
+									value: 'story',
+								},
+							] }
+							value={ postType }
+							// eslint-disable-next-line no-shadow
+							onChange={ ( postType ) => {
+								setAttributes( { postType } );
+							} }
+						/>
 						<BaseControl
 							className="story-base-control"
 							help={ __(
-								'Pull the slide content from the associated post.',
+								'Associate this post with a slide. Once you have chosen a post use the button below to refresh the slide content.',
 								'wmf-reports'
 							) }
-							id={ __( 'Refresh Slide Content', 'wmf-reports' ) }
-							label={ __(
-								'Refresh Slide Content',
-								'wmf-reports'
-							) }
+							id={ __( 'Associated Post', 'wmf-reports' ) }
+							label={ __( 'Associated Post', 'wmf-reports' ) }
 						>
-							<Button variant="secondary" onClick={ updateSlide }>
-								{ __( 'Refresh Slide', 'wmf-reports' ) }
-							</Button>
+							<PostSelectButton
+								maxPosts={ 1 }
+								postType={ postType }
+								value={ [ postId ] }
+								onSelect={ onPostSelect }
+							>
+								<span className="components-button is-secondary">
+									{ __( 'Select post', 'wmf-reports' ) }
+								</span>
+							</PostSelectButton>
 						</BaseControl>
-					) }
-				</PanelBody>
-			</InspectorControls>
+						{ postId !== 0 && (
+							<BaseControl
+								className="story-base-control"
+								help={ __(
+									'Pull the slide content from the associated post.',
+									'wmf-reports'
+								) }
+								id={ __(
+									'Refresh Slide Content',
+									'wmf-reports'
+								) }
+								label={ __(
+									'Refresh Slide Content',
+									'wmf-reports'
+								) }
+							>
+								<Button
+									variant="secondary"
+									onClick={ updateSlide }
+								>
+									{ __( 'Refresh Slide', 'wmf-reports' ) }
+								</Button>
+							</BaseControl>
+						) }
+					</PanelBody>
+				</InspectorControls>
+			) }
 			<InnerBlocks
 				template={ [
 					[
