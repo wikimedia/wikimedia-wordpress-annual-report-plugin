@@ -565,6 +565,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			padding-right: 2rem !important;
 			max-width: calc(440px + 4rem);
 			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
 
 			.wp-block-heading {
 				font-size: 26px;
@@ -608,6 +610,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/** Overlay **/
 	.wmf-annual-reports-overlay-wrapper {
+
 		.wmf-annual-reports-overlay-popover {
 			border-radius: 0;
 		}
@@ -637,7 +640,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				@media only screen and (min-width: 782px) {
 					margin-left: auto;
 					margin-right: auto;
-					width: 100%;;
+					width: 100%;
 				}
 
 				@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
@@ -687,6 +690,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			&__image.wp-block-image {
+
 				img {
 					border-bottom-right-radius: 0;
 				}
@@ -700,7 +704,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				}
 			}
 
-			.wp-block-quote:not( .is-style-pullquote ) {
+			.wp-block-quote:not(.is-style-pullquote) {
+
 				p {
 					margin-left: 1rem;
 				}
@@ -711,6 +716,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 // Frontend only.
 body.single-wmf-report.wikimedia-endow:not(.home) {
+
 	.wmf-pattern-image--hide-desktop {
 
 		@media only screen and (min-width: 782px) {
