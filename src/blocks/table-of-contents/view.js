@@ -11,7 +11,7 @@ const jumplistItems = jumplist.querySelectorAll( '.wmf-toc-jumplist__items a' );
  */
 const progressIndicator = jumplist.querySelector( '.wmf-toc-progress' );
 
-const ACTIVE_SECTION_HEADER_MARGIN = 300;
+const ACTIVE_SECTION_HEADER_MARGIN = 200;
 
 /**
  * Determine the element to use for reading progress measurements.
@@ -68,6 +68,7 @@ function identifyVisibleSection() {
 		const rect = targetContainer.getBoundingClientRect();
 		if (
 			rect.top <= ACTIVE_SECTION_HEADER_MARGIN &&
+			rect.top + rect.height >= ACTIVE_SECTION_HEADER_MARGIN &&
 			rect.top + rect.height >= 0
 		) {
 			return sectionLink;
@@ -107,6 +108,7 @@ function onScroll() {
  */
 function initializeProgressIndicator() {
 	window.addEventListener( 'scroll', onScroll );
+	window.addEventListener( 'hashchange', updateJumplistActiveItem );
 }
 
 initializeProgressIndicator();
