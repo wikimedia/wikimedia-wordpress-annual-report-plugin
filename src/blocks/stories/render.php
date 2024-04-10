@@ -3,10 +3,9 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
-$block_id = wp_unique_id( 'stories-' );
 ?>
 
-<div <?php echo get_block_wrapper_attributes( [ 'class' => 'stories carousel alignfull carousel--uninitialized', 'id' => $block_id ] ); ?>>
+<div <?php echo get_block_wrapper_attributes( [ 'class' => 'stories carousel alignfull carousel--uninitialized' ] ); ?>>
 
 	<div class="stories__categories-outer-wrapper alignwide">
 		<div class="stories__categories-wrapper alignwide">
