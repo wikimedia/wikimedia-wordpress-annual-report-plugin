@@ -24,7 +24,7 @@ registerBlockType( metadata.name, {
 	edit: Edit,
 	save: ( { attributes } ) => {
 		const blockProps = useBlockProps.save( {
-			className: 'accordion-item',
+			className: 'wmf-accordion-item',
 		} );
 		const { fontColor, title } = attributes;
 
