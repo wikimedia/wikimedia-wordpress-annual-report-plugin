@@ -15,4 +15,3 @@ const clickShareButton = ( event ) => {
 [ ...shareButtons ].forEach( ( button ) =>
 	button.addEventListener( 'click', clickShareButton )
 );
-
