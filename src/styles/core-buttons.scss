@@ -1,0 +1,28 @@
+.wp-block-button {
+
+	&.is-share-button {
+		.wp-element-button {
+			cursor: pointer !important;
+			transition: background-color 200ms ease-in;
+			position: relative;
+			pinter-events: all;
+		}
+
+		&.copied .wp-element-button {
+
+			&:after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background-color: var( --wp--preset--color--wmf-report-green, #318557 ) !important;
+				color: #fff;
+				content: "Copied!";
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+}
