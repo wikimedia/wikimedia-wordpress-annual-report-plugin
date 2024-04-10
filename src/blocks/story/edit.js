@@ -12,7 +12,7 @@ import {
 	SelectControl,
 } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { PostSelectButton } from '@humanmade/block-editor-components';
+import { PostPickerButton as PostSelectButton } from '@humanmade/block-editor-components';
 
 // eslint-disable-next-line import/no-unresolved
 import './editor.scss';
