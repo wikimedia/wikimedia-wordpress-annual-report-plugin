@@ -13,7 +13,6 @@ import {
 	SelectControl,
 } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { PostSelectButton } from '@humanmade/block-editor-components';
 
 import { SearchBox } from '@mapbox/search-js-react';
 
@@ -30,7 +29,10 @@ import { SearchBox } from '@mapbox/search-js-react';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
+	const { PostSelectButton } = window.hm.components;
 	const { lat, long, postId, postType } = attributes;
+	// eslint-disable-next-line no-undef
+	const isWend = wmf.theme === 'wikimedia-endow';
 
 	const childBlocks = useSelect(
 		( select ) =>
@@ -98,39 +100,45 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				'core/group',
 				{
 					align: 'full',
-					backgroundColor: 'wmf-report-bright-yellow',
+					backgroundColor: isWend
+						? 'light-blue'
+						: 'wmf-report-bright-yellow',
 					className: 'wmf-pattern-reports-carousel-slide',
 					layout: { type: 'constrained' },
 				},
 				[
 					createBlock( 'core/columns', { align: 'wide' }, [
-						createBlock( 'core/column', { width: '66.66%' }, [
-							createBlock( 'core/image', {
-								aspectRatio: '4/3',
-								className:
-									'is-style-default wmf-pattern-reports-carousel-slide__image',
-								id: imageId || 74197,
-								lightbox: {
-									aspectRatio: '4/3',
+						createBlock(
+							'core/column',
+							{ width: isWend ? '50%' : '66.66%' },
+							[
+								createBlock( 'core/image', {
+									aspectRatio: isWend ? '1/1' : '4/3',
 									className:
 										'is-style-default wmf-pattern-reports-carousel-slide__image',
-									enabled: false,
 									id: imageId || 74197,
+									lightbox: {
+										aspectRatio: isWend ? '1/1' : '4/3',
+										className:
+											'is-style-default wmf-pattern-reports-carousel-slide__image',
+										enabled: false,
+										id: imageId || 74197,
+										linkDestination: 'none',
+										scale: 'cover',
+										sizeSlug: 'full',
+										url:
+											imageUrl ||
+											'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+									},
 									linkDestination: 'none',
 									scale: 'cover',
 									sizeSlug: 'full',
 									url:
 										imageUrl ||
 										'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-								},
-								linkDestination: 'none',
-								scale: 'cover',
-								sizeSlug: 'full',
-								url:
-									imageUrl ||
-									'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-							} ),
-						] ),
+								} ),
+							]
+						),
 						createBlock( 'core/column', { width: '33.33%' }, [
 							createBlock( 'core/paragraph', {
 								className:
@@ -169,7 +177,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 							} ),
 							createBlock( 'core/buttons', {}, [
 								createBlock( 'core/button', {
-									backgroundColor: 'base100',
+									backgroundColor: isWend
+										? 'white'
+										: 'base100',
 									className:
 										'is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger',
 									text: 'Read More',
@@ -418,7 +428,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						'core/group',
 						{
 							align: 'full',
-							backgroundColor: 'wmf-report-bright-yellow',
+							backgroundColor: isWend
+								? 'light-blue'
+								: 'wmf-report-bright-yellow',
 							className: 'wmf-pattern-reports-carousel-slide',
 							layout: { type: 'constrained' },
 						},
@@ -429,17 +441,21 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								[
 									[
 										'core/column',
-										{ width: '66.66%' },
+										{ width: isWend ? '50%' : '66.66%' },
 										[
 											[
 												'core/image',
 												{
-													aspectRatio: '4/3',
+													aspectRatio: isWend
+														? '1/1'
+														: '4/3',
 													className:
 														'is-style-default wmf-pattern-reports-carousel-slide__image',
 													id: 74197,
 													lightbox: {
-														aspectRatio: '4/3',
+														aspectRatio: isWend
+															? '1/1'
+															: '4/3',
 														className:
 															'is-style-default wmf-pattern-reports-carousel-slide__image',
 														enabled: false,
@@ -516,7 +532,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 														'core/button',
 														{
 															backgroundColor:
-																'base100',
+																isWend
+																	? 'white'
+																	: 'base100',
 															className:
 																'is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger',
 															text: 'Read More',
