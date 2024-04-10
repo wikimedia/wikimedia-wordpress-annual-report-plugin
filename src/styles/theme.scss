@@ -180,9 +180,6 @@
 	.wp-block-group + figure {
 		margin-top: 3.5rem;
 	}
-	.wp-block-group:has(+ .wp-block-group.has-background) {
-		// padding-bottom: 2rem;
-	}
 	.wp-block-group.has-background {
 		padding-top: 3rem;
 		padding-bottom: 2rem;
