@@ -98,13 +98,16 @@
 }
 
 .wp-block-wmf-reports-map.carousel .carousel__buttons-wrapper {
+
 	@media only screen and ( min-width: 782px ) {
 		bottom: 2rem;
 		top: unset;
 		transform: none;
 	}
 }
+
 .wp-block-wmf-reports-stories.carousel .carousel__buttons-wrapper {
+
 	@media only screen and (max-width: 781px) {
 		top: var(--story-slide-graphic-height, 300px);
 		transform: translate(0, -50%);
