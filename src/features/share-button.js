@@ -1,10 +1,13 @@
 const { clipboard } = navigator;
 
-const shareButtons = document.querySelectorAll( '.is-share-button' );
-
 const clickShareButton = ( event ) => {
+	const button = event.target.closest( '.is-share-button' );
+
+	if ( ! button ) {
+		return;
+	}
+
 	const currentUrl = location.href;
-	const button = event.currentTarget;
 
 	clipboard.writeText( currentUrl ).then( () => {
 		button.classList.add( 'copied' );
@@ -12,6 +15,4 @@ const clickShareButton = ( event ) => {
 	} );
 };
 
-[ ...shareButtons ].forEach( ( button ) =>
-	button.addEventListener( 'click', clickShareButton )
-);
+document.addEventListener( 'click', clickShareButton );
