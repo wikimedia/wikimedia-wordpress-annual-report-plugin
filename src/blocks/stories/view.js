@@ -16,6 +16,7 @@ const setMarginOffset = ( offset ) => {
 let processingAnimation = false;
 let touchstartX = 0;
 let touchendX = 0;
+let isInitialLoad = true;
 
 const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
@@ -110,6 +111,14 @@ const setSlide = ( id ) => {
 
 	nextCategorySlide.forEach( ( categorySlide ) => {
 		categorySlide.classList.add( 'active' );
+
+		const groupID = categorySlide.closest( '.wp-block-group[id]' )?.id;
+
+		if ( isInitialLoad ) {
+			isInitialLoad = false;
+		} else {
+			location.hash = `${ groupID }-${ categorySlide.dataset.id }`;
+		}
 	} );
 
 	Array.from( stories ).forEach( ( storyInfoBox, index ) => {
@@ -269,4 +278,22 @@ track.addEventListener( 'touchstart', ( e ) => {
 track.addEventListener( 'touchend', ( e ) => {
 	touchendX = e.changedTouches[ 0 ].screenX;
 	checkDirection();
+} );
+
+document.addEventListener( 'load', () => {
+	console.log( 'loaded' );
+	const slideID = location.hash.slice( location.hash.lastIndexOf( '-' ) + 1 );
+	const slide = document.getElementByID( slideID );
+
+	console.log ( slideID, slide );
+
+	if ( slide && slide.closest( '.carousel' ) ) {
+
+		slide.closest( '.carousel' ).slideIntoView( {
+			block: 'start',
+			behavior: 'smooth',
+		} );
+
+		setTimeout( () => setSlide( slideID  ), 50 );
+	}
 } );
