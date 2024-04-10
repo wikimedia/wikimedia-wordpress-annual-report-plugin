@@ -13,7 +13,6 @@ import {
 	SelectControl,
 } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { PostSelectButton } from '@humanmade/block-editor-components';
 
 import { SearchBox } from '@mapbox/search-js-react';
 
@@ -30,7 +29,12 @@ import { SearchBox } from '@mapbox/search-js-react';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
+	const { PostSelectButton } = window?.hm?.components || {
+		PostSelectButton: () => {},
+	};
 	const { lat, long, postId, postType } = attributes;
+	// eslint-disable-next-line no-undef
+	const isWend = wmf.theme === 'wikimedia-endow';
 
 	const childBlocks = useSelect(
 		( select ) =>
@@ -98,39 +102,45 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				'core/group',
 				{
 					align: 'full',
-					backgroundColor: 'wmf-report-bright-yellow',
+					backgroundColor: isWend
+						? 'light-blue'
+						: 'wmf-report-bright-yellow',
 					className: 'wmf-pattern-reports-carousel-slide',
 					layout: { type: 'constrained' },
 				},
 				[
 					createBlock( 'core/columns', { align: 'wide' }, [
-						createBlock( 'core/column', { width: '66.66%' }, [
-							createBlock( 'core/image', {
-								aspectRatio: '4/3',
-								className:
-									'is-style-default wmf-pattern-reports-carousel-slide__image',
-								id: imageId || 74197,
-								lightbox: {
-									aspectRatio: '4/3',
+						createBlock(
+							'core/column',
+							{ width: isWend ? '50%' : '66.66%' },
+							[
+								createBlock( 'core/image', {
+									aspectRatio: isWend ? '1/1' : '4/3',
 									className:
 										'is-style-default wmf-pattern-reports-carousel-slide__image',
-									enabled: false,
 									id: imageId || 74197,
+									lightbox: {
+										aspectRatio: isWend ? '1/1' : '4/3',
+										className:
+											'is-style-default wmf-pattern-reports-carousel-slide__image',
+										enabled: false,
+										id: imageId || 74197,
+										linkDestination: 'none',
+										scale: 'cover',
+										sizeSlug: 'full',
+										url:
+											imageUrl ||
+											'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
+									},
 									linkDestination: 'none',
 									scale: 'cover',
 									sizeSlug: 'full',
 									url:
 										imageUrl ||
 										'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-								},
-								linkDestination: 'none',
-								scale: 'cover',
-								sizeSlug: 'full',
-								url:
-									imageUrl ||
-									'/wp-content/uploads/2024/01/Wikimedia_Foundation_AI_Blog_Series_Header.png',
-							} ),
-						] ),
+								} ),
+							]
+						),
 						createBlock( 'core/column', { width: '33.33%' }, [
 							createBlock( 'core/paragraph', {
 								className:
@@ -169,7 +179,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 							} ),
 							createBlock( 'core/buttons', {}, [
 								createBlock( 'core/button', {
-									backgroundColor: 'base100',
+									backgroundColor: isWend
+										? 'white'
+										: 'base100',
 									className:
 										'is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger',
 									text: 'Read More',
@@ -337,80 +349,88 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						} }
 					/>
 				</PanelBody>
-				<PanelBody>
-					<SelectControl
-						label={ __( 'Choose Post Type', 'wmf-reports' ) }
-						help={ __(
-							'Altering the post type will allow you to choose posts from that post type using the select post button below.',
-							'wmf-reports'
-						) }
-						options={ [
-							{
-								label: 'Post',
-								value: 'post',
-							},
-							{
-								label: 'Page',
-								value: 'page',
-							},
-							{
-								label: 'Profile',
-								value: 'profile',
-							},
-							{
-								label: 'Report',
-								value: 'wmf-report',
-							},
-							{
-								label: 'Story (Default)',
-								value: 'story',
-							},
-						] }
-						value={ postType }
-						// eslint-disable-next-line no-shadow
-						onChange={ ( postType ) => {
-							setAttributes( { postType } );
-						} }
-					/>
-					<BaseControl
-						className="story-base-control"
-						help={ __(
-							'Associate this post with a slide. Once you have chosen a post use the button below to refresh the slide content.',
-							'wmf-reports'
-						) }
-						id={ __( 'Associated Post', 'wmf-reports' ) }
-						label={ __( 'Associated Post', 'wmf-reports' ) }
-					>
-						<PostSelectButton
-							maxPosts={ 1 }
-							postType={ postType }
-							value={ [ postId ] }
-							onSelect={ onPostSelect }
-						>
-							<span className="components-button is-secondary">
-								{ __( 'Select post', 'wmf-reports' ) }
-							</span>
-						</PostSelectButton>
-					</BaseControl>
-					{ postId !== 0 && (
+				{ ! isWend && (
+					<PanelBody>
+						<SelectControl
+							label={ __( 'Choose Post Type', 'wmf-reports' ) }
+							help={ __(
+								'Altering the post type will allow you to choose posts from that post type using the select post button below.',
+								'wmf-reports'
+							) }
+							options={ [
+								{
+									label: 'Post',
+									value: 'post',
+								},
+								{
+									label: 'Page',
+									value: 'page',
+								},
+								{
+									label: 'Profile',
+									value: 'profile',
+								},
+								{
+									label: 'Report',
+									value: 'wmf-report',
+								},
+								{
+									label: 'Story (Default)',
+									value: 'story',
+								},
+							] }
+							value={ postType }
+							// eslint-disable-next-line no-shadow
+							onChange={ ( postType ) => {
+								setAttributes( { postType } );
+							} }
+						/>
 						<BaseControl
 							className="story-base-control"
 							help={ __(
-								'Pull the slide content from the associated post.',
+								'Associate this post with a slide. Once you have chosen a post use the button below to refresh the slide content.',
 								'wmf-reports'
 							) }
-							id={ __( 'Refresh Slide Content', 'wmf-reports' ) }
-							label={ __(
-								'Refresh Slide Content',
-								'wmf-reports'
-							) }
+							id={ __( 'Associated Post', 'wmf-reports' ) }
+							label={ __( 'Associated Post', 'wmf-reports' ) }
 						>
-							<Button variant="secondary" onClick={ updateSlide }>
-								{ __( 'Refresh Slide', 'wmf-reports' ) }
-							</Button>
+							<PostSelectButton
+								maxPosts={ 1 }
+								postType={ postType }
+								value={ [ postId ] }
+								onSelect={ onPostSelect }
+							>
+								<span className="components-button is-secondary">
+									{ __( 'Select post', 'wmf-reports' ) }
+								</span>
+							</PostSelectButton>
 						</BaseControl>
-					) }
-				</PanelBody>
+						{ postId !== 0 && (
+							<BaseControl
+								className="story-base-control"
+								help={ __(
+									'Pull the slide content from the associated post.',
+									'wmf-reports'
+								) }
+								id={ __(
+									'Refresh Slide Content',
+									'wmf-reports'
+								) }
+								label={ __(
+									'Refresh Slide Content',
+									'wmf-reports'
+								) }
+							>
+								<Button
+									variant="secondary"
+									onClick={ updateSlide }
+								>
+									{ __( 'Refresh Slide', 'wmf-reports' ) }
+								</Button>
+							</BaseControl>
+						) }
+					</PanelBody>
+				) }
 			</InspectorControls>
 			<InnerBlocks
 				template={ [
@@ -418,7 +438,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						'core/group',
 						{
 							align: 'full',
-							backgroundColor: 'wmf-report-bright-yellow',
+							backgroundColor: isWend
+								? 'light-blue'
+								: 'wmf-report-bright-yellow',
 							className: 'wmf-pattern-reports-carousel-slide',
 							layout: { type: 'constrained' },
 						},
@@ -429,17 +451,21 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 								[
 									[
 										'core/column',
-										{ width: '66.66%' },
+										{ width: isWend ? '50%' : '66.66%' },
 										[
 											[
 												'core/image',
 												{
-													aspectRatio: '4/3',
+													aspectRatio: isWend
+														? '1/1'
+														: '4/3',
 													className:
 														'is-style-default wmf-pattern-reports-carousel-slide__image',
 													id: 74197,
 													lightbox: {
-														aspectRatio: '4/3',
+														aspectRatio: isWend
+															? '1/1'
+															: '4/3',
 														className:
 															'is-style-default wmf-pattern-reports-carousel-slide__image',
 														enabled: false,
@@ -516,7 +542,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 														'core/button',
 														{
 															backgroundColor:
-																'base100',
+																isWend
+																	? 'white'
+																	: 'base100',
 															className:
 																'is-style-tertiary wmf-pattern-reports-carousel-slide__button overlay__trigger',
 															text: 'Read More',
