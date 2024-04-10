@@ -280,20 +280,32 @@ track.addEventListener( 'touchend', ( e ) => {
 	checkDirection();
 } );
 
-document.addEventListener( 'load', () => {
-	console.log( 'loaded' );
+/**
+ * Check for current slide on load, and advance to it if set.
+ */
+document.addEventListener( 'DOMContentLoaded', () => {
 	const slideID = location.hash.slice( location.hash.lastIndexOf( '-' ) + 1 );
-	const slide = document.getElementByID( slideID );
+	const slide = document.getElementById( slideID );
 
-	console.log ( slideID, slide );
+	if ( ! slide ) {
+		return;
+	}
 
-	if ( slide && slide.closest( '.carousel' ) ) {
+	const section = slide.closest( '.carousel' );
 
-		slide.closest( '.carousel' ).slideIntoView( {
-			block: 'start',
-			behavior: 'smooth',
-		} );
+	if ( section ) {
+		setTimeout( () => {
+			section.scrollIntoView( {
+				block: 'start',
+				behavior: 'smooth',
+			} );
 
-		setTimeout( () => setSlide( slideID  ), 50 );
+			const slides = slide.parentElement.children;
+			const slideIndex = [ ...slides ].findIndex(
+				( { id } ) => id === slideID
+			);
+
+			setSlide( slideIndex );
+		}, 200 );
 	}
 } );
