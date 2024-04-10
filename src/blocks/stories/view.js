@@ -333,7 +333,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		return;
 	}
 
-	const section = slide.closest( '.carousel' );
+	const section = slide.closest( '.stories.carousel' );
 
 	if ( section ) {
 		setTimeout( () => {
