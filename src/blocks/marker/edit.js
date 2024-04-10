@@ -13,7 +13,6 @@ import {
 	SelectControl,
 } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { PostPickerButton as PostSelectButton } from '@humanmade/block-editor-components';
 
 import { SearchBox } from '@mapbox/search-js-react';
 
@@ -30,6 +29,7 @@ import { SearchBox } from '@mapbox/search-js-react';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, clientId, setAttributes } ) {
+	const { PostSelectButton } = window.hm.components;
 	const { lat, long, postId, postType } = attributes;
 	// eslint-disable-next-line no-undef
 	const isWend = wmf.theme === 'wikimedia-endow';
