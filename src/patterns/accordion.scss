@@ -6,7 +6,7 @@
 		overflow: hidden;
 	}
 
-	.accordion-item {
+	.wmf-accordion-item {
 		border-bottom: 1px solid;
 		overflow: hidden;
 		padding: 14px 20px;
@@ -38,7 +38,7 @@
 				transform: rotate(45deg);
 				width: 20px;
 
-				.accordion-item[aria-expanded] & {
+				.wmf-accordion-item[aria-expanded] & {
 					transform: rotate(0deg);
 				}
 			}
@@ -55,7 +55,7 @@
 
 		&[aria-expanded] {
 
-			.accordion-item__content { // stylelint-disable selector-class-pattern
+			.wmf-accordion-item__content { // stylelint-disable selector-class-pattern
 				height: auto;
 				padding-top: 14px;
 			}
@@ -67,16 +67,12 @@
 .wp-block-wmf-reports-accordion {
 	padding: 0;
 
-	.accordion-item {
+	.wmf-accordion-item {
 		margin: 0;
 		padding: 0;
 	}
 
-	.accordion-item__title {
-		padding: 2rem 0;
-	}
-
-	.accordion-item__title::after {
+	.wmf-accordion-item__title::after {
 		background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAyMiAxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMSA5LjU4NTg2TDIwLjI5MjkgMC4yOTI5NjlMMjEuNzA3MSAxLjcwNzE4TDExIDEyLjQxNDNMMC4yOTI4NzcgMS43MDcxOEwxLjcwNzA5IDAuMjkyOTY5TDExIDkuNTg1ODZaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K) center center no-repeat;
 		content: " ";
 		display: inline-block;
@@ -88,11 +84,11 @@
 		border-radius: 50%;
 	}
 
-	.accordion-item[aria-expanded] .accordion-item__title::after {
+	.wmf-accordion-item[aria-expanded] .wmf-accordion-item__title::after {
 		transform: rotate(180deg);
 	}
 
-	.accordion-item__title-text {
+	.wmf-accordion-item__title-text {
 		font-family: $font-family-base;
 		font-weight: 700;
 		font-size: #{$font-size-xlarge};
@@ -103,7 +99,7 @@
 		}
 	}
 
-	.accordion-item__content {
+	.wmf-accordion-item__content {
 		font-size: $font-size-base;
 
 		li,
@@ -147,7 +143,7 @@
 .wp-block-wmf-reports-accordion--alt {
 	margin-bottom: 2rem;
 
-	.accordion-item {
+	.wmf-accordion-item {
 		background: #fff;
 		border: 1px solid var(--wp--preset--color--base-70, #aaa);
 		border-radius: 2px;
@@ -166,7 +162,7 @@
 		}
 	}
 
-	.accordion-item__title::after {
+	.wmf-accordion-item__title::after {
 		background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAyMiAxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMSA5LjU4NTg2TDIwLjI5MjkgMC4yOTI5NjlMMjEuNzA3MSAxLjcwNzE4TDExIDEyLjQxNDNMMC4yOTI4NzcgMS43MDcxOEwxLjcwNzA5IDAuMjkyOTY5TDExIDkuNTg1ODZaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K) center center no-repeat;
 		content: " ";
 		display: inline-block;
@@ -178,11 +174,11 @@
 		width: 0.8rem;
 	}
 
-	.accordion-item[aria-expanded] .accordion-item__title::after {
+	.wmf-accordion-item[aria-expanded] .wmf-accordion-item__title::after {
 		transform: rotate(180deg);
 	}
 
-	.accordion-item__title-text {
+	.wmf-accordion-item__title-text {
 		font-size: 1rem;
 		font-weight: 700;
 		margin-right: 5rem;
@@ -194,7 +190,7 @@
 		}
 	}
 
-	.accordion-item__content {
+	.wmf-accordion-item__content {
 		font-size: $font-size-base;
 
 		p {
@@ -203,8 +199,8 @@
 	}
 }
 
-.wp-block-wmf-accordion .accordion-item,
-.editor-styles-wrapper .wp-block-wmf-accordion .accordion-item {
+.wp-block-wmf-accordion .wmf-accordion-item,
+.editor-styles-wrapper .wp-block-wmf-accordion .wmf-accordion-item {
 
 	&[class*="vis-color"] {
 		border-left: 0;
