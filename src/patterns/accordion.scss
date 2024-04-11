@@ -200,8 +200,9 @@
 }
 
 .wp-block-wmf-accordion .wmf-accordion-item,
+.wp-block-wmf-reports-accordion--alt .wmf-accordion-item,
 .editor-styles-wrapper .wp-block-wmf-accordion .wmf-accordion-item,
-.wp-block-wmf-reports-accordion--alt .wmf-accordion-item {
+.editor-styles-wrapper .wp-block-wmf-reports-accordion--alt .wmf-accordion-item {
 
 	&[class*="vis-color"] {
 		border-left: 0;
@@ -214,7 +215,7 @@
 	}
 
 	&.vis-color-purple::before {
-		background-color: var(--wp--preset--color--vivid-purple, #5748B5);
+		background-color: var(--wp--preset--color--wmf-report-purple, #5748b5);
 	}
 
 	&.vis-color-light-purple::before {
@@ -226,7 +227,7 @@
 	}
 
 	&.vis-color-orange::before {
-		background-color: var(--wp--preset--color--wmf-report-orange, #FF7800);
+		background-color: var(--wp--preset--color--wmf-report-orange, #ff7800);
 	}
 
 	&.vis-color-wend-orange {
@@ -234,7 +235,7 @@
 	}
 
 	&.vis-color-yellow::before {
-		background-color: var(--wp--preset--color--wmf-report-yellow, #F0BC00);
+		background-color: var(--wp--preset--color--wmf-report-yellow, #f0bc00);
 	}
 
 	&.vis-color-amber::before {
