@@ -235,7 +235,9 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		map = new mapboxgl.Map( {
 			container: 'map',
 			center: [ 8.18, 11.83 ],
-			projection: 'equalEarth',
+			minZoom: 1,
+			projection: 'mercator',
+			renderWorldCopies: false,
 			scrollZoom: false,
 			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
 			zoom: 1,
@@ -316,8 +318,12 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 				updateMarkers();
 			} );
 		} );
+		/**
+		 * Note that we have to add slideBlocks as a dependency here so the map refreshes when
+		 * a pin is moved around or unclustered.
+		 */
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ mapStyle, slideBlocks.length, updateMarkers ] );
+	}, [ mapStyle, slideBlocks, slideBlocks.length, updateMarkers ] );
 
 	const blockProps = useBlockProps( {
 		className: 'map map--carousel carousel',
