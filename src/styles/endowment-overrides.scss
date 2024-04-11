@@ -75,7 +75,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		max-width: $width-breakpoint-wide !important;
 		width: 100%;
 
-		@media only screen and (min-width: 1044px) and (max-width: calc($width-breakpoint-wide + 2rem)) {
+		@media only screen and (min-width: 1044px) and (max-width: #{$width-breakpoint-wide + 64}) {
 			padding-left: 2rem;
 			padding-right: 2rem;
 		}
@@ -213,7 +213,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				right: 0;
 			}
 
-			@media only screen and (min-width: calc(782px + 4rem)) {
+			@media only screen and (min-width: #{782px + 128}) {
 				right: 2rem;
 			}
 		}
@@ -643,7 +643,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 					width: 100%;
 				}
 
-				@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
+				@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
 					margin-left: auto;
 					margin-right: auto;
 					border-bottom-right-radius: 0;
@@ -662,7 +662,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 					font-size: 0.75rem;
 					padding: 1rem 2rem;
 
-					@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
+					@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
 						padding: 1rem;
 					}
 
