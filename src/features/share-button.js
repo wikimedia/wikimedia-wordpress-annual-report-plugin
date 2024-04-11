@@ -7,6 +7,9 @@ const clickShareButton = ( event ) => {
 		return;
 	}
 
+	// Do not actually navigate.
+	event.preventDefault();
+
 	const currentUrl = location.href;
 
 	clipboard.writeText( currentUrl ).then( () => {
