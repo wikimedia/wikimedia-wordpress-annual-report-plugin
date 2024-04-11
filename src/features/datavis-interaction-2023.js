@@ -4,6 +4,13 @@
 window.addEventListener( 'DOMContentLoaded', () => {
 	// Only one vis this year, so that's pretty easy.
 	const visBlock = document.querySelector( '[data-datavis]' );
+	if (
+		! visBlock ||
+		! document.body.classList.contains( 'single-wmf-report' )
+	) {
+		return;
+	}
+
 	const visNodeId = visBlock.dataset.datavis;
 	const visNode = document.getElementById( visNodeId );
 
