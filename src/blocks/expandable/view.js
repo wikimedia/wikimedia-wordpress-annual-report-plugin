@@ -1,3 +1,5 @@
+import scrollToElement from '../../helpers/scroll-to-element';
+
 import './frontend.scss';
 
 /**
@@ -33,16 +35,13 @@ function toggleContainer( button, container, forceExpand = false ) {
 	);
 	container.classList.toggle( 'is-expanded', expanded );
 
-	window.scrollTo( {
-		top: expanded
-			? window.scrollY +
-			  container.getBoundingClientRect().top +
-			  visibleAmount
-			: window.scrollY +
-			  container.getBoundingClientRect().top -
-			  visibleAmount,
-		behavior: 'smooth',
-	} );
+	// Specific hack for a 2023 request, to anchor to the top of the containing SECTION
+	// rather than just to the top of the expander.
+	if ( ! expanded ) {
+		scrollToElement(
+			container.closest( '.wp-block-group[id^="toc-"]' ) || container
+		);
+	}
 }
 
 /**
