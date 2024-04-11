@@ -1,4 +1,5 @@
 import debounce from '../../helpers/debounce';
+import scrollToElement from '../../helpers/scroll-to-element';
 
 const stories = document.getElementsByClassName( 'wp-block-wmf-reports-story' );
 const categorySlides = document.getElementsByClassName( 'category-slide' );
@@ -18,7 +19,14 @@ const setMarginOffset = ( offset ) => {
 let processingAnimation = false;
 let touchstartX = 0;
 let touchendX = 0;
-let isInitialLoad = true;
+
+const scrollToSection = ( elt ) => {
+	const section = elt.closest( '.stories.carousel' );
+
+	if ( section ) {
+		scrollToElement( section );
+	}
+};
 
 const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
@@ -128,7 +136,7 @@ window.addEventListener(
 	}, 100 )
 );
 
-const setSlide = ( id ) => {
+const setSlide = ( id, shouldScrollToElement = true ) => {
 	const currentSlide = document.querySelector( '.category-slide.active' );
 	const currentId = parseInt( currentSlide?.dataset?.index || 0 );
 
@@ -150,10 +158,9 @@ const setSlide = ( id ) => {
 
 		const groupID = categorySlide.closest( '.wp-block-group[id]' )?.id;
 
-		if ( isInitialLoad ) {
-			isInitialLoad = false;
-		} else {
+		if ( shouldScrollToElement ) {
 			location.hash = `${ groupID }-${ categorySlide.dataset.id }`;
+			scrollToSection( categorySlide );
 		}
 	} );
 
@@ -329,25 +336,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const slideID = location.hash.slice( location.hash.lastIndexOf( '-' ) + 1 );
 	const slide = document.getElementById( slideID );
 
-	if ( ! slide ) {
-		return;
-	}
-
-	const section = slide.closest( '.stories.carousel' );
-
-	if ( section ) {
+	if ( slide && slide.closest( '.stories.carousel' ) ) {
 		setTimeout( () => {
-			section.scrollIntoView( {
-				block: 'start',
-				behavior: 'smooth',
-			} );
-
-			const slides = slide.parentElement.children;
-			const slideIndex = [ ...slides ].findIndex(
+			const slideIndex = [ ...slide.parentElement.children ].findIndex(
 				( { id } ) => id === slideID
 			);
 
 			setSlide( slideIndex );
-		}, 200 );
+		}, 500 );
 	}
 } );
