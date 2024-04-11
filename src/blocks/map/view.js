@@ -18,7 +18,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		attributionControl: false,
 		container: 'map',
 		center: [ 8.18, 11.83 ],
-		projection: 'equalEarth',
+		minZoom: 1,
+		projection: 'mercator',
+		renderWorldCopies: false,
 		scrollZoom: false,
 		style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
 		zoom: 1,
@@ -189,7 +191,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		);
 
 		const nextIndex = index - 1 < 0 ? markers.length - 1 : index - 1;
-		setMarker( nextIndex );
+		setMarker( nextIndex, false );
 	} );
 
 	forwardButton.addEventListener( 'click', () => {
@@ -202,7 +204,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 
 		const nextIndex = index + 1 > markers.length - 1 ? 0 : index + 1;
-		setMarker( nextIndex );
+		setMarker( nextIndex, false );
 	} );
 
 	/**
