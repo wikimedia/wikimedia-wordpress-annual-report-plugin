@@ -1,4 +1,4 @@
-const ADDITIONAL_MARGIN = 20; // 1.25rem, for comfort.
+const ADDITIONAL_MARGIN = 8; // 0.5rem, for comfort.
 
 /**
  * Variant of scrollIntoView( { block: 'start' } ) that accounts for the fixed header size.
@@ -15,7 +15,6 @@ export default function scrollToElement( element ) {
 		top:
 			element.getBoundingClientRect().top -
 			document.body.getBoundingClientRect().top -
-			// Plus 1rem.
 			( parseInt( scrollMargin, 10 ) + ADDITIONAL_MARGIN ),
 	} );
 }
