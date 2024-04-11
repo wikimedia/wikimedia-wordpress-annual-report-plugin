@@ -1,4 +1,5 @@
 import debounce from '../../helpers/debounce';
+import scrollToElement from '../../helpers/scroll-to-element';
 
 const stories = document.getElementsByClassName( 'wp-block-wmf-reports-story' );
 const categorySlides = document.getElementsByClassName( 'category-slide' );
@@ -23,10 +24,7 @@ const scrollToSection = ( elt ) => {
 	const section = elt.closest( '.stories.carousel' );
 
 	if ( section ) {
-		section.scrollIntoView( {
-			block: 'center',
-			behavior: 'smooth',
-		} );
+		scrollToElement( section );
 	}
 };
 
@@ -138,7 +136,7 @@ window.addEventListener(
 	}, 100 )
 );
 
-const setSlide = ( id, scrollToElement = true ) => {
+const setSlide = ( id, shouldScrollToElement = true ) => {
 	const currentSlide = document.querySelector( '.category-slide.active' );
 	const currentId = parseInt( currentSlide?.dataset?.index || 0 );
 
@@ -160,7 +158,7 @@ const setSlide = ( id, scrollToElement = true ) => {
 
 		const groupID = categorySlide.closest( '.wp-block-group[id]' )?.id;
 
-		if ( scrollToElement ) {
+		if ( shouldScrollToElement ) {
 			location.hash = `${ groupID }-${ categorySlide.dataset.id }`;
 			scrollToSection( categorySlide );
 		}
