@@ -114,8 +114,13 @@ $indicator-cutoff-width: 980px;
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
-			justify-content: space-between;
+			justify-content: flex-start;
+			gap: 1rem;
 			margin-top: 1.5rem;
+
+			:last-child {
+				margin-left: auto;
+			}
 		}
 
 		.wmf-toc-jumplist__modal-close {
