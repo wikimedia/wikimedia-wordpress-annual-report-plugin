@@ -1,10 +1,18 @@
+/* global wmf:false */
 import scrollToElement from '../../helpers/scroll-to-element';
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	// Use mapbox off of CDN-loaded window global on frontend.
 	const mapboxgl = window.mapboxgl;
 
-	// eslint-disable-next-line no-undef
+	if ( ! wmf?.apiKey || ! mapboxgl ) {
+		// eslint-disable-next-line no-console
+		console.error(
+			'Unable to initialize mapbox. API key or mapbox global unavailable.'
+		);
+		return;
+	}
+
 	mapboxgl.accessToken = wmf.apiKey;
 
 	const mapDiv = document.getElementById( 'map' );
