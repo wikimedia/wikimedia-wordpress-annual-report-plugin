@@ -160,7 +160,11 @@ $indicator-cutoff-width: 980px;
 		}
 
 		.admin-bar & {
-			top: 94px;
+			top: 140px;
+
+			&--pinned {
+				top: 94px;
+			}
 		}
 
 		&__modal {
