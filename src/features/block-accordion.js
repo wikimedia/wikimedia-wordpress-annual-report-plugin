@@ -2,6 +2,8 @@
  * Accordion Item open/close Triggers
  */
 
+import scrollToElement from '../helpers/scroll-to-element';
+
 /**
  * Toggle an accordion item open or closed.
  *
@@ -18,7 +20,8 @@ const toggleAccordionItem = ( e ) => {
 
 	// Open items should have the empty string as the attribute value.
 	parent.toggleAttribute( 'aria-expanded', isExpanded !== '' );
-	parent.scrollIntoView( { block: 'center' } );
+
+	scrollToElement( parent, 400 );
 };
 
 /**

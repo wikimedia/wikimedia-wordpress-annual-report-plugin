@@ -1,3 +1,5 @@
+import scrollToElement from '../helpers/scroll-to-element';
+
 document.addEventListener( 'DOMContentLoaded', () => {
 	const welcomePageIntro = document.querySelector(
 		'.wmf-pattern-report-into-hero'
@@ -55,7 +57,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			);
 
 			report.classList.add( 'selected' );
-			report.scrollIntoView( { behavior: 'smooth', block: 'center' } );
+			scrollToElement( report );
 			report.focus();
 
 			triggerButton.setAttribute( 'aria-expanded', false );

@@ -1,5 +1,25 @@
 /* Theme overrides */
 .single-wmf-report {
+	--scroll-margin-top: 0;
+
+	@media screen and (min-width: 980px) {
+		--scroll-margin-top: 48px; // 3rem; Fixed subnav bar.
+	}
+
+	&.admin-bar {
+
+		@media screen and (min-width: 600px) {
+			--scroll-margin-top: 46px; // Fixed admin bar.
+		}
+
+		@media screen and (min-width: 783px) {
+			--scroll-margin-top: 48px; // 32px + 1rem; Thinner admin-bar plus a little space.
+		}
+
+		@media screen and (min-width: 980px) {
+			--scroll-margin-top: 96px; // 32px + 1rem + 3rem; Fixed subnav bar.
+		}
+	}
 
 	.mw-980 {
 		max-width: none;
@@ -99,25 +119,10 @@
 
 	/* stylelint-disable no-descending-specificity */
 	[id^="toc-"] {
-		scroll-margin-top: 0;
+		scroll-margin-top: var(--scroll-margin-top);
 		// Have to be able to predict where the pill is in relation to the div.
 		padding-top: 3rem !important;
 		margin-top: 0 !important;
-	}
-
-	&.admin-bar [id^="toc-"] {
-
-		@media screen and (min-width: 600px) {
-			scroll-margin-top: 46px; // Fixed admin bar.
-		}
-
-		@media screen and (min-width: 783px) {
-			scroll-margin-top: calc(32px + 1rem); // Thinner admin-bar plus a little space.
-		}
-
-		@media screen and (min-width: 980px) {
-			scroll-margin-top: calc(32px + 1rem + 3rem); // Fixed subnav bar.
-		}
 	}
 	/* stylelint-enable */
 
