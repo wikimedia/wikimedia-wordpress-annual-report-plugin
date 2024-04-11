@@ -5,7 +5,7 @@ setTimeout( () => {
 	const countupFormatItems = document.querySelectorAll( '.wmf-countup' );
 
 	// Callback function to handle intersection changes
-	const handleIntersect = ( entries, observer ) => {
+	const handleIntersect = ( entries ) => {
 		entries.forEach( ( entry ) => {
 			const targetNumber =
 				entry.target.dataset.countupTargetNumber ||
@@ -27,7 +27,11 @@ setTimeout( () => {
 				if ( entry.isIntersecting ) {
 					// Slight delay before firing so that it plays when fully in view.
 					setTimeout( () => countup.start(), 100 );
-					observer.unobserve( entry.target );
+				} else {
+					if ( entry.isVisible ) {
+						return;
+					}
+					setTimeout( () => countup.reset(), 100 );
 				}
 			}
 		} );
