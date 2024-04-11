@@ -24,6 +24,10 @@ Array.from( overlays ).forEach( ( overlay ) => {
 	button.addEventListener( 'click', ( e ) => {
 		e.preventDefault();
 
+		// Update URL, in case it's not already updated.
+		const sectionId = parent.closest( '.wp-block-group[id]' )?.id;
+		location.hash = `${ sectionId }-${ parent.id }`;
+
 		const body = document.querySelector( 'body' );
 		body.style.overflow = 'hidden';
 
