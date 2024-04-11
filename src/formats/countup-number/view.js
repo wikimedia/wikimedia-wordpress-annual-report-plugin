@@ -27,7 +27,11 @@ setTimeout( () => {
 				if ( entry.isIntersecting ) {
 					// Slight delay before firing so that it plays when fully in view.
 					setTimeout( () => countup.start(), 100 );
-					observer.unobserve( entry.target );
+				} else {
+					if ( entry.isVisible ) {
+						return;
+					}
+					setTimeout( () => countup.reset(), 100 );
 				}
 			}
 		} );

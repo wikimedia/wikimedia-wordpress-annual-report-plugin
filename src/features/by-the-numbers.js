@@ -41,8 +41,13 @@ const doAnimations = () => {
 			const observer = new window.IntersectionObserver(
 				( [ entry ] ) => {
 					if ( ! entry.isIntersecting ) {
+						if ( ! entry.isVisible ) {
+							animation.setDirection( -1 );
+							animation.play();
+						}
 						return;
 					}
+					animation.setDirection( 1 );
 					animation.play();
 				},
 				{
