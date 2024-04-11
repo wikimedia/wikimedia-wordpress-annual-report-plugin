@@ -231,6 +231,13 @@
 	}
 
 	> .wp-block-group__inner-container {
+
+		@media only screen and ( max-width: 781px ) {
+			max-width: calc( 430px + 2rem );
+			margin-left: auto;
+			margin-right: auto;
+		}
+
 		> .wp-block-group.alignwide {
 			padding-left: 1rem;
 			padding-right: 1rem;
