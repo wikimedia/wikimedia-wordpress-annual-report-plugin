@@ -163,6 +163,11 @@
 	font-weight: 400;
 	line-height: $line-height-base;
 
+	.wp-block-buttons {
+		position: relative;
+		z-index: 15;
+	}
+
 	&.wp-block-group.has-background {
 		padding-bottom: 0;
 	}
