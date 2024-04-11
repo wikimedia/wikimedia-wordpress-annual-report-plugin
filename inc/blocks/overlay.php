@@ -25,9 +25,7 @@ function clone_share_button_to_top_of_overlay( string $block_content, array $blo
 	if ( $block['blockName'] !== 'wmf-reports/overlay' ) {
 		return $block_content;
 	}
-	if ( strpos( $block_content, 'medical' ) ) {
-		error_log( $block_content );
-	}
+
 	// Get existing button.
 	preg_match( '/<div[^>]+class="[^"]+is-share-button.*?<\/div>/', $block_content, $matches );
 	if ( empty( $matches[0] ?? '' ) ) {
