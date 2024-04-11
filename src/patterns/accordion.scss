@@ -199,11 +199,12 @@
 	}
 }
 
-.wp-block-wmf-accordion .wmf-accordion-item,
-.editor-styles-wrapper .wp-block-wmf-accordion .wmf-accordion-item,
-.wp-block-wmf-reports-accordion--alt .wmf-accordion-item {
+.wp-block-wmf-accordion,
+.wp-block-wmf-reports-accordion--alt,
+.editor-styles-wrapper .wp-block-wmf-accordion,
+.editor-styles-wrapper .wp-block-wmf-reports-accordion--alt {
 
-	&[class*="vis-color"] {
+	.wmf-accordion-item[class*="vis-color"] {
 		border-left: 0;
 
 		&::before {
@@ -213,31 +214,38 @@
 		}
 	}
 
-	&.vis-color-purple::before {
-		background-color: var(--wp--preset--color--vivid-purple, #5748B5);
+	.vis-color-purple .wmf-accordion-item::before,
+	.wmf-accordion-item.vis-color-purple::before {
+		background-color: var(--wp--preset--color--wmf-report-purple, #5748b5);
 	}
 
-	&.vis-color-light-purple::before {
+	.vis-color-light-purple .wmf-accordion-item::before,
+	.wmf-accordion-item.vis-color-light-purple::before {
 		background-color: #9b51df;
 	}
 
-	&.vis-color-red::before {
+	.vis-color-red .wmf-accordion-item::before,
+	.wmf-accordion-item.vis-color-red::before {
 		background-color: var(--wp--preset--color--wmf-report-red, #970302);
 	}
 
-	&.vis-color-orange::before {
-		background-color: var(--wp--preset--color--wmf-report-orange, #FF7800);
+	.vis-color-orange .wmf-accordion-item::before,
+	.wmf-accordion-item.vis-color-orange::before {
+		background-color: var(--wp--preset--color--wmf-report-orange, #ff7800);
 	}
 
-	&.vis-color-wend-orange {
+	.vis-color-wen .wmf-accordion-itemd-orange,
+	.wmf-accordion-item.vis-color-wend-orange {
 		background-color: #ff6801;
 	}
 
-	&.vis-color-yellow::before {
-		background-color: var(--wp--preset--color--wmf-report-yellow, #F0BC00);
+	.vis-color-yellow .wmf-accordion-item::before,
+	.wmf-accordion-item.vis-color-yellow::before {
+		background-color: var(--wp--preset--color--wmf-report-yellow, #f0bc00);
 	}
 
-	&.vis-color-amber::before {
+	.vis-color-amber .wmf-accordion-item::before,
+	.wmf-accordion-item.vis-color-amber::before {
 		background-color: var(--wp--preset--color--luminous-vivid-amber, #fcb900);
 	}
 }
