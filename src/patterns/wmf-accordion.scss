@@ -136,6 +136,17 @@ $primary-nav-mobile-height: 62px;
 			thead {
 				border-bottom: 1px solid #c8ccd1;
 			}
+
+			.has-text-align-right {
+
+				@media screen and (min-width: 500px) {
+					min-width: 115px;
+				}
+
+				@media screen and (min-width: 680px) {
+					min-width: 140px;
+				}
+			}
 		}
 	}
 }
