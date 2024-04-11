@@ -5,6 +5,7 @@
 		.wp-element-button {
 			cursor: pointer !important;
 			position: relative;
+			min-width: 7rem;
 
 			&::after {
 				opacity: 0.1;
@@ -31,7 +32,7 @@
 				background-color: var(--wp--preset--color--wmf-report-green, #318557) !important;
 				bottom: 0;
 				color: #fff;
-				content: "Copied!";
+				content: "Link Copied!";
 				display: flex;
 				justify-content: center;
 				left: 0;
