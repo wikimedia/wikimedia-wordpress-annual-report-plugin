@@ -122,16 +122,6 @@ function onScroll() {
 	updateJumplistActiveItem();
 }
 
-/**
- * Read the ToC and initialize progress indicator menus.
- */
-function initializeProgressIndicator() {
-	window.addEventListener( 'scroll', onScroll );
-	window.addEventListener( 'hashchange', updateJumplistActiveItem );
-}
-
-initializeProgressIndicator();
-
 const jumplistOpenClass = 'wmf-toc-jumplist--modal-open';
 
 /**
@@ -152,12 +142,7 @@ const closeJumplistModal = () => {
 		.forEach( ( node ) => node.classList.remove( jumplistOpenClass ) );
 };
 
-document
-	.querySelector( '.wmf-toc-progress button' )
-	.addEventListener( 'click', openJumplistModal );
-
-// Delegated lister. Switch behavior based on element clicked.
-document.addEventListener( 'click', ( { target } ) => {
+const handleCloseModalClick = ( { target } ) => {
 	const targetIs = ( className ) =>
 		target?.classList?.contains?.( className );
 
@@ -169,11 +154,43 @@ document.addEventListener( 'click', ( { target } ) => {
 	) {
 		closeJumplistModal();
 	}
-} );
+};
+
+/**
+ * Read the ToC and initialize progress indicator menus.
+ */
+function initializeProgressIndicatorAndJumplist() {
+	window.addEventListener( 'scroll', onScroll );
+	window.addEventListener( 'hashchange', updateJumplistActiveItem );
+
+	document
+		.querySelector( '.wmf-toc-progress button' )
+		.addEventListener( 'click', openJumplistModal );
+
+	// Delegated lister. Switch behavior based on element clicked.
+	document.addEventListener( 'click', handleCloseModalClick );
+}
+
+if ( document.querySelector( '.wp-block-wmf-reports-table-of-contents' ) ) {
+	// Only kick off logic if the right elements are present on the page.
+	initializeProgressIndicatorAndJumplist();
+}
 
 if ( module.hot ) {
 	module.hot.accept();
 	module.hot.dispose( () => {
+		if (
+			! document.querySelector(
+				'.wp-block-wmf-reports-table-of-contents'
+			)
+		) {
+			return;
+		}
 		window.removeEventListener( 'scroll', onScroll );
+		window.removeEventListener( 'hashchange', updateJumplistActiveItem );
+		document.removeEventListener( 'click', handleCloseModalClick );
+		document
+			.querySelector( '.wmf-toc-progress button' )
+			.removeEventListener( 'click', openJumplistModal );
 	} );
 }
