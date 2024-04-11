@@ -1,7 +1,7 @@
 .wp-block-wmf-reports-donate.wp-block-group.has-background {
 	padding: 2rem;
 
-	@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
+	@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
 		padding: 4rem 4rem 3rem 4rem !important;
 	}
 
