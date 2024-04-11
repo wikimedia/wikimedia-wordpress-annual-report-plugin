@@ -17,3 +17,5 @@ import './features/welcome-page';
 
 // Endow accordion.
 import './features/block-accordion';
+
+import './features/datavis-interaction-2023';
