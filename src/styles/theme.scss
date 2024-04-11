@@ -191,6 +191,10 @@
 			margin-bottom: 0;
 		}
 	}
+
+	p {
+		margin-bottom: 2rem;
+	}
 }
 
 /* Styles used for core block modifications */
@@ -203,6 +207,11 @@
 	.wp-block-button__link.has-base-100-background-color {
 		background: #fff !important;
 		cursor: pointer;
+		font-size: 0.8125rem;
+
+		&::before {
+			font-size: 1rem;
+		}
 
 		&:hover {
 			box-shadow: none;
