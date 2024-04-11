@@ -18,5 +18,7 @@ import './features/welcome-page';
 // Endow accordion.
 import './features/block-accordion';
 
+import './features/datavis-interaction-2023';
+
 // Share button click-to-copy behavior.
 import './features/share-button';

@@ -15,6 +15,12 @@
 		}
 	}
 
+	.wp-block-columns.is-layout-flex.is-not-stacked-on-mobile {
+		@media screen and (max-width: 782px) {
+			gap: 1rem;
+		}
+	}
+
 	.wp-block-wmf-reports-accordion--alt {
 		margin-bottom: 0;
 	}

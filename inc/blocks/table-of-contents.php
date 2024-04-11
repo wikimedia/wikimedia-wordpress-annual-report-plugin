@@ -76,6 +76,9 @@ function render_jumplist( array $waypoints ) : string {
 					?>
 				</div>
 				<div class="wmf-toc-jumplist__modal-footer">
+					<div class="wp-block-button is-style-transparent is-share-button">
+						<a class="wp-block-button__link has-base-100-background-color has-background wp-element-button" href="<?php echo esc_url( get_permalink() ); ?>">Share</a>
+					</div>
 					<button class="wmf-toc-jumplist__modal-close" type="button">
 						<span class="screen-reader-text">
 							<?php esc_html_e( 'Close jumplist', 'wmf-reports' ); ?>
