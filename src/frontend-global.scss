@@ -8,21 +8,33 @@
 /* Blocks and Styles */
 @import "blocks/expandable/frontend";
 @import "blocks/table-of-contents/frontend";
+@import "styles/core-buttons";
+@import "styles/core-columns";
 @import "styles/core-heading-report-section-heading";
 @import "styles/core-group-report-overlapping-callout";
 @import "styles/core-image";
+@import "styles/report-archive";
 @import "styles/map";
 @import "styles/stories";
 
+
 /* Patterns */
 @import "patterns/accordion";
+@import "patterns/by-the-numbers";
 @import "patterns/carousel";
 @import "patterns/donate";
 @import "patterns/donors";
+@import "patterns/financial-statements";
 @import "patterns/hero";
 @import "patterns/leadership";
 @import "patterns/letter-from-the-ceo";
 @import "patterns/overlay";
+@import "patterns/welcome-page";
+@import "patterns/wmf-accordion";
+@import "patterns/wrapped";
+
+/* Endowment */
+@import "styles/endowment-overrides";
 
 @font-face {
 	font-family: "Noto Sans";

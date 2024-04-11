@@ -48,12 +48,12 @@ function register_report_color_palette_override() : void {
 		[
 			'name'  => __( 'WMF Bright Blue', 'wmf-reports' ),
 			'slug'  => 'wmf-report-brightblue',
-			'color' => '#01a0ff',
+			'color' => '#00A0FF',
 		],
 		[
 			'name' => __( 'WMF Blue', 'wmf-reports' ),
 			'slug' => 'wmf-report-blue',
-			'color' => '#0167c7',
+			'color' => '#0067C7',
 		],
 		[
 			'name' => __( 'WMF Report Bright Yellow', 'wmf-reports' ),
@@ -63,7 +63,12 @@ function register_report_color_palette_override() : void {
 		[
 			'name' => __( 'WMF Report Red', 'wmf-reports' ),
 			'slug' => 'wmf-report-red',
-			'color' => '#970203',
+			'color' => '#970302',
+		],
+		[
+			'name' => __( 'WMF Report Orange', 'wmf-reports' ),
+			'slug' => 'wmf-report-orange',
+			'color' => '#FF7800',
 		],
 		[
 			'name' => __( 'WMF Report Yellow', 'wmf-reports' ),
@@ -74,6 +79,11 @@ function register_report_color_palette_override() : void {
 			'name' => __( 'WMF Report Green', 'wmf-reports' ),
 			'slug' => 'wmf-report-green',
 			'color' => '#318557',
+		],
+		[
+			'name' => __( 'Green-30', 'wmf-reports' ),
+			'slug' => 'green-30',
+			'color' => '#14866D',
 		],
 		[
 			'name' => __( 'WMF Report Bright Green', 'wmf-reports' ),

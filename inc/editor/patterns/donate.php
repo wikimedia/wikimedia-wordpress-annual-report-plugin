@@ -8,7 +8,7 @@ namespace WMF\Reports\Editor\Patterns\Donate;
 const NAME = 'wmf-reports/donate';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"align":"wide","backgroundColor":"base80","className":"wp-block-wmf-reports-donate","metadata":{"name":"Donate"}} -->
+<!-- wp:group {"align":"wide","backgroundColor":"base80","className":"wp-block-wmf-reports-donate"} -->
 <div class="wp-block-group alignwide wp-block-wmf-reports-donate has-base-80-background-color has-background"><!-- wp:heading {"level":3,"className":"is-style-default"} -->
 <h3 class="wp-block-heading is-style-default"><strong>Help Ensure Wikipedia's Future</strong></h3>
 <!-- /wp:heading -->

@@ -8,6 +8,6 @@ $long = $attributes['long'] ?? '0';
 $id   = $attributes['id'] ?? '0';
 ?>
 
-<div <?php echo get_block_wrapper_attributes( [ 'class' => 'alignfull', 'data-lat' => $lat, 'data-long' => $long, 'id' => $id ] ); ?>>
+<div <?php echo get_block_wrapper_attributes( [ 'class' => 'alignfull has_overlay', 'data-lat' => $lat, 'data-long' => $long, 'id' => $id ] ); ?>>
 	<?php echo $content; ?>
 </div>

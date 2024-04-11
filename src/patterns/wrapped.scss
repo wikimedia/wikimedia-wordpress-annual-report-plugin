@@ -1,0 +1,12 @@
+.wmf-pattern-wrapped .has-medium-font-size {
+	font-size: 0.9375rem !important; // Overrides an !important rule on .has-medium-font-size.
+	margin-bottom: 1.5rem;
+
+	@media screen and (min-width: 980px) {
+		font-size: 1.125rem !important; // Overrides an !important rule on .has-medium-font-size.
+	}
+
+	p {
+		margin-bottom: 2rem;
+	}
+}

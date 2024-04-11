@@ -24,6 +24,14 @@
 		"long": {
 			"type": "number",
 			"default": 0
+		},
+		"postId": {
+			"type": "number",
+			"default": 0
+		},
+		"postType": {
+			"type": "string",
+			"default": "story"
 		}
 	},
 	"example": {},

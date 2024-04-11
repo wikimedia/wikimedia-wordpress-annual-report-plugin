@@ -1,29 +1,40 @@
+import debounce from '../../helpers/debounce';
+import scrollToElement from '../../helpers/scroll-to-element';
+
 const stories = document.getElementsByClassName( 'wp-block-wmf-reports-story' );
 const categorySlides = document.getElementsByClassName( 'category-slide' );
 const backButton = document.getElementById( 'carousel-back' );
 const forwardButton = document.getElementById( 'carousel-forward' );
+const backCategoryButton = document.getElementById( 'carousel-slide-back' );
+const forwardCategoryButton = document.getElementById(
+	'carousel-slide-forward'
+);
 const slideCount = stories.length;
+const track = document.getElementsByClassName( 'stories__categories' )?.[ 0 ];
 
 const setMarginOffset = ( offset ) => {
-	const track = document.getElementsByClassName(
-		'stories__categories'
-	)?.[ 0 ];
-
 	track.style.marginLeft = offset + 'px';
 };
 
 let processingAnimation = false;
+let touchstartX = 0;
+let touchendX = 0;
+
+const scrollToSection = ( elt ) => {
+	const section = elt.closest( '.stories.carousel' );
+
+	if ( section ) {
+		scrollToElement( section );
+	}
+};
 
 const animateSlider = ( currentItemIndex ) => {
 	const wrapper = document.getElementsByClassName(
 		'stories__categories-wrapper'
 	)?.[ 0 ];
-	const track = document.getElementsByClassName(
-		'stories__categories'
-	)?.[ 0 ];
 	const activeCategory = document.querySelector( '.category-slide.active' );
 	const lastSlide = document.querySelector( '.category-slide:last-child' );
-	const currentOffset = track.style.marginLeft || 0;
+	const currentOffset = parseInt( track.style.marginLeft ) || 0;
 
 	const wrapperPosition = wrapper?.getBoundingClientRect();
 	const categoryPosition = activeCategory?.getBoundingClientRect();
@@ -31,14 +42,16 @@ const animateSlider = ( currentItemIndex ) => {
 
 	// calculate the position of the category slide.
 
-	// First index should always go to position 0;
-	if ( currentItemIndex === 0 ) {
+	// If there are not enough items to trigger scrolling, return.
+	if ( lastSlidePosition.right - currentOffset < wrapperPosition.right ) {
 		setMarginOffset( 0 );
+		document.querySelector( '.stories__categories-buttons' ).style.display =
+			'none';
 		return;
 	}
 
-	// If there are not enough items to trigger scrolling, return.
-	if ( lastSlidePosition.right < wrapperPosition.right ) {
+	// First index should always go to position 0;
+	if ( currentItemIndex === 0 ) {
 		setMarginOffset( 0 );
 		return;
 	}
@@ -47,8 +60,7 @@ const animateSlider = ( currentItemIndex ) => {
 	if ( currentItemIndex === slideCount - 1 ) {
 		// Get width of slide.
 		const slideWidth = categoryPosition.right - categoryPosition.left;
-		const positionOfSlide =
-			categoryPosition.left - parseInt( currentOffset );
+		const positionOfSlide = categoryPosition.left - currentOffset;
 		const newPosition =
 			wrapperPosition.right - ( positionOfSlide + slideWidth );
 		setMarginOffset( newPosition );
@@ -60,8 +72,7 @@ const animateSlider = ( currentItemIndex ) => {
 			'.category-slide:first-child'
 		);
 		const slideWidth = categoryPosition.right - categoryPosition.left;
-		const positionOfSlide =
-			categoryPosition.left - parseInt( currentOffset );
+		const positionOfSlide = categoryPosition.left - currentOffset;
 		const wrapperWidth = wrapperPosition.right - wrapperPosition.left;
 		const halfWrapperWidth = wrapperWidth / 2;
 		const newPosition =
@@ -72,8 +83,7 @@ const animateSlider = ( currentItemIndex ) => {
 
 		// If its going to take our first slide too far right, set the position 0.
 		const firstSlidePosition = firstSlide?.getBoundingClientRect();
-		const firstSlideOffset =
-			firstSlidePosition.left - parseInt( currentOffset );
+		const firstSlideOffset = firstSlidePosition.left - currentOffset;
 		const firstSlideNewPosition = firstSlideOffset + newPosition;
 
 		if ( firstSlideNewPosition > wrapperPosition.left ) {
@@ -82,8 +92,7 @@ const animateSlider = ( currentItemIndex ) => {
 		}
 
 		// If its going to take our last slide too far left, set position of last slide.
-		const lastSlideOffset =
-			lastSlidePosition.right - parseInt( currentOffset );
+		const lastSlideOffset = lastSlidePosition.right - currentOffset;
 		const lastSlideNewPosition = lastSlideOffset + newPosition;
 
 		if ( lastSlideNewPosition < wrapperPosition.right ) {
@@ -96,11 +105,45 @@ const animateSlider = ( currentItemIndex ) => {
 	}
 };
 
-const setSlide = ( id ) => {
+function setGraphicHeightCssProperty( slide ) {
+	// Calculate height of graphic in next story box.
+	const nextStoryGraphic =
+		slide.querySelector( 'figure iframe' ) ||
+		slide.querySelector( 'figure' );
+
+	if ( nextStoryGraphic ) {
+		const graphicHeight = nextStoryGraphic.getBoundingClientRect().height;
+		const wrapper = slide.closest( '.carousel-wrapper' );
+		if ( wrapper && graphicHeight ) {
+			wrapper.style.setProperty(
+				'--story-slide-graphic-height',
+				`${ Math.round( graphicHeight ) }px`
+			);
+		}
+	}
+}
+
+// Reset the story slide graphic height on resize to properly position arrows.
+window.addEventListener(
+	'resize',
+	debounce( () => {
+		for ( const story of stories ) {
+			if ( story.style.visibility !== 'hidden' ) {
+				setGraphicHeightCssProperty( story );
+				return;
+			}
+		}
+	}, 100 )
+);
+
+const setSlide = ( id, shouldScrollToElement = true ) => {
 	const currentSlide = document.querySelector( '.category-slide.active' );
 	const currentId = parseInt( currentSlide?.dataset?.index || 0 );
 
 	const nextStoryInfoBox = stories[ id ];
+
+	// Calculate height of graphic in next story box.
+	setGraphicHeightCssProperty( nextStoryInfoBox );
 
 	const nextCategorySlide = Array.from( categorySlides ).filter(
 		( categorySlide ) => categorySlide.dataset.id === nextStoryInfoBox.id
@@ -112,6 +155,13 @@ const setSlide = ( id ) => {
 
 	nextCategorySlide.forEach( ( categorySlide ) => {
 		categorySlide.classList.add( 'active' );
+
+		const groupID = categorySlide.closest( '.wp-block-group[id]' )?.id;
+
+		if ( shouldScrollToElement ) {
+			location.hash = `${ groupID }-${ categorySlide.dataset.id }`;
+			scrollToSection( categorySlide );
+		}
 	} );
 
 	Array.from( stories ).forEach( ( storyInfoBox, index ) => {
@@ -189,6 +239,10 @@ const setSlide = ( id ) => {
 				}, 2 );
 
 				setTimeout( () => {
+					storyInfoBox.style.opacity = 0;
+				}, 250 );
+
+				setTimeout( () => {
 					nextStoryInfoBox.style.height = null;
 					nextStoryInfoBox.style.opacity = null;
 					nextStoryInfoBox.style.position = null;
@@ -216,7 +270,13 @@ const setSlide = ( id ) => {
 	animateSlider( id );
 };
 
-setSlide( 0 );
+setSlide( 0, false );
+const parentContainer =
+	stories[ 0 ] && stories[ 0 ].closest( '.carousel--uninitialized' );
+if ( parentContainer ) {
+	// Remove the wrapper class to unwind CLS-prevention CSS
+	parentContainer.classList.remove( 'carousel--uninitialized' );
+}
 
 Array.from( categorySlides ).forEach( ( categorySlide, index ) => {
 	categorySlide.addEventListener( 'click', () => {
@@ -224,24 +284,65 @@ Array.from( categorySlides ).forEach( ( categorySlide, index ) => {
 	} );
 } );
 
-backButton.addEventListener( 'click', () => {
-	const index = Array.from( stories ).findIndex(
-		( story ) => story.style.visibility === 'visible'
-	);
+[ backCategoryButton, backButton ].forEach( ( button ) => {
+	button.addEventListener( 'click', () => {
+		const index = Array.from( stories ).findIndex(
+			( story ) => story.style.visibility === 'visible'
+		);
 
-	const nextIndex = index - 1 < 0 ? stories.length - 1 : index - 1;
-	setSlide( nextIndex );
+		const nextIndex = index - 1 < 0 ? stories.length - 1 : index - 1;
+		setSlide( nextIndex );
+	} );
 } );
 
-forwardButton.addEventListener( 'click', () => {
-	let index = Array.from( stories ).findIndex(
-		( story ) => story.style.visibility === 'visible'
-	);
+[ forwardCategoryButton, forwardButton ].forEach( ( button ) => {
+	button.addEventListener( 'click', () => {
+		let index = Array.from( stories ).findIndex(
+			( story ) => story.style.visibility === 'visible'
+		);
 
-	if ( index < 0 ) {
-		index = 0;
+		if ( index < 0 ) {
+			index = 0;
+		}
+
+		const nextIndex = index + 1 > stories.length - 1 ? 0 : index + 1;
+		setSlide( nextIndex );
+	} );
+} );
+
+function checkDirection() {
+	if ( touchendX < touchstartX ) {
+		forwardButton.click();
 	}
 
-	const nextIndex = index + 1 > stories.length - 1 ? 0 : index + 1;
-	setSlide( nextIndex );
+	if ( touchendX > touchstartX ) {
+		backButton.click();
+	}
+}
+
+track.addEventListener( 'touchstart', ( e ) => {
+	touchstartX = e.changedTouches[ 0 ].screenX;
+} );
+
+track.addEventListener( 'touchend', ( e ) => {
+	touchendX = e.changedTouches[ 0 ].screenX;
+	checkDirection();
+} );
+
+/**
+ * Check for current slide on load, and advance to it if set.
+ */
+document.addEventListener( 'DOMContentLoaded', () => {
+	const slideID = location.hash.slice( location.hash.lastIndexOf( '-' ) + 1 );
+	const slide = document.getElementById( slideID );
+
+	if ( slide && slide.closest( '.stories.carousel' ) ) {
+		setTimeout( () => {
+			const slideIndex = [ ...slide.parentElement.children ].findIndex(
+				( { id } ) => id === slideID
+			);
+
+			setSlide( slideIndex );
+		}, 500 );
+	}
 } );

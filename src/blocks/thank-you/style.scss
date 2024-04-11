@@ -1,0 +1,68 @@
+/**
+ * The following styles get applied both on the frontend and editor.
+ */
+
+.wp-block-wmf-reports-thank-you,
+.editor-styles-wrapper .wp-block-wmf-reports-thank-you {
+	--animation-duration: 500ms;
+	--text-size: 1.75rem;
+	--height: 2.125rem;
+
+	height: calc(var(--height) * 4);
+	overflow: hidden;
+
+	.wmf-thank-you-line {
+		display: block;
+		font-family: "Noto Sans", sans-serif;
+		font-size: var(--text-size);
+		font-weight: 700;
+		height: var(--height);
+		letter-spacing: -0.035rem;
+		line-height: 1;
+		transition: opacity var(--animation-duration), height var(--animation-duration);
+	}
+
+	// Make all text visible when block is selected.
+	&.is-selected {
+		height: auto;
+
+		.wmf-thank-you-line {
+			opacity: 1 !important;
+		}
+	}
+
+	// stylelint-disable no-descending-specificity
+	.wmf-thank-you-line:nth-of-type(1),
+	.wmf-thank-you-line:nth-of-type(2).fadein {
+		opacity: 1;
+	}
+
+	.wmf-thank-you-line:nth-of-type(2),
+	.wmf-thank-you-line:nth-of-type(3).fadein {
+		opacity: 0.5;
+	}
+
+	.wmf-thank-you-line:nth-of-type(3),
+	.wmf-thank-you-line:nth-of-type(4).fadein {
+		opacity: 0.2;
+	}
+
+	.wmf-thank-you-line:nth-of-type(4),
+	.wmf-thank-you-line:nth-of-type(5).fadein {
+		opacity: 0.1;
+	}
+
+	.wmf-thank-you-line:nth-of-type(5).fadein {
+		transition-duration: calc(1.5 * var(--animation-duration));
+		transition-delay: calc(0.2 * var(--animation-duration));
+	}
+
+	.wmf-thank-you-line:not(:nth-child(-n+4)),
+	.wmf-thank-you-line.fadeout {
+		opacity: 0;
+	}
+
+	.collapse {
+		height: 0;
+	}
+}

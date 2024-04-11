@@ -8,9 +8,9 @@ namespace WMF\Reports\Editor\Patterns\Wrapped;
 const NAME = 'wmf-reports/wrapped';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"align":"wide","className":"wmf-pattern-wrapped","metadata":{"name":"Wrapped"}} -->
+<!-- wp:group {"align":"wide","className":"wmf-pattern-wrapped"} -->
 <div class="wp-block-group alignwide wmf-pattern-wrapped"><!-- wp:heading {"className":"is-style-h2"} -->
-<h2 class="wp-block-heading is-style-h2">And that's 2023 Wrapped</h2>
+<h2 class="wp-block-heading is-style-h2"><strong>And that's 2023 Wrapped</strong></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->

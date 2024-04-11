@@ -6,7 +6,7 @@
 	padding-left: 0;
 	padding-right: 0;
 
-	@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
+	@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
 		margin-left: auto;
 		margin-right: auto;
 		border-bottom-right-radius: 2rem;
@@ -15,20 +15,32 @@
 	// stylelint-disable-next-line no-descending-specificity
 	img {
 		border-bottom-right-radius: 2rem;
+
+		@media only screen and (max-width: 781px) {
+			height: 24rem;
+			object-fit: cover;
+		}
+	}
+
+	// stylelint-disable-next-line no-descending-specificity
+	&:has(+ .wp-block-group.has-background) {
+		margin-bottom: 0;
 	}
 
 	// stylelint-disable-next-line no-descending-specificity
 	figcaption {
+		font-size: 0.75rem;
 		padding: 1rem 2rem;
 
-		@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
+		@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
 			padding: 1rem;
 		}
 
 		// stylelint-disable-next-line no-descending-specificity
 		mark {
+			color: inherit !important;
 			display: block;
-			font-size: 14px;
+			font-size: 0.625rem;
 			margin-top: 0.5rem;
 
 			// stylelint-disable-next-line no-descending-specificity
@@ -41,33 +53,35 @@
 				width: 14px;
 				margin-right: 0.5rem;
 				display: inline-block;
+				vertical-align: bottom;
 			}
 
 		}
 	}
 }
 
+/* stylelint-disable no-descending-specificity */
 .wp-block-image.is-style-report-image-vertical,
 .wp-block-image.is-style-report-image-vertical.alignwide {
+	margin-bottom: 1rem;
 
-	@media only screen and ( min-width: calc( $width-breakpoint-wide + 4rem ) ) {
-		position: relative;
-		background-color: transparent;
+	@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
+		display: flex;
 
 		figcaption {
-			background-color: #eaecf0;
-			position: absolute;
-			max-width: 25%;
-			width: 100%;
-			top: 50%;
-			transform: translateY(-50%);
-			right: 0;
-			padding: 1rem;
 			border-bottom-right-radius: 2rem;
+			padding: 1rem;
+			position: relative;
+			width: 100%;
+
+			mark {
+				position: absolute;
+				bottom: 1rem;
+			}
 		}
 
 		img {
-			max-width: 83.33%;
+			max-width: 66.66%;
 		}
 	}
 }
