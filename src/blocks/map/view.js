@@ -1,3 +1,5 @@
+import scrollToElement from '../../helpers/scroll-to-element';
+
 document.addEventListener( 'DOMContentLoaded', () => {
 	// Use mapbox off of CDN-loaded window global on frontend.
 	const mapboxgl = window.mapboxgl;
@@ -30,14 +32,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		const section = elt.closest( '.map.carousel' );
 
 		if ( section ) {
-			section.scrollIntoView( {
-				block: 'start',
-				behavior: 'smooth',
-			} );
+			scrollToElement( section );
 		}
 	};
 
-	const setMarker = ( id, scrollToElement = true ) => {
+	const setMarker = ( id, shouldScrollToElement = true ) => {
 		mapItemIndex = id;
 
 		const nextMarkerInfoBox = markers[ id ];
@@ -66,7 +65,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 			const groupID = mapMarker.closest( '.wp-block-group[id]' )?.id;
 
-			if ( scrollToElement ) {
+			if ( shouldScrollToElement ) {
 				location.hash = `${ groupID }-${ mapMarker.dataset.id }`;
 				scrollToSection( mapMarker );
 			}
