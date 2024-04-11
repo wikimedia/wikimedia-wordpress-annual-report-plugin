@@ -5,4 +5,8 @@
 	@media screen and (min-width: 980px) {
 		font-size: 1.125rem !important; // Overrides an !important rule on .has-medium-font-size.
 	}
+
+	p {
+		margin-bottom: 2rem;
+	}
 }
