@@ -15,15 +15,20 @@
 		}
 	}
 
+	.wp-block-columns.is-layout-flex.is-not-stacked-on-mobile {
+		@media screen and (max-width: 782px) {
+			gap: 1rem;
+		}
+	}
+
 	.wp-block-wmf-reports-accordion--alt {
 		margin-bottom: 0;
 	}
 
-	.wp-block-wmf-reports-accordion .accordion-item__title {
+	.wp-block-wmf-reports-accordion .wmf-accordion-item__title {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		padding: 1.5rem 0;
 
 		&-text {
 			margin: 0 4rem 0 0;

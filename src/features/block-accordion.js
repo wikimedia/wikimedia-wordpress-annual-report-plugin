@@ -57,7 +57,7 @@ const initializeAccordionItems = () => {
 	if ( document.location.hash ) {
 		const targetNode = document.querySelector( document.location.hash );
 		const targetedItem =
-			targetNode && targetNode.closest( '.accordion-item' );
+			targetNode && targetNode.closest( '.wmf-accordion-item' );
 		if ( targetedItem ) {
 			targetedItem.querySelector( 'button' ).click();
 			setTimeout( () => {

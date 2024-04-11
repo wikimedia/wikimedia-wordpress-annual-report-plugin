@@ -64,6 +64,14 @@
 		line-height: $line-height-base;
 	}
 
+	p {
+		margin-bottom: 1.5rem;
+
+		+ p {
+			margin-top: 0;
+		}
+	}
+
 	h2,
 	h3 {
 		font-weight: 700;
@@ -81,13 +89,8 @@
 		margin-bottom: 2rem;
 	}
 
-	.wmf-accordion-item__title-text,
-	.accordion-item__title-text {
+	.wmf-accordion-item__title-text {
 		margin-bottom: 0;
-	}
-
-	p + p {
-		margin-top: 0;
 	}
 
 	mark {
@@ -164,7 +167,7 @@
 		background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.9999 8.99219H14.9999L9.99994 14.9922L4.99994 8.99219H8.99994V0.992188H10.9999V8.99219ZM16.9999 16.9922V11.9922H18.9999V16.9922C18.9999 18.0968 18.1045 18.9922 16.9999 18.9922H2.99994C1.89537 18.9922 0.999939 18.0968 0.999939 16.9922V11.9922H2.99994V16.9922H16.9999Z' fill='black'/%3E%3C/svg%3E%0A");
 	}
 
-	.accordion-item {
+	.wmf-accordion-item {
 		border-bottom: 1px solid var(--wp--preset--color--base-70, #aaa);
 	}
 
@@ -203,6 +206,11 @@
 	.wp-block-button__link.has-base-100-background-color {
 		background: #fff !important;
 		cursor: pointer;
+		font-size: 0.8125rem;
+
+		&::before {
+			font-size: 1rem;
+		}
 
 		&:hover {
 			box-shadow: none;

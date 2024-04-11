@@ -13,6 +13,14 @@ const progressIndicator = jumplist.querySelector( '.wmf-toc-progress' );
 
 const ACTIVE_SECTION_HEADER_MARGIN = 200;
 
+// Clone the download button into the modal footer, if present.
+const downloadButton = document.querySelector(
+	'.wp-block-button.has-icon-download'
+);
+jumplist
+	.querySelector( '.wmf-toc-jumplist__modal-footer' )
+	.prepend( downloadButton.cloneNode( true ) );
+
 /**
  * Determine the element to use for reading progress measurements.
  *
@@ -87,6 +95,17 @@ function updateJumplistActiveItem() {
 		return;
 	}
 
+	// Update share button.
+	const anchor = activeSectionLink.getAttribute( 'href' );
+	const button = jumplist.querySelector(
+		'.wp-block-button.is-share-button a'
+	);
+	if ( anchor && button && button.href ) {
+		const url = button.href;
+		button.href = url.replace( /#.*$/, '' );
+	}
+
+	// Update highlighted class.
 	jumplistItems.forEach( ( sectionLink ) => {
 		sectionLink.classList.toggle(
 			'wmf-toc-jumplist__active-item',
