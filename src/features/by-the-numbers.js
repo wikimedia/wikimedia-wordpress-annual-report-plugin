@@ -1,5 +1,54 @@
 import lottie from 'lottie-web';
 
+const doFadeAnimations = () => {
+	const fadeUpAnimation = document.querySelectorAll( '.animation--fade-up' );
+	Array.from( fadeUpAnimation ).forEach( ( animation ) => {
+		const bounceInContainer = animation.querySelector(
+			'.wp-block-group__inner-container'
+		);
+
+		const observer = new window.IntersectionObserver(
+			( [ entry ] ) => {
+				if ( ! entry.isIntersecting ) {
+					if ( ! entry.isVisible ) {
+						for ( const element of bounceInContainer.children ) {
+							setTimeout( () => {
+								element.style.opacity = 0;
+								element.style.transform = 'translateY(5px)';
+							}, 500 );
+						}
+					}
+					return;
+				}
+				let fadeIn = 1;
+				setTimeout( () => {
+					for ( const element of bounceInContainer.children ) {
+						element.style.opacity = 0;
+						element.style.transform = 'translateY(5px)';
+
+						setTimeout( () => {
+							element.style.transition = 'all 0.5s ease-in-out';
+
+							setTimeout( () => {
+								element.style.opacity = 1;
+								element.style.transform = 'translateY(0px)';
+							}, 1 );
+						}, fadeIn );
+
+						fadeIn = fadeIn + 250;
+					}
+				}, 250 );
+			},
+			{
+				root: null,
+				threshold: 1, // set offset 0.1 means trigger if at least 10% of element in viewport
+			}
+		);
+
+		observer.observe( bounceInContainer );
+	} );
+};
+
 const doAnimations = () => {
 	const noAdsServedElement = document.getElementById( '0-ads-served' );
 	const topVisitedElement = document.getElementById( 'top-visited' );
@@ -137,56 +186,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		toggleMasonryView();
 		doAnimations();
+		doFadeAnimations();
 
 		window.addEventListener( 'resize', () => {
 			toggleMasonryView();
 		} );
 	}, 200 );
-} );
-
-const fadeUpAnimation = document.querySelectorAll( '.animation--fade-up' );
-Array.from( fadeUpAnimation ).forEach( ( animation ) => {
-	const bounceInContainer = animation.querySelector(
-		'.wp-block-group__inner-container'
-	);
-
-	const observer = new window.IntersectionObserver(
-		( [ entry ] ) => {
-			if ( ! entry.isIntersecting ) {
-				if ( ! entry.isVisible ) {
-					for ( const element of bounceInContainer.children ) {
-						setTimeout( () => {
-							element.style.opacity = 0;
-							element.style.transform = 'translateY(5px)';
-						}, 500 );
-					}
-				}
-				return;
-			}
-			let fadeIn = 1;
-			setTimeout( () => {
-				for ( const element of bounceInContainer.children ) {
-					element.style.opacity = 0;
-					element.style.transform = 'translateY(5px)';
-
-					setTimeout( () => {
-						element.style.transition = 'all 0.5s ease-in-out';
-
-						setTimeout( () => {
-							element.style.opacity = 1;
-							element.style.transform = 'translateY(0px)';
-						}, 1 );
-					}, fadeIn );
-
-					fadeIn = fadeIn + 250;
-				}
-			}, 250 );
-		},
-		{
-			root: null,
-			threshold: 1, // set offset 0.1 means trigger if at least 10% of element in viewport
-		}
-	);
-
-	observer.observe( bounceInContainer );
 } );
