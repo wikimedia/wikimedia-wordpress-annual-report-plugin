@@ -191,7 +191,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		);
 
 		const nextIndex = index - 1 < 0 ? markers.length - 1 : index - 1;
-		setMarker( nextIndex );
+		setMarker( nextIndex, false );
 	} );
 
 	forwardButton.addEventListener( 'click', () => {
@@ -204,7 +204,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 
 		const nextIndex = index + 1 > markers.length - 1 ? 0 : index + 1;
-		setMarker( nextIndex );
+		setMarker( nextIndex, false );
 	} );
 
 	/**
