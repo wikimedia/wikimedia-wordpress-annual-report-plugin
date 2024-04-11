@@ -185,7 +185,7 @@ const maybePinJumplist = () => {
 		jumplist.classList.remove( 'wmf-toc-jumplist--pinned' );
 		pinned = false;
 	}
-}
+};
 
 /**
  * Read the ToC and initialize progress indicator menus.
