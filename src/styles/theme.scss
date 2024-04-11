@@ -159,11 +159,8 @@
 		margin-right: auto;
 		max-width: $width-breakpoint-wide !important;
 		width: 100%;
-	}
 
-	@media screen and (max-width: 1044px) { // $width-breakpoint-wide + 4px, had to remove due to VIP issue.
-		.wp-block-group.alignwide,
-		.alignwide {
+		@media screen and (max-width: #{ $width-breakpoint-wide + 64 }) {
 			padding-left: 2rem;
 			padding-right: 2rem;
 		}

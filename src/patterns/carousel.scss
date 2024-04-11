@@ -31,7 +31,7 @@
 		text-align: right;
 		padding-right: 1rem;
 
-		@media only screen and ( min-width: calc( $width-breakpoint-wide + 1rem ) ) {
+		@media only screen and ( min-width: #{ $width-breakpoint-wide + 16 } ) {
 			padding-right: 0;
 		}
 	}
@@ -71,7 +71,7 @@
 		height: 0;
 		position: relative;
 
-		@media only screen and ( min-width: calc( $width-breakpoint-wide + 12rem ) ) {
+		@media screen and ( min-width: #{$width-breakpoint-wide + 192} ) {
 			display: block;
 
 			#carousel-slide-back {
