@@ -59,7 +59,7 @@ const withCustomGroupControls = createHigherOrderComponent( ( BlockEdit ) => {
 								onChange={ ( tocLabel ) => {
 									const id = toIdString( tocLabel );
 									setAttributes( {
-										tocSlug: `toc-${ id }`,
+										tocSlug: id ? `toc-${ id }` : '',
 										tocLabel,
 									} );
 								} }

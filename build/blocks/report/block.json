@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wmf-reports/report",
+  "version": "0.1.0",
+  "title": "Report",
+  "category": "widgets",
+  "icon": "image-flip-horizontal",
+  "description": "",
+  "parent": [
+    "wmf-reports/report-archive"
+  ],
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "wmf-reports",
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}

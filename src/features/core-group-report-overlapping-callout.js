@@ -1,7 +1,7 @@
 import debounce from '../helpers/debounce';
 
 const matchingGroups = document.querySelectorAll(
-	'.is-style-report-overlapping-callout'
+	'.is-style-report-overlapping-callout,.set-overlapping-callout-height'
 );
 
 if ( matchingGroups.length ) {
@@ -21,7 +21,6 @@ if ( matchingGroups.length ) {
 			'--report-overlapping-callout-group-block-height',
 			`${ targetHeight }px`
 		);
-		console.log( `${ targetHeight }px` ); // eslint-disable-line
 	}
 
 	setReportCalloutHeightCssProperty();

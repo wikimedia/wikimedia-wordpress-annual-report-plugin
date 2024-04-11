@@ -14,14 +14,13 @@
 	.carousel__buttons-wrapper {
 		bottom: auto;
 		position: absolute;
-		top: calc(300px - 1.5rem);
+		top: calc(300px + 300px - 1.5rem); // Map + expected image height.
 		right: 0;
 		width: 100%;
-		z-index: 2;
+		z-index: 10;
 
 		@media only screen and ( min-width: 782px ) {
-			bottom: 2rem;
-			top: auto;
+			top: calc(400px - 1.5rem); // Map only.
 			right: auto;
 		}
 	}
@@ -32,11 +31,7 @@
 		text-align: right;
 		padding-right: 1rem;
 
-		@media only screen and ( min-width: 782px ) {
-			margin-top: -5rem;
-		}
-
-		@media only screen and ( min-width: calc( $width-breakpoint-wide + 1rem ) ) {
+		@media only screen and ( min-width: #{ $width-breakpoint-wide + 16 } ) {
 			padding-right: 0;
 		}
 	}
@@ -59,7 +54,7 @@
 		}
 
 		&:hover {
-			background-color: #ccc;
+			opacity: 0.8;
 		}
 
 		&:focus {
@@ -70,6 +65,96 @@
 	.alignwide {
 		max-width: $width-breakpoint-wide;
 	}
+
+	.stories__categories-buttons {
+		display: none;
+		height: 0;
+		position: relative;
+
+		@media screen and ( min-width: #{$width-breakpoint-wide + 192} ) {
+			display: block;
+
+			#carousel-slide-back {
+				height: 40px;
+				left: -6rem;
+				position: absolute;
+				top: -5.5rem;
+				width: 40px;
+			}
+
+			#carousel-slide-forward {
+				height: 40px;
+				position: absolute;
+				right: -6rem;
+				top: -5.5rem;
+				width: 40px;
+			}
+		}
+	}
+}
+
+.wp-block-wmf-reports-stories.carousel figure.is-type-video {
+	margin: 0 -2rem;
+}
+
+.wp-block-wmf-reports-map.carousel .carousel__buttons-wrapper {
+
+	@media only screen and ( min-width: 782px ) {
+		bottom: 2rem;
+		top: unset;
+		transform: none;
+	}
+}
+
+.wp-block-wmf-reports-stories.carousel .carousel__buttons-wrapper {
+
+	@media only screen and (max-width: 781px) {
+		top: var(--story-slide-graphic-height, 300px);
+		transform: translate(0, -50%);
+	}
+
+	@media only screen and ( min-width: 782px ) {
+		bottom: 4rem;
+		top: unset;
+		transform: none;
+	}
+}
+
+.wp-block-wmf-reports-report-archive.carousel {
+
+	// stylelint-disable-next-line  no-descending-specificity
+	.carousel__buttons {
+		margin: 2rem auto 2rem auto;
+		max-width: $width-breakpoint-wide;
+		text-align: right;
+	}
+
+	// stylelint-disable-next-line  no-descending-specificity
+	button.carousel__button {
+		background-color: #fff;
+		// stylelint-disable-next-line function-url-quotes
+		background-image: url('data:image/svg+xml,<svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5858 11L0.292908 1.70712L1.70712 0.292908L12.4142 11L1.70712 21.7071L0.292908 20.2929L9.5858 11Z" fill="black"/></svg>');
+		background-position: 55% 50%;
+		background-repeat: no-repeat;
+		border: 1px solid #aaa;
+		border-radius: 100%;
+		cursor: pointer;
+		height: 48px;
+		margin-left: 0.5rem;
+		width: 48px;
+
+		&--back {
+			transform: scaleX(-1);
+		}
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&:focus {
+			border-radius: 100%;
+		}
+	}
 }
 
 .wmf-pattern-reports-carousel-slide {
@@ -78,12 +163,15 @@
 	font-weight: 400;
 	line-height: $line-height-base;
 
+	&.wp-block-group.has-background {
+		padding-bottom: 0;
+	}
 
 	@media only screen and ( max-width: 781px ) {
 		padding: 0;
 
 		&.wp-block-group.has-background {
-			padding: 0;
+			padding: 0 0 1rem 0;
 		}
 
 		.wp-block-columns .wp-block-column:last-child {
@@ -94,17 +182,15 @@
 	}
 
 	.is-style-sans-p {
+		font-size: $font-size-base;
 		margin-top: 0;
 	}
 
 	&__image.wp-block-image {
-		margin-bottom: 0;
-		margin-left: -2rem;
-		margin-right: -2rem;
+		margin: 0 -2rem;
 
 		@media only screen and ( min-width: 782px ) {
-			margin-left: auto;
-			margin-right: auto;
+			margin: 0 auto 2rem;
 		}
 
 		img {
@@ -114,7 +200,7 @@
 			min-width: 100%;
 
 			@media only screen and ( min-width: 782px ) {
-				border-radius: 30px;
+				border-bottom-right-radius: 30px;
 				height: auto;
 				max-height: 100%;
 			}
@@ -132,6 +218,7 @@
 		font-weight: 700;
 	}
 
+	&__location,
 	&__location.is-style-sans-p {
 		margin-bottom: 0.5rem;
 
@@ -154,11 +241,39 @@
 
 			> *:last-child {
 				margin-bottom: 1rem;
-
-				@media only screen and ( min-width: 782px ) {
-					margin-bottom: 5rem;
-				}
 			}
+		}
+	}
+
+	.wp-block-button.is-style-tertiary {
+		margin: 1rem 0 2rem;
+
+		.wp-block-button__link {
+			border-color: #000;
+			color: #000;
+			font-size: 0.8125rem;
+			padding: 0.25rem 0.75rem;
+
+			&:hover {
+				opacity: 0.8;
+				border-color: #000;
+				box-shadow: none;
+				color: #000;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+/* stylelint-disable no-descending-specificity */
+// Hide all but first item until carousel initializes to reduce CLS.
+.carousel--uninitialized {
+
+	.carousel__carousel-wrapper,
+	.carousel-wrapper {
+
+		> div:not(:first-child) {
+			display: none;
 		}
 	}
 }
