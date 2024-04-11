@@ -2,24 +2,34 @@
  * @type {HTMLDivElement}
  */
 const jumplist = document.querySelector( '.wmf-toc-jumplist' );
+
 /**
  * @type {HTMLAnchorElement[]}
  */
-const jumplistItems = jumplist.querySelectorAll( '.wmf-toc-jumplist__items a' );
+const jumplistItems = jumplist
+	? Array.from( jumplist.querySelectorAll( '.wmf-toc-jumplist__items a' ) )
+	: [];
+
 /**
  * @type {HTMLDivElement}
  */
-const progressIndicator = jumplist.querySelector( '.wmf-toc-progress' );
+const progressIndicator = jumplist
+	? jumplist.querySelector( '.wmf-toc-progress' )
+	: null;
 
 const ACTIVE_SECTION_HEADER_MARGIN = 200;
 
-// Clone the download button into the modal footer, if present.
-const downloadButton = document.querySelector(
-	'.wp-block-button.has-icon-download'
-);
-jumplist
-	.querySelector( '.wmf-toc-jumplist__modal-footer' )
-	.prepend( downloadButton.cloneNode( true ) );
+if ( jumplist ) {
+	// Clone the download button into the modal footer, if present.
+	const downloadButton = document.querySelector(
+		'.wp-block-button.has-icon-download'
+	);
+	if ( downloadButton ) {
+		jumplist
+			.querySelector( '.wmf-toc-jumplist__modal-footer' )
+			.prepend( downloadButton.cloneNode( true ) );
+	}
+}
 
 /**
  * Determine the element to use for reading progress measurements.
@@ -38,6 +48,9 @@ function getMainElement() {
  * Update all ToC progress circles and bars on scroll.
  */
 function updateProgressIndicators() {
+	if ( ! progressIndicator ) {
+		return;
+	}
 	const clientHeight = getMainElement().clientHeight;
 	const scrollTop = document.documentElement.scrollTop;
 	// Cap at 100, as Shiro theme structure can lead to >100% values.
@@ -118,8 +131,12 @@ function updateJumplistActiveItem() {
  * Scroll handler.
  */
 function onScroll() {
-	updateProgressIndicators();
-	updateJumplistActiveItem();
+	if ( progressIndicator ) {
+		updateProgressIndicators();
+	}
+	if ( jumplist ) {
+		updateJumplistActiveItem();
+	}
 }
 
 const jumplistOpenClass = 'wmf-toc-jumplist--modal-open';
