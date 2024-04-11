@@ -1,13 +1,18 @@
 .is-style-report-section-heading {
 	background: #000;
+	border-radius: 2px;
 	color: #fff;
 	font-family: "Noto Sans", sans-serif;
 	font-size: 0.9375rem;
 	font-weight: 700;
 	margin: 0 0 1rem;
-	padding: 0.3rem 1rem;
+	padding: 0.37rem 0.94rem;
 	text-transform: uppercase;
 	width: max-content;
+
+	.is-layout-flex > & {
+		margin-bottom: 1rem;
+	}
 }
 
 .editor-styles-wrapper .is-style-report-section-heading {
