@@ -24,7 +24,7 @@ if ( jumplist ) {
 	const downloadButton = document.querySelector(
 		'.wp-block-button.has-icon-download'
 	);
-	if ( downloadButton ) {
+	if ( downloadButton && ! jumplist.querySelector( '.has-icon-download' ) ) {
 		jumplist
 			.querySelector( '.wmf-toc-jumplist__modal-footer' )
 			.prepend( downloadButton.cloneNode( true ) );
@@ -173,6 +173,20 @@ const handleCloseModalClick = ( { target } ) => {
 	}
 };
 
+let pinned = false;
+const maybePinJumplist = () => {
+	if ( window.innerWidth < 1024 ) {
+		return;
+	}
+	if ( ! pinned && window.scrollY > 46 ) {
+		jumplist.classList.add( 'wmf-toc-jumplist--pinned' );
+		pinned = true;
+	} else if ( pinned && window.scrollY <= 46 ) {
+		jumplist.classList.remove( 'wmf-toc-jumplist--pinned' );
+		pinned = false;
+	}
+}
+
 /**
  * Read the ToC and initialize progress indicator menus.
  */
@@ -186,6 +200,8 @@ function initializeProgressIndicatorAndJumplist() {
 
 	// Delegated lister. Switch behavior based on element clicked.
 	document.addEventListener( 'click', handleCloseModalClick );
+
+	document.addEventListener( 'scroll', maybePinJumplist );
 }
 
 if ( document.querySelector( '.wp-block-wmf-reports-table-of-contents' ) ) {
