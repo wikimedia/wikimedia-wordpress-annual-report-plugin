@@ -149,10 +149,15 @@ $indicator-cutoff-width: 980px;
 		display: block;
 		height: 2.875rem;
 		left: 0;
-		position: fixed;
-		top: 62px;
+		position: absolute;
+		top: 108px;
 		width: 100%;
 		z-index: 10;
+
+		&--pinned {
+			position: fixed;
+			top: 62px;
+		}
 
 		.admin-bar & {
 			top: 94px;
