@@ -73,6 +73,13 @@
 
 .wmf-pattern-overlay {
 
+	.single-wmf-report &__heading {
+		font-size: 1.75rem;
+		letter-spacing: -0.035rem;
+		line-height: 1.125;
+		margin: 0.5rem 0;
+	}
+
 	&__image.wp-block-image {
 
 		img {
