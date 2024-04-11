@@ -157,3 +157,16 @@
 		}
 	}
 }
+
+// stylelint-disable-next-line  no-duplicate-selectors
+.editor-styles-wrapper {
+	.wmf-pattern-by-the-numbers {
+		.wmf-pattern-most-visited,
+		.wmf-pattern-ads-served,
+		.wmf-pattern-piechart {
+			.wp-block-image {
+				z-index: -1;
+			}
+		}
+	}
+}
