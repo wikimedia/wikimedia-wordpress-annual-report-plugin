@@ -1,3 +1,4 @@
+/* global wmf:false */
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
@@ -215,8 +216,11 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	 * Init the map.
 	 */
 	useEffect( () => {
-		// eslint-disable-next-line no-undef
-		if ( ! wmf?.apiKey ) {
+		if ( ! wmf?.apiKey || ! mapboxgl ) {
+			// eslint-disable-next-line no-console
+			console.error(
+				'Unable to initialize mapbox. API key or mapbox global unavailable.'
+			);
 			return;
 		}
 
@@ -227,8 +231,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			map.remove();
 		}
 
-		// eslint-disable-next-line no-undef
-		mapboxgl.accessToken = wmf?.apiKey;
+		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
 			center: [ 8.18, 11.83 ],
