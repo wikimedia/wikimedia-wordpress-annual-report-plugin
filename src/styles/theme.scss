@@ -160,7 +160,7 @@
 		max-width: $width-breakpoint-wide !important;
 		width: 100%;
 
-		@media only screen and ( max-width: calc( $width-breakpoint-wide + 4rem ) ) {
+		@media screen and ( max-width: calc( $width-breakpoint-wide + 4rem ) ) {
 			padding-left: 2rem;
 			padding-right: 2rem;
 		}

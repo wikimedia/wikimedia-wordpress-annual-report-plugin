@@ -150,9 +150,13 @@ $indicator-cutoff-width: 980px;
 		height: 2.875rem;
 		left: 0;
 		position: fixed;
-		top: 94px;
+		top: 62px;
 		width: 100%;
 		z-index: 10;
+
+		.admin-bar & {
+			top: 94px;
+		}
 
 		&__modal {
 			display: block;
