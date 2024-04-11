@@ -136,6 +136,17 @@ $primary-nav-mobile-height: 62px;
 			thead {
 				border-bottom: 1px solid #c8ccd1;
 			}
+
+			.has-text-align-right {
+
+				@media screen and (min-width: 500px) {
+					min-width: 115px;
+				}
+
+				@media screen and (min-width: 680px) {
+					min-width: 140px;
+				}
+			}
 		}
 	}
 }
@@ -146,14 +157,15 @@ $primary-nav-mobile-height: 62px;
 	// stylelint-disable-next-line  no-descending-specificity
 	.wmf-accordion-item {
 		background: #fff;
-		border: 1px solid #000;
+		border: 1px solid #aaa;
+		border-left: 0;
+		border-radius: 2px;
 		margin-bottom: 1rem;
 		padding: 1rem 0.5rem 1rem 1.5rem;
 		position: relative;
 
 		&::before {
 			background-color: #ff6801;
-			border-right: 1px solid #000;
 			content: "";
 			height: 100%;
 			left: 0;
@@ -202,31 +214,3 @@ $primary-nav-mobile-height: 62px;
 	}
 	/* stylelint-enable no-descending-specificity */
 }
-
-/* stylelint-disable no-descending-specificity */
-.wmf-pattern-financial-statements {
-
-	.wp-block-wmf-reports-accordion--alt {
-
-		.wp-block-wmf-reports-accordion-item:nth-of-type(1) .wmf-accordion-item::before,
-		.wmf-accordion-item:nth-of-type(1)::before {
-			background-color: #9b51df;
-		}
-
-		.wp-block-wmf-reports-accordion-item:nth-of-type(2) .wmf-accordion-item::before,
-		.wmf-accordion-item:nth-of-type(2)::before {
-			background-color: #970203;
-		}
-
-		.wp-block-wmf-reports-accordion-item:nth-of-type(3) .wmf-accordion-item::before,
-		.wmf-accordion-item:nth-of-type(3)::before {
-			background-color: #ff6801;
-		}
-
-		.wp-block-wmf-reports-accordion-item:nth-of-type(4) .wmf-accordion-item::before,
-		.wmf-accordion-item:nth-of-type(4)::before {
-			background-color: #fcb900;
-		}
-	}
-}
-/* stylelint-enable no-descending-specificity */
