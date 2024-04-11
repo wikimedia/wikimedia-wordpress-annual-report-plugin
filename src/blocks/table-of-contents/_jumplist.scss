@@ -3,7 +3,7 @@
 $indicator-cutoff-width: 980px;
 
 // Site-header should always have dropshadow when jumplist is present.
-.site-header {
+.single-wmf-report .site-header.site-header--pinned {
 	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
