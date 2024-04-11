@@ -91,6 +91,12 @@ function register_pattern() {
 		'content' => Overlay\PATTERN,
 	] );
 
+	register_block_pattern( Learn_More\NAME, [
+		'title' => __( 'Learn More', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => Learn_More\PATTERN,
+	] );
+
 	register_block_pattern( PreviousReports\NAME, [
 		'title' => __( 'Previous Reports', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],

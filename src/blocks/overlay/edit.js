@@ -39,11 +39,10 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 
 	const [ contentExpanded, setContentExpanded ] = useState( false );
 
-	const childBlocks = useSelect(
-		( select ) =>
-			select( 'core/editor' ).getBlocksByClientId( clientId )[ 0 ]
-				.innerBlocks
-	);
+	const childBlocks = useSelect( ( select ) => {
+		const blocks = select( 'core/editor' ).getBlocksByClientId( clientId );
+		return blocks && blocks[ 0 ] ? blocks[ 0 ]?.innerBlocks || [] : [];
+	} );
 
 	const { media, post } = useSelect( ( select ) => {
 		// eslint-disable-next-line no-shadow

@@ -53,7 +53,7 @@ $indicator-cutoff-width: 980px;
 		}
 
 		.wmf-toc-jumplist__modal-contents {
-			background-color: #fff;
+			background-color: var(--wp--preset--color--base-90, #f8f9fa);
 			border-top-left-radius: 2rem;
 			border-top-right-radius: 2rem;
 			height: calc(100vh - $screen-top-offset);
@@ -114,8 +114,13 @@ $indicator-cutoff-width: 980px;
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
-			justify-content: space-between;
+			justify-content: flex-start;
+			gap: 1rem;
 			margin-top: 1.5rem;
+
+			:last-child {
+				margin-left: auto;
+			}
 		}
 
 		.wmf-toc-jumplist__modal-close {

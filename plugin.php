@@ -34,6 +34,7 @@ require_once __DIR__ . '/inc/editor/patterns/finance-tables.php';
 require_once __DIR__ . '/inc/editor/patterns/financial-statements.php';
 require_once __DIR__ . '/inc/editor/patterns/hero.php';
 require_once __DIR__ . '/inc/editor/patterns/leadership.php';
+require_once __DIR__ . '/inc/editor/patterns/learn-more.php';
 require_once __DIR__ . '/inc/editor/patterns/letter-from-the-ceo.php';
 require_once __DIR__ . '/inc/editor/patterns/overlay.php';
 require_once __DIR__ . '/inc/editor/patterns/previous-reports.php';

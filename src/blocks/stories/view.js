@@ -270,7 +270,7 @@ const setSlide = ( id, shouldScrollToElement = true ) => {
 	animateSlider( id );
 };
 
-setSlide( 0 );
+setSlide( 0, false );
 const parentContainer =
 	stories[ 0 ] && stories[ 0 ].closest( '.carousel--uninitialized' );
 if ( parentContainer ) {

@@ -121,8 +121,12 @@
 	[id^="toc-"] {
 		scroll-margin-top: var(--scroll-margin-top);
 		// Have to be able to predict where the pill is in relation to the div.
-		padding-top: 3rem !important;
+		padding-top: 2rem !important;
 		margin-top: 0 !important;
+
+		@media screen and (min-width: 980px) {
+			padding-top: 3rem !important;
+		}
 	}
 	/* stylelint-enable */
 

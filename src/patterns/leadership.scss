@@ -1,12 +1,17 @@
 /* stylelint-disable no-descending-specificity */
 .wmf-pattern-reports-leadership {
 
+	h3,
+	.is-style-h3 {
+		font-size: 1.5rem;
+	}
+
 	&__list > .wp-block-group__inner-container {
 		list-style-type: none;
 		padding: 0;
 		margin: 0 0 2rem 0;
 		display: grid;
-		gap: 1rem;
+		gap: 0.9rem;
 
 		grid-template-columns: 1fr 1fr;
 
@@ -44,7 +49,6 @@
 					display: inline-block;
 					font-weight: 700;
 					line-height: 1.6;
-					margin-bottom: 0.2rem;
 					pointer-events: all;
 				}
 
