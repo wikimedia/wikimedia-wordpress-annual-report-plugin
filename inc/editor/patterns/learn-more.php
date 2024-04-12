@@ -14,11 +14,11 @@ const PATTERN = <<<CONTENT
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p><a href="#">Link to related article 1</a></p>
+<p><a href="#" target="_blank" rel="noreferrer noopener">Link to related article 1</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p><a href="#">Link to related article 2</a></p>
+<p><a href="#" target="_blank" rel="noreferrer noopener">Link to related article 2</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 CONTENT;

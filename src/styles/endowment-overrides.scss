@@ -23,10 +23,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			display: inline-block;
 			background: #0060fe;
 			color: #fff;
-			font-family: $font-family-base;
+
+			@include base-font;
 			text-transform: uppercase;
 			font-size: 15px;
-			font-weight: 700;
 			padding: 0.5rem 1rem 0.5rem 1rem;
 			margin-bottom: 1rem;
 
@@ -1157,10 +1157,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			display: inline-block;
 			background: #0060fe;
 			color: #fff;
-			font-family: $font-family-base;
+
+			@include base-font;
 			text-transform: uppercase;
 			font-size: 15px;
-			font-weight: 700;
 			padding: 4px 8px;
 			margin-bottom: 1rem;
 
