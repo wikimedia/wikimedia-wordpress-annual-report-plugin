@@ -77,9 +77,17 @@
 		max-width: 330px;
 
 		&__number {
-			font-size: 88px;
+			font-size: 4.5rem;
 			font-weight: 700;
 			margin-bottom: 0;
+
+			@media screen and (min-width: 380px) {
+				font-size: 5rem;
+			}
+
+			@media screen and (min-width: 400px) {
+				font-size: 5.5rem;
+			}
 		}
 
 		&__text {
