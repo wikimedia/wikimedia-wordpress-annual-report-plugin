@@ -2,24 +2,34 @@
  * @type {HTMLDivElement}
  */
 const jumplist = document.querySelector( '.wmf-toc-jumplist' );
+
 /**
  * @type {HTMLAnchorElement[]}
  */
-const jumplistItems = jumplist.querySelectorAll( '.wmf-toc-jumplist__items a' );
+const jumplistItems = jumplist
+	? Array.from( jumplist.querySelectorAll( '.wmf-toc-jumplist__items a' ) )
+	: [];
+
 /**
  * @type {HTMLDivElement}
  */
-const progressIndicator = jumplist.querySelector( '.wmf-toc-progress' );
+const progressIndicator = jumplist
+	? jumplist.querySelector( '.wmf-toc-progress' )
+	: null;
 
 const ACTIVE_SECTION_HEADER_MARGIN = 200;
 
-// Clone the download button into the modal footer, if present.
-const downloadButton = document.querySelector(
-	'.wp-block-button.has-icon-download'
-);
-jumplist
-	.querySelector( '.wmf-toc-jumplist__modal-footer' )
-	.prepend( downloadButton.cloneNode( true ) );
+if ( jumplist ) {
+	// Clone the download button into the modal footer, if present.
+	const downloadButton = document.querySelector(
+		'.wp-block-button.has-icon-download'
+	);
+	if ( downloadButton && ! jumplist.querySelector( '.has-icon-download' ) ) {
+		jumplist
+			.querySelector( '.wmf-toc-jumplist__modal-footer' )
+			.prepend( downloadButton.cloneNode( true ) );
+	}
+}
 
 /**
  * Determine the element to use for reading progress measurements.
@@ -38,6 +48,9 @@ function getMainElement() {
  * Update all ToC progress circles and bars on scroll.
  */
 function updateProgressIndicators() {
+	if ( ! progressIndicator ) {
+		return;
+	}
 	const clientHeight = getMainElement().clientHeight;
 	const scrollTop = document.documentElement.scrollTop;
 	// Cap at 100, as Shiro theme structure can lead to >100% values.
@@ -118,19 +131,13 @@ function updateJumplistActiveItem() {
  * Scroll handler.
  */
 function onScroll() {
-	updateProgressIndicators();
-	updateJumplistActiveItem();
+	if ( progressIndicator ) {
+		updateProgressIndicators();
+	}
+	if ( jumplist ) {
+		updateJumplistActiveItem();
+	}
 }
-
-/**
- * Read the ToC and initialize progress indicator menus.
- */
-function initializeProgressIndicator() {
-	window.addEventListener( 'scroll', onScroll );
-	window.addEventListener( 'hashchange', updateJumplistActiveItem );
-}
-
-initializeProgressIndicator();
 
 const jumplistOpenClass = 'wmf-toc-jumplist--modal-open';
 
@@ -152,12 +159,7 @@ const closeJumplistModal = () => {
 		.forEach( ( node ) => node.classList.remove( jumplistOpenClass ) );
 };
 
-document
-	.querySelector( '.wmf-toc-progress button' )
-	.addEventListener( 'click', openJumplistModal );
-
-// Delegated lister. Switch behavior based on element clicked.
-document.addEventListener( 'click', ( { target } ) => {
+const handleCloseModalClick = ( { target } ) => {
 	const targetIs = ( className ) =>
 		target?.classList?.contains?.( className );
 
@@ -169,11 +171,59 @@ document.addEventListener( 'click', ( { target } ) => {
 	) {
 		closeJumplistModal();
 	}
-} );
+};
+
+let pinned = false;
+const maybePinJumplist = () => {
+	if ( window.innerWidth < 1024 ) {
+		return;
+	}
+	if ( ! pinned && window.scrollY > 46 ) {
+		jumplist.classList.add( 'wmf-toc-jumplist--pinned' );
+		pinned = true;
+	} else if ( pinned && window.scrollY <= 46 ) {
+		jumplist.classList.remove( 'wmf-toc-jumplist--pinned' );
+		pinned = false;
+	}
+};
+
+/**
+ * Read the ToC and initialize progress indicator menus.
+ */
+function initializeProgressIndicatorAndJumplist() {
+	window.addEventListener( 'scroll', onScroll );
+	window.addEventListener( 'hashchange', updateJumplistActiveItem );
+
+	document
+		.querySelector( '.wmf-toc-progress button' )
+		.addEventListener( 'click', openJumplistModal );
+
+	// Delegated lister. Switch behavior based on element clicked.
+	document.addEventListener( 'click', handleCloseModalClick );
+
+	document.addEventListener( 'scroll', maybePinJumplist );
+}
+
+if ( document.querySelector( '.wp-block-wmf-reports-table-of-contents' ) ) {
+	// Only kick off logic if the right elements are present on the page.
+	initializeProgressIndicatorAndJumplist();
+}
 
 if ( module.hot ) {
 	module.hot.accept();
 	module.hot.dispose( () => {
+		if (
+			! document.querySelector(
+				'.wp-block-wmf-reports-table-of-contents'
+			)
+		) {
+			return;
+		}
 		window.removeEventListener( 'scroll', onScroll );
+		window.removeEventListener( 'hashchange', updateJumplistActiveItem );
+		document.removeEventListener( 'click', handleCloseModalClick );
+		document
+			.querySelector( '.wmf-toc-progress button' )
+			.removeEventListener( 'click', openJumplistModal );
 	} );
 }

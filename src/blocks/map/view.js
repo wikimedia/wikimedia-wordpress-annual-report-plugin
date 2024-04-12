@@ -1,10 +1,18 @@
+/* global wmf:false */
 import scrollToElement from '../../helpers/scroll-to-element';
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	// Use mapbox off of CDN-loaded window global on frontend.
 	const mapboxgl = window.mapboxgl;
 
-	// eslint-disable-next-line no-undef
+	if ( ! wmf?.apiKey || ! mapboxgl ) {
+		// eslint-disable-next-line no-console
+		console.error(
+			'Unable to initialize mapbox. API key or mapbox global unavailable.'
+		);
+		return;
+	}
+
 	mapboxgl.accessToken = wmf.apiKey;
 
 	const mapDiv = document.getElementById( 'map' );
@@ -18,7 +26,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		attributionControl: false,
 		container: 'map',
 		center: [ 8.18, 11.83 ],
-		projection: 'equalEarth',
+		minZoom: 1,
+		projection: 'mercator',
+		renderWorldCopies: false,
 		scrollZoom: false,
 		style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
 		zoom: 1,
@@ -189,7 +199,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		);
 
 		const nextIndex = index - 1 < 0 ? markers.length - 1 : index - 1;
-		setMarker( nextIndex );
+		setMarker( nextIndex, false );
 	} );
 
 	forwardButton.addEventListener( 'click', () => {
@@ -202,7 +212,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 
 		const nextIndex = index + 1 > markers.length - 1 ? 0 : index + 1;
-		setMarker( nextIndex );
+		setMarker( nextIndex, false );
 	} );
 
 	/**
