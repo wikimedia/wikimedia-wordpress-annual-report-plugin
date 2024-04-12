@@ -60,8 +60,7 @@
 	&__categories {
 		display: flex;
 		gap: 0.8rem;
-		padding-left: 2rem;
-		padding-right: 2rem;
+		padding: 0 2rem 1px; // Solves a "bottom border displays half-width" issue in Safari iOS.
 		transition: all 0.5s;
 		width: max-content;
 
