@@ -25,13 +25,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const map = new mapboxgl.Map( {
 		attributionControl: false,
 		container: 'map',
-		center: [ 8.18, 11.83 ],
-		minZoom: 1,
+		center: [ 8.18, 18.83 ],
+		minZoom: 0,
 		projection: 'mercator',
 		renderWorldCopies: false,
 		scrollZoom: false,
 		style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
-		zoom: 1,
+		zoom: 0,
 	} );
 	let mapItemIndex = 0;
 	let processingAnimation = false;

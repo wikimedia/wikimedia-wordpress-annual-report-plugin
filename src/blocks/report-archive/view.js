@@ -93,11 +93,11 @@ forwardButton.addEventListener( 'click', () => {
 } );
 
 function checkDirection() {
-	if ( touchendX < touchstartX ) {
+	if ( touchendX + 100 < touchstartX ) {
 		forwardButton.click();
 	}
 
-	if ( touchendX > touchstartX ) {
+	if ( touchendX > touchstartX + 100 ) {
 		backButton.click();
 	}
 }
