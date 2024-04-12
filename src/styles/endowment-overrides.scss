@@ -40,6 +40,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 	}
 
+	h3 {
+		&.wp-block-heading {
+			font-size: 24px;
+		}
+	}
+
 	.alignfull {
 		transform: none;
 		padding: 0;
@@ -160,10 +166,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.is-style-default.wmf-pattern-endowment-hero {
 		margin-bottom: -4rem;
 		padding-bottom: 2rem;
-		--slant: calc(80% - 3.8vw);
+		--slant: calc(90% - 3.9vw);
 
 		@media only screen and (min-width: 782px) {
-			clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 			padding-bottom: 6rem;
 			margin-bottom: 0;
 		}
@@ -203,10 +209,14 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		.wmf-pattern-endowment-hero__image {
 			margin: 0;
-			clip-path: polygon(0 0, 100% 0, 100% 89%, 0 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%);
 
-			@media only screen and (min-width: 1500px) {
-				clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+			@media only screen and (min-width: 1300px) {
+				clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
+			}
+
+			@media only screen and (min-width: 1701px) {
+				clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%);
 			}
 		}
 
@@ -319,7 +329,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			figcaption {
 
 				border-bottom-right-radius: none;
-				padding: 1rem 1rem 1rem 2rem;
+				padding: 1rem 1rem 1rem 1rem;
 				position: relative;
 				width: 100%;
 
@@ -503,15 +513,15 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	// stylelint-disable-next-line no-duplicate-selectors
 	.wmf-pattern-financial-statements {
 
+		.wp-block-columns {
+			gap: 2rem !important;
+
+			.wp-block-column {
+				margin-left: 0;
+			}
+		}
+
 		table {
-
-			&.has-light-blue-background-color {
-				border: 2rem solid #e3eef2;
-			}
-
-			&.has-wend-report-cobalt-background-color {
-				border: 2rem solid #0060fe;
-			}
 
 			thead {
 				border-bottom: 1px solid #0060fe;
@@ -520,10 +530,53 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			td,
 			th {
 				border: 0;
+				padding: 0 0 0.5rem 0;
 			}
 
-			tr {
+			thead {
+				th {
+					padding-bottom: 1rem;
+				}
+			}
+
+			tbody {
+				tr:first-of-type {
+					td {
+						padding-top: 1rem;
+					}
+				}
+			}
+
+			tr:has( strong ) {
 				border-bottom: 1px solid #0060fe;
+
+				td {
+					padding-bottom: 1rem;
+				}
+
+				&:last-child {
+					td {
+						padding-bottom: 0;
+					}
+				}
+
+				+ tr td {
+					padding-top: 1rem;
+				}
+			}
+
+			&.has-light-blue-background-color {
+				border: 2rem solid #e3eef2;
+
+				td,
+				th {
+					font-size: 15px;
+				}
+			}
+
+			&.has-wend-report-cobalt-background-color {
+				border: 2rem solid #0060fe;
+				font-size: 23px;
 			}
 		}
 
@@ -689,6 +742,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 				&::after {
 					display: block;
+					background-color: #fff;
 				}
 			}
 		}
@@ -824,6 +878,42 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			p {
 				margin-left: 1rem;
+			}
+		}
+
+		hr {
+			background-color: #0060fe;
+		}
+	}
+
+	.wmf-annual-reports-overlay-popover:has( > .wmf-pattern-overlay > .wp-block-group__inner-container > .wp-block-columns ) {
+		padding: 1rem;
+
+		@media only screen and (min-width: 782px) {
+			padding: 2rem 8rem 2rem 2rem;
+		}
+
+		.wp-block-column {
+			margin-left: 0px;
+
+			.is-share-button {
+				display: none;
+			}
+		}
+
+		.wp-block-image {
+			@media only screen and (max-width: 781px) {
+				margin-left: -1rem;
+				margin-right: -1rem;
+				margin-top: -1rem;
+			}
+
+			margin: 0;
+
+			img {
+				width: 100%;
+				height: auto;
+				aspect-ratio: 1/1 !important;
 			}
 		}
 	}
