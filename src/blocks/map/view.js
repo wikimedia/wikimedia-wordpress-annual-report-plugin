@@ -27,10 +27,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const map = new mapboxgl.Map( {
 		attributionControl: false,
 		container: 'map',
-		center: [ 8.18, isWend ? 26.83 : 18.83 ],
-		minZoom: 0,
+		center: [ 8.18, isWend ? 26.83 : 9 ],
+		minZoom: -2,
 		projection: 'mercator',
-		renderWorldCopies: false,
+		renderWorldCopies: true,
 		scrollZoom: false,
 		style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
 		zoom: 0,
