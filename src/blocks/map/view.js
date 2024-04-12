@@ -13,6 +13,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		return;
 	}
 
+	const isWend = !! document.querySelector( '.wikimedia-endow' );
+
 	mapboxgl.accessToken = wmf.apiKey;
 
 	const mapDiv = document.getElementById( 'map' );
@@ -25,7 +27,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const map = new mapboxgl.Map( {
 		attributionControl: false,
 		container: 'map',
-		center: [ 8.18, 18.83 ],
+		center: [ 8.18, isWend ? 26.83 : 18.83 ],
 		minZoom: 0,
 		projection: 'mercator',
 		renderWorldCopies: false,
