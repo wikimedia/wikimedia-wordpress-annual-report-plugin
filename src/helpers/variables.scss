@@ -55,11 +55,13 @@ $line-height-xlarge: 1.43;
 $line-height-xxlarge: 2;
 
 @mixin base-font {
-	font-family: $font-family-base;
+	// Temporarily commented out because iDevices were too inconsistent in how
+	// they rendered the Noto Sans custom font.
+	// font-family: $font-family-base;
 	font-weight: 700;
 
-	@supports (-webkit-touch-callout: none) {
-		// iOS renders this font differently.
-		font-weight: 600;
-	}
+	// @supports (-webkit-touch-callout: none) {
+	// 	// iOS renders this font differently.
+	// 	font-weight: 600;
+	// }
 }
