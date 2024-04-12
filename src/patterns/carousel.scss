@@ -218,9 +218,9 @@
 	}
 
 	&__heading {
-		font-family: $font-family-base;
+
+		@include base-font;
 		font-size: $font-size-xlarge;
-		font-weight: 700;
 	}
 
 	&__location,
