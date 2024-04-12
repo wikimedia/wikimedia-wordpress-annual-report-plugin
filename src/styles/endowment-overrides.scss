@@ -26,7 +26,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			@include base-font;
 			text-transform: uppercase;
-			font-size: 15px;
+			font-size: 0.938rem;
 			padding: 0.5rem 1rem 0.5rem 1rem;
 			margin-bottom: 1rem;
 
@@ -48,10 +48,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	h3 {
 		&.wp-block-heading {
-			font-size: 28px;
+			font-size: 1.75rem;
 
 			@media only screen and (min-width: 782px) {
-				font-size: 24px;
+				font-size: 1.5rem;
 			}
 		}
 	}
@@ -209,7 +209,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		.wmf-pattern-endowment-hero__title {
 			line-height: 1.25;
-			font-size: 40px;
+			font-size: 2.5rem;
 			font-weight: 700;
 
 			@media only screen and (min-width: 782px) {
@@ -438,7 +438,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		&__heading.is-style-h2,
 		&__heading {
 			line-height: 1.17;
-			font-size: 24px;
+			font-size: 1.5rem;
 		}
 
 		&__location,
@@ -533,11 +533,11 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wmf-pattern-reports-carousel-slide__heading {
-			font-size: 18px;
+			font-size: 1.125rem;
 			font-weight: 600;
 
 			@media only screen and (min-width: 782px) {
-				font-size: 24px;
+				font-size: 1.5rem;
 			}
 		}
 
@@ -611,10 +611,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.wmf-pattern-financial-statements {
 
 		h3.wp-block-heading {
-			font-size: 24px;
+			font-size: 1.5rem;
 
 			@media only screen and (min-width: 782px) {
-				font-size: 28px;
+				font-size: 1.75rem;
 			}
 		}
 
@@ -720,16 +720,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 				td,
 				th {
-					font-size: 15px;
+					font-size: 0.938rem;
 				}
 			}
 
 			&.has-wend-report-cobalt-background-color {
 				border: 1rem solid #0060fe;
-				font-size: 18px;
+				font-size: 1.125rem;
 
 				@media only screen and (min-width: 782px) {
-					font-size: 23px;
+					font-size: 1.438rem;
 					border: 2rem solid #0060fe;
 				}
 			}
@@ -790,17 +790,17 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		h3.wp-block-heading {
-			font-size: 24px;
+			font-size: 1.5rem;
 
 			@media only screen and (min-width: 782px) {
-				font-size: 28px;
+				font-size: 1.75rem;
 			}
 		}
 
 		.wp-block-button {
 			.wp-block-button__link {
 				padding: 0.25rem 0.5rem;
-				font-size: 13px;
+				font-size: 0.813rem;
 			}
 		}
 
@@ -815,8 +815,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				background-size: contain;
 				content: " ";
 				display: inline-block;
-				height: 15px;
-				width: 15px;
+				height: 0.938rem;
+				width: 0.938rem;
 				margin-right: 0.5rem;
 				margin-bottom: -3px;
 			}
@@ -834,8 +834,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				background-size: contain;
 				content: " ";
 				display: inline-block;
-				height: 15px;
-				width: 15px;
+				height: 0.938rem;
+				width: 0.938rem;
 				margin-right: 0.5rem;
 				margin-bottom: -3px;
 			}
@@ -899,7 +899,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			margin-right: auto;
 
 			.wp-block-heading {
-				font-size: 26px;
+				font-size: 1.625rem;
 				text-transform: none;
 				text-align: center;
 				position: static;
@@ -925,7 +925,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		.wp-block-heading.wp-block-wmf-reports-report__title,
 		.wp-block-heading {
-			font-size: 24px;
+			font-size: 1.5rem;
 
 			a {
 				text-decoration: none;
@@ -1089,7 +1089,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		margin-bottom: 2rem;
 
 		.wp-block-heading {
-			font-size: 24px;
+			font-size: 1.5rem;
 			font-weight: 700;
 		}
 
@@ -1104,10 +1104,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		margin-bottom: 10rem;
 
 		p {
-			font-size: 12px;
+			font-size: 0.75rem;
 
 			@media only screen and (min-width: 782px) {
-				font-size: 15px;
+				font-size: 0.938rem;
 			}
 		}
 	}
@@ -1160,7 +1160,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			@include base-font;
 			text-transform: uppercase;
-			font-size: 15px;
+			font-size: 0.938rem;
 			padding: 4px 8px;
 			margin-bottom: 1rem;
 
@@ -1224,7 +1224,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		&__date {
-			font-size: 14px;
+			font-size: 0.875rem;
 			margin-top: 0;
 		}
 	}
