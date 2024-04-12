@@ -1,12 +1,21 @@
-.wmf-pattern-wrapped .has-medium-font-size {
-	font-size: 0.9375rem !important; // Overrides an !important rule on .has-medium-font-size.
-	margin-bottom: 1.5rem;
+.wmf-pattern-wrapped {
+	.wp-block-buttons {
+		margin-bottom: 2.5rem;
 
-	@media screen and (min-width: 980px) {
-		font-size: 1.125rem !important; // Overrides an !important rule on .has-medium-font-size.
+		@media screen and (min-width: 980px) {
+			margin-bottom: 4.25rem;
+		}
 	}
+	.has-medium-font-size {
+		font-size: 0.9375rem !important; // Overrides an !important rule on .has-medium-font-size.
+		margin-bottom: 1.5rem;
 
-	p {
-		margin-bottom: 2rem;
+		@media screen and (min-width: 980px) {
+			font-size: 1.125rem !important; // Overrides an !important rule on .has-medium-font-size.
+		}
+
+		p {
+			margin-bottom: 2rem;
+		}
 	}
 }
