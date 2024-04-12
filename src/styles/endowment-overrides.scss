@@ -378,12 +378,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.wp-block-image.is-style-report-image-vertical.alignwide {
 		background-color: transparent;
 
-		@media only screen and (max-width: 781px) {
-			aspect-ratio: 1/1;
-		}
-
 		img {
 			border-bottom-right-radius: 0;
+
+			@media only screen and (max-width: 781px) {
+				aspect-ratio: 1/1;
+			}
 		}
 
 		mark {
@@ -534,6 +534,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			@media only screen and (max-width: 781px) {
 				aspect-ratio: 1/1;
+				height: 100%;
 
 				img {
 					max-height: 100%;
@@ -573,6 +574,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			@media only screen and (max-width: 781px) {
 				height: 300px;
 			}
+		}
+
+		.cluster.mapboxgl-marker {
+			z-index: 2;
 		}
 	}
 
@@ -990,11 +995,21 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			display: block;
 			border-bottom-right-radius: none;
 
+			figcaption {
+				padding-left: 1rem;
+				padding-right: 1rem;
+			}
+
 			@media only screen and (min-width: 782px) {
 				margin-left: auto;
 				margin-right: auto;
 				width: 100%;
 				display: block !important;
+
+				figcaption {
+					padding-left: 0;
+					padding-right: 0;
+				}
 			}
 
 			@media only screen and (min-width: #{ $width-breakpoint-wide + 64 }) {
@@ -1096,7 +1111,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			margin: 0;
 
 			img {
-				width: 100%;
+				width: 100% !important;
+				height: auto;
 				height: auto;
 				aspect-ratio: 1/1 !important;
 			}
@@ -1162,7 +1178,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			@media only screen and (min-width: #{782px + 128}) {
-				right: calc($width-breakpoint-wide / 3);
+				right: calc(33% + 1rem);
 			}
 		}
 	}
