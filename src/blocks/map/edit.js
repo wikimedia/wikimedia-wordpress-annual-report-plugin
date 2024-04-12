@@ -234,13 +234,13 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
-			center: [ 8.18, 11.83 ],
-			minZoom: 1,
+			center: [ 8.18, 18.83 ],
+			minZoom: 0,
 			projection: 'mercator',
 			renderWorldCopies: false,
 			scrollZoom: false,
 			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
-			zoom: 1,
+			zoom: 0,
 		} );
 
 		map.addControl( fullScreenControl );
