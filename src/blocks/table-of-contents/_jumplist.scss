@@ -209,6 +209,11 @@ $indicator-cutoff-width: 980px;
 		right: 5rem;
 		width: auto !important; // Override inline style in mobile view.
 		z-index: 100;
+
+		@supports (-webkit-touch-callout: none) {
+			// Work around iOS scrollbar shenanigans.
+			top: 76vh;
+		}
 	}
 
 	&__indicator {
