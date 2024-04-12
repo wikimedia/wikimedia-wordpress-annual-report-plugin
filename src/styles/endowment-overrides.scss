@@ -1162,7 +1162,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			@media only screen and (min-width: #{782px + 128}) {
-				right: calc($width-breakpoint-wide / 3);
+				right: calc(33% + 1rem);
 			}
 		}
 	}
