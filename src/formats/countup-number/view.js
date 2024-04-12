@@ -25,13 +25,12 @@ setTimeout( () => {
 			if ( ! isNaN( targetNumber ) ) {
 				// If element is in view
 				if ( entry.isIntersecting ) {
-					// Slight delay before firing so that it plays when fully in view.
-					setTimeout( () => countup.start(), 100 );
+					countup.start();
 				} else {
 					if ( entry.isVisible ) {
 						return;
 					}
-					setTimeout( () => countup.reset(), 100 );
+					countup.reset();
 				}
 			}
 		} );
