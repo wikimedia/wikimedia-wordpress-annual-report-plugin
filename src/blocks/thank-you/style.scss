@@ -1,3 +1,5 @@
+@import "../../helpers/variables";
+
 /**
  * The following styles get applied both on the frontend and editor.
  */
@@ -12,10 +14,10 @@
 	overflow: hidden;
 
 	.wmf-thank-you-line {
+
+		@include base-font;
 		display: block;
-		font-family: "Noto Sans", sans-serif;
 		font-size: var(--text-size);
-		font-weight: 700;
 		height: var(--height);
 		letter-spacing: -0.035rem;
 		line-height: 1;
