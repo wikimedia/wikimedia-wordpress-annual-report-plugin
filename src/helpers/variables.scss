@@ -53,3 +53,13 @@ $line-height-base: 1.6;
 $line-height-large: 1.56;
 $line-height-xlarge: 1.43;
 $line-height-xxlarge: 2;
+
+@mixin base-font {
+	font-family: $font-family-base;
+	font-weight: 700;
+
+	@supports (-webkit-touch-callout: none) {
+		// iOS renders this font differently.
+		font-weight: 600;
+	}
+}
