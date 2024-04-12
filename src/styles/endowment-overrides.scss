@@ -235,7 +235,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		.wmf-pattern-endowment-hero__image {
 			margin: 0;
-			clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 83%, 0 100%);
 
 			@media only screen and (min-width: 1300px) {
 				clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
@@ -317,6 +317,40 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 	}
 
+	.wmf-toc-jumplist {
+		.wmf-toc-jumplist__items {
+			color: #0060fe;
+			list-style-type: disc;
+
+			a {
+				color: #0060fe;
+				font-weight: 400;
+				font-size: 1rem;
+				text-decoration: none;
+				margin-bottom: 0.5rem;
+				margin-left: 0;
+				padding-left: 0;
+				display: block;
+
+				&:focus,
+				&:hover {
+					text-decoration: underline;
+				}
+
+				&::before {
+					background-color: currentColor;
+				}
+			}
+		}
+
+		.wmf-toc-jumplist__modal-close {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			border: 1px solid #0060fe;
+		}
+	}
+
 	/** Images **/
 	.wmf-pattern-image {
 		clip-path: polygon(0 4%, 100% 0, 100% 100%, 0% 100%);
@@ -329,6 +363,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	.is-style-default.wmf-pattern-endowment-hero + .wmf-pattern-image {
 		clip-path: polygon(0 0, 100% 6%, 100% 100%, 0% 100%);
+		margin-top: 1rem;
 	}
 
 	.wp-block-image.is-style-report-image,
@@ -346,7 +381,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		mark {
-			margin-bottom: 1rem;
+			margin-bottom: 0rem;
 
 			@media only screen and (min-width: 782px) {
 				margin-bottom: 2rem;
@@ -486,6 +521,32 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				color: #fff;
 			}
 		}
+
+		.wmf-pattern-reports-carousel-slide__image {
+			@media only screen and (max-width: 781px) {
+				aspect-ratio: 1/1;
+				img {
+					max-height: 100%;
+					height: 100%;
+				}
+			}
+		}
+
+		.wmf-pattern-reports-carousel-slide__heading {
+			font-size: 18px;
+			font-weight: 600;
+
+			@media only screen and (min-width: 782px) {
+				font-size: 24px;
+			}
+		}
+
+		.wmf-pattern-reports-carousel-slide__category {
+			@media only screen and (max-width: 781px) {
+				margin-top: 1rem;
+				margin-bottom: 0.5rem;
+			}
+		}
 	}
 
 	/** Map **/
@@ -494,6 +555,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		.marker.active,
 		.cluster.active {
 			background: #0060fe;
+		}
+
+		#map {
+			@media only screen and (max-width: 781px) {
+				height: 300px;
+			}
 		}
 	}
 
@@ -543,11 +610,60 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	// stylelint-disable-next-line no-duplicate-selectors
 	.wmf-pattern-financial-statements {
 
+		h3.wp-block-heading {
+			font-size: 24px;
+
+			@media only screen and (min-width: 782px) {
+				font-size: 28px;
+			}
+		}
+
 		.wp-block-columns {
 			gap: 2rem !important;
 
-			.wp-block-column {
-				margin-left: 0;
+			&:not(:has( table )) {
+				gap: 0 !important;
+				margin-bottom: 2rem;
+
+				@media only screen and (min-width: 782px) {
+					margin-bottom: 1rem;
+				}
+
+				.wp-block-column {
+					margin-bottom: 0rem;
+
+					p {
+						margin: 0;
+
+						@media only screen and (max-width: 781px) {
+							text-align: left;
+						}
+					}
+				}
+			}
+
+			&:has( table ) {
+				@media only screen and (max-width: 781px) {
+					gap: 0 !important;
+				}
+			}
+
+			.wp-block-column:has( table ) {
+				margin-left: -1rem;
+				margin-right: -1rem;
+
+				@media only screen and (min-width: 782px) {
+					margin-left: 0;
+					margin-right: 0;
+				}
+
+				.wp-block-table {
+					margin-top: 0;
+
+					@media only screen and (max-width: 781px) {
+						margin-bottom: 1rem;
+					}
+				}
 			}
 		}
 
@@ -569,7 +685,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				}
 			}
 
-			tbody {
+			thead + tbody {
 				tr:first-of-type {
 					td {
 						padding-top: 1rem;
@@ -596,7 +712,11 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			&.has-light-blue-background-color {
-				border: 2rem solid #e3eef2;
+				border: 1rem solid #e3eef2;
+
+				@media only screen and (min-width: 782px) {
+					border: 2rem solid #e3eef2;
+				}
 
 				td,
 				th {
@@ -605,8 +725,13 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			&.has-wend-report-cobalt-background-color {
-				border: 2rem solid #0060fe;
-				font-size: 23px;
+				border: 1rem solid #0060fe;
+				font-size: 18px;
+
+				@media only screen and (min-width: 782px) {
+					font-size: 23px;
+					border: 2rem solid #0060fe;
+				}
 			}
 		}
 
@@ -662,6 +787,14 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		@media only screen and (min-width: 782px) {
 			padding: 4rem !important;
+		}
+
+		h3.wp-block-heading {
+			font-size: 24px;
+
+			@media only screen and (min-width: 782px) {
+				font-size: 28px;
+			}
 		}
 
 		.wp-block-button {
@@ -769,6 +902,9 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				font-size: 26px;
 				text-transform: none;
 				text-align: center;
+				position: static;
+				transform: none;
+				left: auto;
 
 				&::after {
 					display: block;
@@ -966,6 +1102,14 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.wmf-pattern-wrapped {
 		margin-top: 6rem;
 		margin-bottom: 10rem;
+
+		p {
+			font-size: 12px;
+
+			@media only screen and (min-width: 782px) {
+				font-size: 15px;
+			}
+		}
 	}
 }
 
