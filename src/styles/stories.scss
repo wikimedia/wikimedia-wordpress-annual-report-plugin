@@ -108,6 +108,10 @@
 		}
 		/* stylelint-enable no-descending-specificity */
 	}
+
+	.wp-block-buttons {
+		display: inline-block; // Prevents overlap with nav arrows.
+	}
 }
 
 .wmf-pattern-stories-learn-more {
