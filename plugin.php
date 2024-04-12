@@ -4,11 +4,13 @@ Plugin Name: Wikimedia WordPress Annual Report
 Description: WP plugin to house all the functionality required for building Wikimedia's digital-first annual reports.
 Author: Human Made
 Author URI: https://hmn.md
-Version: 0.1
+Version: 0.1.0
 License: GPL-2.0-or-later
 */
 
 namespace WMF\Reports;
+
+const PLUGIN_VERSION = '0.1.0';
 
 // Expose plugin directory file system path for dirname()-free usage elsewhere.
 const PLUGIN_PATH = __DIR__;
@@ -20,6 +22,7 @@ require_once __DIR__ . '/inc/blocks/core-group.php';
 require_once __DIR__ . '/inc/blocks/datavis.php';
 require_once __DIR__ . '/inc/blocks/expandable.php';
 require_once __DIR__ . '/inc/blocks/map.php';
+require_once __DIR__ . '/inc/blocks/overlay.php';
 require_once __DIR__ . '/inc/blocks/table-of-contents.php';
 require_once __DIR__ . '/inc/report.php';
 require_once __DIR__ . '/inc/editor.php';
@@ -49,6 +52,7 @@ Blocks\Core_Group\bootstrap();
 Blocks\Datavis\bootstrap();
 Blocks\Expandable\bootstrap();
 Blocks\Map\bootstrap();
+Blocks\Overlay\bootstrap();
 Blocks\Table_of_Contents\bootstrap();
 Report\bootstrap();
 Editor\Colors\bootstrap();
