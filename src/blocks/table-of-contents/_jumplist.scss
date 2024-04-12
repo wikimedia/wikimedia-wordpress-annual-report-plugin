@@ -35,7 +35,7 @@ $indicator-cutoff-width: 980px;
 			left: 50%;
 			max-width: 480px;
 			position: fixed;
-			top: $screen-top-offset;
+			bottom: 0;
 			transform: translate(-50%, 0);
 			width: 100vw;
 			z-index: 100000; // Win the war with WP's admin bar.
@@ -56,8 +56,7 @@ $indicator-cutoff-width: 980px;
 			background-color: var(--wp--preset--color--base-90, #f8f9fa);
 			border-top-left-radius: 2rem;
 			border-top-right-radius: 2rem;
-			height: calc(100vh - $screen-top-offset);
-			padding: 2rem;
+			padding: 2rem 2rem 4rem;
 		}
 
 		.wmf-toc-jumplist__items {
@@ -113,7 +112,7 @@ $indicator-cutoff-width: 980px;
 			align-items: center;
 			display: flex;
 			flex-direction: row;
-			flex-wrap: nowrap;
+			flex-wrap: wrap; // Only needed on very small viewports.
 			justify-content: flex-start;
 			gap: 1rem;
 			margin-top: 1.5rem;
@@ -130,6 +129,7 @@ $indicator-cutoff-width: 980px;
 			border: 1px solid var(--wp--preset--color--base-70);
 			height: 3rem;
 			width: 3rem;
+			min-width: 3rem;
 		}
 	}
 
@@ -168,7 +168,9 @@ $indicator-cutoff-width: 980px;
 		}
 
 		&__modal {
-			display: block;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
 		}
 
 		&__items {

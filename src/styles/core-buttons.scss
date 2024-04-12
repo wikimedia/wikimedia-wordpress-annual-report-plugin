@@ -7,6 +7,10 @@
 			position: relative;
 			min-width: 7rem;
 
+			@media screen and (max-width: 399px) {
+				min-width: 6rem;
+			}
+
 			&::after {
 				opacity: 0.1;
 			}
