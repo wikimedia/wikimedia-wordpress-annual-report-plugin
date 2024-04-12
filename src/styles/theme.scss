@@ -203,6 +203,15 @@
 			margin-bottom: 0;
 		}
 	}
+
+	#vg-tooltip-element table tr td {
+		&.key {
+			color: #444;
+		}
+		&.value {
+			color: #000;
+		}
+	}
 }
 
 /* Styles used for core block modifications */
