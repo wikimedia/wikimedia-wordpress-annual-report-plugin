@@ -241,21 +241,22 @@
 		}
 
 		> .wp-block-group.alignwide {
-			padding-left: 1rem;
-			padding-right: 1rem;
+			padding-left: 2rem;
+			padding-right: 2rem;
 		}
 	}
 
 	.wmf-pattern-by-the-numbers__masonry {
 		margin-top: 3rem;
-		margin-left: 1rem;
-		margin-right: 1rem;
 		overflow: hidden; // Prevents animations from extending page laterally on mobile.
+
+		@media screen and (min-width: 980px) {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
 
 		> .wp-block-group__inner-container {
 			margin-bottom: 2rem;
-			margin-left: 10%;
-			margin-right: 10%;
 
 			> .wp-block-group {
 				margin-top: 4rem;
