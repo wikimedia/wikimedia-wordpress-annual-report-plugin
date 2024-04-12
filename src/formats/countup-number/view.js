@@ -1,11 +1,5 @@
 import { CountUp } from 'countup.js';
 
-const timeouts = [];
-function clearAllTimeouts() {
-	timeouts.forEach( ( timeoutId ) => clearTimeout( timeoutId ) );
-	timeouts.length = 0;
-}
-
 // Add a timeout to give everything chance to load (ie masonry grid).
 setTimeout( () => {
 	const countupFormatItems = document.querySelectorAll( '.wmf-countup' );
@@ -31,15 +25,12 @@ setTimeout( () => {
 			if ( ! isNaN( targetNumber ) ) {
 				// If element is in view
 				if ( entry.isIntersecting ) {
-					// Slight delay before firing so that it plays when fully in view.
-					clearAllTimeouts();
-					timeouts.push( setTimeout( () => countup.start(), 100 ) );
+					countup.start();
 				} else {
 					if ( entry.isVisible ) {
 						return;
 					}
-					clearAllTimeouts();
-					timeouts.push( setTimeout( () => countup.reset(), 100 ) );
+					countup.reset();
 				}
 			}
 		} );
