@@ -33,6 +33,14 @@ function clone_share_button_to_top_of_overlay( string $block_content, array $blo
 	}
 
 	$button_markup = $matches[0];
+
+	// Hack alert: In the 2023 annual report, leadership bios use columns but
+	// other overlays do not. If we see columns, *strip out* the share button,
+	// otherwise duplicate it on top.
+	if ( strpos( $block_content, 'wp-block-columns' ) !== false ) {
+		return str_replace( $button_markup, '', $block_content );
+	}
+
 	return preg_replace(
 		'/(<\/h[34]>)/',
 		'$1' . $button_markup,
