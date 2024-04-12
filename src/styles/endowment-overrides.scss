@@ -1107,7 +1107,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			margin: 0;
 
 			img {
-				width: 100%;
+				width: 100% !important;
+				height: auto;
 				height: auto;
 				aspect-ratio: 1/1 !important;
 			}
