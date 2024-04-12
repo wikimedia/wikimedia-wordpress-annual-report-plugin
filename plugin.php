@@ -4,13 +4,13 @@ Plugin Name: Wikimedia WordPress Annual Report
 Description: WP plugin to house all the functionality required for building Wikimedia's digital-first annual reports.
 Author: Human Made
 Author URI: https://hmn.md
-Version: 0.1.0
+Version: 0.1.1
 License: GPL-2.0-or-later
 */
 
 namespace WMF\Reports;
 
-const PLUGIN_VERSION = '0.1.0';
+const PLUGIN_VERSION = '0.1.1';
 
 // Expose plugin directory file system path for dirname()-free usage elsewhere.
 const PLUGIN_PATH = __DIR__;
