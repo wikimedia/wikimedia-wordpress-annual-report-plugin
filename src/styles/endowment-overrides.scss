@@ -378,12 +378,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.wp-block-image.is-style-report-image-vertical.alignwide {
 		background-color: transparent;
 
-		@media only screen and (max-width: 781px) {
-			aspect-ratio: 1/1;
-		}
-
 		img {
 			border-bottom-right-radius: 0;
+
+			@media only screen and (max-width: 781px) {
+				aspect-ratio: 1/1;
+			}
 		}
 
 		mark {
