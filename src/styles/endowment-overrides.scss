@@ -26,16 +26,34 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			@include base-font;
 			text-transform: uppercase;
-			font-size: 15px;
+			font-size: 0.938rem;
 			padding: 0.5rem 1rem 0.5rem 1rem;
 			margin-bottom: 1rem;
+
+			@media only screen and (max-width: 781px) {
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+			}
 		}
 	}
 
 	h2 {
+		font-family: var(--font-family-sans);
 
 		&::after {
 			display: none;
+		}
+	}
+
+	h3 {
+
+		&.wp-block-heading {
+			font-size: 1.75rem;
+
+			@media only screen and (min-width: 782px) {
+				font-size: 1.5rem;
+			}
 		}
 	}
 
@@ -99,6 +117,47 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		border-bottom-right-radius: 0;
 	}
 
+	/** Buttons **/
+	.wp-block-button {
+
+		.wp-block-button__link {
+			font-size: 1rem;
+			background-color: #fff;
+			border: 1px solid #1c2d3e;
+			color: #1c2d3c;
+			text-align: center;
+			padding: 0.5rem 3.5rem;
+		}
+
+		&.is-download-button,
+		&.is-share-button {
+
+			.wp-block-button__link {
+				padding: 0.5rem 1rem;
+			}
+		}
+	}
+
+	.is-download-button {
+
+		.wp-block-button__link {
+
+			&::before {
+				// stylelint-disable-next-line function-url-quotes
+				background-image: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 8H14L9 14L4 8H8V0H10V8ZM16 16V11H18V16C18 17.1046 17.1046 18 16 18H2C0.89543 18 0 17.1046 0 16V11H2V16H16Z" fill="%231C2D3E"/></svg>');
+				background-repeat: no-repeat;
+				background-position: 50% 50%;
+				background-size: contain;
+				content: " ";
+				display: inline-block;
+				height: 1rem;
+				width: 1rem;
+				margin-right: 0.5rem;
+				margin-bottom: -4px;
+			}
+		}
+	}
+
 	/** Expandable Content **/
 	.expandable-content {
 
@@ -107,19 +166,35 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 	}
 
+	.expandable-expander,
+	button.expandable-expander {
+		width: 100%;
+		max-width: 100%;
+		font-size: 1rem;
+		color: #1c2d3e;
+
+		@media only screen and (min-width: 782px) {
+			max-width: 330px;
+		}
+
+		&::after {
+			display: none;
+		}
+	}
+
 	/* Hero */
 	.is-style-default.wmf-pattern-endowment-hero {
 		margin-bottom: -4rem;
 		padding-bottom: 2rem;
-		--slant: calc(80% - 3.8vw);
+		--slant: calc(94% - 3.8vw);
 
 		@media only screen and (min-width: 782px) {
-			clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 			padding-bottom: 6rem;
 			margin-bottom: 0;
 		}
 
-		@media only screen and (min-width: 1700px) {
+		@media only screen and (min-width: 1555px) {
 			clip-path: polygon(0 0, 100% 0, 100% var(--slant), 0 100%);
 		}
 
@@ -138,23 +213,37 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wmf-pattern-endowment-hero__title {
+			line-height: 1.25;
+			font-size: 2.5rem;
+			font-weight: 700;
+
+			@media only screen and (min-width: 782px) {
+				line-height: 1.3;
+			}
 
 			&::after {
 				background-color: #00ced6;
 				content: "";
 				display: block;
-				height: 0.25rem;
+				height: 5px;
 				margin: 4rem 0 4rem 0;
-				width: 6rem;
+				width: 10rem;
+				margin-left: 50%;
+				transform: translateX(-50%);
+
+				@media only screen and (min-width: 782px) {
+					margin-left: 0;
+					transform: none;
+				}
 			}
 		}
 
 		.wmf-pattern-endowment-hero__image {
 			margin: 0;
-			clip-path: polygon(0 0, 100% 0, 100% 89%, 0 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 83%, 0 100%);
 
-			@media only screen and (min-width: 1500px) {
-				clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+			@media only screen and (min-width: 1300px) {
+				clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
 			}
 		}
 
@@ -177,8 +266,13 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 		}
 
+		.expandable-expander {
+			color: #1c2d3e;
+		}
+
 		/** Letter from the CEO **/
 		.wp-block-group.alignwide.wmf-pattern-letter-from-the-ceo {
+			padding-top: 0 !important;
 			padding-left: 0;
 			padding-right: 0;
 		}
@@ -190,8 +284,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		margin-bottom: 4rem;
 		position: relative;
 
+		@media only screen and (min-width: 782px) {
+			max-width: 50%;
+		}
+
 		.wp-block-wmf-reports-table-of-contents {
-			margin: 1rem 1rem 2rem 1rem;
+			margin: 3rem 1rem 2rem 1rem;
 			padding: 0;
 			list-style-type: disc;
 
@@ -201,20 +299,18 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 				a {
 					color: #0060fe;
+					font-weight: 400;
+					font-size: 1rem;
+					text-decoration: none;
+					margin-bottom: 0.5rem;
+					margin-left: 0.4rem;
+					display: inline-block;
+
+					&:focus,
+					&:hover {
+						text-decoration: underline;
+					}
 				}
-			}
-		}
-
-		.wp-block-buttons {
-
-			@media only screen and (min-width: 782px) {
-				position: absolute;
-				bottom: 0;
-				right: 0;
-			}
-
-			@media only screen and (min-width: #{782px + 128}) {
-				right: 2rem;
 			}
 		}
 	}
@@ -223,6 +319,41 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		.wmf-toc-jumplist {
 			display: none;
+		}
+	}
+
+	.wmf-toc-jumplist {
+
+		.wmf-toc-jumplist__items {
+			color: #0060fe;
+			list-style-type: disc;
+
+			a {
+				color: #0060fe;
+				font-weight: 400;
+				font-size: 1rem;
+				text-decoration: none;
+				margin-bottom: 0.5rem;
+				margin-left: 0;
+				padding-left: 0;
+				display: block;
+
+				&:focus,
+				&:hover {
+					text-decoration: underline;
+				}
+
+				&::before {
+					background-color: currentcolor;
+				}
+			}
+		}
+
+		.wmf-toc-jumplist__modal-close {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			border: 1px solid #0060fe;
 		}
 	}
 
@@ -238,6 +369,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	.is-style-default.wmf-pattern-endowment-hero + .wmf-pattern-image {
 		clip-path: polygon(0 0, 100% 6%, 100% 100%, 0% 100%);
+		margin-top: 1rem;
 	}
 
 	.wp-block-image.is-style-report-image,
@@ -246,12 +378,20 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.wp-block-image.is-style-report-image-vertical.alignwide {
 		background-color: transparent;
 
+		@media only screen and (max-width: 781px) {
+			aspect-ratio: 1/1;
+		}
+
 		img {
 			border-bottom-right-radius: 0;
 		}
 
 		mark {
-			margin-bottom: 2rem;
+			margin-bottom: 0;
+
+			@media only screen and (min-width: 782px) {
+				margin-bottom: 2rem;
+			}
 		}
 
 		@media only screen and (min-width: 782px) {
@@ -260,7 +400,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			figcaption {
 
 				border-bottom-right-radius: none;
-				padding: 1rem 1rem 1rem 2rem;
+				padding: 1rem 1rem 1rem 1rem;
 				position: relative;
 				width: 100%;
 
@@ -301,6 +441,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 		}
 
+		&__heading.is-style-h2,
+		&__heading {
+			line-height: 1.17;
+			font-size: 1.5rem;
+		}
+
 		&__location,
 		&__location.is-style-sans-p {
 
@@ -329,6 +475,23 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.wp-block-wmf-reports-map.carousel,
 	.wp-block-wmf-reports-stories.carousel {
 		margin-bottom: 2rem;
+	}
+
+	.carousel__buttons-wrapper {
+
+		@media only screen and (min-width: 782px) {
+			bottom: 12rem;
+		}
+
+		@media only screen and (min-width: $width-breakpoint-wide) {
+			bottom: 10rem;
+		}
+	}
+
+	.carousel__button {
+		// stylelint-disable-next-line function-url-quotes
+		background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" fill="none"><path fill="%230060fe" fill-rule="evenodd" d="M9.586 11 .293 1.707 1.707.293 12.414 11 1.707 21.707.293 20.293z" clip-rule="evenodd"/></svg>');
+		border-color: #0060fe;
 	}
 
 	/** Stories **/
@@ -366,6 +529,35 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				color: #fff;
 			}
 		}
+
+		.wmf-pattern-reports-carousel-slide__image {
+
+			@media only screen and (max-width: 781px) {
+				aspect-ratio: 1/1;
+
+				img {
+					max-height: 100%;
+					height: 100%;
+				}
+			}
+		}
+
+		.wmf-pattern-reports-carousel-slide__heading {
+			font-size: 1.125rem;
+			font-weight: 600;
+
+			@media only screen and (min-width: 782px) {
+				font-size: 1.5rem;
+			}
+		}
+
+		.wmf-pattern-reports-carousel-slide__category {
+
+			@media only screen and (max-width: 781px) {
+				margin-top: 1rem;
+				margin-bottom: 0.5rem;
+			}
+		}
 	}
 
 	/** Map **/
@@ -374,6 +566,13 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		.marker.active,
 		.cluster.active {
 			background: #0060fe;
+		}
+
+		#map {
+
+			@media only screen and (max-width: 781px) {
+				height: 300px;
+			}
 		}
 	}
 
@@ -423,27 +622,130 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	// stylelint-disable-next-line no-duplicate-selectors
 	.wmf-pattern-financial-statements {
 
+		h3.wp-block-heading {
+			font-size: 1.5rem;
+
+			@media only screen and (min-width: 782px) {
+				font-size: 1.75rem;
+			}
+		}
+
+		.wp-block-columns {
+			gap: 2rem !important;
+
+			&:not(:has(table)) {
+				gap: 0 !important;
+				margin-bottom: 2rem;
+
+				@media only screen and (min-width: 782px) {
+					margin-bottom: 1rem;
+				}
+
+				.wp-block-column {
+					margin-bottom: 0;
+
+					p {
+						margin: 0;
+
+						@media only screen and (max-width: 781px) {
+							text-align: left;
+						}
+					}
+				}
+			}
+
+			&:has(table) {
+
+				@media only screen and (max-width: 781px) {
+					gap: 0 !important;
+				}
+			}
+
+			.wp-block-column:has(table) {
+				margin-left: -1rem;
+				margin-right: -1rem;
+
+				@media only screen and (min-width: 782px) {
+					margin-left: 0;
+					margin-right: 0;
+				}
+
+				.wp-block-table {
+					margin-top: 0;
+
+					@media only screen and (max-width: 781px) {
+						margin-bottom: 1rem;
+					}
+				}
+			}
+		}
+
 		table {
-
-			&.has-light-blue-background-color {
-				border: 2rem solid #e3eef2;
-			}
-
-			&.has-wend-report-cobalt-background-color {
-				border: 2rem solid #0060fe;
-			}
-
-			thead {
-				border-bottom: 1px solid #0060fe;
-			}
 
 			td,
 			th {
 				border: 0;
+				padding: 0 0 0.5rem 0;
 			}
 
-			tr {
+			thead {
 				border-bottom: 1px solid #0060fe;
+
+				th {
+					padding-bottom: 1rem;
+				}
+			}
+
+			thead + tbody {
+
+				tr:first-of-type {
+
+					td {
+						padding-top: 1rem;
+					}
+				}
+			}
+
+			tr:has(strong) {
+				border-bottom: 1px solid #0060fe;
+
+				td {
+					padding-bottom: 1rem;
+				}
+
+				&:last-child {
+
+					td {
+						padding-bottom: 0;
+					}
+				}
+
+				+ tr td {
+					padding-top: 1rem;
+				}
+			}
+
+			&.has-light-blue-background-color {
+				border: 1rem solid #e3eef2;
+
+				@media only screen and (min-width: 782px) {
+					border: 2rem solid #e3eef2;
+				}
+
+				td,
+				th {
+					font-size: 0.938rem;
+				}
+			}
+
+			&.has-wend-report-cobalt-background-color {
+				border: 1rem solid #0060fe;
+				font-size: 1.125rem;
+
+				@media only screen and (min-width: 782px) {
+					font-size: 1.438rem;
+					border: 2rem solid #0060fe;
+				}
 			}
 		}
 
@@ -462,18 +764,62 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	/* Leadership */
 	.wmf-pattern-reports-leadership {
 
+		h3.wp-block-heading {
+			margin-bottom: 2rem;
+		}
+
+		.wp-block-heading {
+
+			&::after {
+				display: none;
+			}
+		}
+
+		.wp-block-button__link:not([href]),
 		a.wp-block-button__link:not([href]) {
 			background-color: transparent;
 			padding: 0;
+			text-align: left;
+		}
+
+		.wmf-pattern-reports-leadership__list {
+
+			.wp-block-button {
+
+				.wp-block-button__link {
+					border: none;
+				}
+			}
+
+			&:last-of-type {
+				margin-bottom: 4rem;
+			}
 		}
 	}
 
 	/* Donate */
 	.wp-block-wmf-reports-donate {
-		margin-bottom: 2rem;
+		margin-bottom: 3.5rem;
+		margin-top: 3rem;
 
 		@media only screen and (min-width: 782px) {
 			padding: 4rem !important;
+		}
+
+		h3.wp-block-heading {
+			font-size: 1.5rem;
+
+			@media only screen and (min-width: 782px) {
+				font-size: 1.75rem;
+			}
+		}
+
+		.wp-block-button {
+
+			.wp-block-button__link {
+				padding: 0.25rem 0.5rem;
+				font-size: 0.813rem;
+			}
 		}
 
 		.wp-block-button__link.has-wend-report-slate-blue-color {
@@ -487,9 +833,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				background-size: contain;
 				content: " ";
 				display: inline-block;
-				height: 15px;
-				width: 15px;
+				height: 0.938rem;
+				width: 0.938rem;
 				margin-right: 0.5rem;
+				margin-bottom: -3px;
 			}
 		}
 
@@ -505,9 +852,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				background-size: contain;
 				content: " ";
 				display: inline-block;
-				height: 15px;
-				width: 15px;
+				height: 0.938rem;
+				width: 0.938rem;
 				margin-right: 0.5rem;
+				margin-bottom: -3px;
 			}
 		}
 	}
@@ -569,12 +917,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			margin-right: auto;
 
 			.wp-block-heading {
-				font-size: 26px;
+				font-size: 1.625rem;
 				text-transform: none;
 				text-align: center;
+				position: static;
+				transform: none;
+				left: auto;
 
 				&::after {
 					display: block;
+					background-color: #fff;
 				}
 			}
 		}
@@ -591,7 +943,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		.wp-block-heading.wp-block-wmf-reports-report__title,
 		.wp-block-heading {
-			font-size: 24px;
+			font-size: 1.5rem;
 
 			a {
 				text-decoration: none;
@@ -614,101 +966,167 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		.wmf-annual-reports-overlay-popover {
 			border-radius: 0;
 		}
+	}
 
-		.wmf-pattern-overlay {
+	.wmf-pattern-overlay {
 
-			.wmf-pattern-overlay__heading {
-				margin-bottom: 0.5rem;
+		.wmf-pattern-overlay__heading {
+			margin-bottom: 0.5rem;
 
-				&::after {
-					display: none;
-				}
+			&::after {
+				display: none;
+			}
+		}
+
+		.wp-block-image.is-style-report-image,
+		.wp-block-image.is-style-report-image.alignwide {
+
+			margin-left: -1rem;
+			margin-right: -1rem;
+			background-color: #e5eef2;
+			padding-left: 0;
+			padding-right: 0;
+			width: calc(100% + 2rem);
+			display: block;
+			border-bottom-right-radius: none;
+
+			@media only screen and (min-width: 782px) {
+				margin-left: auto;
+				margin-right: auto;
+				width: 100%;
+				display: block !important;
 			}
 
-			.wp-block-image.is-style-report-image,
-			.wp-block-image.is-style-report-image.alignwide {
+			@media only screen and (min-width: #{ $width-breakpoint-wide + 64 }) {
+				margin-left: auto;
+				margin-right: auto;
+				border-bottom-right-radius: 0;
+			}
 
-				margin-left: -1rem;
-				margin-right: -1rem;
-				background-color: #e5eef2;
-				padding-left: 0;
-				padding-right: 0;
-				width: calc(100% + 2rem);
-				display: block;
-				border-bottom-right-radius: none;
+			img {
+				border-bottom-right-radius: 0;
 
 				@media only screen and (min-width: 782px) {
-					margin-left: auto;
-					margin-right: auto;
+					max-width: 100%;
 					width: 100%;
 				}
-
-				@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
-					margin-left: auto;
-					margin-right: auto;
-					border-bottom-right-radius: 0;
-				}
-
-				img {
-					border-bottom-right-radius: 0;
-
-					@media only screen and (min-width: 782px) {
-						max-width: 100%;
-						width: 100%;
-					}
-				}
-
-				figcaption {
-					font-size: 0.75rem;
-					padding: 1rem 2rem;
-
-					@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
-						padding: 1rem;
-					}
-
-					mark {
-						color: inherit !important;
-						display: block;
-						font-size: 0.625rem;
-						margin-top: 0.5rem;
-						margin-bottom: 1rem;
-
-						&::before {
-							content: "";
-							// stylelint-disable-next-line function-url-quotes
-							background-image: url('data:image/svg+xml,<svg width="14" height="14" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1098 7.11994C12.0155 6.66987 11.2043 5.721 10.9298 4.56994C11.0198 4.65994 12.7498 5.47994 12.7498 5.47994L10.0198 0.939941L7.28984 5.48994L9.10984 4.57994C9.16562 5.24661 9.35253 5.8957 9.65984 6.48994C10.1259 7.33085 10.8189 8.02386 11.6598 8.48994C12.3754 8.79383 13.0478 9.19057 13.6598 9.66994L13.0198 10.2999L12.5698 9.84994L12.3098 11.3899L13.8498 11.1299L13.3998 10.6799L14.0198 10.0299C14.8783 10.9836 15.3893 12.1993 15.4698 13.4799L14.5598 13.4799V12.7499L13.2998 13.6599L14.5598 14.5699V13.8399H15.4698C15.4329 15.1333 14.916 16.3667 14.0198 17.2999L13.3798 16.6599L13.8298 16.2099L12.2998 15.9399L12.5598 17.4799L13.0098 17.0299L13.6498 17.6699C12.6962 18.5284 11.4804 19.0394 10.1998 19.1199V18.2099H10.9298L10.0198 16.9399L9.10984 18.2099H9.83984V19.1199C8.54995 19.0806 7.32057 18.5639 6.38984 17.6699L7.01984 17.0299L7.46984 17.4799L7.73984 15.9399L6.19984 16.1999L6.64984 16.6499L6.01984 17.2999C5.16133 16.3463 4.65035 15.1305 4.56984 13.8499L5.47984 13.8499V14.5799L6.73984 13.6699L5.47984 12.7599V13.4899H4.56984C4.60676 12.1966 5.12363 10.9632 6.01984 10.0299L6.65984 10.6699L6.20984 11.1199L7.74984 11.3799L7.46984 9.84994L7.01984 10.2999L6.37984 9.65994L5.01984 8.38994C2.6822 10.5769 2.04477 14.033 3.44842 16.91C4.85208 19.787 7.96837 21.4117 11.1308 20.9153C14.2932 20.4188 16.7618 17.9174 17.2164 14.7487C17.6709 11.5799 16.0052 8.48542 13.1098 7.11994Z" fill="%23006499"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.5198 13.6399C12.5198 15.0206 11.4005 16.1399 10.0198 16.1399C8.63912 16.1399 7.51984 15.0206 7.51984 13.6399C7.51984 12.2592 8.63912 11.1399 10.0198 11.1399C11.4005 11.1399 12.5198 12.2592 12.5198 13.6399Z" fill="%23970000"/></svg>');
-							background-repeat: no-repeat;
-							height: 14px;
-							width: 14px;
-							margin-right: 0.5rem;
-							display: inline-block;
-							vertical-align: bottom;
-						}
-
-					}
-				}
 			}
 
-			&__image.wp-block-image {
+			figcaption {
+				font-size: 0.75rem;
+				padding: 1rem 2rem;
 
-				img {
-					border-bottom-right-radius: 0;
+				@media only screen and (min-width: #{ $width-breakpoint-wide + 64 }) {
+					padding: 1rem;
+				}
+
+				mark {
+					color: inherit !important;
+					display: block;
+					font-size: 0.625rem;
+					margin-top: 0.5rem;
+					margin-bottom: 1rem;
+
+					&::before {
+						content: "";
+						// stylelint-disable-next-line function-url-quotes
+						background-image: url('data:image/svg+xml,<svg width="14" height="14" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1098 7.11994C12.0155 6.66987 11.2043 5.721 10.9298 4.56994C11.0198 4.65994 12.7498 5.47994 12.7498 5.47994L10.0198 0.939941L7.28984 5.48994L9.10984 4.57994C9.16562 5.24661 9.35253 5.8957 9.65984 6.48994C10.1259 7.33085 10.8189 8.02386 11.6598 8.48994C12.3754 8.79383 13.0478 9.19057 13.6598 9.66994L13.0198 10.2999L12.5698 9.84994L12.3098 11.3899L13.8498 11.1299L13.3998 10.6799L14.0198 10.0299C14.8783 10.9836 15.3893 12.1993 15.4698 13.4799L14.5598 13.4799V12.7499L13.2998 13.6599L14.5598 14.5699V13.8399H15.4698C15.4329 15.1333 14.916 16.3667 14.0198 17.2999L13.3798 16.6599L13.8298 16.2099L12.2998 15.9399L12.5598 17.4799L13.0098 17.0299L13.6498 17.6699C12.6962 18.5284 11.4804 19.0394 10.1998 19.1199V18.2099H10.9298L10.0198 16.9399L9.10984 18.2099H9.83984V19.1199C8.54995 19.0806 7.32057 18.5639 6.38984 17.6699L7.01984 17.0299L7.46984 17.4799L7.73984 15.9399L6.19984 16.1999L6.64984 16.6499L6.01984 17.2999C5.16133 16.3463 4.65035 15.1305 4.56984 13.8499L5.47984 13.8499V14.5799L6.73984 13.6699L5.47984 12.7599V13.4899H4.56984C4.60676 12.1966 5.12363 10.9632 6.01984 10.0299L6.65984 10.6699L6.20984 11.1199L7.74984 11.3799L7.46984 9.84994L7.01984 10.2999L6.37984 9.65994L5.01984 8.38994C2.6822 10.5769 2.04477 14.033 3.44842 16.91C4.85208 19.787 7.96837 21.4117 11.1308 20.9153C14.2932 20.4188 16.7618 17.9174 17.2164 14.7487C17.6709 11.5799 16.0052 8.48542 13.1098 7.11994Z" fill="%23006499"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.5198 13.6399C12.5198 15.0206 11.4005 16.1399 10.0198 16.1399C8.63912 16.1399 7.51984 15.0206 7.51984 13.6399C7.51984 12.2592 8.63912 11.1399 10.0198 11.1399C11.4005 11.1399 12.5198 12.2592 12.5198 13.6399Z" fill="%23970000"/></svg>');
+						background-repeat: no-repeat;
+						height: 14px;
+						width: 14px;
+						margin-right: 0.5rem;
+						display: inline-block;
+						vertical-align: bottom;
+					}
+
 				}
 			}
+		}
 
-			&__location,
-			&__location.is-style-sans-p {
+		&__image.wp-block-image {
 
-				&::before {
-					background: #0060fe;
-				}
+			img {
+				border-bottom-right-radius: 0;
+			}
+		}
+
+		&__location,
+		&__location.is-style-sans-p {
+
+			&::before {
+				background: #0060fe;
+			}
+		}
+
+		.wp-block-quote:not(.is-style-pullquote) {
+
+			p {
+				margin-left: 1rem;
+			}
+		}
+
+		hr {
+			background-color: #0060fe;
+		}
+	}
+
+	.wmf-annual-reports-overlay-popover:has(> .wmf-pattern-overlay > .wp-block-group__inner-container > .wp-block-columns) {
+		padding: 1rem;
+
+		@media only screen and (min-width: 782px) {
+			padding: 2rem 8rem 2rem 2rem;
+		}
+
+		.wp-block-column {
+			margin-left: 0;
+
+			.is-share-button {
+				display: none;
+			}
+		}
+
+		.wp-block-image {
+
+			@media only screen and (max-width: 781px) {
+				margin-left: -1rem;
+				margin-right: -1rem;
+				margin-top: -1rem;
 			}
 
-			.wp-block-quote:not(.is-style-pullquote) {
+			margin: 0;
 
-				p {
-					margin-left: 1rem;
-				}
+			img {
+				width: 100%;
+				height: auto;
+				aspect-ratio: 1/1 !important;
+			}
+		}
+	}
+
+	.wmf-pattern-learn-more.has-background.wp-block-group {
+		padding: 2rem;
+		margin-bottom: 2rem;
+
+		.wp-block-heading {
+			font-size: 1.5rem;
+			font-weight: 700;
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	/** Wrapped **/
+	.wmf-pattern-wrapped {
+		margin-top: 6rem;
+		margin-bottom: 10rem;
+
+		p {
+			font-size: 0.75rem;
+
+			@media only screen and (min-width: 782px) {
+				font-size: 0.938rem;
 			}
 		}
 	}
@@ -731,6 +1149,23 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			display: block;
 		}
 	}
+
+	/** TOC **/
+	.wmf-pattern-toc {
+
+		.wp-block-buttons {
+
+			@media only screen and (min-width: 782px) {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+
+			@media only screen and (min-width: #{782px + 128}) {
+				right: calc($width-breakpoint-wide / 3);
+			}
+		}
+	}
 }
 
 .wmf-pattern-endowment-welcome {
@@ -745,7 +1180,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			@include base-font;
 			text-transform: uppercase;
-			font-size: 15px;
+			font-size: 0.938rem;
 			padding: 4px 8px;
 			margin-bottom: 1rem;
 
@@ -809,7 +1244,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		&__date {
-			font-size: 14px;
+			font-size: 0.875rem;
 			margin-top: 0;
 		}
 	}
