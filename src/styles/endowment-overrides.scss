@@ -575,6 +575,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				height: 300px;
 			}
 		}
+
+		.cluster.mapboxgl-marker {
+			z-index: 2;
+		}
 	}
 
 	/* Accordion */
