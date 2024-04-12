@@ -29,6 +29,13 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			font-weight: 700;
 			padding: 0.5rem 1rem 0.5rem 1rem;
 			margin-bottom: 1rem;
+			margin-right: -50%;
+			transform: translateX(50%);
+
+			@media only screen and (min-width: 782px) {
+				margin-right: 0;
+				transform: none;
+			}
 		}
 	}
 
@@ -151,11 +158,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 	}
 
+	.expandable-expander,
 	button.expandable-expander {
 		width: 100%;
-		max-width: 330px;
+		max-width: 100%;
 		font-size: 1rem;
 		color: #1c2d3e;
+
+		@media only screen and (min-width: 782px) {
+			max-width: 330px;
+		}
 
 		&::after {
 			display: none;
@@ -166,7 +178,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.is-style-default.wmf-pattern-endowment-hero {
 		margin-bottom: -4rem;
 		padding-bottom: 2rem;
-		--slant: calc(90% - 3.9vw);
+		--slant: calc(94% - 3.8vw);
 
 		@media only screen and (min-width: 782px) {
 			clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
@@ -174,7 +186,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			margin-bottom: 0;
 		}
 
-		@media only screen and (min-width: 1700px) {
+		@media only screen and (min-width: 1555px) {
 			clip-path: polygon(0 0, 100% 0, 100% var(--slant), 0 100%);
 		}
 
@@ -201,9 +213,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				background-color: #00ced6;
 				content: "";
 				display: block;
-				height: 0.25rem;
+				height: 5px;
 				margin: 4rem 0 4rem 0;
-				width: 6rem;
+				width: 10rem;
+				margin-left: 50%;
+				transform: translateX(-50%);
+
+				@media only screen and (min-width: 782px) {
+					margin-left: 0;
+					transform: none;
+				}
 			}
 		}
 
@@ -213,10 +232,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			@media only screen and (min-width: 1300px) {
 				clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
-			}
-
-			@media only screen and (min-width: 1701px) {
-				clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%);
 			}
 		}
 
