@@ -78,6 +78,10 @@
 		height: 1.8rem;
 		width: 1.8rem;
 	}
+
+	.wp-block-buttons {
+		display: inline-block; // Prevents overlap with nav arrows.
+	}
 }
 
 .wp-block-wmf-reports-map__container.wp-block-group.has-background:not(:only-child) {

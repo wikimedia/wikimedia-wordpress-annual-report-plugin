@@ -152,7 +152,7 @@ $indicator-cutoff-width: 980px;
 		position: absolute;
 		top: 108px;
 		width: 100%;
-		z-index: 11;
+		z-index: 20;
 
 		&--pinned {
 			position: fixed;
@@ -209,6 +209,11 @@ $indicator-cutoff-width: 980px;
 		right: 5rem;
 		width: auto !important; // Override inline style in mobile view.
 		z-index: 100;
+
+		@supports (-webkit-touch-callout: none) {
+			// Work around iOS scrollbar shenanigans.
+			top: 76vh;
+		}
 	}
 
 	&__indicator {
