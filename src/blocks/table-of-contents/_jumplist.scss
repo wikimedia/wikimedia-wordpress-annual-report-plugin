@@ -113,7 +113,7 @@ $indicator-cutoff-width: 980px;
 			align-items: center;
 			display: flex;
 			flex-direction: row;
-			flex-wrap: nowrap;
+			flex-wrap: wrap; // Only needed on very small viewports.
 			justify-content: flex-start;
 			gap: 1rem;
 			margin-top: 1.5rem;
@@ -130,6 +130,7 @@ $indicator-cutoff-width: 980px;
 			border: 1px solid var(--wp--preset--color--base-70);
 			height: 3rem;
 			width: 3rem;
+			min-width: 3rem;
 		}
 	}
 
