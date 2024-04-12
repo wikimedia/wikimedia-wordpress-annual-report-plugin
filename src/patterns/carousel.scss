@@ -158,7 +158,8 @@
 }
 
 .wmf-pattern-reports-carousel-slide {
-	font-family: $font-family-base;
+
+	@include base-font;
 	font-size: $font-size-base;
 	font-weight: 400;
 	line-height: $line-height-base;
