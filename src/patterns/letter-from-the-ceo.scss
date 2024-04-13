@@ -6,6 +6,10 @@
 		margin: 0 auto;
 	}
 
+	.wp-block-group figure {
+		filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.15));
+	}
+
 	.wp-block-quote {
 		border: 0;
 		margin: 0 0 2rem;
@@ -13,11 +17,20 @@
 		padding-left: 0;
 
 		p {
-			font-family: $font-family-base;
-			font-size: #{$font-size-xxlarge};
-			line-height: #{$line-height-xlarge};
-			font-weight: 700;
+
+			@include base-font;
+			font-size: $font-size-xxlarge;
+			line-height: 1.2;
 			font-style: normal;
+		}
+	}
+
+	.wp-block-group figure + p {
+		line-height: 1.2;
+
+		strong {
+			display: inline-block;
+			margin-bottom: 0.5rem;
 		}
 	}
 

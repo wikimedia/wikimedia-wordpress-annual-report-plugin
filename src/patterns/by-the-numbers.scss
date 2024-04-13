@@ -77,9 +77,21 @@
 		max-width: 330px;
 
 		&__number {
-			font-size: 88px;
+			font-size: 4rem;
 			font-weight: 700;
 			margin-bottom: 0;
+
+			@media screen and (min-width: 380px) {
+				font-size: 4.5rem;
+			}
+
+			@media screen and (min-width: 400px) {
+				font-size: 5rem;
+			}
+
+			@media screen and (min-width: 420px) {
+				font-size: 5.5rem;
+			}
 		}
 
 		&__text {
@@ -241,20 +253,22 @@
 		}
 
 		> .wp-block-group.alignwide {
-			padding-left: 1rem;
-			padding-right: 1rem;
+			padding-left: 2rem;
+			padding-right: 2rem;
 		}
 	}
 
 	.wmf-pattern-by-the-numbers__masonry {
 		margin-top: 3rem;
-		margin-left: 1rem;
-		margin-right: 1rem;
+		overflow: hidden; // Prevents animations from extending page laterally on mobile.
+
+		@media screen and (min-width: 980px) {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
 
 		> .wp-block-group__inner-container {
 			margin-bottom: 2rem;
-			margin-left: 10%;
-			margin-right: 10%;
 
 			> .wp-block-group {
 				margin-top: 4rem;

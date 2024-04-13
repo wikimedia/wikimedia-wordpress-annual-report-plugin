@@ -28,8 +28,9 @@
 		height: 300px;
 		margin: auto;
 		width: 100%;
+
 		@media only screen and ( min-width: 782px ) {
-			height: 400px;
+			height: 250px;
 		}
 	}
 
@@ -76,6 +77,10 @@
 		background: #ff7800;
 		height: 1.8rem;
 		width: 1.8rem;
+	}
+
+	.wp-block-buttons {
+		display: inline-block; // Prevents overlap with nav arrows.
 	}
 }
 

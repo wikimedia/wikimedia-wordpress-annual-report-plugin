@@ -53,7 +53,7 @@
 			transform: scaleX(-1);
 		}
 
-		&:hover {
+		&:active {
 			opacity: 0.8;
 		}
 
@@ -147,7 +147,7 @@
 			transform: scaleX(-1);
 		}
 
-		&:hover {
+		&:active {
 			opacity: 0.8;
 		}
 
@@ -158,10 +158,16 @@
 }
 
 .wmf-pattern-reports-carousel-slide {
-	font-family: $font-family-base;
+
+	@include base-font;
 	font-size: $font-size-base;
 	font-weight: 400;
 	line-height: $line-height-base;
+
+	.wp-block-buttons {
+		position: relative;
+		z-index: 15;
+	}
 
 	&.wp-block-group.has-background {
 		padding-bottom: 0;
@@ -213,9 +219,9 @@
 	}
 
 	&__heading {
-		font-family: $font-family-base;
+
+		@include base-font;
 		font-size: $font-size-xlarge;
-		font-weight: 700;
 	}
 
 	&__location,

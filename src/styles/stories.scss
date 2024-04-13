@@ -59,11 +59,14 @@
 
 	&__categories {
 		display: flex;
-		gap: 1rem;
-		padding-left: 2rem;
-		padding-right: 2rem;
+		gap: 0.8rem;
+		padding: 0 2rem 1px; // Solves a "bottom border displays half-width" issue in Safari iOS.
 		transition: all 0.5s;
 		width: max-content;
+
+		@media screen and (min-width: 782px) {
+			gap: 1rem;
+		}
 	}
 
 	.category-slide {
@@ -71,8 +74,8 @@
 		border: 1px solid #aaa;
 		cursor: pointer;
 		font-size: 0.75rem;
-		max-width: 100px;
-		padding: 0.625rem 0.9375rem;
+		max-width: 90px;
+		padding: 0.6rem 0.4375rem;
 		text-align: center;
 
 		@media screen and (min-width: 782px) {
@@ -104,6 +107,10 @@
 		}
 		/* stylelint-enable no-descending-specificity */
 	}
+
+	.wp-block-buttons {
+		display: inline-block; // Prevents overlap with nav arrows.
+	}
 }
 
 .wmf-pattern-stories-learn-more {
@@ -124,7 +131,7 @@
 	h3,
 	h4 {
 		font-size: 1.5rem;
-		font-weight: bold;
+		font-weight: 700;
 	}
 
 	p {

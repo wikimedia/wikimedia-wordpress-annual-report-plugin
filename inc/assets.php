@@ -6,6 +6,7 @@
 namespace WMF\Reports\Assets;
 
 use const WMF\Reports\PLUGIN_PATH;
+use const WMF\Reports\PLUGIN_VERSION;
 use WMF\Reports\Asset_Loader;
 
 use const WMF\Reports\Blocks\Map\MAP_API_OPTION_KEY;
@@ -158,7 +159,9 @@ function enqueue_editor_assets() : void {
 		[
 			'dashicons'
 		],
-		filemtime( build_file_path( 'editor.css' ) )
+		wp_get_environment_type() === 'local'
+			? filemtime( build_file_path( 'editor.css' ) )
+			: PLUGIN_VERSION
 	);
 
 	wp_enqueue_style( 'mapbox-css', 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' );
@@ -203,7 +206,9 @@ function enqueue_frontend_styles() : void {
 		[
 			'dashicons'
 		],
-		filemtime( build_file_path( 'frontend.css' ) )
+		wp_get_environment_type() === 'local'
+			? filemtime( build_file_path( 'frontend.css' ) )
+			: PLUGIN_VERSION
 	);
 
 	if ( has_block( 'wmf-reports/map' ) ) {

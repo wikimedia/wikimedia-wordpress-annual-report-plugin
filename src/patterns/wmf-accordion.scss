@@ -89,8 +89,8 @@ $primary-nav-mobile-height: 62px;
 	}
 
 	.wmf-accordion-item__title-text {
-		font-family: $font-family-base;
-		font-weight: 700;
+
+		@include base-font;
 		font-size: #{$font-size-xlarge};
 		line-height: #{$line-height-xlarge};
 
