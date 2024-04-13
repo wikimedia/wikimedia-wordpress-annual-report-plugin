@@ -1,47 +1,64 @@
 import { CountUp } from 'countup.js';
 
+const counts = new Map();
+
+const createCountup = ( countupElement ) => {
+	const targetNumber =
+		countupElement.dataset.countupTargetNumber ||
+		parseInt( countupElement.textContent.replace( /[^0-9]/g, '' ), 10 );
+
+	if ( ! countupElement.dataset.countupTargetNumber ) {
+		countupElement.dataset.countupTargetNumber = targetNumber;
+	}
+
+	if ( isNaN( targetNumber ) ) {
+		countupElement.dataset.countupAnimation = false;
+		return false;
+	}
+
+	return new CountUp( countupElement, targetNumber, {
+		duration: countupElement.dataset?.countupDuration || 1,
+	} );
+};
+
+const processIntersectionEntry = ( entry ) => {
+	const countup = counts.get( entry.target );
+	if ( ! countup ) {
+		return;
+	}
+
+	// If element is in view
+	if ( entry.isIntersecting ) {
+		// Start after a slight delay to ensure it's been scrolled fully into view.
+		setTimeout( () => {
+			countup.start();
+		}, 100 );
+	} else {
+		if ( entry.isVisible ) {
+			return;
+		}
+		countup.reset();
+	}
+};
+
 // Add a timeout to give everything chance to load (ie masonry grid).
 setTimeout( () => {
 	const countupFormatItems = document.querySelectorAll( '.wmf-countup' );
 
-	// Callback function to handle intersection changes
+	// Instantiate the CountUp objects.
+	countupFormatItems.forEach( ( countupElement ) => {
+		counts.set( countupElement, createCountup( countupElement ) );
+	} );
+
+	// Callback function to handle intersection changes.
 	const handleIntersect = ( entries ) => {
-		entries.forEach( ( entry ) => {
-			const targetNumber =
-				entry.target.dataset.countupTargetNumber ||
-				parseInt(
-					entry.target.textContent.replace( /[^0-9]/g, '' ),
-					10
-				);
-
-			if ( ! entry.target.dataset.countupTargetNumber ) {
-				entry.target.dataset.countupTargetNumber = targetNumber;
-			}
-
-			const countup = new CountUp( entry.target, targetNumber, {
-				duration: entry.target.dataset?.countupDuration || 1,
-			} );
-
-			if ( ! isNaN( targetNumber ) ) {
-				// If element is in view
-				if ( entry.isIntersecting ) {
-					countup.start();
-				} else {
-					if ( entry.isVisible ) {
-						return;
-					}
-					countup.reset();
-				}
-			}
-		} );
+		entries.forEach( processIntersectionEntry );
 	};
 
 	const observer = new IntersectionObserver( handleIntersect, {
-		threshold: 1, // Fire when fully visible.
+		threshold: 0.9, // Fire when fully visible.
 	} );
 
-	// Observe each countup span
-	countupFormatItems.forEach( ( span ) => {
-		observer.observe( span );
-	} );
+	// Observe each countup span.
+	countupFormatItems.forEach( ( span ) => observer.observe( span ) );
 }, 250 );
