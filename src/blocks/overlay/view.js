@@ -164,8 +164,6 @@ const trapFocusListener = ( event ) => {
 			return;
 		}
 
-		console.log( 'last element clicked' );
-
 		// If focus has reached the last focusable element,
 		// then focus first focusable element after pressing tab.
 		first.focus(); // Add focus for the first focusable element.
