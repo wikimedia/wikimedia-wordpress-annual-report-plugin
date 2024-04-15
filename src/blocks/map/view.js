@@ -76,7 +76,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 			const groupID = mapMarker.closest( '.wp-block-group[id]' )?.id;
 
-			if ( shouldScrollToElement ) {
+			if ( shouldScrollToElement && mapMarker.dataset.id ) {
 				location.hash = `${ groupID }-${ mapMarker.dataset.id }`;
 				scrollToSection( mapMarker );
 			}

@@ -106,6 +106,10 @@ const animateSlider = ( currentItemIndex ) => {
 };
 
 function setGraphicHeightCssProperty( slide ) {
+	if ( ! slide ) {
+		return;
+	}
+
 	// Calculate height of graphic in next story box.
 	const nextStoryGraphic =
 		slide.querySelector( 'figure iframe' ) ||
@@ -158,7 +162,7 @@ const setSlide = ( id, shouldScrollToElement = true ) => {
 
 		const groupID = categorySlide.closest( '.wp-block-group[id]' )?.id;
 
-		if ( shouldScrollToElement ) {
+		if ( shouldScrollToElement && categorySlide.dataset.id ) {
 			location.hash = `${ groupID }-${ categorySlide.dataset.id }`;
 			scrollToSection( categorySlide );
 		}
