@@ -11,8 +11,11 @@ const clickShareButton = ( event ) => {
 	event.preventDefault();
 
 	// Use URL set on the button itself, by default.
+	const buttonTarget = button.querySelector( 'a' ).getAttribute( 'href' );
 	const currentUrl =
-		button.querySelector( 'a' ).getAttribute( 'href' ) || location.href;
+		buttonTarget && buttonTarget.trim() !== '#'
+			? buttonTarget
+			: location.href;
 
 	clipboard.writeText( currentUrl ).then( () => {
 		button.classList.add( 'copied' );
