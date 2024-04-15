@@ -34,6 +34,8 @@ function register_post_type() : void {
 			'supports' => [
 				'title',
 				'editor',
+				'excerpt',
+				'thumbnail',
 				'custom-fields',
 				'revisions',
 			],
