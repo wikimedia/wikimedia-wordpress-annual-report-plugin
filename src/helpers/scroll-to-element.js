@@ -6,9 +6,10 @@ const ADDITIONAL_MARGIN = 8; // 0.5rem, for comfort.
  * @param {HTMLElement} element A DOM node to scroll into view.
  */
 export default function scrollToElement( element ) {
-	const scrollMargin = window
-		.getComputedStyle( document.body )
-		.getPropertyValue( '--scroll-margin-top' );
+	const scrollMargin =
+		window
+			.getComputedStyle( document.body )
+			.getPropertyValue( '--scroll-margin-top' ) || 0;
 
 	window.scrollTo( {
 		behavior: 'smooth',
