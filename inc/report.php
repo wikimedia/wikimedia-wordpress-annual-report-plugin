@@ -40,7 +40,7 @@ function register_post_type() : void {
 				'revisions',
 			],
 			'rewrite' => [
-				'slug' => 'report',
+				'slug' => 'reports',
 			],
 		]
 	);
