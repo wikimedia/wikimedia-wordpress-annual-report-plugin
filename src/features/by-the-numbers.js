@@ -158,38 +158,35 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		'wmf-pattern-masonry'
 	);
 
-	// Give the JS time to render.
-	setTimeout( () => {
-		const desktopVersion = masonryContainer.querySelector(
-			'#wmf-pattern-masonry'
-		);
+	const desktopVersion = masonryContainer.querySelector(
+		'#wmf-pattern-masonry'
+	);
 
-		const mobileVersion = masonryContainer.querySelector(
-			'.wp-block-group__inner-container'
-		);
+	const mobileVersion = masonryContainer.querySelector(
+		'.wp-block-group__inner-container'
+	);
 
-		const toggleMasonryView = () => {
-			const windowWidth = window.innerWidth;
+	const toggleMasonryView = () => {
+		const windowWidth = window.innerWidth;
 
-			if ( windowWidth < 782 ) {
-				mobileVersion.style.display = null;
-				mobileVersion.removeAttribute( 'aria-hidden' );
-				desktopVersion.style.display = 'none';
-				desktopVersion.setAttribute( 'aria-hidden', '' );
-			} else {
-				desktopVersion.style.display = null;
-				desktopVersion.removeAttribute( 'aria-hidden' );
-				mobileVersion.style.display = 'none';
-				mobileVersion.setAttribute( 'aria-hidden', '' );
-			}
-		};
+		if ( windowWidth < 782 ) {
+			mobileVersion.style.display = null;
+			mobileVersion.removeAttribute( 'aria-hidden' );
+			desktopVersion.style.display = 'none';
+			desktopVersion.setAttribute( 'aria-hidden', '' );
+		} else {
+			desktopVersion.style.display = null;
+			desktopVersion.removeAttribute( 'aria-hidden' );
+			mobileVersion.style.display = 'none';
+			mobileVersion.setAttribute( 'aria-hidden', '' );
+		}
+	};
 
+	toggleMasonryView();
+	doAnimations();
+	doFadeAnimations();
+
+	window.addEventListener( 'resize', () => {
 		toggleMasonryView();
-		doAnimations();
-		doFadeAnimations();
-
-		window.addEventListener( 'resize', () => {
-			toggleMasonryView();
-		} );
-	}, 200 );
+	} );
 } );
