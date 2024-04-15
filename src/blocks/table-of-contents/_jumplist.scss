@@ -231,7 +231,7 @@ $indicator-cutoff-width: 980px;
 			cx: math.div($indicator-width, 2);
 			cy: math.div($indicator-width, 2);
 			fill: transparent;
-			stroke: var(--wp--preset--color--orange);
+			stroke: var(--wp--preset--color--orange, var(--wp--preset--color--wend-report-bright-blue, #00ced6));
 			stroke-width: $stroke-width;
 			transition: stroke-dashoffset 17ms;
 		}
