@@ -28,12 +28,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		attributionControl: false,
 		container: 'map',
 		center: [ 8.18, isWend ? 26.83 : 9 ],
-		minZoom: -2,
-		projection: 'mercator',
-		renderWorldCopies: true,
+		projection: 'equirectangular',
+		renderWorldCopies: false,
 		scrollZoom: false,
 		style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
-		zoom: 0,
+		zoom: 0.5,
 	} );
 	let mapItemIndex = 0;
 	let processingAnimation = false;
