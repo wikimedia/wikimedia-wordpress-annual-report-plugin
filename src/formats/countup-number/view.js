@@ -41,8 +41,8 @@ const processIntersectionEntry = ( entry ) => {
 	}
 };
 
-// Add a timeout to give everything chance to load (ie masonry grid).
-setTimeout( () => {
+// Give everything chance to load (ie masonry grid).
+document.addEventListener( 'DOMContentLoaded', () => {
 	const countupFormatItems = document.querySelectorAll( '.wmf-countup' );
 
 	// Instantiate the CountUp objects.
@@ -61,4 +61,4 @@ setTimeout( () => {
 
 	// Observe each countup span.
 	countupFormatItems.forEach( ( span ) => observer.observe( span ) );
-}, 250 );
+} );
