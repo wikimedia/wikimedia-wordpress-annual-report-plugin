@@ -183,8 +183,12 @@ function initializeByTheNumbers() {
 	};
 
 	toggleMasonryView();
-	doAnimations();
-	doFadeAnimations();
+	window.addEventListener( 'DOMContentLoaded', () => {
+		setTimeout( () => {
+			doAnimations();
+			doFadeAnimations();
+		} );
+	} );
 
 	window.addEventListener( 'resize', () => {
 		toggleMasonryView();
