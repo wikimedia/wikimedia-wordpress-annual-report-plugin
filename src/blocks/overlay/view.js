@@ -2,6 +2,41 @@ const overlays = document.getElementsByClassName(
 	'wp-block-wmf-reports-overlay'
 );
 
+/**
+ * Build an object containing the DOM elements needed for tab trapping.
+ *
+ * This calculates the "allowed" items for tab navigation, as well as
+ * determining the first and last items in the resulting list.
+ *
+ * @param {Element} all       Every focusable element available.
+ * @param {Array}   [skip=[]] The elements (if any) to skip.
+ * @return {{last, allowed, skip, first}} Compiled object with DOM element lists.
+ */
+const calculateFocusableElements = ( all, skip = [] ) => {
+	const allowed = all.filter( ( element ) => ! skip.includes( element ) );
+	return {
+		first: allowed[ 0 ],
+		last: allowed[ allowed.length - 1 ],
+		all,
+		allowed,
+		skip,
+	};
+};
+
+/**
+ * Return all focusable elements in a DOM element.
+ *
+ * @param {Element} element A DOM element.
+ * @return {Array} All potentially focusable elements in the element.
+ */
+const getFocusableInside = ( element ) => {
+	return Array.from(
+		element.querySelectorAll(
+			'a:not([disabled]), button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), details:not([disabled]), [tabindex]:not([tabindex="-1"]:not([disabled]))'
+		)
+	);
+};
+
 Array.from( overlays ).forEach( ( overlay ) => {
 	const innerHtml = ( overlay?.innerHTML || '' ).replace(
 		/<\/?[^>]+(>|$)/g,
@@ -23,6 +58,9 @@ Array.from( overlays ).forEach( ( overlay ) => {
 
 	button.addEventListener( 'click', ( e ) => {
 		e.preventDefault();
+
+		// eslint-disable-next-line @wordpress/no-global-active-element
+		const activeElement = document.activeElement;
 
 		// Update URL, in case it's not already updated.
 		const sectionId = parent.closest( '.wp-block-group[id]' )?.id;
@@ -56,8 +94,6 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		popover.appendChild( close );
 		body.appendChild( wrapper );
 
-		popover.focus();
-
 		const popoverBounds = popover.getBoundingClientRect();
 		if ( popoverBounds.height < window.innerHeight ) {
 			popover.classList.add( 'center' );
@@ -70,16 +106,69 @@ Array.from( overlays ).forEach( ( overlay ) => {
 		}, 1 );
 
 		close.addEventListener( 'click', () => {
+			document.removeEventListener( 'keydown', trapFocusListener );
 			wrapper.style.opacity = 0;
 			popover.style.opacity = 0;
 
 			setTimeout( () => {
 				body.style.overflow = null;
-				popover.blur();
+				activeElement.focus();
 				wrapper.remove();
 			}, 300 );
 		} );
 
+		// Get the first focusable item in the overlay.
+		const { first } = calculateFocusableElements(
+			getFocusableInside( popover )
+		);
+
+		first.focus();
+		document.addEventListener( 'keydown', trapFocusListener );
+
 		return false;
 	} );
 } );
+
+/**
+ * Detect keydown events.
+ *
+ * @param {Object} event Event object.
+ */
+const trapFocusListener = ( event ) => {
+	const isTabPressed = event.key === 'Tab' || event.keyCode === 9;
+
+	if ( ! isTabPressed ) {
+		return;
+	}
+
+	const popover = document.querySelector(
+		'.wmf-annual-reports-overlay-popover'
+	);
+
+	// Get the first and last focusable item in the overlay.
+	const { first, last } = calculateFocusableElements(
+		getFocusableInside( popover )
+	);
+
+	if ( event.shiftKey ) {
+		// If shift key pressed for shift + tab combination.
+		// eslint-disable-next-line @wordpress/no-global-active-element
+		if ( document.activeElement === first ) {
+			last.focus(); // Add focus for the last focusable element.
+			event.preventDefault();
+		}
+	} else {
+		// If only the tab key is pressed.
+		// eslint-disable-next-line @wordpress/no-global-active-element
+		if ( document.activeElement !== last ) {
+			return;
+		}
+
+		console.log( 'last element clicked' );
+
+		// If focus has reached the last focusable element,
+		// then focus first focusable element after pressing tab.
+		first.focus(); // Add focus for the first focusable element.
+		event.preventDefault();
+	}
+};
