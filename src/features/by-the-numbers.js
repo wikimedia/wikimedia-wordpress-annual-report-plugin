@@ -142,7 +142,7 @@ const initMasonry = function ( container, items, columns, id ) {
 	} );
 };
 
-document.addEventListener( 'DOMContentLoaded', () => {
+function initializeByTheNumbers() {
 	const masonryContainer = document.querySelector(
 		'.wmf-pattern-by-the-numbers__masonry'
 	);
@@ -189,4 +189,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	window.addEventListener( 'resize', () => {
 		toggleMasonryView();
 	} );
-} );
+}
+
+initializeByTheNumbers();
