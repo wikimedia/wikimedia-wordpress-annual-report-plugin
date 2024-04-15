@@ -106,6 +106,10 @@ const animateSlider = ( currentItemIndex ) => {
 };
 
 function setGraphicHeightCssProperty( slide ) {
+	if ( ! slide ) {
+		return;
+	}
+
 	// Calculate height of graphic in next story box.
 	const nextStoryGraphic =
 		slide.querySelector( 'figure iframe' ) ||
