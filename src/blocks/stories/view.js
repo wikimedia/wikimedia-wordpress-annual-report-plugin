@@ -158,7 +158,7 @@ const setSlide = ( id, shouldScrollToElement = true ) => {
 
 		const groupID = categorySlide.closest( '.wp-block-group[id]' )?.id;
 
-		if ( shouldScrollToElement ) {
+		if ( shouldScrollToElement && categorySlide.dataset.id ) {
 			location.hash = `${ groupID }-${ categorySlide.dataset.id }`;
 			scrollToSection( categorySlide );
 		}
