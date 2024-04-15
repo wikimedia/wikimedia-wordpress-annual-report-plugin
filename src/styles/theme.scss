@@ -1,5 +1,4 @@
-/* Theme overrides */
-.single-wmf-report {
+:root {
 	--scroll-margin-top: 62px;
 
 	@media screen and (min-width: 980px) {
@@ -20,6 +19,10 @@
 			--scroll-margin-top: 96px; // 32px + 1rem + 3rem; Fixed subnav bar.
 		}
 	}
+}
+
+/* Theme overrides */
+.single-wmf-report {
 
 	.mw-980 {
 		max-width: none;

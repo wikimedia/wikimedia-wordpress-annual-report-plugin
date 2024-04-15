@@ -11,24 +11,24 @@ const PATTERN = <<<CONTENT
 <!-- wp:group {"align":"full","className":"wmf-pattern-report-welcome"} -->
 <div class="wp-block-group alignfull wmf-pattern-report-welcome"><!-- wp:group {"tagName":"section","align":"full","backgroundColor":"wmf-report-blue","className":"wmf-pattern-report-into-hero is-style-default"} -->
 <section class="wp-block-group alignfull wmf-pattern-report-into-hero is-style-default has-wmf-report-blue-background-color has-background"><!-- wp:group {"align":"full","className":"wmf-pattern-report-into-hero__head"} -->
-<div class="wp-block-group alignfull wmf-pattern-report-into-hero__head"><!-- wp:image {"align":"full","id":74087,"sizeSlug":"large","linkDestination":"none","lock":{"move":false,"remove":false},"className":"wmf-pattern-report-into-hero__image"} -->
-<figure class="wp-block-image alignfull size-large wmf-pattern-report-into-hero__image"><img src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2023/12/Pranzo_al_volo.jpg?w=683" alt="" class="wp-image-74087"/></figure>
+<div class="wp-block-group alignfull wmf-pattern-report-into-hero__head"><!-- wp:image {"align":"full","id":74296,"sizeSlug":"large","linkDestination":"none","lock":{"move":false,"remove":false},"className":"wmf-pattern-report-into-hero__image"} -->
+<figure class="wp-block-image alignfull size-large wmf-pattern-report-into-hero__image"><img src="https://wikimediafoundation-org-develop.go-vip.co/wp-content/uploads/2024/03/PrenticeHandMural-1.jpg?w=1024" alt="The Prentice School Hand Mural" class="wp-image-74296" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"align":"full","className":"wmf-pattern-report-into-hero__heading-container"} -->
 <div class="wp-block-group alignfull wmf-pattern-report-into-hero__heading-container"><!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"align":"wide","className":"wmf-pattern-report-into-hero__heading"} -->
-<div class="wp-block-group alignwide wmf-pattern-report-into-hero__heading"><!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base90"}}}},"backgroundColor":"wmf-report-brightblue","textColor":"base90","className":"wmf-pattern-report-into-hero__heading-pill"} -->
-<div class="wp-block-group wmf-pattern-report-into-hero__heading-pill has-base-90-color has-wmf-report-brightblue-background-color has-text-color has-background has-link-color"><!-- wp:heading {"level":3,"className":"wmf-pattern-report-into-hero__heading-label"} -->
-<h3 class="wp-block-heading wmf-pattern-report-into-hero__heading-label"><img class="wp-image-74796" style="width: 20px;" src="https://wikimedia.vipdev.lndo.site/wp-content/uploads/2024/03/Wikimedia-icon.svg" alt="">Annual Report 2025</h3>
+<div class="wp-block-group alignwide wmf-pattern-report-into-hero__heading"><!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base90"}}}},"backgroundColor":"wmf-report-brightblue","textColor":"base90","className":"wmf-pattern-reports-hero__heading-pill"} -->
+<div class="wp-block-group wmf-pattern-reports-hero__heading-pill has-base-90-color has-wmf-report-brightblue-background-color has-text-color has-background has-link-color"><!-- wp:heading {"level":3,"className":"wmf-pattern-report-into-hero__heading-label is-style-report-section-heading has-wmf-logo"} -->
+<h3 class="wp-block-heading wmf-pattern-report-into-hero__heading-label is-style-report-section-heading has-wmf-logo"><strong>Annual Report 2022-2023</strong></h3>
 <!-- /wp:heading -->
 
-<!-- wp:heading -->
-<h2 class="wp-block-heading"><strong>The people behind a year of impact around the world</strong></h2>
+<!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading"><strong>The humans behind a year of impact around the world</strong></h1>
 <!-- /wp:heading -->
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-tertiary"} -->
-<div class="wp-block-button is-style-tertiary"><a class="wp-block-button__link wp-element-button" href="#">Open the latest report</a></div>
+<div class="wp-block-button is-style-tertiary"><a class="wp-block-button__link wp-element-button" href="#" target="_blank" rel="noreferrer noopener">Open the latest report</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
