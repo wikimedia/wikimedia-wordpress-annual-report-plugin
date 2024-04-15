@@ -754,6 +754,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 		}
 
+		td.has-text-align-right {
+			white-space: nowrap;
+		}
+
 		.wp-block-columns.alignwide {
 			gap: 0;
 			padding-left: 0 !important;
