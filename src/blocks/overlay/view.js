@@ -37,6 +37,25 @@ const getFocusableInside = ( element ) => {
 	);
 };
 
+/**
+ * Return or create and return a hidden div we can add images to in order to
+ * trigger those images to download before we need to display them.
+ *
+ * @return {HTMLDivElement} Visually-hidden container for preloading images.
+ */
+const getHiddenImagePrimingContainer = () => {
+	const containerId = 'wmf-overlay-image-priming';
+	const existingContainer = document.getElementById( containerId );
+	if ( existingContainer ) {
+		return existingContainer;
+	}
+	const container = document.createElement( 'div' );
+	container.classList.add( 'screen-reader-text' );
+	container.id = containerId;
+	document.body.appendChild( container );
+	return container;
+};
+
 Array.from( overlays ).forEach( ( overlay ) => {
 	const innerHtml = ( overlay?.innerHTML || '' ).replace(
 		/<\/?[^>]+(>|$)/g,
@@ -55,6 +74,34 @@ Array.from( overlays ).forEach( ( overlay ) => {
 	}
 
 	button.setAttribute( 'aria-label', 'Open content in overlay' );
+
+	button.addEventListener( 'mouseover', () => {
+		// Create a visually-hidden div to prime any <img>s which will be used
+		// in the rendered overlay.
+		const images = overlay.content
+			.cloneNode( true )
+			.querySelectorAll( 'img' );
+
+		if ( ! images.length ) {
+			return;
+		}
+		const hiddenContainer = getHiddenImagePrimingContainer();
+		if ( ! hiddenContainer ) {
+			return;
+		}
+		hiddenContainer.innerHTML = '';
+		images.forEach(
+			/**
+			 * Remove any lazy-loading from the image and add it to the container.
+			 *
+			 * @param {HTMLImageElement} imgNode
+			 */
+			( imgNode ) => {
+				imgNode.removeAttribute( 'loading' );
+				hiddenContainer.appendChild( imgNode );
+			}
+		);
+	} );
 
 	button.addEventListener( 'click', ( e ) => {
 		e.preventDefault();
