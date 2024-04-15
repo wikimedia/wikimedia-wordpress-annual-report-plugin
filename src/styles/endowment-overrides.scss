@@ -346,6 +346,15 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				&::before {
 					background-color: currentcolor;
 				}
+
+				&.wmf-toc-jumplist__active-item {
+					background: #0060fe;
+					color: #fff;
+
+					&::before {
+						background-color: #0060fe;
+					}
+				}
 			}
 		}
 
