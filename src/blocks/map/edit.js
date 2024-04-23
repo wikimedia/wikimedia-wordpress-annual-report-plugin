@@ -119,6 +119,28 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 						.setDraggable( false )
 						.setLngLat( coords )
 						.addTo( map );
+
+					// On click select zoom into the cluster.
+					markerDiv.addEventListener( 'click', () => {
+						const selectedClusters = features.filter(
+							( c ) => c.id === clusterId
+						);
+
+						map.getSource( 'markers' ).getClusterExpansionZoom(
+							clusterId,
+							( err, zoom ) => {
+								if ( err ) {
+									return;
+								}
+
+								map.easeTo( {
+									center: selectedClusters[ 0 ].geometry
+										.coordinates,
+									zoom: zoom + 1,
+								} );
+							}
+						);
+					} );
 				}
 
 				// Push it to our list of existing clusters.
