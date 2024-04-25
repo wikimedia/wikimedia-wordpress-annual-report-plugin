@@ -21,6 +21,7 @@ const toggleAccordionItem = ( e ) => {
 	// Open items should have the empty string as the attribute value.
 	parent.toggleAttribute( 'aria-expanded', isExpanded !== '' );
 
+	console.log( parent, parent.getBoundingClientRect() );
 	scrollToElement( parent, 400 );
 };
 
