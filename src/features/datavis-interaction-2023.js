@@ -34,7 +34,12 @@ window.addEventListener( 'DOMContentLoaded', () => {
 	}
 
 	const connectEvents = ( { view, spec } ) => {
-		window.tools = { view, spec, accordionItems };
+		if ( ! view ) {
+			// eslint-disable-next-line no-console
+			console.error( 'Could not bind to visualization' );
+			return;
+		}
+
 		view.addEventListener( 'click', ( event, item ) => {
 			if ( ! item?.datum?.className ) {
 				return;
@@ -78,12 +83,12 @@ window.addEventListener( 'DOMContentLoaded', () => {
 
 	// Poll until vis is available.
 	const pollingInterval = setInterval( () => {
-		if ( ! window.vegaLitePlugin?.visualizations ) {
+		const visualizations = window.vegaLitePlugin?.visualizations;
+		if ( ! visualizations ) {
 			return;
 		}
 
-		const visualization =
-			window.vegaLitePlugin.visualizations.get( visNodeId );
+		const visualization = visualizations.get( visNode );
 
 		if ( visualization ) {
 			// Found it! Quit poll.
