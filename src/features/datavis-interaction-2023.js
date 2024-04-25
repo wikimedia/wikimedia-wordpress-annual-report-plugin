@@ -54,31 +54,38 @@ window.addEventListener( 'DOMContentLoaded', () => {
 		} );
 
 		// TK: Highlight chart when expanding accordion.
-		// accordionItems.forEach( ( accordion ) => {
-		// 	const visColorClassName = [ ...accordion.classList ].find(
-		// 		( className ) => {
-		// 			return /vis-color-/.test( className );
-		// 		}
-		// 	);
-		// 	const matchingData =
-		// 		visColorClassName &&
-		// 		spec.data.values.find( ( datum ) => {
-		// 			return datum.className === visColorClassName;
-		// 		} );
-		// 	if ( ! matchingData ) {
-		// 		return;
-		// 	}
-		// 	accordion.addEventListener( 'click', () => {
-		// 		console.log( { matchingData, accordion } ); // eslint-disable-line
-		// 		if ( accordion.getAttribute( 'aria-expanded' ) ) {
-		// 			// Deselecting, nothing to do.
-		// 			return;
-		// 		}
-		// 		view.signal( 'select', {
-		// 			vlPoint: [ matchingData ],
-		// 		} );
-		// 	} );
-		// } );
+		accordionItems.forEach( ( accordion ) => {
+			const visColorClassName = [ ...accordion.classList ].find(
+				( className ) => {
+					return /vis-color-/.test( className );
+				}
+			);
+			const matchingData =
+				visColorClassName &&
+				spec.data.values.find( ( datum ) => {
+					return datum.className === visColorClassName;
+				} );
+			if ( ! matchingData ) {
+				return;
+			}
+			accordion.addEventListener( 'click', () => {
+				window.tools = { matchingData, accordion, view };
+				console.log( { matchingData, accordion } ); // eslint-disable-line
+				if ( accordion.getAttribute( 'aria-expanded' ) ) {
+					// Deselecting, nothing to do.
+					return;
+				}
+				view.signal( 'select', {
+					category: [ matchingData.category ],
+					label: [ matchingData.label ],
+					spend: [ matchingData.spend ],
+					spendLabel: [ matchingData.spendLabel ],
+					vlPoint: {
+						or: [ matchingData ],
+					},
+				} ).run();
+			} );
+		} );
 	};
 
 	// Poll until vis is available.
