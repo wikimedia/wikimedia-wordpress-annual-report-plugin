@@ -33,7 +33,7 @@ window.addEventListener( 'DOMContentLoaded', () => {
 		return;
 	}
 
-	const connectEvents = ( { view, spec } ) => {
+	const connectEvents = ( { view } ) => {
 		if ( ! view ) {
 			// eslint-disable-next-line no-console
 			console.error( 'Could not bind to visualization' );
