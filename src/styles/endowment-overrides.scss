@@ -1008,11 +1008,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			display: block;
 			border-bottom-right-radius: none;
 
-			figcaption {
-				padding-left: 1rem;
-				padding-right: 1rem;
-			}
-
 			@media only screen and (min-width: 782px) {
 				margin-left: auto;
 				margin-right: auto;
@@ -1125,7 +1120,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			img {
 				width: 100% !important;
-				height: auto;
 				height: auto;
 				aspect-ratio: 1/1 !important;
 			}
