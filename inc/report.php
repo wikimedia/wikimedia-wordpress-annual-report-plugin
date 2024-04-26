@@ -56,7 +56,7 @@ function register_post_type() : void {
 				'revisions',
 			],
 			'rewrite' => [
-				'slug'       => 'annualreport',
+				'slug'       => 'annualreports',
 				'with_front' => false,
 			],
 		]
