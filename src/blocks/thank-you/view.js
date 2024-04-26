@@ -2,7 +2,7 @@
  * Use this file for JavaScript code that you want to run in the front-end
  * on posts/pages that contain this block.
  */
-const ANIMATION_DURATION = 500;
+const ANIMATION_DURATION = 1200;
 
 /**
  * Pause the animation of a specific widget.
@@ -29,7 +29,7 @@ function initWidget( widget ) {
 	pauseAnimation( widget );
 	widget.dataset.thankYouAnimation = setInterval(
 		animate( widget ),
-		ANIMATION_DURATION * 4
+		ANIMATION_DURATION
 	);
 }
 
@@ -47,28 +47,7 @@ const animate = ( widget ) => () => {
 	const firstLine = lines[ 0 ];
 	const lastLine = lines[ lines.length - 1 ];
 
-	// Fade out first line.
-	firstLine.classList.add( 'fadeout' );
-	setTimeout( () => {
-		// Collapse the now-hidden first line.
-		firstLine.classList.add( 'collapse' );
-		// Fade in each subsequent line of text as the first one collapses.
-		[ 1, 2, 3, 4 ].forEach( ( indexToFadeIn ) => {
-			if ( lines[ indexToFadeIn ] ) {
-				lines[ indexToFadeIn ].classList.add( 'fadein' );
-			}
-		} );
-	}, ANIMATION_DURATION * 0.75 );
-	setTimeout( () => {
-		// Move first line down to bottom, then reset all animation classes.
-		lastLine.after( firstLine );
-		firstLine.classList.remove( 'fadeout', 'collapse' );
-		Array.from( widget.querySelectorAll( '.fadein' ) ).forEach(
-			( line ) => {
-				line.classList.remove( 'fadein' );
-			}
-		);
-	}, ANIMATION_DURATION * 1.75 );
+	lastLine.after( firstLine );
 };
 
 // Initialize!

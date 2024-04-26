@@ -4,9 +4,14 @@
  * The following styles get applied both on the frontend and editor.
  */
 
-.wp-block-wmf-reports-thank-you,
-.editor-styles-wrapper .wp-block-wmf-reports-thank-you {
-	--animation-duration: 500ms;
+.wp-block-wmf-reports-thank-you {
+	// ANIMATION STRUCTURE:
+	// We start with n different thank-you text items.
+	// When they get to the fifth-from-top position, we begin to fade them in.
+	// They fade in continually from that point.
+	// Once a line is the first child, visually transition it out of frame.
+	// Once out of frame, we move the element to the bottom (using JS).
+	--animation-duration: 1200ms;
 	--text-size: 1.75rem;
 	--height: 2.125rem;
 
@@ -21,50 +26,49 @@
 		height: var(--height);
 		letter-spacing: -0.035rem;
 		line-height: 1;
-		transition: opacity var(--animation-duration), height var(--animation-duration);
+		transition: opacity calc(3 * var(--animation-duration)) ease-in;
+		transition-delay: 200ms;
 	}
 
-	// Make all text visible when block is selected.
+	.wmf-thank-you-line:first-child {
+		opacity: 0;
+		height: 0;
+		transform: translate(0, calc(-1 * var(--height)));
+		transition:
+			opacity var(--animation-duration),
+			height var(--animation-duration) linear,
+			transform var(--animation-duration) linear;
+	}
+
+	.wmf-thank-you-line:not(:nth-child(-n+5)) {
+		opacity: 0;
+	}
+}
+
+.editor-styles-wrapper .wp-block-wmf-reports-thank-you {
+
+	.wmf-thank-you-line:nth-of-type(1) {
+		opacity: 1;
+	}
+
+	.wmf-thank-you-line:nth-of-type(2) {
+		opacity: 0.5;
+	}
+
+	.wmf-thank-you-line:nth-of-type(3) {
+		opacity: 0.2;
+	}
+
+	.wmf-thank-you-line:nth-of-type(4) {
+		opacity: 0.1;
+	}
+
+	// Make all text visible when block is selected in the editor.
 	&.is-selected {
 		height: auto;
 
 		.wmf-thank-you-line {
 			opacity: 1 !important;
 		}
-	}
-
-	// stylelint-disable no-descending-specificity
-	.wmf-thank-you-line:nth-of-type(1),
-	.wmf-thank-you-line:nth-of-type(2).fadein {
-		opacity: 1;
-	}
-
-	.wmf-thank-you-line:nth-of-type(2),
-	.wmf-thank-you-line:nth-of-type(3).fadein {
-		opacity: 0.5;
-	}
-
-	.wmf-thank-you-line:nth-of-type(3),
-	.wmf-thank-you-line:nth-of-type(4).fadein {
-		opacity: 0.2;
-	}
-
-	.wmf-thank-you-line:nth-of-type(4),
-	.wmf-thank-you-line:nth-of-type(5).fadein {
-		opacity: 0.1;
-	}
-
-	.wmf-thank-you-line:nth-of-type(5).fadein {
-		transition-duration: calc(1.5 * var(--animation-duration));
-		transition-delay: calc(0.2 * var(--animation-duration));
-	}
-
-	.wmf-thank-you-line:not(:nth-child(-n+4)),
-	.wmf-thank-you-line.fadeout {
-		opacity: 0;
-	}
-
-	.collapse {
-		height: 0;
 	}
 }
