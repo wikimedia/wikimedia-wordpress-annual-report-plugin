@@ -40,8 +40,8 @@ function register_post_type() : void {
 				'revisions',
 			],
 			'rewrite' => [
-				'slug'       => 'about/reports',
-				'with_front' => false
+				'slug'       => 'annualreport',
+				'with_front' => false,
 			],
 		]
 	);
