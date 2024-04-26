@@ -24,10 +24,26 @@ function bootstrap() {
  * Register custom post type for reports.
  */
 function register_post_type() : void {
+	$labels = [
+		'name'               => _x( 'Reports', 'post type general name', 'wmf-reports' ),
+		'singular_name'      => _x( 'Report', 'post type singular name', 'wmf-reports' ),
+		'menu_name'          => _x( 'Reports', 'admin menu', 'wmf-reports' ),
+		'name_admin_bar'     => _x( 'Report', 'add new on admin bar', 'wmf-reports' ),
+		'add_new'            => _x( 'Add New', 'Filing', 'wmf-reports' ),
+		'add_new_item'       => __( 'Add New Report', 'wmf-reports' ),
+		'new_item'           => __( 'New Report', 'wmf-reports' ),
+		'edit_item'          => __( 'Edit Report', 'wmf-reports' ),
+		'view_item'          => __( 'View Report', 'wmf-reports' ),
+		'all_items'          => __( 'All Reports', 'wmf-reports' ),
+		'search_items'       => __( 'Search Reports', 'wmf-reports' ),
+		'parent_item_colon'  => __( 'Parent Reports:', 'wmf-reports' ),
+		'not_found'          => __( 'No reports found.', 'wmf-reports' ),
+		'not_found_in_trash' => __( 'No reports found in Trash.', 'wmf-reports' ),
+	];
 	\register_post_type(
 		POST_TYPE,
 		[
-			'label' => __( 'Reports', 'wmf-reports' ),
+			'labels' => $labels,
 			'description' => __( 'Annual reports for Wikimedia Foundation', 'wmf-reports' ),
 			'public' => true,
 			'show_in_rest' => true,
