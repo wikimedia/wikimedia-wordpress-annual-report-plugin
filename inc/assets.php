@@ -76,7 +76,7 @@ function set_blob_worker_src_csp( array $headers ) : array {
 	if ( strpos( $headers['Content-Security-Policy'], 'worker-src' ) !== false ) {
 		$headers['Content-Security-Policy'] = preg_replace(
 			"/worker-src /",
-			"worker-src blob:",
+			"worker-src blob: ",
 			$headers['Content-Security-Policy']
 		);
 	} else {
