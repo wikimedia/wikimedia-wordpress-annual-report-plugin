@@ -73,10 +73,15 @@ function allow_mapbox_csp_origins( array $allowed_origins, string $policy_type )
  * @return string[] Updated HTTP headers array.
  */
 function set_blob_worker_src_csp( array $headers ) : array {
+	preg_match( '/worker-src[^;]+blob:/', $headers['Content-Security-Policy'], $already_has_blob );
+	if ( $already_has_blob ) {
+		return $headers;
+	}
+
 	if ( strpos( $headers['Content-Security-Policy'], 'worker-src' ) !== false ) {
 		$headers['Content-Security-Policy'] = preg_replace(
 			"/worker-src /",
-			"worker-src blob:",
+			"worker-src blob: ",
 			$headers['Content-Security-Policy']
 		);
 	} else {
