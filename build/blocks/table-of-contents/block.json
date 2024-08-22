@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wmf-reports/table-of-contents",
+  "version": "0.1.0",
+  "title": "Report Table of Contents",
+  "textdomain": "wmf-reports",
+  "category": "widgets",
+  "icon": "editor-ul",
+  "description": "Render a table of contents based on labeled group blocks.",
+  "example": {},
+  "supports": {
+    "multiple": false,
+    "html": false
+  },
+  "attributes": {
+    "waypoints": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./index.css",
+  "viewScript": "file:./view.js"
+}
