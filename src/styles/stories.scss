@@ -1,3 +1,5 @@
+@use "../helpers/variables";
+
 .wp-block-wmf-reports-stories {
 
 	.wp-block-group.alignfull,
@@ -7,7 +9,7 @@
 	}
 
 	.alignwide {
-		max-width: $width-breakpoint-wide;
+		max-width: variables.$width-breakpoint-wide;
 	}
 }
 
@@ -23,7 +25,7 @@
 	&.carousel &__categories-wrapper.alignwide {
 		margin: auto;
 		margin-bottom: 2rem;
-		max-width: calc($width-breakpoint-wide + 4rem) !important;
+		max-width: calc(variables.$width-breakpoint-wide + 4rem) !important;
 		overflow: scroll;
 		padding-left: 0;
 		padding-right: 0;
@@ -33,7 +35,7 @@
 	}
 
 	&.carousel &__categories-outer-wrapper.alignwide {
-		max-width: calc($width-breakpoint-wide + 4rem) !important;
+		max-width: calc(variables.$width-breakpoint-wide + 4rem) !important;
 		overflow: hidden;
 		padding-left: 0;
 		padding-right: 0;
@@ -101,8 +103,8 @@
 			display: block;
 			height: 1rem;
 			margin: 0 auto 0.5rem auto;
-			min-height: $font-size-base;
-			min-width: $font-size-base;
+			min-height: variables.$font-size-base;
+			min-width: variables.$font-size-base;
 			width: auto;
 		}
 		/* stylelint-enable no-descending-specificity */

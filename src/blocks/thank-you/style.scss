@@ -1,4 +1,4 @@
-@import "../../helpers/variables";
+@use "../../helpers/variables";
 
 /**
  * The following styles get applied both on the frontend and editor.
@@ -20,9 +20,9 @@
 
 	.wmf-thank-you-line {
 
-		@include base-font;
 		display: block;
 		font-size: var(--text-size);
+		font-weight: variables.$font-weight-base;
 		height: var(--height);
 		letter-spacing: -0.035rem;
 		line-height: 1;

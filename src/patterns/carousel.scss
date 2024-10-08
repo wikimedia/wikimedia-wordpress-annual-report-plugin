@@ -1,3 +1,5 @@
+@use "../helpers/variables";
+
 .wp-block-wmf-reports-map.carousel,
 .wp-block-wmf-reports-stories.carousel {
 	overflow: hidden;
@@ -27,11 +29,11 @@
 
 	.carousel__buttons {
 		margin: auto;
-		max-width: $width-breakpoint-wide;
+		max-width: variables.$width-breakpoint-wide;
 		text-align: right;
 		padding-right: 1rem;
 
-		@media only screen and ( min-width: #{ $width-breakpoint-wide + 16 } ) {
+		@media only screen and ( min-width: #{ variables.$width-breakpoint-wide + 16 } ) {
 			padding-right: 0;
 		}
 	}
@@ -63,7 +65,7 @@
 	}
 
 	.alignwide {
-		max-width: $width-breakpoint-wide;
+		max-width: variables.$width-breakpoint-wide;
 	}
 
 	.stories__categories-buttons {
@@ -71,7 +73,7 @@
 		height: 0;
 		position: relative;
 
-		@media screen and ( min-width: #{$width-breakpoint-wide + 192} ) {
+		@media screen and ( min-width: #{variables.$width-breakpoint-wide + 192} ) {
 			display: block;
 
 			#carousel-slide-back {
@@ -125,7 +127,7 @@
 	// stylelint-disable-next-line  no-descending-specificity
 	.carousel__buttons {
 		margin: 2rem auto 2rem auto;
-		max-width: $width-breakpoint-wide;
+		max-width: variables.$width-breakpoint-wide;
 		text-align: right;
 	}
 
@@ -159,10 +161,9 @@
 
 .wmf-pattern-reports-carousel-slide {
 
-	@include base-font;
-	font-size: $font-size-base;
+	font-size: variables.$font-size-base;
 	font-weight: 400;
-	line-height: $line-height-base;
+	line-height: variables.$line-height-base;
 
 	.wp-block-buttons {
 		position: relative;
@@ -188,7 +189,7 @@
 	}
 
 	.is-style-sans-p {
-		font-size: $font-size-base;
+		font-size: variables.$font-size-base;
 		margin-top: 0;
 	}
 
@@ -220,8 +221,8 @@
 
 	&__heading {
 
-		@include base-font;
-		font-size: $font-size-xlarge;
+		font-weight: variables.$font-weight-base;
+		font-size: variables.$font-size-xlarge;
 	}
 
 	&__location,
@@ -234,9 +235,9 @@
 			background-size: cover;
 			border-radius: 50%;
 			display: inline-block;
-			height: $font-size-base;
+			height: variables.$font-size-base;
 			margin-right: 8px;
-			width: $font-size-base;
+			width: variables.$font-size-base;
 		}
 	}
 

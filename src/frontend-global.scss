@@ -1,5 +1,4 @@
 /* Helpers */
-@import "helpers/variables";
 @import "helpers/colors";
 
 /* Theme */
@@ -16,7 +15,6 @@
 @import "styles/report-archive";
 @import "styles/map";
 @import "styles/stories";
-
 
 /* Patterns */
 @import "patterns/accordion";
@@ -35,8 +33,3 @@
 
 /* Endowment */
 @import "styles/endowment-overrides";
-
-// @font-face {
-// 	font-family: "Noto Sans";
-// 	src: url(../assets/fonts/NotoSans-VariableFont_wdth-wght.ttf);
-// }
