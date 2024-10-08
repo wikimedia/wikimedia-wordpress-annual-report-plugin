@@ -1,3 +1,5 @@
+@use "../helpers/variables";
+
 /* stylelint-disable no-descending-specificity */
 .wmf-pattern-by-the-numbers {
 
@@ -44,7 +46,7 @@
 		}
 
 		&__text {
-			font-size: $font-size-xlarge;
+			font-size: variables.$font-size-xlarge;
 			margin: 0 auto 0 auto;
 		}
 
@@ -95,7 +97,7 @@
 		}
 
 		&__text {
-			font-size: $font-size-xlarge;
+			font-size: variables.$font-size-xlarge;
 			margin: 0 auto 0 auto;
 		}
 	}
@@ -212,7 +214,7 @@
 		}
 
 		&__text {
-			font-size: $font-size-xlarge;
+			font-size: variables.$font-size-xlarge;
 			margin: 0 auto 0 auto;
 		}
 
@@ -239,7 +241,7 @@
 		}
 
 		&__text {
-			font-size: $font-size-xlarge;
+			font-size: variables.$font-size-xlarge;
 			margin: 0 auto 0 auto;
 		}
 	}

@@ -1,10 +1,12 @@
+@use "../helpers/variables";
+
 .is-style-report-section-heading {
 
-	@include base-font;
 	background: #000;
 	border-radius: 2px;
 	color: #fff;
 	font-size: 0.9375rem;
+	font-weight: variables.$font-weight-base;
 	margin: 0 0 1rem;
 	padding: 0.37rem 0.94rem;
 	text-transform: uppercase;

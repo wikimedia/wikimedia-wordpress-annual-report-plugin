@@ -1,3 +1,5 @@
+@use "../helpers/variables";
+
 .wmf-pattern-letter-from-the-ceo {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
@@ -18,8 +20,8 @@
 
 		p {
 
-			@include base-font;
-			font-size: $font-size-xxlarge;
+			font-weight: variables.$font-weight-base;
+			font-size: variables.$font-size-xxlarge;
 			line-height: 1.2;
 			font-style: normal;
 		}

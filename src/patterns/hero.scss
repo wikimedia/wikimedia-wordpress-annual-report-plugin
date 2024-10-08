@@ -1,3 +1,5 @@
+@use "../helpers/variables";
+
 .wmf-pattern-reports-hero {
 	padding: 0 !important;
 	margin-bottom: 3rem !important;
@@ -96,10 +98,10 @@
 		padding-bottom: 0 !important;
 
 		.is-style-sans-p {
-			font-size: $font-size-base;
+			font-size: variables.$font-size-base;
 
 			@media only screen and ( min-width: 782px ) {
-				font-size: $font-size-xlarge;
+				font-size: variables.$font-size-xlarge;
 			}
 		}
 

@@ -4,11 +4,10 @@ import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, useRef, useState } from '@wordpress/element';
 
-// eslint-disable-next-line import/no-unresolved
-import './editor.scss';
-
 import InnerBlocksDisplaySingle from '../../components/inner-block-slider/inner-block-single-display';
 import Navigation from '../../components/inner-block-slider/navigation';
+
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the

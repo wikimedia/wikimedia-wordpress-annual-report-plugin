@@ -1,3 +1,5 @@
+@use "../helpers/variables";
+
 /* stylelint-disable no-descending-specificity */
 .wmf-pattern-reports-leadership {
 
@@ -30,14 +32,14 @@
 
 			.wp-block-buttons,
 			p {
-				font-size: $font-size-small;
+				font-size: variables.$font-size-small;
 				margin-bottom: 0;
 			}
 
 			.wp-block-button__link,
 			.wp-block-button.is-style-as-link a.wp-block-button__link {
 				color: #000;
-				font-size: $font-size-small;
+				font-size: variables.$font-size-small;
 				font-weight: 400;
 				text-align: left;
 				cursor: default;

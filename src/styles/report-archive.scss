@@ -1,9 +1,11 @@
+@use "../helpers/variables";
+
 .wp-block-wmf-reports-report-archive.carousel {
 	position: relative;
 
 	.carousel__track-outer {
 		margin: auto;
-		max-width: calc($width-breakpoint-desktop-extrawide * 2);
+		max-width: calc(variables.$width-breakpoint-desktop-extrawide * 2);
 		scrollbar-width: none;
 		overflow: hidden;
 	}

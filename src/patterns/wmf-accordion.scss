@@ -1,3 +1,5 @@
+@use "../helpers/variables";
+
 $primary-nav-mobile-height: 62px;
 
 .wmf-accordion-wrapper {
@@ -90,21 +92,21 @@ $primary-nav-mobile-height: 62px;
 
 	.wmf-accordion-item__title-text {
 
-		@include base-font;
-		font-size: #{$font-size-xlarge};
-		line-height: #{$line-height-xlarge};
+		font-weight: variables.$font-weight-base;
+		font-size: #{variables.$font-size-xlarge};
+		line-height: #{variables.$line-height-xlarge};
 
 		mark.has-inline-color {
-			font-size: #{$font-size-base};
+			font-size: #{variables.$font-size-base};
 		}
 	}
 
 	.wmf-accordion-item__content {
-		font-size: $font-size-base;
+		font-size: variables.$font-size-base;
 
 		li,
 		p {
-			font-size: $font-size-base;
+			font-size: variables.$font-size-base;
 		}
 
 		.wp-block-table {
@@ -206,10 +208,10 @@ $primary-nav-mobile-height: 62px;
 	}
 
 	.wmf-accordion-item__content {
-		font-size: $font-size-base;
+		font-size: variables.$font-size-base;
 
 		p {
-			font-size: $font-size-base;
+			font-size: variables.$font-size-base;
 		}
 	}
 	/* stylelint-enable no-descending-specificity */

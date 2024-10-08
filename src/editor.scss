@@ -1,5 +1,5 @@
 /* Helpers */
-@import "helpers/variables";
+@use "helpers/variables";
 @import "helpers/colors";
 
 // @font-face {
@@ -50,9 +50,8 @@
 		li,
 		p {
 			font-family: var(--font-family-sans);
-			// font-size: $font-size-base;
 			font-weight: 400;
-			line-height: $line-height-base;
+			line-height: variables.$line-height-base;
 		}
 
 		p + p {
@@ -75,10 +74,10 @@
 		.wp-block[data-align="wide"] {
 			margin-left: auto;
 			margin-right: auto;
-			max-width: $width-breakpoint-wide !important;
+			max-width: variables.$width-breakpoint-wide !important;
 			width: 100%;
 
-			@media only screen and ( max-width: #{ $width-breakpoint-wide + 64 } ) {
+			@media only screen and ( max-width: #{ variables.$width-breakpoint-wide + 64 } ) {
 				padding-left: 2rem;
 				padding-right: 2rem;
 			}
@@ -122,7 +121,7 @@
 	.wp-block-image.is-style-report-image-vertical,
 	.wp-block-image.is-style-report-image-vertical.alignwide {
 
-		@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
+		@media only screen and ( min-width: #{ variables.$width-breakpoint-wide + 64 } ) {
 			display: flex;
 
 			div {

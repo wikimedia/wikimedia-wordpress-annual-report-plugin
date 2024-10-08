@@ -1,3 +1,5 @@
+@use "../../helpers/variables";
+
 .wp-block-wmf-reports-map {
 
 	#map {
@@ -21,7 +23,7 @@
 	}
 
 	.alignwide {
-		max-width: $width-breakpoint-wide;
+		max-width: variables.$width-breakpoint-wide;
 	}
 
 	.mapboxgl-map {
@@ -36,7 +38,7 @@
 
 	.mapboxgl-control-container {
 		margin: auto;
-		max-width: $width-breakpoint-wide;
+		max-width: variables.$width-breakpoint-wide;
 	}
 
 	.mapboxgl-ctrl-top-right {
@@ -65,7 +67,7 @@
 		background-size: cover;
 		border: none;
 		border-radius: 50%;
-		font-size: $font-size-base;
+		font-size: variables.$font-size-base;
 		height: 2rem;
 		text-align: center;
 		width: 2rem;

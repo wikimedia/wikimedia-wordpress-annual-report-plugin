@@ -1,3 +1,5 @@
+@use "../helpers/variables";
+
 .wp-block-image.is-style-report-image,
 .wp-block-image.is-style-report-image.alignwide,
 .wp-block-image.is-style-report-image-vertical,
@@ -6,7 +8,7 @@
 	padding-left: 0;
 	padding-right: 0;
 
-	@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
+	@media only screen and ( min-width: #{ variables.$width-breakpoint-wide + 64 } ) {
 		margin-left: auto;
 		margin-right: auto;
 		border-bottom-right-radius: 2rem;
@@ -32,7 +34,7 @@
 		font-size: 0.75rem;
 		padding: 1rem 2rem;
 
-		@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
+		@media only screen and ( min-width: #{ variables.$width-breakpoint-wide + 64 } ) {
 			padding: 1rem;
 		}
 
@@ -65,7 +67,7 @@
 .wp-block-image.is-style-report-image-vertical.alignwide {
 	margin-bottom: 1rem;
 
-	@media only screen and ( min-width: #{ $width-breakpoint-wide + 64 } ) {
+	@media only screen and ( min-width: #{ variables.$width-breakpoint-wide + 64 } ) {
 		display: flex;
 
 		figcaption {
