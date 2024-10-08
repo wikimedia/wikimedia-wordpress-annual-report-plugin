@@ -89,22 +89,28 @@ function allow_report_block_types( $allowed_block_types, $block_editor_context )
 	if ( ( $block_editor_context->post->post_type ?? '' ) !== POST_TYPE ) {
 		return $allowed_block_types;
 	}
-	// TODO: Before launch, replace with a static list for improved performance.
-	$block_json_files = glob( dirname( __DIR__ ) . '/build/blocks/*/block.json' );
-	$plugin_block_types = array_filter(
-		array_map(
-			function( string $block_json_path ) : string {
-				$metadata = wp_json_file_decode( $block_json_path, [ 'associative' => true ] );
-				return $metadata['name'] ?? '';
-			},
-			$block_json_files
-		)
-	);
+
+	// List all our custom blocks which must be allowed on Report pages.
+	$report_only_blocks = [
+		'wmf-reports/accordion-item',
+		'wmf-reports/accordion',
+		'wmf-reports/example-dynamic',
+		'wmf-reports/expandable',
+		'wmf-reports/map',
+		'wmf-reports/marker',
+		'wmf-reports/overlay',
+		'wmf-reports/report-archive',
+		'wmf-reports/report',
+		'wmf-reports/stories',
+		'wmf-reports/story',
+		'wmf-reports/table-of-contents',
+		'wmf-reports/thank-you',
+	];
 
 	// We also need the media-text block to be available.
 	$core_blocks = [ 'core/media-text' ];
 
-	return array_merge( $allowed_block_types, $plugin_block_types, $core_blocks );
+	return array_merge( $allowed_block_types, $report_only_blocks, $core_blocks );
 }
 
 /**
