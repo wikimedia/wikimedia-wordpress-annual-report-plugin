@@ -17,6 +17,7 @@ function bootstrap() {
 	add_action( 'init', __NAMESPACE__ . '\\register_post_type' );
 	add_action( 'init', __NAMESPACE__ . '\\register_blocks' );
 	add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\\allow_report_block_types', 11, 2 );
+	add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\\allow_some_report_blocks_globally', 11 );
 	add_filter( 'single_template', __NAMESPACE__ . '\\single_template' );
 }
 
@@ -92,17 +93,8 @@ function allow_report_block_types( $allowed_block_types, $block_editor_context )
 
 	// List all our custom blocks which must be allowed on Report pages.
 	$report_only_blocks = [
-		'wmf-reports/accordion-item',
-		'wmf-reports/accordion',
-		'wmf-reports/example-dynamic',
-		'wmf-reports/expandable',
-		'wmf-reports/map',
-		'wmf-reports/marker',
-		'wmf-reports/overlay',
 		'wmf-reports/report-archive',
 		'wmf-reports/report',
-		'wmf-reports/stories',
-		'wmf-reports/story',
 		'wmf-reports/table-of-contents',
 		'wmf-reports/thank-you',
 	];
@@ -111,6 +103,32 @@ function allow_report_block_types( $allowed_block_types, $block_editor_context )
 	$core_blocks = [ 'core/media-text' ];
 
 	return array_merge( $allowed_block_types, $report_only_blocks, $core_blocks );
+}
+
+/**
+ * Expose certain Report blocks throughout the site.
+ *
+ * @param bool|string[] $allowed_block_types Array of block type slugs, or boolean to enable/disable all.
+ *
+ * @return bool|string[] Filtered allowed blocks list.
+ */
+function allow_some_report_blocks_globally( $allowed_block_types ) {
+	if ( ! is_array( $allowed_block_types ) ) {
+		return $allowed_block_types;
+	}
+
+	$globally_available_blocks = [
+		'wmf-reports/accordion-item',
+		'wmf-reports/accordion',
+		'wmf-reports/expandable',
+		'wmf-reports/map',
+		'wmf-reports/marker',
+		'wmf-reports/overlay',
+		'wmf-reports/stories',
+		'wmf-reports/story',
+	];
+
+	return array_merge( $allowed_block_types, $globally_available_blocks );
 }
 
 /**
