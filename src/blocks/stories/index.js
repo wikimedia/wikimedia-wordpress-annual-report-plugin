@@ -12,6 +12,8 @@ import Edit from './edit.js';
 import metadata from './block.json';
 import { InnerBlocks } from '@wordpress/block-editor';
 
+import './style.scss';
+
 /**
  * Every block starts by registering a new block type definition.
  *
