@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import lottie from 'lottie-web';
+import { useRef, useEffect, useState } from 'react';
 
 import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
@@ -7,18 +8,70 @@ import { TextareaControl } from '@wordpress/components';
 import './editor.scss';
 
 /**
+ * Render a preview of the animation within the editor.
+ *
+ * @param {object} props               Component props.
+ * @param {string} props.animationData Serialized LottieJSON.
+ * @return {React.ReactNode} Rendered div which will be initialized as an animation.
+ */
+const AnimationPreview = ( { animationData } ) => {
+	const containerRef = useRef( null );
+	const animationRef = useRef( null );
+
+	useEffect( () => {
+		if ( ! animationData || ! containerRef.current ) {
+			return;
+		}
+
+		if ( animationRef.current ) {
+			animationRef.current.destroy();
+		}
+
+		try {
+			animationRef.current = lottie.loadAnimation( {
+				container: containerRef.current,
+				renderer: 'svg',
+				loop: false,
+				autoplay: true,
+				animationData: JSON.parse( animationData ),
+			} );
+		} catch ( e ) {
+			// Don't crash editor if parsing gets into a bad state.
+		}
+	}, [ containerRef.current, animationRef.current, animationData ] );
+	return (
+		<div ref={ containerRef } />
+	);
+}
+
+/**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
- * @return {Element} Element to render.
+ * @param {object}   props                          Component props.
+ * @param {object}   props.attributes               Block Attributes.
+ * @param {string}   props.attributes.animationData Serialized LottieJSON.
+ * @param {Function} props.setAttributes            Block attribute setter.
+ * @param {boolean}  props.isSelected               Whether the block is currently selected in the editor.
+ * @return {React.ReactNode} Rendered element.
  */
-export default function Edit( { attributes, setAttributes } ) {
+export default function Edit( { attributes, setAttributes, isSelected } ) {
 	const [ tempAnimationData, setTempAnimationData ] = useState( attributes.animationData || '' );
 	const [ validationError, setValidationError ] = useState( false );
+	const blockProps = useBlockProps( { className: 'wmf-animation' } );
+
+	if ( attributes.animationData && ! isSelected ) {
+		return (
+			<div { ...blockProps }>
+				<AnimationPreview animationData={ attributes.animationData } />
+			</div>
+		);
+	}
+
 	return (
-		<div { ...useBlockProps( { className: 'wmf-animation' } ) }>
+		<div { ...blockProps }>
 			<TextareaControl
 				label={ __( 'Paste LottieJSON animation data', 'wmf-reports' ) }
 				value={ tempAnimationData }
