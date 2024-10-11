@@ -10,7 +10,7 @@ import './editor.scss';
 /**
  * Render a preview of the animation within the editor.
  *
- * @param {object} props               Component props.
+ * @param {Object} props               Component props.
  * @param {string} props.animationData Serialized LottieJSON.
  * @return {React.ReactNode} Rendered div which will be initialized as an animation.
  */
@@ -19,21 +19,12 @@ const AnimationPreview = ( { animationData } ) => {
 	const animationRef = useRef( null );
 
 	useEffect( () => {
-		if ( animationRef.current ) {
-			animationRef.current.destroy();
-		}
-		// This function deliberately only runs when animationData changes,
-		// to clear the cached animation instance.
-		// eslint:ignore react-hooks/exhaustive-deps
-	}, [ animationData ] );
-
-	useEffect( () => {
 		if ( ! animationData || ! containerRef.current ) {
 			return;
 		}
 
-		if ( animationRef.current ) {
-			return;
+		if ( animationRef.current && animationRef.current.destroy ) {
+			animationRef.current.destroy();
 		}
 
 		try {
@@ -47,7 +38,7 @@ const AnimationPreview = ( { animationData } ) => {
 		} catch ( e ) {
 			// Don't crash editor if parsing gets into a bad state.
 		}
-	}, [ containerRef.current, animationRef.current, animationData ] );
+	}, [ animationData ] );
 	return <div ref={ containerRef } />;
 };
 
@@ -57,11 +48,10 @@ const AnimationPreview = ( { animationData } ) => {
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
- * @param {object}   props                          Component props.
- * @param {object}   props.attributes               Block Attributes.
- * @param {string}   props.attributes.animationData Serialized LottieJSON.
- * @param {Function} props.setAttributes            Block attribute setter.
- * @param {boolean}  props.isSelected               Whether the block is currently selected in the editor.
+ * @param {Object}   props               Component props.
+ * @param {Object}   props.attributes    Block Attributes.
+ * @param {Function} props.setAttributes Block attribute setter.
+ * @param {boolean}  props.isSelected    Whether the block is currently selected in the editor.
  * @return {React.ReactNode} Rendered element.
  */
 export default function Edit( { attributes, setAttributes, isSelected } ) {
@@ -105,7 +95,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 				} }
 			/>
 			{ validationError && (
-				<p class="wmf-animation__editor-error">
+				<p className="wmf-animation__editor-error">
 					{ __( 'Invalid JSON: changes not saved.', 'wmf-reports' ) }
 				</p>
 			) }
