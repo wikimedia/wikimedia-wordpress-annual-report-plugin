@@ -19,12 +19,21 @@ const AnimationPreview = ( { animationData } ) => {
 	const animationRef = useRef( null );
 
 	useEffect( () => {
+		if ( animationRef.current ) {
+			animationRef.current.destroy();
+		}
+		// This function deliberately only runs when animationData changes,
+		// to clear the cached animation instance.
+		// eslint:ignore react-hooks/exhaustive-deps
+	}, [ animationData ] );
+
+	useEffect( () => {
 		if ( ! animationData || ! containerRef.current ) {
 			return;
 		}
 
 		if ( animationRef.current ) {
-			animationRef.current.destroy();
+			return;
 		}
 
 		try {
