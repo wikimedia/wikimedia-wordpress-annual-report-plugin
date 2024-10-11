@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wmf-reports/animation",
+	"version": "0.1.0",
+	"title": "Embedded Animation",
+	"category": "media",
+	"icon": "video-alt3",
+	"description": "Lottie animation",
+	"attributes": {
+		"animationData": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".wmf-animation",
+			"attribute": "data-animation",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "left", "right", "center" ]
+	},
+	"textdomain": "wmf-reports",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": [ "file:./view.js" ]
+}

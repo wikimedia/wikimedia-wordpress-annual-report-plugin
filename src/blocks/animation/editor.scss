@@ -1,0 +1,15 @@
+.editor-styles-wrapper a.wmf-animation__editor-help {
+	color: var(--link-color, #3a25ff);
+	font-family: var(--font-family-sans, sans-serif);
+	font-size: 0.8rem;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.editor-styles-wrapper .wmf-animation__editor-error {
+	color: #e20000;
+	font-family: var(--font-family-sans, sans-serif);
+	font-size: 0.8rem;
+	font-weight: 700;
+	margin-bottom: 0;
+}
