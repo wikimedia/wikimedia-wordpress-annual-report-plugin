@@ -120,6 +120,7 @@ function allow_some_report_blocks_globally( $allowed_block_types ) {
 	$globally_available_blocks = [
 		'wmf-reports/accordion-item',
 		'wmf-reports/accordion',
+		'wmf-reports/animation',
 		'wmf-reports/expandable',
 		'wmf-reports/map',
 		'wmf-reports/marker',
