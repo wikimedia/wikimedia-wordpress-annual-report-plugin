@@ -48,10 +48,8 @@ const AnimationPreview = ( { animationData } ) => {
 			// Don't crash editor if parsing gets into a bad state.
 		}
 	}, [ containerRef.current, animationRef.current, animationData ] );
-	return (
-		<div ref={ containerRef } />
-	);
-}
+	return <div ref={ containerRef } />;
+};
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -67,7 +65,9 @@ const AnimationPreview = ( { animationData } ) => {
  * @return {React.ReactNode} Rendered element.
  */
 export default function Edit( { attributes, setAttributes, isSelected } ) {
-	const [ tempAnimationData, setTempAnimationData ] = useState( attributes.animationData || '' );
+	const [ tempAnimationData, setTempAnimationData ] = useState(
+		attributes.animationData || ''
+	);
 	const [ validationError, setValidationError ] = useState( false );
 	const blockProps = useBlockProps( { className: 'wmf-animation' } );
 
@@ -94,7 +94,9 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 							return;
 						}
 						// If we have input, make sure it's valid JSON.
-						const reparsedJSON = JSON.stringify( JSON.parse( animationData ) );
+						const reparsedJSON = JSON.stringify(
+							JSON.parse( animationData )
+						);
 						setTempAnimationData( reparsedJSON );
 						setAttributes( { animationData: reparsedJSON } );
 					} catch ( e ) {
@@ -111,7 +113,10 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 				className="wmf-animation__editor-help"
 				href="https://lottiefiles.com/integrations#create-animation"
 			>
-				{ __( 'Click here for more details on generating LottieJSON', 'wmf-reports' ) }
+				{ __(
+					'Click here for more details on generating LottieJSON',
+					'wmf-reports'
+				) }
 			</a>
 		</div>
 	);

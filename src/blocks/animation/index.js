@@ -20,7 +20,9 @@ registerBlockType( metadata.name, {
 	save: ( { attributes } ) => {
 		let reparsedJSON = '';
 		try {
-			reparsedJSON = JSON.stringify( JSON.parse( attributes.animationData ) );
+			reparsedJSON = JSON.stringify(
+				JSON.parse( attributes.animationData )
+			);
 		} catch ( e ) {
 			// Save as unchanged if invalid.
 			reparsedJSON = attributes.animationData;

@@ -1,8 +1,12 @@
 import lottie from 'lottie-web';
 
-document.querySelectorAll( '.wmf-animation[data-animation]' )
+document
+	.querySelectorAll( '.wmf-animation[data-animation]' )
 	.forEach( ( animationContainer ) => {
-		console.log( { animationContainer, animationData: animationContainer.dataset.animation ?? '' } );
+		console.log( {
+			animationContainer,
+			animationData: animationContainer.dataset.animation ?? '',
+		} );
 		let animationData = '';
 		try {
 			animationData = JSON.parse( animationContainer.dataset.animation );
