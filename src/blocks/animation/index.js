@@ -30,6 +30,11 @@ registerBlockType( metadata.name, {
 		return (
 			<div
 				{ ...useBlockProps.save( { className: 'wmf-animation' } ) }
+				style={
+					attributes.maxWidth
+						? `max-width: ${ attributes.maxWidth }px`
+						: ''
+				}
 				data-animation={ reparsedJSON }
 			/>
 		);

@@ -14,11 +14,18 @@
 			"selector": ".wmf-animation",
 			"attribute": "data-animation",
 			"default": ""
+		},
+		"maxWidth": {
+			"type": "number",
+			"default": 330
 		}
 	},
 	"supports": {
 		"html": false,
-		"align": [ "left", "right", "center" ]
+		"align": [ "left", "right", "center" ],
+		"spacing": {
+			"margin": true
+		}
 	},
 	"textdomain": "wmf-reports",
 	"editorScript": "file:./index.js",

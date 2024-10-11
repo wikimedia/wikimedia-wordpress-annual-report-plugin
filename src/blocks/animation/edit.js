@@ -2,8 +2,13 @@ import lottie from 'lottie-web';
 import { useRef, useEffect, useState } from 'react';
 
 import { __ } from '@wordpress/i18n';
-import { useBlockProps } from '@wordpress/block-editor';
-import { TextareaControl } from '@wordpress/components';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import {
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalNumberControl as NumberControl,
+	PanelBody,
+	TextareaControl,
+} from '@wordpress/components';
 
 import './editor.scss';
 
@@ -64,13 +69,33 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 	if ( attributes.animationData && ! isSelected ) {
 		return (
 			<div { ...blockProps }>
-				<AnimationPreview animationData={ attributes.animationData } />
+				<div style={ { maxWidth: `${ attributes.maxWidth }px` } }>
+					<AnimationPreview
+						animationData={ attributes.animationData }
+					/>
+				</div>
 			</div>
 		);
 	}
 
 	return (
 		<div { ...blockProps }>
+			{ isSelected && (
+				<InspectorControls>
+					<PanelBody
+						title={ __( 'Animation appearance', 'wmf-reports' ) }
+					>
+						<NumberControl
+							label={ __( 'Maximum width', 'wmf-reports' ) }
+							max="1280"
+							value={ attributes.maxWidth }
+							onChange={ ( maxWidth ) =>
+								setAttributes( { maxWidth } )
+							}
+						/>
+					</PanelBody>
+				</InspectorControls>
+			) }
 			<TextareaControl
 				label={ __( 'Paste LottieJSON animation data', 'wmf-reports' ) }
 				value={ tempAnimationData }
