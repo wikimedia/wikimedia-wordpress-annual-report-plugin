@@ -1,4 +1,4 @@
-@import "../helpers/variables";
+@use "../helpers/variables";
 
 :root {
 	// Default.
@@ -27,7 +27,7 @@ div {
 		padding-top: calc(var(--report-overlapping-callout-group-block-height) * 0.6 + 1rem) !important;
 	}
 
-	@media screen and (min-width: $width-breakpoint-tablet) {
+	@media screen and (min-width: variables.$width-breakpoint-tablet) {
 		border-radius: 2rem;
 		left: 50%;
 		text-align: center;
