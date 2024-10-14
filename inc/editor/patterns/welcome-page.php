@@ -278,7 +278,7 @@ const PATTERN = <<<CONTENT
 
 <!-- wp:group {"align":"wide","className":"wmf-pattern-report-intro-contact","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide wmf-pattern-report-intro-contact"><!-- wp:shiro/contact -->
-<div class="wp-block-shiro-contact contact"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" class="contact__icon"><path fill="#000" fill-rule="evenodd" d="M14.5 5.5a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM2 16c0-2 2.083-5 8-5s8 3 8 5v3H2v-3z" clip-rule="evenodd"></path></svg><h3 class="contact__title">Contact a human</h3><div class="contact__description">Questions about the Wikimedia Foundation or our projects? Get in touch with our team.</div><h4 class="contact__social-title">Follow</h4><!-- wp:buttons -->
+<div class="wp-block-shiro-contact contact"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" class="contact__icon"><path fill="#000" fill-rule="evenodd" d="M14.5 5.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0M2 16c0-2 2.083-5 8-5s8 3 8 5v3H2z" clip-rule="evenodd"></path></svg><h3 class="contact__title">Contact a human</h3><div class="contact__description">Questions about the Wikimedia Foundation or our projects? Get in touch with our team.</div><h4 class="contact__social-title">Follow</h4><!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-as-link has-icon has-icon-social-facebook-blue"} -->
 <div class="wp-block-button is-style-as-link has-icon has-icon-social-facebook-blue"><a class="wp-block-button__link wp-element-button" href="https://www.facebook.com/wikimediafoundation/" target="_blank" rel="noreferrer noopener">Facebook</a></div>
 <!-- /wp:button -->
