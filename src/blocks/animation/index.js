@@ -18,24 +18,30 @@ registerBlockType( metadata.name, {
 	 */
 	edit: Edit,
 	save: ( { attributes } ) => {
-		let reparsedJSON = '';
+		let reserializedJSON = '';
+
+		const blockStyle = {};
+		if ( attributes.maxWidth ) {
+			blockStyle.maxWidth = `${ attributes.maxWidth }px`;
+		}
+
 		try {
-			reparsedJSON = JSON.stringify(
-				JSON.parse( attributes.animationData )
-			);
+			const parsedJSON = JSON.parse( attributes.animationData );
+
+			if ( parsedJSON.w && parsedJSON.h ) {
+				blockStyle.aspectRatio = `${ parsedJSON.w } / ${ parsedJSON.h }`;
+			}
+
+			reserializedJSON = JSON.stringify( parsedJSON );
 		} catch ( e ) {
-			// Save as unchanged if invalid.
-			reparsedJSON = attributes.animationData;
+			// Save as unchanged if invalid JSON.
+			reserializedJSON = attributes.animationData;
 		}
 		return (
 			<div
 				{ ...useBlockProps.save( { className: 'wmf-animation' } ) }
-				style={
-					attributes.maxWidth
-						? `max-width: ${ attributes.maxWidth }px`
-						: ''
-				}
-				data-animation={ reparsedJSON }
+				style={ blockStyle }
+				data-animation={ reserializedJSON }
 			/>
 		);
 	},
