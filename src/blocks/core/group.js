@@ -6,6 +6,7 @@ import { createBlock } from '@wordpress/blocks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 import { addFilter, removeFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 
@@ -19,6 +20,27 @@ const toIdString = ( string ) => {
 };
 
 /**
+ * Recursively look for a Table of Contents block in a BlockList.
+ *
+ * @param {object[]} blocks Array of WP Block instances.
+ * @return {boolean} Whether a ToC was found.
+ */
+function blockListContainsTableOfContents( blocks ) {
+	for ( const block of blocks ) {
+		if ( block.name === 'wmf-reports/table-of-contents' ) {
+			return true;
+		}
+		if (
+			blocks.innerBlocks &&
+			blockListContainsTableOfContents( blocks.innerBlocks )
+		) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
  * Filter the BlockEdit component to inject custom controls into core/group block.
  *
  * @param {React.ReactNode} BlockEdit Gutenberg's default edit component for a block.
@@ -26,7 +48,22 @@ const toIdString = ( string ) => {
  */
 const withCustomGroupControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		if ( ! props.isSelected || props.name !== 'core/group' ) {
+		const shouldInjectControls =
+			props.isSelected && props.name === 'core/group';
+		const showControlsForToC = useSelect(
+			( select ) => {
+				if ( ! shouldInjectControls ) {
+					return false;
+				}
+				// Only inject Report Table of Contents-related settings if a ToC is present.
+				return blockListContainsTableOfContents(
+					select( 'core/editor' ).getBlocks()
+				);
+			},
+			[ shouldInjectControls ]
+		);
+
+		if ( ! shouldInjectControls ) {
 			return <BlockEdit key="edit" { ...props } />;
 		}
 		const { attributes, setAttributes } = props;
@@ -39,31 +76,37 @@ const withCustomGroupControls = createHigherOrderComponent( ( BlockEdit ) => {
 						title={ __( 'Report group settings', 'wmf-reports' ) }
 						initialOpen={ true }
 					>
-						<ToggleControl
-							label={ __(
-								'Include in Report Table of Contents',
-								'wmf-reports'
-							) }
-							checked={ attributes.includeInToC }
-							onChange={ ( includeInToC ) => {
-								setAttributes( { includeInToC } );
-							} }
-						/>
-						{ attributes.includeInToC && (
-							<TextControl
-								label={ __(
-									'Table of Contents Label',
-									'wmf-reports'
+						{ showControlsForToC && (
+							<>
+								<ToggleControl
+									label={ __(
+										'Include in Report Table of Contents',
+										'wmf-reports'
+									) }
+									checked={ attributes.includeInToC }
+									onChange={ ( includeInToC ) => {
+										setAttributes( { includeInToC } );
+									} }
+								/>
+								{ attributes.includeInToC && (
+									<TextControl
+										label={ __(
+											'Table of Contents Label',
+											'wmf-reports'
+										) }
+										value={ attributes.tocLabel }
+										onChange={ ( tocLabel ) => {
+											const id = toIdString( tocLabel );
+											setAttributes( {
+												tocSlug: id
+													? `toc-${ id }`
+													: '',
+												tocLabel,
+											} );
+										} }
+									/>
 								) }
-								value={ attributes.tocLabel }
-								onChange={ ( tocLabel ) => {
-									const id = toIdString( tocLabel );
-									setAttributes( {
-										tocSlug: id ? `toc-${ id }` : '',
-										tocLabel,
-									} );
-								} }
-							/>
+							</>
 						) }
 						<ToggleControl
 							label={ __(

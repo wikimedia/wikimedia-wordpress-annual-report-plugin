@@ -2,11 +2,19 @@ import lottie from 'lottie-web';
 
 const animations = new Map();
 
+const prefersReducedMotion = window.matchMedia(
+	'(prefers-reduced-motion: reduce)'
+);
+
 const observer = new window.IntersectionObserver(
 	( entries ) => {
 		entries.forEach( ( entry ) => {
 			const animation = animations.get( entry.target );
 			if ( ! animation ) {
+				return;
+			}
+			if ( prefersReducedMotion.matches ) {
+				// Do not animate, user has requested reduced motion.
 				return;
 			}
 			if ( ! entry.isIntersecting ) {
@@ -34,6 +42,11 @@ const observer = new window.IntersectionObserver(
  */
 function registerAnimation( container, animation ) {
 	animations.set( container, animation );
+
+	if ( prefersReducedMotion.matches ) {
+		// Avoid motion by freezing on the final frame (behave as a static image).
+		animation.goToAndStop( animation.totalFrames, true );
+	}
 
 	observer.observe( container );
 }

@@ -15,4 +15,10 @@
 		font-weight: 700;
 		margin-bottom: 0;
 	}
+
+	[data-align="center"] > & {
+		> div {
+			margin: auto;
+		}
+	}
 }
