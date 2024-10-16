@@ -390,7 +390,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					className="slides"
 					currentItemIndex={ currentItemIndex }
 					parentBlockId={ clientId }
-					template={ [ 'wmf-reports/marker' ] }
+					template={ [ [ 'wmf-reports/marker' ] ] }
 				/>
 				<p className="help">
 					{ __(

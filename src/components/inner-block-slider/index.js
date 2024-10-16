@@ -23,7 +23,7 @@ const InnerBlockSlider = ( {
 	allowedBlocks,
 	currentBlock,
 	template,
-	slideLimit,
+	slideLimit = 10,
 } ) => {
 	const innerBlockTemplate = template || [ [ currentBlock ] ];
 
@@ -89,11 +89,6 @@ const InnerBlockSlider = ( {
 			/>
 		</div>
 	);
-};
-
-InnerBlockSlider.defaultProps = {
-	slideLimit: 10,
-	template: null,
 };
 
 InnerBlockSlider.propTypes = {

@@ -21,10 +21,10 @@ function InnerBlocksDisplaySingle( {
 	className,
 	allowedBlocks,
 	template,
-	currentItemIndex,
+	currentItemIndex = 0,
 	parentBlockId,
-	renderAppender,
-	captureToolbars,
+	renderAppender = false,
+	captureToolbars = true,
 } ) {
 	const styleRef = useRef();
 
@@ -38,7 +38,7 @@ function InnerBlocksDisplaySingle( {
 			allowedBlocks,
 			orientation: 'horizontal',
 			renderAppender,
-			template,
+			...( template ? { template } : null ),
 			templateLock: false,
 		}
 	);
@@ -60,12 +60,6 @@ function InnerBlocksDisplaySingle( {
 		</>
 	);
 }
-
-InnerBlocksDisplaySingle.defaultProps = {
-	currentItemIndex: 0,
-	renderAppender: false,
-	captureToolbars: true,
-};
 
 InnerBlocksDisplaySingle.propTypes = {
 	parentBlockId: PropTypes.string.isRequired,
