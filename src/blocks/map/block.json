@@ -14,7 +14,7 @@
 		},
 		"mapStyle": {
 			"type": "string",
-			"default": "mapbox://styles/mapbox/light-v11"
+			"default": "mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7"
 		}
 	},
 	"example": {},
