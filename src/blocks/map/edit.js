@@ -2,7 +2,7 @@
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useEffect, useRef, useState } from '@wordpress/element';
 
@@ -14,6 +14,36 @@ import Navigation from '../../components/inner-block-slider/navigation';
 
 let map = null;
 let mapItemIndex = 0;
+
+const mapboxStyleOptions = [
+	{
+		label: 'WMF Report',
+		value: 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7',
+	},
+	{ label: 'Standard', value: 'mapbox://styles/mapbox/standard' },
+	{
+		label: 'Standard Satellite',
+		value: 'mapbox://styles/mapbox/standard-satellite',
+	},
+	{ label: 'Streets', value: 'mapbox://styles/mapbox/streets-v12' },
+	{ label: 'Outdoors', value: 'mapbox://styles/mapbox/outdoors-v12' },
+	{ label: 'Light', value: 'mapbox://styles/mapbox/light-v11' },
+	{ label: 'Dark', value: 'mapbox://styles/mapbox/dark-v11' },
+	{ label: 'Satellite', value: 'mapbox://styles/mapbox/satellite-v9' },
+	{
+		label: 'Satellite Streets',
+		value: 'mapbox://styles/mapbox/satellite-streets-v12',
+	},
+	{
+		label: 'Navigation Day',
+		value: 'mapbox://styles/mapbox/navigation-day-v1',
+	},
+	{
+		label: 'Navigation Night',
+		value: 'mapbox://styles/mapbox/navigation-night-v1',
+	},
+	{ label: 'Custom', value: '' },
+];
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -365,22 +395,36 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		);
 	}
 
+	const customStyleSelected =
+		mapStyle === '' ||
+		! mapboxStyleOptions.find( ( { value } ) => value === mapStyle );
+
 	return (
 		<div { ...blockProps }>
 			<InspectorControls>
 				<PanelBody>
-					<TextControl
+					<SelectControl
+						label={ __( 'Select Mapbox style', 'wmf-reports' ) }
 						help={ __(
 							'Change the style associated with the map',
 							'wmf-reports'
 						) }
-						label={ __( 'Map Style', 'wmf-reports' ) }
-						value={ mapStyle }
-						// eslint-disable-next-line no-shadow
-						onChange={ ( mapStyle ) => {
-							setAttributes( { mapStyle } );
-						} }
+						options={ mapboxStyleOptions }
+						onChange={ ( mapStyle ) =>
+							setAttributes( { mapStyle } )
+						}
+						value={ customStyleSelected ? '' : mapStyle }
 					/>
+					{ customStyleSelected ? (
+						<TextControl
+							label={ __( 'Custom style', 'wmf-reports' ) }
+							value={ mapStyle }
+							// eslint-disable-next-line no-shadow
+							onChange={ ( mapStyle ) => {
+								setAttributes( { mapStyle } );
+							} }
+						/>
+					) : null }
 				</PanelBody>
 			</InspectorControls>
 			<div id="map"></div>
