@@ -87,13 +87,13 @@ const MapPreview = ( { mapStyle, slideBlocks = [], updateMarkers } ) => {
 		if ( map ) {
 			map.removeControl( fullScreenControl );
 			map.remove();
-			if ( containerRef.current ) {
-				// Clear out DIV to avoid "The map container element should be empty"
-				// warnings when re-rendering.
-				containerRef.current.innerHTML = '';
-			}
 		}
 
+		if ( containerRef.current ) {
+			// Clear out DIV to avoid "The map container element should be empty"
+			// warnings when re-rendering.
+			containerRef.current.innerHTML = '';
+		}
 		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
