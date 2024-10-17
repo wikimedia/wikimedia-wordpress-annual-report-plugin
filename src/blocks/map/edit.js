@@ -54,8 +54,21 @@ const mapboxStyleOptions = [
  * @param {Function} props.updateMarkers Callback to update map pins.
  * @return {React.ReactNode} Container node for Map.
  */
-const MapPreview = ( { mapStyle, slideBlocks, updateMarkers } ) => {
+const MapPreview = ( { mapStyle, slideBlocks = [], updateMarkers } ) => {
 	const containerRef = useRef( null );
+
+	// Parse the slideBlocks into a stable JSON string, which we can use
+	// to rerender the map as needed without unnecessarily causing it to
+	// reinit (with a distracting visual flash) every time text is changed
+	// in nested blocks.
+	const serializedFeatures = JSON.stringify(
+		slideBlocks.map( ( { attributes, clientId } ) => ( {
+			clientId,
+			id: attributes.id,
+			lat: attributes.lat,
+			long: attributes.long,
+		} ) )
+	);
 
 	/**
 	 * Init the map.
@@ -95,6 +108,8 @@ const MapPreview = ( { mapStyle, slideBlocks, updateMarkers } ) => {
 
 		map.addControl( fullScreenControl );
 
+		const slideMarkers = JSON.parse( serializedFeatures );
+
 		map.on( 'load', () => {
 			// For clustering we need to add a data source.
 			map.addSource( 'markers', {
@@ -102,21 +117,22 @@ const MapPreview = ( { mapStyle, slideBlocks, updateMarkers } ) => {
 				data: {
 					type: 'FeatureCollection',
 					features:
-						slideBlocks?.map( ( slideBlock, index ) => {
-							const { id, lat, long } = slideBlock.attributes;
-							return {
-								geometry: {
-									type: 'Point',
-									coordinates: [ long, lat ],
-								},
-								type: 'Feature',
-								properties: {
-									clientId: slideBlock.clientId,
-									id,
-									index,
-								},
-							};
-						} ) || [],
+						slideMarkers.map(
+							( { id, lat, long, clientId }, index ) => {
+								return {
+									geometry: {
+										type: 'Point',
+										coordinates: [ long, lat ],
+									},
+									type: 'Feature',
+									properties: {
+										clientId: clientId,
+										id,
+										index,
+									},
+								};
+							}
+						) || [],
 				},
 				cluster: true,
 				clusterRadius: 10,
@@ -168,16 +184,9 @@ const MapPreview = ( { mapStyle, slideBlocks, updateMarkers } ) => {
 				updateMarkers();
 			} );
 		} );
-		/**
-		 * Note that we have to add slideBlocks as a dependency here so the map refreshes when
-		 * a pin is moved around or unclustered.
-		 */
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ mapStyle, slideBlocks, updateMarkers ] );
+	}, [ mapStyle, serializedFeatures, updateMarkers ] );
 
-	return (
-		<div id="map"></div>
-	);
+	return <div id="map" ref={ containerRef }></div>;
 };
 
 /**
