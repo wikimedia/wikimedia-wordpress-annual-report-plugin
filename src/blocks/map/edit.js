@@ -228,9 +228,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			return;
 		}
 
-		const id = Date.now();
 		const created = createBlock( 'wmf-reports/marker', {
-			id,
+			id: Date.now(),
 			title: `Marker ${ slideCount.current + 1 }`,
 			lat: center.lat,
 			long: center.lng,

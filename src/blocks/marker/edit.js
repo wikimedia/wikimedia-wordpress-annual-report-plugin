@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import {
@@ -32,9 +33,16 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	const { PostSelectButton } = window?.hm?.components || {
 		PostSelectButton: () => {},
 	};
-	const { lat, long, postId, postType } = attributes;
+	const { id, lat, long, postId, postType } = attributes;
 	// eslint-disable-next-line no-undef
 	const isWend = wmf.theme === 'wikimedia-endow';
+
+	useEffect( () => {
+		// Ensure every block has a unique[-enough] ID.
+		if ( ! id ) {
+			setAttributes( { id: Date.now() } );
+		}
+	}, [ id ] );
 
 	const childBlocks = useSelect( ( select ) => {
 		const blocks = select( 'core/editor' ).getBlocksByClientId( clientId );
