@@ -46,6 +46,141 @@ const mapboxStyleOptions = [
 ];
 
 /**
+ * Render a container and initialize the map within it.
+ *
+ * @param {Object}   props               React component props.
+ * @param {string}   props.mapStyle      mapbox:// style string URI.
+ * @param {Object[]} props.slideBlocks   Block array, necessary for rerendering map.
+ * @param {Function} props.updateMarkers Callback to update map pins.
+ * @return {React.ReactNode} Container node for Map.
+ */
+const MapPreview = ( { mapStyle, slideBlocks, updateMarkers } ) => {
+	const containerRef = useRef( null );
+
+	/**
+	 * Init the map.
+	 */
+	useEffect( () => {
+		if ( ! wmf?.apiKey || ! mapboxgl ) {
+			// eslint-disable-next-line no-console
+			console.error(
+				'Unable to initialize mapbox. API key or mapbox global unavailable.'
+			);
+			return;
+		}
+
+		const fullScreenControl = new mapboxgl.NavigationControl();
+
+		if ( map ) {
+			map.removeControl( fullScreenControl );
+			map.remove();
+			if ( containerRef.current ) {
+				// Clear out DIV to avoid "The map container element should be empty"
+				// warnings when re-rendering.
+				containerRef.current.innerHTML = '';
+			}
+		}
+
+		mapboxgl.accessToken = wmf.apiKey;
+		map = new mapboxgl.Map( {
+			container: 'map',
+			center: [ 8.18, 18.83 ],
+			minZoom: 0,
+			projection: 'mercator',
+			renderWorldCopies: false,
+			scrollZoom: false,
+			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
+			zoom: 0,
+		} );
+
+		map.addControl( fullScreenControl );
+
+		map.on( 'load', () => {
+			// For clustering we need to add a data source.
+			map.addSource( 'markers', {
+				type: 'geojson',
+				data: {
+					type: 'FeatureCollection',
+					features:
+						slideBlocks?.map( ( slideBlock, index ) => {
+							const { id, lat, long } = slideBlock.attributes;
+							return {
+								geometry: {
+									type: 'Point',
+									coordinates: [ long, lat ],
+								},
+								type: 'Feature',
+								properties: {
+									clientId: slideBlock.clientId,
+									id,
+									index,
+								},
+							};
+						} ) || [],
+				},
+				cluster: true,
+				clusterRadius: 10,
+				clusterProperties: {
+					sum: [
+						'get',
+						'count',
+						[ 'get', 'value', [ 'properties' ] ],
+					],
+				},
+			} );
+
+			// For clustering we need to add a layer for markers.
+			// We will replace these with HTML markers.
+			map.addLayer( {
+				id: 'marker_circle',
+				type: 'circle',
+				source: 'markers',
+				filter: [ '!=', 'cluster', true ],
+				paint: {
+					'circle-color': '#000',
+					'circle-radius': 1,
+				},
+			} );
+
+			// For clustering we need to add a layer for clusters.
+			// We will replace these with HTML markers.
+			map.addLayer( {
+				id: 'marker_label',
+				type: 'symbol',
+				source: 'markers',
+				filter: [ '!=', 'cluster', true ],
+				layout: {
+					'text-field': '{point_count_abbreviated}',
+					'text-size': 10,
+				},
+				paint: {
+					'circle-color': '#000',
+					'text-color': 'white',
+				},
+			} );
+
+			// Rendering happen as the map moves, update the pins on the map
+			// based on the above data source.
+			map.on( 'render', () => {
+				if ( ! map.isSourceLoaded( 'markers' ) ) {
+					return;
+				}
+				updateMarkers();
+			} );
+		} );
+		/**
+		 * Note that we have to add slideBlocks as a dependency here so the map refreshes when
+		 * a pin is moved around or unclustered.
+		 */
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ mapStyle, slideBlocks, updateMarkers ] );
+
+	return (
+		<div id="map"></div>
+	);
+};
+
+/**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
@@ -264,119 +399,6 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		slideCount.current = slideBlocks.length;
 	}, [ slideBlocks.length, currentItemIndex, slideCount, slideBlocks ] );
 
-	/**
-	 * Init the map.
-	 */
-	useEffect( () => {
-		if ( ! wmf?.apiKey || ! mapboxgl ) {
-			// eslint-disable-next-line no-console
-			console.error(
-				'Unable to initialize mapbox. API key or mapbox global unavailable.'
-			);
-			return;
-		}
-
-		const fullScreenControl = new mapboxgl.NavigationControl();
-
-		if ( map ) {
-			map.removeControl( fullScreenControl );
-			map.remove();
-		}
-
-		mapboxgl.accessToken = wmf.apiKey;
-		map = new mapboxgl.Map( {
-			container: 'map',
-			center: [ 8.18, 18.83 ],
-			minZoom: 0,
-			projection: 'mercator',
-			renderWorldCopies: false,
-			scrollZoom: false,
-			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
-			zoom: 0,
-		} );
-
-		map.addControl( fullScreenControl );
-
-		map.on( 'load', () => {
-			// For clustering we need to add a data source.
-			map.addSource( 'markers', {
-				type: 'geojson',
-				data: {
-					type: 'FeatureCollection',
-					features:
-						slideBlocks?.map( ( slideBlock, index ) => {
-							const { id, lat, long } = slideBlock.attributes;
-							return {
-								geometry: {
-									type: 'Point',
-									coordinates: [ long, lat ],
-								},
-								type: 'Feature',
-								properties: {
-									clientId: slideBlock.clientId,
-									id,
-									index,
-								},
-							};
-						} ) || [],
-				},
-				cluster: true,
-				clusterRadius: 10,
-				clusterProperties: {
-					sum: [
-						'get',
-						'count',
-						[ 'get', 'value', [ 'properties' ] ],
-					],
-				},
-			} );
-
-			// For clustering we need to add a layer for markers.
-			// We will replace these with HTML markers.
-			map.addLayer( {
-				id: 'marker_circle',
-				type: 'circle',
-				source: 'markers',
-				filter: [ '!=', 'cluster', true ],
-				paint: {
-					'circle-color': '#000',
-					'circle-radius': 1,
-				},
-			} );
-
-			// For clustering we need to add a layer for clusters.
-			// We will replace these with HTML markers.
-			map.addLayer( {
-				id: 'marker_label',
-				type: 'symbol',
-				source: 'markers',
-				filter: [ '!=', 'cluster', true ],
-				layout: {
-					'text-field': '{point_count_abbreviated}',
-					'text-size': 10,
-				},
-				paint: {
-					'circle-color': '#000',
-					'text-color': 'white',
-				},
-			} );
-
-			// Rendering happen as the map moves, update the pins on the map
-			// based on the above data source.
-			map.on( 'render', () => {
-				if ( ! map.isSourceLoaded( 'markers' ) ) {
-					return;
-				}
-				updateMarkers();
-			} );
-		} );
-		/**
-		 * Note that we have to add slideBlocks as a dependency here so the map refreshes when
-		 * a pin is moved around or unclustered.
-		 */
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ mapStyle, slideBlocks, slideBlocks.length, updateMarkers ] );
-
 	const blockProps = useBlockProps( {
 		className: 'map map--carousel carousel',
 	} );
@@ -427,7 +449,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					) : null }
 				</PanelBody>
 			</InspectorControls>
-			<div id="map"></div>
+			<MapPreview { ...{ mapStyle, slideBlocks, updateMarkers } } />
 			<div className="inner-block-slider">
 				<InnerBlocksDisplaySingle
 					allowedBlocks={ [ 'wmf-reports/marker' ] }
