@@ -1,8 +1,6 @@
-/**
- * Base variables, partly inherited from WikimediaUI Base v0.18.1
- * Wikimedia Foundation user interface base variables
- * https://gerrit.wikimedia.org/g/wikimedia-ui-base/
- */
+// Base variables, partly inherited from WikimediaUI Base v0.18.1
+// Wikimedia Foundation user interface base variables
+// https://gerrit.wikimedia.org/g/wikimedia-ui-base/
 
 // == Breakpoints ==
 // The following numbers are prone to change with new information.
@@ -46,6 +44,9 @@ $font-size-xlarge: 1.5rem; // 24px
 $font-size-xxlarge: 1.75rem; // 28px
 $font-size-xxxlarge: 2.188rem; // 35px
 
+// Font weight
+$font-weight-base: 700;
+
 // Line heights
 $line-height-xsmall: 1.07;
 $line-height-small: 1.43;
@@ -53,15 +54,3 @@ $line-height-base: 1.6;
 $line-height-large: 1.56;
 $line-height-xlarge: 1.43;
 $line-height-xxlarge: 2;
-
-@mixin base-font {
-	// Temporarily commented out because iDevices were too inconsistent in how
-	// they rendered the Noto Sans custom font.
-	// font-family: $font-family-base;
-	font-weight: 700;
-
-	// @supports (-webkit-touch-callout: none) {
-	// 	// iOS renders this font differently.
-	// 	font-weight: 600;
-	// }
-}
