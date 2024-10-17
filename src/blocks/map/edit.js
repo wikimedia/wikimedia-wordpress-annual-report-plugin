@@ -170,7 +170,7 @@ const MapPreview = ( { mapStyle, slideBlocks = [], updateMarkers } ) => {
 					'text-size': 10,
 				},
 				paint: {
-					'circle-color': '#000',
+					'icon-color': '#000',
 					'text-color': 'white',
 				},
 			} );
