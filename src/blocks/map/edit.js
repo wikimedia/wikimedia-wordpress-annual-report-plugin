@@ -126,7 +126,7 @@ const MapPreview = ( { mapStyle, slideBlocks = [], updateMarkers } ) => {
 									},
 									type: 'Feature',
 									properties: {
-										clientId: clientId,
+										clientId,
 										id,
 										index,
 									},
@@ -440,6 +440,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 							'wmf-reports'
 						) }
 						options={ mapboxStyleOptions }
+						// eslint-disable-next-line no-shadow
 						onChange={ ( mapStyle ) =>
 							setAttributes( { mapStyle } )
 						}

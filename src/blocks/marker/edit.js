@@ -42,7 +42,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		if ( ! id ) {
 			setAttributes( { id: Date.now() } );
 		}
-	}, [ id ] );
+	}, [ id, setAttributes ] );
 
 	const childBlocks = useSelect( ( select ) => {
 		const blocks = select( 'core/editor' ).getBlocksByClientId( clientId );

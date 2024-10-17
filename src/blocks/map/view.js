@@ -74,7 +74,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		nextMapMarkers.forEach( ( mapMarker ) => {
 			mapMarker.classList.add( 'active' );
 
-			const groupID = mapMarker.closest( '.wp-block-group[id]' )?.id || 'map';
+			const groupID =
+				mapMarker.closest( '.wp-block-group[id]' )?.id || 'map';
 
 			if ( shouldScrollToElement && mapMarker.dataset.id ) {
 				location.hash = `${ groupID }-${ mapMarker.dataset.id }`;
