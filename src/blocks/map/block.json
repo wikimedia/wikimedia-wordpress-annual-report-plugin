@@ -14,7 +14,7 @@
 		},
 		"mapStyle": {
 			"type": "string",
-			"default": "mapbox://styles/mapbox/light-v11"
+			"default": "mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7"
 		}
 	},
 	"example": {},
@@ -26,5 +26,6 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"render": "file:./render.php",
+	"style": "file:./style-index.css",
 	"viewScript": [ "file:./view.js", "mapbox-gl" ]
 }

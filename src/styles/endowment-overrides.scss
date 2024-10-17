@@ -1,3 +1,5 @@
+@use "../helpers/variables";
+
 /* stylelint-disable no-descending-specificity */
 .report-background.wikimedia-endow,
 body.single-wmf-report.wikimedia-endow:not(.home) {
@@ -24,7 +26,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			background: #0060fe;
 			color: #fff;
 
-			@include base-font;
+			font-weight: variables.$font-weight-base;
 			text-transform: uppercase;
 			font-size: 0.938rem;
 			padding: 0.5rem 1rem 0.5rem 1rem;
@@ -90,10 +92,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	.alignwide {
 		margin-left: auto;
 		margin-right: auto;
-		max-width: $width-breakpoint-wide !important;
+		max-width: variables.$width-breakpoint-wide !important;
 		width: 100%;
 
-		@media only screen and (min-width: 1044px) and (max-width: #{$width-breakpoint-wide + 64}) {
+		@media only screen and (min-width: 1044px) and (max-width: #{variables.$width-breakpoint-wide + 64}) {
 			padding-left: 2rem;
 			padding-right: 2rem;
 		}
@@ -492,7 +494,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			bottom: 12rem;
 		}
 
-		@media only screen and (min-width: $width-breakpoint-wide) {
+		@media only screen and (min-width: variables.$width-breakpoint-wide) {
 			bottom: 10rem;
 		}
 	}
@@ -513,7 +515,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		.stories__categories-outer-wrapper.alignwide,
 		.stories__categories-wrapper.alignwide {
-			max-width: calc($width-breakpoint-wide + 4rem) !important;
+			max-width: calc(variables.$width-breakpoint-wide + 4rem) !important;
 		}
 
 		&.carousel .stories__categories-outer-wrapper.alignwide {
@@ -1020,7 +1022,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				}
 			}
 
-			@media only screen and (min-width: #{ $width-breakpoint-wide + 64 }) {
+			@media only screen and (min-width: #{ variables.$width-breakpoint-wide + 64 }) {
 				margin-left: auto;
 				margin-right: auto;
 				border-bottom-right-radius: 0;
@@ -1039,7 +1041,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				font-size: 0.75rem;
 				padding: 1rem 2rem;
 
-				@media only screen and (min-width: #{ $width-breakpoint-wide + 64 }) {
+				@media only screen and (min-width: #{ variables.$width-breakpoint-wide + 64 }) {
 					padding: 1rem;
 				}
 
@@ -1201,7 +1203,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			background: #0060fe;
 			color: #fff;
 
-			@include base-font;
+			font-weight: variables.$font-weight-base;
 			text-transform: uppercase;
 			font-size: 0.938rem;
 			padding: 4px 8px;

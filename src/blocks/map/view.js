@@ -74,7 +74,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		nextMapMarkers.forEach( ( mapMarker ) => {
 			mapMarker.classList.add( 'active' );
 
-			const groupID = mapMarker.closest( '.wp-block-group[id]' )?.id;
+			const groupID =
+				mapMarker.closest( '.wp-block-group[id]' )?.id || 'map';
 
 			if ( shouldScrollToElement && mapMarker.dataset.id ) {
 				location.hash = `${ groupID }-${ mapMarker.dataset.id }`;
@@ -194,27 +195,31 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		parentContainer.classList.remove( 'carousel--uninitialized' );
 	}
 
-	backButton.addEventListener( 'click', () => {
-		const index = Array.from( markers ).findIndex(
-			( marker ) => marker.style.visibility === 'visible'
-		);
+	if ( backButton ) {
+		backButton.addEventListener( 'click', () => {
+			const index = Array.from( markers ).findIndex(
+				( marker ) => marker.style.visibility === 'visible'
+			);
 
-		const nextIndex = index - 1 < 0 ? markers.length - 1 : index - 1;
-		setMarker( nextIndex, false );
-	} );
+			const nextIndex = index - 1 < 0 ? markers.length - 1 : index - 1;
+			setMarker( nextIndex, false );
+		} );
+	}
 
-	forwardButton.addEventListener( 'click', () => {
-		let index = Array.from( markers ).findIndex(
-			( marker ) => marker.style.visibility === 'visible'
-		);
+	if ( forwardButton ) {
+		forwardButton.addEventListener( 'click', () => {
+			let index = Array.from( markers ).findIndex(
+				( marker ) => marker.style.visibility === 'visible'
+			);
 
-		if ( index < 0 ) {
-			index = 0;
-		}
+			if ( index < 0 ) {
+				index = 0;
+			}
 
-		const nextIndex = index + 1 > markers.length - 1 ? 0 : index + 1;
-		setMarker( nextIndex, false );
-	} );
+			const nextIndex = index + 1 > markers.length - 1 ? 0 : index + 1;
+			setMarker( nextIndex, false );
+		} );
+	}
 
 	/**
 	 * Update Markers Function.
@@ -408,7 +413,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				'text-size': 10,
 			},
 			paint: {
-				'circle-color': '#000',
+				'icon-color': '#000',
 				'text-color': 'white',
 			},
 		} );

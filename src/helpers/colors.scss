@@ -1,3 +1,11 @@
+
+// Report compatibility
+.has-wmf-report-red-background-color,
+.has-wmf-report-green-background-color,
+.has-green-30-background-color,
+.has-wmf-report-purple-background-color {
+
+}
 /* Support for our custom colors */
 .has-wmf-report-brightblue-background-color {
 	background-color: #00a0ff;
@@ -13,6 +21,7 @@
 
 .has-wmf-report-red-background-color {
 	background-color: #970302;
+	color: #fff;
 }
 
 .has-wmf-report-orange-background-color {
@@ -25,18 +34,22 @@
 
 .has-wmf-report-green-background-color {
 	background-color: #318557;
+	color: #fff;
 }
 
 .has-green-30-background-color {
 	background-color: #14866d;
+	color: #fff;
 }
 
 .has-wmf-report-bright-green-background-color {
 	background-color: #71d1b3;
+	color: var(--text-color);
 }
 
 .has-wmf-report-purple-background-color {
 	background-color: #5748b5;
+	color: #fff;
 }
 
 .has-wmf-report-link-color-background-color {
