@@ -55,7 +55,12 @@ const mapboxStyleOptions = [
  * @param {Function} props.updateMarkers Callback to update map pins.
  * @return {React.ReactNode} Container node for Map.
  */
-const MapPreview = ( { mapStyle, projection = 'equirectangular', slideBlocks = [], updateMarkers } ) => {
+const MapPreview = ( {
+	mapStyle,
+	projection = 'equirectangular',
+	slideBlocks = [],
+	updateMarkers,
+} ) => {
 	const containerRef = useRef( null );
 
 	// Parse the slideBlocks into a stable JSON string, which we can use
@@ -98,13 +103,13 @@ const MapPreview = ( { mapStyle, projection = 'equirectangular', slideBlocks = [
 		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
-			center: [ 8.18, 18.83 ],
+			center: [ 8.18, 9 ],
 			minZoom: 0,
 			projection,
 			renderWorldCopies: false,
 			scrollZoom: false,
 			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
-			zoom: 0,
+			zoom: 0.5,
 		} );
 
 		map.addControl( fullScreenControl );
@@ -197,7 +202,13 @@ const MapPreview = ( { mapStyle, projection = 'equirectangular', slideBlocks = [
 		}
 	}, [ projection ] );
 
-	return <div id="map" style={ {} } ref={ containerRef }></div>;
+	return (
+		<div
+			id="map"
+			style={ { minHeight: '250px' } }
+			ref={ containerRef }
+		></div>
+	);
 };
 
 /**
@@ -470,11 +481,16 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 					<SelectControl
 						label={ __( 'Choose projection', 'wmf-reports' ) }
 						options={ [
-							{ value: 'equirectangular', label: 'Equirectangular' },
+							{
+								value: 'equirectangular',
+								label: 'Equirectangular',
+							},
 							{ value: 'mercator', label: 'Mercator' },
 						] }
 						value={ attributes.projection || 'equirectangular' }
-						onChange={ ( projection ) => setAttributes( { projection } ) }
+						onChange={ ( projection ) =>
+							setAttributes( { projection } )
+						}
 					/>
 				</PanelBody>
 			</InspectorControls>
