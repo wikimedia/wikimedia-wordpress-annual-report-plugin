@@ -50,11 +50,12 @@ const mapboxStyleOptions = [
  *
  * @param {Object}   props               React component props.
  * @param {string}   props.mapStyle      mapbox:// style string URI.
+ * @param {string}   props.projection    Which map projection to use.
  * @param {Object[]} props.slideBlocks   Block array, necessary for rerendering map.
  * @param {Function} props.updateMarkers Callback to update map pins.
  * @return {React.ReactNode} Container node for Map.
  */
-const MapPreview = ( { mapStyle, slideBlocks = [], updateMarkers } ) => {
+const MapPreview = ( { mapStyle, projection = 'equirectangular', slideBlocks = [], updateMarkers } ) => {
 	const containerRef = useRef( null );
 
 	// Parse the slideBlocks into a stable JSON string, which we can use
@@ -99,7 +100,7 @@ const MapPreview = ( { mapStyle, slideBlocks = [], updateMarkers } ) => {
 			container: 'map',
 			center: [ 8.18, 18.83 ],
 			minZoom: 0,
-			projection: 'mercator',
+			projection,
 			renderWorldCopies: false,
 			scrollZoom: false,
 			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
@@ -184,9 +185,19 @@ const MapPreview = ( { mapStyle, slideBlocks = [], updateMarkers } ) => {
 				updateMarkers();
 			} );
 		} );
+		// We do not want a change to projection to trigger a re-render, that
+		// is handled separately below.
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ mapStyle, serializedFeatures, updateMarkers ] );
 
-	return <div id="map" ref={ containerRef }></div>;
+	useEffect( () => {
+		if ( map ) {
+			// Keep the projection up to date as it changes.
+			map.setProjection( projection );
+		}
+	}, [ projection ] );
+
+	return <div id="map" style={ {} } ref={ containerRef }></div>;
 };
 
 /**
@@ -456,9 +467,21 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 							} }
 						/>
 					) : null }
+					<SelectControl
+						label={ __( 'Choose projection', 'wmf-reports' ) }
+						options={ [
+							{ value: 'equirectangular', label: 'Equirectangular' },
+							{ value: 'mercator', label: 'Mercator' },
+						] }
+						value={ attributes.projection || 'equirectangular' }
+						onChange={ ( projection ) => setAttributes( { projection } ) }
+					/>
 				</PanelBody>
 			</InspectorControls>
-			<MapPreview { ...{ mapStyle, slideBlocks, updateMarkers } } />
+			<MapPreview
+				{ ...{ mapStyle, slideBlocks, updateMarkers } }
+				projection={ attributes.projection }
+			/>
 			<div className="inner-block-slider">
 				<InnerBlocksDisplaySingle
 					allowedBlocks={ [ 'wmf-reports/marker' ] }
