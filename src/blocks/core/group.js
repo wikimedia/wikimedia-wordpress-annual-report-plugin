@@ -77,36 +77,44 @@ const withCustomGroupControls = createHigherOrderComponent( ( BlockEdit ) => {
 						initialOpen={ true }
 					>
 						{ showControlsForToC && (
-							<>
-								<ToggleControl
-									label={ __(
-										'Include in Report Table of Contents',
-										'wmf-reports'
-									) }
-									checked={ attributes.includeInToC }
-									onChange={ ( includeInToC ) => {
-										setAttributes( { includeInToC } );
-									} }
-								/>
-								{ attributes.includeInToC && (
-									<TextControl
-										label={ __(
-											'Table of Contents Label',
-											'wmf-reports'
-										) }
-										value={ attributes.tocLabel }
-										onChange={ ( tocLabel ) => {
-											const id = toIdString( tocLabel );
-											setAttributes( {
-												tocSlug: id
-													? `toc-${ id }`
-													: '',
-												tocLabel,
-											} );
-										} }
-									/>
+							<ToggleControl
+								label={ __(
+									'Include in Report Table of Contents',
+									'wmf-reports'
 								) }
-							</>
+								checked={ attributes.includeInToC }
+								onChange={ ( includeInToC ) => {
+									setAttributes( { includeInToC } );
+								} }
+							/>
+						) }
+						{ /*
+						We still show the label control when ToC not present,
+						so that anchors in custom blocks work as expected.
+						*/ }
+						{ ( attributes.includeInToC ||
+							! showControlsForToC ) && (
+							<TextControl
+								label={
+									showControlsForToC
+										? __(
+												'Table of Contents Label',
+												'wmf-reports'
+										  )
+										: __(
+												'Container anchor label',
+												'wmf-reports'
+										  )
+								}
+								value={ attributes.tocLabel }
+								onChange={ ( tocLabel ) => {
+									const id = toIdString( tocLabel );
+									setAttributes( {
+										tocSlug: id ? `toc-${ id }` : '',
+										tocLabel,
+									} );
+								} }
+							/>
 						) }
 						<ToggleControl
 							label={ __(
