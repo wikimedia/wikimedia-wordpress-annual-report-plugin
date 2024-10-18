@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import {
@@ -35,6 +36,14 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	const { postId, postType } = attributes;
 	// eslint-disable-next-line no-undef
 	const isWend = wmf.theme === 'wikimedia-endow';
+
+	useEffect( () => {
+		// Ensure every block has a unique[-enough] ID. The one added as part of
+		// an InnerBlocks template will be empty initially.
+		if ( ! attributes.id ) {
+			setAttributes( { id: Date.now() } );
+		}
+	}, [ attributes.id, setAttributes ] );
 
 	const childBlocks = useSelect( ( select ) => {
 		const blocks = select( 'core/editor' ).getBlocksByClientId( clientId );
