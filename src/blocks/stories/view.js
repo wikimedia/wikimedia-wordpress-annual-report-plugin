@@ -43,7 +43,7 @@ const animateSlider = ( currentItemIndex ) => {
 	// calculate the position of the category slide.
 
 	// If there are not enough items to trigger scrolling, return.
-	if ( lastSlidePosition.right - currentOffset < wrapperPosition.right ) {
+	if ( ! lastSlide || ( lastSlidePosition.right - currentOffset ) < wrapperPosition.right ) {
 		setMarginOffset( 0 );
 		document.querySelector( '.stories__categories-buttons' ).style.display =
 			'none';
