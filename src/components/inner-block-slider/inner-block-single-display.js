@@ -38,7 +38,7 @@ function InnerBlocksDisplaySingle( {
 			allowedBlocks,
 			orientation: 'horizontal',
 			renderAppender,
-			...( template ? { template } : null ),
+			template,
 			templateLock: false,
 		}
 	);

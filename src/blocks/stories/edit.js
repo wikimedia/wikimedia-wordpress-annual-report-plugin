@@ -213,7 +213,7 @@ export default function Edit( { clientId } ) {
 					className="slides"
 					currentItemIndex={ currentItemIndex }
 					parentBlockId={ clientId }
-					template={ [ 'wmf-reports/story' ] }
+					template={ [ [ 'wmf-reports/story' ] ] }
 				/>
 				<p className="help">
 					{ __(

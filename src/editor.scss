@@ -40,7 +40,7 @@
 
 	&.single-wmf-report {
 
-		// stylelint-disable-next-line  no-descending-specificity
+		// stylelint-disable no-descending-specificity
 		h1,
 		h2,
 		h3,
@@ -53,6 +53,7 @@
 			font-weight: 400;
 			line-height: variables.$line-height-base;
 		}
+		// stylelint-enable no-descending-specificity
 
 		p + p {
 			margin-top: 0;

@@ -27,27 +27,24 @@
 	}
 }
 
+// stylelint-disable no-descending-specificity
 .block-editor-block-list__layout > .wp-block.wp-block-wmf-reports-report,
 .wp-block-wmf-reports-report {
 	max-width: 240px;
 	width: 240px;
 
-	// stylelint-disable-next-line  no-descending-specificity
 	.wp-block-wmf-reports-report__image {
 		margin-bottom: 2rem;
 
-		// stylelint-disable-next-line  no-descending-specificity
 		img {
 			border-bottom-right-radius: 2rem;
 		}
 	}
 
-	// stylelint-disable-next-line  no-descending-specificity
 	.wp-block-wmf-reports-report__date {
 		margin-bottom: 0.5rem;
 	}
 
-	// stylelint-disable-next-line  no-descending-specificity
 	h3.wp-block-wmf-reports-report__title,
 	.wp-block-wmf-reports-report__title {
 		line-height: 1.2;

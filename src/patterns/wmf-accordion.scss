@@ -125,7 +125,7 @@ $primary-nav-mobile-height: 62px;
 				}
 			}
 
-			// stylelint-disable-next-line no-descending-specificity
+			// stylelint-disable no-descending-specificity
 			table,
 			thead,
 			tbody,
@@ -156,7 +156,6 @@ $primary-nav-mobile-height: 62px;
 .wp-block-wmf-reports-accordion--alt {
 	margin-bottom: 2rem;
 
-	// stylelint-disable-next-line  no-descending-specificity
 	.wmf-accordion-item {
 		background: #fff;
 		border: 1px solid #aaa;
@@ -177,7 +176,6 @@ $primary-nav-mobile-height: 62px;
 		}
 	}
 
-	/* stylelint-disable no-descending-specificity */
 	.wmf-accordion-item__title::after {
 		background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAyMiAxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMSA5LjU4NTg2TDIwLjI5MjkgMC4yOTI5NjlMMjEuNzA3MSAxLjcwNzE4TDExIDEyLjQxNDNMMC4yOTI4NzcgMS43MDcxOEwxLjcwNzA5IDAuMjkyOTY5TDExIDkuNTg1ODZaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K) center center no-repeat;
 		border: none;
@@ -214,5 +212,5 @@ $primary-nav-mobile-height: 62px;
 			font-size: variables.$font-size-base;
 		}
 	}
-	/* stylelint-enable no-descending-specificity */
 }
+// stylelint-enable no-descending-specificity
