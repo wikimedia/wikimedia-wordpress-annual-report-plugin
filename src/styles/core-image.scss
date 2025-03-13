@@ -30,6 +30,7 @@
 	figcaption {
 		font-size: 0.75rem;
 		padding: 1rem 2rem;
+		margin-top: 0;
 
 		@media only screen and ( min-width: #{ variables.$width-breakpoint-wide + 64 } ) {
 			padding: 1rem;
@@ -82,6 +83,11 @@
 			max-width: 66.66%;
 		}
 	}
+}
+
+.wp-block-image.is-style-report-image.alignfull figcaption {
+	max-width: #{ variables.$width-breakpoint-wide + 32px };
+	margin-inline: auto;
 }
 
 // Remove padding for group wrappers around report images.
