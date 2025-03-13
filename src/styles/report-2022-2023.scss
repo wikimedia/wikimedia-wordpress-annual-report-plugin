@@ -15,6 +15,7 @@
 	.wp-block-image.is-style-report-image.alignwide,
 	.wp-block-image.is-style-report-image-vertical,
 	.wp-block-image.is-style-report-image-vertical.alignwide {
+		background-color: #eaecf0;
 
 		@media only screen and ( min-width: #{ variables.$width-breakpoint-wide + 64 } ) {
 			border-bottom-right-radius: 2rem;

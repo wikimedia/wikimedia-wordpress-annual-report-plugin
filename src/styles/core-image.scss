@@ -4,7 +4,6 @@
 .wp-block-image.is-style-report-image.alignwide,
 .wp-block-image.is-style-report-image-vertical,
 .wp-block-image.is-style-report-image-vertical.alignwide {
-	background-color: #eaecf0;
 	padding-left: 0;
 	padding-right: 0;
 
@@ -83,4 +82,11 @@
 			max-width: 66.66%;
 		}
 	}
+}
+
+// Remove padding for group wrappers around report images.
+.wp-block-group.has-background:has(
+	.wp-block-image.is-style-report-image:only-child,
+	.wp-block-image.is-style-report-image-vertical:only-child ) {
+	padding: 0;
 }
