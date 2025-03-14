@@ -7,13 +7,9 @@ jobs:
     name: Node
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [ 20 ]
-
     steps:
       - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Paths filters
         uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
@@ -30,11 +26,11 @@ jobs:
               - 'package.json'
               - 'package-lock.json'
 
-      - name: Setup
-        if: ${{ toJSON( steps.paths.outputs.changes ) != '"[]"' }}
-        uses: ./.github/actions/setup-node
+      - name: Set up Node
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
-          cache_version: ${{ secrets.GH_ACTIONS_CACHE_KEY }}
+          node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
         if: ${{ toJSON( steps.paths.outputs.changes ) != '"[]"' && steps.cache-node-dependencies.outputs.cache-hit != 'true' }}
