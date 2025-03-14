@@ -10,6 +10,7 @@ use const WMF\Reports\PLUGIN_VERSION;
 use WMF\Reports\Asset_Loader;
 
 use const WMF\Reports\Blocks\Map\MAP_API_OPTION_KEY;
+use const WMF\Reports\Report\POST_TYPE as REPORT_POST_TYPE;
 
 /**
  * Attach hooks.
@@ -152,6 +153,10 @@ function build_file_path( string $relative_file_path = '' ) : string {
  * Enqueue these assets in the block editor.
  */
 function enqueue_editor_assets() : void {
+	if ( get_post_type() !== REPORT_POST_TYPE ) {
+		return;
+	}
+
 	Asset_Loader\enqueue_script_asset(
 		'annual-report-plugin-editor',
 		build_file_path( 'editor.asset.php' ),
@@ -184,6 +189,10 @@ function enqueue_editor_assets() : void {
  * Enqueue these assets only on the frontend.
  */
 function enqueue_frontend_scripts() : void {
+	if ( ! is_singular( REPORT_POST_TYPE ) ) {
+		return;
+	}
+
 	Asset_Loader\enqueue_script_asset(
 		'annual-report-plugin-frontend',
 		build_file_path( 'frontend.asset.php' ),
@@ -205,6 +214,10 @@ function enqueue_frontend_scripts() : void {
  * Enqueue these assets in the editor and the frontend.
  */
 function enqueue_frontend_styles() : void {
+	if ( ! is_singular( REPORT_POST_TYPE ) ) {
+		return;
+	}
+
 	wp_enqueue_style(
 		'annual-report-plugin-frontend',
 		build_file_uri( 'frontend.css' ),
