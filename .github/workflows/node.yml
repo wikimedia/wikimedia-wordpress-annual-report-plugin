@@ -22,6 +22,14 @@ on:
       - 'package.json'
       - 'package-lock.json'
 
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   node:
     name: Node
