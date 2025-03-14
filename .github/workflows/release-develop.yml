@@ -3,7 +3,7 @@ name: Build to "release-develop" branch
 on:
   push:
     branches:
-      - develop
+      - ci-modernization
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
@@ -15,7 +15,7 @@ jobs:
     uses: humanmade/hm-github-actions/.github/workflows/build-and-release-node.yml@a9a243d6c42fbff4a967d7ce0a6b307bc77251b7 # v0.1.0
     with:
       node_version: 20
-      source_branch: develop
+      source_branch: ci-modernization
       release_branch: release-develop
       built_asset_paths: build
       build_script: |
