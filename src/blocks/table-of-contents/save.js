@@ -20,7 +20,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 export default function save( { attributes } ) {
 	return (
 		<ul { ...useBlockProps.save() }>
-			{ ( JSON.parse( attributes.waypoints ) || [] ).map(
+			{ ( JSON.parse( attributes.waypoints || '[]' ) ).map(
 				( waypoint ) => (
 					<li key={ `waypoint-${ waypoint.tocSlug }` }>
 						<a href={ `#${ waypoint.tocSlug }` }>
