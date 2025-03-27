@@ -66,10 +66,14 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 	const [ validationError, setValidationError ] = useState( false );
 	const blockProps = useBlockProps( { className: 'wmf-animation' } );
 
+	// If the block is full width, we don't want to set a max width.
+	const isFullWidth = attributes.align === 'full';
+	const maxWidthPx = isFullWidth ? null : `${ attributes.maxWidth }px`;
+
 	if ( attributes.animationData && ! isSelected ) {
 		return (
 			<div { ...blockProps }>
-				<div style={ { maxWidth: `${ attributes.maxWidth }px` } }>
+				<div style={ { maxWidth: maxWidthPx } }>
 					<AnimationPreview
 						animationData={ attributes.animationData }
 					/>
@@ -88,10 +92,11 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 						<NumberControl
 							label={ __( 'Maximum width', 'wmf-reports' ) }
 							max="1280"
-							value={ attributes.maxWidth }
-							onChange={ ( maxWidth ) =>
-								setAttributes( { maxWidth } )
-							}
+							value={ isFullWidth ? null : attributes.maxWidth }
+							disabled={ isFullWidth }
+							onChange={ ( maxWidth ) => {
+								setAttributes( { maxWidth } );
+							} }
 						/>
 					</PanelBody>
 				</InspectorControls>

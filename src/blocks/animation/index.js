@@ -21,7 +21,7 @@ registerBlockType( metadata.name, {
 		let reserializedJSON = '';
 
 		const blockStyle = {};
-		if ( attributes.maxWidth ) {
+		if ( attributes.maxWidth && attributes.align !== 'full' ) {
 			blockStyle.maxWidth = `${ attributes.maxWidth }px`;
 		}
 

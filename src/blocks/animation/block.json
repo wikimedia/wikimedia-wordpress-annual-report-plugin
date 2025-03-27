@@ -22,7 +22,7 @@
 	},
 	"supports": {
 		"html": false,
-		"align": [ "left", "right", "center" ],
+		"align": [ "left", "right", "center", "full" ],
 		"spacing": {
 			"margin": true
 		}
