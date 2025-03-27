@@ -42,6 +42,7 @@ registerBlockType( metadata.name, {
 				{ ...useBlockProps.save( { className: 'wmf-animation' } ) }
 				style={ blockStyle }
 				data-animation={ reserializedJSON }
+				data-loop={ attributes.loop }
 			/>
 		);
 	},

@@ -6,6 +6,7 @@ import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalNumberControl as NumberControl,
+	CheckboxControl,
 	PanelBody,
 	TextareaControl,
 } from '@wordpress/components';
@@ -19,7 +20,7 @@ import './editor.scss';
  * @param {string} props.animationData Serialized LottieJSON.
  * @return {React.ReactNode} Rendered div which will be initialized as an animation.
  */
-const AnimationPreview = ( { animationData } ) => {
+const AnimationPreview = ( { animationData, loop } ) => {
 	const containerRef = useRef( null );
 	const animationRef = useRef( null );
 
@@ -36,14 +37,14 @@ const AnimationPreview = ( { animationData } ) => {
 			animationRef.current = lottie.loadAnimation( {
 				container: containerRef.current,
 				renderer: 'svg',
-				loop: false,
+				loop,
 				autoplay: true,
 				animationData: JSON.parse( animationData ),
 			} );
 		} catch ( e ) {
 			// Don't crash editor if parsing gets into a bad state.
 		}
-	}, [ animationData ] );
+	}, [ animationData, loop ] );
 	return <div ref={ containerRef } />;
 };
 
@@ -76,6 +77,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 				<div style={ { maxWidth: maxWidthPx } }>
 					<AnimationPreview
 						animationData={ attributes.animationData }
+						loop={ attributes.loop }
 					/>
 				</div>
 			</div>
@@ -97,6 +99,11 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 							onChange={ ( maxWidth ) => {
 								setAttributes( { maxWidth } );
 							} }
+						/>
+						<CheckboxControl
+							label={ __( 'Loop Animation', 'wmf-reports' ) }
+							checked={ attributes.loop }
+							onChange={ ( loop ) => setAttributes( { loop } ) }
 						/>
 					</PanelBody>
 				</InspectorControls>
