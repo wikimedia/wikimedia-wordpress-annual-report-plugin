@@ -15,6 +15,10 @@
       "attribute": "data-animation",
       "default": ""
     },
+    "loop": {
+      "type": "boolean",
+      "default": false
+    },
     "maxWidth": {
       "type": "number",
       "default": 330
@@ -25,7 +29,8 @@
     "align": [
       "left",
       "right",
-      "center"
+      "center",
+      "full"
     ],
     "spacing": {
       "margin": true

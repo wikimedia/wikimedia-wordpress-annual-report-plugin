@@ -1,0 +1,39 @@
+// Styles specific to the 2022-2023 report.
+
+@use "../helpers/variables";
+
+// stylelint-disable no-descending-specificity
+
+.wmf-report-2022-2023-annual-report {
+	.wmf-pattern-overlay__image.wp-block-image img,
+	.wp-block-wmf-reports-report__image img,
+	.wp-block-group.has-background {
+		border-bottom-right-radius: 2rem;
+	}
+
+	.wp-block-image.is-style-report-image,
+	.wp-block-image.is-style-report-image.alignwide,
+	.wp-block-image.is-style-report-image-vertical,
+	.wp-block-image.is-style-report-image-vertical.alignwide {
+		background-color: #eaecf0;
+
+		@media only screen and ( min-width: #{ variables.$width-breakpoint-wide + 64 } ) {
+			border-bottom-right-radius: 2rem;
+
+			figcaption {
+				border-bottom-right-radius: 2rem;
+			}
+		}
+
+		img {
+			border-bottom-right-radius: 2rem;
+		}
+	}
+
+	.wmf-pattern-reports-carousel-slide__image.wp-block-image img {
+		@media only screen and ( min-width: 782px ) {
+			border-bottom-right-radius: 2rem;
+		}
+	}
+
+}
