@@ -16,8 +16,9 @@ import './editor.scss';
 /**
  * Render a preview of the animation within the editor.
  *
- * @param {Object} props               Component props.
- * @param {string} props.animationData Serialized LottieJSON.
+ * @param {Object}  props               Component props.
+ * @param {string}  props.animationData Serialized LottieJSON.
+ * @param {boolean} props.loop          Whether the animation should loop.
  * @return {React.ReactNode} Rendered div which will be initialized as an animation.
  */
 const AnimationPreview = ( { animationData, loop } ) => {
@@ -101,7 +102,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 							} }
 						/>
 						<CheckboxControl
-							label={ __( 'Loop Animation', 'wmf-reports' ) }
+							label={ __( 'Loop animation', 'wmf-reports' ) }
 							checked={ attributes.loop }
 							onChange={ ( loop ) => setAttributes( { loop } ) }
 						/>
