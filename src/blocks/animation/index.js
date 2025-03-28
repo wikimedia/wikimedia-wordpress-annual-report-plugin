@@ -21,7 +21,7 @@ registerBlockType( metadata.name, {
 		let reserializedJSON = '';
 
 		const blockStyle = {};
-		if ( attributes.maxWidth ) {
+		if ( attributes.maxWidth && attributes.align !== 'full' ) {
 			blockStyle.maxWidth = `${ attributes.maxWidth }px`;
 		}
 
@@ -42,6 +42,7 @@ registerBlockType( metadata.name, {
 				{ ...useBlockProps.save( { className: 'wmf-animation' } ) }
 				style={ blockStyle }
 				data-animation={ reserializedJSON }
+				data-loop={ attributes.loop }
 			/>
 		);
 	},

@@ -82,6 +82,21 @@
 		}
 	}
 
+	.wmf-animation {
+		@media only screen and ( max-width: 781px ) {
+			overflow: hidden;
+			aspect-ratio: 2 / 1 !important;
+
+			svg {
+				width: auto !important;
+			}
+		}
+
+		@media only screen and ( max-width: 600px ) {
+			aspect-ratio: 1 / 1 !important;
+		}
+	}
+
 	.has-large-font-size {
 		line-height: 1.5;
 	}

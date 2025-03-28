@@ -6,6 +6,7 @@ import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalNumberControl as NumberControl,
+	CheckboxControl,
 	PanelBody,
 	TextareaControl,
 } from '@wordpress/components';
@@ -15,11 +16,12 @@ import './editor.scss';
 /**
  * Render a preview of the animation within the editor.
  *
- * @param {Object} props               Component props.
- * @param {string} props.animationData Serialized LottieJSON.
+ * @param {Object}  props               Component props.
+ * @param {string}  props.animationData Serialized LottieJSON.
+ * @param {boolean} props.loop          Whether the animation should loop.
  * @return {React.ReactNode} Rendered div which will be initialized as an animation.
  */
-const AnimationPreview = ( { animationData } ) => {
+const AnimationPreview = ( { animationData, loop } ) => {
 	const containerRef = useRef( null );
 	const animationRef = useRef( null );
 
@@ -36,14 +38,14 @@ const AnimationPreview = ( { animationData } ) => {
 			animationRef.current = lottie.loadAnimation( {
 				container: containerRef.current,
 				renderer: 'svg',
-				loop: false,
+				loop,
 				autoplay: true,
 				animationData: JSON.parse( animationData ),
 			} );
 		} catch ( e ) {
 			// Don't crash editor if parsing gets into a bad state.
 		}
-	}, [ animationData ] );
+	}, [ animationData, loop ] );
 	return <div ref={ containerRef } />;
 };
 
@@ -66,12 +68,17 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 	const [ validationError, setValidationError ] = useState( false );
 	const blockProps = useBlockProps( { className: 'wmf-animation' } );
 
+	// If the block is full width, we don't want to set a max width.
+	const isFullWidth = attributes.align === 'full';
+	const maxWidthPx = isFullWidth ? null : `${ attributes.maxWidth }px`;
+
 	if ( attributes.animationData && ! isSelected ) {
 		return (
 			<div { ...blockProps }>
-				<div style={ { maxWidth: `${ attributes.maxWidth }px` } }>
+				<div style={ { maxWidth: maxWidthPx } }>
 					<AnimationPreview
 						animationData={ attributes.animationData }
+						loop={ attributes.loop }
 					/>
 				</div>
 			</div>
@@ -88,10 +95,16 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 						<NumberControl
 							label={ __( 'Maximum width', 'wmf-reports' ) }
 							max="1280"
-							value={ attributes.maxWidth }
-							onChange={ ( maxWidth ) =>
-								setAttributes( { maxWidth } )
-							}
+							value={ isFullWidth ? null : attributes.maxWidth }
+							disabled={ isFullWidth }
+							onChange={ ( maxWidth ) => {
+								setAttributes( { maxWidth } );
+							} }
+						/>
+						<CheckboxControl
+							label={ __( 'Loop animation', 'wmf-reports' ) }
+							checked={ attributes.loop }
+							onChange={ ( loop ) => setAttributes( { loop } ) }
 						/>
 					</PanelBody>
 				</InspectorControls>

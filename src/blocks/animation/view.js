@@ -69,7 +69,7 @@ document
 		const animation = lottie.loadAnimation( {
 			container: animationContainer,
 			renderer: 'svg',
-			loop: false,
+			loop: animationContainer.dataset.loop === 'true',
 			autoplay: false,
 			mode: 'scroll',
 			actions: [
