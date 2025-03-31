@@ -38,13 +38,18 @@ function updateProgressIndicators() {
 	if ( ! progressIndicator ) {
 		return;
 	}
-	const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+	const documentHeight =
+		document.documentElement.scrollHeight -
+		document.documentElement.clientHeight;
 	const scrollPosition = document.documentElement.scrollTop;
 	const percentage = ( scrollPosition / documentHeight ) * 100;
 	const remaining = ( 100 - percentage ) / 100;
 
 	// Handle linear (desktop) indicator.
-	progressIndicator.setAttribute( 'style', `width:${ percentage.toFixed( 2 ) }%` );
+	progressIndicator.setAttribute(
+		'style',
+		`width:${ percentage.toFixed( 2 ) }%`
+	);
 
 	// Handle radial (mobile) indicator.
 	const radialIndicator = progressIndicator.querySelector( 'circle' );
