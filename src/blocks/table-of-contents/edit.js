@@ -93,7 +93,7 @@ function Edit( {
 
 	const customStyleProps = {};
 	if ( attributes.highlightColor ) {
-		customStyleProps['--wmf-report-highlight-color'] = `var(--wp--preset--color--${ attributes.highlightColor })`;
+		customStyleProps['--wmf-toc-highlight-color'] = `var(--wp--preset--color--${ attributes.highlightColor })`;
 	}
 
 	return (
@@ -117,7 +117,7 @@ function Edit( {
 		<ul { ...useBlockProps( {
 			style: {
 				...( attributes.highlightColor
-					? { '--wmf-report-highlight-color': `var(--wp--preset--color--${ attributes.highlightColor })` }
+					? { '--wmf-toc-highlight-color': `var(--wp--preset--color--${ attributes.highlightColor })` }
 					: {}
 				),
 			}

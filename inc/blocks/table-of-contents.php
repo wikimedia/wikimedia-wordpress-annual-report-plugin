@@ -112,7 +112,7 @@ function set_hightlight_color( string $content, array $block ) : string {
 	}
 
 	$style = sprintf(
-		'<style>:root{--wmf-report-highlight-color: var(--wp--preset--color--%s)}</style>',
+		'<style>:root{--wmf-toc-highlight-color: var(--wp--preset--color--%s)}</style>',
 		esc_attr( $color )
 	);
 

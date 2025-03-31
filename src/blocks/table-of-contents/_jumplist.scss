@@ -8,7 +8,7 @@ $indicator-cutoff-width: 980px;
 }
 
 .wmf-toc-jumplist {
-	--report-highlight-color: var(--wmf-report-highlight-color, var(--wp--preset--color--wmf-report-brightblue));
+	--toc-highlight-color: var(--wmf-toc-highlight-color, var(--wp--preset--color--wmf-report-brightblue));
 
 	background: #fff;
 
@@ -142,7 +142,7 @@ $indicator-cutoff-width: 980px;
 		&:focus,
 		&:hover,
 		&.wmf-toc-jumplist__active-item {
-			color: var(--report-highlight-color);
+			color: var(--toc-highlight-color);
 		}
 	}
 
@@ -253,7 +253,7 @@ $indicator-cutoff-width: 980px;
 	}
 
 	@media screen and (min-width: $indicator-cutoff-width) {
-		background: var(--report-highlight-color);
+		background: var(--toc-highlight-color);
 		height: 0.5rem;
 		position: relative;
 		width: 0; // Will be overridden by inline style attribute.
