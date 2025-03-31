@@ -156,6 +156,12 @@ $indicator-cutoff-width: 980px;
 		width: 100%;
 		z-index: 20;
 
+		.is-layout-constrained > & {
+			// Removes column-width constraint when used as a direct child of the
+			// block container so the desktop progress list will remain full-width.
+			max-width: unset;
+		}
+
 		&--pinned {
 			position: fixed;
 			top: 62px;
