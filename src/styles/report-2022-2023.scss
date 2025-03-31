@@ -5,6 +5,7 @@
 // stylelint-disable no-descending-specificity
 
 .wmf-report-2022-2023-annual-report {
+
 	.wmf-pattern-overlay__image.wp-block-image img,
 	.wp-block-wmf-reports-report__image img,
 	.wp-block-group.has-background {
@@ -31,6 +32,7 @@
 	}
 
 	.wmf-pattern-reports-carousel-slide__image.wp-block-image img {
+
 		@media only screen and ( min-width: 782px ) {
 			border-bottom-right-radius: 2rem;
 		}
