@@ -1,3 +1,4 @@
+/* eslint-disable @wordpress/no-unsafe-wp-apis */
 import { __ } from '@wordpress/i18n';
 import {
 	useBlockProps,
@@ -40,8 +41,12 @@ const detectWaypoints = ( blocks ) => {
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
- * @param {Object}   props               React component props.
- * @param {Function} props.setAttributes Block Editor setAttributes method.
+ * @param {Object}   props                   React component props.
+ * @param {Object}   props.attributes        Block attributes.
+ * @param {string}   props.highlightColor    The current highlight color identifier.
+ * @param {Function} props.setHighlightColor Callback to update the highlight color.
+ * @param {Function} props.setAttributes     Block Editor method to update block attributes.
+ * @param {string}   props.clientId          Unique client identifier for the block instance.
  * @return {Element} Element to render.
  */
 function Edit( {
@@ -93,52 +98,61 @@ function Edit( {
 
 	const customStyleProps = {};
 	if ( attributes.highlightColor ) {
-		customStyleProps['--wmf-toc-highlight-color'] = `var(--wp--preset--color--${ attributes.highlightColor })`;
+		customStyleProps[
+			'--wmf-toc-highlight-color'
+		] = `var(--wp--preset--color--${ attributes.highlightColor })`;
 	}
 
 	return (
 		<>
-		<InspectorControls group="color">
-			<ColorGradientSettingsDropdown
-				settings={ [ {
-					label: __( 'Highlight', 'wmf-reports' ),
-					colorValue: highlightColor?.color || attributes.highlightColor,
-					onColorChange: ( value ) => {
-						setHighlightColor( value );
-					}
-				} ] }
-				panelId={ clientId }
-				hasColorsOrGradients={ false }
-				__experimentalIsRenderedInSidebar
-				{ ...colorGradientSettings }
-			/>
-		</InspectorControls>
+			<InspectorControls group="color">
+				<ColorGradientSettingsDropdown
+					settings={ [
+						{
+							label: __( 'Highlight', 'wmf-reports' ),
+							colorValue:
+								highlightColor?.color ||
+								attributes.highlightColor,
+							onColorChange: ( value ) => {
+								setHighlightColor( value );
+							},
+						},
+					] }
+					panelId={ clientId }
+					hasColorsOrGradients={ false }
+					__experimentalIsRenderedInSidebar
+					{ ...colorGradientSettings }
+				/>
+			</InspectorControls>
 
-		<ul { ...useBlockProps( {
-			style: {
-				...( attributes.highlightColor
-					? { '--wmf-toc-highlight-color': `var(--wp--preset--color--${ attributes.highlightColor })` }
-					: {}
-				),
-			}
-		} ) }>
-			{ waypoints.map( ( waypoint ) => (
-				<li key={ `waypoint-${ waypoint.clientId }` }>
-					{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid -- Maintains styling parity, we save this as an <a>. */ }
-					<a
-						href={ `#${ waypoint.tocSlug }` }
-						onClick={ () => {
-							// This is why we map over the useEffect() return value, and
-							// not attributes.waypoints: The attr won't have the clientId.
-							selectBlock( waypoint.clientId );
-							openGeneralSidebar( 'edit-post/block' );
-						} }
-					>
-						{ waypoint.tocLabel || noLabelMessage }
-					</a>
-				</li>
-			) ) }
-		</ul>
+			<ul
+				{ ...useBlockProps( {
+					style: {
+						...( attributes.highlightColor
+							? {
+									'--wmf-toc-highlight-color': `var(--wp--preset--color--${ attributes.highlightColor })`,
+							  }
+							: {} ),
+					},
+				} ) }
+			>
+				{ waypoints.map( ( waypoint ) => (
+					<li key={ `waypoint-${ waypoint.clientId }` }>
+						{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid -- Maintains styling parity, we save this as an <a>. */ }
+						<a
+							href={ `#${ waypoint.tocSlug }` }
+							onClick={ () => {
+								// This is why we map over the useEffect() return value, and
+								// not attributes.waypoints: The attr won't have the clientId.
+								selectBlock( waypoint.clientId );
+								openGeneralSidebar( 'edit-post/block' );
+							} }
+						>
+							{ waypoint.tocLabel || noLabelMessage }
+						</a>
+					</li>
+				) ) }
+			</ul>
 		</>
 	);
 }
