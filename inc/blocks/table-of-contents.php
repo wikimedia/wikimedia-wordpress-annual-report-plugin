@@ -11,6 +11,7 @@ namespace WMF\Reports\Blocks\Table_of_Contents;
  */
 function bootstrap() {
 	add_filter( 'render_block', __NAMESPACE__ . '\\inject_jumplist', 10, 2 );
+	add_filter( 'render_block', __NAMESPACE__ . '\\set_hightlight_color', 10, 2 );
 }
 
 /**
@@ -90,4 +91,30 @@ function render_jumplist( array $waypoints ) : string {
 	</div>
 	<?php
 	return (string) ob_get_clean();
+}
+
+/**
+ * Filter the rendered output of the ToC block to set a custom highlight color.
+ *
+ * @param string $content Rendered block content.
+ * @param array  $block   Block data array.
+ * @return string Filtered content with injected additional elements.
+ */
+function set_hightlight_color( string $content, array $block ) : string {
+	if ( $block['blockName'] !== 'wmf-reports/table-of-contents' ) {
+		return $content;
+	}
+
+	$color = $block['attrs']['highlightColor'] ?? '';
+
+	if ( empty( $color ) ) {
+		return $content;
+	}
+
+	$style = sprintf(
+		'<style>:root{--wmf-report-highlight-color: var(--wp--preset--color--%s)}</style>',
+		esc_attr( $color )
+	);
+
+	return $style . $content;
 }

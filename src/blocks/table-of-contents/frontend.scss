@@ -8,6 +8,7 @@
 
 .wp-block-wmf-reports-table-of-contents {
 	--report-highlight-color: var(--wmf-report-highlight-color, var(--wp--preset--color--wmf-report-link-color));
+
 	padding-left: 1rem;
 	margin: 0 0 2rem;
 
@@ -31,6 +32,7 @@
 		}
 
 		a {
+			color: var(--report-highlight-color);
 			font-size: 0.9375rem;
 			line-height: 1;
 		}
@@ -48,7 +50,6 @@
 			}
 
 			a {
-				color: var(--report-highlight-color);
 				font-size: 1.125rem;
 				font-weight: 700;
 			}
