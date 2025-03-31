@@ -92,7 +92,7 @@
 
 // Remove padding for group wrappers around report images.
 .wp-block-group.has-background:has(
-	> .wp-block-group__inner-container > .wp-block-image.is-style-report-image:only-child,
-	> .wp-block-group__inner-container > .wp-block-image.is-style-report-image-vertical:only-child ) {
+> .wp-block-group__inner-container > .wp-block-image.is-style-report-image:only-child,
+> .wp-block-group__inner-container > .wp-block-image.is-style-report-image-vertical:only-child) {
 	padding: 0;
 }
