@@ -14,6 +14,9 @@
     "html": false
   },
   "attributes": {
+    "highlightColor": {
+      "type": "string"
+    },
     "waypoints": {
       "type": "string",
       "default": ""
