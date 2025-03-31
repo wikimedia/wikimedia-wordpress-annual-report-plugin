@@ -90,7 +90,7 @@ $indicator-cutoff-width: 980px;
 			}
 
 			.wmf-toc-jumplist__active-item {
-				background: var(--wp--preset--color--wmf-report-orange);
+				background: var(--toc-highlight-color);
 
 				&,
 				&:hover,
@@ -233,7 +233,7 @@ $indicator-cutoff-width: 980px;
 			cx: math.div($indicator-width, 2);
 			cy: math.div($indicator-width, 2);
 			fill: transparent;
-			stroke: var(--wp--preset--color--orange, var(--wp--preset--color--wend-report-bright-blue, #00ced6));
+			stroke: var(--toc-highlight-color, var(--wp--preset--color--wend-report-bright-blue, #00ced6));
 			stroke-width: $stroke-width;
 			transition: stroke-dashoffset 17ms;
 		}
