@@ -7,6 +7,8 @@
 @import "./jumplist";
 
 .wp-block-wmf-reports-table-of-contents {
+	--toc-highlight-color: var(--wmf-toc-highlight-color, var(--wp--preset--color--wmf-report-link-color));
+
 	padding-left: 1rem;
 	margin: 0 0 2rem;
 
@@ -19,7 +21,7 @@
 		}
 
 		&::before {
-			background-color: var(--wp--preset--color--wmf-report-link-color);
+			background-color: var(--toc-highlight-color);
 			border-radius: 50%;
 			content: " ";
 			display: inline-block;
@@ -30,13 +32,14 @@
 		}
 
 		a {
+			color: var(--toc-highlight-color);
 			font-size: 0.9375rem;
 			line-height: 1;
 		}
 	}
 
 	@media screen and (min-width: 782px) {
-		border-left: 1px solid var(--wp--preset--color--wmf-report-blue);
+		border-left: 1px solid var(--toc-highlight-color);
 		margin-left: 2rem;
 		padding-left: 2.875rem;
 
@@ -47,7 +50,6 @@
 			}
 
 			a {
-				color: var(--wp--preset--color--wmf-report-blue);
 				font-size: 1.125rem;
 				font-weight: 700;
 			}
