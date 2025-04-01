@@ -82,6 +82,21 @@
 		}
 	}
 
+	.wmf-animation {
+		@media only screen and ( max-width: 781px ) {
+			overflow: hidden;
+			aspect-ratio: 2 / 1 !important;
+
+			svg {
+				width: auto !important;
+			}
+		}
+
+		@media only screen and ( max-width: 600px ) {
+			aspect-ratio: 1 / 1 !important;
+		}
+	}
+
 	.has-large-font-size {
 		line-height: 1.5;
 	}
@@ -108,7 +123,7 @@
 		.wp-block-wmf-reports-expandable {
 
 			@media only screen and ( min-width: 782px ) {
-				border-left: 1px solid #fff;
+				border-left: 1px solid currentColor;
 				padding-left: 2.875rem;
 				margin-left: 2rem;
 				margin-top: -4rem;

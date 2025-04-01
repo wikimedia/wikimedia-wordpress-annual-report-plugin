@@ -32,36 +32,24 @@ if ( jumplist ) {
 }
 
 /**
- * Determine the element to use for reading progress measurements.
- *
- * @return {HTMLElement} Selected content element.
- */
-function getMainElement() {
-	return (
-		document.querySelector( 'main' ) ||
-		document.querySelector( 'article' ) ||
-		document.body
-	);
-}
-
-/**
  * Update all ToC progress circles and bars on scroll.
  */
 function updateProgressIndicators() {
 	if ( ! progressIndicator ) {
 		return;
 	}
-	const clientHeight = getMainElement().clientHeight;
-	const scrollTop = document.documentElement.scrollTop;
-	// Cap at 100, as Shiro theme structure can lead to >100% values.
-	const percentage = +Math.min(
-		( scrollTop / clientHeight ) * 100,
-		100
-	).toFixed( 2 );
+	const documentHeight =
+		document.documentElement.scrollHeight -
+		document.documentElement.clientHeight;
+	const scrollPosition = document.documentElement.scrollTop;
+	const percentage = ( scrollPosition / documentHeight ) * 100;
 	const remaining = ( 100 - percentage ) / 100;
 
 	// Handle linear (desktop) indicator.
-	progressIndicator.setAttribute( 'style', `width:${ percentage }%` );
+	progressIndicator.setAttribute(
+		'style',
+		`width:${ percentage.toFixed( 2 ) }%`
+	);
 
 	// Handle radial (mobile) indicator.
 	const radialIndicator = progressIndicator.querySelector( 'circle' );
