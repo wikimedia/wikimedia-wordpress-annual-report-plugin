@@ -9,7 +9,7 @@
 	"description": "Port of the Shiro Accordion Item, with custom features",
 	"parent": [ "wmf-reports/accordion" ],
 	"attributes": {
-		"fontColor": {
+		"borderColor": {
 			"type": "string"
 		},
 		"title": {
@@ -23,7 +23,6 @@
 		"html": false,
 		"align": [ "center", "full" ]
 	},
-	"usesContext": [ "accordion/fontColor" ],
 	"textdomain": "wmf-reports",
 	"editorScript": "file:./index.js"
 }
