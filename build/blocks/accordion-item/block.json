@@ -11,7 +11,7 @@
     "wmf-reports/accordion"
   ],
   "attributes": {
-    "fontColor": {
+    "borderColor": {
       "type": "string"
     },
     "title": {
@@ -28,9 +28,6 @@
       "full"
     ]
   },
-  "usesContext": [
-    "accordion/fontColor"
-  ],
   "textdomain": "wmf-reports",
   "editorScript": "file:./index.js"
 }

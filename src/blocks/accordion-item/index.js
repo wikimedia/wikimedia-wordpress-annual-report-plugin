@@ -26,14 +26,14 @@ registerBlockType( metadata.name, {
 		const blockProps = useBlockProps.save( {
 			className: 'wmf-accordion-item',
 		} );
-		const { fontColor, title } = attributes;
+		const { borderColor, title } = attributes;
 
 		return (
-			<div { ...blockProps }>
-				<button
-					className="wmf-accordion-item__title"
-					style={ fontColor && { color: fontColor } }
-				>
+			<div
+				{ ...blockProps }
+				style={ borderColor && { borderLeftColor: borderColor } }
+			>
+				<button className="wmf-accordion-item__title">
 					<RichText.Content
 						className="wmf-accordion-item__title-text"
 						tagName="h3"
