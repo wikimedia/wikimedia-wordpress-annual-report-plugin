@@ -16,6 +16,9 @@
       "type": "string",
       "default": "mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7"
     },
+    "markerActiveColor": {
+      "type": "string"
+    },
     "projection": {
       "type": "string",
       "default": "equirectangular"
