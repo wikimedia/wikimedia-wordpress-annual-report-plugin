@@ -11,6 +11,22 @@
 		"align": {
 			"type": "string",
 			"default": "full"
+		},
+		"navTextColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"navBackgroundColor": {
+			"type": "string",
+			"default": "#FFFFFF"
+		},
+		"navTextHoverColor": {
+			"type": "string",
+			"default": "#FFFFFF"
+		},
+		"navBackgroundHoverColor": {
+			"type": "string",
+			"default": "#FF7800"
 		}
 	},
 	"example": {},

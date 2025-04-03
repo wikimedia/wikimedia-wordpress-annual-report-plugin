@@ -1,8 +1,9 @@
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { RichText, useBlockProps, withColors } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, useRef, useState } from '@wordpress/element';
+import PaletteColorPicker from '../../components/palette-color-picker';
 
 import InnerBlocksDisplaySingle from '../../components/inner-block-slider/inner-block-single-display';
 import Navigation from '../../components/inner-block-slider/navigation';
@@ -10,16 +11,36 @@ import Navigation from '../../components/inner-block-slider/navigation';
 import './editor.scss';
 
 /**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
+ * The edit function describes the structure of your block in the context of the editor.
+ * This represents what the editor will render when the block is used.
  *
- * @param {Object} props          Block Props.
- * @param {number} props.clientId Client ID.
+ * @param {Object}   props                            Block Props.
+ * @param {number}   props.clientId                   Client ID.
+ * @param {Object}   props.attributes                 Block attributes.
+ * @param {Object}   props.navTextColor               Navigation text color.
+ * @param {Function} props.setNavTextColor            Set navigation text color.
+ * @param {Object}   props.navBackgroundColor         Navigation background color.
+ * @param {Function} props.setNavBackgroundColor      Set navigation background color.
+ * @param {Object}   props.navTextHoverColor          Navigation text hover color.
+ * @param {Function} props.setNavTextHoverColor       Set navigation text hover color.
+ * @param {Object}   props.navBackgroundHoverColor    Navigation background hover color.
+ * @param {Function} props.setNavBackgroundHoverColor Set navigation background hover color.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.
  */
-export default function Edit( { clientId } ) {
+const Edit = ( {
+	attributes,
+	clientId,
+	navTextColor,
+	setNavTextColor,
+	navBackgroundColor,
+	setNavBackgroundColor,
+	navTextHoverColor,
+	setNavTextHoverColor,
+	navBackgroundHoverColor,
+	setNavBackgroundHoverColor,
+} ) => {
 	// Get the innerBlocks (slideBlocks).
 	const slideBlocks = useSelect(
 		( select ) =>
@@ -166,6 +187,37 @@ export default function Edit( { clientId } ) {
 
 	return (
 		<div { ...blockProps }>
+			<PaletteColorPicker
+				label={ __( 'Nav: Text', 'wmf-reports' ) }
+				color={ navTextColor?.color || attributes.navTextColor }
+				onColorChange={ setNavTextColor }
+				clientId={ clientId }
+			/>
+			<PaletteColorPicker
+				label={ __( 'Nav: Background', 'wmf-reports' ) }
+				color={
+					navBackgroundColor?.color || attributes.navBackgroundColor
+				}
+				onColorChange={ setNavBackgroundColor }
+				clientId={ clientId }
+			/>
+			<PaletteColorPicker
+				label={ __( 'Nav: Text Hover', 'wmf-reports' ) }
+				color={
+					navTextHoverColor?.color || attributes.navTextHoverColor
+				}
+				onColorChange={ setNavTextHoverColor }
+				clientId={ clientId }
+			/>
+			<PaletteColorPicker
+				label={ __( 'Nav: Background Hover', 'wmf-reports' ) }
+				color={
+					navBackgroundHoverColor?.color ||
+					attributes.navBackgroundHoverColor
+				}
+				onColorChange={ setNavBackgroundHoverColor }
+				clientId={ clientId }
+			/>
 			<div className="stories__categories-wrapper alignwide">
 				<div
 					className="stories__categories"
@@ -191,6 +243,16 @@ export default function Edit( { clientId } ) {
 									'wmf-reports'
 								) }
 								tagName="div"
+								style={ {
+									backgroundColor:
+										index === currentItemIndex
+											? navBackgroundHoverColor?.color
+											: navBackgroundColor?.color,
+									color:
+										index === currentItemIndex
+											? navTextHoverColor?.color
+											: navTextColor?.color,
+								} }
 								value={ category }
 								// eslint-disable-next-line no-shadow
 								onChange={ ( category ) => {
@@ -235,4 +297,11 @@ export default function Edit( { clientId } ) {
 			</div>
 		</div>
 	);
-}
+};
+
+export default withColors( {
+	navTextColor: 'nav-text-color',
+	navBackgroundColor: 'nav-background-color',
+	navTextHoverColor: 'nav-text-hover-color',
+	navBackgroundHoverColor: 'nav-background-hover-color',
+} )( Edit );
