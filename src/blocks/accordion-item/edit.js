@@ -2,53 +2,49 @@ import {
 	InnerBlocks,
 	RichText,
 	useBlockProps,
-	InspectorControls,
+	withColors,
 } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-import { Panel, PanelBody, ColorPalette } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
+
+import PaletteColorPicker from '../../components/palette-color-picker';
 
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
- * @param {Object}   props               Block Props.
- * @param {Object}   props.attributes    Block Attributes.
- * @param {Function} props.setAttributes Set Block Attributes.
+ * @param {Object}   props                Block Props.
+ * @param {Object}   props.attributes     Block Attributes.
+ * @param {Function} props.setAttributes  Set Block Attributes.
+ * @param {string}   props.clientId       Unique identifier for the block instance.
+ * @param {Object}   props.borderColor    Color object for the border.
+ * @param {Function} props.setBorderColor Function to update the border color.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.
  */
-export default function Edit( { attributes, setAttributes } ) {
-	const { borderColor } = attributes;
-	const colorPalette = useSelect(
-		( select ) => select( 'core/block-editor' ).getSettings().colors || [],
-		[]
-	);
+const Edit = ( {
+	attributes,
+	setAttributes,
+	clientId,
+	borderColor,
+	setBorderColor,
+} ) => {
 	const blockProps = useBlockProps();
 
 	return (
 		<div { ...blockProps }>
-			<InspectorControls>
-				<Panel header={ __( 'Set border color:', 'wmf-reports' ) }>
-					<PanelBody>
-						{ borderColor && (
-							<p>{ __( 'Border Color', 'wmf-reports' ) }</p>
-						) }
-						<ColorPalette
-							value={ borderColor }
-							colors={ colorPalette }
-							onChange={ ( color ) =>
-								setAttributes( { borderColor: color } )
-							}
-						/>
-					</PanelBody>
-				</Panel>
-			</InspectorControls>
+			<PaletteColorPicker
+				label={ __( 'Border color', 'wmf-reports' ) }
+				color={ borderColor?.color || attributes.borderColor }
+				onColorChange={ setBorderColor }
+				clientId={ clientId }
+			/>
 			<div
 				className="wmf-accordion-item"
 				aria-expanded
-				style={ borderColor && { borderLeftColor: borderColor } }
+				style={
+					borderColor?.color && { borderLeftColor: borderColor.color }
+				}
 			>
 				<div className="wmf-accordion-item__title">
 					<RichText
@@ -70,4 +66,8 @@ export default function Edit( { attributes, setAttributes } ) {
 			</div>
 		</div>
 	);
-}
+};
+
+export default withColors( {
+	borderColor: 'border-color',
+} )( Edit );
