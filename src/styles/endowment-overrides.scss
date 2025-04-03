@@ -462,7 +462,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		&__location.is-style-sans-p {
 
 			&::before {
-				background: #0060fe;
+				background: var(--map-marker-active-color, #0060fe);
 			}
 		}
 
@@ -574,12 +574,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/** Map **/
 	.wp-block-wmf-reports-map {
-
-		.marker.active,
-		.cluster.active {
-			background: #0060fe;
-		}
-
 		#map {
 
 			@media only screen and (max-width: 781px) {
@@ -1079,7 +1073,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		&__location.is-style-sans-p {
 
 			&::before {
-				background: #0060fe;
+				background: var(--map-marker-active-color, #0060fe);
 			}
 		}
 
