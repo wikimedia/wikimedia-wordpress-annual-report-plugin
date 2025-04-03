@@ -3,6 +3,24 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
+$colors = [
+	'text' => $block->attributes['navTextColor'] ?? '',
+	'background' => $block->attributes['navBackgroundColor'] ?? '',
+	'text-hover' => $block->attributes['navTextHoverColor'] ?? '',
+	'background-hover' => $block->attributes['navBackgroundHoverColor'] ?? '',
+];
+
+$cssColors = array_map( function( $key, $value ) {
+	if ( empty( $value ) ) {
+		return;
+	}
+
+	// If the colour ends with a number, add a hyphen before it so it matches the CSS variable name.
+	$fallback = preg_replace( '/([a-zA-Z])(\d)/', '$1-$2', $value );
+
+	return "--story-nav-$key-color: var(--wp--preset--color--$value, var(--wp--preset--color--$fallback));";
+}, array_keys( $colors ), $colors );
+
 ?>
 
 <div <?php echo get_block_wrapper_attributes( [ 'class' => 'stories carousel alignfull carousel--uninitialized' ] ); ?>>
@@ -11,6 +29,7 @@
 		<div class="stories__categories-wrapper alignwide">
 			<div
 				class="stories__categories"
+				style="<?php echo esc_attr( implode( ';', $cssColors ) ); ?>"
 			>
 			<?php
 				foreach ( $block->inner_blocks as $key => $inner_block ) {

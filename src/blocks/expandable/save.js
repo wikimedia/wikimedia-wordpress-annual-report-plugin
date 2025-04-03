@@ -13,7 +13,12 @@ export default function Save( { attributes } ) {
 	const blockProps = useBlockProps.save();
 
 	return (
-		<div { ...blockProps }>
+		<div
+			{ ...blockProps }
+			style={ {
+				'--expandable-fade-color': `var(--wp--preset--color--${ attributes.fadeColor })`,
+			} }
+		>
 			<div
 				className="expandable-content"
 				data-visible-amount={ attributes.visibleAmount }

@@ -16,6 +16,7 @@ import {
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
+import PaletteColorPicker from '../../components/palette-color-picker';
 import useIsChildBlockSelected from '../../hooks/use-is-child-block-selected';
 
 const UNIT_OPTIONS = [
@@ -32,9 +33,18 @@ const UNIT_OPTIONS = [
  * @param {Function} props.setAttributes Function to set attributes.
  * @param {string}   props.clientId      Transient block clientId.
  * @param {bool}     props.isSelected    Whether this block is selected.
+ * @param {string}   props.fadeColor     Fade color for the block.
+ * @param {Function} props.setFadeColor  Function to set the fade color.
  * @return {React.ReactNode} Element to render.
  */
-const Edit = ( { attributes, setAttributes, clientId, isSelected } ) => {
+const Edit = ( {
+	attributes,
+	setAttributes,
+	clientId,
+	isSelected,
+	fadeColor,
+	setFadeColor,
+} ) => {
 	const blockProps = useBlockProps();
 	const isChildSelected = useIsChildBlockSelected( clientId );
 	const isExpanded =
@@ -49,6 +59,7 @@ const Edit = ( { attributes, setAttributes, clientId, isSelected } ) => {
 			'data-visible-amount': attributes.visibleAmount,
 			'data-visible-unit': attributes.visibleUnit,
 			style: {
+				'--expandable-fade-color': fadeColor?.color,
 				// Always open if child is selected or required variables are not present.
 				...( isExpanded
 					? {}
@@ -65,6 +76,12 @@ const Edit = ( { attributes, setAttributes, clientId, isSelected } ) => {
 
 	return (
 		<div { ...blockProps }>
+			<PaletteColorPicker
+				label={ __( 'Fade color', 'wmf-reports' ) }
+				color={ fadeColor?.color || attributes.fadeColor }
+				onColorChange={ setFadeColor }
+				clientId={ clientId }
+			/>
 			<InspectorControls group="styles">
 				<PanelBody intialOpen={ true }>
 					<PanelRow className="wmf-expandable-dimensions-panel">
@@ -130,4 +147,5 @@ const Edit = ( { attributes, setAttributes, clientId, isSelected } ) => {
 export default withColors( {
 	buttonBackgroundColor: 'button-bg-color',
 	buttonTextColor: 'button-text-color',
+	fadeColor: 'fade-color',
 } )( Edit );
