@@ -78,10 +78,6 @@
 			background-color: var( --story-nav-background-hover-color, #ff7800 );
 			border-color: var( --story-nav-background-hover-color, #ff7800 );
 			color: var( --story-nav-text-hover-color, #fff );
-
-			img {
-				filter: brightness(0) invert(1);
-			}
 		}
 
 		/* stylelint-disable no-descending-specificity */
