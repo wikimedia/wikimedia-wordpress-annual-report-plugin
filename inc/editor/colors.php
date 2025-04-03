@@ -147,6 +147,11 @@ function register_report_color_palette_override() : void {
 			'slug' => 'wend-report-bright-blue',
 			'color' => '#00ced6',
 		],
+		[
+			'name' => __( 'WEND Report Gold', 'wmf-reports' ),
+			'slug' => 'wend-report-gold',
+			'color' => '#85754e',
+		],
 	];
 
 	$is_foundation = ( wp_get_theme()->get( 'Name' ) ?? '' ) === 'Shiro';
