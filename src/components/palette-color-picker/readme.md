@@ -27,7 +27,7 @@ import { __ } from '@wordpress/i18n';
 import { withColors } from '@wordpress/block-editor';
 import PaletteColorPicker from '../../components/palette-color-picker';
 
-const EditBlock = ( {
+const Edit = ( {
 	// Normal block props:
 	clientId,
 	attributes,
