@@ -1,16 +1,13 @@
-/* eslint-disable @wordpress/no-unsafe-wp-apis */
 import { __ } from '@wordpress/i18n';
 import {
 	useBlockProps,
 	store as blockEditorStore,
-	InspectorControls,
 	withColors,
-	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
-	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 import { store as editPostStore } from '@wordpress/edit-post';
 import { useEffect, useMemo } from '@wordpress/element';
 import { useDispatch, useSelect } from '@wordpress/data';
+import PaletteColorPicker from '../../components/palette-color-picker';
 
 const noLabelMessage = __( '(Waypoint group has no ToC label)', 'wmf-reports' );
 
@@ -94,8 +91,6 @@ function Edit( {
 		} );
 	}, [ waypoints, setAttributes ] );
 
-	const colorGradientSettings = useMultipleOriginColorsAndGradients();
-
 	const customStyleProps = {};
 	if ( attributes.highlightColor ) {
 		customStyleProps[
@@ -105,25 +100,12 @@ function Edit( {
 
 	return (
 		<>
-			<InspectorControls group="color">
-				<ColorGradientSettingsDropdown
-					settings={ [
-						{
-							label: __( 'Highlight', 'wmf-reports' ),
-							colorValue:
-								highlightColor?.color ||
-								attributes.highlightColor,
-							onColorChange: ( value ) => {
-								setHighlightColor( value );
-							},
-						},
-					] }
-					panelId={ clientId }
-					hasColorsOrGradients={ false }
-					__experimentalIsRenderedInSidebar
-					{ ...colorGradientSettings }
-				/>
-			</InspectorControls>
+			<PaletteColorPicker
+				label={ __( 'Highlight', 'wmf-reports' ) }
+				color={ highlightColor?.color || attributes.highlightColor }
+				onColorChange={ setHighlightColor }
+				clientId={ clientId }
+			/>
 
 			<ul
 				{ ...useBlockProps( {
