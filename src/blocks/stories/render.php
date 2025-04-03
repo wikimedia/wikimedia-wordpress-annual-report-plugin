@@ -11,11 +11,14 @@ $colors = [
 ];
 
 $cssColors = array_map( function( $key, $value ) {
-	// if value is empty, return.
 	if ( empty( $value ) ) {
 		return;
 	}
-	return "--story-nav-$key-color: var(--wp--preset--color--$value)";
+
+	// If the colour ends with a number, add a hyphen before it so it matches the CSS variable name.
+	$fallback = preg_replace( '/([a-zA-Z])(\d)/', '$1-$2', $value );
+
+	return "--story-nav-$key-color: var(--wp--preset--color--$value, var(--wp--preset--color--$fallback));";
 }, array_keys( $colors ), $colors );
 
 ?>
