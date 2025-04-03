@@ -152,6 +152,10 @@
 		margin-bottom: 1rem;
 		padding: 1rem 0.5rem 1rem 1.5rem;
 		position: relative;
+
+		&[style*="border-left-color"] {
+			border-left-width: 0.5em;
+		}
 	}
 
 	.wmf-accordion-item__title::after {
