@@ -14,6 +14,10 @@
     "buttonTextColor": {
       "type": "string"
     },
+    "fadeColor": {
+      "type": "string",
+      "default": "#fff"
+    },
     "showMoreText": {
       "type": "string",
       "default": "Show more"
