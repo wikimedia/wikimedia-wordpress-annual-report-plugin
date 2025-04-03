@@ -57,7 +57,8 @@
 	}
 
 	.category-slide {
-		background-color: #fff;
+		background-color: var( --story-nav-background-color, #fff );
+		color: var( --story-nav-text-color, #000 );
 		border: 1px solid #aaa;
 		cursor: pointer;
 		font-size: 0.75rem;
@@ -74,9 +75,9 @@
 		&:hover,
 		&:focus,
 		&.active {
-			background-color: #ff7800;
-			border-color: #ff7800;
-			color: #fff;
+			background-color: var( --story-nav-background-hover-color, #ff7800 );
+			border-color: var( --story-nav-background-hover-color, #ff7800 );
+			color: var( --story-nav-text-hover-color, #ffffff );
 
 			img {
 				filter: brightness(0) invert(1);

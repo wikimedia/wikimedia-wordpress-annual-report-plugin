@@ -14,19 +14,19 @@
 		},
 		"navTextColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": "base0"
 		},
 		"navBackgroundColor": {
 			"type": "string",
-			"default": "#FFFFFF"
+			"default": "base100"
 		},
 		"navTextHoverColor": {
 			"type": "string",
-			"default": "#FFFFFF"
+			"default": "base100"
 		},
 		"navBackgroundHoverColor": {
 			"type": "string",
-			"default": "#FF7800"
+			"default": "wmf-report-orange"
 		}
 	},
 	"example": {},
