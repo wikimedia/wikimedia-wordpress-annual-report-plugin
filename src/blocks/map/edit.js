@@ -1,7 +1,11 @@
 /* global wmf:false */
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import {
+	InspectorControls,
+	useBlockProps,
+	withColors,
+} from '@wordpress/block-editor';
 import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useEffect, useRef, useState } from '@wordpress/element';
@@ -11,6 +15,7 @@ import './editor.scss';
 
 import InnerBlocksDisplaySingle from '../../components/inner-block-slider/inner-block-single-display';
 import Navigation from '../../components/inner-block-slider/navigation';
+import PaletteColorPicker from '../../components/palette-color-picker';
 
 let map = null;
 let mapItemIndex = 0;
@@ -215,15 +220,23 @@ const MapPreview = ( {
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
- * @param {Object}   props               Block Props.
- * @param {Object}   props.attributes    Block Attributes.
- * @param {number}   props.clientId      Client ID.
- * @param {Function} props.setAttributes Set Block Attributes.
+ * @param {Object}   props                      Block Props.
+ * @param {Object}   props.attributes           Block Attributes.
+ * @param {number}   props.clientId             Client ID.
+ * @param {Function} props.setAttributes        Set Block Attributes.
+ * @param {Object}   props.markerActiveColor    Color object for the active marker.
+ * @param {Function} props.setMarkerActiveColor Function to update the active marker color.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.
  */
-export default function Edit( { attributes, clientId, setAttributes } ) {
+const Edit = ( {
+	attributes,
+	clientId,
+	setAttributes,
+	markerActiveColor,
+	setMarkerActiveColor,
+} ) => {
 	const { mapStyle } = attributes;
 
 	// Get the innerBlocks (slideBlocks).
@@ -452,7 +465,21 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		! mapboxStyleOptions.find( ( { value } ) => value === mapStyle );
 
 	return (
-		<div { ...blockProps }>
+		<div
+			{ ...blockProps }
+			style={ {
+				'--map-marker-active-color':
+					markerActiveColor?.color || attributes.markerActiveColor,
+			} }
+		>
+			<PaletteColorPicker
+				label={ __( 'Active Marker', 'wmf-reports' ) }
+				color={
+					markerActiveColor?.color || attributes.markerActiveColor
+				}
+				onColorChange={ setMarkerActiveColor }
+				clientId={ clientId }
+			/>
 			<InspectorControls>
 				<PanelBody>
 					<SelectControl
@@ -526,4 +553,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 			</div>
 		</div>
 	);
-}
+};
+
+export default withColors( {
+	markerActiveColor: 'active-marker-color',
+} )( Edit );

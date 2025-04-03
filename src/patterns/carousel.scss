@@ -230,7 +230,7 @@
 
 		&::before {
 			content: "";
-			background: #ff7800;
+			background: var(--map-marker-active-color, #ff7800);
 			background-size: cover;
 			border-radius: 50%;
 			display: inline-block;

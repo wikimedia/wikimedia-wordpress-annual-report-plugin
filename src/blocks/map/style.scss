@@ -76,7 +76,7 @@
 
 	.marker.active,
 	.cluster.active {
-		background: #ff7800;
+		background: var(--map-marker-active-color, #ff7800);
 		height: 1.8rem;
 		width: 1.8rem;
 	}
