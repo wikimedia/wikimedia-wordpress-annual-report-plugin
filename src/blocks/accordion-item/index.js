@@ -31,7 +31,11 @@ registerBlockType( metadata.name, {
 		return (
 			<div
 				{ ...blockProps }
-				style={ borderColor && { borderLeftColor: borderColor } }
+				style={
+					borderColor && {
+						borderLeftColor: `var(--wp--preset--color--${ borderColor })`,
+					}
+				}
 			>
 				<button className="wmf-accordion-item__title">
 					<RichText.Content
