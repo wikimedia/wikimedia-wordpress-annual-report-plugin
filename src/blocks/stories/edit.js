@@ -248,6 +248,10 @@ const Edit = ( {
 										index === currentItemIndex
 											? navBackgroundHoverColor?.color
 											: navBackgroundColor?.color,
+									borderColor:
+										index === currentItemIndex
+											? navBackgroundHoverColor?.color
+											: '',
 									color:
 										index === currentItemIndex
 											? navTextHoverColor?.color
