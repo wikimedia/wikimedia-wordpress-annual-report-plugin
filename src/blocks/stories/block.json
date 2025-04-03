@@ -11,6 +11,22 @@
 		"align": {
 			"type": "string",
 			"default": "full"
+		},
+		"navTextColor": {
+			"type": "string",
+			"default": "base0"
+		},
+		"navBackgroundColor": {
+			"type": "string",
+			"default": "base100"
+		},
+		"navTextHoverColor": {
+			"type": "string",
+			"default": "base100"
+		},
+		"navBackgroundHoverColor": {
+			"type": "string",
+			"default": "wmf-report-orange"
 		}
 	},
 	"example": {},
