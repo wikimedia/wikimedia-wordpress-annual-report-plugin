@@ -249,6 +249,41 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 		}
 
+		// Allow the hero image to bleed to the right of the screen using `alignfull`.
+		@media only screen and (min-width: 782px) {
+			--tangent: 0.068; // Ensures the angle of the slant is consistent.
+
+			.wmf-pattern-endowment-hero__image.alignfull {
+				--corner-offset: calc( 50vw * var(--tangent) );
+				clip-path: polygon(0 0, 100% 0, 100% calc( 100% - var(--corner-offset) ), 0 100%);
+				position: relative;
+				width: 50vw;
+				max-width: initial;
+				overflow: hidden;
+				margin-bottom: calc( -1 * var(--corner-offset) );
+
+				@media only screen and (min-height: 1100px) and (min-width: 1200px) {
+					// Prevent the image from being too tall on large screens.
+					max-height: 80vh;
+				}
+
+				img {
+					object-fit: cover;
+					width: auto;
+					height: auto;
+					min-width: 100%;
+					min-height: 100%;
+					max-width: initial;
+				}
+			}
+
+			&:has(.wmf-pattern-endowment-hero__image.alignfull) {
+				--corner-offset: calc( 100vw * var(--tangent) );
+				clip-path: polygon(0 0, 100% 0, 100% calc( 100% - var(--corner-offset) ), 0 100%);
+				overflow: hidden;
+			}
+		}
+
 		@media only screen and (max-width: 781px) {
 
 			.wp-block-column:last-child {
