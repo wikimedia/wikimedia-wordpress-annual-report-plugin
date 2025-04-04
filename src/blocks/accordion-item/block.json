@@ -21,7 +21,10 @@
 	"example": {},
 	"supports": {
 		"html": false,
-		"align": [ "center", "full" ]
+		"align": [ "center", "full" ],
+		"color": {
+			"background": true
+		}
 	},
 	"textdomain": "wmf-reports",
 	"editorScript": "file:./index.js"

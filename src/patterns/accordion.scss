@@ -146,12 +146,15 @@
 	margin-bottom: 2rem;
 
 	.wmf-accordion-item {
-		background: #fff;
 		border: 1px solid var(--wp--preset--color--base-70, #aaa);
 		border-radius: 2px;
 		margin-bottom: 1rem;
 		padding: 1rem 0.5rem 1rem 1.5rem;
 		position: relative;
+
+		&.has-background {
+			border-width: 0;
+		}
 
 		&[style*="border-left-color"] {
 			border-left-width: 0.5em;
@@ -193,4 +196,9 @@
 			font-size: variables.$font-size-base;
 		}
 	}
+}
+
+// Reduce the specificity so picked colour is not overridden.
+:where(.wp-block-wmf-reports-accordion--alt .wmf-accordion-item) {
+	background-color: #fff;
 }
