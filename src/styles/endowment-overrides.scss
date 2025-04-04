@@ -418,7 +418,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		margin-top: 1rem;
 	}
 
-	.wp-block-image.is-style-report-image,
+	.wp-block-image.is-style-report-image:not(.alignfull),
 	.wp-block-image.is-style-report-image.alignwide,
 	.wp-block-image.is-style-report-image-vertical,
 	.wp-block-image.is-style-report-image-vertical.alignwide {
@@ -460,6 +460,20 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				max-width: 66.66%;
 				width: 100%;
 			}
+		}
+	}
+
+	.wp-block-image.is-style-report-image.alignfull {
+		position: relative;
+
+		img {
+			clip-path: polygon(0 0, 100% 0, 100% calc( 100% - 6.8vw ), 0 100%);
+		}
+
+		figcaption {
+			text-align: right;
+			margin-top: -4.8vw;
+			min-height: 4.8vw;
 		}
 	}
 
