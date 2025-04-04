@@ -249,6 +249,40 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 		}
 
+		--tangent: 0.068;
+
+		@media only screen and (min-width: 782px) {
+			.wmf-pattern-endowment-hero__image.alignfull {
+				--corner-offset: calc( 50vw * var(--tangent) );
+				clip-path: polygon(0 0, 100% 0, 100% calc( 100% - var(--corner-offset) ), 0 100%);
+				position: relative;
+				width: 50vw;
+				max-width: initial;
+				overflow: hidden;
+				margin-bottom: calc( -1 * var(--corner-offset) );
+
+				@media only screen and (min-height: 1100px) {
+					// Prevent the image from being too tall on large screens.
+					max-height: 80vh;
+				}
+
+				img {
+					object-fit: cover;
+					width: auto;
+					height: auto;
+					min-width: 100%;
+					min-height: 100%;
+					max-width: initial;
+				}
+			}
+
+			&:has(.wmf-pattern-endowment-hero__image.alignfull) {
+				--corner-offset: calc( 100vw * var(--tangent) );
+				clip-path: polygon(0 0, 100% 0, 100% calc( 100% - var(--corner-offset) ), 0 100%);
+				overflow: hidden;
+			}
+		}
+
 		@media only screen and (max-width: 781px) {
 
 			.wp-block-column:last-child {
