@@ -9,6 +9,7 @@ import { registerBlockType } from '@wordpress/blocks';
  * Internal dependencies
  */
 import Edit from './edit';
+import deprecated from './deprecated';
 import metadata from './block.json';
 import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 
@@ -51,6 +52,7 @@ registerBlockType( metadata.name, {
 			</div>
 		);
 	},
+	deprecated,
 } );
 
 // Block HMR boilerplate.
