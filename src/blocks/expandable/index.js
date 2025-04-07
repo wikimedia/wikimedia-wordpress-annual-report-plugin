@@ -3,6 +3,7 @@ import { createBlock, registerBlockType } from '@wordpress/blocks';
 import Edit from './edit';
 import Save from './save';
 import metadata from './block.json';
+import deprecated from './deprecated';
 
 /** @see https://www.npmjs.com/package/@wordpress/scripts#using-css */
 import './frontend.scss';
@@ -11,6 +12,7 @@ registerBlockType( metadata.name, {
 	...metadata,
 	edit: Edit,
 	save: Save,
+	deprecated,
 	transforms: {
 		from: [
 			{
