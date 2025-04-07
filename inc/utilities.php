@@ -8,6 +8,21 @@ namespace WMF\Reports\Utilities;
 /**
  * Convert a color slug to a CSS variable.
  *
+ * Takes a color slug provided by the core color picker and converts it to a CSS
+ * variable with WP prefix, for use in inline styles.
+ *
+ * Some colours defined in the theme have a slug that contains numbers. There is
+ * some inconsistency in the way these are named, eg. `base-100` is defined as
+ * `base100`. Here we account for that by providing a fallback CSS variable name
+ * so either version can be used.
+ *
+ * Example:
+ * ```
+ * $slug = $attributes['color']; // eg. 'base100'
+ * $variable = color_slug_to_css_variable( slug );
+ * // returns 'var(--wp--preset--color--base100, var(--wp--preset--color--base-100))'
+ * ```
+ *
  * @param string $slug The color slug.
  * @return string The CSS variable.
  */
