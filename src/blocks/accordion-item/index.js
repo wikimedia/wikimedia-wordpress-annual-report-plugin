@@ -13,6 +13,8 @@ import deprecated from './deprecated';
 import metadata from './block.json';
 import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 
+import { colorSlugToCSSVariable } from '../../helpers/cssVariables.js';
+
 /**
  * Every block starts by registering a new block type definition.
  *
@@ -34,7 +36,7 @@ registerBlockType( metadata.name, {
 				{ ...blockProps }
 				style={
 					borderColor && {
-						borderLeftColor: `var(--wp--preset--color--${ borderColor })`,
+						borderLeftColor: colorSlugToCSSVariable( borderColor ),
 					}
 				}
 			>
