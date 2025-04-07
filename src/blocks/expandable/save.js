@@ -3,6 +3,8 @@
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
+import { colorSlugToCSSVariable } from '../../helpers/cssVariables';
+
 /**
  * Block Save function.
  * @param {Object} props            Component Props.
@@ -16,7 +18,9 @@ export default function Save( { attributes } ) {
 		<div
 			{ ...blockProps }
 			style={ {
-				'--expandable-fade-color': `var(--wp--preset--color--${ attributes.fadeColor })`,
+				'--expandable-fade-color': colorSlugToCSSVariable(
+					attributes.fadeColor
+				),
 			} }
 		>
 			<div
