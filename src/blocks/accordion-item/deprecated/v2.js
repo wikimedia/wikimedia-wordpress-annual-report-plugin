@@ -1,11 +1,11 @@
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 /**
- * 2022-2023 version of the report.
+ * Fixed borderColor slugs for use in CSS.
  */
-const v1 = {
+const v2 = {
 	attributes: {
-		fontColor: {
+		borderColor: {
 			type: 'string',
 		},
 		title: {
@@ -15,12 +15,16 @@ const v1 = {
 		},
 	},
 	save: ( { attributes } ) => {
-		const { fontColor, title } = attributes;
+		const { borderColor, title } = attributes;
 
 		return (
 			<div
 				className="wmf-accordion-item"
-				style={ fontColor && { color: fontColor } }
+				style={
+					borderColor && {
+						borderLeftColor: `var(--wp--preset--color--${ borderColor })`,
+					}
+				}
 			>
 				<button className="wmf-accordion-item__title">
 					<RichText.Content
@@ -29,6 +33,7 @@ const v1 = {
 						value={ title }
 					/>
 				</button>
+
 				<div className="wmf-accordion-item__content">
 					<InnerBlocks.Content />
 				</div>
@@ -37,4 +42,4 @@ const v1 = {
 	},
 };
 
-export default v1;
+export default v2;
