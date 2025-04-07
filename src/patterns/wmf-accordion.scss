@@ -159,21 +159,11 @@ $primary-nav-mobile-height: 62px;
 	.wmf-accordion-item {
 		background: #fff;
 		border: 1px solid #aaa;
-		border-left: 0;
+		border-left: 0.5em solid #ff6801;
 		border-radius: 2px;
 		margin-bottom: 1rem;
 		padding: 1rem 0.5rem 1rem 1.5rem;
 		position: relative;
-
-		&::before {
-			background-color: #ff6801;
-			content: "";
-			height: 100%;
-			left: 0;
-			position: absolute;
-			top: 0;
-			width: 0.5rem;
-		}
 	}
 
 	.wmf-accordion-item__title::after {

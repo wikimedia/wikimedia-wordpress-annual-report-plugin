@@ -46,6 +46,7 @@ require_once __DIR__ . '/inc/editor/patterns/wrapped.php';
 require_once __DIR__ . '/inc/editor/patterns/welcome-page.php';
 require_once __DIR__ . '/inc/editor/styles.php';
 require_once __DIR__ . '/inc/theme-integration.php';
+require_once __DIR__ . '/inc/utilities.php';
 
 Assets\bootstrap();
 Blocks\Core_Group\bootstrap();
