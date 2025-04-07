@@ -9,8 +9,11 @@ import { registerBlockType } from '@wordpress/blocks';
  * Internal dependencies
  */
 import Edit from './edit';
+import deprecated from './deprecated';
 import metadata from './block.json';
 import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
+
+import { colorSlugToCSSVariable } from '../../helpers/cssVariables.js';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -31,7 +34,11 @@ registerBlockType( metadata.name, {
 		return (
 			<div
 				{ ...blockProps }
-				style={ borderColor && { borderLeftColor: borderColor } }
+				style={
+					borderColor && {
+						borderLeftColor: colorSlugToCSSVariable( borderColor ),
+					}
+				}
 			>
 				<button className="wmf-accordion-item__title">
 					<RichText.Content
@@ -47,6 +54,7 @@ registerBlockType( metadata.name, {
 			</div>
 		);
 	},
+	deprecated,
 } );
 
 // Block HMR boilerplate.
