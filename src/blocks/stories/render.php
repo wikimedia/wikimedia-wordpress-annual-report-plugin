@@ -3,6 +3,8 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
+use Wmf\Reports\Utilities;
+
 $colors = [
 	'text' => $block->attributes['navTextColor'] ?? '',
 	'background' => $block->attributes['navBackgroundColor'] ?? '',
@@ -10,15 +12,14 @@ $colors = [
 	'background-hover' => $block->attributes['navBackgroundHoverColor'] ?? '',
 ];
 
-$cssColors = array_map( function( $key, $value ) {
-	if ( empty( $value ) ) {
+$cssColors = array_map( function( $context, $color_slug ) {
+	if ( empty( $color_slug ) ) {
 		return;
 	}
 
-	// If the colour ends with a number, add a hyphen before it so it matches the CSS variable name.
-	$fallback = preg_replace( '/([a-zA-Z])(\d)/', '$1-$2', $value );
+	$color = Utilities\color_slug_to_css_variable( $color_slug );
 
-	return "--story-nav-$key-color: var(--wp--preset--color--$value, var(--wp--preset--color--$fallback));";
+	return "--story-nav-$context-color:$color";
 }, array_keys( $colors ), $colors );
 
 ?>
