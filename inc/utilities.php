@@ -15,5 +15,9 @@ function color_slug_to_css_variable( string $slug ): string {
 	// If the slug ends with a number, add a hyphen before it so it matches the CSS variable name.
 	$fallback = preg_replace( '/([a-zA-Z])(\d)/', '$1-$2', $slug );
 
-	return "var(--wp--preset--color--$slug, var(--wp--preset--color--$fallback));";
+	if ( $slug === $fallback ) {
+		return "var(--wp--preset--color--$slug)";
+	}
+
+	return "var(--wp--preset--color--$slug, var(--wp--preset--color--$fallback))";
 }
