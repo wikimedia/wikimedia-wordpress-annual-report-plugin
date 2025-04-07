@@ -3,6 +3,25 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
+use Wmf\Reports\Utilities;
+
+$colors = [
+	'text' => $block->attributes['navTextColor'] ?? '',
+	'background' => $block->attributes['navBackgroundColor'] ?? '',
+	'text-hover' => $block->attributes['navTextHoverColor'] ?? '',
+	'background-hover' => $block->attributes['navBackgroundHoverColor'] ?? '',
+];
+
+$cssColors = array_map( function( $context, $color_slug ) {
+	if ( empty( $color_slug ) ) {
+		return;
+	}
+
+	$color = Utilities\color_slug_to_css_variable( $color_slug );
+
+	return "--story-nav-$context-color:$color";
+}, array_keys( $colors ), $colors );
+
 ?>
 
 <div <?php echo get_block_wrapper_attributes( [ 'class' => 'stories carousel alignfull carousel--uninitialized' ] ); ?>>
@@ -11,6 +30,7 @@
 		<div class="stories__categories-wrapper alignwide">
 			<div
 				class="stories__categories"
+				style="<?php echo esc_attr( implode( ';', $cssColors ) ); ?>"
 			>
 			<?php
 				foreach ( $block->inner_blocks as $key => $inner_block ) {

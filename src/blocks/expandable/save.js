@@ -3,6 +3,8 @@
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
+import { colorSlugToCSSVariable } from '../../helpers/cssVariables';
+
 /**
  * Block Save function.
  * @param {Object} props            Component Props.
@@ -13,7 +15,14 @@ export default function Save( { attributes } ) {
 	const blockProps = useBlockProps.save();
 
 	return (
-		<div { ...blockProps }>
+		<div
+			{ ...blockProps }
+			style={ {
+				'--expandable-fade-color': colorSlugToCSSVariable(
+					attributes.fadeColor
+				),
+			} }
+		>
 			<div
 				className="expandable-content"
 				data-visible-amount={ attributes.visibleAmount }
