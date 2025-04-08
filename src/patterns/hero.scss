@@ -83,6 +83,7 @@
 	}
 
 	.wmf-animation {
+
 		@media only screen and ( max-width: 781px ) {
 			overflow: hidden;
 			aspect-ratio: 2 / 1 !important;
@@ -123,7 +124,7 @@
 		.wp-block-wmf-reports-expandable {
 
 			@media only screen and ( min-width: 782px ) {
-				border-left: 1px solid currentColor;
+				border-left: 1px solid currentcolor;
 				padding-left: 2.875rem;
 				margin-left: 2rem;
 				margin-top: -4rem;
