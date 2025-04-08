@@ -4,7 +4,7 @@
  */
 
 $map_style = $attributes['mapStyle'] ?? 'mapbox://styles/mapbox/light-v11';
-$markerActiveColor = $block->attributes['markerActiveColor'] ?? 'base100';
+$markerActiveColor = $block->attributes['markerActiveColor'] ?? '';
 $cssColors = [];
 
 if ( ! empty( $markerActiveColor ) ) {
