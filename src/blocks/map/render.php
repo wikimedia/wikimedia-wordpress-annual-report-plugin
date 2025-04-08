@@ -3,20 +3,21 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
-$markerActiveColor = $block->attributes['markerActiveColor'] ?? '';
+$map_style = $attributes['mapStyle'] ?? 'mapbox://styles/mapbox/light-v11';
+$markerActiveColor = $block->attributes['markerActiveColor'] ?? 'base100';
 $cssColors = [];
 
 if ( ! empty( $markerActiveColor ) ) {
 	$cssColors[] = "--map-marker-active-color: var(--wp--preset--color--$markerActiveColor);";
 }
 
-$map_style = $attributes['mapStyle'] ?? 'mapbox://styles/mapbox/light-v11';
-?>
-
-<div <?php echo get_block_wrapper_attributes( [
+$attributes = get_block_wrapper_attributes( [
 	'class' => 'map map--carousel carousel alignfull carousel--uninitialized',
 	'style' => implode( ';', $cssColors ),
-] ); ?>>
+] );
+?>
+
+<div <?php echo wp_kses_data( $attributes ); ?>>
 	<div id="map" style="min-height: 250px" data-map-style="<?php echo esc_attr( $map_style ); ?>"></div>
 	<div class="carousel__carousel-wrapper">
 		<?php echo $content; ?>
