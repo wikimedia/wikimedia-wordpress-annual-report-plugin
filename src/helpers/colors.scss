@@ -171,3 +171,65 @@
 .has-wend-report-gold-color {
 	color: #85754e;
 }
+
+/**
+ * Fix theme colour overrides.
+ *
+ * In the Shiro theme, some colours are set to a different colour value to what
+ * is visible in the editor. This causes unexpected results when publishing.
+ * Here we are overriding those values to match the editor. This is a temporary
+ * solution and should be resolved in the theme.
+ *
+ * See:
+ * - https://github.com/wikimedia/shiro-wordpress-theme/blob/main/assets/src/sass/helpers/_style-guide-variables-overrides.scss
+ * - https://github.com/wikimedia/shiro-wordpress-theme/blob/main/inc/editor/namespace.php
+ */
+.single-wmf-report {
+	.has-bright-green-70-background-color {
+		background-color: #dbf3ec;
+	}
+
+	.has-dark-green-background-color {
+		background-color: #305d70;
+	}
+
+	.has-dark-green-70-background-color {
+		background-color: #cbd6db;
+	}
+
+	.has-green-background-color {
+		background-color: #339966;
+	}
+
+	.has-red-background-color {
+		background-color: #900;
+	}
+
+	.has-yellow-90-background-color {
+		background-color: #fef6e7;
+	}
+
+	.has-bright-green-70-color {
+		color: #dbf3ec;
+	}
+
+	.has-dark-green-color {
+		color: #305d70;
+	}
+
+	.has-dark-green-70-color {
+		color: #cbd6db;
+	}
+
+	.has-green-color {
+		color: #339966;
+	}
+
+	.has-red-color {
+		color: #900;
+	}
+
+	.has-yellow-90-color {
+		color: #fef6e7;
+	}
+}
