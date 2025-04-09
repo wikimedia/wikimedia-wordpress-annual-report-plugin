@@ -12,11 +12,7 @@
 
 	&::after {
 		bottom: 0;
-		background: linear-gradient(
-			180deg,
-			transparent 0%,
-			var(--expandable-fade-color, #fff) 80%
-		);
+		background: linear-gradient(180deg, transparent 0%, var(--expandable-fade-color, #fff) 80%);
 		content: "";
 		height: 2rem;
 		position: absolute;
@@ -60,10 +56,6 @@
 .expandable-expander[aria-expanded="true"]::after,
 .expandable-expander.is-expanded-in-editor::after {
 	transform: rotate(180deg);
-}
-
-.has-base-90-background-color .wp-block-wmf-reports-expandable .expandable-content::after {
-	background: linear-gradient(180deg, rgba(258, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 80%);
 }
 
 .has-wmf-report-blue-background-color .wp-block-wmf-reports-expandable {

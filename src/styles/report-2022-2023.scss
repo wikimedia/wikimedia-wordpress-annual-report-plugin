@@ -39,12 +39,18 @@
 	}
 
 	.stories .category-slide {
+
 		&:hover,
 		&:focus,
 		&.active {
+
 			img {
 				filter: brightness(0) invert(1);
 			}
 		}
+	}
+
+	.has-base-90-background-color .wp-block-wmf-reports-expandable .expandable-content::after {
+		background: linear-gradient(180deg, rgba(258, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 80%);
 	}
 }
