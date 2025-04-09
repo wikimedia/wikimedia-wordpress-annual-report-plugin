@@ -254,13 +254,13 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			--tangent: 0.068; // Ensures the angle of the slant is consistent.
 
 			.wmf-pattern-endowment-hero__image.alignfull {
-				--corner-offset: calc( 50vw * var(--tangent) );
-				clip-path: polygon(0 0, 100% 0, 100% calc( 100% - var(--corner-offset) ), 0 100%);
+				--corner-offset: calc(50vw * var(--tangent));
+				clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--corner-offset)), 0 100%);
 				position: relative;
 				width: 50vw;
 				max-width: initial;
 				overflow: hidden;
-				margin-bottom: calc( -1 * var(--corner-offset) );
+				margin-bottom: calc(-1 * var(--corner-offset));
 
 				@media only screen and (min-height: 1100px) and (min-width: 1200px) {
 					// Prevent the image from being too tall on large screens.
@@ -278,8 +278,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			&:has(.wmf-pattern-endowment-hero__image.alignfull) {
-				--corner-offset: calc( 100vw * var(--tangent) );
-				clip-path: polygon(0 0, 100% 0, 100% calc( 100% - var(--corner-offset) ), 0 100%);
+				--corner-offset: calc(100vw * var(--tangent));
+				clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--corner-offset)), 0 100%);
 				overflow: hidden;
 			}
 		}
@@ -467,7 +467,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		position: relative;
 
 		img {
-			clip-path: polygon(0 0, 100% 0, 100% calc( 100% - 6.8vw ), 0 100%);
+			clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6.8vw), 0 100%);
 		}
 
 		figcaption {
@@ -623,6 +623,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/** Map **/
 	.wp-block-wmf-reports-map {
+
 		#map {
 
 			@media only screen and (max-width: 781px) {
