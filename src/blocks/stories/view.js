@@ -12,13 +12,13 @@ const setupCarousel = ( carousel ) => {
 		'.carousel__buttons .carousel__button--back'
 	);
 	const forwardButton = carousel.querySelector(
-		'.carousel__buttons .carousel__button-forward'
+		'.carousel__buttons .carousel__button--forward'
 	);
 	const backCategoryButton = carousel.querySelector(
 		'.stories__categories-buttons .carousel__button--back'
 	);
 	const forwardCategoryButton = carousel.querySelector(
-		'.stories__categories-buttons .carousel__button-forward'
+		'.stories__categories-buttons .carousel__button--forward'
 	);
 	const slideCount = stories.length;
 	const track = carousel.getElementsByClassName(
