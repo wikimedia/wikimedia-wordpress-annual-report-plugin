@@ -291,8 +291,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			.wmf-pattern-endowment-hero__image {
+				max-width: 100vw;
 				margin-left: -2rem;
 				margin-right: -2rem;
+				width: 100vw;
 			}
 		}
 
