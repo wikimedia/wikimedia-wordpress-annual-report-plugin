@@ -3,16 +3,27 @@ import scrollToElement from '../../helpers/scroll-to-element';
 
 const carousels = document.querySelectorAll( '.wp-block-wmf-reports-stories' );
 
-const setupCarousel = carousel => {
-
-	const stories = carousel.getElementsByClassName( 'wp-block-wmf-reports-story' );
+const setupCarousel = ( carousel ) => {
+	const stories = carousel.getElementsByClassName(
+		'wp-block-wmf-reports-story'
+	);
 	const categorySlides = carousel.getElementsByClassName( 'category-slide' );
-	const backButton = carousel.querySelector( '.carousel__buttons .carousel__button--back' );
-	const forwardButton = carousel.querySelector( '.carousel__buttons .carousel__button-forward' );
-	const backCategoryButton = carousel.querySelector( '.stories__categories-buttons .carousel__button--back' );
-	const forwardCategoryButton = carousel.querySelector( '.stories__categories-buttons .carousel__button-forward' );
+	const backButton = carousel.querySelector(
+		'.carousel__buttons .carousel__button--back'
+	);
+	const forwardButton = carousel.querySelector(
+		'.carousel__buttons .carousel__button-forward'
+	);
+	const backCategoryButton = carousel.querySelector(
+		'.stories__categories-buttons .carousel__button--back'
+	);
+	const forwardCategoryButton = carousel.querySelector(
+		'.stories__categories-buttons .carousel__button-forward'
+	);
 	const slideCount = stories.length;
-	const track = carousel.getElementsByClassName( 'stories__categories' )?.[ 0 ];
+	const track = carousel.getElementsByClassName(
+		'stories__categories'
+	)?.[ 0 ];
 
 	const setMarginOffset = ( offset ) => {
 		track.style.marginLeft = offset + 'px';
@@ -34,8 +45,12 @@ const setupCarousel = carousel => {
 		const wrapper = document.getElementsByClassName(
 			'stories__categories-wrapper'
 		)?.[ 0 ];
-		const activeCategory = document.querySelector( '.category-slide.active' );
-		const lastSlide = document.querySelector( '.category-slide:last-child' );
+		const activeCategory = document.querySelector(
+			'.category-slide.active'
+		);
+		const lastSlide = document.querySelector(
+			'.category-slide:last-child'
+		);
 		const currentOffset = parseInt( track.style.marginLeft ) || 0;
 
 		const wrapperPosition = wrapper?.getBoundingClientRect();
@@ -50,8 +65,9 @@ const setupCarousel = carousel => {
 			lastSlidePosition.right - currentOffset < wrapperPosition.right
 		) {
 			setMarginOffset( 0 );
-			document.querySelector( '.stories__categories-buttons' ).style.display =
-				'none';
+			document.querySelector(
+				'.stories__categories-buttons'
+			).style.display = 'none';
 			return;
 		}
 
@@ -121,7 +137,8 @@ const setupCarousel = carousel => {
 			slide.querySelector( 'figure' );
 
 		if ( nextStoryGraphic ) {
-			const graphicHeight = nextStoryGraphic.getBoundingClientRect().height;
+			const graphicHeight =
+				nextStoryGraphic.getBoundingClientRect().height;
 			const wrapper = slide.closest( '.carousel-wrapper' );
 			if ( wrapper && graphicHeight ) {
 				wrapper.style.setProperty(
@@ -155,7 +172,8 @@ const setupCarousel = carousel => {
 		setGraphicHeightCssProperty( nextStoryInfoBox );
 
 		const nextCategorySlide = Array.from( categorySlides ).filter(
-			( categorySlide ) => categorySlide.dataset.id === nextStoryInfoBox.id
+			( categorySlide ) =>
+				categorySlide.dataset.id === nextStoryInfoBox.id
 		);
 
 		Array.from( categorySlides ).forEach( ( categorySlide ) => {
@@ -199,7 +217,8 @@ const setupCarousel = carousel => {
 					storyInfoBox.classList.add( 'animate' );
 
 					setTimeout( () => {
-						storyInfoBox.style.height = nextStoryInfoBox.offsetHeight;
+						storyInfoBox.style.height =
+							nextStoryInfoBox.offsetHeight;
 						storyInfoBox.style.opacity = 0;
 
 						processingAnimation = true;
@@ -346,7 +365,7 @@ const setupCarousel = carousel => {
 		touchendX = e.changedTouches[ 0 ].screenX;
 		checkDirection();
 	} );
-}
+};
 
 carousels.forEach( setupCarousel );
 
