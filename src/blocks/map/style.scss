@@ -106,3 +106,30 @@
 		margin-bottom: 0;
 	}
 }
+
+@media screen and (min-width: 45rem) {
+	.wp-block-wmf-reports-map.is-style-side-by-side {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+
+		.carousel__carousel-wrapper {
+			width: 30%;
+		}
+
+		.wmf-pattern-reports-carousel-slide {
+			&,
+			&.wp-block-group.has-background {
+				padding: 1.5rem;
+			}
+
+			.wp-block-image img {
+				border-radius: 0.25rem;
+			}
+
+			> .wp-block-columns {
+				flex-direction: column;
+			}
+		}
+	}
+}
