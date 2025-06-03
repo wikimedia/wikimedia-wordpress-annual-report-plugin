@@ -67,7 +67,7 @@
 	&__heading.alignwide {
 		margin-left: -2rem !important;
 
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			margin-left: auto !important;
 		}
 	}
@@ -112,7 +112,6 @@
 		margin-bottom: 0;
 
 		.wp-block-button.is-style-tertiary {
-
 			.wp-block-button__link.wp-element-button {
 				color: #00a0ff;
 				border-color: #00a0ff;
@@ -131,7 +130,7 @@
 .wmf-pattern-report-intro-columns.wp-block-columns {
 	margin-bottom: 0;
 
-	@media only screen and ( max-width: 781px ) {
+	@media only screen and (max-width: 781px) {
 		gap: 0;
 
 		.wp-block-column:nth-child(even) {
@@ -144,89 +143,19 @@
 		margin-bottom: 1rem;
 
 		button.dropdown-toggle {
-			cursor: pointer;
-			color: #000;
-			text-align: center;
-			border: 1px solid #aaa;
-			background: #fff;
-			border-radius: 0;
-			padding: 0.5rem;
 			width: 100%;
-
-			&:hover {
-				box-shadow: none;
-				color: #000;
-				opacity: 0.8;
-			}
-
-			&::after {
-				// stylelint-disable-next-line function-url-quotes
-				background: url('data:image/svg+xml,<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.795181 1L6.26205 6L11.7289 1" stroke="black" stroke-width="2"/></svg>') center center no-repeat;
-				content: " ";
-				display: inline-block;
-				height: 1em;
-				margin-left: 0.5rem;
-				padding-left: 0.25rem;
-				width: 13px;
-				vertical-align: middle;
-			}
-		}
-
-		button.dropdown-toggle[aria-expanded="true"]::after {
-			transform: rotate(180deg);
 		}
 
 		ul {
-			position: absolute;
-			top: 2.2rem;
-			padding: 0;
+			height: 0;
 			margin: 0;
-			list-style-type: none;
+			position: absolute;
+			visibility: hidden;
 			width: 100%;
 			z-index: 2;
-			visibility: hidden;
-			height: 0;
 
-			li {
-				padding: 0;
-				margin: 0;
-				list-style-type: none;
-				width: 100%;
-
-				button {
-					cursor: pointer;
-					color: #666;
-					text-align: center;
-					border: 1px solid #eee;
-					background: #fff;
-					border-top: none;
-					border-radius: 0;
-					padding: 0.5rem;
-					width: 100%;
-
-					&:focus,
-					&:hover {
-						box-shadow: none;
-						background: #eee;
-						color: #666;
-						outline: none;
-					}
-				}
-
-				&:first-child button {
-					border-top: 1px solid #aaa;
-				}
-
-				&:nth-child(odd) button {
-					background: #f9f9f9;
-
-					&:focus,
-					&:hover {
-						background: #eee;
-						color: #666;
-						outline: none;
-					}
-				}
+			strong {
+				font-weight: inherit;
 			}
 		}
 
@@ -244,15 +173,14 @@
 	margin-bottom: 0;
 	padding: 0;
 
-	@media only screen and ( min-width: 782px ) {
+	@media only screen and (min-width: 782px) {
 		width: calc(100% + 3rem);
 		max-width: calc(100% + 3rem) !important;
 		margin-left: -1rem !important;
 	}
 
 	.wp-block-column:nth-child(even) {
-
-		@media only screen and ( max-width: 781px ) {
+		@media only screen and (max-width: 781px) {
 			margin-left: 0;
 		}
 	}
@@ -263,7 +191,7 @@
 	padding: 0 2rem;
 	width: calc(100% + 4rem);
 
-	@media only screen and ( min-width: 782px ) {
+	@media only screen and (min-width: 782px) {
 		border-radius: 30px;
 		width: calc(100% + 1rem);
 		margin-left: -1rem;
@@ -344,7 +272,6 @@
 		font-size: 15px;
 		margin-bottom: 1rem;
 	}
-
 }
 
 .wmf-pattern-report-intro-donate.wp-block-group {
@@ -372,7 +299,6 @@
 	}
 
 	.wp-block-column:nth-child(even) {
-
 		@media only screen and (max-width: 781px) {
 			margin-left: 0;
 		}
