@@ -6,7 +6,12 @@ import {
 	useBlockProps,
 	withColors,
 } from '@wordpress/block-editor';
-import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
+import {
+	__experimentalNumberControl as NumberControl,
+	PanelBody,
+	TextControl,
+	SelectControl,
+} from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useEffect, useRef, useState } from '@wordpress/element';
 
@@ -16,6 +21,8 @@ import './editor.scss';
 import InnerBlocksDisplaySingle from '../../components/inner-block-slider/inner-block-single-display';
 import Navigation from '../../components/inner-block-slider/navigation';
 import PaletteColorPicker from '../../components/palette-color-picker';
+
+import metadata from './block.json';
 
 let map = null;
 let mapItemIndex = 0;
@@ -63,6 +70,9 @@ const mapboxStyleOptions = [
 const MapPreview = ( {
 	mapStyle,
 	projection = 'equirectangular',
+	latitude = 0,
+	longitude = 0,
+	zoom = 1,
 	slideBlocks = [],
 	updateMarkers,
 } ) => {
@@ -108,13 +118,13 @@ const MapPreview = ( {
 		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
-			center: [ 8.18, 9 ],
+			center: [ longitude || 0, latitude || 0 ],
 			minZoom: 0,
 			projection,
 			renderWorldCopies: false,
 			scrollZoom: false,
 			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
-			zoom: 0.5,
+			zoom: zoom || 1,
 		} );
 
 		map.addControl( fullScreenControl );
@@ -195,17 +205,19 @@ const MapPreview = ( {
 				updateMarkers();
 			} );
 		} );
-		// We do not want a change to projection to trigger a re-render, that
+		// We do not want a change to map attributes to trigger a re-render, that
 		// is handled separately below.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ mapStyle, serializedFeatures, updateMarkers ] );
 
 	useEffect( () => {
 		if ( map ) {
-			// Keep the projection up to date as it changes.
+			// Keep the map up to date as attributes change.
 			map.setProjection( projection );
+			map.setCenter( [ longitude || 0, latitude || 0 ] );
+			map.setZoom( zoom || 1 );
 		}
-	}, [ projection ] );
+	}, [ projection, latitude, longitude, zoom ] );
 
 	return (
 		<div
@@ -514,9 +526,41 @@ const Edit = ( {
 							},
 							{ value: 'mercator', label: 'Mercator' },
 						] }
-						value={ attributes.projection || 'equirectangular' }
+						value={
+							attributes.projection ||
+							metadata.attributes.projection.default
+						}
 						onChange={ ( projection ) =>
 							setAttributes( { projection } )
+						}
+					/>
+					<NumberControl
+						label={ __( 'Center point latitude', 'wmf-reports' ) }
+						value={
+							attributes.centerLat ||
+							metadata.attributes.centerLat.default
+						}
+						onChange={ ( centerLat ) =>
+							setAttributes( { centerLat: +centerLat } )
+						}
+					/>
+					<NumberControl
+						label={ __( 'Center point longitude', 'wmf-reports' ) }
+						value={
+							attributes.centerLon ||
+							metadata.attributes.centerLon.default
+						}
+						onChange={ ( centerLon ) =>
+							setAttributes( { centerLon: +centerLon } )
+						}
+					/>
+					<NumberControl
+						label={ __( 'Initial zoom level', 'wmf-reports' ) }
+						value={
+							attributes.zoom || metadata.attributes.zoom.default
+						}
+						onChange={ ( zoom ) =>
+							setAttributes( { zoom: +zoom } )
 						}
 					/>
 				</PanelBody>
@@ -524,6 +568,15 @@ const Edit = ( {
 			<MapPreview
 				{ ...{ mapStyle, slideBlocks, updateMarkers } }
 				projection={ attributes.projection }
+				latitude={
+					attributes.centerLat ||
+					metadata.attributes.centerLat.default
+				}
+				longitude={
+					attributes.centerLon ||
+					metadata.attributes.centerLon.default
+				}
+				zoom={ attributes.zoom || metadata.attributes.zoom.default }
 			/>
 			<div className="inner-block-slider">
 				<InnerBlocksDisplaySingle
