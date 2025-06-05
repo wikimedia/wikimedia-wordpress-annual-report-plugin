@@ -63,6 +63,9 @@ const mapboxStyleOptions = [
  * @param {Object}   props               React component props.
  * @param {string}   props.mapStyle      mapbox:// style string URI.
  * @param {string}   props.projection    Which map projection to use.
+ * @param {number}   props.latitude      Latitude of map centerpoint.
+ * @param {number}   props.longitude     Longitude of map centerpoint.
+ * @param {number}   props.zoom          Initial zoom level of map.
  * @param {Object[]} props.slideBlocks   Block array, necessary for rerendering map.
  * @param {Function} props.updateMarkers Callback to update map pins.
  * @return {React.ReactNode} Container node for Map.
