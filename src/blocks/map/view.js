@@ -13,8 +13,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		return;
 	}
 
-	const isWend = !! document.querySelector( '.wikimedia-endow' );
-
 	mapboxgl.accessToken = wmf.apiKey;
 
 	const mapDiv = document.getElementById( 'map' );
