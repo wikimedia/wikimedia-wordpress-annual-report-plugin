@@ -7,6 +7,7 @@ import {
 	withColors,
 } from '@wordpress/block-editor';
 import {
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalNumberControl as NumberControl,
 	PanelBody,
 	TextControl,
