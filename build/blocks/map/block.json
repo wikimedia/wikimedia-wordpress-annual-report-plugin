@@ -22,6 +22,18 @@
     "projection": {
       "type": "string",
       "default": "equirectangular"
+    },
+    "centerLat": {
+      "type": "number",
+      "default": 8.18
+    },
+    "centerLon": {
+      "type": "number",
+      "default": 9
+    },
+    "zoom": {
+      "type": "number",
+      "default": 0.5
     }
   },
   "example": {},

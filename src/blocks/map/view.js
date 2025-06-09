@@ -13,8 +13,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		return;
 	}
 
-	const isWend = !! document.querySelector( '.wikimedia-endow' );
-
 	mapboxgl.accessToken = wmf.apiKey;
 
 	const mapDiv = document.getElementById( 'map' );
@@ -27,12 +25,16 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const map = new mapboxgl.Map( {
 		attributionControl: false,
 		container: 'map',
-		center: [ 8.18, isWend ? 26.83 : 9 ],
+		center: [
+			// Order is long-lat for GeoJSON parity.
+			parseFloat( mapDiv?.dataset?.longitude || 0 ),
+			parseFloat( mapDiv?.dataset?.latitude || 0 ),
+		],
 		projection: 'equirectangular',
 		renderWorldCopies: false,
 		scrollZoom: false,
 		style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
-		zoom: 0.5,
+		zoom: parseFloat( mapDiv?.dataset?.zoom || 1 ),
 	} );
 	let mapItemIndex = 0;
 	let processingAnimation = false;
