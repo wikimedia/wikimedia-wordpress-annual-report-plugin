@@ -370,14 +370,16 @@ const setupCarousel = ( carousel ) => {
 	 * Check for current slide on load, and advance to it if set.
 	 */
 	document.addEventListener( 'DOMContentLoaded', () => {
-		const slideID = location.hash.slice( location.hash.lastIndexOf( '-' ) + 1 );
+		const slideID = location.hash.slice(
+			location.hash.lastIndexOf( '-' ) + 1
+		);
 		const slide = document.getElementById( slideID );
 
 		if ( slide && slide.closest( '.stories.carousel' ) ) {
 			setTimeout( () => {
-				const slideIndex = [ ...slide.parentElement.children ].findIndex(
-					( { id } ) => id === slideID
-				);
+				const slideIndex = [
+					...slide.parentElement.children,
+				].findIndex( ( { id } ) => id === slideID );
 
 				setSlide( slideIndex );
 			}, 500 );
@@ -386,4 +388,3 @@ const setupCarousel = ( carousel ) => {
 };
 
 carousels.forEach( setupCarousel );
-
