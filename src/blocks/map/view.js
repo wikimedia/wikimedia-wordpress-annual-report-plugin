@@ -1,13 +1,13 @@
 /* global wmf:false */
 import scrollToElement from '../../helpers/scroll-to-element';
 
-let initialized = false;
+window.wmf = { ...window.wmf, mapInitialized: false };
 document.addEventListener( 'DOMContentLoaded', () => {
 	// Avoid double-rendering in DevServer mode. Testing requires a full page reload.
-	if ( initialized ) {
+	if ( window.wmf.mapInitialized ) {
 		return;
 	}
-	initialized = true;
+	window.wmf.mapInitialized = true;
 
 	// Use mapbox off of CDN-loaded window global on frontend.
 	const mapboxgl = window.mapboxgl;
