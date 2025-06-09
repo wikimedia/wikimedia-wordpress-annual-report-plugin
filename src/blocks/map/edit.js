@@ -537,21 +537,21 @@ const Edit = ( {
 						label={ __( 'Center point latitude', 'wmf-reports' ) }
 						value={ attributes.centerLat }
 						onChange={ ( centerLat ) =>
-							setAttributes( { centerLat: +centerLat } )
+							setAttributes( { centerLat: parseFloat( centerLat ) } )
 						}
 					/>
 					<NumberControl
 						label={ __( 'Center point longitude', 'wmf-reports' ) }
 						value={ attributes.centerLon }
 						onChange={ ( centerLon ) =>
-							setAttributes( { centerLon: +centerLon } )
+							setAttributes( { centerLon: parseFloat( centerLon ) } )
 						}
 					/>
 					<NumberControl
 						label={ __( 'Initial zoom level', 'wmf-reports' ) }
 						value={ attributes.zoom }
 						onChange={ ( zoom ) =>
-							setAttributes( { zoom: +zoom } )
+							setAttributes( { zoom: parseFloat( zoom ) } )
 						}
 					/>
 				</PanelBody>
