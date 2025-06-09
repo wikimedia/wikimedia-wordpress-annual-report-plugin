@@ -8,7 +8,6 @@
 	}
 
 	&.admin-bar {
-
 		@media screen and (min-width: 600px) {
 			--scroll-margin-top: 46px; // Fixed admin bar.
 		}
@@ -25,39 +24,16 @@
 
 /* Theme overrides */
 .single-wmf-report {
-
 	.mw-980 {
 		max-width: none;
 		padding: 0;
 	}
 
-	.primary-nav {
-		margin-top: 3.875rem;
-	}
-
 	@media (min-width: 1024px) {
-		// We stack our nav on top of Shiro's, in that theme.
-		[data-dropdown-status="initialized"] .primary-nav {
-			min-height: 0;
-			height: 3rem;
-			margin-top: 3.75rem;
-		}
-
-		[data-dropdown-status="initialized"] .primary-nav__items {
-			max-width: variables.$width-breakpoint-wide;
-			margin: 0 auto;
-			padding: 0;
-		}
-
 		// Focus management to enable keyboard selection of page-level nav
 		// items even when they are occluded by the Report navigation.
 		.header-default {
 			position: relative;
-
-			.header-inner .primary-nav:focus-within {
-				background: #fff;
-				z-index: 3000; // overrides 2000 of .site-header
-			}
 		}
 	}
 
@@ -142,21 +118,6 @@
 		}
 	}
 
-	.wp-block-group.alignfull,
-	.alignfull {
-		margin-left: 0;
-		margin-right: 0;
-		max-width: 100%;
-		padding-left: 0;
-		padding-right: 0;
-		width: 100%;
-
-		// stylelint-disable-next-line no-descending-specificity
-		.wp-block-group__inner-container {
-			padding: 0;
-		}
-	}
-
 	.wp-block-group.alignwide,
 	.alignwide {
 		margin-left: auto;
@@ -212,7 +173,6 @@
 	}
 
 	#vg-tooltip-element table tr td {
-
 		&.key {
 			color: #444;
 		}
@@ -229,7 +189,6 @@
 }
 
 .wp-block-button.is-style-transparent {
-
 	.wp-block-button__link.has-base-100-background-color {
 		background: #fff !important;
 		cursor: pointer;
