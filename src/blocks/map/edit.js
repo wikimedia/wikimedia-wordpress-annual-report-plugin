@@ -23,8 +23,6 @@ import InnerBlocksDisplaySingle from '../../components/inner-block-slider/inner-
 import Navigation from '../../components/inner-block-slider/navigation';
 import PaletteColorPicker from '../../components/palette-color-picker';
 
-import metadata from './block.json';
-
 let map = null;
 let mapItemIndex = 0;
 
@@ -530,39 +528,28 @@ const Edit = ( {
 							},
 							{ value: 'mercator', label: 'Mercator' },
 						] }
-						value={
-							attributes.projection ||
-							metadata.attributes.projection.default
-						}
+						value={ attributes.projection }
 						onChange={ ( projection ) =>
 							setAttributes( { projection } )
 						}
 					/>
 					<NumberControl
 						label={ __( 'Center point latitude', 'wmf-reports' ) }
-						value={
-							attributes.centerLat ||
-							metadata.attributes.centerLat.default
-						}
+						value={ attributes.centerLat }
 						onChange={ ( centerLat ) =>
 							setAttributes( { centerLat: +centerLat } )
 						}
 					/>
 					<NumberControl
 						label={ __( 'Center point longitude', 'wmf-reports' ) }
-						value={
-							attributes.centerLon ||
-							metadata.attributes.centerLon.default
-						}
+						value={ attributes.centerLon }
 						onChange={ ( centerLon ) =>
 							setAttributes( { centerLon: +centerLon } )
 						}
 					/>
 					<NumberControl
 						label={ __( 'Initial zoom level', 'wmf-reports' ) }
-						value={
-							attributes.zoom || metadata.attributes.zoom.default
-						}
+						value={ attributes.zoom }
 						onChange={ ( zoom ) =>
 							setAttributes( { zoom: +zoom } )
 						}
@@ -572,15 +559,9 @@ const Edit = ( {
 			<MapPreview
 				{ ...{ mapStyle, slideBlocks, updateMarkers } }
 				projection={ attributes.projection }
-				latitude={
-					attributes.centerLat ||
-					metadata.attributes.centerLat.default
-				}
-				longitude={
-					attributes.centerLon ||
-					metadata.attributes.centerLon.default
-				}
-				zoom={ attributes.zoom || metadata.attributes.zoom.default }
+				latitude={ attributes.centerLat }
+				longitude={ attributes.centerLon }
+				zoom={ attributes.zoom }
 			/>
 			<div className="inner-block-slider">
 				<InnerBlocksDisplaySingle
