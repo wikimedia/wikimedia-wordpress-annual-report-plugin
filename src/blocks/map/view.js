@@ -194,6 +194,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 			markerInfoBox.style.height = 0;
 			markerInfoBox.style.visibility = 'hidden';
+
+			setTimeout( map.resize, 50 );
 		} );
 	};
 

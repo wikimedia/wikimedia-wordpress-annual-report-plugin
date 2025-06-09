@@ -268,6 +268,16 @@ const Edit = ( {
 	// Keep track of the selected Slide.
 	const [ currentItemIndex, setCurrentItemIndex ] = useState( 0 );
 
+	// Track the active sidebar so we can adjust map rendering if necessary.
+	const activeSidebar = useSelect( ( select ) => select( 'core/edit-post' ).getActiveGeneralSidebarName() );
+
+	useEffect( () => {
+		if ( ! map ) {
+			return;
+		}
+		setTimeout( () => map.resize(), 250 );
+	}, [ currentItemIndex, slideCount, activeSidebar ] )
+
 	/**
 	 * Add Slide Function.
 	 */
