@@ -60,7 +60,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		// eslint-disable-next-line no-shadow
 		const media = post?.featured_media
 			? select( 'core' ).getMedia( post?.featured_media )
-			: {};
+			: null;
 
 		return {
 			media,
