@@ -21,4 +21,21 @@
 			margin-top: 0;
 		}
 	}
+
+	&.is-style-side-by-side {
+
+		> .inner-block-slider {
+			width: 30%;
+			min-width: 250px;
+		}
+
+		.help {
+			padding: 0.5rem;
+		}
+
+		.help,
+		.overlay-container {
+			margin: 0;
+		}
+	}
 }
