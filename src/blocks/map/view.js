@@ -1,7 +1,14 @@
 /* global wmf:false */
 import scrollToElement from '../../helpers/scroll-to-element';
 
+let initialized = false;
 document.addEventListener( 'DOMContentLoaded', () => {
+	// Avoid double-rendering in DevServer mode. Testing requires a full page reload.
+	if ( initialized ) {
+		return;
+	}
+	initialized = true;
+
 	// Use mapbox off of CDN-loaded window global on frontend.
 	const mapboxgl = window.mapboxgl;
 
@@ -446,3 +453,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 	} );
 } );
+
+if ( module.hot ) {
+	module.hot.decline();
+}
