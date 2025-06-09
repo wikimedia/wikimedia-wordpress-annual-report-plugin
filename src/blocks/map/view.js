@@ -378,13 +378,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 							geometry: {
 								type: 'Point',
 								coordinates: [
-									marker?.dataset?.long || 0,
-									marker?.dataset?.lat || 0,
+									marker.dataset.long || 0,
+									marker.dataset.lat || 0,
 								],
 							},
 							type: 'Feature',
 							properties: {
-								id: marker?.id,
+								id: marker.id,
 								index,
 							},
 						};
