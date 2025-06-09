@@ -40,7 +40,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	const [ contentExpanded, setContentExpanded ] = useState( false );
 
 	const childBlocks = useSelect( ( select ) => {
-		const blocks = select( 'core/block-editor' ).getBlocksByClientId( clientId );
+		const blocks =
+			select( 'core/block-editor' ).getBlocksByClientId( clientId );
 		return blocks && blocks[ 0 ] ? blocks[ 0 ]?.innerBlocks || [] : [];
 	} );
 

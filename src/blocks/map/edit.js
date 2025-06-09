@@ -269,14 +269,16 @@ const Edit = ( {
 	const [ currentItemIndex, setCurrentItemIndex ] = useState( 0 );
 
 	// Track the active sidebar so we can adjust map rendering if necessary.
-	const activeSidebar = useSelect( ( select ) => select( 'core/edit-post' ).getActiveGeneralSidebarName() );
+	const activeSidebar = useSelect( ( select ) =>
+		select( 'core/edit-post' ).getActiveGeneralSidebarName()
+	);
 
 	useEffect( () => {
 		if ( ! map ) {
 			return;
 		}
 		setTimeout( () => map.resize(), 250 );
-	}, [ currentItemIndex, slideCount, activeSidebar ] )
+	}, [ currentItemIndex, slideCount, activeSidebar ] );
 
 	/**
 	 * Add Slide Function.
@@ -547,14 +549,18 @@ const Edit = ( {
 						label={ __( 'Center point latitude', 'wmf-reports' ) }
 						value={ attributes.centerLat }
 						onChange={ ( centerLat ) =>
-							setAttributes( { centerLat: parseFloat( centerLat ) } )
+							setAttributes( {
+								centerLat: parseFloat( centerLat ),
+							} )
 						}
 					/>
 					<NumberControl
 						label={ __( 'Center point longitude', 'wmf-reports' ) }
 						value={ attributes.centerLon }
 						onChange={ ( centerLon ) =>
-							setAttributes( { centerLon: parseFloat( centerLon ) } )
+							setAttributes( {
+								centerLon: parseFloat( centerLon ),
+							} )
 						}
 					/>
 					<NumberControl
