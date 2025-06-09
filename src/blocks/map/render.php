@@ -11,14 +11,19 @@ if ( ! empty( $markerActiveColor ) ) {
 	$cssColors[] = "--map-marker-active-color: var(--wp--preset--color--$markerActiveColor);";
 }
 
-$attributes = get_block_wrapper_attributes( [
+$wrapper_attributes = get_block_wrapper_attributes( [
 	'class' => 'map map--carousel carousel alignfull carousel--uninitialized',
 	'style' => implode( ';', $cssColors ),
 ] );
 ?>
 
-<div <?php echo wp_kses_data( $attributes ); ?>>
-	<div id="map" style="min-height: 250px" data-map-style="<?php echo esc_attr( $map_style ); ?>"></div>
+<div <?php echo wp_kses_data( $wrapper_attributes ); ?>>
+	<div id="map" style="min-height: 250px"
+		data-map-style="<?php echo esc_attr( $map_style ); ?>"
+		data-latitude="<?php echo esc_attr( $attributes['centerLat'] ?? 0 ); ?>"
+		data-longitude="<?php echo esc_attr( $attributes['centerLon'] ?? 0 ); ?>"
+		data-zoom="<?php echo esc_attr( $attributes['zoom'] ?? 1 ); ?>"
+	></div>
 	<div class="carousel__carousel-wrapper">
 		<?php echo $content; ?>
 		<?php if ( substr_count( $content, 'wp-block-wmf-reports-marker' ) > 1 ) : ?>
