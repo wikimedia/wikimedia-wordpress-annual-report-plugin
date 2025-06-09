@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { Button, IconButton } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 
 /**
  * Inner Block Slider Navigation component.
@@ -27,11 +27,11 @@ function Navigation( {
 } ) {
 	return (
 		<div className="inner-block-slider__navigation">
-			<IconButton
+			<Button
 				disabled={ ! prevEnabled }
 				icon="arrow-left-alt2"
-				isSecondary
-				isSmall
+				variant="secondary"
+				size="small"
 				onClick={ () => {
 					if ( prevEnabled ) {
 						setCurrentPage( currentPage - 1 );
@@ -58,22 +58,22 @@ function Navigation( {
 					{ i + 1 }
 				</Button>
 			) ) }
-			<IconButton
+			<Button
 				disabled={ ! nextEnabled }
 				icon="arrow-right-alt2"
-				isSecondary
-				isSmall
+				variant="secondary"
+				size="small"
 				onClick={ () => {
 					if ( nextEnabled ) {
 						setCurrentPage( currentPage + 1 );
 					}
 				} }
 			/>
-			<IconButton
+			<Button
 				disabled={ ! addSlideEnabled }
 				icon="plus-alt2"
-				isSecondary
-				isSmall
+				variant="secondary"
+				size="small"
 				onClick={ () => addSlide() }
 			/>
 		</div>
