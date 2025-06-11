@@ -56,6 +56,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 	};
 
+	/** Allow all JS changes to "settle," then update map size. */
+	const resizeMap = () => setTimeout( () => map.resize(), 50 );
+
 	const setMarker = ( id, shouldScrollToElement = true ) => {
 		mapItemIndex = id;
 
@@ -195,7 +198,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			markerInfoBox.style.height = 0;
 			markerInfoBox.style.visibility = 'hidden';
 
-			setTimeout( map.resize, 50 );
+			resizeMap();
 		} );
 	};
 
@@ -454,6 +457,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			setMarker( 0, false );
 		}
 	} );
+
+	resizeMap();
 } );
 
 if ( module.hot ) {
