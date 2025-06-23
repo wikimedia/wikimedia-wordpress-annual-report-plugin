@@ -161,6 +161,7 @@
 .wmf-pattern-previous-report {
 	position: relative;
 	padding: 0 1rem;
+	position: relative;
 
 	@media only screen and (min-width: 782px) {
 		border-radius: 30px;
@@ -169,21 +170,6 @@
 
 	&.selected {
 		background-color: #c0e6ff;
-	}
-
-	// stylelint-disable-next-line no-descending-specificity
-	.wp-block-group__inner-container {
-		position: relative;
-
-		// Click blanket.
-		a::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-		}
 	}
 
 	&__duration {
@@ -196,7 +182,7 @@
 		font-size: 15px;
 		padding: 0.5rem 1rem 0.5rem 1rem;
 		margin-bottom: 1rem;
-		top: 1.5rem;
+		top: 0.5rem;
 		left: -1rem;
 		position: relative;
 	}
@@ -222,6 +208,16 @@
 
 			&:hover {
 				color: #000;
+			}
+
+			// Click blanket.
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
 			}
 
 			&::after {
