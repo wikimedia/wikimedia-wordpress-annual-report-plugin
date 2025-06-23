@@ -41,11 +41,6 @@
 		margin: 0;
 	}
 
-	/* Non-block-specific styles */
-	button:focus-visible {
-		box-shadow: 0 0 0 2px rgba(0, 125, 250, 0.8);
-	}
-
 	.report-background.wp-block-group.has-background {
 		padding: 0;
 	}
@@ -86,7 +81,11 @@
 	h2:not([class*="is-style-"]),
 	h2:not(.is-style-report-section-heading) {
 		font-size: 1.75rem;
-		margin-bottom: 2rem;
+	}
+
+	h2:not([class*="is-style-"]),
+	h2:not(.is-style-report-section-heading) {
+		margin-bottom: 0;
 	}
 
 	.wmf-accordion-item__title-text {
@@ -102,7 +101,6 @@
 		scroll-margin-top: var(--scroll-margin-top);
 		// Have to be able to predict where the pill is in relation to the div.
 		padding-top: 2rem !important;
-		margin-top: 0 !important;
 
 		@media screen and (min-width: 980px) {
 			padding-top: 3rem !important;
@@ -118,8 +116,8 @@
 		}
 	}
 
-	.wp-block-group.alignwide,
-	.alignwide {
+	.report-background .wp-block-group.alignwide,
+	.report-background .alignwide {
 		margin-left: auto;
 		margin-right: auto;
 		max-width: variables.$width-breakpoint-wide !important;
@@ -183,6 +181,15 @@
 	}
 }
 
+.report-background .wp-block-group.has-background {
+	> .wp-block-group.alignfull,
+	> .alignfull {
+		margin-left: calc(var(--wp--style--root--padding-left) * -1);
+		margin-right: calc(var(--wp--style--root--padding-right) * -1);
+		width: 100vw;
+	}
+}
+
 /* Styles used for core block modifications */
 .wp-block-group-is-full-viewport-height {
 	height: 100vh;
@@ -191,8 +198,8 @@
 .wp-block-button.is-style-transparent {
 	.wp-block-button__link.has-base-100-background-color {
 		background: #fff !important;
+		border-color: #000 !important;
 		cursor: pointer;
-		font-size: 0.8125rem;
 
 		&::before {
 			font-size: 1rem;

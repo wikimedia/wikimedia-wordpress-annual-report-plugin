@@ -1,25 +1,24 @@
 @use "../helpers/variables";
 
 .wmf-pattern-reports-hero {
-	padding: 0 !important;
-	margin-bottom: 3rem !important;
+	padding-block: 0 !important;
+	margin-bottom: 4rem !important;
 
 	&__head {
 		display: grid;
 		overflow: hidden;
 	}
 
-	.wp-block-wmf-reports-animation {
-		aspect-ratio: initial !important;
-	}
-
-	.wp-block-wmf-reports-animation,
+	.wmf-animation,
 	&__heading-container {
 		grid-column: 1 / span 1;
 		grid-row: 1 / span 1;
 	}
 
 	&__heading-container {
+		align-items: center;
+		display: flex;
+		margin: 0 !important;
 	}
 
 	&__heading-label {
@@ -78,6 +77,8 @@
 	}
 
 	.wmf-animation {
+		overflow: hidden;
+
 		@media only screen and (max-width: 781px) {
 			overflow: hidden;
 			aspect-ratio: 2 / 1 !important;
@@ -97,6 +98,9 @@
 	}
 
 	& &__content-background.wp-block-group {
+		margin: 0 !important;
+		padding-top: 0 !important;
+
 		@media only screen and (max-width: 781px) {
 			padding-top: 2.5rem;
 		}
@@ -108,6 +112,7 @@
 
 		.is-style-sans-p {
 			font-size: variables.$font-size-base;
+			margin-left: 0 !important;
 
 			@media only screen and (min-width: 782px) {
 				font-size: variables.$font-size-xlarge;
