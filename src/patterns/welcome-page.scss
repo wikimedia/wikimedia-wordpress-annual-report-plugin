@@ -17,11 +17,19 @@
 	p + p {
 		margin-top: 0;
 	}
+
+	&:has(> .has-background:last-child) + .photo-attribution {
+		margin-block-start: 0;
+	}
 }
 
 .wmf-pattern-report-into-hero {
 	display: grid;
 	padding-block: 0 !important;
+
+	@media only screen and (max-width: 781px) {
+		padding-left: 0 !important;
+	}
 
 	&__image.wp-block-image,
 	&__heading {
@@ -36,8 +44,9 @@
 		width: 100%;
 	}
 
-	&__heading-pill {
-		position: relative;
+	&__heading .wmf-pattern-reports-hero__heading-pill {
+		margin-bottom: 0 !important;
+		transform: none !important;
 	}
 
 	&__image.wp-block-image {
@@ -100,7 +109,7 @@
 		gap: 0;
 
 		.wp-block-column:nth-child(even) {
-			margin-left: 0;
+			margin-top: 2rem;
 		}
 	}
 
@@ -133,15 +142,12 @@
 }
 
 .wmf-pattern-previous-report-columns.wp-block-columns {
-	gap: 0;
-	margin-left: -2rem !important;
-	margin-right: -2rem !important;
 	margin-bottom: 0;
 	padding: 0;
 
 	@media only screen and (min-width: 782px) {
-		width: calc(100% + 3rem);
-		max-width: calc(100% + 3rem) !important;
+		width: calc(100% + 1rem);
+		max-width: calc(100% + 1rem) !important;
 		margin-left: -1rem !important;
 	}
 
@@ -154,32 +160,16 @@
 
 .wmf-pattern-previous-report {
 	position: relative;
-	padding: 0 2rem;
-	width: calc(100% + 4rem);
+	padding: 0 1rem;
+	position: relative;
 
 	@media only screen and (min-width: 782px) {
 		border-radius: 30px;
 		width: calc(100% + 1rem);
-		margin-left: -1rem;
 	}
 
 	&.selected {
 		background-color: #c0e6ff;
-	}
-
-	// stylelint-disable-next-line no-descending-specificity
-	.wp-block-group__inner-container {
-		position: relative;
-
-		// Click blanket.
-		a::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-		}
 	}
 
 	&__duration {
@@ -192,7 +182,7 @@
 		font-size: 15px;
 		padding: 0.5rem 1rem 0.5rem 1rem;
 		margin-bottom: 1rem;
-		top: 1.5rem;
+		top: 0.5rem;
 		left: -1rem;
 		position: relative;
 	}
@@ -218,6 +208,16 @@
 
 			&:hover {
 				color: #000;
+			}
+
+			// Click blanket.
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
 			}
 
 			&::after {

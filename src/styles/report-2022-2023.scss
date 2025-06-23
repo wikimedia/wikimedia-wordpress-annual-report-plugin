@@ -5,10 +5,10 @@
 // stylelint-disable no-descending-specificity
 
 .wmf-report-2022-2023-annual-report {
-
 	.wmf-pattern-overlay__image.wp-block-image img,
 	.wp-block-wmf-reports-report__image img,
-	.wp-block-group.has-background {
+	.report-background
+		.wp-block-group.has-background:not(.wmf-pattern-previous-reports) {
 		border-bottom-right-radius: 2rem;
 	}
 
@@ -32,25 +32,28 @@
 	}
 
 	.wmf-pattern-reports-carousel-slide__image.wp-block-image img {
-
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			border-bottom-right-radius: 2rem;
 		}
 	}
 
 	.stories .category-slide {
-
 		&:hover,
 		&:focus,
 		&.active {
-
 			img {
 				filter: brightness(0) invert(1);
 			}
 		}
 	}
 
-	.has-base-90-background-color .wp-block-wmf-reports-expandable .expandable-content::after {
-		background: linear-gradient(180deg, rgba(258, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 80%);
+	.has-base-90-background-color
+		.wp-block-wmf-reports-expandable
+		.expandable-content::after {
+		background: linear-gradient(
+			180deg,
+			rgba(258, 249, 250, 0) 0%,
+			rgba(248, 249, 250, 1) 80%
+		);
 	}
 }

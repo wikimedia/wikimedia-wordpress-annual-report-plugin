@@ -4,22 +4,17 @@
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 
-	> .wp-block-group__inner-container {
-		margin: 0 auto;
-	}
-
 	.wp-block-group figure {
 		filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.15));
 	}
 
 	.wp-block-quote {
 		border: 0;
-		margin: 0 0 2rem;
+		margin-block-start: 1rem;
 		max-width: 100%;
 		padding-left: 0;
 
 		p {
-
 			font-weight: variables.$font-weight-base;
 			font-size: variables.$font-size-xxlarge;
 			line-height: 1.2;
@@ -38,9 +33,5 @@
 
 	.wp-block-group.is-layout-flex {
 		margin-bottom: 1rem;
-
-		img {
-			margin-right: 1rem;
-		}
 	}
 }
