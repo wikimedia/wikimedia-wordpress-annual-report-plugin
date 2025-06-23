@@ -22,6 +22,11 @@
 	}
 }
 
+.page-annualreport .header-default,
+.single-wmf-report .header-default {
+	display: none;
+}
+
 /* Theme overrides */
 .single-wmf-report {
 	.mw-980 {
