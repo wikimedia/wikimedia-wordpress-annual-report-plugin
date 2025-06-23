@@ -4,6 +4,10 @@ $primary-nav-mobile-height: 62px;
 
 .wmf-accordion-wrapper {
 	overflow: hidden;
+
+	+ .wmf-accordion-wrapper {
+		margin-block-start: 1rem !important;
+	}
 }
 
 .wmf-accordion-item {
@@ -68,6 +72,7 @@ $primary-nav-mobile-height: 62px;
 }
 
 .wp-block-wmf-reports-accordion:not(.wp-block-wmf-reports-accordion--alt) {
+	margin-block-start: 0 !important;
 	padding: 0;
 
 	.wmf-accordion-item {
@@ -164,9 +169,12 @@ $primary-nav-mobile-height: 62px;
 		border: 1px solid #aaa;
 		border-left: 0.5em solid #ff6801;
 		border-radius: 2px;
-		margin-bottom: 1rem;
 		padding: 1rem 0.5rem 1rem 1.5rem;
 		position: relative;
+
+		&:not(:first-of-type) {
+			margin-block-start: 1rem;
+		}
 	}
 
 	.wmf-accordion-item__title::after {
