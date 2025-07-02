@@ -8,60 +8,10 @@ namespace WMF\Reports\Editor\Patterns\WelcomePage;
 const NAME = 'wmf-reports/welcome-page';
 
 const PATTERN = <<<CONTENT
-<!-- wp:group {"align":"full","className":"wmf-pattern-report-welcome"} -->
-<div class="wp-block-group alignfull wmf-pattern-report-welcome"><!-- wp:group {"tagName":"section","align":"full","backgroundColor":"wmf-report-blue","className":"wmf-pattern-report-into-hero is-style-default"} -->
-<section class="wp-block-group alignfull wmf-pattern-report-into-hero is-style-default has-wmf-report-blue-background-color has-background"><!-- wp:group {"align":"full","className":"wmf-pattern-report-into-hero__head"} -->
-<div class="wp-block-group alignfull wmf-pattern-report-into-hero__head"><!-- wp:image {"align":"full","id":74296,"sizeSlug":"large","linkDestination":"none","lock":{"move":false,"remove":false},"className":"wmf-pattern-report-into-hero__image"} -->
-<figure class="wp-block-image alignfull size-large wmf-pattern-report-into-hero__image"><img src="/wp-content/uploads/2024/03/PrenticeHandMural-1.jpg?w=1024" alt="The Prentice School Hand Mural" class="wp-image-74296" /></figure>
-<!-- /wp:image -->
-
-<!-- wp:group {"align":"full","className":"wmf-pattern-report-into-hero__heading-container"} -->
-<div class="wp-block-group alignfull wmf-pattern-report-into-hero__heading-container"><!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"align":"wide","className":"wmf-pattern-report-into-hero__heading"} -->
-<div class="wp-block-group alignwide wmf-pattern-report-into-hero__heading"><!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base90"}}}},"backgroundColor":"wmf-report-brightblue","textColor":"base90","className":"wmf-pattern-reports-hero__heading-pill"} -->
-<div class="wp-block-group wmf-pattern-reports-hero__heading-pill has-base-90-color has-wmf-report-brightblue-background-color has-text-color has-background has-link-color"><!-- wp:heading {"level":3,"className":"wmf-pattern-report-into-hero__heading-label is-style-report-section-heading has-wmf-logo"} -->
-<h3 class="wp-block-heading wmf-pattern-report-into-hero__heading-label is-style-report-section-heading has-wmf-logo"><strong>Annual Report 2022-2023</strong></h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":1} -->
-<h1 class="wp-block-heading"><strong>The humans behind a year of impact around the world</strong></h1>
-<!-- /wp:heading -->
-
-<!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-tertiary"} -->
-<div class="wp-block-button is-style-tertiary"><a class="wp-block-button__link wp-element-button" href="#" target="_blank" rel="noreferrer noopener">Open the latest report</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group --></section>
-<!-- /wp:group -->
-
-<!-- wp:columns {"align":"wide","className":"wmf-pattern-report-intro-columns"} -->
-<div class="wp-block-columns alignwide wmf-pattern-report-intro-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3,"className":"is-style-h2"} -->
-<h3 class="wp-block-heading is-style-h2">All reports</h3>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>Access to all reports of Wikimedia foundation</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
-
-<!-- wp:column {"width":"33%","className":"wmf-pattern-report-intro-columns__select"} -->
-<div class="wp-block-column wmf-pattern-report-intro-columns__select" style="flex-basis:33%"><!-- wp:list -->
-<ul><!-- wp:list-item -->
-<li></li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide"><!-- wp:columns {"align":"wide","className":"wmf-pattern-previous-report-columns"} --><!-- wp:group {"align":"full","className":"wmf-pattern-report-welcome","layout":{"type":"constrained"}} -->
+<!-- wp:group {"align":"full","className":"wmf-pattern-report-welcome","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wmf-pattern-report-welcome"><!-- wp:group {"tagName":"section","align":"full","className":"wmf-pattern-report-into-hero is-style-default has-link-color","backgroundColor":"wmf-report-blue","layout":{"type":"constrained"}} -->
 <section class="wp-block-group alignfull wmf-pattern-report-into-hero is-style-default has-link-color has-wmf-report-blue-background-color has-background"><!-- wp:image {"id":77135,"sizeSlug":"large","linkDestination":"none","lock":{"move":false,"remove":false},"align":"full","className":"wmf-pattern-report-into-hero__image"} -->
-<figure class="wp-block-image alignfull size-large wmf-pattern-report-into-hero__image"><img src="/wp-content/uploads/2025/04/wiki_hero.svg" alt="" class="wp-image-77135"/></figure>
+<figure class="wp-block-image alignfull size-large wmf-pattern-report-into-hero__image"><img src="/wp-content/uploads/2025/04/wiki_hero.svg" alt="" class="wp-image-77135" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"templateLock":false,"lock":{"move":false,"remove":false},"align":"wide","className":"wmf-pattern-report-into-hero__heading"} -->
@@ -112,7 +62,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":77137,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2025/04/The-internet-we-were-promised-thumbnail.png" alt="" class="wp-image-77137" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2025/04/The-internet-we-were-promised-thumbnail.png" alt="" class="wp-image-77137" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -132,7 +82,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74600,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/PrenticeHandMural_2f0333.jpg" alt="" class="wp-image-74600" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/PrenticeHandMural_2f0333.jpg" alt="" class="wp-image-74600" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -152,7 +102,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74601,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/WikiCon_Brasil_2022_-_Fotografia_em_grupo_24.jpg" alt="" class="wp-image-74601" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/WikiCon_Brasil_2022_-_Fotografia_em_grupo_24.jpg" alt="" class="wp-image-74601" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -174,7 +124,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":66777,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2022/04/annualreport-cover.jpg" alt="" class="wp-image-66777" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2022/04/annualreport-cover.jpg" alt="" class="wp-image-66777" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -194,7 +144,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74602,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/wiki-w-2020-new.jpg" alt="" class="wp-image-74602" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/wiki-w-2020-new.jpg" alt="" class="wp-image-74602" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -214,7 +164,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74603,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Wikimedians-world.jpg" alt="" class="wp-image-74603" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Wikimedians-world.jpg" alt="" class="wp-image-74603" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -236,7 +186,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74604,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Jamie_Tubers_at_Wikimedia_Conference_2018.jpg" alt="" class="wp-image-74604" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Jamie_Tubers_at_Wikimedia_Conference_2018.jpg" alt="" class="wp-image-74604" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -256,7 +206,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74605,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/ISS-52_Aurora_australis_above_Antarctica.jpg" alt="" class="wp-image-74605" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/ISS-52_Aurora_australis_above_Antarctica.jpg" alt="" class="wp-image-74605" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -276,7 +226,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74606,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Wikimedia_Foundation_Annual_Report_2016_books.jpg" alt="" class="wp-image-74606" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Wikimedia_Foundation_Annual_Report_2016_books.jpg" alt="" class="wp-image-74606" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -298,7 +248,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74607,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Young_girls_reading_-_Government_primary_school_in_Amman_Jordan.jpg" alt="" class="wp-image-74607" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Young_girls_reading_-_Government_primary_school_in_Amman_Jordan.jpg" alt="" class="wp-image-74607" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -318,7 +268,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74608,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Sinenjongo_graduation_matric_2013-10-12_0381.jpg" alt="" class="wp-image-74608" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Sinenjongo_graduation_matric_2013-10-12_0381.jpg" alt="" class="wp-image-74608" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -338,7 +288,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74609,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Wmf-AR12_cover2_300dpi.png" alt="" class="wp-image-74609" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Wmf-AR12_cover2_300dpi.png" alt="" class="wp-image-74609" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -360,7 +310,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74611,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/WMF_Annual_Report_2011–12_EN_cover_rgb_300ppi.png" alt="" class="wp-image-74611" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/WMF_Annual_Report_2011–12_EN_cover_rgb_300ppi.png" alt="" class="wp-image-74611" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -380,7 +330,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74612,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Page1-250px-WMF_AR11_SHIP_spreads_15dec11_72dpi.png" alt="" class="wp-image-74612" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Page1-250px-WMF_AR11_SHIP_spreads_15dec11_72dpi.png" alt="" class="wp-image-74612" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -400,7 +350,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74613,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/WMF_Annual_Report_2009_2010_Cover_image.png" alt="" class="wp-image-74613" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/WMF_Annual_Report_2009_2010_Cover_image.png" alt="" class="wp-image-74613" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -422,7 +372,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74614,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Thumbnail20082009WMFAR.jpg" alt="" class="wp-image-74614" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Thumbnail20082009WMFAR.jpg" alt="" class="wp-image-74614" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -442,7 +392,7 @@ const PATTERN = <<<CONTENT
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":74615,"aspectRatio":"4/3","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"wmf-pattern-previous-report__image"} -->
-<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Wikimedia_Foundation_Annual_Report_2007-2008_cover.jpg" alt="" class="wp-image-74615" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-full wmf-pattern-previous-report__image"><img src="/wp-content/uploads/2024/04/Wikimedia_Foundation_Annual_Report_2007-2008_cover.jpg" alt="" class="wp-image-74615" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":4,"className":"wmf-pattern-previous-report__link"} -->
@@ -465,7 +415,7 @@ const PATTERN = <<<CONTENT
 <div class="wp-block-group alignfull wmf-pattern-report-intro-donate has-red-90-background-color has-background"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"id":282,"aspectRatio":"4/3","scale":"cover","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="/wp-content/uploads/2018/06/ArtAndFeminism_2017_Livrustkammaren_06-e1533254907593.jpg?w=1024" alt="Wikipedia edit-a-thon Art+Feminism at the Royal Armoury in Stockholm" class="wp-image-282" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+<figure class="wp-block-image size-large"><img src="/wp-content/uploads/2018/06/ArtAndFeminism_2017_Livrustkammaren_06-e1533254907593.jpg?w=1024" alt="Wikipedia edit-a-thon Art+Feminism at the Royal Armoury in Stockholm" class="wp-image-282" style="aspect-ratio:4/3;object-fit:cover" /></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
