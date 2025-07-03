@@ -8,7 +8,7 @@
 	.carousel-wrapper {
 		position: relative;
 
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			position: initial;
 		}
 	}
@@ -21,7 +21,7 @@
 		width: 100%;
 		z-index: 10;
 
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			top: calc(400px - 1.5rem); // Map only.
 			right: auto;
 		}
@@ -61,6 +61,7 @@
 
 		&:focus {
 			border-radius: 100%;
+			outline-color: #000;
 		}
 	}
 
@@ -100,8 +101,7 @@
 }
 
 .wp-block-wmf-reports-map.carousel .carousel__buttons-wrapper {
-
-	@media only screen and ( min-width: 782px ) {
+	@media only screen and (min-width: 782px) {
 		bottom: 2rem;
 		top: unset;
 		transform: none;
@@ -109,13 +109,12 @@
 }
 
 .wp-block-wmf-reports-stories.carousel .carousel__buttons-wrapper {
-
 	@media only screen and (max-width: 781px) {
 		top: var(--story-slide-graphic-height, 300px);
 		transform: translate(0, -50%);
 	}
 
-	@media only screen and ( min-width: 782px ) {
+	@media only screen and (min-width: 782px) {
 		bottom: 4rem;
 		top: unset;
 		transform: none;
@@ -123,6 +122,9 @@
 }
 
 .wp-block-wmf-reports-report-archive.carousel {
+	h3 a:not(:hover):not(:focus):not(:active) {
+		text-decoration: none !important;
+	}
 
 	// stylelint-disable-next-line  no-descending-specificity
 	.carousel__buttons {
@@ -155,17 +157,18 @@
 
 		&:focus {
 			border-radius: 100%;
+			outline-color: #000;
 		}
 	}
 }
 
 .wmf-pattern-reports-carousel-slide {
-
 	font-size: variables.$font-size-base;
 	font-weight: 400;
 	line-height: variables.$line-height-base;
 
 	.wp-block-buttons {
+		margin: 0 !important;
 		position: relative;
 		z-index: 15;
 	}
@@ -174,11 +177,11 @@
 		padding-bottom: 0;
 	}
 
-	@media only screen and ( max-width: 781px ) {
+	@media only screen and (max-width: 781px) {
 		padding: 0;
 
 		&.wp-block-group.has-background {
-			padding: 0 0 1rem 0;
+			padding: 0 0 1rem 0 !important;
 		}
 
 		.wp-block-columns .wp-block-column:last-child {
@@ -196,7 +199,7 @@
 	&__image.wp-block-image {
 		margin: 0 -2rem;
 
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			margin: 0 auto 2rem;
 		}
 
@@ -206,7 +209,7 @@
 			width: auto;
 			min-width: 100%;
 
-			@media only screen and ( min-width: 782px ) {
+			@media only screen and (min-width: 782px) {
 				height: auto;
 				max-height: 100%;
 			}
@@ -219,7 +222,6 @@
 	}
 
 	&__heading {
-
 		font-weight: variables.$font-weight-base;
 		font-size: variables.$font-size-xlarge;
 	}
@@ -244,7 +246,6 @@
 		margin-bottom: 0;
 
 		.wp-block-column:last-child {
-
 			> *:last-child {
 				margin-bottom: 1rem;
 			}
@@ -255,7 +256,8 @@
 		margin: 1rem 0 2rem;
 
 		.wp-block-button__link {
-			border-color: #000;
+			background-color: #fff !important;
+			border-color: #000 !important;
 			color: #000;
 			font-size: 0.8125rem;
 			padding: 0.25rem 0.75rem;
@@ -274,10 +276,8 @@
 /* stylelint-disable no-descending-specificity */
 // Hide all but first item until carousel initializes to reduce CLS.
 .carousel--uninitialized {
-
 	.carousel__carousel-wrapper,
 	.carousel-wrapper {
-
 		> div:not(:first-child) {
 			display: none;
 		}

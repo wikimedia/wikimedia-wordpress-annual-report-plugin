@@ -1,4 +1,40 @@
 /* Support for our custom colors */
+:root {
+	--wp--preset--color--base-10: #202122;
+	--wp--preset--color--base-20: #54595d;
+	--wp--preset--color--base-30: #72777d;
+	--wp--preset--color--base-50: #a2a9b1;
+	--wp--preset--color--base-0: #000000;
+	--wp--preset--color--base-70: #c8ccd1;
+	--wp--preset--color--base-80: #eaecf0;
+	--wp--preset--color--base-90: #f8f9fa;
+	--wp--preset--color--base-100: #ffffff;
+	--wp--preset--color--blue-90: #eeeaff;
+
+	--wp--preset--color--wmf-report-brightblue: #00a0ff;
+	--wp--preset--color--wmf-report-blue: #0067c7;
+	--wp--preset--color--wmf-report-bright-yellow: #e9e7c0;
+	--wp--preset--color--wmf-report-red: #970302;
+	--wp--preset--color--wmf-report-orange: #ff7800;
+	--wp--preset--color--wmf-report-yellow: #f0bc00;
+	--wp--preset--color--wmf-report-green: #318557;
+	--wp--preset--color--green-30: #14866d;
+	--wp--preset--color--wmf-report-bright-green: #71d1b3;
+	--wp--preset--color--wmf-report-purple: #5748b5;
+	--wp--preset--color--wmf-report-link-color: #3a25ff;
+	--wp--preset--color--wmf-report-toned-yellow: #fbeebf;
+
+	--wp--preset--color--wend-report-luminous-vivid-orange: #ff6801;
+	--wp--preset--color--wend-report-luminous-vivid-amber: #fcb900;
+	--wp--preset--color--wend-report-cobalt: #0360fe;
+	--wp--preset--color--wend-report-slate-blue: #1c2d3e;
+	--wp--preset--color--wend-report-vivid-cyan-green: #00d084;
+	--wp--preset--color--wend-report-pale-cyan-blue: #8fd1fc;
+	--wp--preset--color--wend-report-vivid-purple: #9b51df;
+	--wp--preset--color--wend-report-bright-blue: #00ced6;
+	--wp--preset--color--wend-report-gold: #85754e;
+}
+
 .has-wmf-report-brightblue-background-color {
 	background-color: #00a0ff;
 }
@@ -42,6 +78,10 @@
 .has-wmf-report-purple-background-color {
 	background-color: #5748b5;
 	color: #fff;
+
+	*:focus {
+		outline-color: #fff !important;
+	}
 }
 
 .has-wmf-report-link-color-background-color {
@@ -185,7 +225,6 @@
  * - https://github.com/wikimedia/shiro-wordpress-theme/blob/main/inc/editor/namespace.php
  */
 .single-wmf-report {
-
 	.has-bright-green-70-background-color {
 		background-color: #dbf3ec;
 	}

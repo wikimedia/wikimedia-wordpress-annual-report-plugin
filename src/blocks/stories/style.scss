@@ -1,7 +1,6 @@
 @use "../../helpers/variables";
 
 .wp-block-wmf-reports-stories {
-
 	.wp-block-group.alignfull,
 	.alignfull {
 		margin: 0;
@@ -14,22 +13,19 @@
 }
 
 .wp-block-wmf-reports-story {
-
 	&.animate {
 		transition: all 0.25s;
 	}
 }
 
 .stories {
-
 	&.carousel &__categories-wrapper.alignwide {
 		margin: auto;
 		margin-bottom: 2rem;
 		max-width: calc(variables.$width-breakpoint-wide + 4rem) !important;
 		overflow: scroll;
-		padding-left: 0;
-		padding-right: 0;
-		padding-top: 2px;
+		padding-inline: 0;
+		padding-block: 0.25rem;
 		position: relative;
 		scrollbar-width: none;
 	}

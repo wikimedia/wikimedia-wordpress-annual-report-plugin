@@ -12,7 +12,11 @@
 
 	&::after {
 		bottom: 0;
-		background: linear-gradient(180deg, transparent 0%, var(--expandable-fade-color, #fff) 80%);
+		background: linear-gradient(
+			180deg,
+			transparent 0%,
+			var(--expandable-fade-color, #fff) 80%
+		);
 		content: "";
 		height: 2rem;
 		position: absolute;
@@ -28,6 +32,7 @@
 	display: inline-block;
 	font-size: 0.8125rem;
 	font-weight: 700;
+	margin-top: 0.5rem;
 	padding: 0.5rem 3rem 0.5rem 3rem;
 	text-align: center;
 	width: auto;
@@ -43,7 +48,8 @@
 
 .expandable-expander::after {
 	// stylelint-disable-next-line function-url-quotes
-	background: url('data:image/svg+xml,<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.795181 1L6.26205 6L11.7289 1" stroke="black" stroke-width="2"/></svg>') center center no-repeat;
+	background: url('data:image/svg+xml,<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.795181 1L6.26205 6L11.7289 1" stroke="black" stroke-width="2"/></svg>')
+		center center no-repeat;
 	content: " ";
 	display: inline-block;
 	height: 1em;
@@ -59,12 +65,15 @@
 }
 
 .has-wmf-report-blue-background-color .wp-block-wmf-reports-expandable {
-
 	.expandable-expander::after {
 		filter: brightness(0) invert(1);
 	}
 
 	.expandable-content::after {
-		background: linear-gradient(180deg, rgba(1, 103, 199, 0) 0%, rgba(1, 103, 199, 1) 80%);
+		background: linear-gradient(
+			180deg,
+			rgba(1, 103, 199, 0) 0%,
+			rgba(1, 103, 199, 1) 80%
+		);
 	}
 }
