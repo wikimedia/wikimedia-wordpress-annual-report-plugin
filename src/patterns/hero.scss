@@ -1,25 +1,36 @@
 @use "../helpers/variables";
 
 .wmf-pattern-reports-hero {
-	padding: 0 !important;
-	margin-bottom: 3rem !important;
+	padding-block: 0 !important;
+	margin-bottom: 4rem !important;
 
 	&__head {
-		display: grid;
-		overflow: hidden;
+		@media only screen and (min-width: 782px) {
+			display: grid;
+		}
 	}
 
-	.wp-block-wmf-reports-animation {
-		aspect-ratio: initial !important;
-	}
-
-	.wp-block-wmf-reports-animation,
+	.wmf-animation,
+	&__image,
 	&__heading-container {
 		grid-column: 1 / span 1;
 		grid-row: 1 / span 1;
 	}
 
 	&__heading-container {
+		align-items: end;
+		display: flex;
+		margin: 0 !important;
+
+		@media only screen and (min-width: 782px) {
+			align-items: center;
+		}
+	}
+
+	@media only screen and (max-width: 781px) {
+		&__heading {
+			padding: 0 !important;
+		}
 	}
 
 	&__heading-label {
@@ -32,11 +43,18 @@
 	}
 
 	&__heading-pill.wp-block-group.has-background {
-		border-radius: 0 30px 30px 0;
-		max-width: 34rem;
-		padding: 2rem;
+		border-radius: 0 30px 30px 0 !important;
+		max-width: 37rem;
+		padding: 2rem !important;
 		position: relative;
 		width: 90vw;
+
+		@media only screen and (max-width: 781px) {
+			margin-bottom: calc(
+				var(--report-overlapping-callout-group-block-height, 200px) * -0.5
+			);
+			transform: translateY(-50%);
+		}
 
 		.editor-styles-wrapper & {
 			width: 90%;
@@ -50,12 +68,12 @@
 
 		h2.is-style-report-section-heading {
 			position: absolute;
-			margin-top: -2rem;
+			top: 0;
 			transform: translate(0, -50%);
 		}
 
 		@media only screen and (min-width: 782px) {
-			border-radius: 30px;
+			border-radius: 30px !important;
 
 			h2.is-style-report-section-heading {
 				position: absolute;
@@ -78,6 +96,8 @@
 	}
 
 	.wmf-animation {
+		overflow: hidden;
+
 		@media only screen and (max-width: 781px) {
 			overflow: hidden;
 			aspect-ratio: 2 / 1 !important;
@@ -98,16 +118,23 @@
 
 	& &__content-background.wp-block-group {
 		@media only screen and (max-width: 781px) {
-			padding-top: 2.5rem;
+			padding-left: 0;
+			padding-top: 2.5rem !important;
+		}
+
+		@media only screen and (min-width: 782px) {
+			margin-block-start: 0 !important;
+			padding-top: 0 !important;
 		}
 	}
 
 	&__content {
-		margin-bottom: 0 !important;
+		margin-bottom: 3rem !important;
 		padding-bottom: 0 !important;
 
 		.is-style-sans-p {
 			font-size: variables.$font-size-base;
+			margin-left: 0 !important;
 
 			@media only screen and (min-width: 782px) {
 				font-size: variables.$font-size-xlarge;
