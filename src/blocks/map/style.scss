@@ -89,12 +89,13 @@
 	}
 }
 
-.wp-block-wmf-reports-map__container.wp-block-group.has-background:not(:only-child) {
-	padding-bottom: 0;
+.wp-block-wmf-reports-map__container.wp-block-group.has-background:not(
+		:only-child
+	) {
+	padding-bottom: 0 !important;
 }
 
 .wp-block-wmf-reports-marker {
-
 	&.animate {
 		transition: all 0.25s;
 	}

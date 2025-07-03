@@ -1,75 +1,40 @@
 @use "../helpers/variables";
 
 .wmf-pattern-report-welcome {
-	padding: 0 !important;
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	li,
-	p {
-		font-family: var(--font-family-sans);
-		font-weight: 400;
-		line-height: variables.$line-height-base;
-	}
-
 	p + p {
 		margin-top: 0;
 	}
 
-	.wp-block-group.alignfull,
-	.alignfull {
-		margin-left: 0;
-		margin-right: 0;
-		max-width: 100%;
-		padding-left: 0;
-		padding-right: 0;
-		width: 100%;
-
-		// stylelint-disable-next-line no-descending-specificity
-		.wp-block-group__inner-container {
-			padding: 0;
-		}
-	}
-
-	.wp-block-group.alignwide,
-	.alignwide {
-		margin-left: auto;
-		margin-right: auto;
-		max-width: variables.$width-breakpoint-wide !important;
-		width: 100%;
-
-		@media only screen and ( max-width: #{ variables.$width-breakpoint-wide + 64 } ) {
-			padding-left: 2rem;
-			padding-right: 2rem;
-		}
+	&:has(> .has-background:last-child) + .photo-attribution,
+	&:has(> .spotlight:last-child) + .photo-attribution {
+		margin-block-start: 0;
 	}
 }
 
 .wmf-pattern-report-into-hero {
-	padding: 0 !important;
+	display: grid;
+	padding-block: 0 !important;
 
-	// stylelint-disable-next-line no-descending-specificity
-	.wp-block-group__inner-container {
-		position: relative;
+	@media only screen and (max-width: 781px) {
+		padding-left: 0 !important;
 	}
 
-	&__heading-container {
-		margin-bottom: 0;
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
+	&__image.wp-block-image,
+	&__heading {
+		grid-column: 1 / span 1;
+		grid-row: 1 / span 1;
 	}
 
-	&__heading.alignwide {
-		margin-left: -2rem !important;
+	&__heading {
+		align-items: center;
+		display: flex;
+		margin: 0 !important;
+		width: 100%;
+	}
 
-		@media only screen and ( min-width: 782px ) {
-			margin-left: auto !important;
-		}
+	&__heading .wmf-pattern-reports-hero__heading-pill {
+		margin-bottom: 0 !important;
+		transform: none !important;
 	}
 
 	&__image.wp-block-image {
@@ -87,17 +52,15 @@
 	}
 
 	&__heading-label {
-		display: inline-block;
-		background: #000;
-		color: #fff;
-
-		font-weight: variables.$font-weight-base;
+		background: var(--wp--preset--color--main);
+		color: var(--wp--preset--color--base);
+		font-weight: var(--wp--custom--font-weight--normal);
 		text-transform: uppercase;
-		font-size: 15px;
+		font-size: var(--wp--preset--font-size--medium);
 		padding: 0.5rem 1rem 0.5rem 1rem;
 		margin-bottom: 1rem;
 		position: absolute;
-		top: -3rem;
+		top: -1rem;
 
 		// stylelint-disable-next-line no-descending-specificity
 		img {
@@ -112,7 +75,6 @@
 		margin-bottom: 0;
 
 		.wp-block-button.is-style-tertiary {
-
 			.wp-block-button__link.wp-element-button {
 				color: #00a0ff;
 				border-color: #00a0ff;
@@ -131,11 +93,11 @@
 .wmf-pattern-report-intro-columns.wp-block-columns {
 	margin-bottom: 0;
 
-	@media only screen and ( max-width: 781px ) {
+	@media only screen and (max-width: 781px) {
 		gap: 0;
 
 		.wp-block-column:nth-child(even) {
-			margin-left: 0;
+			margin-top: 2rem;
 		}
 	}
 
@@ -144,89 +106,19 @@
 		margin-bottom: 1rem;
 
 		button.dropdown-toggle {
-			cursor: pointer;
-			color: #000;
-			text-align: center;
-			border: 1px solid #aaa;
-			background: #fff;
-			border-radius: 0;
-			padding: 0.5rem;
 			width: 100%;
-
-			&:hover {
-				box-shadow: none;
-				color: #000;
-				opacity: 0.8;
-			}
-
-			&::after {
-				// stylelint-disable-next-line function-url-quotes
-				background: url('data:image/svg+xml,<svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.795181 1L6.26205 6L11.7289 1" stroke="black" stroke-width="2"/></svg>') center center no-repeat;
-				content: " ";
-				display: inline-block;
-				height: 1em;
-				margin-left: 0.5rem;
-				padding-left: 0.25rem;
-				width: 13px;
-				vertical-align: middle;
-			}
-		}
-
-		button.dropdown-toggle[aria-expanded="true"]::after {
-			transform: rotate(180deg);
 		}
 
 		ul {
-			position: absolute;
-			top: 2.2rem;
-			padding: 0;
+			height: 0;
 			margin: 0;
-			list-style-type: none;
+			position: absolute;
+			visibility: hidden;
 			width: 100%;
 			z-index: 2;
-			visibility: hidden;
-			height: 0;
 
-			li {
-				padding: 0;
-				margin: 0;
-				list-style-type: none;
-				width: 100%;
-
-				button {
-					cursor: pointer;
-					color: #666;
-					text-align: center;
-					border: 1px solid #eee;
-					background: #fff;
-					border-top: none;
-					border-radius: 0;
-					padding: 0.5rem;
-					width: 100%;
-
-					&:focus,
-					&:hover {
-						box-shadow: none;
-						background: #eee;
-						color: #666;
-						outline: none;
-					}
-				}
-
-				&:first-child button {
-					border-top: 1px solid #aaa;
-				}
-
-				&:nth-child(odd) button {
-					background: #f9f9f9;
-
-					&:focus,
-					&:hover {
-						background: #eee;
-						color: #666;
-						outline: none;
-					}
-				}
+			strong {
+				font-weight: inherit;
 			}
 		}
 
@@ -238,21 +130,17 @@
 }
 
 .wmf-pattern-previous-report-columns.wp-block-columns {
-	gap: 0;
-	margin-left: -2rem !important;
-	margin-right: -2rem !important;
 	margin-bottom: 0;
 	padding: 0;
 
-	@media only screen and ( min-width: 782px ) {
-		width: calc(100% + 3rem);
-		max-width: calc(100% + 3rem) !important;
+	@media only screen and (min-width: 782px) {
+		width: calc(100% + 1rem);
+		max-width: calc(100% + 1rem) !important;
 		margin-left: -1rem !important;
 	}
 
 	.wp-block-column:nth-child(even) {
-
-		@media only screen and ( max-width: 781px ) {
+		@media only screen and (max-width: 781px) {
 			margin-left: 0;
 		}
 	}
@@ -260,32 +148,16 @@
 
 .wmf-pattern-previous-report {
 	position: relative;
-	padding: 0 2rem;
-	width: calc(100% + 4rem);
+	padding: 0 1rem;
+	position: relative;
 
-	@media only screen and ( min-width: 782px ) {
+	@media only screen and (min-width: 782px) {
 		border-radius: 30px;
 		width: calc(100% + 1rem);
-		margin-left: -1rem;
 	}
 
 	&.selected {
 		background-color: #c0e6ff;
-	}
-
-	// stylelint-disable-next-line no-descending-specificity
-	.wp-block-group__inner-container {
-		position: relative;
-
-		// Click blanket.
-		a::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-		}
 	}
 
 	&__duration {
@@ -298,7 +170,7 @@
 		font-size: 15px;
 		padding: 0.5rem 1rem 0.5rem 1rem;
 		margin-bottom: 1rem;
-		top: 1.5rem;
+		top: 0.5rem;
 		left: -1rem;
 		position: relative;
 	}
@@ -316,7 +188,7 @@
 
 	&__link {
 		font-size: 18px;
-		margin-bottom: 0.5rem;
+		margin-top: 0.5rem !important;
 
 		a {
 			color: #000;
@@ -324,6 +196,16 @@
 
 			&:hover {
 				color: #000;
+			}
+
+			// Click blanket.
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
 			}
 
 			&::after {
@@ -342,9 +224,8 @@
 
 	&__date {
 		font-size: 15px;
-		margin-bottom: 1rem;
+		margin-top: 0.5rem !important;
 	}
-
 }
 
 .wmf-pattern-report-intro-donate.wp-block-group {
@@ -372,7 +253,6 @@
 	}
 
 	.wp-block-column:nth-child(even) {
-
 		@media only screen and (max-width: 781px) {
 			margin-left: 0;
 		}

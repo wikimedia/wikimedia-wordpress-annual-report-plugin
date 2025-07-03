@@ -1,6 +1,7 @@
 @use "../helpers/variables";
 
 .wp-block-wmf-reports-report-archive.carousel {
+	margin-block-start: 0;
 	position: relative;
 
 	.carousel__track-outer {

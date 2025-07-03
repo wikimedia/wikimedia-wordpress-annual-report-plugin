@@ -2,13 +2,12 @@
 
 /* stylelint-disable no-descending-specificity */
 .wmf-pattern-reports-leadership {
-
 	h3,
 	.is-style-h3 {
 		font-size: 1.5rem;
 	}
 
-	&__list > .wp-block-group__inner-container {
+	&__list {
 		list-style-type: none;
 		padding: 0;
 		margin: 0 0 2rem 0;
@@ -17,7 +16,7 @@
 
 		grid-template-columns: 1fr 1fr;
 
-		@media only screen and ( min-width: 782px ) {
+		@media only screen and (min-width: 782px) {
 			grid-template-columns: 1fr 1fr 1fr 1fr;
 		}
 
@@ -25,10 +24,6 @@
 			padding: 0;
 			margin: 0;
 			margin-left: 0;
-
-			.wp-block-group__inner-container {
-				margin-left: 0 !important;
-			}
 
 			.wp-block-buttons,
 			p {
@@ -39,6 +34,7 @@
 			.wp-block-button__link,
 			.wp-block-button.is-style-as-link a.wp-block-button__link {
 				color: #000;
+				display: block;
 				font-size: variables.$font-size-small;
 				font-weight: 400;
 				text-align: left;
@@ -66,7 +62,6 @@
 	}
 
 	&__list {
-
 		.wp-block-group {
 			margin-left: 0 !important;
 		}
