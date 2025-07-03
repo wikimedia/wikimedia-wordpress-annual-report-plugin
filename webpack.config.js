@@ -8,6 +8,25 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 // eslint-disable-next-line import/no-extraneous-dependencies -- bundled with wp-scripts.
 const { optimize } = require( 'webpack' );
 
+// Suppress a specific SCSS deprecation warning about our @import used to
+// assemble the editor stylesheet. SCSS does not give us a good alternative
+// for now, and this sheet may not be needed once all blocks are API v3.
+defaultConfig.module.rules.forEach( ( rule ) => {
+	if ( ! rule.test.test( 'file.scss' ) ) {
+		return;
+	}
+	// We've isolated SCSS build.
+	rule.use.forEach( ( loader ) => {
+		if ( /\/sass-loader/.test( loader.loader ) ) {
+			// Turn off verbose and repetitive SASS deprecation warnings.
+			loader.options.sassOptions = {
+				...loader.options.sassOptions,
+				silenceDeprecations: [ 'import' ],
+			};
+		}
+	} );
+} );
+
 module.exports = defaultConfig;
 
 if ( module.exports.mode === 'production' ) {
