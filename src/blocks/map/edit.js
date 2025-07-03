@@ -6,7 +6,13 @@ import {
 	useBlockProps,
 	withColors,
 } from '@wordpress/block-editor';
-import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
+import {
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalNumberControl as NumberControl,
+	PanelBody,
+	TextControl,
+	SelectControl,
+} from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useEffect, useRef, useState } from '@wordpress/element';
 
@@ -56,6 +62,9 @@ const mapboxStyleOptions = [
  * @param {Object}   props               React component props.
  * @param {string}   props.mapStyle      mapbox:// style string URI.
  * @param {string}   props.projection    Which map projection to use.
+ * @param {number}   props.latitude      Latitude of map centerpoint.
+ * @param {number}   props.longitude     Longitude of map centerpoint.
+ * @param {number}   props.zoom          Initial zoom level of map.
  * @param {Object[]} props.slideBlocks   Block array, necessary for rerendering map.
  * @param {Function} props.updateMarkers Callback to update map pins.
  * @return {React.ReactNode} Container node for Map.
@@ -63,6 +72,9 @@ const mapboxStyleOptions = [
 const MapPreview = ( {
 	mapStyle,
 	projection = 'equirectangular',
+	latitude = 0,
+	longitude = 0,
+	zoom = 1,
 	slideBlocks = [],
 	updateMarkers,
 } ) => {
@@ -108,13 +120,13 @@ const MapPreview = ( {
 		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
 			container: 'map',
-			center: [ 8.18, 9 ],
+			center: [ longitude || 0, latitude || 0 ],
 			minZoom: 0,
 			projection,
 			renderWorldCopies: false,
 			scrollZoom: false,
 			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
-			zoom: 0.5,
+			zoom: zoom || 1,
 		} );
 
 		map.addControl( fullScreenControl );
@@ -195,17 +207,19 @@ const MapPreview = ( {
 				updateMarkers();
 			} );
 		} );
-		// We do not want a change to projection to trigger a re-render, that
+		// We do not want a change to map attributes to trigger a re-render, that
 		// is handled separately below.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ mapStyle, serializedFeatures, updateMarkers ] );
 
 	useEffect( () => {
 		if ( map ) {
-			// Keep the projection up to date as it changes.
+			// Keep the map up to date as attributes change.
 			map.setProjection( projection );
+			map.setCenter( [ longitude || 0, latitude || 0 ] );
+			map.setZoom( zoom || 1 );
 		}
-	}, [ projection ] );
+	}, [ projection, latitude, longitude, zoom ] );
 
 	return (
 		<div
@@ -514,9 +528,30 @@ const Edit = ( {
 							},
 							{ value: 'mercator', label: 'Mercator' },
 						] }
-						value={ attributes.projection || 'equirectangular' }
+						value={ attributes.projection }
 						onChange={ ( projection ) =>
 							setAttributes( { projection } )
+						}
+					/>
+					<NumberControl
+						label={ __( 'Center point latitude', 'wmf-reports' ) }
+						value={ attributes.centerLat }
+						onChange={ ( centerLat ) =>
+							setAttributes( { centerLat: +centerLat } )
+						}
+					/>
+					<NumberControl
+						label={ __( 'Center point longitude', 'wmf-reports' ) }
+						value={ attributes.centerLon }
+						onChange={ ( centerLon ) =>
+							setAttributes( { centerLon: +centerLon } )
+						}
+					/>
+					<NumberControl
+						label={ __( 'Initial zoom level', 'wmf-reports' ) }
+						value={ attributes.zoom }
+						onChange={ ( zoom ) =>
+							setAttributes( { zoom: +zoom } )
 						}
 					/>
 				</PanelBody>
@@ -524,6 +559,9 @@ const Edit = ( {
 			<MapPreview
 				{ ...{ mapStyle, slideBlocks, updateMarkers } }
 				projection={ attributes.projection }
+				latitude={ attributes.centerLat }
+				longitude={ attributes.centerLon }
+				zoom={ attributes.zoom }
 			/>
 			<div className="inner-block-slider">
 				<InnerBlocksDisplaySingle

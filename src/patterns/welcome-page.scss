@@ -1,24 +1,12 @@
 @use "../helpers/variables";
 
 .wmf-pattern-report-welcome {
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	li,
-	p {
-		font-family: var(--font-family-sans);
-		font-weight: 400;
-		line-height: variables.$line-height-base;
-	}
-
 	p + p {
 		margin-top: 0;
 	}
 
-	&:has(> .has-background:last-child) + .photo-attribution {
+	&:has(> .has-background:last-child) + .photo-attribution,
+	&:has(> .spotlight:last-child) + .photo-attribution {
 		margin-block-start: 0;
 	}
 }
