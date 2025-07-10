@@ -22,6 +22,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 		data-map-style="<?php echo esc_attr( $map_style ); ?>"
 		data-latitude="<?php echo esc_attr( $attributes['centerLat'] ?? 0 ); ?>"
 		data-longitude="<?php echo esc_attr( $attributes['centerLon'] ?? 0 ); ?>"
+		data-projection="<?php echo esc_attr( $attributes['projection'] ?? '' ); ?>"
 		data-zoom="<?php echo esc_attr( $attributes['zoom'] ?? 1 ); ?>"
 	></div>
 	<div class="carousel__carousel-wrapper">
