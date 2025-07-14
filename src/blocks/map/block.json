@@ -40,7 +40,11 @@
 	"supports": {
 		"html": false,
 		"multiple": false,
-		"align": [ "full", "wide" ]
+		"align": [ "full", "wide" ],
+		"color": {
+			"background": true,
+			"text": false
+		}
 	},
 	"textdomain": "wmf-reports",
 	"editorScript": "file:./index.js",

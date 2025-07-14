@@ -12,7 +12,7 @@ if ( ! empty( $markerActiveColor ) ) {
 }
 
 $wrapper_attributes = get_block_wrapper_attributes( [
-	'class' => 'map map--carousel carousel alignfull carousel--uninitialized',
+	'class' => 'map map--carousel carousel carousel--uninitialized',
 	'style' => implode( ';', $cssColors ),
 ] );
 ?>
