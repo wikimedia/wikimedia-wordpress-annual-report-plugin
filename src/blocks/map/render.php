@@ -27,13 +27,11 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 	></div>
 	<div class="carousel__carousel-wrapper">
 		<?php echo $content; ?>
-		<?php if ( substr_count( $content, 'wp-block-wmf-reports-marker' ) > 1 ) : ?>
-		<div class="carousel__buttons-wrapper">
-			<div class="carousel__buttons alignwide">
-				<button id="map-back" class="carousel__button carousel__button--back"><span class="screen-reader-text"><?php esc_html_e( 'Previous Map Marker', 'wmf-reports' ); ?></span></button>
-				<button id="map-forward" class="carousel__button carousel__button--forward"><span class="screen-reader-text"><?php esc_html_e( 'Next Map Marker', 'wmf-reports' ); ?></span></button>
-			</div>
-		</div>
-		<?php endif; ?>
 	</div>
+	<?php if ( substr_count( $content, 'wp-block-wmf-reports-marker' ) > 1 ) : ?>
+	<div class="carousel__buttons alignwide">
+		<button id="map-back" class="carousel__button carousel__button--back"><span class="screen-reader-text"><?php esc_html_e( 'Previous Map Marker', 'wmf-reports' ); ?></span></button>
+		<button id="map-forward" class="carousel__button carousel__button--forward"><span class="screen-reader-text"><?php esc_html_e( 'Next Map Marker', 'wmf-reports' ); ?></span></button>
+	</div>
+	<?php endif; ?>
 </div>

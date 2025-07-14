@@ -111,22 +111,45 @@
 	}
 }
 
+// These general non-layout styles are sandboxed to the side-by-side mode
+// as of July 2025. They could be expanded to apply to all maps if it is
+// acceptable to retroactively change design on e.g. old annual reports.
+.wp-block-wmf-reports-map.is-style-side-by-side {
+	.marker.active {
+		outline: 4px solid white;
+		outline-offset: -6px;
+	}
+}
+
 @media screen and (min-width: 45rem) {
 	.wp-block-wmf-reports-map.is-style-side-by-side {
-		display: flex;
-		flex-direction: row;
+		display: grid;
+		grid-template-columns: 70% 30%;
+		grid-template-rows: 1fr;
+		grid-template-areas: "main sidebar";
 		align-items: stretch;
-		flex-wrap: nowrap;
+		width: 100%;
 		position: relative;
 
 		#map {
 			background-color: #f2f2f2;
 			min-height: 100%;
-			width: 70%;
+			grid-area: main;
+		}
+
+		.carousel__buttons {
+			grid-area: main;
+			position: absolute;
+			right: 1rem;
+			bottom: 1rem;
 		}
 
 		.carousel__carousel-wrapper {
-			width: 30%;
+			grid-area: sidebar;
+
+			> * {
+				margin: 1.5rem;
+			}
 		}
 
 		.wmf-pattern-reports-carousel-slide {
