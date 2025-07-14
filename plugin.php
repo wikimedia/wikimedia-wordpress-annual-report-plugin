@@ -39,6 +39,7 @@ require_once __DIR__ . '/inc/editor/patterns/hero.php';
 require_once __DIR__ . '/inc/editor/patterns/leadership.php';
 require_once __DIR__ . '/inc/editor/patterns/learn-more.php';
 require_once __DIR__ . '/inc/editor/patterns/letter-from-the-ceo.php';
+require_once __DIR__ . '/inc/editor/patterns/map-side-by-side.php';
 require_once __DIR__ . '/inc/editor/patterns/overlay.php';
 require_once __DIR__ . '/inc/editor/patterns/previous-reports.php';
 require_once __DIR__ . '/inc/editor/patterns/report.php';
