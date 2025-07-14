@@ -37,5 +37,10 @@
 		.overlay-container {
 			margin: 0;
 		}
+
+		.wp-block-button.is-style-as-arrow-link,
+		.wp-block-button.is-style-as-arrow-link .wp-block-button__link {
+			color: inherit !important; // Overrides editor-styles-wrapper rule.
+		}
 	}
 }
