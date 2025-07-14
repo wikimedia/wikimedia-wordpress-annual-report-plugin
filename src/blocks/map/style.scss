@@ -1,6 +1,12 @@
 @use "../../helpers/variables";
 
 .wp-block-wmf-reports-map {
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+		"main"
+		"sidebar";
 
 	.wp-block-group.alignfull,
 	.alignfull {
@@ -87,6 +93,24 @@
 			height: 250px;
 		}
 	}
+
+	.carousel-buttons {
+		grid-area: main;
+		position: absolute;
+		bottom: 0;
+		right: 1rem;
+		display: flex;
+		justify-content: flex-end;
+		// On narrow screens, put arrows at bottom of the content column image.
+		transform: translate(0, calc(300px + 50%));
+
+		@media screen and (min-width: 782px) {
+			grid-area: sidebar;
+			bottom: 2rem;
+			right: max(2rem, calc((100vw - 1200px) / 2));
+			transform: none;
+		}
+	}
 }
 
 .wp-block-wmf-reports-map__container.wp-block-group.has-background:not(
@@ -121,9 +145,8 @@
 	}
 }
 
-@media screen and (min-width: 45rem) {
-	.wp-block-wmf-reports-map.is-style-side-by-side {
-		display: grid;
+.wp-block-wmf-reports-map.is-style-side-by-side {
+	@media screen and (min-width: 45rem) {
 		grid-template-columns: 70% 30%;
 		grid-template-rows: 1fr;
 		grid-template-areas: "main sidebar";
@@ -135,13 +158,6 @@
 			background-color: #f2f2f2;
 			min-height: 100%;
 			grid-area: main;
-		}
-
-		.carousel__buttons {
-			grid-area: main;
-			position: absolute;
-			right: 1rem;
-			bottom: 1rem;
 		}
 
 		.carousel__carousel-wrapper {
@@ -179,4 +195,18 @@
 			}
 		}
 	}
+
+	.carousel-buttons {
+		grid-area: main;
+		position: absolute;
+		bottom: 0;
+		right: 1rem;
+		transform: translate(0, 50%);
+
+		@media screen and (min-width: 45rem) {
+			bottom: 1rem;
+			transform: none;
+		}
+	}
+
 }
