@@ -34,14 +34,14 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		container: 'map',
 		center: [
 			// Order is long-lat for GeoJSON parity.
-			parseFloat( mapDiv?.dataset?.longitude || 0 ),
-			parseFloat( mapDiv?.dataset?.latitude || 0 ),
+			parseFloat( mapDiv.dataset.longitude || 0 ),
+			parseFloat( mapDiv.dataset.latitude || 0 ),
 		],
-		projection: 'equirectangular',
+		projection: mapDiv.dataset.projection || 'equirectangular',
 		renderWorldCopies: false,
 		scrollZoom: false,
-		style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
-		zoom: parseFloat( mapDiv?.dataset?.zoom || 1 ),
+		style: mapDiv.dataset.mapStyle || 'mapbox://styles/mapbox/light-v11',
+		zoom: parseFloat( mapDiv.dataset.zoom || 1 ),
 	} );
 	let mapItemIndex = 0;
 	let processingAnimation = false;

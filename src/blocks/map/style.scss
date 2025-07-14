@@ -159,10 +159,12 @@
 
 .wp-block-wmf-reports-map.is-style-side-by-side {
 
-	.is-layout-constrained > &:not(.alignfull) {
-		// Always full-bleed on small viewports. Override core style.
-		margin-left: calc(-1 * var(--wp--style--root--padding-left)) !important;
-		margin-right: calc(-1 * var(--wp--style--root--padding-right)) !important;
+	@media screen and (max-width: 719px /* 45rem - 1px */) {
+		.is-layout-constrained > &:not(.alignfull) {
+			// Always full-bleed on small viewports. Override core style.
+			margin-left: calc(-1 * var(--wp--style--root--padding-left)) !important;
+			margin-right: calc(-1 * var(--wp--style--root--padding-right)) !important;
+		}
 	}
 
 	@media screen and (min-width: 45rem) {
@@ -173,10 +175,6 @@
 		width: 100%;
 		position: relative;
 		margin: auto;
-
-		.is-layout-constrained > &:not(.alignfull) {
-			margin: auto;
-		}
 
 		#map {
 			background-color: #f2f2f2;
