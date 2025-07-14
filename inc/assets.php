@@ -23,6 +23,7 @@ function bootstrap() {
 	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_connect_src_origins', 901, 2 );
 	add_filter( 'wmf/security/csp/allowed_origins', __NAMESPACE__ . '\\allow_mapbox_csp_origins', 10, 2 );
 	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_blob_worker_src_csp', 901, 2 );
+	add_action( 'style_loader_src', __NAMESPACE__ . '\\cachebust_stylesheets' );
 }
 
 /**
@@ -219,4 +220,34 @@ function enqueue_frontend_styles() : void {
 	if ( has_block( 'wmf-reports/map' ) ) {
 		wp_enqueue_style( 'mapbox-css', 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' );
 	}
+}
+
+/**
+ * Intercept URIs for enqueued CSS and rewrite version strings for plugin assets
+ * to ensure a hash-based version string is in use.
+ *
+ * Removes requirement for constituent block versions to be incremented on each
+ * related code update, which is difficult to enforce in process.
+ *
+ * @param string $src The source URL of the enqueued style.
+ * @return string Filtered URL.
+ */
+function cachebust_stylesheets( string $src ): string {
+	$plugin_base_url = trailingslashit( plugin_dir_url( __DIR__ ) );
+	if ( strpos( $src, $plugin_base_url ) !== 0 ) {
+		return $src;
+	}
+
+	$file_relative_path = preg_replace( '/\?.*$/', '', str_replace( $plugin_base_url, '', $src ) );
+	$file_path          = plugin_dir_path( __DIR__ ) . $file_relative_path;
+	if ( ! is_readable( $file_path ) ) {
+		return $src;
+	}
+
+	$version = hash_file( 'crc32', $file_path ) ?: filemtime( $file_path );
+	if ( empty( $version ) ) {
+		return $src;
+	}
+
+	return add_query_arg( 'ver', $version, $src );
 }
