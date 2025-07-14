@@ -146,6 +146,13 @@
 }
 
 .wp-block-wmf-reports-map.is-style-side-by-side {
+
+	.is-layout-constrained > &:not(.alignfull) {
+		// Always full-bleed on small viewports. Override core style.
+		margin-left: calc(-1 * var(--wp--style--root--padding-left)) !important;
+		margin-right: calc(-1 * var(--wp--style--root--padding-right)) !important;
+	}
+
 	@media screen and (min-width: 45rem) {
 		grid-template-columns: 70% 30%;
 		grid-template-rows: 1fr;
@@ -153,6 +160,7 @@
 		align-items: stretch;
 		width: 100%;
 		position: relative;
+		margin: auto;
 
 		#map {
 			background-color: #f2f2f2;
@@ -196,6 +204,29 @@
 		}
 	}
 
+	.carousel__carousel-wrapper {
+		// Stack all cards on top of each other.
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: 1fr;
+	}
+
+	.wp-block-wmf-reports-marker {
+		margin: 0;
+
+		> .alignfull {
+			margin: 0;
+		}
+
+		> :not(.alignfull) {
+			margin: var(--wp--style--root--padding-left, 1rem);
+
+			@media screen and (min-width: 45rem) {
+				margin: 1.5rem;
+			}
+		}
+	}
+
 	.carousel-buttons {
 		grid-area: main;
 		position: absolute;
@@ -208,5 +239,4 @@
 			transform: none;
 		}
 	}
-
 }

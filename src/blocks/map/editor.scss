@@ -25,11 +25,11 @@
 	&.is-style-side-by-side {
 
 		> .inner-block-slider {
-			width: 30%;
 			min-width: 250px;
 		}
 
 		.help {
+			color: inherit;
 			padding: 0.5rem;
 		}
 
