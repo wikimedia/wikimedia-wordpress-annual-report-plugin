@@ -69,7 +69,6 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		};
 	} );
 
-	// const { replaceBlocks } = useDispatch( 'core/block-editor' );
 	const { insertBlocks, removeBlocks } = useDispatch( 'core/block-editor' );
 
 	const onPostSelect = ( posts ) => {
