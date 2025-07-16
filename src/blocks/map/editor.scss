@@ -21,4 +21,26 @@
 			margin-top: 0;
 		}
 	}
+
+	&.is-style-side-by-side {
+
+		> .inner-block-slider {
+			min-width: 250px;
+		}
+
+		.help {
+			color: inherit;
+			padding: 0.5rem;
+		}
+
+		.help,
+		.overlay-container {
+			margin: 0;
+		}
+
+		.wp-block-button.is-style-as-arrow-link,
+		.wp-block-button.is-style-as-arrow-link .wp-block-button__link {
+			color: inherit !important; // Overrides editor-styles-wrapper rule.
+		}
+	}
 }

@@ -85,6 +85,12 @@ function register_pattern() {
 		'content' => LetterFromTheCeo\PATTERN,
 	] );
 
+	register_block_pattern( MapSideBySide\NAME, [
+		'title' => __( 'Map (Side-by-side)', 'wmf-reports' ),
+		'categories' => [ MAIN_CATEGORY_NAME ],
+		'content' => MapSideBySide\PATTERN,
+	] );
+
 	register_block_pattern( Overlay\NAME, [
 		'title' => __( 'Overlay', 'wmf-reports' ),
 		'categories' => [ MAIN_CATEGORY_NAME ],

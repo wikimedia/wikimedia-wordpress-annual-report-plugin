@@ -268,6 +268,34 @@ const Edit = ( {
 	// Keep track of the selected Slide.
 	const [ currentItemIndex, setCurrentItemIndex ] = useState( 0 );
 
+	// Track the active sidebar so we can adjust map rendering if necessary.
+	const activeSidebar = useSelect( ( select ) =>
+		select( 'core/edit-post' ).getActiveGeneralSidebarName()
+	);
+
+	useEffect( () => {
+		if ( ! map ) {
+			return;
+		}
+		setTimeout( () => map.resize(), 250 );
+	}, [ currentItemIndex, slideCount, activeSidebar ] );
+
+	useEffect( () => {
+		// Resolve ID conflicts when a block is duplicated using the editor UI.
+		const idsInUse = {};
+		for ( const markerBlock of slideBlocks ) {
+			if ( idsInUse[ markerBlock.attributes.id ] ) {
+				updateBlockAttributes(
+					markerBlock.clientId,
+					// IDs are from Date.now(), so 1ms is usually enough to deconflict.
+					{ id: markerBlock.attributes.id + 1 }
+				);
+			} else {
+				idsInUse[ markerBlock.attributes.id ] = true;
+			}
+		}
+	}, [ slideBlocks, updateBlockAttributes ] );
+
 	/**
 	 * Add Slide Function.
 	 */
@@ -537,21 +565,25 @@ const Edit = ( {
 						label={ __( 'Center point latitude', 'wmf-reports' ) }
 						value={ attributes.centerLat }
 						onChange={ ( centerLat ) =>
-							setAttributes( { centerLat: +centerLat } )
+							setAttributes( {
+								centerLat: parseFloat( centerLat ),
+							} )
 						}
 					/>
 					<NumberControl
 						label={ __( 'Center point longitude', 'wmf-reports' ) }
 						value={ attributes.centerLon }
 						onChange={ ( centerLon ) =>
-							setAttributes( { centerLon: +centerLon } )
+							setAttributes( {
+								centerLon: parseFloat( centerLon ),
+							} )
 						}
 					/>
 					<NumberControl
 						label={ __( 'Initial zoom level', 'wmf-reports' ) }
 						value={ attributes.zoom }
 						onChange={ ( zoom ) =>
-							setAttributes( { zoom: +zoom } )
+							setAttributes( { zoom: parseFloat( zoom ) } )
 						}
 					/>
 				</PanelBody>
