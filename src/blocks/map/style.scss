@@ -223,6 +223,7 @@
 		display: grid;
 		grid-template-rows: 1fr;
 		grid-template-columns: 1fr;
+		padding-bottom: 3rem;
 	}
 
 	.wp-block-wmf-reports-marker {
@@ -254,7 +255,9 @@
 		transform: translate(0, 50%);
 
 		@media screen and (min-width: 45rem) {
+			grid-area: sidebar;
 			bottom: 1rem;
+			right: max(1rem, calc((100vw - 1200px) / 2));
 			transform: none;
 		}
 	}
