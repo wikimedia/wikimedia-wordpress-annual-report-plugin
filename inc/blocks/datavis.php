@@ -27,9 +27,7 @@ function inject_embed_config( string $block_content, array $block ) : string {
 	if ( $block['blockName'] !== 'vegalite-plugin/visualization' ) {
 		return $block_content;
 	}
-	if ( ! is_singular( Report\POST_TYPE ) ) {
-		return $block_content;
-	}
+
 	return str_replace(
 		'class="visualization-block"',
 		sprintf(
