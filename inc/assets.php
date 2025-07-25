@@ -244,6 +244,7 @@ function cachebust_stylesheets( string $src ): string {
 		return $src;
 	}
 
+	// Version the file with a content hash, falling back to modified time.
 	$version = hash_file( 'crc32', $file_path ) ?: filemtime( $file_path );
 	if ( empty( $version ) ) {
 		return $src;
