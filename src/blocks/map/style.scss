@@ -227,10 +227,18 @@
 	}
 
 	.wp-block-wmf-reports-marker {
+		grid-column: 1;
+		grid-row: 1;
 		margin: 0;
 
 		> .alignfull {
 			margin: 0;
+
+			&.has-background {
+				// Make room for arrows but extend bg to bottom.
+				margin-bottom: -4rem !important;
+				padding-bottom: 5rem !important;
+			}
 		}
 
 		> :not(.alignfull) {
@@ -242,8 +250,10 @@
 		}
 	}
 
-	&.carousel--uninitialized .wp-block-wmf-reports-marker:not(:first-of-type) {
-		// Avoid CLS when loading in. May be better to switch to a .nojs class?
+	// Avoid CLS when loading in. May be better to switch to a .nojs class?
+	&.carousel--uninitialized .wp-block-wmf-reports-marker:not(:first-of-type),
+	// But we also need to guard against flash of content *while initializing*.
+	.carousel__carousel-wrapper:not(:has(> [style])) .wp-block-wmf-reports-marker:not(:first-child) {
 		display: none;
 	}
 
