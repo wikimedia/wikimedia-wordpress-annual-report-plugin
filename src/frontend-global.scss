@@ -1,36 +1,36 @@
 /* Helpers */
-@import "helpers/colors";
+@use "helpers/colors" as *;
 
 /* Theme */
-@import "styles/theme";
+@use "styles/theme" as *;
 
 /* Blocks and Styles */
-@import "blocks/expandable/frontend";
-@import "blocks/table-of-contents/frontend";
-@import "styles/core-buttons";
-@import "styles/core-columns";
-@import "styles/core-heading-report-section-heading";
-@import "styles/core-group-report-overlapping-callout";
-@import "styles/core-image";
-@import "styles/report-archive";
+@use "blocks/expandable/frontend" as *;
+@use "blocks/table-of-contents/frontend" as *;
+@use "styles/core-buttons" as *;
+@use "styles/core-columns" as *;
+@use "styles/core-heading-report-section-heading" as *;
+@use "styles/core-group-report-overlapping-callout" as *;
+@use "styles/core-image" as *;
+@use "styles/report-archive" as *;
 
 /* Patterns */
-@import "patterns/accordion";
-@import "patterns/by-the-numbers";
-@import "patterns/carousel";
-@import "patterns/donate";
-@import "patterns/donors";
-@import "patterns/financial-statements";
-@import "patterns/hero";
-@import "patterns/leadership";
-@import "patterns/letter-from-the-ceo";
-@import "patterns/overlay";
-@import "patterns/welcome-page";
-@import "patterns/wmf-accordion";
-@import "patterns/wrapped";
+@use "patterns/accordion" as *;
+@use "patterns/by-the-numbers" as *;
+@use "patterns/carousel" as *;
+@use "patterns/donate" as *;
+@use "patterns/donors" as *;
+@use "patterns/financial-statements" as *;
+@use "patterns/hero" as *;
+@use "patterns/leadership" as *;
+@use "patterns/letter-from-the-ceo" as *;
+@use "patterns/overlay" as *;
+@use "patterns/welcome-page" as *;
+@use "patterns/wmf-accordion" as *;
+@use "patterns/wrapped" as *;
 
 /* Endowment */
-@import "styles/endowment-overrides";
+@use "styles/endowment-overrides" as *;
 
 /* Report 2022-2023 */
-@import "styles/report-2022-2023";
+@use "styles/report-2022-2023" as *;

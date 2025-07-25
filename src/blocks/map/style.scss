@@ -1,19 +1,12 @@
 @use "../../helpers/variables";
 
 .wp-block-wmf-reports-map {
-	#map {
-		background-color: #fff;
-	}
-
-	&::after {
-		box-shadow: inset 0 3px 10px -10px rgba(0, 0, 0, 0.75);
-		content: "";
-		height: 10px;
-		position: absolute;
-		top: 0;
-		width: 100%;
-		z-index: 1;
-	}
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+		"main"
+		"sidebar";
 
 	.wp-block-group.alignfull,
 	.alignfull {
@@ -23,16 +16,6 @@
 
 	.alignwide {
 		max-width: variables.$width-breakpoint-wide;
-	}
-
-	.mapboxgl-map {
-		height: 300px;
-		margin: auto;
-		width: 100%;
-
-		@media only screen and (min-width: 782px) {
-			height: 250px;
-		}
 	}
 
 	.mapboxgl-control-container {
@@ -85,6 +68,51 @@
 	}
 }
 
+/* Vertically stacked (default) style. */
+.wp-block-wmf-reports-map:not(.is-style-side-by-side) {
+	#map {
+		background-color: #fff;
+	}
+
+	&::after {
+		box-shadow: inset 0 3px 10px -10px rgba(0, 0, 0, 0.75);
+		content: "";
+		height: 10px;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+
+	.mapboxgl-map {
+		height: 300px;
+		margin: auto;
+		width: 100%;
+
+		@media only screen and ( min-width: 782px ) {
+			height: 250px;
+		}
+	}
+
+	.carousel-buttons {
+		grid-area: main;
+		position: absolute;
+		bottom: 0;
+		right: 1rem;
+		display: flex;
+		justify-content: flex-end;
+		// On narrow screens, put arrows at bottom of the content column image.
+		transform: translate(0, calc(300px + 50%));
+
+		@media screen and (min-width: 782px) {
+			grid-area: sidebar;
+			bottom: 2rem;
+			right: max(2rem, calc((100vw - 1200px) / 2));
+			transform: none;
+		}
+	}
+}
+
 .wp-block-wmf-reports-map__container.wp-block-group.has-background:not(
 		:only-child
 	) {
@@ -104,5 +132,139 @@
 
 	.wp-block-group.has-background:not(:only-child) {
 		margin-bottom: 0;
+	}
+}
+
+// These general non-layout styles are sandboxed to the side-by-side mode
+// as of July 2025. They could be expanded to apply to all maps if it is
+// acceptable to retroactively change design on e.g. old annual reports.
+.wp-block-wmf-reports-map.is-style-side-by-side {
+	.marker.active {
+		outline: 4px solid white;
+		outline-offset: -6px;
+	}
+
+	// These controls aren't accessible on the <p> block yet.
+	.wmf-pattern-reports-carousel-slide__location {
+		font-weight: bold;
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+
+	.wp-block-buttons,
+	.is-style-sans-p {
+		font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+	}
+}
+
+.wp-block-wmf-reports-map.is-style-side-by-side {
+
+	@media screen and (max-width: 719px /* 45rem - 1px */) {
+		.is-layout-constrained > &:not(.alignfull) {
+			// Always full-bleed on small viewports. Override core style.
+			margin-left: calc(-1 * var(--wp--style--root--padding-left)) !important;
+			margin-right: calc(-1 * var(--wp--style--root--padding-right)) !important;
+		}
+	}
+
+	@media screen and (min-width: 45rem) {
+		grid-template-columns: 70% 30%;
+		grid-template-rows: 1fr;
+		grid-template-areas: "main sidebar";
+		align-items: stretch;
+		width: 100%;
+		position: relative;
+		margin: auto;
+
+		#map {
+			background-color: #f2f2f2;
+			min-height: 100%;
+			grid-area: main;
+		}
+
+		.carousel__carousel-wrapper {
+			grid-area: sidebar;
+
+			> * {
+				margin: 1.5rem;
+			}
+		}
+
+		.wmf-pattern-reports-carousel-slide {
+			> .wp-block-columns {
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+				justify-content: flex-start;
+			}
+
+			&,
+			&.wp-block-group.has-background {
+				padding: 1.5rem;
+			}
+
+			> .wp-block-columns > .wp-block-column > *:not(:last-child) {
+				margin-top: 0;
+				margin-bottom: 1rem;
+			}
+
+			.wp-block-image img {
+				border-radius: 0.25rem;
+			}
+
+			> .wp-block-columns {
+				flex-direction: column;
+			}
+		}
+	}
+
+	.carousel__carousel-wrapper {
+		// Stack all cards on top of each other.
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: 1fr;
+		padding-bottom: 4rem;
+	}
+
+	.wp-block-wmf-reports-marker {
+		grid-column: 1;
+		grid-row: 1;
+		margin: 0;
+
+		> .alignfull {
+			margin: 0;
+
+			&.has-background {
+				// Make room for arrows but extend bg to bottom.
+				margin-bottom: -4rem !important;
+				padding-bottom: 5rem !important;
+			}
+		}
+
+		> :not(.alignfull) {
+			margin: var(--wp--style--root--padding-left, 1rem);
+
+			@media screen and (min-width: 45rem) {
+				margin: 1.5rem;
+			}
+		}
+	}
+
+	// Avoid CLS when loading in. May be better to switch to a .nojs class?
+	&.carousel--uninitialized .wp-block-wmf-reports-marker:not(:first-of-type),
+	// But we also need to guard against flash of content *while initializing*.
+	.carousel__carousel-wrapper:not(:has(> [style])) .wp-block-wmf-reports-marker:not(:first-child) {
+		display: none;
+	}
+
+	.carousel-buttons {
+		grid-area: sidebar;
+		position: absolute;
+		bottom: 1rem;
+		left: 0.5rem;
+
+		@media screen and (max-width: 45rem) {
+			transform: scale(-90%, -90%);
+		}
 	}
 }

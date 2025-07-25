@@ -1,7 +1,14 @@
 /* global wmf:false */
 import scrollToElement from '../../helpers/scroll-to-element';
 
+window.wmf = { ...window.wmf, mapInitialized: false };
 document.addEventListener( 'DOMContentLoaded', () => {
+	// Avoid double-rendering in DevServer mode. Testing requires a full page reload.
+	if ( window.wmf.mapInitialized ) {
+		return;
+	}
+	window.wmf.mapInitialized = true;
+
 	// Use mapbox off of CDN-loaded window global on frontend.
 	const mapboxgl = window.mapboxgl;
 
@@ -27,14 +34,14 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		container: 'map',
 		center: [
 			// Order is long-lat for GeoJSON parity.
-			parseFloat( mapDiv?.dataset?.longitude || 0 ),
-			parseFloat( mapDiv?.dataset?.latitude || 0 ),
+			parseFloat( mapDiv.dataset.longitude || 0 ),
+			parseFloat( mapDiv.dataset.latitude || 0 ),
 		],
-		projection: 'equirectangular',
+		projection: mapDiv.dataset.projection || 'equirectangular',
 		renderWorldCopies: false,
 		scrollZoom: false,
-		style: mapDiv?.dataset?.mapStyle || 'mapbox://styles/mapbox/light-v11',
-		zoom: parseFloat( mapDiv?.dataset?.zoom || 1 ),
+		style: mapDiv.dataset.mapStyle || 'mapbox://styles/mapbox/light-v11',
+		zoom: parseFloat( mapDiv.dataset.zoom || 1 ),
 	} );
 	let mapItemIndex = 0;
 	let processingAnimation = false;
@@ -48,6 +55,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			scrollToElement( section );
 		}
 	};
+
+	/** Allow all JS changes to "settle," then update map size. */
+	const resizeMap = () => setTimeout( () => map.resize(), 50 );
 
 	const setMarker = ( id, shouldScrollToElement = true ) => {
 		mapItemIndex = id;
@@ -187,6 +197,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 			markerInfoBox.style.height = 0;
 			markerInfoBox.style.visibility = 'hidden';
+
+			resizeMap();
 		} );
 	};
 
@@ -371,13 +383,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 							geometry: {
 								type: 'Point',
 								coordinates: [
-									marker?.dataset?.long || 0,
-									marker?.dataset?.lat || 0,
+									marker.dataset.long || 0,
+									marker.dataset.lat || 0,
 								],
 							},
 							type: 'Feature',
 							properties: {
-								id: marker?.id,
+								id: marker.id,
 								index,
 							},
 						};
@@ -445,4 +457,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			setMarker( 0, false );
 		}
 	} );
+
+	resizeMap();
 } );
+
+if ( module.hot ) {
+	module.hot.decline();
+}

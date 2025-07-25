@@ -1,6 +1,6 @@
 /* Helpers */
 @use "helpers/variables";
-@import "helpers/colors";
+@use "helpers/colors" as *;
 
 // @font-face {
 // 	font-family: "Noto Sans";
