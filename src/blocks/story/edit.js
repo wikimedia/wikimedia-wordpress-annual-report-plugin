@@ -46,7 +46,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	}, [ attributes.id, setAttributes ] );
 
 	const childBlocks = useSelect( ( select ) => {
-		const blocks = select( 'core/editor' ).getBlocksByClientId( clientId );
+		const blocks =
+			select( 'core/block-editor' ).getBlocksByClientId( clientId );
 		return blocks && blocks[ 0 ] ? blocks[ 0 ]?.innerBlocks || [] : [];
 	} );
 
