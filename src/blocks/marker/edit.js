@@ -45,7 +45,8 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 	}, [ id, setAttributes ] );
 
 	const childBlocks = useSelect( ( select ) => {
-		const blocks = select( 'core/editor' ).getBlocksByClientId( clientId );
+		const blocks =
+			select( 'core/block-editor' ).getBlocksByClientId( clientId );
 		return blocks && blocks[ 0 ] ? blocks[ 0 ]?.innerBlocks || [] : [];
 	} );
 
@@ -60,7 +61,7 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		// eslint-disable-next-line no-shadow
 		const media = post?.featured_media
 			? select( 'core' ).getMedia( post?.featured_media )
-			: {};
+			: null;
 
 		return {
 			media,
@@ -68,7 +69,6 @@ export default function Edit( { attributes, clientId, setAttributes } ) {
 		};
 	} );
 
-	// const { replaceBlocks } = useDispatch( 'core/block-editor' );
 	const { insertBlocks, removeBlocks } = useDispatch( 'core/block-editor' );
 
 	const onPostSelect = ( posts ) => {

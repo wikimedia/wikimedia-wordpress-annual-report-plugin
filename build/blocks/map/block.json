@@ -39,9 +39,15 @@
   "example": {},
   "supports": {
     "html": false,
+    "multiple": false,
     "align": [
-      "full"
-    ]
+      "full",
+      "wide"
+    ],
+    "color": {
+      "background": true,
+      "text": false
+    }
   },
   "textdomain": "wmf-reports",
   "editorScript": "file:./index.js",
