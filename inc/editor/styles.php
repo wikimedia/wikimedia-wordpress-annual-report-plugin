@@ -44,4 +44,19 @@ function register_styles() : void {
 			'label' => __( 'Report Image Vertical', 'wmf-reports' ),
 		]
 	);
+	register_block_style(
+		'wmf-reports/map',
+		[
+			'name' => 'stacked',
+			'is_default' => true,
+			'label' => __( 'Stacked', 'wmf-reports' ),
+		]
+	);
+	register_block_style(
+		'wmf-reports/map',
+		[
+			'name' => 'side-by-side',
+			'label' => __( 'Side-by-side', 'wmf-reports' ),
+		]
+	);
 }
