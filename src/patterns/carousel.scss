@@ -56,12 +56,13 @@
 			transform: scaleX(-1);
 		}
 
-
-		:dir(rtl) & {
+		:dir(rtl) &,
+		.direction-rtl & {
 			transform: scaleX(-1);
 		}
 
-		:dir(rtl) &--back {
+		:dir(rtl) &--back,
+		.direction-rtl &--back {
 			transform: scaleX(1);
 		}
 
