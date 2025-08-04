@@ -18,6 +18,7 @@ const PLUGIN_PATH = __DIR__;
 require_once __DIR__ . '/inc/assets.php';
 require_once __DIR__ . '/inc/asset-loader/namespace.php';
 require_once __DIR__ . '/inc/asset-loader/utilities.php';
+require_once __DIR__ . '/inc/blocks/animation.php';
 require_once __DIR__ . '/inc/blocks/core-group.php';
 require_once __DIR__ . '/inc/blocks/datavis.php';
 require_once __DIR__ . '/inc/blocks/expandable.php';
@@ -50,6 +51,7 @@ require_once __DIR__ . '/inc/theme-integration.php';
 require_once __DIR__ . '/inc/utilities.php';
 
 Assets\bootstrap();
+Blocks\Animation\bootstrap();
 Blocks\Core_Group\bootstrap();
 Blocks\Datavis\bootstrap();
 Blocks\Expandable\bootstrap();
