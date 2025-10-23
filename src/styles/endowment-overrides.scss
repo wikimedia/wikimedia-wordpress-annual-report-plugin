@@ -1,16 +1,84 @@
 @use "../helpers/variables";
 
+// Oct 2025 Endowment Report - re-branded colours
+$black-90: #19191a;
+$greyscale-black-75: #404040;
+$black-55: #737373;
+$greyscale-black-50: #7f7f7f;
+$greyscale-black-25: #bfbfbf;
+$greyscale-white: #fff;
+
+$creative-strong-green: #308557;
+$legacy-green-legacy: #396;
+$legacy-accesible-green-legacy-aaa: #246342;
+$deep-dark-green: #153d31;
+$creative-strong-green-dark: #305d70;
+$creative-strong-green-bright: #dbf3ec;
+$creative-light-green-bright-light: #dbf3ec;
+
+$light-bright-blue: #c0e6ff;
+$creative-light-blue-bright-light: #dbf3ec;
+$bright-blue-light-50: #dff3ff;
+$blue-grey-10: #dadde3;
+
+$creative-strong-yellow: #f0bc00;
+$creative-strong-yellow-bright: #e9e7c4;
+$yellow-grey-05: #f5f5f0;
+
 /* stylelint-disable no-descending-specificity */
 .report-background.wikimedia-endow,
 body.single-wmf-report.wikimedia-endow:not(.home) {
+	background-color: $greyscale-white;
 	$width-breakpoint-wide: 1440px;
+
+	.has-wend-report-slate-blue-background-color {
+		background-color: $yellow-grey-05;
+		color: $black-90 !important;
+
+		& a {
+			color: $creative-strong-green-dark !important;
+
+			&.wp-block-button__link {
+				color: $black-90 !important;
+			}
+		}
+	}
+
+	.has-wend-report-cobalt-background-color {
+		background-color: $creative-strong-green;
+
+		& a {
+			color: $light-bright-blue !important;
+
+			&.wp-block-button__link {
+				color: $black-90 !important;
+			}
+		}
+	}
+
+	.has-wend-report-gold-background-color {
+		background-color: $bright-blue-light-50;
+		color: $black-90 !important;
+
+		& .has-white-color {
+			color: $black-90 !important;
+		}
+
+		& a {
+			color: $creative-strong-green-dark !important;
+
+			&.wp-block-button__link {
+				color: $black-90 !important;
+			}
+		}
+	}
 
 	.entry-header {
 		display: none;
 	}
 
 	.wp-block-heading {
-		margin: 0 0 1rem 0;
+		margin: 0 0 1rem;
 	}
 
 	p {
@@ -22,34 +90,30 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		margin-bottom: 2rem;
 
 		&.wp-block-heading {
+			background: $creative-strong-green;
+			color: $greyscale-white;
 			display: inline-block;
-			background: #0060fe;
-			color: #fff;
-
-			font-weight: variables.$font-weight-base;
-			text-transform: uppercase;
 			font-size: 0.938rem;
-			padding: 0.5rem 1rem 0.5rem 1rem;
+			font-weight: variables.$font-weight-base;
 			margin-bottom: 1rem;
+			padding: 0.5rem 1rem;
+			text-transform: uppercase;
 
 			@media only screen and (max-width: 781px) {
-				position: relative;
 				left: 50%;
+				position: relative;
 				transform: translateX(-50%);
 			}
 		}
 	}
 
 	h2 {
-		font-family: var(--font-family-sans);
-
 		&::after {
 			display: none;
 		}
 	}
 
 	h3 {
-
 		&.wp-block-heading {
 			font-size: 1.75rem;
 
@@ -60,10 +124,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	.alignfull {
-		transform: none;
 		padding: 0;
+		transform: none;
 
-		> div {
+		>div {
 			max-width: 100%;
 			padding: 0;
 		}
@@ -102,17 +166,17 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	.wmf-report.hentry {
+		margin: 0;
+		margin-bottom: 0;
 		max-width: 100%;
 		padding-bottom: 0;
 		padding-left: 0;
 		padding-right: 0;
-		margin: 0;
-		margin-bottom: 0;
 	}
 
 	.entry-content {
-		max-width: 100%;
 		margin-top: -1rem;
+		max-width: 100%;
 	}
 
 	.wp-block-group.has-background {
@@ -121,19 +185,17 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/** Buttons **/
 	.wp-block-button {
-
 		.wp-block-button__link {
-			font-size: 1rem;
-			background-color: #fff;
+			background-color: $greyscale-white;
 			border: 1px solid #1c2d3e;
 			color: #1c2d3c;
-			text-align: center;
+			font-size: 1rem;
 			padding: 0.5rem 3.5rem;
+			text-align: center;
 		}
 
 		&.is-download-button,
 		&.is-share-button {
-
 			.wp-block-button__link {
 				padding: 0.5rem 1rem;
 			}
@@ -141,28 +203,25 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	.is-download-button {
-
 		.wp-block-button__link {
-
 			&::before {
 				// stylelint-disable-next-line function-url-quotes
 				background-image: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 8H14L9 14L4 8H8V0H10V8ZM16 16V11H18V16C18 17.1046 17.1046 18 16 18H2C0.89543 18 0 17.1046 0 16V11H2V16H16Z" fill="%231C2D3E"/></svg>');
-				background-repeat: no-repeat;
 				background-position: 50% 50%;
+				background-repeat: no-repeat;
 				background-size: contain;
 				content: " ";
 				display: inline-block;
 				height: 1rem;
-				width: 1rem;
-				margin-right: 0.5rem;
 				margin-bottom: -4px;
+				margin-right: 0.5rem;
+				width: 1rem;
 			}
 		}
 	}
 
 	/** Expandable Content **/
 	.expandable-content {
-
 		&::after {
 			background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%);
 		}
@@ -170,10 +229,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	.expandable-expander,
 	button.expandable-expander {
-		width: 100%;
-		max-width: 100%;
-		font-size: 1rem;
 		color: #1c2d3e;
+		font-size: 1rem;
+		max-width: 100%;
+		width: 100%;
 
 		@media only screen and (min-width: 782px) {
 			max-width: 330px;
@@ -192,8 +251,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		@media only screen and (min-width: 782px) {
 			clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-			padding-bottom: 6rem;
 			margin-bottom: 0;
+			padding-bottom: 6rem;
 		}
 
 		@media only screen and (min-width: 1555px) {
@@ -201,7 +260,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wmf-pattern-endowment-hero__label {
-
 			@media only screen and (min-width: 782px) {
 				margin-top: 6rem;
 			}
@@ -215,23 +273,23 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wmf-pattern-endowment-hero__title {
-			line-height: 1.25;
 			font-size: 2.5rem;
 			font-weight: 700;
+			line-height: 1.25;
 
 			@media only screen and (min-width: 782px) {
 				line-height: 1.3;
 			}
 
 			&::after {
-				background-color: #00ced6;
+				background-color: $creative-strong-green-dark;
 				content: "";
 				display: block;
 				height: 5px;
-				margin: 4rem 0 4rem 0;
-				width: 10rem;
+				margin: 4rem 0;
 				margin-left: 50%;
 				transform: translateX(-50%);
+				width: 10rem;
 
 				@media only screen and (min-width: 782px) {
 					margin-left: 0;
@@ -241,8 +299,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wmf-pattern-endowment-hero__image {
-			margin: 0;
 			clip-path: polygon(0 0, 100% 0, 100% 83%, 0 100%);
+			margin: 0;
 
 			@media only screen and (min-width: 1300px) {
 				clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
@@ -256,11 +314,11 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			.wmf-pattern-endowment-hero__image.alignfull {
 				--corner-offset: calc(50vw * var(--tangent));
 				clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--corner-offset)), 0 100%);
-				position: relative;
-				width: 50vw;
+				margin-bottom: calc(-1 * var(--corner-offset));
 				max-width: initial;
 				overflow: hidden;
-				margin-bottom: calc(-1 * var(--corner-offset));
+				position: relative;
+				width: 50vw;
 
 				@media only screen and (min-height: 1100px) and (min-width: 1200px) {
 					// Prevent the image from being too tall on large screens.
@@ -268,12 +326,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				}
 
 				img {
+					height: auto;
+					max-width: 100%;
+					min-height: 100%;
+					min-width: 100%;
 					object-fit: cover;
 					width: auto;
-					height: auto;
-					min-width: 100%;
-					min-height: 100%;
-					max-width: 100%;
 				}
 			}
 
@@ -285,23 +343,21 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		@media only screen and (max-width: 781px) {
-
 			.wp-block-column:last-child {
 				order: -1;
 			}
 
 			.wmf-pattern-endowment-hero__image {
-				max-width: 100vw;
 				margin-left: -2rem;
 				margin-right: -2rem;
+				max-width: 100vw;
 				width: 100vw;
 			}
 		}
 
 		.expandable-content {
-
 			&::after {
-				background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(28, 45, 62, 1) 80%);
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, $yellow-grey-05 100%);
 			}
 		}
 
@@ -311,16 +367,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		/** Letter from the CEO **/
 		.wp-block-group.alignwide.wmf-pattern-letter-from-the-ceo {
-			padding-top: 0 !important;
 			padding-left: 0;
 			padding-right: 0;
+			padding-top: 0 !important;
 		}
 	}
 
 	/** TOC **/
 	.wmf-pattern-toc {
-		margin-top: 4rem;
 		margin-bottom: 4rem;
+		margin-top: 4rem;
 		position: relative;
 
 		@media only screen and (min-width: 782px) {
@@ -328,22 +384,27 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wp-block-wmf-reports-table-of-contents {
-			margin: 3rem 1rem 2rem 1rem;
-			padding: 0;
+			border-left: 0 !important;
 			list-style-type: disc;
+			margin: 3rem 1rem 2rem;
+			padding: 0;
 
 			li {
-				color: #0060fe;
+				color: $creative-strong-green;
 				list-style-type: disc;
 
+				&::before {
+					display: none;
+				}
+
 				a {
-					color: #0060fe;
-					font-weight: 400;
+					color: $creative-strong-green !important;
+					display: inline-block;
 					font-size: 1rem;
-					text-decoration: none;
+					font-weight: 400;
 					margin-bottom: 0.5rem;
 					margin-left: 0.4rem;
-					display: inline-block;
+					text-decoration: none;
 
 					&:focus,
 					&:hover {
@@ -355,27 +416,25 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	@media only screen and (min-width: 782px) {
-
 		.wmf-toc-jumplist {
 			display: none;
 		}
 	}
 
 	.wmf-toc-jumplist {
-
 		.wmf-toc-jumplist__items {
-			color: #0060fe;
+			color: $creative-strong-green;
 			list-style-type: disc;
 
 			a {
-				color: #0060fe;
-				font-weight: 400;
+				color: $creative-strong-green;
+				display: block;
 				font-size: 1rem;
-				text-decoration: none;
+				font-weight: 400;
 				margin-bottom: 0.5rem;
 				margin-left: 0;
 				padding-left: 0;
-				display: block;
+				text-decoration: none;
 
 				&:focus,
 				&:hover {
@@ -387,21 +446,21 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 				}
 
 				&.wmf-toc-jumplist__active-item {
-					background: #0060fe;
-					color: #fff;
+					background: $creative-strong-green;
+					color: $greyscale-white;
 
 					&::before {
-						background-color: #0060fe;
+						background-color: $creative-strong-green;
 					}
 				}
 			}
 		}
 
 		.wmf-toc-jumplist__modal-close {
+			border: 1px solid $creative-strong-green;
 			position: absolute;
-			top: 1rem;
 			right: 1rem;
-			border: 1px solid #0060fe;
+			top: 1rem;
 		}
 	}
 
@@ -415,7 +474,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 	}
 
-	.is-style-default.wmf-pattern-endowment-hero + .wmf-pattern-image {
+	.is-style-default.wmf-pattern-endowment-hero+.wmf-pattern-image {
 		clip-path: polygon(0 0, 100% 6%, 100% 100%, 0% 100%);
 		margin-top: 1rem;
 	}
@@ -446,15 +505,14 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			display: flex;
 
 			figcaption {
-
 				border-bottom-right-radius: none;
-				padding: 1rem 1rem 1rem 1rem;
+				padding: 1rem;
 				position: relative;
 				width: 100%;
 
 				mark {
-					position: relative;
 					margin-top: 2rem;
+					position: relative;
 				}
 			}
 
@@ -473,9 +531,9 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		figcaption {
-			text-align: right;
 			margin-top: -4.8vw;
 			min-height: 4.8vw;
+			text-align: right;
 		}
 	}
 
@@ -488,7 +546,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		&__image {
-			background-color: #fff;
+			background-color: $greyscale-white;
 			margin: 0;
 
 			@media only screen and (min-width: 782px) {
@@ -496,7 +554,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			img {
-
 				@media only screen and (min-width: 782px) {
 					height: 100%;
 				}
@@ -505,15 +562,14 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		&__heading.is-style-h2,
 		&__heading {
-			line-height: 1.17;
 			font-size: 1.5rem;
+			line-height: 1.17;
 		}
 
 		&__location,
 		&__location.is-style-sans-p {
-
 			&::before {
-				background: var(--map-marker-active-color, #0060fe);
+				background: var(--map-marker-active-color, $creative-strong-green);
 			}
 		}
 
@@ -521,7 +577,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			padding: 0;
 
 			.wp-block-column:last-of-type {
-				padding: 0 2rem 0 2rem;
+				padding: 0 2rem;
 
 				@media only screen and (min-width: 782px) {
 					padding: 2rem 2rem 6rem 0;
@@ -540,7 +596,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	.carousel__buttons-wrapper {
-
 		@media only screen and (min-width: 782px) {
 			bottom: 12rem;
 		}
@@ -552,13 +607,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	.carousel__button {
 		// stylelint-disable-next-line function-url-quotes
-		background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" fill="none"><path fill="%230060fe" fill-rule="evenodd" d="M9.586 11 .293 1.707 1.707.293 12.414 11 1.707 21.707.293 20.293z" clip-rule="evenodd"/></svg>');
-		border-color: #0060fe;
+		background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" fill="none"><path fill="%2319191a" fill-rule="evenodd" d="M9.586 11 .293 1.707 1.707.293 12.414 11 1.707 21.707.293 20.293z" clip-rule="evenodd"/></svg>');
+		border-color: $black-90;
 	}
 
 	/** Stories **/
 	.wp-block-wmf-reports-stories.stories {
-
 		.stories__categories-wrapper {
 			padding-left: 0;
 			padding-right: 0;
@@ -586,9 +640,9 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			&:hover,
 			&:focus,
 			&.active {
-				background-color: #0060fe;
-				border-color: #0060fe;
-				color: #fff;
+				background-color: $creative-strong-green;
+				border-color: $creative-strong-green;
+				color: $greyscale-white;
 
 				img {
 					filter: brightness(0) invert(1);
@@ -597,14 +651,13 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wmf-pattern-reports-carousel-slide__image {
-
 			@media only screen and (max-width: 781px) {
 				aspect-ratio: 1/1;
 				height: 100%;
 
 				img {
-					max-height: 100%;
 					height: 100%;
+					max-height: 100%;
 				}
 			}
 		}
@@ -619,19 +672,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wmf-pattern-reports-carousel-slide__category {
-
 			@media only screen and (max-width: 781px) {
-				margin-top: 1rem;
 				margin-bottom: 0.5rem;
+				margin-top: 1rem;
 			}
 		}
 	}
 
 	/** Map **/
 	.wp-block-wmf-reports-map {
-
 		#map {
-
 			@media only screen and (max-width: 781px) {
 				height: 300px;
 			}
@@ -644,13 +694,13 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/* Accordion */
 	.wp-block-wmf-reports-accordion {
-		width: 100% !important;
 		max-width: 100% !important;
+		width: 100% !important;
 
 		.wp-block {
-			max-width: 100%;
 			margin-left: 0;
 			margin-right: 0;
+			max-width: 100%;
 		}
 
 		.wmf-accordion-wrapper {
@@ -659,7 +709,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	.wmf-pattern-financial-statements {
-
 		.wp-block-wmf-reports-accordion--alt {
 
 			.wp-block-wmf-reports-accordion-item:nth-of-type(1) .wmf-accordion-item::before,
@@ -674,12 +723,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			.wp-block-wmf-reports-accordion-item:nth-of-type(3) .wmf-accordion-item::before,
 			.wmf-accordion-item:nth-of-type(3)::before {
-				background-color: #0060fe;
+				background-color: $creative-strong-green;
 			}
 
 			.wp-block-wmf-reports-accordion-item:nth-of-type(4) .wmf-accordion-item::before,
 			.wmf-accordion-item:nth-of-type(4)::before {
-				background-color: #00ced6;
+				background-color: $creative-strong-green-dark;
 			}
 		}
 	}
@@ -687,7 +736,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	/* Financial Statements */
 	// stylelint-disable-next-line no-duplicate-selectors
 	.wmf-pattern-financial-statements {
-
 		h3.wp-block-heading {
 			font-size: 1.5rem;
 
@@ -721,7 +769,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			&:has(table) {
-
 				@media only screen and (max-width: 781px) {
 					gap: 0 !important;
 				}
@@ -751,21 +798,19 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			td,
 			th {
 				border: 0;
-				padding: 0 0 0.5rem 0;
+				padding: 0 0 0.5rem;
 			}
 
 			thead {
-				border-bottom: 1px solid #0060fe;
+				border-bottom: 1px solid $creative-strong-green-dark;
 
 				th {
 					padding-bottom: 1rem;
 				}
 			}
 
-			thead + tbody {
-
+			thead+tbody {
 				tr:first-of-type {
-
 					td {
 						padding-top: 1rem;
 					}
@@ -773,29 +818,29 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			tr:has(strong) {
-				border-bottom: 1px solid #0060fe;
+				border-bottom: 1px solid $creative-strong-green-dark;
 
 				td {
 					padding-bottom: 1rem;
 				}
 
 				&:last-child {
-
 					td {
 						padding-bottom: 0;
 					}
 				}
 
-				+ tr td {
+				+tr td {
 					padding-top: 1rem;
 				}
 			}
 
 			&.has-light-blue-background-color {
-				border: 1rem solid #e3eef2;
+				background-color: $bright-blue-light-50;
+				border: 1rem solid $bright-blue-light-50;
 
 				@media only screen and (min-width: 782px) {
-					border: 2rem solid #e3eef2;
+					border: 2rem solid $bright-blue-light-50;
 				}
 
 				td,
@@ -805,12 +850,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			&.has-wend-report-cobalt-background-color {
-				border: 1rem solid #0060fe;
+				border: 1rem solid $creative-strong-green;
 				font-size: 1.125rem;
 
 				@media only screen and (min-width: 782px) {
+					border: 2rem solid $creative-strong-green;
 					font-size: 1.438rem;
-					border: 2rem solid #0060fe;
 				}
 			}
 		}
@@ -826,20 +871,17 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 			@media only screen and (min-width: 782px) {
 				gap: 4rem;
-				padding-left: 4rem !important;
 			}
 		}
 	}
 
 	/* Leadership */
 	.wmf-pattern-reports-leadership {
-
 		h3.wp-block-heading {
 			margin-bottom: 2rem;
 		}
 
 		.wp-block-heading {
-
 			&::after {
 				display: none;
 			}
@@ -853,11 +895,29 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wmf-pattern-reports-leadership__list {
+			display: block;
+
+			&>.wp-block-group__inner-container {
+				display: grid;
+				grid-gap: 1.5rem;
+				grid-template-columns: repeat(4, 1fr);
+
+				@media only screen and (max-width: 1043px) {
+					grid-template-columns: repeat(2, 1fr);
+				}
+
+				@media only screen and (max-width: 600px) {
+					grid-template-columns: 1fr;
+				}
+
+				& a.wp-block-button__link strong {
+					color: $creative-strong-green !important;
+				}
+			}
 
 			.wp-block-button {
-
 				.wp-block-button__link {
-					border: none;
+					border: 0;
 				}
 			}
 
@@ -885,10 +945,9 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wp-block-button {
-
 			.wp-block-button__link {
-				padding: 0.25rem 0.5rem;
 				font-size: 0.813rem;
+				padding: 0.25rem 0.5rem;
 			}
 		}
 
@@ -898,49 +957,46 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			&::before {
 				// stylelint-disable-next-line function-url-quotes
 				background-image: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.99854 16H15.9985V11H17.9985V16C17.9985 17.1046 17.1031 18 15.9985 18H1.99854C0.893966 18 -0.00146484 17.1046 -0.00146484 16V2C-0.00146484 0.89543 0.893965 0 1.99854 0H6.99854V2H1.99854V16Z" fill="%231C2D3E"/><path d="M9.99854 0H17.9985V8L14.7085 4.71L8.97853 10.44L7.55853 9.02L13.2885 3.29L9.99854 0Z" fill="%231C2D3E"/></svg>');
-				background-repeat: no-repeat;
 				background-position: 50% 50%;
+				background-repeat: no-repeat;
 				background-size: contain;
 				content: " ";
 				display: inline-block;
 				height: 0.938rem;
-				width: 0.938rem;
-				margin-right: 0.5rem;
 				margin-bottom: -3px;
+				margin-right: 0.5rem;
+				width: 0.938rem;
 			}
 		}
 
 		.wp-block-button__link.has-wend-report-luminous-vivid-orange-background-color {
 			background-color: #d40356 !important;
-			color: #fff !important;
+			color: $greyscale-white !important;
 
 			&::before {
 				// stylelint-disable-next-line function-url-quotes
 				background-image: url('data:image/svg+xml,<svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5733 8.38756L9.0007 16.0005L1.42814 8.38756C-0.477999 6.46691 -0.477999 3.36163 1.42814 1.44098C3.33428 -0.47532 6.42742 -0.47532 8.33355 1.44098C8.58915 1.69794 8.81009 1.98103 8.99637 2.27283C9.18265 1.97667 9.40359 1.69794 9.65918 1.44098C11.5653 -0.479675 14.6585 -0.479675 16.5689 1.44098C18.4751 3.35728 18.4751 6.46691 16.5689 8.38756H16.5733Z" fill="white"/></svg>');
-				background-repeat: no-repeat;
 				background-position: 50% 50%;
+				background-repeat: no-repeat;
 				background-size: contain;
 				content: " ";
 				display: inline-block;
 				height: 0.938rem;
-				width: 0.938rem;
-				margin-right: 0.5rem;
 				margin-bottom: -3px;
+				margin-right: 0.5rem;
+				width: 0.938rem;
 			}
 		}
 	}
 
 	/* Donors */
 	.wmf-pattern-reports-donors {
-
 		.wp-block-group-is-layout-flex {
-
 			@media only screen and (max-width: 781px) {
 				justify-content: space-between !important;
 			}
 
 			@media only screen and (min-width: 782px) {
-
 				img {
 					margin-left: 4rem;
 				}
@@ -951,19 +1007,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			width: auto !important;
 
 			@media only screen and (min-width: 782px) {
-				margin-left: 4rem;
-
 				.wmf-accordion-item {
-					border-color: #0060fe;
+					border-color: $creative-strong-green;
 					margin-left: 4rem;
 					overflow: visible;
 				}
 
 				.wmf-accordion-item__title {
-
 					&::after {
-						position: absolute;
 						left: -4rem;
+						position: absolute;
 					}
 				}
 			}
@@ -972,31 +1025,31 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/* Contact */
 	.wmf-pattern-contact {
-		overflow: hidden;
 		clip-path: polygon(0 0, 100% 9%, 100% 100%, 0 100%);
 		margin-top: -2rem;
-		padding-top: 4rem;
+		overflow: hidden;
 		padding-bottom: 2rem;
+		padding-top: 4rem;
 
 		.wp-block-group__inner-container {
-			padding-left: 2rem !important;
-			padding-right: 2rem !important;
-			max-width: calc(440px + 4rem);
-			text-align: center;
 			margin-left: auto;
 			margin-right: auto;
+			max-width: calc(440px + 4rem);
+			padding-left: 2rem !important;
+			padding-right: 2rem !important;
+			text-align: center;
 
 			.wp-block-heading {
 				font-size: 1.625rem;
-				text-transform: none;
-				text-align: center;
-				position: static;
-				transform: none;
 				left: auto;
+				position: static;
+				text-align: center;
+				text-transform: none;
+				transform: none;
 
 				&::after {
+					background-color: $greyscale-white;
 					display: block;
-					background-color: #fff;
 				}
 			}
 		}
@@ -1005,10 +1058,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	/* Report */
 	.wmf-pattern-previous-reports {
 		clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%);
-		padding: 2rem  2rem;
+		padding: 2rem;
 
 		@media only screen and (min-width: 782px) {
-			padding: 4rem  4rem;
+			padding: 4rem;
 		}
 
 		.wp-block-heading.wp-block-wmf-reports-report__title,
@@ -1032,14 +1085,12 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/** Overlay **/
 	.wmf-annual-reports-overlay-wrapper {
-
 		.wmf-annual-reports-overlay-popover {
 			border-radius: 0;
 		}
 	}
 
 	.wmf-pattern-overlay {
-
 		.wmf-pattern-overlay__heading {
 			margin-bottom: 0.5rem;
 
@@ -1050,21 +1101,20 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		.wp-block-image.is-style-report-image,
 		.wp-block-image.is-style-report-image.alignwide {
-
+			background-color: #e5eef2;
+			border-bottom-right-radius: none;
+			display: block;
 			margin-left: -1rem;
 			margin-right: -1rem;
-			background-color: #e5eef2;
 			padding-left: 0;
 			padding-right: 0;
 			width: calc(100% + 2rem);
-			display: block;
-			border-bottom-right-radius: none;
 
 			@media only screen and (min-width: 782px) {
+				display: block !important;
 				margin-left: auto;
 				margin-right: auto;
 				width: 100%;
-				display: block !important;
 
 				figcaption {
 					padding-left: 0;
@@ -1073,9 +1123,9 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			@media only screen and (min-width: #{ $width-breakpoint-wide + 64 }) {
+				border-bottom-right-radius: 0;
 				margin-left: auto;
 				margin-right: auto;
-				border-bottom-right-radius: 0;
 			}
 
 			img {
@@ -1099,27 +1149,25 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 					color: inherit !important;
 					display: block;
 					font-size: 0.625rem;
-					margin-top: 0.5rem;
 					margin-bottom: 1rem;
+					margin-top: 0.5rem;
 
 					&::before {
-						content: "";
 						// stylelint-disable-next-line function-url-quotes
 						background-image: url('data:image/svg+xml,<svg width="14" height="14" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1098 7.11994C12.0155 6.66987 11.2043 5.721 10.9298 4.56994C11.0198 4.65994 12.7498 5.47994 12.7498 5.47994L10.0198 0.939941L7.28984 5.48994L9.10984 4.57994C9.16562 5.24661 9.35253 5.8957 9.65984 6.48994C10.1259 7.33085 10.8189 8.02386 11.6598 8.48994C12.3754 8.79383 13.0478 9.19057 13.6598 9.66994L13.0198 10.2999L12.5698 9.84994L12.3098 11.3899L13.8498 11.1299L13.3998 10.6799L14.0198 10.0299C14.8783 10.9836 15.3893 12.1993 15.4698 13.4799L14.5598 13.4799V12.7499L13.2998 13.6599L14.5598 14.5699V13.8399H15.4698C15.4329 15.1333 14.916 16.3667 14.0198 17.2999L13.3798 16.6599L13.8298 16.2099L12.2998 15.9399L12.5598 17.4799L13.0098 17.0299L13.6498 17.6699C12.6962 18.5284 11.4804 19.0394 10.1998 19.1199V18.2099H10.9298L10.0198 16.9399L9.10984 18.2099H9.83984V19.1199C8.54995 19.0806 7.32057 18.5639 6.38984 17.6699L7.01984 17.0299L7.46984 17.4799L7.73984 15.9399L6.19984 16.1999L6.64984 16.6499L6.01984 17.2999C5.16133 16.3463 4.65035 15.1305 4.56984 13.8499L5.47984 13.8499V14.5799L6.73984 13.6699L5.47984 12.7599V13.4899H4.56984C4.60676 12.1966 5.12363 10.9632 6.01984 10.0299L6.65984 10.6699L6.20984 11.1199L7.74984 11.3799L7.46984 9.84994L7.01984 10.2999L6.37984 9.65994L5.01984 8.38994C2.6822 10.5769 2.04477 14.033 3.44842 16.91C4.85208 19.787 7.96837 21.4117 11.1308 20.9153C14.2932 20.4188 16.7618 17.9174 17.2164 14.7487C17.6709 11.5799 16.0052 8.48542 13.1098 7.11994Z" fill="%23006499"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.5198 13.6399C12.5198 15.0206 11.4005 16.1399 10.0198 16.1399C8.63912 16.1399 7.51984 15.0206 7.51984 13.6399C7.51984 12.2592 8.63912 11.1399 10.0198 11.1399C11.4005 11.1399 12.5198 12.2592 12.5198 13.6399Z" fill="%23970000"/></svg>');
 						background-repeat: no-repeat;
-						height: 14px;
-						width: 14px;
-						margin-right: 0.5rem;
+						content: "";
 						display: inline-block;
+						height: 14px;
+						margin-right: 0.5rem;
 						vertical-align: bottom;
+						width: 14px;
 					}
-
 				}
 			}
 		}
 
 		&__image.wp-block-image {
-
 			img {
 				border-bottom-right-radius: 0;
 			}
@@ -1127,21 +1175,19 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 		&__location,
 		&__location.is-style-sans-p {
-
 			&::before {
-				background: var(--map-marker-active-color, #0060fe);
+				background: var(--map-marker-active-color, $creative-strong-green);
 			}
 		}
 
 		.wp-block-quote:not(.is-style-pullquote) {
-
 			p {
 				margin-left: 1rem;
 			}
 		}
 
 		hr {
-			background-color: #0060fe;
+			background-color: $creative-strong-green;
 		}
 	}
 
@@ -1161,7 +1207,6 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 		}
 
 		.wp-block-image {
-
 			margin: 0;
 
 			@media only screen and (max-width: 781px) {
@@ -1171,16 +1216,16 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			}
 
 			img {
-				width: 100% !important;
-				height: auto;
 				aspect-ratio: 1/1 !important;
+				height: auto;
+				width: 100% !important;
 			}
 		}
 	}
 
 	.wmf-pattern-learn-more.has-background.wp-block-group {
-		padding: 2rem;
 		margin-bottom: 2rem;
+		padding: 2rem;
 
 		.wp-block-heading {
 			font-size: 1.5rem;
@@ -1194,8 +1239,8 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/** Wrapped **/
 	.wmf-pattern-wrapped {
-		margin-top: 6rem;
 		margin-bottom: 10rem;
+		margin-top: 6rem;
 
 		p {
 			font-size: 0.75rem;
@@ -1209,9 +1254,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 // Frontend only.
 body.single-wmf-report.wikimedia-endow:not(.home) {
-
 	.wmf-pattern-image--hide-desktop {
-
 		@media only screen and (min-width: 782px) {
 			display: none;
 		}
@@ -1227,12 +1270,10 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	/** TOC **/
 	.wmf-pattern-toc {
-
 		.wp-block-buttons {
-
 			@media only screen and (min-width: 782px) {
-				position: absolute;
 				bottom: 0;
+				position: absolute;
 				right: 0;
 			}
 
@@ -1247,17 +1288,15 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 
 	.archive-report,
 	.report {
-
 		&__label {
+			background: $creative-strong-green;
+			color: $greyscale-white;
 			display: inline-block;
-			background: #0060fe;
-			color: #fff;
-
-			font-weight: variables.$font-weight-base;
-			text-transform: uppercase;
 			font-size: 0.938rem;
-			padding: 4px 8px;
+			font-weight: variables.$font-weight-base;
 			margin-bottom: 1rem;
+			padding: 4px 8px;
+			text-transform: uppercase;
 
 			img {
 				filter: brightness(0) invert(1);
@@ -1273,9 +1312,7 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 	}
 
 	.archive-report {
-
 		&__image {
-
 			@media only screen and (min-width: 782px) {
 				clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
 			}
@@ -1285,27 +1322,26 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			margin-bottom: 2rem;
 
 			a {
-				color: #000;
+				color: $black-90;
 			}
 		}
 	}
 
 	.report {
-
-		> .wp-block-group__inner-container {
+		>.wp-block-group__inner-container {
 			display: grid;
-			grid-template-columns: 33.33% 66.66%;
 			gap: 1rem;
+			grid-template-columns: 33.33% 66.66%;
 		}
 
 		&__title {
-			margin-top: 0;
-			margin-bottom: 0.5rem;
 			font-size: 1rem;
+			margin-bottom: 0.5rem;
+			margin-top: 0;
 
 			a {
-				text-decoration: none;
 				font-size: 1rem;
+				text-decoration: none;
 
 				&:focus,
 				&:hover {
@@ -1322,5 +1358,170 @@ body.single-wmf-report.wikimedia-endow:not(.home) {
 			font-size: 0.875rem;
 			margin-top: 0;
 		}
+	}
+}
+
+// Oct 2025 Endowment Report - styles taken from old site's static stylesheet
+.single-wmf-report {
+	.mw-980 {
+		max-width: none;
+		padding: 0;
+	}
+
+	.primary-nav {
+		margin-top: 3.875rem;
+	}
+
+	@media (min-width: 1024px) {
+		[data-dropdown-status="initialized"] .primary-nav {
+			height: 3rem;
+			margin-top: 3.75rem;
+			min-height: 0;
+		}
+
+		[data-dropdown-status="initialized"] .primary-nav__items {
+			margin: 0 auto;
+			max-width: 980px;
+			padding: 0;
+		}
+
+		.header-default {
+			position: relative;
+		}
+
+		.header-default .header-inner .primary-nav:focus-within {
+			background: #fff;
+			z-index: 3000;
+		}
+	}
+
+	.header-main .header-content {
+		margin: 0;
+	}
+
+	button:focus-visible {
+		box-shadow: 0 0 0 2px rgba(0, 125, 250, 0.8);
+	}
+
+	.report-background.wp-block-group.has-background {
+		padding: 0;
+	}
+
+	p {
+		margin-bottom: 1.5rem;
+	}
+
+	p+p {
+		margin-top: 0;
+	}
+
+	h3 {
+		margin-bottom: 1.5rem;
+	}
+
+	.wmf-accordion-item__title-text {
+		margin-bottom: 0;
+	}
+
+	mark {
+		background: 0 0;
+	}
+
+	[id^="toc-"] {
+		margin-top: 0 !important;
+		padding-top: 2rem !important;
+		scroll-margin-top: var(--scroll-margin-top);
+	}
+
+	@media screen and (min-width: 980px) {
+		[id^="toc-"] {
+			padding-top: 3rem !important;
+		}
+	}
+
+	div:has(+ [id^="toc-"]),
+	figure:has(+ [id^="toc-"]) {
+		margin-bottom: 0;
+	}
+
+	.alignfull,
+	.wp-block-group.alignfull {
+		margin-left: 0;
+		margin-right: 0;
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+	}
+
+	.alignfull .wp-block-group__inner-container,
+	.wp-block-group.alignfull .wp-block-group__inner-container {
+		padding: 0;
+	}
+
+	.alignwide,
+	.wp-block-group.alignwide {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 980px !important;
+		width: 100%;
+	}
+
+	@media screen and (max-width: 1044px) {
+
+		.alignwide,
+		.wp-block-group.alignwide {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+	}
+
+	.vega-embed {
+		display: block;
+		margin: auto;
+	}
+
+	.wp-block-button.has-icon-download .wp-block-button__link {
+		white-space: nowrap;
+	}
+
+	.wp-block-button.has-icon-download .wp-block-button__link::before {
+		background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 fill=%27none%27%3E%3Cpath fill=%27%23000%27 fill-rule=%27evenodd%27 d=%27M11 8.992h4l-5 6-5-6h4v-8h2zm6 8v-5h2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-5h2v5z%27 clip-rule=%27evenodd%27/%3E%3C/svg%3E");
+	}
+
+	.wmf-accordion-item {
+		border-bottom: 1px solid var(--wp--preset--color--base-70, #aaa);
+	}
+
+	.vega-embed path {
+		transition: d 0.2s;
+	}
+
+	.wp-block-group+figure {
+		margin-top: 3.5rem;
+	}
+
+	.wp-block-group.has-background {
+		padding-bottom: 2rem;
+		padding-top: 3rem;
+	}
+
+	@media screen and (min-width: 980px) {
+		.wp-block-group.has-background {
+			padding-bottom: 2.5rem;
+			padding-top: 3.5rem;
+		}
+	}
+
+	.wp-block-group.has-background:not(:only-child) {
+		margin-bottom: 0;
+	}
+
+	#vg-tooltip-element table tr td.key {
+		color: #444;
+	}
+
+	#vg-tooltip-element table tr td.value {
+		color: #000;
 	}
 }
