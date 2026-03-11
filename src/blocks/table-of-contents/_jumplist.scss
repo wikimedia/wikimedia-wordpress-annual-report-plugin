@@ -156,7 +156,7 @@ $indicator-cutoff-width: 1200px;
 		left: 0;
 		margin: 0 !important;
 		position: fixed;
-		top: calc(76px + var(--wp-admin--admin-bar--height, 0));
+		top: calc(76px + var(--wp-admin--admin-bar--height, 0px));
 		width: 100%;
 		z-index: 20;
 
