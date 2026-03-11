@@ -56,6 +56,16 @@
 			transform: scaleX(-1);
 		}
 
+		:dir(rtl) &,
+		.direction-rtl & {
+			transform: scaleX(-1);
+		}
+
+		:dir(rtl) &--back,
+		.direction-rtl &--back {
+			transform: scaleX(1);
+		}
+
 		&:active {
 			opacity: 0.8;
 		}
