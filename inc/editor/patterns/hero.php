@@ -11,7 +11,7 @@ const PATTERN = <<<CONTENT
 <!-- wp:group {"tagName":"section","metadata":{"name":"Hero"},"align":"full","className":"wmf-pattern-reports-hero is-style-default","backgroundColor":"wmf-report-blue"} -->
 <section class="wp-block-group alignfull wmf-pattern-reports-hero is-style-default has-wmf-report-blue-background-color has-background"><!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero__head"} -->
 <div class="wp-block-group alignfull wmf-pattern-reports-hero__head"><!-- wp:image {"id":74502,"sizeSlug":"large","linkDestination":"none","lock":{"move":false,"remove":false},"align":"full","className":"wmf-pattern-reports-hero__image"} -->
-<figure class="wp-block-image alignfull size-large wmf-pattern-reports-hero__image"><img src="/wp-content/uploads/2024/04/PrenticeHandMural.jpg?w=1024" alt="" class="wp-image-74502"/></figure>
+<figure class="wp-block-image alignfull size-large wmf-pattern-reports-hero__image wmf-animation"><img src="/wp-content/uploads/2024/04/PrenticeHandMural.jpg?w=1024" alt="" class="wp-image-74502"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"align":"full","className":"wmf-pattern-reports-hero__heading-container"} -->
