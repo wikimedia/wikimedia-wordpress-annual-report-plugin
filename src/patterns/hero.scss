@@ -105,6 +105,16 @@
 			svg {
 				width: auto !important;
 			}
+
+
+			/* Canvas styles for use with Lottie Lite plugin */
+			canvas {
+				height: 100%;
+				width: auto !important;
+				max-width: unset;
+				left: 0 !important;
+				transform: translatey(-50%) !important;
+			}
 		}
 
 		@media only screen and (max-width: 600px) {
