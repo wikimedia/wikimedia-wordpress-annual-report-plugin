@@ -93,7 +93,8 @@ $indicator-cutoff-width: 1200px;
 				&,
 				&:hover,
 				&:active {
-					color: #fff;
+					// We need to use !important here in order to override other !important styles.
+					color: #fff !important;
 				}
 
 				&::before {
