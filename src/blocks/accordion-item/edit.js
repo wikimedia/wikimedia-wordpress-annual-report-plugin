@@ -49,7 +49,7 @@ const Edit = ( {
 				<div className="wmf-accordion-item__title">
 					<RichText
 						className="wmf-accordion-item__title-text"
-						formattingControls={ [] }
+						allowedFormats={ [] }
 						placeholder={ __(
 							'Add Accordion Title…',
 							'wmf-reports'
