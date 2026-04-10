@@ -14,15 +14,15 @@ import { colorSlugToCSSVariable } from '../../helpers/cssVariables';
 export default function Save( { attributes } ) {
 	const blockProps = useBlockProps.save();
 
+	const wrapperStyle = {};
+	if ( attributes.fadeColor || attributes.customFadeColor ) {
+		wrapperStyle['--expandable-fade-color'] = attributes.customFadeColor || colorSlugToCSSVariable(
+			attributes.fadeColor
+		);
+	}
+
 	return (
-		<div
-			{ ...blockProps }
-			style={ {
-				'--expandable-fade-color': colorSlugToCSSVariable(
-					attributes.fadeColor
-				),
-			} }
-		>
+		<div { ...blockProps } style={ wrapperStyle }>
 			<div
 				className="expandable-content"
 				data-visible-amount={ attributes.visibleAmount }

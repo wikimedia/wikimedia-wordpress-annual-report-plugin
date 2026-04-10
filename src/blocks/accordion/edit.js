@@ -2,7 +2,7 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	InspectorControls,
-	useSetting,
+	useSettings,
 } from '@wordpress/block-editor';
 import { Panel, PanelBody, ColorPalette } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -20,6 +20,7 @@ import { __ } from '@wordpress/i18n';
  */
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps(); // eslint-disable-line react-hooks/rules-of-hooks
+	const [ colorPalette ] = useSettings( 'color.palette' );
 	const { fontColor } = attributes;
 	return (
 		<>
@@ -28,7 +29,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					<PanelBody>
 						<ColorPalette
 							value={ fontColor }
-							colors={ [ ...useSetting( 'color.palette' ) ] }
+							colors={ colorPalette }
 							// eslint-disable-next-line no-shadow
 							onChange={ ( fontColor ) =>
 								setAttributes( { fontColor } )
