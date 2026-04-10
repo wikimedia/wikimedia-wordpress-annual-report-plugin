@@ -44,7 +44,7 @@ const Edit = ( {
 	// Get the innerBlocks (slideBlocks).
 	const slideBlocks = useSelect(
 		( select ) =>
-			select( 'core/block-editor' ).getBlock( clientId ).innerBlocks
+			select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks || []
 	);
 
 	const { insertBlock, selectBlock, updateBlockAttributes } =
