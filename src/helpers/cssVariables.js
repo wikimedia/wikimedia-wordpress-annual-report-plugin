@@ -20,6 +20,10 @@
  * @return {string} The CSS variable.
  */
 export const colorSlugToCSSVariable = ( slug ) => {
+	if ( ! slug ) {
+		return '';
+	}
+
 	// If the slug ends with a number, add a hyphen before it so it matches the CSS variable name.
 	const fallback = slug.replace( /([a-zA-Z])(\d)/, '$1-$2' );
 
