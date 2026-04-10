@@ -16,9 +16,9 @@ export default function Save( { attributes } ) {
 
 	const wrapperStyle = {};
 	if ( attributes.fadeColor || attributes.customFadeColor ) {
-		wrapperStyle['--expandable-fade-color'] = attributes.customFadeColor || colorSlugToCSSVariable(
-			attributes.fadeColor
-		);
+		wrapperStyle[ '--expandable-fade-color' ] =
+			attributes.customFadeColor ||
+			colorSlugToCSSVariable( attributes.fadeColor );
 	}
 
 	return (
