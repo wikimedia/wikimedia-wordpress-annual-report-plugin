@@ -7,8 +7,7 @@ import {
 	withColors,
 } from '@wordpress/block-editor';
 import {
-	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
-	__experimentalNumberControl as NumberControl,
+	NumberControl,
 	PanelBody,
 	TextControl,
 	SelectControl,
@@ -105,21 +104,35 @@ const MapPreview = ( {
 			return;
 		}
 
+		// Exit if the container ref is not set, as we need the container.
+		if ( ! containerRef.current ) {
+			return;
+		}
+
 		const fullScreenControl = new mapboxgl.NavigationControl();
 
 		if ( map ) {
 			map.removeControl( fullScreenControl );
 			map.remove();
+			map = null;
 		}
 
-		if ( containerRef.current ) {
-			// Clear out DIV to avoid "The map container element should be empty"
-			// warnings when re-rendering.
-			containerRef.current.innerHTML = '';
-		}
+		/**
+		 * WP 7.0's iframed editor runs block scripts in the parent frame, but containerRef.current lives
+		 * in the editor iframe. Mapbox validates the container with `instanceof HTMLElement` against the
+		 * parent frame's constructor, which fails here.
+		 *
+		 * As a workaround, create the container in the parent frame, initialize Mapbox into it (passing the instanceof check),
+		 * then move it into the block render inside the iframe.
+		 */
+		const mapContainer = document.createElement( 'div' );
+		mapContainer.style.cssText =
+			'position:fixed;top:-9999px;left:-9999px;width:800px;height:400px;';
+		document.body.appendChild( mapContainer );
+
 		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
-			container: 'map',
+			container: mapContainer,
 			center: [ longitude || 0, latitude || 0 ],
 			minZoom: 0,
 			projection,
@@ -130,6 +143,14 @@ const MapPreview = ( {
 		} );
 
 		map.addControl( fullScreenControl );
+
+		/**
+		 * Move the container (including Mapbox's WebGL canvas) into the iframe.
+		 * This should replace any previous versions in case a re-render requires this to be recreated.
+		 */
+		mapContainer.style.cssText = 'width:100%;height:100%;';
+		containerRef.current.replaceChildren( mapContainer );
+		map.resize();
 
 		const slideMarkers = JSON.parse( serializedFeatures );
 
@@ -210,7 +231,7 @@ const MapPreview = ( {
 		// We do not want a change to map attributes to trigger a re-render, that
 		// is handled separately below.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ mapStyle, serializedFeatures, updateMarkers ] );
+	}, [ map, mapStyle, serializedFeatures, updateMarkers ] );
 
 	useEffect( () => {
 		if ( map ) {
@@ -224,7 +245,7 @@ const MapPreview = ( {
 	return (
 		<div
 			id="map"
-			style={ { minHeight: '250px' } }
+			style={ { height: '250px' } }
 			ref={ containerRef }
 		></div>
 	);
