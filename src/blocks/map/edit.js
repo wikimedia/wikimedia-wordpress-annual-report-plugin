@@ -239,7 +239,7 @@ const MapPreview = ( {
 			map.setCenter( [ longitude || 0, latitude || 0 ] );
 			map.setZoom( zoom || 1 );
 		}
-	}, [ projection, latitude, longitude, zoom ] );https://github.com/wikimedia/wikimedia-wordpress-annual-report-plugin/actions/runs/25802242964/job/75795192655?pr=145
+	}, [ projection, latitude, longitude, zoom ] );
 
 	return (
 		<div
