@@ -112,6 +112,7 @@ const MapPreview = ( {
 		const fullScreenControl = new mapboxgl.NavigationControl();
 
 		if ( map ) {
+			map.removeControl( fullScreenControl );
 			map.remove();
 			map = null;
 		}
@@ -230,7 +231,7 @@ const MapPreview = ( {
 		// We do not want a change to map attributes to trigger a re-render, that
 		// is handled separately below.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ containerRef, map, mapStyle, serializedFeatures, updateMarkers ] );
+	}, [ map, mapStyle, serializedFeatures, updateMarkers ] );
 
 	useEffect( () => {
 		if ( map ) {
