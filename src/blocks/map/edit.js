@@ -104,6 +104,7 @@ const MapPreview = ( {
 			return;
 		}
 
+		// Exit if the container ref is not set, as we need the container.
 		if ( ! containerRef.current ) {
 			return;
 		}
@@ -115,12 +116,14 @@ const MapPreview = ( {
 			map = null;
 		}
 
-		// WordPress 7.0's iframed editor runs block scripts in the parent frame,
-		// but containerRef.current lives in the iframe's document. Mapbox validates
-		// the container with `instanceof HTMLElement` against the parent frame's
-		// constructor, which fails for cross-frame elements. As a workaround, create
-		// the container in the parent frame, initialize Mapbox into it (passing the
-		// instanceof check), then move it into the iframe block element.
+		/**
+		 * WP 7.0's iframed editor runs block scripts in the parent frame, but containerRef.current lives
+		 * in the editor iframe. Mapbox validates the container with `instanceof HTMLElement` against the
+		 * parent frame's constructor, which fails here.
+		 *
+		 * As a workaround, create the container in the parent frame, initialize Mapbox into it (passing the instanceof check),
+		 * then move it into the block render inside the iframe.
+		 */
 		const mapContainer = document.createElement( 'div' );
 		mapContainer.style.cssText =
 			'position:fixed;top:-9999px;left:-9999px;width:800px;height:400px;';
@@ -140,9 +143,10 @@ const MapPreview = ( {
 
 		map.addControl( fullScreenControl );
 
-		// Move the container (including Mapbox's WebGL canvas) into the iframe block
-		// element. Node adoption preserves the WebGL context in modern browsers.
-		// Clear any leftover container from a previous render first.
+		/**
+		 * Move the container (including Mapbox's WebGL canvas) into the iframe.
+		 * This should replace any previous versions in case a re-render requires this to be recreated.
+		 */
 		mapContainer.style.cssText = 'width:100%;height:100%;';
 		containerRef.current.replaceChildren( mapContainer );
 		map.resize();
@@ -235,7 +239,7 @@ const MapPreview = ( {
 			map.setCenter( [ longitude || 0, latitude || 0 ] );
 			map.setZoom( zoom || 1 );
 		}
-	}, [ projection, latitude, longitude, zoom ] );
+	}, [ projection, latitude, longitude, zoom ] );https://github.com/wikimedia/wikimedia-wordpress-annual-report-plugin/actions/runs/25802242964/job/75795192655?pr=145
 
 	return (
 		<div
