@@ -120,14 +120,23 @@ const MapPreview = ( {
 			map = null;
 		}
 
+		// Clear the container to avoid "map container should be empty" warnings
+		// when re-initialising.
+		containerRef.current.innerHTML = '';
+
 		/**
-		 * Create the container in the parent frame so that Mapbox initialises
-		 * properly, then move the container into the iframed editor below.
+		 * The block canvas is an iframe, but this script (and its bundled
+		 * mapbox-gl) runs in the parent window. Create the container with the
+		 * parent document so it passes Mapbox's `instanceof HTMLElement` check,
+		 * then append it into the iframe *before* constructing the map: the node
+		 * keeps its parent realm, but its ownerDocument becomes the iframe, so
+		 * Mapbox binds its interaction handlers there. Initialising while the
+		 * container is still in the parent frame binds panning to the wrong
+		 * realm and makes the map jump during drags.
 		 */
 		const mapContainer = document.createElement( 'div' );
-		mapContainer.style.cssText =
-			'position:fixed;top:-9999px;left:-9999px;width:800px;height:400px;';
-		document.body.appendChild( mapContainer );
+		mapContainer.style.cssText = 'width:100%;height:100%;';
+		containerRef.current.appendChild( mapContainer );
 
 		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
@@ -142,14 +151,6 @@ const MapPreview = ( {
 		} );
 
 		map.addControl( fullScreenControl );
-
-		/**
-		 * Move the container (including Mapbox's WebGL canvas) into the iframe.
-		 * This should replace any previous versions in case a re-render requires this to be recreated.
-		 */
-		mapContainer.style.cssText = 'width:100%;height:100%;';
-		containerRef.current.replaceChildren( mapContainer );
-		map.resize();
 
 		const slideMarkers = JSON.parse( serializedFeatures );
 
