@@ -118,12 +118,8 @@ const MapPreview = ( {
 		}
 
 		/**
-		 * WP 7.0's iframed editor runs block scripts in the parent frame, but containerRef.current lives
-		 * in the editor iframe. Mapbox validates the container with `instanceof HTMLElement` against the
-		 * parent frame's constructor, which fails here.
-		 *
-		 * As a workaround, create the container in the parent frame, initialize Mapbox into it (passing the instanceof check),
-		 * then move it into the block render inside the iframe.
+		 * Create the container in the parent frame so that Mapbox initialises
+		 * properly, then move the container into the iframed editor below.
 		 */
 		const mapContainer = document.createElement( 'div' );
 		mapContainer.style.cssText =
@@ -243,11 +239,7 @@ const MapPreview = ( {
 	}, [ projection, latitude, longitude, zoom ] );
 
 	return (
-		<div
-			id="map"
-			style={ { height: '250px' } }
-			ref={ containerRef }
-		></div>
+		<div id="map" style={ { height: '250px' } } ref={ containerRef }></div>
 	);
 };
 
@@ -346,12 +338,8 @@ const Edit = ( {
 			return;
 		}
 
-		// Mapbox's container was moved into the editor iframe, so the marker
-		// elements it appends live in that document. Query them against the
-		// map's own document so reconciliation finds existing markers instead
-		// of recreating duplicates every render. The elements themselves are
-		// still created in the parent frame (see below) to satisfy Mapbox's
-		// `instanceof HTMLElement` check.
+		// Look up markers in the map's own document (the iframe under WP 7.0),
+		// where Mapbox appends them, so we reconcile instead of duplicating.
 		const mapDocument = map.getContainer().ownerDocument;
 		const features = map.querySourceFeatures( 'markers' );
 		const mapMarkers = mapDocument.getElementsByClassName( 'marker' );
