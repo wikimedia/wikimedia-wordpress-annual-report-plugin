@@ -7,7 +7,10 @@ import {
 	withColors,
 } from '@wordpress/block-editor';
 import {
-	NumberControl,
+	// NumberControl is not stabilised as of WP 7.0; the unprefixed export is
+	// undefined and crashes the block when the inspector mounts.
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalNumberControl as NumberControl,
 	PanelBody,
 	TextControl,
 	SelectControl,
