@@ -346,9 +346,16 @@ const Edit = ( {
 			return;
 		}
 
+		// Mapbox's container was moved into the editor iframe, so the marker
+		// elements it appends live in that document. Query them against the
+		// map's own document so reconciliation finds existing markers instead
+		// of recreating duplicates every render. The elements themselves are
+		// still created in the parent frame (see below) to satisfy Mapbox's
+		// `instanceof HTMLElement` check.
+		const mapDocument = map.getContainer().ownerDocument;
 		const features = map.querySourceFeatures( 'markers' );
-		const mapMarkers = document.getElementsByClassName( 'marker' );
-		const clusterMarkers = document.getElementsByClassName( 'cluster' );
+		const mapMarkers = mapDocument.getElementsByClassName( 'marker' );
+		const clusterMarkers = mapDocument.getElementsByClassName( 'cluster' );
 		const newMarkers = [];
 		const newClusters = [];
 
