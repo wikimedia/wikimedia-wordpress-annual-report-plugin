@@ -231,7 +231,7 @@ const MapPreview = ( {
 		// We do not want a change to map attributes to trigger a re-render, that
 		// is handled separately below.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ map, mapStyle, serializedFeatures, updateMarkers ] );
+	}, [ mapStyle, serializedFeatures, updateMarkers ] );
 
 	useEffect( () => {
 		if ( map ) {
