@@ -152,6 +152,45 @@ const MapPreview = ( {
 
 		map.addControl( fullScreenControl );
 
+		// Mapbox's built-in drag-pan is driven by mouse events. The WP 7.0
+		// editor iframe re-dispatches those to the parent frame (where mapbox-gl
+		// runs) offset by the iframe's position, so the map jumps on the first
+		// drag movement. Pointer events are not re-dispatched, so drive panning
+		// from them instead, keeping the whole gesture in the iframe realm.
+		map.dragPan.disable();
+		const mapDocument = mapContainer.ownerDocument;
+		let panLastX = 0;
+		let panLastY = 0;
+		const onPanMove = ( event ) => {
+			map.panBy( [ panLastX - event.clientX, panLastY - event.clientY ], {
+				animate: false,
+			} );
+			panLastX = event.clientX;
+			panLastY = event.clientY;
+		};
+		const onPanEnd = () => {
+			mapDocument.removeEventListener( 'pointermove', onPanMove );
+			mapDocument.removeEventListener( 'pointerup', onPanEnd );
+			mapDocument.removeEventListener( 'pointercancel', onPanEnd );
+		};
+		mapContainer.addEventListener( 'pointerdown', ( event ) => {
+			// Only pan from the map background; markers, clusters and controls
+			// keep their own gestures.
+			if (
+				event.button !== 0 ||
+				event.target.closest(
+					'.marker, .cluster, .mapboxgl-marker, .mapboxgl-ctrl'
+				)
+			) {
+				return;
+			}
+			panLastX = event.clientX;
+			panLastY = event.clientY;
+			mapDocument.addEventListener( 'pointermove', onPanMove );
+			mapDocument.addEventListener( 'pointerup', onPanEnd );
+			mapDocument.addEventListener( 'pointercancel', onPanEnd );
+		} );
+
 		const slideMarkers = JSON.parse( serializedFeatures );
 
 		map.on( 'load', () => {
