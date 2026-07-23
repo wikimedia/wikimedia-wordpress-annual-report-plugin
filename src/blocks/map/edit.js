@@ -7,6 +7,8 @@ import {
 	withColors,
 } from '@wordpress/block-editor';
 import {
+	// NumberControl is not stabilised as of WP 7.0; the unprefixed export is
+	// undefined and crashes the block when the inspector mounts.
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalNumberControl as NumberControl,
 	PanelBody,
@@ -105,21 +107,40 @@ const MapPreview = ( {
 			return;
 		}
 
+		// Exit if the container ref is not set, as we need the container.
+		if ( ! containerRef.current ) {
+			return;
+		}
+
 		const fullScreenControl = new mapboxgl.NavigationControl();
 
 		if ( map ) {
 			map.removeControl( fullScreenControl );
 			map.remove();
+			map = null;
 		}
 
-		if ( containerRef.current ) {
-			// Clear out DIV to avoid "The map container element should be empty"
-			// warnings when re-rendering.
-			containerRef.current.innerHTML = '';
-		}
+		// Clear the container to avoid "map container should be empty" warnings
+		// when re-initialising.
+		containerRef.current.innerHTML = '';
+
+		/**
+		 * The block canvas is an iframe, but this script (and its bundled
+		 * mapbox-gl) runs in the parent window. Create the container with the
+		 * parent document so it passes Mapbox's `instanceof HTMLElement` check,
+		 * then append it into the iframe *before* constructing the map: the node
+		 * keeps its parent realm, but its ownerDocument becomes the iframe, so
+		 * Mapbox binds its interaction handlers there. Initialising while the
+		 * container is still in the parent frame binds panning to the wrong
+		 * realm and makes the map jump during drags.
+		 */
+		const mapContainer = document.createElement( 'div' );
+		mapContainer.style.cssText = 'width:100%;height:100%;';
+		containerRef.current.appendChild( mapContainer );
+
 		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
-			container: 'map',
+			container: mapContainer,
 			center: [ longitude || 0, latitude || 0 ],
 			minZoom: 0,
 			projection,
@@ -130,6 +151,45 @@ const MapPreview = ( {
 		} );
 
 		map.addControl( fullScreenControl );
+
+		// Mapbox's built-in drag-pan is driven by mouse events. The WP 7.0
+		// editor iframe re-dispatches those to the parent frame (where mapbox-gl
+		// runs) offset by the iframe's position, so the map jumps on the first
+		// drag movement. Pointer events are not re-dispatched, so drive panning
+		// from them instead, keeping the whole gesture in the iframe realm.
+		map.dragPan.disable();
+		const mapDocument = mapContainer.ownerDocument;
+		let panLastX = 0;
+		let panLastY = 0;
+		const onPanMove = ( event ) => {
+			map.panBy( [ panLastX - event.clientX, panLastY - event.clientY ], {
+				animate: false,
+			} );
+			panLastX = event.clientX;
+			panLastY = event.clientY;
+		};
+		const onPanEnd = () => {
+			mapDocument.removeEventListener( 'pointermove', onPanMove );
+			mapDocument.removeEventListener( 'pointerup', onPanEnd );
+			mapDocument.removeEventListener( 'pointercancel', onPanEnd );
+		};
+		mapContainer.addEventListener( 'pointerdown', ( event ) => {
+			// Only pan from the map background; markers, clusters and controls
+			// keep their own gestures.
+			if (
+				event.button !== 0 ||
+				event.target.closest(
+					'.marker, .cluster, .mapboxgl-marker, .mapboxgl-ctrl'
+				)
+			) {
+				return;
+			}
+			panLastX = event.clientX;
+			panLastY = event.clientY;
+			mapDocument.addEventListener( 'pointermove', onPanMove );
+			mapDocument.addEventListener( 'pointerup', onPanEnd );
+			mapDocument.addEventListener( 'pointercancel', onPanEnd );
+		} );
 
 		const slideMarkers = JSON.parse( serializedFeatures );
 
@@ -222,11 +282,7 @@ const MapPreview = ( {
 	}, [ projection, latitude, longitude, zoom ] );
 
 	return (
-		<div
-			id="map"
-			style={ { minHeight: '250px' } }
-			ref={ containerRef }
-		></div>
+		<div id="map" style={ { height: '250px' } } ref={ containerRef }></div>
 	);
 };
 
@@ -325,9 +381,12 @@ const Edit = ( {
 			return;
 		}
 
+		// Look up markers in the map's own document (the iframe under WP 7.0),
+		// where Mapbox appends them, so we reconcile instead of duplicating.
+		const mapDocument = map.getContainer().ownerDocument;
 		const features = map.querySourceFeatures( 'markers' );
-		const mapMarkers = document.getElementsByClassName( 'marker' );
-		const clusterMarkers = document.getElementsByClassName( 'cluster' );
+		const mapMarkers = mapDocument.getElementsByClassName( 'marker' );
+		const clusterMarkers = mapDocument.getElementsByClassName( 'cluster' );
 		const newMarkers = [];
 		const newClusters = [];
 
