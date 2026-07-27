@@ -7,7 +7,10 @@ import {
 	withColors,
 } from '@wordpress/block-editor';
 import {
-	NumberControl,
+	// NumberControl is not stabilised as of WP 7.0; the unprefixed export is
+	// undefined and crashes the block when the inspector mounts.
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalNumberControl as NumberControl,
 	PanelBody,
 	TextControl,
 	SelectControl,
@@ -117,18 +120,23 @@ const MapPreview = ( {
 			map = null;
 		}
 
+		// Clear the container to avoid "map container should be empty" warnings
+		// when re-initialising.
+		containerRef.current.innerHTML = '';
+
 		/**
-		 * WP 7.0's iframed editor runs block scripts in the parent frame, but containerRef.current lives
-		 * in the editor iframe. Mapbox validates the container with `instanceof HTMLElement` against the
-		 * parent frame's constructor, which fails here.
-		 *
-		 * As a workaround, create the container in the parent frame, initialize Mapbox into it (passing the instanceof check),
-		 * then move it into the block render inside the iframe.
+		 * The block canvas is an iframe, but this script (and its bundled
+		 * mapbox-gl) runs in the parent window. Create the container with the
+		 * parent document so it passes Mapbox's `instanceof HTMLElement` check,
+		 * then append it into the iframe *before* constructing the map: the node
+		 * keeps its parent realm, but its ownerDocument becomes the iframe, so
+		 * Mapbox binds its interaction handlers there. Initialising while the
+		 * container is still in the parent frame binds panning to the wrong
+		 * realm and makes the map jump during drags.
 		 */
 		const mapContainer = document.createElement( 'div' );
-		mapContainer.style.cssText =
-			'position:fixed;top:-9999px;left:-9999px;width:800px;height:400px;';
-		document.body.appendChild( mapContainer );
+		mapContainer.style.cssText = 'width:100%;height:100%;';
+		containerRef.current.appendChild( mapContainer );
 
 		mapboxgl.accessToken = wmf.apiKey;
 		map = new mapboxgl.Map( {
@@ -144,13 +152,44 @@ const MapPreview = ( {
 
 		map.addControl( fullScreenControl );
 
-		/**
-		 * Move the container (including Mapbox's WebGL canvas) into the iframe.
-		 * This should replace any previous versions in case a re-render requires this to be recreated.
-		 */
-		mapContainer.style.cssText = 'width:100%;height:100%;';
-		containerRef.current.replaceChildren( mapContainer );
-		map.resize();
+		// Mapbox's built-in drag-pan is driven by mouse events. The WP 7.0
+		// editor iframe re-dispatches those to the parent frame (where mapbox-gl
+		// runs) offset by the iframe's position, so the map jumps on the first
+		// drag movement. Pointer events are not re-dispatched, so drive panning
+		// from them instead, keeping the whole gesture in the iframe realm.
+		map.dragPan.disable();
+		const mapDocument = mapContainer.ownerDocument;
+		let panLastX = 0;
+		let panLastY = 0;
+		const onPanMove = ( event ) => {
+			map.panBy( [ panLastX - event.clientX, panLastY - event.clientY ], {
+				animate: false,
+			} );
+			panLastX = event.clientX;
+			panLastY = event.clientY;
+		};
+		const onPanEnd = () => {
+			mapDocument.removeEventListener( 'pointermove', onPanMove );
+			mapDocument.removeEventListener( 'pointerup', onPanEnd );
+			mapDocument.removeEventListener( 'pointercancel', onPanEnd );
+		};
+		mapContainer.addEventListener( 'pointerdown', ( event ) => {
+			// Only pan from the map background; markers, clusters and controls
+			// keep their own gestures.
+			if (
+				event.button !== 0 ||
+				event.target.closest(
+					'.marker, .cluster, .mapboxgl-marker, .mapboxgl-ctrl'
+				)
+			) {
+				return;
+			}
+			panLastX = event.clientX;
+			panLastY = event.clientY;
+			mapDocument.addEventListener( 'pointermove', onPanMove );
+			mapDocument.addEventListener( 'pointerup', onPanEnd );
+			mapDocument.addEventListener( 'pointercancel', onPanEnd );
+		} );
 
 		const slideMarkers = JSON.parse( serializedFeatures );
 
@@ -231,7 +270,7 @@ const MapPreview = ( {
 		// We do not want a change to map attributes to trigger a re-render, that
 		// is handled separately below.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ map, mapStyle, serializedFeatures, updateMarkers ] );
+	}, [ mapStyle, serializedFeatures, updateMarkers ] );
 
 	useEffect( () => {
 		if ( map ) {
@@ -243,11 +282,7 @@ const MapPreview = ( {
 	}, [ projection, latitude, longitude, zoom ] );
 
 	return (
-		<div
-			id="map"
-			style={ { height: '250px' } }
-			ref={ containerRef }
-		></div>
+		<div id="map" style={ { height: '250px' } } ref={ containerRef }></div>
 	);
 };
 
@@ -346,9 +381,12 @@ const Edit = ( {
 			return;
 		}
 
+		// Look up markers in the map's own document (the iframe under WP 7.0),
+		// where Mapbox appends them, so we reconcile instead of duplicating.
+		const mapDocument = map.getContainer().ownerDocument;
 		const features = map.querySourceFeatures( 'markers' );
-		const mapMarkers = document.getElementsByClassName( 'marker' );
-		const clusterMarkers = document.getElementsByClassName( 'cluster' );
+		const mapMarkers = mapDocument.getElementsByClassName( 'marker' );
+		const clusterMarkers = mapDocument.getElementsByClassName( 'cluster' );
 		const newMarkers = [];
 		const newClusters = [];
 
