@@ -14,13 +14,14 @@ on:
       - synchronize
     # Only run on a given PR if relevant files have changed.
     paths:
-      - '**.js'
-      - '**.jsx'
+      - '**/*.js'
+      - '**/*.jsx'
       - '.babelrc.js'
       - '.eslintrc'
       - '.eslintignore'
       - 'package.json'
       - 'package-lock.json'
+      - '**/*.yml'
 
 defaults:
   run:
@@ -39,21 +40,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Paths filters
-        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
-        id: paths
-        with:
-          filters: |
-            javascript: &javascript
-              - '**/*.js'
-            eslint:
-              - *javascript
-              - '.eslintignore'
-              - '.eslintrc'
-            npm:
-              - 'package.json'
-              - 'package-lock.json'
-
       - name: Set up Node
         uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
@@ -61,13 +47,10 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        if: ${{ toJSON( steps.paths.outputs.changes ) != '"[]"' && steps.cache-node-dependencies.outputs.cache-hit != 'true' }}
         run: npm ci --progress=false --audit=false --fund=false --legacy-peer-deps
 
       - name: Lint code
-        if: ${{ steps.paths.outputs.eslint == 'true' }}
         run: npm run lint:js
 
       - name: Build application
-        if: ${{ steps.paths.outputs.javascript == 'true' || steps.paths.outputs.npm == 'true' }}
         run: npm run build
