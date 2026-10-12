@@ -53,6 +53,8 @@ const Edit = ( {
 	// Track state in a ref, to allow us to determine if slides are added or removed.
 	const slideCount = useRef( slideBlocks.length );
 
+	const blockRef = useRef();
+
 	// Keep track of the selected Slide.
 	const [ currentItemIndex, setCurrentItemIndex ] = useState( 0 );
 	const [ marginOffset, setMarginOffset ] = useState( 0 );
@@ -72,18 +74,18 @@ const Edit = ( {
 	 * Scroll category slides into view.
 	 */
 	useEffect( () => {
-		const wrapper = document.getElementsByClassName(
-			'stories__categories-wrapper'
-		)?.[ 0 ];
-		const track = document.getElementsByClassName(
-			'stories__categories'
-		)?.[ 0 ];
-		const activeCategory = document.querySelector(
-			'.category-slide.active'
-		);
-		const lastSlide = document.querySelector(
-			'.category-slide:last-child'
-		);
+		// Query from the block's own element: in the iframe editor the global
+		// document is not the one containing the block.
+		const block = blockRef.current;
+		const wrapper = block?.querySelector( '.stories__categories-wrapper' );
+		const track = block?.querySelector( '.stories__categories' );
+		const activeCategory = block?.querySelector( '.category-slide.active' );
+		const lastSlide = block?.querySelector( '.category-slide:last-child' );
+
+		if ( ! wrapper || ! track || ! activeCategory || ! lastSlide ) {
+			return;
+		}
+
 		const currentOffset = track.style.marginLeft || 0;
 
 		const wrapperPosition = wrapper?.getBoundingClientRect();
@@ -120,7 +122,7 @@ const Edit = ( {
 			currentItemIndex > 0 &&
 			currentItemIndex < slideCount.current - 1
 		) {
-			const firstSlide = document.querySelector(
+			const firstSlide = block.querySelector(
 				'.category-slide:first-child'
 			);
 			const slideWidth = categoryPosition.right - categoryPosition.left;
@@ -182,6 +184,7 @@ const Edit = ( {
 	}, [ slideBlocks.length, currentItemIndex, slideCount, slideBlocks ] );
 
 	const blockProps = useBlockProps( {
+		ref: blockRef,
 		className: 'stories carousel',
 	} );
 
