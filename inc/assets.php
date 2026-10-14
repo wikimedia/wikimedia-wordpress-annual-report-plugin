@@ -18,6 +18,7 @@ function bootstrap() {
 	add_action( 'body_class', __NAMESPACE__ . '\\add_body_classes'  );
 	add_action( 'init', __NAMESPACE__ . '\\register_dependency_scripts' );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets' );
+	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_editor_styles' );
 	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_frontend_styles' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_scripts' );
 	add_filter( 'wp_headers', __NAMESPACE__ . '\\set_connect_src_origins', 901, 2 );
@@ -159,6 +160,27 @@ function enqueue_editor_assets() : void {
 		build_file_uri( 'editor.js' )
 	);
 
+	wp_localize_script(
+		'annual-report-plugin-editor',
+		'wmf',
+		[
+			'apiKey' => get_option( MAP_API_OPTION_KEY ),
+			'theme' => get_option('stylesheet'),
+		],
+	);
+}
+
+/**
+ * Enqueue the editor stylesheets in the editor iframe, not on the frontend.
+ *
+ * The post editor runs in an iframe, which only loads styles enqueued on
+ * enqueue_block_assets. This hook also fires on the frontend, so bail there.
+ */
+function enqueue_editor_styles() : void {
+	if ( ! is_admin() ) {
+		return;
+	}
+
 	wp_enqueue_style(
 		'annual-report-plugin-editor',
 		build_file_uri( 'editor.css' ),
@@ -171,14 +193,6 @@ function enqueue_editor_assets() : void {
 	);
 
 	wp_enqueue_style( 'mapbox-css', 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' );
-	wp_localize_script(
-		'annual-report-plugin-editor',
-		'wmf',
-		[
-			'apiKey' => get_option( MAP_API_OPTION_KEY ),
-			'theme' => get_option('stylesheet'),
-		],
-	);
 }
 
 /**
