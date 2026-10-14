@@ -1,0 +1,89 @@
+name: Push to Environment
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - closed
+
+jobs:
+  push-to-development:
+    name: Development
+    if: ${{ github.event.label.name == 'Push to Development' }}
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      # sync-branches fails when its sync branch already exists, so on a second
+      # label, merge the new commits into that branch and skip it.
+      - id: update-sync-branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_REF: ${{ github.head_ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          sync_branch="${HEAD_REF}-development"
+          if ! git ls-remote --exit-code --heads origin "$sync_branch" > /dev/null; then
+            echo "updated=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Remove the label first so a conflict still leaves it free to add again.
+          gh pr edit "$PR_NUMBER" --remove-label 'Push to Development'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -C "$sync_branch" "origin/$sync_branch"
+          if ! git merge --no-ff --no-edit "origin/$HEAD_REF"; then
+            echo "::error::Merging $HEAD_REF into $sync_branch conflicts. Resolve it on $sync_branch."
+            exit 1
+          fi
+          git push origin "$sync_branch"
+          echo "updated=true" >> "$GITHUB_OUTPUT"
+
+      - if: ${{ steps.update-sync-branch.outputs.updated != 'true' }}
+        uses: humanmade/sync-branches@bf3315950e8c147a5202eef0b8d564d4df051bc5 # v1.4.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FROM_BRANCH: ${{ github.head_ref }}
+          TO_BRANCH: develop
+          NEW_BRANCH_SUFFIX: development
+          REQUIRED_LABEL: Push to Development
+
+  # sync-branches only opens the sync PR. Once that PR merges into develop, mark
+  # the original PR so the list shows which branches are on the test environment.
+  label-on-development:
+    name: Label On Development
+    if: >-
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.base.ref == 'develop' &&
+      endsWith(github.event.pull_request.head.ref, '-development')
+    runs-on: ubuntu-24.04
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          SYNC_BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+          original="${SYNC_BRANCH%-development}"
+          number="$(gh pr list --head "$original" --state all --limit 1 --json number --jq '.[0].number // empty')"
+          if [ -z "$number" ]; then
+            echo "No pull request found for branch $original, nothing to label."
+            exit 0
+          fi
+          echo "Labelling #$number as On Development."
+          gh pr edit "$number" --add-label 'On Development'
