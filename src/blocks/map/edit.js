@@ -147,7 +147,18 @@ const MapPreview = ( {
 			renderWorldCopies: false,
 			scrollZoom: false,
 			style: mapStyle || 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mattwatsonhm/clu09j0hw00tf01p7dpw5hyv7' >- custom grey colours.
-			zoom: zoom || 1,
+			zoom: zoom ?? 1,
+		} );
+
+		// The container is still at its pre-layout height when the map is
+		// created, and mapbox raises the zoom to fill it. Re-apply the saved
+		// view once the container has settled.
+		map.once( 'load', () => {
+			map.resize();
+			map.jumpTo( {
+				center: [ longitude || 0, latitude || 0 ],
+				zoom: zoom ?? 1,
+			} );
 		} );
 
 		map.addControl( fullScreenControl );
@@ -277,7 +288,7 @@ const MapPreview = ( {
 			// Keep the map up to date as attributes change.
 			map.setProjection( projection );
 			map.setCenter( [ longitude || 0, latitude || 0 ] );
-			map.setZoom( zoom || 1 );
+			map.setZoom( zoom ?? 1 );
 		}
 	}, [ projection, latitude, longitude, zoom ] );
 
